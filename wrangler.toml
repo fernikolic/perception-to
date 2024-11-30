@@ -1,0 +1,14 @@
+name = "perception-to"
+main = "workers-site/index.js"  # Replace entry-point
+account_id = "565edbf71e00f27e7dc764574a32e04e"  # Get this from Cloudflare dashboard
+workers_dev = true
+
+[site]
+bucket = "dist"
+
+[env.production]
+routes = [
+  { pattern = "perception.to/*", zone_id = "a5b72240fbd06d9e53113fa91ac1d548" }
+]
+
+compatibility_date = "2024-11-30"
