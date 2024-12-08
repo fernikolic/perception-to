@@ -10,8 +10,6 @@ export default function RootLayout({
       <body>
         <ThemeProvider
           defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
         >
           {children}
         </ThemeProvider>
