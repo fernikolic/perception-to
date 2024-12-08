@@ -7,10 +7,10 @@ export function Footer() {
     <footer className="border-t">
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
         <div className="mb-12">
-          <div className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-2">
             <Logo />
             <span className="text-2xl font-bold">Perception</span>
-          </div>
+          </a>
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
             Empowering businesses with innovative solutions. Transform your workflow
             and scale your operations with our comprehensive platform.

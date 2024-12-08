@@ -58,19 +58,19 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav 
-      className={cn(
-        "fixed top-0 z-50 w-full transition-all duration-300",
-        isScrolled 
-          ? "bg-background/80 backdrop-blur-xl shadow-lg" 
-          : "bg-transparent"
-      )}
-    >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2">
+    <header className="fixed top-0 z-50 w-full transition-all duration-300">
+      <nav 
+        className={cn(
+          "mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8",
+          isScrolled 
+            ? "bg-background/80 backdrop-blur-xl shadow-lg" 
+            : "bg-transparent"
+        )}
+      >
+        <a href="/" className="flex items-center gap-2">
           <Logo />
           <span className="text-2xl font-bold">Perception</span>
-        </div>
+        </a>
 
         <div className="hidden md:flex md:items-center md:space-x-6">
           <NavigationMenu>
@@ -179,7 +179,7 @@ export function Navbar() {
             Get Started
           </Button>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }

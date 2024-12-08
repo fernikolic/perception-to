@@ -1,4 +1,6 @@
 import { TrendBarChart } from './trend-bar-chart';
+import { Card, CardContent } from '@/components/ui/card';
+import { BrowserFrame } from '../charts/browser-frame';
 
 const trendingData = [
   {
@@ -30,9 +32,16 @@ const trendingData = [
 
 export function TrendingTopics() {
   return (
-    <TrendBarChart 
-      data={trendingData} 
-      description="Track the most discussed Bitcoin topics across social media, news outlets, and community forums. Our analysis covers technical developments, market trends, and industry updates to help you stay informed about what's moving the market. Data is updated hourly to ensure you're always seeing the latest trends."
-    />
+    <Card className="overflow-hidden">
+      <BrowserFrame url="app.perception.to" />
+      <CardContent className="border-none">
+        <div className="h-[400px]">
+          <TrendBarChart 
+            data={trendingData} 
+            description="Track the most discussed Bitcoin topics across social media, news outlets, and community forums. Our analysis covers technical developments, market trends, and industry updates to help you stay informed about what's moving the market. Data is updated hourly to ensure you're always seeing the latest trends."
+          />
+        </div>
+      </CardContent>
+    </Card>
   );
 }
