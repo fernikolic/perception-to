@@ -72,26 +72,26 @@ export function Navbar() {
           <span className="text-2xl font-bold">Perception</span>
         </a>
 
-        <div className="hidden md:flex md:items-center md:space-x-6">
+        <div className="hidden md:flex md:flex-1 md:justify-center">
           <NavigationMenu>
-            <NavigationMenuList>
+            <NavigationMenuList className="space-x-2">
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent">
                   Use Cases
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid w-[800px] gap-4 p-6">
+                  <div className="grid grid-cols-3 gap-2 p-3 w-[1200px] relative -left-[10px]">
                     {useCases.map((useCase) => (
                       <NavigationMenuLink
                         key={useCase.title}
                         href={useCase.href}
-                        className="block space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        className="block space-y-1 rounded-lg p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                       >
-                        <div className="flex gap-4">
+                        <div className="flex flex-col gap-2">
                           <img
                             src={useCase.image}
                             alt={useCase.title}
-                            className="h-32 w-48 rounded-lg object-cover"
+                            className="h-28 w-full rounded-lg object-cover"
                           />
                           <div>
                             <div className="text-lg font-medium leading-none">
@@ -165,7 +165,9 @@ export function Navbar() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
+        </div>
 
+        <div className="hidden md:flex md:items-center md:space-x-6">
           <a 
             href="https://app.perception.to/auth/login" 
             className="text-sm hover:text-primary"

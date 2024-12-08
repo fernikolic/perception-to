@@ -53,7 +53,7 @@ export function Hero() {
           </div>
           
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl gradient-text">
-            Streamline Your Workflow with Our SaaS Solution
+          Track trends, decode sentiment, uncover narratives, and make informed decisions—all in one place.
           </h1>
           
           <p className="mt-6 text-lg leading-8 text-white/60">

@@ -64,11 +64,10 @@ export function Integrations() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Seamlessly integrates with your favorite frontend tools
+            Monitor media sentiment across channels
           </h2>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Build with the tools you love. Our platform works seamlessly with all major
-            frontend frameworks and libraries.
+            Quickly track positive, negative, or neutral sentiment in the media to understand how Bitcoin is being discussed globally.
           </p>
         </div>
         

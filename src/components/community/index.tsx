@@ -36,13 +36,13 @@ export function Community() {
           </div>
           
           <h2 className="mt-4 text-center text-4xl font-bold tracking-tight sm:text-5xl">
-            Join our community
+          Your All-in-One Bitcoin Intelligence Platform
           </h2>
           
           <p className="mt-4 text-center text-xl text-muted-foreground">
-            <span className="text-foreground">Connect</span>,{' '}
-            <span className="text-foreground">learn</span>, and{' '}
-            <span className="text-foreground">grow</span> with fellow designers and developers.
+            <span className="text-foreground">No more</span>{' '}
+            <span className="text-foreground">switching</span> between{' '}
+            <span className="text-foreground">tools or wasting time</span>. From trend discovery to price analysis, everything you need is here.
           </p>
         </div>
 

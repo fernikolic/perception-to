@@ -53,13 +53,12 @@ export function Hero() {
           </div>
           
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl gradient-text">
-            Streamline Your Workflow with Our SaaS Solution
+            Track Bitcoin trends, decode sentiment, and uncover narratives. All in one place.
+
           </h1>
           
           <p className="mt-6 text-lg leading-8 text-white/60">
-            Transform your business operations with our innovative platform. Boost productivity,
-            enhance collaboration, and drive growth with our comprehensive suite of tools.
-          </p>
+          Save HOURS staying ahead of the Bitcoin market.                    </p>
           
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button 

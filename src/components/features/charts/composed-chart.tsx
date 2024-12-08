@@ -27,7 +27,7 @@ export function ComposedChart({ data }: ComposedChartProps) {
     <Card className="overflow-hidden">
       <BrowserFrame url="app.perception.to" />
       <CardHeader>
-        <CardTitle>Bitcoin Price & Market Sentiment</CardTitle>
+        <CardTitle>Correlate Sentiment with Price Movements</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="h-[400px]">

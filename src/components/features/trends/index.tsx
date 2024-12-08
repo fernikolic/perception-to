@@ -38,7 +38,7 @@ export function TrendingTopics() {
         <div className="h-[400px]">
           <TrendBarChart 
             data={trendingData} 
-            description="Track the most discussed Bitcoin topics across social media, news outlets, and community forums. Our analysis covers technical developments, market trends, and industry updates to help you stay informed about what's moving the market. Data is updated hourly to ensure you're always seeing the latest trends."
+            description=""
           />
         </div>
       </CardContent>

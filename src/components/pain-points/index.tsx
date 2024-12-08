@@ -1,5 +1,3 @@
-import { ComposedChart } from './charts/composed-chart';
-import { TrendingTopics } from './trends';
 import { XCircle } from 'lucide-react';
 
 const painPoints = [
@@ -25,24 +23,12 @@ const painPoints = [
   },
 ];
 
-// Generate mock data for the last 12 months
-const generateMockData = () => {
-  return Array.from({ length: 12 }, (_, i) => ({
-    month: new Date(2023, i).toLocaleString('default', { month: 'short' }),
-    price: Math.floor(20000 + Math.random() * 30000 + i * 2000),
-    sentiment: Math.floor(40 + Math.random() * 60),
-  }));
-};
-
-const chartData = generateMockData();
-
-export function Features() {
+export function PainPoints() {
   return (
-    <section id="features" className="relative overflow-hidden py-24 sm:py-32">
+    <section className="relative overflow-hidden py-24 sm:py-32">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,0.05),transparent)]" />
       
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Pain Points Section */}
         <div className="mx-auto max-w-2xl text-center">
           <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">
             <span className="text-sm font-medium">Current Workflow</span>
@@ -76,27 +62,7 @@ export function Features() {
             ))}
           </div>
         </div>
-
-        {/* Solution Section */}
-        <div className="mx-auto mt-32 max-w-2xl text-center">
-          <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">
-            <span className="text-sm font-medium">Market Analysis</span>
-          </div>
-          
-          <h2 className="mt-8 text-3xl font-bold tracking-tight sm:text-4xl">
-            There Is A Better Way: Decode Bitcoin Market Sentiment In One Place
-          </h2>
-          
-          <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Get instant updates on Bitcoin market psychology with our sentiment pulse. Spot sentiment shifts before they impact price.
-          </p>
-        </div>
-        
-        <div className="mx-auto mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <ComposedChart data={chartData} />
-          <TrendingTopics />
-        </div>
       </div>
     </section>
   );
-}
+} 

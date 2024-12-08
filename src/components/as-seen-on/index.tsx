@@ -22,16 +22,16 @@ const publications = [
 export function AsSeenOn() {
   return (
     <section className="border-t border-white/5 bg-black/20 backdrop-blur-sm">
-      <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <p className="text-center text-sm font-semibold leading-8 text-muted-foreground">
           As featured in
         </p>
-        <div className="mx-auto mt-6 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10">
+        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-4 items-center gap-x-16 gap-y-12">
           {publications.map((publication) => (
             <div
               key={publication.name}
               className={cn(
-                "col-span-2 max-h-12 w-full object-contain lg:col-span-1",
+                "col-span-2 max-h-32 w-full object-contain lg:col-span-1",
                 "transition-all duration-300 hover:opacity-100",
                 "opacity-70 grayscale hover:grayscale-0"
               )}

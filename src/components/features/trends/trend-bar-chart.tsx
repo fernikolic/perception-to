@@ -14,14 +14,14 @@ interface TrendBarChartProps {
 export function TrendBarChart({ data, description }: TrendBarChartProps) {
   return (
     <>
-      <div className="mb-6">
-        <h3 className="text-lg font-medium">Top Bitcoin Topics</h3>
+      <div className="mb-12">
+        <h3 className="text-lg font-medium">Track Breaking Trends Without the Noise</h3>
         <p className="mt-2 text-sm text-muted-foreground">
           {description}
         </p>
       </div>
       
-      <div className="h-[300px]">
+      <div className="h-[400px] flex items-center">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
