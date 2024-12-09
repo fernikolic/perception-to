@@ -10,6 +10,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
+import { Menu, X } from 'lucide-react';
 
 const useCases = [
   {
@@ -47,6 +48,7 @@ const company = [
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,7 +82,7 @@ export function Navbar() {
                   Use Cases
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid grid-cols-3 gap-2 p-3 w-[1200px] relative -left-[10px]">
+                  <div className="grid w-[calc(100vw-2rem)] max-w-[90vw] md:max-w-[1200px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3 relative">
                     {useCases.map((useCase) => (
                       <NavigationMenuLink
                         key={useCase.title}
@@ -113,7 +115,7 @@ export function Navbar() {
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4">
+                  <ul className="grid w-[calc(100vw-2rem)] max-w-[400px] gap-3 p-4">
                     {resources.map((item) => (
                       <li key={item.title}>
                         <NavigationMenuLink asChild>
@@ -138,7 +140,7 @@ export function Navbar() {
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4">
+                  <ul className="grid w-[calc(100vw-2rem)] max-w-[400px] gap-3 p-4">
                     {company.map((item) => (
                       <li key={item.title}>
                         <NavigationMenuLink asChild>
@@ -181,7 +183,89 @@ export function Navbar() {
             Get Started
           </Button>
         </div>
+
+        <button
+          className="md:hidden p-2"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
+        </button>
       </nav>
+
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-background border-b">
+          <div className="space-y-1 px-4 pb-3 pt-2">
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <div className="font-medium px-3">Use Cases</div>
+                {useCases.map((useCase) => (
+                  <a
+                    key={useCase.title}
+                    href={useCase.href}
+                    className="block px-3 py-2 text-sm hover:bg-accent rounded-lg"
+                  >
+                    {useCase.title}
+                  </a>
+                ))}
+              </div>
+
+              <div className="space-y-2">
+                <div className="font-medium px-3">Resources</div>
+                {resources.map((item) => (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    className="block px-3 py-2 text-sm hover:bg-accent rounded-lg"
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+
+              <div className="space-y-2">
+                <div className="font-medium px-3">Company</div>
+                {company.map((item) => (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    className="block px-3 py-2 text-sm hover:bg-accent rounded-lg"
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+
+              <a
+                href="/pricing"
+                className="block px-3 py-2 text-sm hover:bg-accent rounded-lg"
+              >
+                Pricing
+              </a>
+
+              <div className="space-y-2 pt-4">
+                <a
+                  href="https://app.perception.to/auth/login"
+                  className="block px-3 py-2 text-sm hover:bg-accent rounded-lg"
+                >
+                  Login
+                </a>
+                <div className="px-3">
+                  <Button 
+                    className="w-full bg-white text-black hover:bg-white/90 transition-all"
+                    onClick={() => window.location.href = 'https://app.perception.to/auth/signup'}
+                  >
+                    Get Started
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

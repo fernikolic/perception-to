@@ -12,7 +12,7 @@ export function Testimonials() {
             See how companies of all sizes have transformed their operations with our platform.
           </p>
         </div>
-        <div className="mx-auto mt-16 max-w-7xl">
+        <div className="mx-auto mt-16 w-full overflow-hidden">
           <TestimonialList />
         </div>
       </div>

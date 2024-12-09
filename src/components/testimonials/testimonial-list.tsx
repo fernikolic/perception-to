@@ -102,7 +102,7 @@ const rows = [
 
 export function TestimonialList() {
   return (
-    <div className="relative flex flex-col gap-4">
+    <div className="relative w-full overflow-hidden">
       {rows.map((row, rowIndex) => (
         <div
           key={rowIndex}
@@ -116,7 +116,7 @@ export function TestimonialList() {
           {[...row, ...row].map((testimonial, index) => (
             <div
               key={`${testimonial.author.name}-${index}`}
-              className="w-[400px] flex-shrink-0"
+              className="w-[min(400px,80vw)] flex-shrink-0"
             >
               <TestimonialCard
                 content={testimonial.content}
