@@ -3,22 +3,22 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const platforms = [
   {
-    name: 'Twitter Community',
-    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=400&h=300&q=80',
+    name: 'Researchers & Analysts',
+    image: 'https://storage.googleapis.com/btcp_bucket/marketing/researchers.png',
     description: 'Stay updated with tips, announcements, and general info about the latest features and updates.',
     buttonText: 'Join Twitter',
     href: '#',
   },
   {
-    name: 'GitHub Developers',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&h=300&q=80',
+    name: 'Journalists & Creators',
+    image: 'https://storage.googleapis.com/btcp_bucket/marketing/journalists.png',
     description: 'Report bugs, request features and contribute to the project. Join our open-source community.',
     buttonText: 'Join GitHub',
     href: '#',
   },
   {
-    name: 'Discord Chat',
-    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&h=300&q=80',
+    name: 'Investors & VCs',
+    image: 'https://storage.googleapis.com/btcp_bucket/marketing/investors.png',
     description: 'Join the community, ask questions, and share tips. Connect with developers worldwide.',
     buttonText: 'Join Discord',
     href: '#',
