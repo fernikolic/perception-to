@@ -15,16 +15,6 @@ export function TweetCard({ author }: TweetCardProps) {
   const tweetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check if Twitter script is already loaded
-    const existingScript = document.querySelector('script[src="https://platform.twitter.com/widgets.js"]');
-    
-    if (!existingScript) {
-      const script = document.createElement('script');
-      script.setAttribute('src', 'https://platform.twitter.com/widgets.js');
-      script.setAttribute('async', 'true');
-      document.head.appendChild(script);
-    }
-
     // Function to render tweet
     const renderTweet = () => {
       if (window.twttr && tweetRef.current) {
@@ -32,29 +22,38 @@ export function TweetCard({ author }: TweetCardProps) {
         tweetRef.current.innerHTML = '';
         
         window.twttr.widgets.createTweet(author.tweetUrl, tweetRef.current, {
-          theme: 'dark', // or 'light'
-          conversation: 'none', // Hide the conversation thread
-          dnt: true // Do Not Track
+          theme: 'dark',
+          conversation: 'none',
+          dnt: true,
+          cards: 'hidden',
+          align: 'center',
+          width: '100%',
+          backgroundColor: '#000000'
         });
       }
     };
 
-    // If Twitter widget is already loaded
-    if (window.twttr) {
-      renderTweet();
+    // Load Twitter script if not already loaded
+    if (!window.twttr) {
+      const script = document.createElement('script');
+      script.src = 'https://platform.twitter.com/widgets.js';
+      script.async = true;
+      document.head.appendChild(script);
+      
+      // Only render when script loads for the first time
+      script.onload = () => {
+        window.twttr.ready(renderTweet);
+      };
     } else {
-      // Wait for Twitter widget to load
-      window.addEventListener('load', renderTweet);
+      // If script already exists, use ready callback
+      window.twttr.ready(renderTweet);
     }
 
-    return () => {
-      window.removeEventListener('load', renderTweet);
-    };
   }, [author.tweetUrl]);
 
   return (
-    <Card className="relative overflow-hidden border-none bg-gradient-to-b from-white/[0.12] to-transparent p-1">
-      <div ref={tweetRef} />
+    <Card className="relative overflow-hidden border-none bg-black p-1">
+      <div ref={tweetRef} className="[&>iframe]:!bg-black" />
     </Card>
   );
 } 

@@ -84,7 +84,7 @@ export function Features() {
           </div>
           
           <h2 className="mt-8 text-3xl font-bold tracking-tight sm:text-4xl">
-            There Is A Better Way: Decode Bitcoin Market Sentiment In One Place
+            There is a better way: Decode Bitcoin market sentiment in one place
           </h2>
           
           <p className="mt-6 text-lg leading-8 text-muted-foreground">

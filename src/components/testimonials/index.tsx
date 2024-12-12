@@ -96,9 +96,11 @@ export function Testimonials() {
             Join the conversation about Bitcoin sentiment analysis
           </p>
         </div>
-        <div className="mx-auto mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto mt-16 columns-1 gap-4 sm:columns-2 lg:columns-3">
           {testimonials.map((testimonial, index) => (
-            <TweetCard key={index} author={testimonial.author} />
+            <div key={index} className="mb-4 break-inside-avoid">
+              <TweetCard author={testimonial.author} />
+            </div>
           ))}
         </div>
       </div>
