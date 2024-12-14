@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 interface IntegrationCardProps {
   name: string;
   icon: string;
-  description: string;
+  description?: string;
 }
 
 export function IntegrationCard({ name, icon, description }: IntegrationCardProps) {

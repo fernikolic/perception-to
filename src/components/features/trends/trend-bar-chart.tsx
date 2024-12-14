@@ -12,7 +12,7 @@ interface TrendBarChartProps {
 
 export function TrendBarChart({ data }: TrendBarChartProps) {
   return (
-    <div className="h-[400px] flex items-center">
+    <div className="w-full h-[400px] flex items-center">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={data}
@@ -63,6 +63,7 @@ export function TrendBarChart({ data }: TrendBarChartProps) {
                 key={`cell-${index}`}
                 fill="hsl(var(--primary))"
                 opacity={1 - (index * 0.15)}
+                className="hover:fill-opacity-100"
               />
             ))}
           </Bar>

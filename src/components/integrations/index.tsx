@@ -3,97 +3,79 @@ import { IntegrationCard } from "./integration-card";
 const integrations = [
   {
     name: "Reddit",
-    icon: "https://api.iconify.design/logos:reddit.svg",
-    description: "Build interactive UIs with ease",
+    icon: "https://www.iconpacks.net/icons/2/free-reddit-logo-icon-2436-thumb.png",
   },
   {
     name: "X",
-    icon: "https://api.iconify.design/logos:x.svg",
-    description: "Progressive JavaScript framework",
+    icon: "https://cdn.prod.website-files.com/5d66bdc65e51a0d114d15891/64cebc6c19c2fe31de94c78e_X-vector-logo-download.png",
   },
   {
     name: "GitHub",
-    icon: "https://api.iconify.design/logos:github.svg",
-    description: "Platform for building web applications",
+    icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
   },
   {
     name: "Bloomberg",
-    icon: "https://api.iconify.design/logos:bloomberg.svg",
-    description: "Cybernetically enhanced web apps",
+    icon: "https://logos-world.net/wp-content/uploads/2022/01/Bloomberg-Logo.png",
   },
   {
     name: "The Block",
-    icon: "https://api.iconify.design/logos:the-block.svg",
-    description: "The React Framework for Production",
+    icon: "https://getlogovector.com/wp-content/uploads/2022/09/the-block-crypto-simplified-logo-vector-2022.png",
   },
   {
     name: "CoinDesk",
-    icon: "https://api.iconify.design/logos:coindesk.svg",
-    description: "The Intuitive Vue Framework",
+    icon: "https://www.nasdaq.com/sites/acquia.prod/files/2022/11/09/coindesksquare.jpg",
   },
   {
     name: "MSNBC",
-    icon: "https://api.iconify.design/logos:msnbc.svg",
-    description: "Build faster websites with less client-side JavaScript",
+    icon: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8109726-9708-48ac-b7ae-68e564aa6843/dfh3573-a1a61bac-92ea-48ce-8e88-61b458321bb1.png/v1/fill/w_1280,h_1280/msnbc_logo_by_zacktastic2006_dfh3573-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2U4MTA5NzI2LTk3MDgtNDhhYy1iN2FlLTY4ZTU2NGFhNjg0M1wvZGZoMzU3My1hMWE2MWJhYy05MmVhLTQ4Y2UtOGU4OC02MWI0NTgzMjFiYjEucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.QbOiw0w6kCPpgK76cXzhxXjlV2VW4hwk81XSoYavAhE",
   },
   {
     name: "The Financial Times",
-    icon: "https://api.iconify.design/logos:the-financial-times.svg",
-    description: "Full stack web framework",
+    icon: "https://seeklogo.com/images/F/financial-times-corporate-logo-1D9DF9C0BC-seeklogo.com.png",
   },
   {
     name: "The Guardian",
-    icon: "https://api.iconify.design/logos:the-guardian.svg",
-    description: "Simple and performant reactivity",
+    icon: "https://assets-legacy.floridarrc.com/2023/01/the-guardian-logo.jpeg",
   },
   {
     name: "CNN",
-    icon: "https://api.iconify.design/logos:cnn.svg",
-    description: "Global news and analysis platform",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Cnn_logo_red_background.png",
   },
   {
     name: "Forbes",
-    icon: "https://api.iconify.design/logos:forbes.svg",
-    description: "Business news and financial insights",
+    icon: "https://logodownload.org/wp-content/uploads/2017/04/forbes-logo-0.png",
   },
   {
     name: "Reuters",
-    icon: "https://api.iconify.design/logos:reuters.svg",
-    description: "International news organization",
+    icon: "https://cdn.icon-icons.com/icons2/2699/PNG/512/reuters_logo_icon_170782.png",
   },
   {
     name: "Wall Street Journal",
-    icon: "https://api.iconify.design/logos:wsj.svg",
-    description: "Business and financial news leader",
+    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYZxSs94SaRvElupvRZSChbVZiSNq_qVHLhQ&s",
   },
   {
     name: "CNBC",
-    icon: "https://api.iconify.design/logos:cnbc.svg",
-    description: "Business and market news coverage",
+    icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cnbc.svg",
   },
   {
     name: "BBC",
-    icon: "https://api.iconify.design/logos:bbc.svg",
-    description: "Global news and entertainment",
+    icon: "https://ichef.bbci.co.uk/images/ic/400x225/p09xtmrn.jpg",
   },
   {
     name: "Yahoo Finance",
-    icon: "https://api.iconify.design/logos:yahoo.svg",
-    description: "Financial news and market data",
+    icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/yahoo.svg",
   },
   {
     name: "Decrypt",
-    icon: "https://api.iconify.design/logos:decrypt.svg",
-    description: "Cryptocurrency and blockchain news",
+    icon: "https://wp.decrypt.co/wp-content/uploads/2019/04/decrypt_logo-300x300.png",
   },
   {
     name: "Cointelegraph",
-    icon: "https://api.iconify.design/logos:cointelegraph.svg",
-    description: "Digital asset and fintech news",
+    icon: "https://media.licdn.com/dms/image/v2/C560BAQHvGx_kLN7HFg/company-logo_200_200/company-logo_200_200/0/1631432721352?e=2147483647&v=beta&t=uREYaN-A-Dw_6XcXwwxhvJIFhRWeeGDukPfLQO7IRp4",
   },
 ];
 
-// Update the rows split to handle 18 items (6 rows of 3)
+// First, let's modify the rows creation to include more duplicates for smoother scrolling
 const rows = [
   integrations.slice(0, 3),
   integrations.slice(3, 6),
@@ -120,18 +102,16 @@ export function Integrations() {
         </div>
         
         <div className="mx-auto mt-16 max-w-7xl">
-          <div className="relative flex flex-col gap-4">
+          <div className="relative flex flex-col gap-4 mask-gradient">
             {rows.map((row, rowIndex) => (
               <div
                 key={rowIndex}
-                className="flex gap-4 py-4"
-                style={{
-                  animation: `scroll${rowIndex % 2 === 0 ? 'Left' : 'Right'} 20s linear infinite`,
-                  width: 'fit-content'
-                }}
+                className={`flex gap-4 py-4 animate-scroll ${
+                  rowIndex % 2 === 0 ? 'animate-scroll-left' : 'animate-scroll-right'
+                }`}
               >
-                {/* Double the items to create seamless loop */}
-                {[...row, ...row].map((integration, index) => (
+                {/* Quadruple the items to ensure smooth infinite scroll */}
+                {[...row, ...row, ...row, ...row].map((integration, index) => (
                   <div
                     key={`${integration.name}-${index}`}
                     className="w-[300px] flex-shrink-0"

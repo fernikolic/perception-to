@@ -43,13 +43,13 @@ export function AsSeenOn() {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                "h-16 w-auto flex-shrink-0",
-                "transition-all duration-300 hover:opacity-100",
-                "opacity-70 grayscale hover:grayscale-0"
+                "flex h-24 w-48 flex-shrink-0 items-center justify-center",
+                "transition-all duration-300",
+                "opacity-90 hover:opacity-100"
               )}
             >
               <img
-                className="h-full w-auto object-contain"
+                className="max-h-20 w-auto max-w-[12rem] object-contain"
                 src={publication.logo}
                 alt={publication.name}
                 loading="lazy"

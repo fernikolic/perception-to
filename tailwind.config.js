@@ -73,12 +73,30 @@ module.exports = {
             height: '0',
           },
         },
+        scrollLeft: {
+          to: {
+            transform: 'translateX(calc(-50% - 1rem))',
+          },
+        },
+        scrollRight: {
+          to: {
+            transform: 'translateX(calc(50% + 1rem))',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'scroll-left': 'scrollLeft 40s linear infinite',
+        'scroll-right': 'scrollRight 40s linear infinite',
+      },
+      height: {
+        screen: ['100vh /* fallback for Opera, IE and etc. */', '100dvh'],
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('tailwind-scrollbar-hide'),
+  ],
 };

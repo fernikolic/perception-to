@@ -100,7 +100,7 @@ export function ComposedChart({ data }: ComposedChartProps) {
                   dataKey="price"
                   yAxisId="price"
                   name="Bitcoin Price"
-                  stroke="hsl(var(--primary))"
+                  stroke="#f7931a"
                   strokeWidth={2}
                   dot={false}
                   activeDot={{ r: 4 }}

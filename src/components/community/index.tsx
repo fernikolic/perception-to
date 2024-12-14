@@ -83,10 +83,6 @@ export function Community() {
             </Card>
           ))}
         </div>
-
-        <p className="mt-12 text-center text-muted-foreground">
-          Be part of a community that connects, learns, and grows together.
-        </p>
       </div>
     </section>
   );
