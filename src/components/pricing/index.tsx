@@ -6,10 +6,11 @@ export function Pricing() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Simple, transparent pricing
+            Choose Your Insight Level
           </h2>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Choose the perfect plan for your needs. All plans include a 14-day free trial.
+            From trend discovery to deep market analysis, we have the right plan for your needs.
+            Start with a 14-day free trial.
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-7xl">

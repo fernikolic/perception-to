@@ -13,13 +13,13 @@ interface TweetCardProps {
 
 export function TweetCard({ author }: TweetCardProps) {
   const tweetRef = useRef<HTMLDivElement>(null);
+  const isRendered = useRef(false);
 
   useEffect(() => {
     // Function to render tweet
     const renderTweet = () => {
-      if (window.twttr && tweetRef.current) {
-        // Clear previous content
-        tweetRef.current.innerHTML = '';
+      if (window.twttr && tweetRef.current && !isRendered.current) {
+        isRendered.current = true;
         
         window.twttr.widgets.createTweet(author.tweetUrl, tweetRef.current, {
           theme: 'dark',
@@ -40,15 +40,17 @@ export function TweetCard({ author }: TweetCardProps) {
       script.async = true;
       document.head.appendChild(script);
       
-      // Only render when script loads for the first time
       script.onload = () => {
         window.twttr.ready(renderTweet);
       };
     } else {
-      // If script already exists, use ready callback
       window.twttr.ready(renderTweet);
     }
 
+    // Cleanup function
+    return () => {
+      isRendered.current = false;
+    };
   }, [author.tweetUrl]);
 
   return (

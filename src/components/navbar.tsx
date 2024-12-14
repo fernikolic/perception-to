@@ -17,19 +17,19 @@ const useCases = [
     title: "For Investors",
     href: "/investor",
     description: "Make data-driven decisions with real-time market insights",
-    image: "https://images.unsplash.com/photo-1642790551116-18e4f8f6c637?auto=format&fit=crop&q=80&w=800",
+    image: "https://storage.googleapis.com/btcp_bucket/marketing/investors.png",
   },
   {
     title: "For Researchers",
     href: "/researcher",
     description: "Analyze trends and narratives across the Bitcoin ecosystem",
-    image: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&q=80&w=800",
+    image: "https://storage.googleapis.com/btcp_bucket/marketing/researchers.png",
   },
   {
     title: "For Journalists",
     href: "/journalist",
     description: "Discover emerging stories and create data-backed content",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800",
+    image: "https://storage.googleapis.com/btcp_bucket/marketing/journalists.png",
   },
 ];
 
@@ -63,7 +63,7 @@ export function Navbar() {
     <header className="fixed top-0 z-50 w-full transition-all duration-300">
       <nav 
         className={cn(
-          "mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8",
+          "mx-auto flex h-16 w-full items-center justify-between px-4 sm:px-6 lg:px-8",
           isScrolled 
             ? "bg-background/80 backdrop-blur-xl shadow-lg" 
             : "bg-transparent"
@@ -75,37 +75,42 @@ export function Navbar() {
         </a>
 
         <div className="hidden md:flex md:flex-1 md:justify-center">
-          <NavigationMenu>
+          <NavigationMenu className="w-full">
             <NavigationMenuList className="space-x-2">
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent">
                   Use Cases
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid w-[calc(100vw-2rem)] max-w-[90vw] md:max-w-[1200px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3 relative">
-                    {useCases.map((useCase) => (
-                      <NavigationMenuLink
-                        key={useCase.title}
-                        href={useCase.href}
-                        className="block space-y-1 rounded-lg p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      >
-                        <div className="flex flex-col gap-2">
-                          <img
-                            src={useCase.image}
-                            alt={useCase.title}
-                            className="h-28 w-full rounded-lg object-cover"
-                          />
-                          <div>
-                            <div className="text-lg font-medium leading-none">
-                              {useCase.title}
+                  <div className="fixed left-1/2 -translate-x-1/2 w-[90vw] max-w-[2400px]">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3 bg-black rounded-lg border border-white/10">
+                      {useCases.map((useCase) => (
+                        <NavigationMenuLink
+                          key={useCase.title}
+                          href={useCase.href}
+                          className="block space-y-1 rounded-lg p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="flex flex-col gap-2">
+                            <div className="relative h-32 w-full overflow-hidden rounded-lg">
+                              <img
+                                src={useCase.image}
+                                alt={useCase.title}
+                                className="h-full w-full object-cover object-center"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                             </div>
-                            <p className="mt-2 line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              {useCase.description}
-                            </p>
+                            <div>
+                              <div className="text-lg font-medium leading-none">
+                                {useCase.title}
+                              </div>
+                              <p className="mt-2 line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                {useCase.description}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      </NavigationMenuLink>
-                    ))}
+                        </NavigationMenuLink>
+                      ))}
+                    </div>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -115,7 +120,7 @@ export function Navbar() {
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[calc(100vw-2rem)] max-w-[400px] gap-3 p-4">
+                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative left-1/2 -translate-x-1/2">
                     {resources.map((item) => (
                       <li key={item.title}>
                         <NavigationMenuLink asChild>
@@ -140,7 +145,7 @@ export function Navbar() {
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[calc(100vw-2rem)] max-w-[400px] gap-3 p-4">
+                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative left-1/2 -translate-x-1/2">
                     {company.map((item) => (
                       <li key={item.title}>
                         <NavigationMenuLink asChild>
