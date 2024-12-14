@@ -53,7 +53,7 @@ export function Hero() {
           </div>
           
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl gradient-text">
-            Track Bitcoin trends, decode sentiment, and uncover narratives. All in one place.
+            Track Bitcoin trends. Decode market sentiment. Uncover narratives. All in one place.
 
           </h1>
           
