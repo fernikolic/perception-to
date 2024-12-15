@@ -41,12 +41,17 @@ export function Hero() {
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-8">
-            <a href="#" className="inline-flex items-center space-x-2">
+            <a 
+              href="https://x.com/BTCPerception/status/1840527608863232426" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center space-x-2"
+            >
               <span className="rounded-full bg-white/10 px-3 py-1 text-sm font-semibold leading-6 text-white ring-1 ring-inset ring-white/20">
                 What's new
               </span>
               <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-white/60">
-                <span>Just shipped v1.0</span>
+                <span>Early Adopter Program now open</span>
                 <ArrowRight className="h-4 w-4" />
               </span>
             </a>
@@ -64,6 +69,7 @@ export function Hero() {
             <Button 
               size="lg" 
               className="bg-white text-black hover:bg-white/90 transition-all"
+              onClick={() => window.location.href = 'https://app.perception.to/auth/signup'}
             >
               Get started
             </Button>

@@ -39,7 +39,11 @@ export function PriceCard({ name, description, price, features, popular }: Price
         </ul>
       </CardContent>
       <CardFooter>
-        <Button className="w-full" variant={popular ? 'default' : 'outline'}>
+        <Button 
+          className="w-full" 
+          variant={popular ? 'default' : 'outline'}
+          onClick={() => window.location.href = 'https://app.perception.to/auth/signup'}
+        >
           Get Started
         </Button>
       </CardFooter>

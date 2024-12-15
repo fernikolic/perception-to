@@ -1,3 +1,4 @@
+import React from 'react';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/navbar';
 import { Hero } from '@/components/hero';
@@ -26,12 +27,14 @@ import { RoadmapPage } from '@/pages/roadmap';
 import { PrivacyPage } from '@/pages/legal/privacy';
 import { TermsPage } from '@/pages/legal/terms';
 
-function App() {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+const App = () => {
+  const [path, setPath] = useState('/');
 
   useEffect(() => {
+    setPath(window.location.pathname);
+
     const handlePathChange = () => {
-      setCurrentPath(window.location.pathname);
+      setPath(window.location.pathname);
       window.scrollTo(0, 0);
     };
 
@@ -40,7 +43,7 @@ function App() {
   }, []);
 
   const renderContent = () => {
-    switch (currentPath) {
+    switch (path) {
       case '/methodology':
         return <MethodologyPage />;
       case '/journalist':
@@ -87,7 +90,7 @@ function App() {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background text-foreground">
         <Navbar />
         {renderContent()}
         <Footer />
@@ -95,6 +98,6 @@ function App() {
       </div>
     </ThemeProvider>
   );
-}
+};
 
 export default App;

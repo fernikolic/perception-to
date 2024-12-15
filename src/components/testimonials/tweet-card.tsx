@@ -1,5 +1,4 @@
-import { Card } from '@/components/ui/card';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 interface TweetCardProps {
   author: {
@@ -12,50 +11,23 @@ interface TweetCardProps {
 }
 
 export function TweetCard({ author }: TweetCardProps) {
-  const tweetRef = useRef<HTMLDivElement>(null);
-  const isRendered = useRef(false);
-
   useEffect(() => {
-    // Function to render tweet
-    const renderTweet = () => {
-      if (window.twttr && tweetRef.current && !isRendered.current) {
-        isRendered.current = true;
-        
-        window.twttr.widgets.createTweet(author.tweetUrl, tweetRef.current, {
-          theme: 'dark',
-          conversation: 'none',
-          dnt: true,
-          cards: 'hidden',
-          align: 'center',
-          width: '100%',
-          backgroundColor: '#000000'
-        });
-      }
-    };
+    // Load Twitter widget script
+    const script = document.createElement('script');
+    script.src = "https://platform.twitter.com/widgets.js";
+    script.async = true;
+    document.body.appendChild(script);
 
-    // Load Twitter script if not already loaded
-    if (!window.twttr) {
-      const script = document.createElement('script');
-      script.src = 'https://platform.twitter.com/widgets.js';
-      script.async = true;
-      document.head.appendChild(script);
-      
-      script.onload = () => {
-        window.twttr.ready(renderTweet);
-      };
-    } else {
-      window.twttr.ready(renderTweet);
-    }
-
-    // Cleanup function
     return () => {
-      isRendered.current = false;
+      document.body.removeChild(script);
     };
-  }, [author.tweetUrl]);
+  }, []);
 
   return (
-    <Card className="relative overflow-hidden border-none bg-black p-1">
-      <div ref={tweetRef} className="[&>iframe]:!bg-black" />
-    </Card>
+    <div className="rounded-xl bg-card p-6 h-full">
+      <blockquote className="twitter-tweet" data-theme="dark" data-width="100%">
+        <a href={`https://twitter.com/x/status/${author.tweetUrl}`}></a>
+      </blockquote>
+    </div>
   );
 } 

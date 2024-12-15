@@ -17,4 +17,9 @@ export default defineConfig({
       localsConvention: 'camelCaseOnly',
     },
   },
+  server: {
+    hmr: {
+      overlay: false
+    }
+  }
 });

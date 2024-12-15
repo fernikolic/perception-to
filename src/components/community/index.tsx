@@ -32,11 +32,11 @@ export function Community() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex flex-col items-center gap-4">
           <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">
-            <span className="text-sm font-medium">Community</span>
+            <span className="text-sm font-medium">Use Cases</span>
           </div>
           
           <h2 className="mt-4 text-center text-4xl font-bold tracking-tight sm:text-5xl">
-          Your All-in-One Bitcoin Intelligence Platform
+          Your all-in-one Bitcoin intelligence platform
           </h2>
           
           <p className="mt-4 text-center text-xl text-muted-foreground">

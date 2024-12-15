@@ -90,15 +90,15 @@ export function Testimonials() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            What people are saying
+            The best in Bitcoin trusts the data
           </h2>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
             Join the conversation about Bitcoin sentiment analysis
           </p>
         </div>
-        <div className="mx-auto mt-16 columns-1 gap-4 sm:columns-2 lg:columns-3">
+        <div className="mx-auto mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="mb-4 break-inside-avoid">
+            <div key={index}>
               <TweetCard author={testimonial.author} />
             </div>
           ))}

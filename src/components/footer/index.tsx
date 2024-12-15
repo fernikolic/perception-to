@@ -43,8 +43,7 @@ export function Footer() {
             <span className="text-2xl font-bold">Perception</span>
           </a>
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
-            Empowering businesses with innovative solutions. Transform your workflow
-            and scale your operations with our comprehensive platform.
+          Uncover trends and insights that matter. Stay ahead of the Bitcoin market with our high-signal intelligence platform, delivering curated sentiment analysis and trend discovery across global sources.
           </p>
         </div>
         

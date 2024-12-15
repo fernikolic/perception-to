@@ -9,8 +9,7 @@ export function Faq() {
             Frequently asked questions
           </h2>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Have questions? We're here to help. If you can't find the answer you're looking for,
-            feel free to contact our support team.
+            Have questions? We're here to help.
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-3xl">
