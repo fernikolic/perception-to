@@ -1,9 +1,13 @@
+interface FooterLink {
+  label: string;
+  href: string;
+  comingSoon?: boolean;
+  className?: string;
+}
+
 interface FooterSection {
   title: string;
-  links: {
-    label: string;
-    href: string;
-  }[];
+  links: FooterLink[];
 }
 
 const footerSections: FooterSection[] = [
@@ -11,23 +15,27 @@ const footerSections: FooterSection[] = [
     title: 'Product',
     links: [
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Roadmap', href: '/roadmap' },
+      { label: 'Roadmap', href: '/roadmap', comingSoon: true },
     ],
   },
   {
     title: 'Company',
     links: [
-      { label: 'About', href: '/about' },
-      { label: 'Research', href: 'https://bitcoinperception.com' },
-      { label: 'Careers', href: '/careers' },
+      { label: 'About', href: '/about', comingSoon: true },
+      { 
+        label: 'Bitcoin Media Research', 
+        href: 'https://bitcoinperception.com',
+        className: 'text-orange-500 hover:text-orange-600'
+      },
+      { label: 'Careers', href: '/careers', comingSoon: true },
       { label: 'Press', href: '/press' },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { label: 'Documentation', href: '/docs' },
-      { label: 'API Reference', href: '/api' },
+      { label: 'Documentation', href: '/docs', comingSoon: true },
+      { label: 'API Reference', href: '/api', comingSoon: true },
       { label: 'Methodology', href: '/methodology' },
     ],
   },
@@ -49,14 +57,25 @@ export function FooterLinks() {
           <ul className="mt-6 space-y-4">
             {section.links.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                  target={link.href.startsWith('http') ? '_blank' : undefined}
-                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                >
-                  {link.label}
-                </a>
+                {link.comingSoon ? (
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-muted-foreground cursor-not-allowed">
+                      {link.label}
+                    </span>
+                    <span className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 text-xs font-medium">
+                      Coming soon
+                    </span>
+                  </div>
+                ) : (
+                  <a
+                    href={link.href}
+                    className={`text-sm text-muted-foreground transition-colors hover:text-primary ${link.className || ''}`}
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  >
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>

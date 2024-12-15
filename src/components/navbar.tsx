@@ -78,7 +78,13 @@ const company: {
   className?: string;
 }[] = [
   { title: "About", href: "/about", description: "Learn about our mission and team" },
-  { title: "Careers", href: "/careers", description: "Join our growing team" },
+  { 
+    title: "Careers", 
+    href: "#",
+    description: "Join our growing team",
+    disabled: true,
+    badge: "Coming Soon"
+  },
   { title: "Press", href: "/press", description: "Latest news and media resources" },
   { title: "Announcements", href: "/announcements", description: "Product updates and company news" },
   { 
@@ -321,9 +327,20 @@ export function Navbar() {
                   <a
                     key={item.title}
                     href={item.href}
-                    className="block px-3 py-2 text-sm hover:bg-accent rounded-lg"
+                    className={cn(
+                      "block px-3 py-2 text-sm hover:bg-accent rounded-lg",
+                      item.disabled && "cursor-not-allowed opacity-70"
+                    )}
+                    onClick={item.disabled ? (e) => e.preventDefault() : undefined}
                   >
-                    {item.title}
+                    <div className="flex items-center gap-2">
+                      {item.title}
+                      {item.badge && (
+                        <Badge variant="secondary" className="text-xs">
+                          {item.badge}
+                        </Badge>
+                      )}
+                    </div>
                   </a>
                 ))}
               </div>
