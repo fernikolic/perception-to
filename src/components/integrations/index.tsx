@@ -11,19 +11,19 @@ const integrations = [
   },
   {
     name: "GitHub",
-    icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
+    icon: "https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png",
   },
   {
     name: "Bloomberg",
-    icon: "https://logos-world.net/wp-content/uploads/2022/01/Bloomberg-Logo.png",
+    icon: "https://e7.pngegg.com/pngimages/727/671/png-clipart-bloomberg-round-logo-icons-logos-emojis-iconic-brands-thumbnail.png",
   },
   {
     name: "The Block",
-    icon: "https://getlogovector.com/wp-content/uploads/2022/09/the-block-crypto-simplified-logo-vector-2022.png",
+    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDdyTfJe2gO4jnPxumJfbXhrxyAkuoaeOSdg&s",
   },
   {
     name: "CoinDesk",
-    icon: "https://www.nasdaq.com/sites/acquia.prod/files/2022/11/09/coindesksquare.jpg",
+    icon: "https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/HIKBTSHOAFEFZNVVHQHMRCLVZA.jpg",
   },
   {
     name: "MSNBC",
@@ -43,7 +43,7 @@ const integrations = [
   },
   {
     name: "Forbes",
-    icon: "https://logodownload.org/wp-content/uploads/2017/04/forbes-logo-0.png",
+    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsCj05p4vyZ2N9M5ng1gQol10jzx78ePwMXQ&s",
   },
   {
     name: "Reuters",
@@ -55,7 +55,7 @@ const integrations = [
   },
   {
     name: "CNBC",
-    icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cnbc.svg",
+    icon: "https://cdn.icon-icons.com/icons2/2699/PNG/512/cnbc_logo_icon_169378.png",
   },
   {
     name: "BBC",
@@ -73,16 +73,60 @@ const integrations = [
     name: "Cointelegraph",
     icon: "https://media.licdn.com/dms/image/v2/C560BAQHvGx_kLN7HFg/company-logo_200_200/company-logo_200_200/0/1631432721352?e=2147483647&v=beta&t=uREYaN-A-Dw_6XcXwwxhvJIFhRWeeGDukPfLQO7IRp4",
   },
+  {
+    name: "Business Insider",
+    icon: "https://play-lh.googleusercontent.com/rT_YtsKZEiH079xJnuq40Vb_EcejRWskCTkR9uDJKaPliY7gLCkiFRVUfd-bZT0slkcd",
+  },
+  {
+    name: "The Economist",
+    icon: "https://icon2.cleanpng.com/20180630/cjf/kisspng-the-economist-0-magazine-chief-executive-creativit-print-digital-5b3700e7c98b27.5315200115303313678255.jpg",
+  },
+  {
+    name: "New York Times",
+    icon: "https://media.licdn.com/dms/image/v2/C4E0BAQGjV8MPT_u6Jg/company-logo_200_200/company-logo_200_200/0/1630595948074/nytlive_logo?e=2147483647&v=beta&t=jIPKhXr3Io4bMkYRB7NulJA1aznBK8gJt3FoAS3CH5k",
+  },
+  {
+    name: "Associated Press",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Associated_Press_logo_2012.svg/800px-Associated_Press_logo_2012.svg.png",
+  },
+  {
+    name: "Bloomberg News",
+    icon: "https://cdn-icons-png.flaticon.com/512/5968/5968704.png",
+  },
+  {
+    name: "TechCrunch",
+    icon: "https://yt3.googleusercontent.com/ytc/AIdro_kCWnlG0S5KmFxBckuWUwXOaIsmZL7hBkuXa4CFY27vtk_y=s900-c-k-c0x00ffffff-no-rj",
+  },
+  {
+    name: "The Verge",
+    icon: "https://cdn.icon-icons.com/icons2/2699/PNG/512/the_verge_logo_icon_170772.png",
+  },
+  {
+    name: "Wired",
+    icon: "https://thesohoagency.co.uk/wp-content/uploads/2024/04/wired-600.jpg",
+  },
+  {
+    name: "Vice News",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Vice_News_logo.png",
+  },
+  {
+    name: "Al Jazeera",
+    icon: "https://cdn-icons-png.flaticon.com/512/5968/5968989.png",
+  },
+  {
+    name: "NPR",
+    icon: "https://media.npr.org/assets/img/2019/06/17/npr-logo_sq-98c81a8c70711b4d8fb7aec62dae7a3d5b0a4e23.jpg",
+  }
 ];
 
 // First, let's modify the rows creation to include more duplicates for smoother scrolling
 const rows = [
-  integrations.slice(0, 3),
-  integrations.slice(3, 6),
-  integrations.slice(6, 9),
-  integrations.slice(9, 12),
-  integrations.slice(12, 15),
-  integrations.slice(15, 18),
+  integrations.slice(0, 8),
+  integrations.slice(8, 16),
+  integrations.slice(16, 24),
+  integrations.slice(0, 8),    // Repeating the pattern to maintain 6 rows
+  integrations.slice(8, 16),
+  integrations.slice(16, 24),
 ];
 
 export function Integrations() {

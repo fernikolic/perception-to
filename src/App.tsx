@@ -10,6 +10,8 @@ import { Testimonials } from '@/components/testimonials';
 import { Faq } from '@/components/faq';
 import { Footer } from '@/components/footer';
 import { FloatingNav } from '@/components/floating-nav';
+import { useEffect, useState } from 'react';
+import MethodologyPage from './pages/methodology';
 import { JournalistLanding } from '@/pages/landing/journalist';
 import { InvestorLanding } from '@/pages/landing/investor';
 import { ResearcherLanding } from '@/pages/landing/researcher';
@@ -23,7 +25,6 @@ import { ApiPage } from '@/pages/api';
 import { RoadmapPage } from '@/pages/roadmap';
 import { PrivacyPage } from '@/pages/legal/privacy';
 import { TermsPage } from '@/pages/legal/terms';
-import { useEffect, useState } from 'react';
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -40,6 +41,8 @@ function App() {
 
   const renderContent = () => {
     switch (currentPath) {
+      case '/methodology':
+        return <MethodologyPage />;
       case '/journalist':
         return <JournalistLanding />;
       case '/investor':

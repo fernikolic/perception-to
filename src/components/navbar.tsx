@@ -11,6 +11,7 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { Menu, X } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const useCases = [
   {
@@ -33,17 +34,60 @@ const useCases = [
   },
 ];
 
-const resources = [
-  { title: "Documentation", href: "/docs", description: "Learn how to integrate and use our platform" },
-  { title: "API Reference", href: "/api", description: "Detailed API documentation for developers" },
+const resources: {
+  title: string;
+  href: string;
+  description: string;
+  disabled?: boolean;
+  badge?: string;
+  className?: string;
+}[] = [
+  { 
+    title: "Documentation", 
+    href: "#",
+    description: "Learn how to integrate and use our platform",
+    disabled: true,
+    badge: "Coming Soon"
+  },
+  { 
+    title: "API Reference", 
+    href: "#",
+    description: "Detailed API documentation for developers",
+    disabled: true,
+    badge: "Coming Soon"
+  },
+  { 
+    title: "Bitcoin Media Research", 
+    href: "https://bitcoinperception.com", 
+    description: "Join 1,000+ professionals receiving free research reports",
+    className: "text-orange-500"
+  },
+  { 
+    title: "Methodology", 
+    href: "/methodology", 
+    description: "Learn about our comprehensive data collection and analysis process" 
+  },
 ];
 
-const company = [
+const company: {
+  title: string;
+  href: string;
+  description: string;
+  disabled?: boolean;
+  badge?: string;
+  className?: string;
+}[] = [
   { title: "About", href: "/about", description: "Learn about our mission and team" },
   { title: "Careers", href: "/careers", description: "Join our growing team" },
   { title: "Press", href: "/press", description: "Latest news and media resources" },
   { title: "Announcements", href: "/announcements", description: "Product updates and company news" },
-  { title: "Roadmap", href: "/roadmap", description: "See what we're building" },
+  { 
+    title: "Roadmap", 
+    href: "#",
+    description: "See what we're building",
+    disabled: true,
+    badge: "Coming Soon"
+  },
 ];
 
 export function Navbar() {
@@ -126,9 +170,23 @@ export function Navbar() {
                         <NavigationMenuLink asChild>
                           <a
                             href={item.href}
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            className={cn(
+                              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
+                              item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                              item.className
+                            )}
+                            onClick={item.disabled ? (e) => e.preventDefault() : undefined}
                           >
-                            <div className="text-sm font-medium leading-none">{item.title}</div>
+                            <div className="flex items-center gap-2">
+                              <div className={cn("text-sm font-medium leading-none", item.className)}>
+                                {item.title}
+                              </div>
+                              {item.badge && (
+                                <Badge variant="secondary" className="text-xs">
+                                  {item.badge}
+                                </Badge>
+                              )}
+                            </div>
                             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                               {item.description}
                             </p>
@@ -151,9 +209,23 @@ export function Navbar() {
                         <NavigationMenuLink asChild>
                           <a
                             href={item.href}
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            className={cn(
+                              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
+                              item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                              item.className
+                            )}
+                            onClick={item.disabled ? (e) => e.preventDefault() : undefined}
                           >
-                            <div className="text-sm font-medium leading-none">{item.title}</div>
+                            <div className="flex items-center gap-2">
+                              <div className={cn("text-sm font-medium leading-none", item.className)}>
+                                {item.title}
+                              </div>
+                              {item.badge && (
+                                <Badge variant="secondary" className="text-xs">
+                                  {item.badge}
+                                </Badge>
+                              )}
+                            </div>
                             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                               {item.description}
                             </p>
@@ -221,13 +293,25 @@ export function Navbar() {
               <div className="space-y-2">
                 <div className="font-medium px-3">Resources</div>
                 {resources.map((item) => (
-                  <a
-                    key={item.title}
-                    href={item.href}
-                    className="block px-3 py-2 text-sm hover:bg-accent rounded-lg"
-                  >
-                    {item.title}
-                  </a>
+                  item.href.startsWith('http') ? (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      className={cn("block px-3 py-2 text-sm hover:bg-accent rounded-lg", item.className)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.title}
+                    </a>
+                  ) : (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      className={cn("block px-3 py-2 text-sm hover:bg-accent rounded-lg", item.className)}
+                    >
+                      {item.title}
+                    </a>
+                  )
                 ))}
               </div>
 

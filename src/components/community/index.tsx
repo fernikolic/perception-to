@@ -5,22 +5,22 @@ const platforms = [
   {
     name: 'Researchers & Analysts',
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/researchers.png',
-    description: 'Stay updated with tips, announcements, and general info about the latest features and updates.',
-    buttonText: 'Join Twitter',
+    description: 'Save hours of manual research with automated trend discovery, sentiment analysis, and correlation with key financial metrics.',
+    buttonText: 'Join the closed alpha',
     href: '#',
   },
   {
     name: 'Journalists & Creators',
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/journalists.png',
-    description: 'Report bugs, request features and contribute to the project. Join our open-source community.',
-    buttonText: 'Join GitHub',
+    description: 'Instantly spot emerging trends and find what matters most across the Bitcoin ecosystem. Spend less time searching and more time creating.',
+    buttonText: 'Join the closed alpha',
     href: '#',
   },
   {
     name: 'Investors & VCs',
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/investors.png',
-    description: 'Join the community, ask questions, and share tips. Connect with developers worldwide.',
-    buttonText: 'Join Discord',
+    description: 'Spot trends before they go mainstream. Get real-time signals, early insights, and sentiment analysis to make smarter decisions.',
+    buttonText: 'Join the closed alpha',
     href: '#',
   },
 ];

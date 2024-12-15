@@ -28,6 +28,7 @@ const footerSections: FooterSection[] = [
     links: [
       { label: 'Documentation', href: '/docs' },
       { label: 'API Reference', href: '/api' },
+      { label: 'Methodology', href: '/methodology' },
     ],
   },
   {
