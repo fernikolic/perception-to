@@ -93,10 +93,12 @@ export function Hero() {
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button 
               size="lg" 
+              asChild
               className="bg-white text-black hover:bg-white/90 transition-all"
-              onClick={() => window.location.href = 'https://app.perception.to/auth/signup'}
             >
-              Get Started
+              <a href="https://getformly.app/MoHB6K">
+                Get Started
+              </a>
             </Button>
             <Button 
               variant="outline" 

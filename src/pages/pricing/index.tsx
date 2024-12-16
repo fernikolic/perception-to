@@ -56,15 +56,7 @@ const tiers: PricingTier[] = [
   },
 ];
 
-export function PricingPage() {
-  const handleCTA = (tier: PricingTier) => {
-    if (tier.cta === 'Contact Sales') {
-      // Handle contact sales differently if needed
-      return;
-    }
-    window.location.href = 'https://app.perception.to/auth/signup';
-  };
-
+export default function PricingPage() {
   return (
     <div className="min-h-screen bg-background pt-20">
       <section className="relative overflow-hidden py-24">
@@ -111,9 +103,11 @@ export function PricingPage() {
                   <Button 
                     className="w-full" 
                     variant={tier.popular ? 'default' : 'outline'}
-                    onClick={() => handleCTA(tier)}
+                    asChild
                   >
-                    {tier.cta}
+                    <a href={tier.cta === 'Contact Sales' ? '#' : 'https://getformly.app/MoHB6K'}>
+                      {tier.cta}
+                    </a>
                   </Button>
                 </CardFooter>
               </Card>

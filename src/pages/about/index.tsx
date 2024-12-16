@@ -148,6 +148,22 @@ export function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Get Started Button */}
+      <section className="py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <Button 
+              asChild
+              className="bg-primary text-white hover:bg-primary-focus"
+            >
+              <a href="https://getformly.app/MoHB6K">
+                Get Started
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -261,9 +261,11 @@ export function Navbar() {
           </a>
           <Button 
             className="bg-white text-black hover:bg-white/90 transition-all"
-            onClick={() => window.location.href = 'https://app.perception.to/auth/signup'}
+            asChild
           >
-            Get Started
+            <a href="https://getformly.app/MoHB6K">
+              Get Started
+            </a>
           </Button>
         </div>
 
@@ -362,9 +364,11 @@ export function Navbar() {
                 <div className="px-3">
                   <Button 
                     className="w-full bg-white text-black hover:bg-white/90 transition-all"
-                    onClick={() => window.location.href = 'https://app.perception.to/auth/signup'}
+                    asChild
                   >
-                    Get Started
+                    <a href="https://getformly.app/MoHB6K">
+                      Get Started
+                    </a>
                   </Button>
                 </div>
               </div>

@@ -19,12 +19,13 @@ import { AboutPage } from '@/pages/about';
 import { CareersPage } from '@/pages/careers';
 import { PressPage } from '@/pages/press';
 import { AnnouncementsPage } from '@/pages/announcements';
-import { PricingPage } from '@/pages/pricing';
+import PricingPage from '@/pages/pricing';
 import { DocsPage } from '@/pages/docs';
 import { ApiPage } from '@/pages/api';
 import { RoadmapPage } from '@/pages/roadmap';
 import { PrivacyPage } from '@/pages/legal/privacy';
 import { TermsPage } from '@/pages/legal/terms';
+import PageTransition from '@/components/PageTransition';
 
 const App = () => {
   const [path, setPath] = useState('/');
@@ -91,7 +92,9 @@ const App = () => {
     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
       <div className="min-h-screen bg-background text-foreground">
         <Navbar />
-        {renderContent()}
+        <PageTransition>
+          {renderContent()}
+        </PageTransition>
         <Footer />
         <FloatingNav />
       </div>

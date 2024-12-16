@@ -69,17 +69,22 @@ export function Hero() {
             <Button 
               size="lg" 
               className="bg-white text-black hover:bg-white/90 transition-all"
-              onClick={() => window.location.href = 'https://app.perception.to/auth/signup'}
+              asChild
             >
-              Get started
+              <a href="https://getformly.app/MoHB6K">
+                Get started
+              </a>
             </Button>
             <Button 
-              variant="outline" 
-              size="lg" 
-              className="border-white/20 text-white hover:bg-white/10 group"
-            >
-              Learn more{' '}
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+  variant="outline" 
+  size="lg" 
+  className="border-white/20 text-white hover:bg-white/10 group"
+  asChild
+>
+  <a href="/about">
+    Learn more{' '}
+    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
             </Button>
           </div>
         </div>

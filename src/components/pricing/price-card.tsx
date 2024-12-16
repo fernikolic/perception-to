@@ -42,9 +42,11 @@ export function PriceCard({ name, description, price, features, popular }: Price
         <Button 
           className="w-full" 
           variant={popular ? 'default' : 'outline'}
-          onClick={() => window.location.href = 'https://app.perception.to/auth/signup'}
+          asChild
         >
-          Get Started
+          <a href="https://getformly.app/MoHB6K">
+            Get Started
+          </a>
         </Button>
       </CardFooter>
     </Card>
