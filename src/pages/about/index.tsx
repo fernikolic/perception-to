@@ -1,56 +1,39 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ArrowRight, Github, Twitter } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
+
+// Add custom X icon component
+const XIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" 
+      fill="currentColor"/>
+  </svg>
+);
 
 const teamMembers = [
   {
-    name: 'Sarah Johnson',
-    role: 'CEO & Co-founder',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80',
-    bio: 'Former VP of Product at leading fintech companies, passionate about democratizing access to financial data.',
+    name: 'Fernando Nikolic',
+    role: 'Founder',
+    image: 'https://pbs.twimg.com/profile_images/1850431899908608000/cy1MPF8Y_400x400.jpg',
+    bio: '15 years of experience in marketing and communications at leading tech and Bitcoin companies.',
     social: {
-      twitter: '#',
-      github: '#',
-    },
-  },
-  {
-    name: 'Michael Chen',
-    role: 'CTO & Co-founder',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
-    bio: '15 years of experience in scaling cloud infrastructure and building secure systems.',
-    social: {
-      twitter: '#',
-      github: '#',
-    },
-  },
-  {
-    name: 'Emma Rodriguez',
-    role: 'Head of Research',
-    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=400&q=80',
-    bio: 'PhD in Data Science, specializing in market sentiment analysis and predictive modeling.',
-    social: {
-      twitter: '#',
-      github: '#',
+      twitter: 'https://x.com/basedlayer',
+      linkedin: 'https://www.linkedin.com/in/fernandonikolic/',
     },
   },
 ];
 
 const milestones = [
   {
-    year: '2021',
+    year: '2024',
     title: 'Company Founded',
-    description: 'Started with a vision to make crypto market data accessible to everyone.',
+    description: 'Started with a vision to provide comprehensive Bitcoin market intelligence.',
   },
   {
-    year: '2022',
-    title: 'Series A Funding',
-    description: 'Raised $10M to expand our data analytics capabilities.',
-  },
-  {
-    year: '2023',
-    title: 'Global Expansion',
-    description: 'Launched in 30+ countries with support for multiple languages.',
+    year: '2025',
+    title: 'Closed Alpha Launch',
+    description: 'Launched our first alpha version of the platform to select partners.',
   },
 ];
 
@@ -63,17 +46,33 @@ export function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-              Making Crypto Data Accessible
+              Leading Bitcoin Market Intelligence
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              We're on a mission to democratize access to cryptocurrency market data and analytics,
-              enabling everyone to make informed decisions in the digital asset space.
+              Bitcoin Perception is a leading market intelligence firm specializing in the analysis of Bitcoin-related discussions across social media, news outlets, and online communities.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Button size="lg">Join Our Team</Button>
-              <Button variant="outline" size="lg" className="group">
-                Read Our Story <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* New Mission Section */}
+      <section className="py-24 bg-muted/50">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-8">Our Mission</h2>
+            <div className="space-y-6 text-lg leading-8 text-muted-foreground">
+              <p>
+                Our mission is to provide businesses, investors, and stakeholders with clear, actionable insights into the evolving public sentiment surrounding Bitcoin.
+              </p>
+              <p>
+                In a landscape that is increasingly complex and fragmented, understanding how Bitcoin is perceived has never been more critical.
+              </p>
+              <p>
+                We track the volume, tone, and context of Bitcoin mentions across various platforms, monitor key topics, and analyze emerging trends to deliver comprehensive intelligence reports.
+              </p>
+              <p>
+                Our goal is to offer a nuanced view of Bitcoin's standing in the public eye, helping our clients navigate the market with confidence.
+              </p>
             </div>
           </div>
         </div>
@@ -83,39 +82,37 @@ export function AboutPage() {
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Meet Our Team</h2>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Meet Our Founder</h2>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              We're a diverse team of experts passionate about making cryptocurrency data more accessible and actionable.
+              Bringing deep expertise in Bitcoin market intelligence and communications.
             </p>
           </div>
-          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:grid-cols-2 lg:max-w-none lg:grid-cols-3">
-            {teamMembers.map((member) => (
-              <Card key={member.name} className="overflow-hidden">
-                <CardContent className="p-6">
-                  <div className="flex flex-col items-center text-center">
-                    <Avatar className="h-24 w-24">
-                      <AvatarImage src={member.image} alt={member.name} />
-                      <AvatarFallback>{member.name[0]}</AvatarFallback>
-                    </Avatar>
-                    <h3 className="mt-4 text-lg font-semibold">{member.name}</h3>
-                    <p className="text-sm text-muted-foreground">{member.role}</p>
-                    <p className="mt-4 text-sm text-muted-foreground">{member.bio}</p>
-                    <div className="mt-6 flex gap-4">
-                      <Button variant="ghost" size="icon" asChild>
-                        <a href={member.social.twitter} target="_blank" rel="noopener noreferrer">
-                          <Twitter className="h-4 w-4" />
-                        </a>
-                      </Button>
-                      <Button variant="ghost" size="icon" asChild>
-                        <a href={member.social.github} target="_blank" rel="noopener noreferrer">
-                          <Github className="h-4 w-4" />
-                        </a>
-                      </Button>
-                    </div>
+          <div className="mx-auto mt-16 max-w-sm">
+            <Card className="overflow-hidden">
+              <CardContent className="p-6">
+                <div className="flex flex-col items-center text-center">
+                  <Avatar className="h-24 w-24">
+                    <AvatarImage src={teamMembers[0].image} alt={teamMembers[0].name} />
+                    <AvatarFallback>{teamMembers[0].name[0]}</AvatarFallback>
+                  </Avatar>
+                  <h3 className="mt-4 text-lg font-semibold">{teamMembers[0].name}</h3>
+                  <p className="text-sm text-muted-foreground">{teamMembers[0].role}</p>
+                  <p className="mt-4 text-sm text-muted-foreground">{teamMembers[0].bio}</p>
+                  <div className="mt-6 flex gap-4">
+                    <Button variant="ghost" size="icon" asChild>
+                      <a href={teamMembers[0].social.twitter} target="_blank" rel="noopener noreferrer">
+                        <XIcon />
+                      </a>
+                    </Button>
+                    <Button variant="ghost" size="icon" asChild>
+                      <a href={teamMembers[0].social.linkedin} target="_blank" rel="noopener noreferrer">
+                        <Linkedin className="h-4 w-4" />
+                      </a>
+                    </Button>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
