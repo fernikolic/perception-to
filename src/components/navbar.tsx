@@ -13,17 +13,17 @@ import {
 import { Menu, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
-const useCases = [
+const solutions = [
   {
     title: "For Investors",
     href: "/investor",
-    description: "Make data-driven decisions with real-time market insights",
+    description: "Make data-driven decisions with real-time market intelligence",
     image: "https://storage.googleapis.com/btcp_bucket/marketing/investors.png",
   },
   {
-    title: "For Researchers",
+    title: "For Companies",
     href: "/researcher",
-    description: "Analyze trends and narratives across the Bitcoin ecosystem",
+    description: "Track sentiment, monitor competitors, and stay ahead of trends",
     image: "https://storage.googleapis.com/btcp_bucket/marketing/researchers.png",
   },
   {
@@ -129,32 +129,32 @@ export function Navbar() {
             <NavigationMenuList className="space-x-2">
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent">
-                  Use Cases
+                  Solutions
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="fixed left-1/2 -translate-x-1/2 w-[90vw] max-w-[2400px]">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3 bg-black rounded-lg border border-white/10">
-                      {useCases.map((useCase) => (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3 bg-background/80 backdrop-blur-xl rounded-lg border border-white/10">
+                      {solutions.map((solution) => (
                         <NavigationMenuLink
-                          key={useCase.title}
-                          href={useCase.href}
-                          className="block space-y-1 rounded-lg p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          key={solution.title}
+                          href={solution.href}
+                          className="block space-y-1 rounded-lg p-2 leading-none no-underline outline-none transition-colors hover:bg-white/5 hover:text-accent-foreground focus:bg-white/5 focus:text-accent-foreground"
                         >
                           <div className="flex flex-col gap-2">
                             <div className="relative h-32 w-full overflow-hidden rounded-lg">
                               <img
-                                src={useCase.image}
-                                alt={useCase.title}
+                                src={solution.image}
+                                alt={solution.title}
                                 className="h-full w-full object-cover object-center"
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                             </div>
                             <div>
                               <div className="text-lg font-medium leading-none">
-                                {useCase.title}
+                                {solution.title}
                               </div>
                               <p className="mt-2 line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                {useCase.description}
+                                {solution.description}
                               </p>
                             </div>
                           </div>
@@ -170,7 +170,7 @@ export function Navbar() {
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative left-1/2 -translate-x-1/2">
+                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-xl rounded-lg border border-white/10">
                     {resources.map((item) => (
                       <li key={item.title}>
                         <NavigationMenuLink asChild>
@@ -209,7 +209,7 @@ export function Navbar() {
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative left-1/2 -translate-x-1/2">
+                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-xl rounded-lg border border-white/10">
                     {company.map((item) => (
                       <li key={item.title}>
                         <NavigationMenuLink asChild>
@@ -286,14 +286,14 @@ export function Navbar() {
           <div className="space-y-1 px-4 pb-3 pt-2">
             <div className="space-y-4">
               <div className="space-y-2">
-                <div className="font-medium px-3">Use Cases</div>
-                {useCases.map((useCase) => (
+                <div className="font-medium px-3">Solutions</div>
+                {solutions.map((solution) => (
                   <a
-                    key={useCase.title}
-                    href={useCase.href}
+                    key={solution.title}
+                    href={solution.href}
                     className="block px-3 py-2 text-sm hover:bg-accent rounded-lg"
                   >
-                    {useCase.title}
+                    {solution.title}
                   </a>
                 ))}
               </div>

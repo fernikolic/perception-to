@@ -1,84 +1,87 @@
-import { Card, CardContent } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Quote } from 'lucide-react';
+interface Tweet {
+  id: string;
+  gradient?: string;
+}
 
-interface Testimonial {
-  content: string;
-  author: {
-    name: string;
-    role: string;
-    company: string;
-    image: string;
-  };
+interface Metric {
+  value: string;
+  label: string;
+  gradient?: string;
+}
+
+interface Logo {
+  name: string;
+  url: string;
 }
 
 interface TestimonialSectionProps {
-  testimonials: Testimonial[];
-  metrics: Array<{
-    value: string;
-    label: string;
-  }>;
-  logos: Array<{
-    name: string;
-    url: string;
-  }>;
+  tweets?: Tweet[];
+  metrics: Metric[];
+  logos: Logo[];
 }
 
-export function TestimonialSection({ testimonials, metrics, logos }: TestimonialSectionProps) {
+export function TestimonialSection({ tweets = [], metrics, logos }: TestimonialSectionProps) {
   return (
-    <section className="py-24 sm:py-32">
+    <div className="py-8 sm:py-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Success Metrics */}
-        <div className="mb-16 grid grid-cols-2 gap-8 md:grid-cols-4">
+        {tweets.length > 0 && (
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+            {tweets.map((tweet) => (
+              <div 
+                key={tweet.id}
+                className={`group relative rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br ${tweet.gradient || 'from-white/5 to-white/10'} hover:shadow-lg hover:shadow-white/5 border border-white/10`}
+              >
+                <blockquote className="twitter-tweet">
+                  <a href={`https://twitter.com/x/status/${tweet.id}`}></a>
+                </blockquote>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-4">
           {metrics.map((metric) => (
-            <div key={metric.label} className="text-center">
-              <div className="text-3xl font-bold text-primary">{metric.value}</div>
-              <div className="mt-2 text-sm text-muted-foreground">{metric.label}</div>
+            <div 
+              key={metric.label}
+              className={`group relative rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br ${metric.gradient || 'from-white/5 to-white/10'} hover:shadow-lg hover:shadow-white/5 border border-white/10`}
+            >
+              <p className="text-sm font-medium text-muted-foreground">
+                {metric.label}
+              </p>
+              <p className="mt-2 flex items-baseline gap-x-2">
+                <span className="text-4xl font-semibold tracking-tight">
+                  {metric.value}
+                </span>
+              </p>
             </div>
           ))}
         </div>
 
-        {/* Testimonials */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial) => (
-            <Card key={testimonial.author.name} className="relative">
-              <CardContent className="p-6">
-                <Quote className="absolute right-6 top-6 h-6 w-6 text-primary/20" />
-                <p className="mb-6 text-muted-foreground">{testimonial.content}</p>
-                <div className="flex items-center gap-4">
-                  <Avatar>
-                    <AvatarImage src={testimonial.author.image} />
-                    <AvatarFallback>{testimonial.author.name[0]}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="font-semibold">{testimonial.author.name}</div>
-                    <div className="text-sm text-muted-foreground">
-                      {testimonial.author.role} at {testimonial.author.company}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Client Logos */}
-        <div className="mt-16">
-          <div className="text-center text-sm font-semibold text-muted-foreground">
-            Trusted by industry leaders
+        {logos.length > 0 && (
+          <div className="relative mt-16">
+            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+              <div className="w-full border-t border-white/10" />
+            </div>
+            <div className="relative flex justify-center">
+              <span className="bg-background px-3 text-sm text-muted-foreground">
+                Trusted by
+              </span>
+            </div>
+            <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 items-center gap-x-12 gap-y-16 sm:max-w-5xl sm:grid-cols-3 sm:gap-x-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+              {logos.map((logo) => (
+                <img
+                  key={logo.name}
+                  className="col-span-1 max-h-24 w-full object-contain mix-blend-lighten opacity-75 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 filter"
+                  src={logo.url}
+                  alt={logo.name}
+                  width={316}
+                  height={96}
+                />
+              ))}
+            </div>
           </div>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
-            {logos.map((logo) => (
-              <img
-                key={logo.name}
-                src={logo.url}
-                alt={logo.name}
-                className="h-8 object-contain grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all"
-              />
-            ))}
-          </div>
-        </div>
+        )}
       </div>
-    </section>
+    </div>
   );
 }

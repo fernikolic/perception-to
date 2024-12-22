@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import MethodologyPage from './pages/methodology';
 import { JournalistLanding } from '@/pages/landing/journalist';
 import { InvestorLanding } from '@/pages/landing/investor';
-import { ResearcherLanding } from '@/pages/landing/researcher';
+import { CompaniesLanding } from '@/pages/landing/companies';
 import { AboutPage } from '@/pages/about';
 import { CareersPage } from '@/pages/careers';
 import { PressPage } from '@/pages/press';
@@ -51,7 +51,7 @@ const App = () => {
       case '/investor':
         return <InvestorLanding />;
       case '/researcher':
-        return <ResearcherLanding />;
+        return <CompaniesLanding />;
       case '/about':
         return <AboutPage />;
       case '/careers':
@@ -90,7 +90,7 @@ const App = () => {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-screen bg-background text-foreground dark">
         <Navbar />
         <PageTransition>
           {renderContent()}

@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 
-// Force dark mode by default
+// Force dark mode by default and clear any stored theme
+localStorage.setItem('ui-theme', 'dark');
+document.documentElement.classList.remove('light', 'system');
 document.documentElement.classList.add('dark');
 
 const rootElement = document.getElementById('root');

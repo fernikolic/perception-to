@@ -1,11 +1,11 @@
 export const faqData = [
   {
-    question: "What is the Bitcoin Perception Platform?",
-    answer: "The Bitcoin Perception Platform is an all-in-one intelligence tool that aggregates sentiment analysis, trend discovery, and actionable insights across the Bitcoin ecosystem. Designed for journalists, researchers, investors, and VCs, it saves time and helps you stay ahead of trends."
+    question: "What is Bitcoin Perception?",
+    answer: "Bitcoin Perception is a real-time intelligence platform that tracks sentiment, trends, and narratives in the Bitcoin ecosystem. Designed for Bitcoin companies, investors, and ecosystem builders, it saves time and helps you stay ahead of trends."
   },
   {
     question: "Who is this platform for?",
-    answer: "The platform is designed for:\n• Researchers & Analysts: Automate market insights and correlate sentiment with key financial trends.\n• Journalists & Creators: Discover trends and measure sentiment to enhance your stories.\n• Investors & VCs: Spot early signals and opportunities for smarter decision-making."
+    answer: "The platform is designed for:\n• Bitcoin Companies: Track market sentiment, monitor competitors, and stay ahead of industry trends.\n• Journalists & Creators: Discover trends and measure sentiment to enhance your stories.\n• Investors & VCs: Make data-driven decisions with real-time market intelligence."
   },
   {
     question: "How does the platform analyze sentiment?",

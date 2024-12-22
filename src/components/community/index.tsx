@@ -1,11 +1,11 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
-const platforms = [
+const communities = [
   {
-    name: 'Researchers & Analysts',
+    name: 'Bitcoin Companies',
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/researchers.png',
-    description: 'Save hours of manual research with automated trend discovery, sentiment analysis, and correlation with key financial metrics.',
+    description: 'Track market sentiment, monitor competitors, and stay ahead of industry trends with real-time intelligence.',
     buttonText: 'Join the closed alpha',
     href: '#',
   },
@@ -47,35 +47,35 @@ export function Community() {
         </div>
 
         <div className="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {platforms.map((platform) => (
+          {communities.map((community) => (
             <Card
-              key={platform.name}
+              key={community.name}
               className="group relative overflow-hidden border-white/5 bg-black/20 transition-all duration-300 hover:border-white/10 hover:-translate-y-1"
             >
               <CardContent className="p-0">
                 <div className="relative h-[200px] w-full overflow-hidden">
                   <img
-                    src={platform.image}
-                    alt={platform.name}
+                    src={community.image}
+                    alt={community.name}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
                 
                 <div className="p-6 text-center">
-                  <h3 className="text-xl font-semibold">{platform.name}</h3>
-                  <p className="mt-2 text-muted-foreground">{platform.description}</p>
+                  <h3 className="text-xl font-semibold">{community.name}</h3>
+                  <p className="mt-2 text-muted-foreground">{community.description}</p>
                   <Button
                     className="mt-6 rounded-full bg-white/10 px-8 hover:bg-white/20"
                     asChild
                   >
                     <a 
-                      href={platform.href} 
+                      href={community.href} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2"
                     >
-                      {platform.buttonText}
+                      {community.buttonText}
                     </a>
                   </Button>
                 </div>

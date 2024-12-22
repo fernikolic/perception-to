@@ -3,87 +3,98 @@ import { ValuePropSection } from '../shared/value-prop-section';
 import { FeatureSection } from '../shared/feature-section';
 import { TestimonialSection } from '../shared/testimonial-section';
 import { CTASection } from '../shared/cta-section';
-import { LineChart, TrendingUp, Shield } from 'lucide-react';
+import { TrendingUp, LineChart, Users } from 'lucide-react';
 
-export function InvestorLanding() {
+export function CompaniesLanding() {
   const benefits = [
     {
-      title: 'Spot Opportunities First',
-      description: 'Real-time sentiment shifts and market-moving trends at your fingertips.',
+      title: 'Track Real-Time Trends',
+      description: 'Stay informed with live updates from 200+ top sources across 15 countries and 8 languages.',
       Icon: TrendingUp,
       gradient: 'from-blue-500/20 via-slate-600/20 to-zinc-700/30 hover:from-blue-500/30 hover:to-zinc-700/40',
     },
     {
-      title: 'Correlate Sentiment with Price',
-      description: 'Advanced tools to identify how emotions drive price movements.',
+      title: 'Analyze Sentiment',
+      description: 'Track sentiment shifts in real time across social media, news outlets, and community discussions.',
       Icon: LineChart,
       gradient: 'from-slate-500/30 via-blue-600/20 to-neutral-700/30 hover:from-slate-500/40 hover:to-blue-600/30',
     },
     {
-      title: 'Stay Ahead of the Market',
-      description: 'Breaking trend insights keep you informed before the market reacts.',
-      Icon: Shield,
+      title: 'Monitor Competition',
+      description: 'Track unlimited companies and projects to see how they are perceived in the ecosystem.',
+      Icon: Users,
       gradient: 'from-blue-400/20 via-zinc-600/20 to-slate-700/30 hover:from-blue-400/30 hover:to-slate-700/40',
     },
   ];
 
   const features = [
     {
-      title: 'Real-time Sentiment Analysis',
-      description: 'Track market sentiment in real-time with our advanced analytics dashboard.',
+      title: 'Real-Time Trend Discovery',
+      description: 'Spot what is trending across the Bitcoin industry with early signals from media, social platforms, and communities.',
       imageUrl: 'https://images.unsplash.com/photo-1642790551116-18e4f8f6c637?auto=format&fit=crop&q=80&w=800',
       benefits: [
-        'Live Sentiment Tracking',
-        'Social Media Analysis',
-        'News Sentiment',
+        'Live updates from 200+ sources',
+        'Multi-language coverage',
+        'High-signal data curation',
       ],
       gradient: 'from-blue-400/20 via-zinc-600/10 to-slate-800/20 hover:from-blue-400/30',
     },
     {
-      title: 'Price Correlation Tools',
-      description: 'Understand how sentiment impacts price movements with our correlation analysis tools.',
+      title: 'Sentiment Analysis',
+      description: 'Understand the narrative shaping Bitcoin and refine your messaging strategy.',
       imageUrl: 'https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&q=80&w=800',
       benefits: [
-        'Price Impact Analysis',
-        'Correlation Metrics',
-        'Historical Patterns',
+        'Real-time sentiment tracking',
+        'Positive/negative analysis',
+        'Strategic insights',
       ],
       gradient: 'from-slate-400/20 via-blue-600/10 to-neutral-800/20 hover:from-slate-400/30',
     },
     {
-      title: 'Advanced Trading Tools',
-      description: 'Make informed decisions with our comprehensive suite of trading tools.',
+      title: 'Competitive Intelligence',
+      description: 'Gain a competitive edge by tracking both competitors and your own presence in the ecosystem.',
       imageUrl: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800',
       benefits: [
-        'Technical Analysis',
-        'Risk Management',
-        'Portfolio Tracking',
+        'Unlimited company tracking',
+        'Self-analysis tools',
+        'Benchmarking capabilities',
       ],
       gradient: 'from-blue-400/20 via-slate-600/10 to-zinc-800/20 hover:from-blue-400/30',
     },
   ];
 
-  const tweets = [
-    {
-      id: '1760715258231005618',
-      gradient: 'from-blue-500/10 via-purple-500/10 to-pink-500/10',
-    },
-    {
-      id: '1760715258231005619',
-      gradient: 'from-purple-500/10 via-pink-500/10 to-orange-500/10',
-    },
-  ];
-
   const metrics = [
-    { value: "$2B+", label: "Assets Analyzed", gradient: 'from-blue-400/30 to-zinc-700/30 hover:from-blue-400/40' },
-    { value: "150ms", label: "Avg. Response Time", gradient: 'from-slate-400/30 to-blue-700/30 hover:from-slate-400/40' },
-    { value: "99.9%", label: "Uptime", gradient: 'from-blue-400/30 to-slate-700/30 hover:from-blue-400/40' },
-    { value: "24/7", label: "Market Coverage", gradient: 'from-slate-400/30 to-blue-700/30 hover:from-slate-400/40' },
+    { value: "200+", label: "Data Sources", gradient: 'from-blue-400/30 to-zinc-700/30 hover:from-blue-400/40' },
+    { value: "15", label: "Countries", gradient: 'from-slate-400/30 to-blue-700/30 hover:from-slate-400/40' },
+    { value: "8", label: "Languages", gradient: 'from-blue-400/30 to-slate-700/30 hover:from-blue-400/40' },
+    { value: "24/7", label: "Real-time Updates", gradient: 'from-slate-400/30 to-blue-700/30 hover:from-slate-400/40' },
   ];
 
   const logos = [
-    { name: "Binance", url: "https://www.binance.com/logo.svg" },
-    { name: "Kraken", url: "https://www.kraken.com/logo.svg" },
+    {
+      name: "Swan Bitcoin",
+      url: "https://www.cryptometer.io/news/wp-content/uploads/2024/07/swan-bitcoin.jpg",
+    },
+    {
+      name: "Unchained",
+      url: "https://mms.businesswire.com/media/20230418005200/en/1764812/23/Unchained%E2%80%94Vertical-Logo%E2%80%94Full-Color%E2%80%94On_Light%402x_%281%29.jpg",
+    },
+    {
+      name: "Galoy",
+      url: "https://raw.githubusercontent.com/GaloyMoney/.github/main/img/galoy.png",
+    },
+    {
+      name: "Cash App",
+      url: "https://play-lh.googleusercontent.com/USZfMKL3L_6Gl61UumLdD7HxHkHxz408ySQufsBCpD7YWvbR7NFixt6oMb-neytMkIU",
+    },
+    {
+      name: "Blockstream",
+      url: "https://blockstream.com/img/img/blks_logo_1920x1080.png",
+    },
+    {
+      name: "Jan3",
+      url: "https://blog.liquid.net/content/images/2023/05/jan3_logo_sqaure-01.png",
+    },
   ];
 
   return (
@@ -96,10 +107,10 @@ export function InvestorLanding() {
       </div>
 
       <HeroSection
-        segment="investor"
-        title="Make Data-Driven Decisions: Stay Ahead of Bitcoin Market Trends"
-        subtitle="Track real-time sentiment, discover emerging trends, and decode market psychology to gain the edge you need in Bitcoin trading."
-        ctaText="Start Your Free Trial Today and Trade Smarter"
+        segment="companies"
+        title={<>Stay Ahead in the <span className="whitespace-nowrap">Bitcoin Industry</span></>}
+        subtitle="Discover real-time trends, analyze sentiment, and track competitors with ease. Whether you're a decision-maker, researcher, or builder in the Bitcoin space, unlock the insights you need to drive your strategy."
+        ctaText="Start Free Trial"
         backgroundClass="bg-gradient-to-br from-blue-500/5 via-slate-600/5 to-neutral-700/5"
       />
 
@@ -133,13 +144,12 @@ export function InvestorLanding() {
       
       <div className="space-y-8 sm:space-y-12 mt-16 sm:mt-24">
         <ValuePropSection
-          title="Everything You Need to Trade Smarter"
-          subtitle="Make data-driven decisions with our comprehensive suite of trading tools."
+          title="The Insights You Need to Stay Ahead"
+          subtitle="Empower your decisions with a comprehensive intelligence platform designed for the Bitcoin industry."
           benefits={benefits}
         />
 
         <TestimonialSection
-          tweets={tweets}
           metrics={metrics}
           logos={[]}
         />
@@ -148,10 +158,10 @@ export function InvestorLanding() {
           <FeatureSection features={features} />
           
           <CTASection
-            title="Start Trading with Confidence"
-            subtitle="Join professional traders who use our platform to gain a competitive edge."
+            title="Stay Informed, Stay Competitive"
+            subtitle="Don't get left behind in the fast-moving Bitcoin industry. Start using Perception to lead the conversation, track competitors, and identify key opportunities."
             primaryCTA="Start Free Trial"
-            secondaryCTA="View Pricing"
+            secondaryCTA=""
             backgroundClass="group"
           >
             <div className="absolute inset-0 -z-10">

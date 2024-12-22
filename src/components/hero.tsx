@@ -47,10 +47,10 @@ export function Hero() {
               rel="noopener noreferrer" 
               className="inline-flex items-center space-x-2"
             >
-              <span className="rounded-full bg-white/10 px-3 py-1 text-sm font-semibold leading-6 text-white ring-1 ring-inset ring-white/20">
+              <span className="rounded-full bg-white/10 px-3 py-1 text-sm font-semibold leading-6 text-gray-900 dark:text-white ring-1 ring-inset ring-white/20">
                 What's new
               </span>
-              <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-white/60">
+              <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600 dark:text-white/60">
                 <span>Early Adopter Program now open</span>
                 <ArrowRight className="h-4 w-4" />
               </span>
@@ -62,13 +62,14 @@ export function Hero() {
 
           </h1>
           
-          <p className="mt-6 text-lg leading-8 text-white/60">
-          Save HOURS staying ahead of the Bitcoin market.                    </p>
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white/60">
+            Save HOURS staying ahead of the Bitcoin market.
+          </p>
           
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button 
               size="lg" 
-              className="bg-white text-black hover:bg-white/90 transition-all"
+              className="bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-white/90 transition-all"
               asChild
             >
               <a href="https://getformly.app/MoHB6K">
@@ -76,14 +77,14 @@ export function Hero() {
               </a>
             </Button>
             <Button 
-  variant="outline" 
-  size="lg" 
-  className="border-white/20 text-white hover:bg-white/10 group"
-  asChild
->
-  <a href="/about">
-    Learn more{' '}
-    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              variant="outline" 
+              size="lg" 
+              className="border-gray-200 dark:border-white/20 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 group"
+              asChild
+            >
+              <a href="/about">
+                Learn more{' '}
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
           </div>

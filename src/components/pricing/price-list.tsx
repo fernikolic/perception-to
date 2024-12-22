@@ -1,43 +1,48 @@
 import { PriceCard } from './price-card';
 
-const plans = [
+const tiers = [
   {
     name: 'Starter',
-    description: 'Perfect for journalists, VCs, and content creators',
-    price: '$69',
+    id: 'starter',
+    href: '#',
+    description: 'For companies getting started with market intelligence',
+    price: '$79',
     features: [
-      'Real-time trend discovery',
-      'Daily market insights',
-      'Sentiment analysis',
-      'Email reports',
+      'Real-time trend tracking',
+      'Basic sentiment analysis',
+      'Up to 3 competitor tracking',
+      'Daily email reports',
+      'Basic data export',
     ],
   },
   {
     name: 'Pro',
-    description: 'For investors, traders, and researchers',
+    id: 'pro',
+    href: '#',
+    description: 'For growing Bitcoin companies and teams',
     price: '$179',
     features: [
       'Everything in Starter, plus:',
-      'Price correlation analysis',
-      'Market metrics integration',
-      'Industry insights dashboard',
       'Advanced sentiment metrics',
-      'Custom alerts (coming soon)',
+      'Unlimited competitor tracking',
+      'Custom alerts',
+      'API access',
       'Priority support',
     ],
-    popular: true,
   },
   {
-    name: 'API',
-    description: 'Enterprise-grade data solutions',
+    name: 'Enterprise',
+    id: 'enterprise',
+    href: '#',
+    description: 'For large organizations needing advanced features',
     price: 'Custom',
     features: [
-      'Full API access',
-      'Custom data integrations',
-      'Historical data access',
-      'Custom metrics',
-      'Dedicated support',
+      'Everything in Pro, plus:',
+      'Custom integrations',
+      'Dedicated account manager',
       'Custom reporting',
+      'SLA & support',
+      'Training & onboarding',
     ],
   },
 ];
@@ -45,8 +50,8 @@ const plans = [
 export function PriceList() {
   return (
     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {plans.map((plan) => (
-        <PriceCard key={plan.name} {...plan} />
+      {tiers.map((tier) => (
+        <PriceCard key={tier.name} {...tier} />
       ))}
     </div>
   );
