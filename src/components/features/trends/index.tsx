@@ -33,10 +33,6 @@ const trendingData = [
 export function TrendingTopics() {
   return (
     <div>
-      <div className="mb-6 text-center">
-        <h3 className="text-2xl font-semibold">Track Breaking Trends Without the Noise</h3>
-      </div>
-
       <Card className="overflow-hidden">
         <BrowserFrame url="app.perception.to" />
         <CardContent className="border-none p-6">

@@ -31,7 +31,7 @@ export function TestimonialSection({ tweets = [], metrics, logos }: TestimonialS
                 key={tweet.id}
                 className={`group relative rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br ${tweet.gradient || 'from-white/5 to-white/10'} hover:shadow-lg hover:shadow-white/5 border border-white/10`}
               >
-                <blockquote className="twitter-tweet">
+                <blockquote className="twitter-tweet" data-theme="dark">
                   <a href={`https://twitter.com/x/status/${tweet.id}`}></a>
                 </blockquote>
               </div>

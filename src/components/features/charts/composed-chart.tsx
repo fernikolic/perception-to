@@ -54,10 +54,6 @@ function createYAxis({
 export function ComposedChart({ data }: ComposedChartProps) {
   return (
     <div>
-      <div className="mb-6 text-center">
-        <h3 className="text-2xl font-semibold">Correlate Sentiment with Price Movements</h3>
-      </div>
-      
       <Card className="overflow-hidden">
         <BrowserFrame url="app.perception.to" />
         <CardContent className="border-none p-6">

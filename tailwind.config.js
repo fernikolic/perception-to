@@ -2,44 +2,108 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./src/app/**/*.{js,ts,jsx,tsx}",
-  ],
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
-        border: 'hsl(var(--border))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        shimmer: {
-          from: { transform: 'translateX(-100%)' },
-          to: { transform: 'translateX(100%)' },
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-        'scroll-left': {
-          from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(-100%)' },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
         },
-        'scroll-right': {
-          from: { transform: 'translateX(-100%)' },
-          to: { transform: 'translateX(0)' },
+        "scroll-left": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
         },
+        "scroll-right": {
+          from: { transform: "translateX(-50%)" },
+          to: { transform: "translateX(0)" },
+        },
+        "card-enter": {
+          "0%": { 
+            opacity: "0",
+            transform: "translateY(20px) scale(0.95)"
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0) scale(1)"
+          }
+        },
+        "card-active": {
+          "0%": {
+            transform: "scale(1)"
+          },
+          "50%": {
+            transform: "scale(1.05)"
+          },
+          "100%": {
+            transform: "scale(1)"
+          }
+        }
       },
       animation: {
-        shimmer: 'shimmer 2s linear infinite',
-        'scroll-left': 'scroll-left 80s linear infinite',
-        'scroll-right': 'scroll-right 80s linear infinite',
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "scroll-left": "scroll-left 50s linear infinite",
+        "scroll-right": "scroll-right 50s linear infinite",
+        "card-enter": "card-enter 0.5s ease-out forwards",
+        "card-active": "card-active 1s ease-in-out"
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 }

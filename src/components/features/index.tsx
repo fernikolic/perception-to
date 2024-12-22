@@ -1,6 +1,6 @@
 import { ComposedChart } from './charts/composed-chart';
 import { TrendingTopics } from './trends';
-import { XCircle } from 'lucide-react';
+import { XCircle, ChevronDown } from 'lucide-react';
 
 const painPoints = [
   {
@@ -45,12 +45,16 @@ export function Features() {
         {/* Pain Points Section */}
         <div className="mx-auto max-w-2xl text-center">
           <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">
-            <span className="text-sm font-medium">Current Workflow</span>
+            <span className="text-sm font-medium">Current State</span>
           </div>
           
-          <h2 className="mt-8 text-3xl font-bold tracking-tight sm:text-4xl">
-            Stop letting your workflow look like this:
+          <h2 className="mt-8 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            Common problems in Bitcoin market analysis
           </h2>
+
+          <div className="mt-8 flex justify-center">
+            <ChevronDown className="h-8 w-8 animate-bounce text-muted-foreground" />
+          </div>
         </div>
 
         <div className="mx-auto mt-16 max-w-2xl">
@@ -79,21 +83,33 @@ export function Features() {
 
         {/* Solution Section */}
         <div className="mx-auto mt-32 max-w-2xl text-center">
-          <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">
-            <span className="text-sm font-medium">Market Analysis</span>
-          </div>
-          
-          <h2 className="mt-8 text-3xl font-bold tracking-tight sm:text-4xl">
-            There is a better way: Decode Bitcoin market sentiment in one place
+          <h2 className="mt-8 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl flex flex-col gap-6">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-orange-500">
+              There is a better way:
+            </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-orange-500">
+              Decode Bitcoin market sentiment in one place
+            </span>
           </h2>
-          
-          <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Get instant updates on Bitcoin market psychology with our sentiment pulse. Spot sentiment shifts before they impact price.
-          </p>
+
+          <div className="mt-8 flex justify-center">
+            <ChevronDown className="h-8 w-8 animate-bounce text-muted-foreground" />
+          </div>
         </div>
         
-        <div className="mx-auto mt-16 grid grid-cols-1 gap-8">
+        <div className="mx-auto mt-8 grid grid-cols-1 gap-8">
+          <div className="space-y-4 text-center">
+            <h3 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+              Correlate sentiment with price movements
+            </h3>
+          </div>
           <ComposedChart data={chartData} />
+          
+          <div className="space-y-4 text-center mt-16">
+            <h3 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+              Track breaking trends without the noise
+            </h3>
+          </div>
           <TrendingTopics />
         </div>
       </div>
