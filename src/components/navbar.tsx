@@ -264,7 +264,7 @@ export function Navbar() {
             asChild
           >
             <a href="https://getformly.app/MoHB6K">
-              Get Started
+              Join Early Adopter Program
             </a>
           </Button>
         </div>
@@ -367,7 +367,7 @@ export function Navbar() {
                     asChild
                   >
                     <a href="https://getformly.app/MoHB6K">
-                      Get Started
+                      Join Early Adopter Program
                     </a>
                   </Button>
                 </div>

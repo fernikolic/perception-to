@@ -63,7 +63,7 @@ export function Hero() {
           </h1>
           
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white/60">
-            Save HOURS staying ahead of the Bitcoin market.
+            <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">Save hours</span> staying ahead of the Bitcoin market.
           </p>
           
           <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -73,7 +73,7 @@ export function Hero() {
               asChild
             >
               <a href="https://getformly.app/MoHB6K">
-                Get started
+                Join Early Adopter Program
               </a>
             </Button>
             <Button 

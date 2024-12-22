@@ -158,7 +158,7 @@ export function AboutPage() {
               className="bg-primary text-white hover:bg-primary-focus"
             >
               <a href="https://getformly.app/MoHB6K">
-                Get Started
+                Join Early Adopter Program
               </a>
             </Button>
           </div>

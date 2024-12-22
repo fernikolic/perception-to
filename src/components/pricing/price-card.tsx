@@ -45,7 +45,7 @@ export function PriceCard({ name, description, price, features, popular }: Price
           asChild
         >
           <a href="https://getformly.app/MoHB6K">
-            Get Started
+            Join Early Adopter Program
           </a>
         </Button>
       </CardFooter>

@@ -97,7 +97,7 @@ export function Hero() {
               className="bg-white text-black hover:bg-white/90 transition-all"
             >
               <a href="https://getformly.app/MoHB6K">
-                Get Started
+                Join Early Adopter Program
               </a>
             </Button>
             <Button 
