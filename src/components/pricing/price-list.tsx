@@ -6,7 +6,7 @@ const tiers = [
     id: 'starter',
     href: '#',
     description: 'For companies getting started with market intelligence',
-    price: '$79',
+    price: '$59',
     features: [
       'Real-time trend tracking',
       'Basic sentiment analysis',
@@ -20,7 +20,7 @@ const tiers = [
     id: 'pro',
     href: '#',
     description: 'For growing Bitcoin companies and teams',
-    price: '$179',
+    price: '$149',
     features: [
       'Everything in Starter, plus:',
       'Advanced sentiment metrics',

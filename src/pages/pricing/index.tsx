@@ -15,7 +15,7 @@ const tiers: PricingTier[] = [
   {
     name: 'Starter',
     description: 'Perfect for journalists, VCs, and content creators',
-    price: '$69',
+    price: '$59',
     features: [
       'Real-time trend discovery',
       'Daily market insights',
@@ -27,7 +27,7 @@ const tiers: PricingTier[] = [
   {
     name: 'Pro',
     description: 'For investors, traders, and researchers',
-    price: '$179',
+    price: '$149',
     features: [
       'Everything in Starter, plus:',
       'Price correlation analysis',

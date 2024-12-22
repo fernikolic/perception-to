@@ -21,11 +21,11 @@ export const faqData = [
   },
   {
     question: "What is the difference between the Starter and Pro plans?",
-    answer: "• Starter Plan ($69/month): Provides trend discovery and sentiment analysis from high-signal sources.\n• Pro Plan ($179/month): Includes all Starter features plus advanced tools to correlate sentiment with financial metrics and price trends."
+    answer: "• Starter Plan ($59/month): Provides trend discovery and sentiment analysis from high-signal sources.\n• Pro Plan ($149/month): Includes all Starter features plus advanced tools to correlate sentiment with financial metrics and price trends."
   },
   {
     question: "How much does the platform cost?",
-    answer: "Our pricing starts at $69/month for the Starter plan, with the Pro plan offering enhanced features for $179/month."
+    answer: "Our pricing starts at $59/month for the Starter plan, with the Pro plan offering enhanced features for $149/month."
   },
   {
     question: "How can I access the platform?",

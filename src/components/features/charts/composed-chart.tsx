@@ -22,6 +22,35 @@ interface ComposedChartProps {
   data: ChartData[];
 }
 
+const BaseAxis = {
+  stroke: "hsl(var(--muted-foreground))",
+  fontSize: 12,
+  tickLine: false,
+  axisLine: { stroke: 'hsl(var(--muted))' }
+} as const;
+
+function createYAxis({
+  id,
+  orientation = 'left',
+  width = 80,
+  formatter
+}: {
+  id: string;
+  orientation?: 'left' | 'right';
+  width?: number;
+  formatter: (value: number) => string;
+}) {
+  return (
+    <YAxis 
+      {...BaseAxis}
+      yAxisId={id}
+      orientation={orientation}
+      width={width}
+      tickFormatter={formatter}
+    />
+  );
+}
+
 export function ComposedChart({ data }: ComposedChartProps) {
   return (
     <div>
@@ -51,34 +80,23 @@ export function ComposedChart({ data }: ComposedChartProps) {
                 />
                 
                 <XAxis 
+                  {...BaseAxis}
                   dataKey="month"
-                  stroke="hsl(var(--muted-foreground))"
-                  fontSize={12}
-                  tickLine={false}
-                  axisLine={{ stroke: 'hsl(var(--muted))' }}
                 />
                 
-                <YAxis 
-                  yAxisId="price"
-                  orientation="left"
-                  width={80}
-                  stroke="hsl(var(--muted-foreground))"
-                  fontSize={12}
-                  tickLine={false}
-                  axisLine={{ stroke: 'hsl(var(--muted))' }}
-                  tickFormatter={(value) => `$${value.toLocaleString()}`}
-                />
+                {createYAxis({
+                  id: "price",
+                  orientation: "left",
+                  width: 80,
+                  formatter: (value) => `$${value.toLocaleString()}`
+                })}
                 
-                <YAxis 
-                  yAxisId="sentiment"
-                  orientation="right"
-                  width={50}
-                  stroke="hsl(var(--muted-foreground))"
-                  fontSize={12}
-                  tickLine={false}
-                  axisLine={{ stroke: 'hsl(var(--muted))' }}
-                  tickFormatter={(value) => `${value}%`}
-                />
+                {createYAxis({
+                  id: "sentiment",
+                  orientation: "right",
+                  width: 50,
+                  formatter: (value) => `${value}%`
+                })}
                 
                 <Tooltip
                   contentStyle={{
@@ -92,7 +110,7 @@ export function ComposedChart({ data }: ComposedChartProps) {
                     return [`${value}%`, name];
                   }}
                 />
-                
+
                 <Legend />
                 
                 <Line

@@ -127,17 +127,22 @@ export function CompaniesLanding() {
               </span>
             </div>
           </div>
-          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 items-center gap-x-12 gap-y-16 sm:max-w-5xl sm:grid-cols-3 sm:gap-x-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {logos.map((logo) => (
-              <img
-                key={logo.name}
-                className="col-span-1 max-h-24 w-full object-contain mix-blend-lighten opacity-75 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 filter"
-                src={logo.url}
-                alt={logo.name}
-                width={316}
-                height={96}
-              />
-            ))}
+          <div className="relative overflow-hidden">
+            <div className="logo-container relative w-full">
+              <div className="flex flex-wrap justify-center items-center gap-8 py-8">
+                {logos.map((logo) => (
+                  <div key={logo.name} className="flex items-center justify-center">
+                    <img
+                      className="h-24 w-auto object-contain mix-blend-lighten opacity-75 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 filter"
+                      src={logo.url}
+                      alt={logo.name}
+                      width={200}
+                      height={72}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
