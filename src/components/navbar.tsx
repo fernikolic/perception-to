@@ -19,18 +19,24 @@ const solutions = [
     href: "/investor",
     description: "Make data-driven decisions with real-time market intelligence",
     image: "https://storage.googleapis.com/btcp_bucket/marketing/investors.png",
+    disabled: true,
+    badge: "Coming Soon"
   },
   {
     title: "For Companies",
     href: "/researcher",
     description: "Track sentiment, monitor competitors, and stay ahead of trends",
     image: "https://storage.googleapis.com/btcp_bucket/marketing/researchers.png",
+    disabled: true,
+    badge: "Coming Soon"
   },
   {
     title: "For Journalists",
     href: "/journalist",
     description: "Discover emerging stories and create data-backed content",
     image: "https://storage.googleapis.com/btcp_bucket/marketing/journalists.png",
+    disabled: true,
+    badge: "Coming Soon"
   },
 ];
 
@@ -138,7 +144,11 @@ export function Navbar() {
                         <NavigationMenuLink
                           key={solution.title}
                           href={solution.href}
-                          className="block space-y-1 rounded-lg p-2 leading-none no-underline outline-none transition-colors hover:bg-white/5 hover:text-accent-foreground focus:bg-white/5 focus:text-accent-foreground"
+                          className={cn(
+                            "block space-y-1 rounded-lg p-2 leading-none no-underline outline-none transition-colors hover:bg-white/5 hover:text-accent-foreground focus:bg-white/5 focus:text-accent-foreground",
+                            solution.disabled && "cursor-not-allowed opacity-70"
+                          )}
+                          onClick={solution.disabled ? (e) => e.preventDefault() : undefined}
                         >
                           <div className="flex flex-col gap-2">
                             <div className="relative h-32 w-full overflow-hidden rounded-lg">
@@ -150,8 +160,15 @@ export function Navbar() {
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                             </div>
                             <div>
-                              <div className="text-lg font-medium leading-none">
-                                {solution.title}
+                              <div className="flex items-center gap-2">
+                                <div className="text-lg font-medium leading-none">
+                                  {solution.title}
+                                </div>
+                                {solution.badge && (
+                                  <Badge variant="secondary" className="text-xs">
+                                    {solution.badge}
+                                  </Badge>
+                                )}
                               </div>
                               <p className="mt-2 line-clamp-2 text-sm leading-snug text-muted-foreground">
                                 {solution.description}
@@ -291,9 +308,20 @@ export function Navbar() {
                   <a
                     key={solution.title}
                     href={solution.href}
-                    className="block px-3 py-2 text-sm hover:bg-accent rounded-lg"
+                    className={cn(
+                      "block px-3 py-2 text-sm hover:bg-accent rounded-lg",
+                      solution.disabled && "cursor-not-allowed opacity-70"
+                    )}
+                    onClick={solution.disabled ? (e) => e.preventDefault() : undefined}
                   >
-                    {solution.title}
+                    <div className="flex items-center gap-2">
+                      {solution.title}
+                      {solution.badge && (
+                        <Badge variant="secondary" className="text-xs">
+                          {solution.badge}
+                        </Badge>
+                      )}
+                    </div>
                   </a>
                 ))}
               </div>
