@@ -19,23 +19,29 @@ export async function onRequest(context) {
     });
   }
 
-  // If requesting a JavaScript file
-  if (url.pathname.endsWith('.js')) {
-    const response = await context.next();
+  // If requesting assets (including JavaScript files)
+  if (url.pathname.startsWith('/assets/')) {
+    const response = await context.env.ASSETS.fetch(url);
     const newHeaders = new Headers(response.headers);
+    
+    // Add security headers
     Object.entries(securityHeaders).forEach(([key, value]) => {
       newHeaders.set(key, value);
     });
-    newHeaders.set('content-type', 'application/javascript');
+
+    // Set correct content type for JavaScript files
+    if (url.pathname.endsWith('.js')) {
+      newHeaders.set('content-type', 'application/javascript');
+    }
+    
     return new Response(response.body, {
       status: response.status,
       headers: newHeaders
     });
   }
 
-  // If requesting other static assets
+  // If requesting other static files
   if (
-    url.pathname.startsWith('/assets/') ||
     url.pathname.endsWith('.css') ||
     url.pathname.endsWith('.svg') ||
     url.pathname.endsWith('.ico')
