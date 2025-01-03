@@ -2,9 +2,11 @@
   "version": 1,
   "include": ["/*"],
   "exclude": [
-    "/assets/*",
-    "/assets/js/*",
-    "/assets/css/*",
-    "/assets/img/*"
+    "/assets/js/*.js",
+    "/assets/css/*.css",
+    "/assets/img/*",
+    "/*.js",
+    "/*.css",
+    "/*.map"
   ]
 } 

@@ -4,7 +4,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+  base: 'https://perception.to/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -19,12 +19,12 @@ export default defineConfig({
           const name = assetInfo.name || '';
           const ext = name.split('.').pop() || '';
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
-            return `assets/img/[name][extname]`;
+            return `assets/img/[name].[hash][extname]`;
           }
-          return `assets/[ext]/[name][extname]`;
+          return `assets/[ext]/[name].[hash][extname]`;
         },
-        chunkFileNames: 'assets/js/[name].js',
-        entryFileNames: 'assets/js/[name].js',
+        chunkFileNames: 'assets/js/[name].[hash].js',
+        entryFileNames: 'assets/js/[name].[hash].js',
       },
     },
   },
