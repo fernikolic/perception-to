@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
+  base: '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -11,6 +12,20 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    minify: 'esbuild'
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          const name = assetInfo.name || '';
+          const ext = name.split('.').pop() || '';
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+            return `assets/img/[name][extname]`;
+          }
+          return `assets/[ext]/[name][extname]`;
+        },
+        chunkFileNames: 'assets/js/[name].js',
+        entryFileNames: 'assets/js/[name].js',
+      },
+    },
   },
 });
