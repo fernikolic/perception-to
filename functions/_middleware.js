@@ -9,12 +9,18 @@ export async function onRequest(context) {
     url.pathname.endsWith('.svg') ||
     url.pathname.endsWith('.ico')
   ) {
+    // Rewrite the request to the Pages domain if coming from custom domain
+    if (url.hostname === 'perception.to') {
+      const pagesUrl = new URL(url.pathname, 'https://perception-to.pages.dev');
+      return fetch(pagesUrl);
+    }
     return context.next();
   }
   
   try {
-    // For all other routes, serve index.html
-    const response = await fetch(new URL('/index.html', url.origin));
+    // For all other routes, serve index.html from the Pages domain
+    const indexUrl = new URL('/index.html', 'https://perception-to.pages.dev');
+    const response = await fetch(indexUrl);
     const html = await response.text();
     
     return new Response(html, {
