@@ -2,6 +2,8 @@ import path from 'path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
+// Configuration for the multi-page marketing site (perception.to)
+// Handles multiple landing pages and routes while keeping assets organized
 export default defineConfig({
   plugins: [react()],
   base: '/',
@@ -12,13 +14,16 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
-    cssCodeSplit: false,
     rollupOptions: {
       output: {
-        entryFileNames: `assets/[name].js`,
-        chunkFileNames: `assets/[name].js`,
-        assetFileNames: `assets/[name].[ext]`
+        // Keep JavaScript bundles in their own directory
+        entryFileNames: 'js/[name].js',
+        chunkFileNames: 'js/[name].js',
+        // Organize other assets by type
+        assetFileNames: ({ name }) => {
+          if (/\.css$/.test(name ?? '')) return 'css/[name][extname]';
+          return 'assets/[name][extname]';
+        },
       }
     },
   },
