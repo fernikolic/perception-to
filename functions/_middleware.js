@@ -19,34 +19,34 @@ export async function onRequest(context) {
     });
   }
 
-  // If requesting a static asset, serve it directly
-  if (
-    url.pathname.startsWith('/assets/') ||
-    url.pathname.endsWith('.js') ||
-    url.pathname.endsWith('.css') ||
-    url.pathname.endsWith('.svg') ||
-    url.pathname.endsWith('.ico')
-  ) {
+  // If requesting a JavaScript file
+  if (url.pathname.endsWith('.js')) {
     const response = await context.next();
     const newHeaders = new Headers(response.headers);
-    
-    // Add security headers to the response
     Object.entries(securityHeaders).forEach(([key, value]) => {
       newHeaders.set(key, value);
     });
-
+    newHeaders.set('content-type', 'application/javascript');
     return new Response(response.body, {
       status: response.status,
       headers: newHeaders
     });
+  }
+
+  // If requesting other static assets
+  if (
+    url.pathname.startsWith('/assets/') ||
+    url.pathname.endsWith('.css') ||
+    url.pathname.endsWith('.svg') ||
+    url.pathname.endsWith('.ico')
+  ) {
+    return context.next();
   }
   
   try {
     // For all other routes, serve index.html
     const response = await context.env.ASSETS.fetch(new URL('/index.html', url));
     const newHeaders = new Headers(response.headers);
-    
-    // Add security headers to the response
     Object.entries(securityHeaders).forEach(([key, value]) => {
       newHeaders.set(key, value);
     });
