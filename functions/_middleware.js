@@ -1,71 +1,27 @@
 export async function onRequest(context) {
   const url = new URL(context.request.url);
   
-  // Common security headers
-  const securityHeaders = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, HEAD, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'X-Content-Type-Options': 'nosniff',
-    'X-Frame-Options': 'DENY',
-    'Referrer-Policy': 'strict-origin-when-cross-origin'
-  };
-
-  // Handle OPTIONS request for CORS
-  if (context.request.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 204,
-      headers: securityHeaders
-    });
-  }
-
-  // If requesting assets (including JavaScript files)
+  // If requesting static assets, let Cloudflare handle it
   if (url.pathname.startsWith('/assets/')) {
-    const response = await context.env.ASSETS.fetch(url);
-    const newHeaders = new Headers(response.headers);
-    
-    // Add security headers
-    Object.entries(securityHeaders).forEach(([key, value]) => {
-      newHeaders.set(key, value);
-    });
-
-    // Set correct content type for JavaScript files
-    if (url.pathname.endsWith('.js')) {
-      newHeaders.set('content-type', 'application/javascript');
-    }
-    
-    return new Response(response.body, {
-      status: response.status,
-      headers: newHeaders
-    });
-  }
-
-  // If requesting other static files
-  if (
-    url.pathname.endsWith('.css') ||
-    url.pathname.endsWith('.svg') ||
-    url.pathname.endsWith('.ico')
-  ) {
     return context.next();
   }
-  
+
+  // For all other routes, serve index.html
   try {
-    // For all other routes, serve index.html
     const response = await context.env.ASSETS.fetch(new URL('/index.html', url));
-    const newHeaders = new Headers(response.headers);
-    Object.entries(securityHeaders).forEach(([key, value]) => {
-      newHeaders.set(key, value);
-    });
-    newHeaders.set('content-type', 'text/html;charset=UTF-8');
-    
     return new Response(response.body, {
-      status: 200,
-      headers: newHeaders
+      headers: {
+        'content-type': 'text/html;charset=UTF-8',
+        'cache-control': 'no-cache',
+        'x-content-type-options': 'nosniff'
+      }
     });
   } catch (error) {
     return new Response('Error loading the application', { 
       status: 500,
-      headers: securityHeaders
+      headers: {
+        'content-type': 'text/plain'
+      }
     });
   }
 } 
