@@ -28,16 +28,13 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: false,
     cssCodeSplit: false,
+    modulePreload: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': ['framer-motion', 'recharts', 'lucide-react'],
-          'utils-vendor': ['date-fns', 'clsx', 'tailwind-merge']
-        },
-        entryFileNames: 'assets/[name].js',
-        chunkFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name].[ext]'
+        manualChunks: undefined,
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]'
       }
     },
     minify: 'esbuild',
