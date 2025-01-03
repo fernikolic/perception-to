@@ -1,21 +1,5 @@
 {
   "version": 1,
   "include": ["/*"],
-  "exclude": [
-    "/assets/*",
-    "/assets/js/*",
-    "/assets/css/*",
-    "/assets/img/*",
-    "/*.js",
-    "/*.css",
-    "/*.svg",
-    "/*.ico",
-    "/*.png",
-    "/*.jpg",
-    "/*.jpeg",
-    "/*.gif",
-    "/favicon.ico",
-    "/manifest.json",
-    "/robots.txt"
-  ]
+  "exclude": []
 } 
