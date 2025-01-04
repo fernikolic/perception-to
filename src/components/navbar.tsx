@@ -271,7 +271,7 @@ export function Navbar() {
 
         <div className="hidden md:flex md:items-center md:space-x-6">
           <a 
-            href="https://app.perception.to/auth/login" 
+            href="https://app.perception.to/auth/sign-in" 
             className="text-sm hover:text-primary"
           >
             Login
@@ -384,14 +384,14 @@ export function Navbar() {
 
               <div className="space-y-2 pt-4">
                 <a
-                  href="https://app.perception.to/auth/login"
+                  href="https://app.perception.to/auth/sign-in"
                   className="block px-3 py-2 text-sm hover:bg-accent rounded-lg"
                 >
                   Login
                 </a>
-                <div className="px-3">
+                <div className="px-3 flex justify-center">
                   <Button 
-                    className="w-full bg-white text-black hover:bg-white/90 transition-all"
+                    className="bg-white text-black hover:bg-white/90 transition-all"
                     asChild
                   >
                     <a href="https://getformly.app/MoHB6K">
