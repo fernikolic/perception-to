@@ -64,50 +64,55 @@ export function Hero() {
         }}
       />
 
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-8 inline-flex flex-col items-center gap-4 sm:flex-row">
-            <div className="relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white/5 px-4 py-1.5 ring-1 ring-white/10 transition-colors duration-300 hover:bg-white/10 hover:ring-white/20">
-              <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,1.9),transparent)]" />
-              <Sparkles className="h-4 w-4 text-primary animate-pulse" />
-              <span className="text-sm font-semibold leading-6">What's new</span>
-            </div>
-            <a 
-              href="#" 
-              className="group inline-flex items-center space-x-2 text-sm font-medium leading-6 text-white/60 transition-colors hover:text-white"
-            >
-              <span>Just shipped v1.0</span>
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          </div>
-          
-          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl gradient-text">
-          Track trends, decode sentiment, uncover narratives, and make informed decisions—all in one place.
-          </h1>
-          
-          <p className="mt-6 text-lg leading-8 text-white/60">
-            Transform your business operations with our innovative platform. Boost productivity,
-            enhance collaboration, and drive growth with our comprehensive suite of tools.
-          </p>
-          
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Button 
-              size="lg" 
-              asChild
-              className="bg-white text-black hover:bg-white/90 transition-all"
-            >
-              <a href="https://getformly.app/MoHB6K">
-                Join Early Adopter Program
+      <div className="w-full px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
+        <div className="flex flex-col lg:flex-row gap-8 max-w-7xl">
+          <div className="flex flex-col items-start w-full lg:w-1/2">
+            <div className="mb-8 flex flex-col items-start gap-4 sm:flex-row">
+              <div className="relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white/5 px-4 py-1.5 ring-1 ring-white/10 transition-colors duration-300 hover:bg-white/10 hover:ring-white/20">
+                <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,1.9),transparent)]" />
+                <Sparkles className="h-4 w-4 text-primary animate-pulse" />
+                <span className="text-sm font-semibold leading-6">What's new</span>
+              </div>
+              <a 
+                href="#" 
+                className="group inline-flex items-center space-x-2 text-sm font-medium leading-6 text-white/60 transition-colors hover:text-white"
+              >
+                <span>Just shipped v1.0</span>
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="border-white/20 text-white hover:bg-white/10 group"
-            >
-              Learn more{' '}
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+            </div>
+            
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl gradient-text">
+            Track trends, decode sentiment, uncover narratives, and make informed decisions—all in one place.
+            </h1>
+            
+            <p className="mt-6 text-lg leading-8 text-white/60">
+              Transform your business operations with our innovative platform. Boost productivity,
+              enhance collaboration, and drive growth with our comprehensive suite of tools.
+            </p>
+            
+            <div className="mt-10 flex items-center gap-x-6">
+              <Button 
+                size="lg" 
+                asChild
+                className="bg-white text-black hover:bg-white/90 transition-all"
+              >
+                <a href="https://app.perception.to/auth/sign-up">
+                  Join Early Adopter Program
+                </a>
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-white/20 text-white hover:bg-white/10 group"
+              >
+                Learn more{' '}
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </div>
+          </div>
+          <div className="w-full lg:w-1/2">
+            {/* Right side content will go here */}
           </div>
         </div>
       </div>

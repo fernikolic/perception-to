@@ -27,7 +27,7 @@ export function CTASection({ title, subtitle, primaryCTA, secondaryCTA, backgrou
               className="bg-white text-black hover:bg-white/90 transition-all"
               asChild
             >
-              <a href="https://getformly.app/MoHB6K">
+              <a href="https://app.perception.to/auth/sign-up">
                 {primaryCTA}
               </a>
             </Button>

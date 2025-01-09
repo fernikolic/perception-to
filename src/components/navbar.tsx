@@ -280,7 +280,7 @@ export function Navbar() {
             className="bg-white text-black hover:bg-white/90 transition-all"
             asChild
           >
-            <a href="https://getformly.app/MoHB6K">
+            <a href="https://app.perception.to/auth/sign-up">
               Join Early Adopter Program
             </a>
           </Button>
@@ -394,7 +394,7 @@ export function Navbar() {
                     className="bg-white text-black hover:bg-white/90 transition-all"
                     asChild
                   >
-                    <a href="https://getformly.app/MoHB6K">
+                    <a href="https://app.perception.to/auth/sign-up">
                       Join Early Adopter Program
                     </a>
                   </Button>

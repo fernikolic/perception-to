@@ -42,7 +42,7 @@ export function Hero() {
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-8">
             <a 
-              href="https://x.com/BTCPerception/status/1840527608863232426" 
+              href="https://x.com/BTCPerception/status/1877387322724909419" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="inline-flex items-center space-x-2"
@@ -72,7 +72,7 @@ export function Hero() {
               className="bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-white/90 transition-all"
               asChild
             >
-              <a href="https://getformly.app/MoHB6K">
+              <a href="https://app.perception.to/auth/sign-up">
                 Join Early Adopter Program
               </a>
             </Button>
@@ -82,7 +82,7 @@ export function Hero() {
               className="border-gray-200 dark:border-white/20 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 group"
               asChild
             >
-              <a href="/about">
+              <a href="https://x.com/BTCPerception/status/1877387322724909419" target="_blank" rel="noopener noreferrer">
                 Learn more{' '}
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>

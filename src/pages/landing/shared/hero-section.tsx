@@ -40,7 +40,7 @@ export function HeroSection({ segment, title, subtitle, ctaText, backgroundClass
               className="bg-primary text-primary-foreground hover:bg-primary/90"
               asChild
             >
-              <a href="https://getformly.app/MoHB6K">
+              <a href="https://app.perception.to/auth/sign-up">
                 {ctaText}
               </a>
             </Button>

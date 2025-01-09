@@ -6,22 +6,22 @@ const communities = [
     name: 'Bitcoin Companies',
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/researchers.png',
     description: 'Track market sentiment, monitor competitors, and stay ahead of industry trends with real-time intelligence.',
-    buttonText: 'Join the closed alpha',
-    href: '#',
+    buttonText: 'Join Early Adopter Program',
+    href: 'https://app.perception.to/auth/sign-up',
   },
   {
     name: 'Journalists & Creators',
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/journalists.png',
     description: 'Instantly spot emerging trends and find what matters most across the Bitcoin ecosystem. Spend less time searching and more time creating.',
-    buttonText: 'Join the closed alpha',
-    href: '#',
+    buttonText: 'Join Early Adopter Program',
+    href: 'https://app.perception.to/auth/sign-up',
   },
   {
     name: 'Investors & VCs',
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/investors.png',
     description: 'Spot trends before they go mainstream. Get real-time signals, early insights, and sentiment analysis to make smarter decisions.',
-    buttonText: 'Join the closed alpha',
-    href: '#',
+    buttonText: 'Join Early Adopter Program',
+    href: 'https://app.perception.to/auth/sign-up',
   },
 ];
 

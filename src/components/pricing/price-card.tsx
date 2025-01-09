@@ -44,7 +44,7 @@ export function PriceCard({ name, description, price, features, popular }: Price
           variant={popular ? 'default' : 'outline'}
           asChild
         >
-          <a href="https://getformly.app/MoHB6K">
+          <a href="https://app.perception.to/auth/sign-up">
             Join Early Adopter Program
           </a>
         </Button>

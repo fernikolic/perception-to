@@ -157,7 +157,7 @@ export function AboutPage() {
               asChild
               className="bg-primary text-white hover:bg-primary-focus"
             >
-              <a href="https://getformly.app/MoHB6K">
+              <a href="https://app.perception.to/auth/sign-up">
                 Join Early Adopter Program
               </a>
             </Button>
