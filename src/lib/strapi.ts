@@ -75,8 +75,7 @@ export async function getBlogPosts() {
 }
 
 export async function getBlogPost(slug: string) {
-  console.log('Fetching article with slug:', slug);
-  return fetchAPI(`articles?filters[slug][$eq]=${slug}&populate=*`);
+  return fetchAPI(`/articles?filters[slug][$eq]=${slug}&populate=*`);
 }
 
 // Add more API functions as needed

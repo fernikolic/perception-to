@@ -8,14 +8,28 @@ import { Link } from 'react-router-dom';
 
 interface Post {
   id: number;
-  attributes: {
-    documentId: string;
-    title: string;
-    description: string;
+  documentId: string;
+  title: string;
+  description: string;
+  slug: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  cover: {
+    url: string;
+    alternativeText: string;
+    formats: {
+      thumbnail: {
+        url: string;
+      };
+    };
+  };
+  author: {
+    name: string;
+  };
+  category: {
+    name: string;
     slug: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
   };
 }
 
@@ -38,11 +52,6 @@ export function LearnPage() {
           return;
         }
 
-        // Log the first post to see its structure
-        if (response.data.length > 0) {
-          console.log('First post structure:', JSON.stringify(response.data[0], null, 2));
-        }
-        
         setPosts(response.data);
         setLoading(false);
       } catch (err) {
@@ -100,15 +109,31 @@ export function LearnPage() {
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (
                 <Card key={post.id} className="group relative overflow-hidden hover:shadow-lg">
+                  {post.cover && (
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={post.cover.formats.thumbnail.url}
+                        alt={post.cover.alternativeText || post.title}
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
                   <CardHeader>
-                    <CardTitle className="line-clamp-2">{post.attributes.title}</CardTitle>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      {post.category && (
+                        <span className="capitalize">{post.category.name}</span>
+                      )}
+                      <span>•</span>
+                      <time>{new Date(post.publishedAt).toLocaleDateString()}</time>
+                    </div>
+                    <CardTitle className="line-clamp-2 mt-2">{post.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground line-clamp-3 mb-4">
-                      {post.attributes.description}
+                      {post.description}
                     </p>
                     <Button variant="ghost" className="group/button" asChild>
-                      <Link to={`/learn/${post.attributes.slug}`}>
+                      <Link to={`/learn/${post.slug}`}>
                         Read more{' '}
                         <span className="ml-2 transition-transform group-hover/button:translate-x-1">
                           →
