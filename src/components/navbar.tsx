@@ -49,6 +49,11 @@ const resources: {
   className?: string;
 }[] = [
   { 
+    title: "Learn", 
+    href: "/learn",
+    description: "Discover insights and analysis about Bitcoin markets",
+  },
+  { 
     title: "Documentation", 
     href: "#",
     description: "Learn how to integrate and use our platform",

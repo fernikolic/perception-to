@@ -25,6 +25,7 @@ import { ApiPage } from '@/pages/api';
 import { RoadmapPage } from '@/pages/roadmap';
 import { PrivacyPage } from '@/pages/legal/privacy';
 import { TermsPage } from '@/pages/legal/terms';
+import { LearnPage } from '@/pages/learn';
 import PageTransition from '@/components/PageTransition';
 
 const App = () => {
@@ -72,6 +73,8 @@ const App = () => {
         return <PrivacyPage />;
       case '/terms':
         return <TermsPage />;
+      case '/learn':
+        return <LearnPage />;
       default:
         return (
           <main>
