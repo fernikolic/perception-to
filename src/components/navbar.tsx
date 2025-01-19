@@ -18,7 +18,7 @@ const solutions = [
     title: "For Investors",
     href: "/investor",
     description: "Make data-driven decisions with real-time market intelligence",
-    image: "https://storage.googleapis.com/btcp_bucket/marketing/investors.png",
+    image: "/logos/investors.png",
     disabled: true,
     badge: "Coming Soon"
   },
@@ -26,7 +26,7 @@ const solutions = [
     title: "For Companies",
     href: "/researcher",
     description: "Track sentiment, monitor competitors, and stay ahead of trends",
-    image: "https://storage.googleapis.com/btcp_bucket/marketing/researchers.png",
+    image: "/logos/companies.png",
     disabled: true,
     badge: "Coming Soon"
   },
@@ -34,7 +34,7 @@ const solutions = [
     title: "For Journalists",
     href: "/journalist",
     description: "Discover emerging stories and create data-backed content",
-    image: "https://storage.googleapis.com/btcp_bucket/marketing/journalists.png",
+    image: "/logos/journalists.png",
     disabled: true,
     badge: "Coming Soon"
   },
@@ -95,10 +95,8 @@ const company: {
   { title: "Announcements", href: "/announcements", description: "Product updates and company news" },
   { 
     title: "Roadmap", 
-    href: "#",
-    description: "See what we're building",
-    disabled: true,
-    badge: "Coming Soon"
+    href: "/roadmap",
+    description: "See what we're building"
   },
 ];
 
@@ -145,20 +143,12 @@ export function Navbar() {
                           key={solution.title}
                           href={solution.href}
                           className={cn(
-                            "block space-y-1 rounded-lg p-2 leading-none no-underline outline-none transition-colors hover:bg-white/5 hover:text-accent-foreground focus:bg-white/5 focus:text-accent-foreground",
+                            "block space-y-1 rounded-lg p-6 leading-none no-underline outline-none transition-colors hover:bg-white/8 hover:text-accent-foreground focus:bg-white/8 focus:text-accent-foreground",
                             solution.disabled && "cursor-not-allowed opacity-70"
                           )}
                           onClick={solution.disabled ? (e) => e.preventDefault() : undefined}
                         >
                           <div className="flex flex-col gap-2">
-                            <div className="relative h-32 w-full overflow-hidden rounded-lg">
-                              <img
-                                src={solution.image}
-                                alt={solution.title}
-                                className="h-full w-full object-cover object-center"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                            </div>
                             <div>
                               <div className="flex items-center gap-2">
                                 <div className="text-lg font-medium leading-none">
@@ -170,7 +160,7 @@ export function Navbar() {
                                   </Badge>
                                 )}
                               </div>
-                              <p className="mt-2 line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              <p className="mt-2 text-sm leading-snug text-muted-foreground">
                                 {solution.description}
                               </p>
                             </div>
@@ -187,7 +177,7 @@ export function Navbar() {
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-xl rounded-lg border border-white/10">
+                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative -translate-x-1/2 bg-background/80 backdrop-blur-xl rounded-lg border border-white/10" style={{ left: 'calc(50% - 8px)' }}>
                     {resources.map((item) => (
                       <li key={item.title}>
                         <NavigationMenuLink asChild>
@@ -195,7 +185,7 @@ export function Navbar() {
                             href={item.href}
                             className={cn(
                               "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
-                              item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                              item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-white/8 hover:text-accent-foreground focus:bg-white/8 focus:text-accent-foreground",
                               item.className
                             )}
                             onClick={item.disabled ? (e) => e.preventDefault() : undefined}
@@ -226,7 +216,7 @@ export function Navbar() {
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-xl rounded-lg border border-white/10">
+                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative -translate-x-1/2 bg-background/80 backdrop-blur-xl rounded-lg border border-white/10" style={{ left: 'calc(50% - 8px)' }}>
                     {company.map((item) => (
                       <li key={item.title}>
                         <NavigationMenuLink asChild>
@@ -234,7 +224,7 @@ export function Navbar() {
                             href={item.href}
                             className={cn(
                               "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
-                              item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                              item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-white/8 hover:text-accent-foreground focus:bg-white/8 focus:text-accent-foreground",
                               item.className
                             )}
                             onClick={item.disabled ? (e) => e.preventDefault() : undefined}
@@ -309,7 +299,7 @@ export function Navbar() {
                     key={solution.title}
                     href={solution.href}
                     className={cn(
-                      "block px-3 py-2 text-sm hover:bg-accent rounded-lg",
+                      "block px-3 py-2 text-sm hover:bg-white/8 rounded-lg",
                       solution.disabled && "cursor-not-allowed opacity-70"
                     )}
                     onClick={solution.disabled ? (e) => e.preventDefault() : undefined}
@@ -333,7 +323,7 @@ export function Navbar() {
                     <a
                       key={item.title}
                       href={item.href}
-                      className={cn("block px-3 py-2 text-sm hover:bg-accent rounded-lg", item.className)}
+                      className={cn("block px-3 py-2 text-sm hover:bg-white/8 rounded-lg", item.className)}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -343,7 +333,7 @@ export function Navbar() {
                     <a
                       key={item.title}
                       href={item.href}
-                      className={cn("block px-3 py-2 text-sm hover:bg-accent rounded-lg", item.className)}
+                      className={cn("block px-3 py-2 text-sm hover:bg-white/8 rounded-lg", item.className)}
                     >
                       {item.title}
                     </a>
@@ -358,7 +348,7 @@ export function Navbar() {
                     key={item.title}
                     href={item.href}
                     className={cn(
-                      "block px-3 py-2 text-sm hover:bg-accent rounded-lg",
+                      "block px-3 py-2 text-sm hover:bg-white/8 rounded-lg",
                       item.disabled && "cursor-not-allowed opacity-70"
                     )}
                     onClick={item.disabled ? (e) => e.preventDefault() : undefined}
@@ -377,7 +367,7 @@ export function Navbar() {
 
               <a
                 href="/pricing"
-                className="block px-3 py-2 text-sm hover:bg-accent rounded-lg"
+                className="block px-3 py-2 text-sm hover:bg-white/8 rounded-lg"
               >
                 Pricing
               </a>
@@ -385,7 +375,7 @@ export function Navbar() {
               <div className="space-y-2 pt-4">
                 <a
                   href="https://app.perception.to/auth/sign-in"
-                  className="block px-3 py-2 text-sm hover:bg-accent rounded-lg"
+                  className="block px-3 py-2 text-sm hover:bg-white/8 rounded-lg"
                 >
                   Login
                 </a>

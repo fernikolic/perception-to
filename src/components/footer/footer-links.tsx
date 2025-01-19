@@ -15,13 +15,13 @@ const footerSections: FooterSection[] = [
     title: 'Product',
     links: [
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Roadmap', href: '/roadmap', comingSoon: true },
+      { label: 'Roadmap', href: '/roadmap' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { label: 'About', href: '/about', comingSoon: true },
+      { label: 'About', href: '/about' },
       { 
         label: 'Bitcoin Media Research', 
         href: 'https://bitcoinperception.com',

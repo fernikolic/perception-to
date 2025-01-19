@@ -1,63 +1,102 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, CheckCircle2, Circle } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface Milestone {
-  quarter: string;
   title: string;
   description: string;
-  status: 'completed' | 'in-progress' | 'upcoming';
+  status: 'idea' | 'in-progress' | 'completed';
   features: string[];
 }
 
 const milestones: Milestone[] = [
   {
-    quarter: 'Q1 2024',
-    title: 'Enhanced Analytics',
-    description: 'Expanding our analytics capabilities with new metrics and visualizations.',
+    title: 'Light Mode',
+    description: 'Added light theme support for better daytime visibility and user preference.',
     status: 'completed',
     features: [
-      'Advanced sentiment analysis',
-      'Custom chart indicators',
-      'Real-time alerts system',
-      'Portfolio tracking',
+      'Light color scheme',
+      'Theme toggle',
+      'System preference detection',
+      'Persistent theme selection',
     ],
   },
   {
-    quarter: 'Q2 2024',
-    title: 'API Expansion',
-    description: 'Major updates to our API infrastructure and capabilities.',
+    title: 'Trends Bookmarking',
+    description: 'Save and organize important trends for later reference.',
     status: 'in-progress',
     features: [
-      'WebSocket support',
-      'Enhanced historical data',
-      'New API endpoints',
-      'Improved documentation',
+      'Bookmark favorite trends',
+      'Organize bookmarks into collections',
+      'Quick access to saved items',
+      'Sync across devices',
     ],
   },
   {
-    quarter: 'Q3 2024',
-    title: 'Machine Learning Integration',
-    description: 'Introducing AI-powered features and predictions.',
-    status: 'upcoming',
+    title: 'Performance Optimization',
+    description: 'Improving chart rendering speed and overall application performance.',
+    status: 'in-progress',
     features: [
-      'Price prediction models',
-      'Anomaly detection',
-      'Pattern recognition',
-      'Automated insights',
+      'Chart rendering optimization',
+      'Data loading improvements',
+      'Caching enhancements',
+      'Reduced load times',
     ],
   },
   {
-    quarter: 'Q4 2024',
-    title: 'Enterprise Features',
-    description: 'New features designed for institutional clients.',
-    status: 'upcoming',
+    title: 'Technical Analysis Integration',
+    description: 'Adding advanced technical indicators to complement sentiment analysis.',
+    status: 'idea',
     features: [
-      'Advanced access controls',
-      'Custom reporting',
-      'Dedicated infrastructure',
-      'Premium support',
+      'RSI (Relative Strength Index)',
+      'Moving averages',
+      'Volume analysis',
+      'Custom indicator settings',
+    ],
+  },
+  {
+    title: 'On-Chain Analytics Enhancement',
+    description: 'Expanding our on-chain data analysis capabilities.',
+    status: 'idea',
+    features: [
+      'Whale wallet tracking',
+      'Network health metrics',
+      'Smart contract interactions',
+      'Cross-chain analytics',
+    ],
+  },
+  {
+    title: 'Multi-Channel Price Predictions',
+    description: 'Comprehensive price forecasting across different data sources.',
+    status: 'idea',
+    features: [
+      'Social sentiment prediction',
+      'Technical analysis forecasts',
+      'On-chain metrics prediction',
+      'Combined prediction models',
+    ],
+  },
+  {
+    title: 'Research Hub',
+    description: 'Dedicated section for high-impact, low-frequency market events.',
+    status: 'idea',
+    features: [
+      'Critical event detection',
+      'Deep-dive analysis reports',
+      'Custom research filters',
+      'Important event notifications',
+    ],
+  },
+  {
+    title: 'Mobile Responsiveness',
+    description: 'Optimizing the platform for seamless mobile experience.',
+    status: 'idea',
+    features: [
+      'Responsive layouts',
+      'Touch-friendly controls',
+      'Mobile-optimized charts',
+      'Progressive web app features',
     ],
   },
 ];
@@ -78,10 +117,7 @@ export function RoadmapPage() {
               to help you make better decisions in the crypto market.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Button 
-                size="lg"
-                asChild
-              >
+              <Button size="lg" asChild>
                 <a href="https://app.perception.to/auth/sign-up">
                   Join Early Adopter Program
                 </a>
@@ -95,64 +131,85 @@ export function RoadmapPage() {
         </div>
       </section>
 
-      {/* Timeline Section */}
+      {/* Simple Gantt Chart Section */}
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-border sm:left-1/2" />
-            
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <div key={milestone.quarter} className="relative">
-                  <div className={`flex flex-col items-start gap-6 sm:flex-row ${
-                    index % 2 === 0 ? 'sm:flex-row-reverse' : ''
-                  }`}>
-                    {/* Timeline Node */}
-                    <div className="absolute left-8 -translate-x-1/2 sm:left-1/2">
-                      {milestone.status === 'completed' ? (
-                        <CheckCircle2 className="h-4 w-4 text-primary" />
-                      ) : milestone.status === 'in-progress' ? (
-                        <Circle className="h-4 w-4 text-primary animate-pulse" />
-                      ) : (
-                        <Circle className="h-4 w-4 text-muted-foreground" />
-                      )}
+          <div className="grid grid-cols-3 gap-8">
+            {/* Ideas Column */}
+            <div className="space-y-4">
+              <div className="mb-6">
+                <h2 className="text-xl font-semibold text-center">Ideas</h2>
+                <div className="mt-1 h-1 bg-muted rounded-full" />
+              </div>
+              {milestones.filter(m => m.status === 'idea').map((milestone) => (
+                <Card key={milestone.title} className="group hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-semibold">{milestone.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">{milestone.description}</p>
+                    <div className="mt-4 pt-4 border-t">
+                      <ul className="space-y-2">
+                        {milestone.features.map((feature) => (
+                          <li key={feature} className="text-sm flex items-center gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-muted" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
 
-                    {/* Content Card */}
-                    <div className="w-full pl-12 sm:w-1/2 sm:pl-0 sm:pr-8">
-                      <Card className="overflow-hidden">
-                        <CardContent className="p-6">
-                          <div className="mb-4 flex items-center justify-between">
-                            <Badge variant={
-                              milestone.status === 'completed' ? 'default' :
-                              milestone.status === 'in-progress' ? 'secondary' :
-                              'outline'
-                            }>
-                              {milestone.quarter}
-                            </Badge>
-                            <Badge variant={
-                              milestone.status === 'completed' ? 'default' :
-                              milestone.status === 'in-progress' ? 'secondary' :
-                              'outline'
-                            }>
-                              {milestone.status}
-                            </Badge>
-                          </div>
-                          <h3 className="text-xl font-semibold">{milestone.title}</h3>
-                          <p className="mt-2 text-muted-foreground">{milestone.description}</p>
-                          <ul className="mt-4 space-y-2">
-                            {milestone.features.map((feature) => (
-                              <li key={feature} className="flex items-center gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-primary" />
-                                <span className="text-sm">{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </CardContent>
-                      </Card>
+            {/* In Progress Column */}
+            <div className="space-y-4">
+              <div className="mb-6">
+                <h2 className="text-xl font-semibold text-center">In Progress</h2>
+                <div className="mt-1 h-1 bg-primary rounded-full" />
+              </div>
+              {milestones.filter(m => m.status === 'in-progress').map((milestone) => (
+                <Card key={milestone.title} className="group hover:shadow-lg transition-all border-primary/20">
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-semibold">{milestone.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">{milestone.description}</p>
+                    <div className="mt-4 pt-4 border-t">
+                      <ul className="space-y-2">
+                        {milestone.features.map((feature) => (
+                          <li key={feature} className="text-sm flex items-center gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-primary" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Completed Column */}
+            <div className="space-y-4">
+              <div className="mb-6">
+                <h2 className="text-xl font-semibold text-center">Completed</h2>
+                <div className="mt-1 h-1 bg-green-500 rounded-full" />
+              </div>
+              {milestones.filter(m => m.status === 'completed').map((milestone) => (
+                <Card key={milestone.title} className="group hover:shadow-lg transition-all border-green-500/20">
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-semibold">{milestone.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">{milestone.description}</p>
+                    <div className="mt-4 pt-4 border-t">
+                      <ul className="space-y-2">
+                        {milestone.features.map((feature) => (
+                          <li key={feature} className="text-sm flex items-center gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-green-500" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
@@ -177,3 +234,5 @@ export function RoadmapPage() {
     </div>
   );
 }
+
+export default RoadmapPage;

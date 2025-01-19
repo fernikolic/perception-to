@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 const publications = [
   {
     name: "Cointelegraph",
-    logo: "https://www.coinpoint.net/wp-content/uploads/2017/11/Cointelegraph.png",
+    logo: "https://downloadr2.apkmirror.com/wp-content/uploads/2024/05/57/6659dbea9743a_cointelegraph.com.png",
     url: "https://cointelegraph.com/news/bitcoins-change-in-media-perception-from-0-to-100000-dollars",
   },
   {
