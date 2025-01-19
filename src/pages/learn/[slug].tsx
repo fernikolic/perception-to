@@ -134,7 +134,7 @@ export function ArticlePage() {
         </header>
         
         <div className="prose prose-lg prose-invert max-w-none">
-          {article.blocks?.map((block, index) => {
+          {article.blocks?.map((block) => {
             if (block.__component === 'shared.rich-text' && block.body) {
               return <div key={block.id} dangerouslySetInnerHTML={{ __html: block.body }} />;
             }
