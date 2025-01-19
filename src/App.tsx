@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/navbar';
 import { Hero } from '@/components/hero';
@@ -26,6 +27,7 @@ import { RoadmapPage } from '@/pages/roadmap';
 import { PrivacyPage } from '@/pages/legal/privacy';
 import { TermsPage } from '@/pages/legal/terms';
 import { LearnPage } from '@/pages/learn';
+import { ArticlePage } from '@/pages/learn/[slug]';
 import PageTransition from '@/components/PageTransition';
 
 const App = () => {
@@ -75,6 +77,8 @@ const App = () => {
         return <TermsPage />;
       case '/learn':
         return <LearnPage />;
+      case '/learn/:slug':
+        return <ArticlePage />;
       default:
         return (
           <main>
@@ -93,14 +97,28 @@ const App = () => {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
-      <div className="min-h-screen bg-background text-foreground dark">
-        <Navbar />
-        <PageTransition>
-          {renderContent()}
-        </PageTransition>
-        <Footer />
-        <FloatingNav />
-      </div>
+      <Router>
+        <div className="min-h-screen bg-background text-foreground dark">
+          <Navbar />
+          <PageTransition>
+            <Routes>
+              <Route path="/" element={renderContent()} />
+              <Route path="/about" element={renderContent()} />
+              <Route path="/press" element={renderContent()} />
+              <Route path="/api" element={renderContent()} />
+              <Route path="/docs" element={renderContent()} />
+              <Route path="/announcements" element={renderContent()} />
+              <Route path="/roadmap" element={renderContent()} />
+              <Route path="/privacy" element={renderContent()} />
+              <Route path="/terms" element={renderContent()} />
+              <Route path="/learn" element={renderContent()} />
+              <Route path="/learn/:slug" element={renderContent()} />
+            </Routes>
+          </PageTransition>
+          <Footer />
+          <FloatingNav />
+        </div>
+      </Router>
     </ThemeProvider>
   );
 };
