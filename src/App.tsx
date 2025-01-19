@@ -11,7 +11,6 @@ import { Testimonials } from '@/components/testimonials';
 import { Faq } from '@/components/faq';
 import { Footer } from '@/components/footer';
 import { FloatingNav } from '@/components/floating-nav';
-import { useEffect, useState } from 'react';
 import MethodologyPage from './pages/methodology';
 import { JournalistLanding } from '@/pages/landing/journalist';
 import { InvestorLanding } from '@/pages/landing/investor';
@@ -30,71 +29,22 @@ import { LearnPage } from '@/pages/learn';
 import { ArticlePage } from '@/pages/learn/[slug]';
 import PageTransition from '@/components/PageTransition';
 
+function HomePage() {
+  return (
+    <main>
+      <Hero />
+      <AsSeenOn />
+      <Features />
+      <Integrations />
+      <Community />
+      <Testimonials />
+      <Pricing />
+      <Faq />
+    </main>
+  );
+}
+
 const App = () => {
-  const [path, setPath] = useState('/');
-
-  useEffect(() => {
-    setPath(window.location.pathname);
-
-    const handlePathChange = () => {
-      setPath(window.location.pathname);
-      window.scrollTo(0, 0);
-    };
-
-    window.addEventListener('popstate', handlePathChange);
-    return () => window.removeEventListener('popstate', handlePathChange);
-  }, []);
-
-  const renderContent = () => {
-    switch (path) {
-      case '/methodology':
-        return <MethodologyPage />;
-      case '/journalist':
-        return <JournalistLanding />;
-      case '/investor':
-        return <InvestorLanding />;
-      case '/researcher':
-        return <CompaniesLanding />;
-      case '/about':
-        return <AboutPage />;
-      case '/careers':
-        return <CareersPage />;
-      case '/press':
-        return <PressPage />;
-      case '/announcements':
-        return <AnnouncementsPage />;
-      case '/pricing':
-        return <PricingPage />;
-      case '/docs':
-        return <DocsPage />;
-      case '/api':
-        return <ApiPage />;
-      case '/roadmap':
-        return <RoadmapPage />;
-      case '/privacy':
-        return <PrivacyPage />;
-      case '/terms':
-        return <TermsPage />;
-      case '/learn':
-        return <LearnPage />;
-      case '/learn/:slug':
-        return <ArticlePage />;
-      default:
-        return (
-          <main>
-            <Hero />
-            <AsSeenOn />
-            <Features />
-            <Integrations />
-            <Community />
-            <Testimonials />
-            <Pricing />
-            <Faq />
-          </main>
-        );
-    }
-  };
-
   return (
     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
       <Router>
@@ -102,17 +52,23 @@ const App = () => {
           <Navbar />
           <PageTransition>
             <Routes>
-              <Route path="/" element={renderContent()} />
-              <Route path="/about" element={renderContent()} />
-              <Route path="/press" element={renderContent()} />
-              <Route path="/api" element={renderContent()} />
-              <Route path="/docs" element={renderContent()} />
-              <Route path="/announcements" element={renderContent()} />
-              <Route path="/roadmap" element={renderContent()} />
-              <Route path="/privacy" element={renderContent()} />
-              <Route path="/terms" element={renderContent()} />
-              <Route path="/learn" element={renderContent()} />
-              <Route path="/learn/:slug" element={renderContent()} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/methodology" element={<MethodologyPage />} />
+              <Route path="/journalist" element={<JournalistLanding />} />
+              <Route path="/investor" element={<InvestorLanding />} />
+              <Route path="/researcher" element={<CompaniesLanding />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/careers" element={<CareersPage />} />
+              <Route path="/press" element={<PressPage />} />
+              <Route path="/announcements" element={<AnnouncementsPage />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/docs" element={<DocsPage />} />
+              <Route path="/api" element={<ApiPage />} />
+              <Route path="/roadmap" element={<RoadmapPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/learn" element={<LearnPage />} />
+              <Route path="/learn/:slug" element={<ArticlePage />} />
             </Routes>
           </PageTransition>
           <Footer />
