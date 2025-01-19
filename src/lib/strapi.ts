@@ -30,17 +30,19 @@ async function fetchAPI(endpoint: string, options: FetchOptions = {}) {
     },
   };
 
-  // Remove double /api if it exists
-  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
-  const fullUrl = `${STRAPI_URL}${cleanEndpoint}`;
+  // Ensure we're using the correct API endpoint structure
+  const baseUrl = STRAPI_URL.endsWith('/api') ? STRAPI_URL : `${STRAPI_URL}/api`;
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+  const fullUrl = `${baseUrl}/${cleanEndpoint}`;
+  
   console.log('Making request to:', fullUrl);
+  console.log('With options:', {
+    method: mergedOptions.method || 'GET',
+    mode: mergedOptions.mode,
+    headers: mergedOptions.headers,
+  });
 
   try {
-    console.log('Request options:', {
-      ...mergedOptions,
-      headers: Object.keys(mergedOptions.headers || {}),
-    });
-
     const response = await fetch(fullUrl, mergedOptions);
     console.log('Response status:', response.status);
     
@@ -69,11 +71,11 @@ async function fetchAPI(endpoint: string, options: FetchOptions = {}) {
 // Example functions to get data
 export async function getBlogPosts() {
   console.log('Fetching blog posts...');
-  return fetchAPI('/articles?populate=*');
+  return fetchAPI('articles?populate=*');
 }
 
 export async function getBlogPost(id: string) {
-  return fetchAPI(`/articles/${id}?populate=*`);
+  return fetchAPI(`articles/${id}?populate=*`);
 }
 
 // Add more API functions as needed
