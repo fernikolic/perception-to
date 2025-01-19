@@ -6,7 +6,6 @@ console.log('Strapi Config:', {
   url: STRAPI_URL,
   hasToken: !!STRAPI_API_TOKEN,
   tokenPreview: STRAPI_API_TOKEN?.substring(0, 10) + '...',
-  fullApiUrl: `${STRAPI_URL}/api/articles`,
 });
 
 interface FetchOptions extends RequestInit {
@@ -19,6 +18,7 @@ async function fetchAPI(endpoint: string, options: FetchOptions = {}) {
       'Authorization': `Bearer ${STRAPI_API_TOKEN}`,
       'Content-Type': 'application/json',
     },
+    mode: 'cors',
   };
 
   const mergedOptions = {
@@ -30,7 +30,9 @@ async function fetchAPI(endpoint: string, options: FetchOptions = {}) {
     },
   };
 
-  const fullUrl = `${STRAPI_URL}/api${endpoint}`;
+  // Remove double /api if it exists
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const fullUrl = `${STRAPI_URL}${cleanEndpoint}`;
   console.log('Making request to:', fullUrl);
 
   try {
@@ -67,11 +69,11 @@ async function fetchAPI(endpoint: string, options: FetchOptions = {}) {
 // Example functions to get data
 export async function getBlogPosts() {
   console.log('Fetching blog posts...');
-  return fetchAPI('/articles');
+  return fetchAPI('/articles?populate=*');
 }
 
 export async function getBlogPost(id: string) {
-  return fetchAPI(`/articles/${id}`);
+  return fetchAPI(`/articles/${id}?populate=*`);
 }
 
 // Add more API functions as needed
