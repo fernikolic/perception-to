@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/navbar';
 import { Hero } from '@/components/hero';
@@ -47,34 +47,32 @@ function HomePage() {
 const App = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
-      <Router>
-        <div className="min-h-screen bg-background text-foreground dark">
-          <Navbar />
-          <PageTransition>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/methodology" element={<MethodologyPage />} />
-              <Route path="/journalist" element={<JournalistLanding />} />
-              <Route path="/investor" element={<InvestorLanding />} />
-              <Route path="/researcher" element={<CompaniesLanding />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/careers" element={<CareersPage />} />
-              <Route path="/press" element={<PressPage />} />
-              <Route path="/announcements" element={<AnnouncementsPage />} />
-              <Route path="/pricing" element={<PricingPage />} />
-              <Route path="/docs" element={<DocsPage />} />
-              <Route path="/api" element={<ApiPage />} />
-              <Route path="/roadmap" element={<RoadmapPage />} />
-              <Route path="/privacy" element={<PrivacyPage />} />
-              <Route path="/terms" element={<TermsPage />} />
-              <Route path="/learn" element={<LearnPage />} />
-              <Route path="/learn/:slug" element={<ArticlePage />} />
-            </Routes>
-          </PageTransition>
-          <Footer />
-          <FloatingNav />
-        </div>
-      </Router>
+      <div className="min-h-screen bg-background text-foreground dark">
+        <Navbar />
+        <PageTransition>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/methodology" element={<MethodologyPage />} />
+            <Route path="/journalist" element={<JournalistLanding />} />
+            <Route path="/investor" element={<InvestorLanding />} />
+            <Route path="/researcher" element={<CompaniesLanding />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/press" element={<PressPage />} />
+            <Route path="/announcements" element={<AnnouncementsPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/docs" element={<DocsPage />} />
+            <Route path="/api" element={<ApiPage />} />
+            <Route path="/roadmap" element={<RoadmapPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/learn" element={<LearnPage />} />
+            <Route path="/learn/:slug" element={<ArticlePage />} />
+          </Routes>
+        </PageTransition>
+        <Footer />
+        <FloatingNav />
+      </div>
     </ThemeProvider>
   );
 };
