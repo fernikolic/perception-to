@@ -107,30 +107,30 @@ export function LearnPage() {
             </div>
           ) : (
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => (
+              {posts.map((post) => post && (
                 <Card key={post.id} className="group relative overflow-hidden hover:shadow-lg">
-                  {post.cover && (
+                  {post.cover?.formats?.thumbnail?.url && (
                     <div className="relative h-48 overflow-hidden">
                       <img
                         src={post.cover.formats.thumbnail.url}
-                        alt={post.cover.alternativeText || post.title}
+                        alt={post.cover?.alternativeText || post.title || ''}
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
                   )}
                   <CardHeader>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      {post.category && (
+                      {post.category?.name && (
                         <span className="capitalize">{post.category.name}</span>
                       )}
                       <span>•</span>
-                      <time>{new Date(post.publishedAt).toLocaleDateString()}</time>
+                      <time>{post.publishedAt && new Date(post.publishedAt).toLocaleDateString()}</time>
                     </div>
-                    <CardTitle className="line-clamp-2 mt-2">{post.title}</CardTitle>
+                    <CardTitle className="line-clamp-2 mt-2">{post.title || 'Untitled'}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground line-clamp-3 mb-4">
-                      {post.description}
+                      {post.description || 'No description available'}
                     </p>
                     <Button variant="ghost" className="group/button" asChild>
                       <Link to={`/learn/${post.slug}`}>
