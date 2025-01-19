@@ -4,14 +4,15 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { Link } from 'react-router-dom';
 
 interface Post {
   id: number;
   attributes: {
     title: string;
     description: string;
-    content: string;
     slug: string;
+    content?: string;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
@@ -93,11 +94,13 @@ export function LearnPage() {
                     <p className="text-muted-foreground line-clamp-3 mb-4">
                       {post.attributes.description}
                     </p>
-                    <Button variant="ghost" className="group/button">
-                      Read more{' '}
-                      <span className="ml-2 transition-transform group-hover/button:translate-x-1">
-                        →
-                      </span>
+                    <Button variant="ghost" className="group/button" asChild>
+                      <Link to={`/learn/${post.attributes.slug}`}>
+                        Read more{' '}
+                        <span className="ml-2 transition-transform group-hover/button:translate-x-1">
+                          →
+                        </span>
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
