@@ -8,15 +8,13 @@ import { Link } from 'react-router-dom';
 
 interface Post {
   id: number;
-  attributes: {
-    title: string;
-    description: string;
-    slug: string;
-    content?: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-  };
+  documentId: string;
+  title: string;
+  description: string;
+  slug: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
 }
 
 export function LearnPage() {
@@ -29,8 +27,13 @@ export function LearnPage() {
       try {
         console.log('Fetching posts...');
         const response = await getBlogPosts();
-        console.log('API Response:', response);
-        setPosts(response.data || []);
+        console.log('Raw API Response:', response);
+        
+        // Handle the response data structure
+        const postsData = response.data || [];
+        console.log('Posts data:', postsData);
+        
+        setPosts(postsData);
         setLoading(false);
       } catch (err) {
         console.error('Error fetching posts:', err);
@@ -88,14 +91,14 @@ export function LearnPage() {
               {posts.map((post) => (
                 <Card key={post.id} className="group relative overflow-hidden hover:shadow-lg">
                   <CardHeader>
-                    <CardTitle className="line-clamp-2">{post.attributes.title}</CardTitle>
+                    <CardTitle className="line-clamp-2">{post.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground line-clamp-3 mb-4">
-                      {post.attributes.description}
+                      {post.description}
                     </p>
                     <Button variant="ghost" className="group/button" asChild>
-                      <Link to={`/learn/${post.attributes.slug}`}>
+                      <Link to={`/learn/${post.slug}`}>
                         Read more{' '}
                         <span className="ml-2 transition-transform group-hover/button:translate-x-1">
                           →
