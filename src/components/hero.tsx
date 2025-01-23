@@ -45,14 +45,14 @@ export function Hero() {
               href="https://x.com/BTCPerception/status/1877387322724909419" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center space-x-2"
+              className="inline-flex flex-col sm:flex-row items-center gap-3"
             >
-              <span className="rounded-full bg-white/10 px-3 py-1 text-sm font-semibold leading-6 text-gray-900 dark:text-white ring-1 ring-inset ring-white/20">
+              <span className="inline-flex items-center rounded-full bg-white/5 px-3 py-1 text-sm font-semibold leading-6 text-white ring-1 ring-inset ring-white/20">
                 What's new
               </span>
-              <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600 dark:text-white/60">
+              <span className="inline-flex items-center gap-2 text-sm font-medium leading-6 text-white/60 group">
                 <span>Early Adopter Program now open</span>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </span>
             </a>
           </div>
@@ -66,7 +66,7 @@ export function Hero() {
             <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">Save hours</span> staying ahead of the Bitcoin market.
           </p>
           
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               size="lg" 
               className="bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-white/90 transition-all"

@@ -10,7 +10,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const solutions = [
@@ -108,6 +108,7 @@ const company: {
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,6 +118,10 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleSection = (section: string) => {
+    setExpandedSection(expandedSection === section ? null : section);
+  };
 
   return (
     <header className="fixed top-0 z-50 w-full transition-all duration-300">
@@ -295,80 +300,126 @@ export function Navbar() {
 
       {isMobileMenuOpen && (
         <div className="md:hidden bg-background border-b">
-          <div className="space-y-1 px-4 pb-3 pt-2">
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <div className="font-medium px-3">Solutions</div>
-                {solutions.map((solution) => (
-                  <a
-                    key={solution.title}
-                    href={solution.href}
-                    className={cn(
-                      "block px-3 py-2 text-sm hover:bg-white/8 rounded-lg",
-                      solution.disabled && "cursor-not-allowed opacity-70"
-                    )}
-                    onClick={solution.disabled ? (e) => e.preventDefault() : undefined}
-                  >
-                    <div className="flex items-center gap-2">
-                      {solution.title}
-                      {solution.badge && (
-                        <Badge variant="secondary" className="text-xs">
-                          {solution.badge}
-                        </Badge>
+          <div className="px-4 py-3">
+            <Button 
+              className="bg-white text-black hover:bg-white/90 transition-all w-full"
+              asChild
+            >
+              <a href="https://app.perception.to/auth/sign-up">
+                Join Early Adopter Program
+              </a>
+            </Button>
+          </div>
+          <div className="space-y-1 px-4 pb-3">
+            <div className="space-y-2">
+              <button
+                onClick={() => toggleSection('solutions')}
+                className="w-full flex items-center justify-between px-3 py-2 font-medium hover:bg-white/8 rounded-lg"
+              >
+                <span>Solutions</span>
+                {expandedSection === 'solutions' ? (
+                  <ChevronUp className="h-4 w-4" />
+                ) : (
+                  <ChevronDown className="h-4 w-4" />
+                )}
+              </button>
+              {expandedSection === 'solutions' && (
+                <div className="pl-4 space-y-1">
+                  {solutions.map((solution) => (
+                    <a
+                      key={solution.title}
+                      href={solution.href}
+                      className={cn(
+                        "block px-3 py-2 text-sm hover:bg-white/8 rounded-lg",
+                        solution.disabled && "cursor-not-allowed opacity-70"
                       )}
-                    </div>
-                  </a>
-                ))}
-              </div>
+                      onClick={solution.disabled ? (e) => e.preventDefault() : undefined}
+                    >
+                      <div className="flex items-center gap-2">
+                        {solution.title}
+                        {solution.badge && (
+                          <Badge variant="secondary" className="text-xs">
+                            {solution.badge}
+                          </Badge>
+                        )}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              )}
 
-              <div className="space-y-2">
-                <div className="font-medium px-3">Resources</div>
-                {resources.map((item) => (
-                  item.href.startsWith('http') ? (
+              <button
+                onClick={() => toggleSection('resources')}
+                className="w-full flex items-center justify-between px-3 py-2 font-medium hover:bg-white/8 rounded-lg"
+              >
+                <span>Resources</span>
+                {expandedSection === 'resources' ? (
+                  <ChevronUp className="h-4 w-4" />
+                ) : (
+                  <ChevronDown className="h-4 w-4" />
+                )}
+              </button>
+              {expandedSection === 'resources' && (
+                <div className="pl-4 space-y-1">
+                  {resources.map((item) => (
+                    item.href.startsWith('http') ? (
+                      <a
+                        key={item.title}
+                        href={item.href}
+                        className={cn("block px-3 py-2 text-sm hover:bg-white/8 rounded-lg", item.className)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.title}
+                      </a>
+                    ) : (
+                      <a
+                        key={item.title}
+                        href={item.href}
+                        className={cn("block px-3 py-2 text-sm hover:bg-white/8 rounded-lg", item.className)}
+                      >
+                        {item.title}
+                      </a>
+                    )
+                  ))}
+                </div>
+              )}
+
+              <button
+                onClick={() => toggleSection('company')}
+                className="w-full flex items-center justify-between px-3 py-2 font-medium hover:bg-white/8 rounded-lg"
+              >
+                <span>Company</span>
+                {expandedSection === 'company' ? (
+                  <ChevronUp className="h-4 w-4" />
+                ) : (
+                  <ChevronDown className="h-4 w-4" />
+                )}
+              </button>
+              {expandedSection === 'company' && (
+                <div className="pl-4 space-y-1">
+                  {company.map((item) => (
                     <a
                       key={item.title}
                       href={item.href}
-                      className={cn("block px-3 py-2 text-sm hover:bg-white/8 rounded-lg", item.className)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {item.title}
-                    </a>
-                  ) : (
-                    <a
-                      key={item.title}
-                      href={item.href}
-                      className={cn("block px-3 py-2 text-sm hover:bg-white/8 rounded-lg", item.className)}
-                    >
-                      {item.title}
-                    </a>
-                  )
-                ))}
-              </div>
-
-              <div className="space-y-2">
-                <div className="font-medium px-3">Company</div>
-                {company.map((item) => (
-                  <a
-                    key={item.title}
-                    href={item.href}
-                    className={cn(
-                      "block px-3 py-2 text-sm hover:bg-white/8 rounded-lg",
-                      item.disabled && "cursor-not-allowed opacity-70"
-                    )}
-                    onClick={item.disabled ? (e) => e.preventDefault() : undefined}
-                  >
-                    <div className="flex items-center gap-2">
-                      {item.title}
-                      {item.badge && (
-                        <Badge variant="secondary" className="text-xs">
-                          {item.badge}
-                        </Badge>
+                      className={cn(
+                        "block px-3 py-2 text-sm hover:bg-white/8 rounded-lg",
+                        item.disabled && "cursor-not-allowed opacity-70"
                       )}
-                    </div>
-                  </a>
-                ))}
-              </div>
+                      onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                    >
+                      <div className="flex items-center gap-2">
+                        {item.title}
+                        {item.badge && (
+                          <Badge variant="secondary" className="text-xs">
+                            {item.badge}
+                          </Badge>
+                        )}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              )}
 
               <a
                 href="/pricing"
@@ -384,16 +435,6 @@ export function Navbar() {
                 >
                   Login
                 </a>
-                <div className="px-3 flex justify-center">
-                  <Button 
-                    className="bg-white text-black hover:bg-white/90 transition-all"
-                    asChild
-                  >
-                    <a href="https://app.perception.to/auth/sign-up">
-                      Join Early Adopter Program
-                    </a>
-                  </Button>
-                </div>
               </div>
             </div>
           </div>

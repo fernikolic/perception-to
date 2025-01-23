@@ -57,7 +57,7 @@ export function Hero() {
           background: `
             radial-gradient(
               1200px circle at ${mousePosition.x}px ${mousePosition.y}px,
-              rgba(255,255,255,1.9),
+              rgba(255,255,255,0.12),
               transparent 10%
             )
           `,
@@ -65,11 +65,11 @@ export function Hero() {
       />
 
       <div className="w-full px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
-        <div className="flex flex-col lg:flex-row gap-8 max-w-7xl">
+        <div className="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto">
           <div className="flex flex-col items-start w-full lg:w-1/2">
-            <div className="mb-8 flex flex-col items-start gap-4 sm:flex-row">
-              <div className="relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white/5 px-4 py-1.5 ring-1 ring-white/10 transition-colors duration-300 hover:bg-white/10 hover:ring-white/20">
-                <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,1.9),transparent)]" />
+            <div className="mb-8 flex flex-col sm:flex-row items-start gap-4">
+              <div className="relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white/5 px-3 py-1 ring-1 ring-white/10 transition-colors duration-300 hover:bg-white/10 hover:ring-white/20">
+                <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,0.12),transparent)]" />
                 <Sparkles className="h-4 w-4 text-primary animate-pulse" />
                 <span className="text-sm font-semibold leading-6">What's new</span>
               </div>
@@ -77,28 +77,27 @@ export function Hero() {
                 href="#" 
                 className="group inline-flex items-center space-x-2 text-sm font-medium leading-6 text-white/60 transition-colors hover:text-white"
               >
-                <span>Just shipped v1.0</span>
+                <span>Early Adopter Program now open</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
             
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl gradient-text">
-            Track trends, decode sentiment, uncover narratives, and make informed decisions—all in one place.
+              Track Bitcoin trends, decode market sentiment, uncover narratives. All in one place.
             </h1>
             
             <p className="mt-6 text-lg leading-8 text-white/60">
-              Transform your business operations with our innovative platform. Boost productivity,
-              enhance collaboration, and drive growth with our comprehensive suite of tools.
+              Save hours staying ahead of the Bitcoin market.
             </p>
             
-            <div className="mt-10 flex items-center gap-x-6">
+            <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
               <Button 
                 size="lg" 
                 asChild
                 className="bg-white text-black hover:bg-white/90 transition-all"
               >
                 <a href="https://app.perception.to/auth/sign-up">
-                  Join Early Adopter Program
+                  Early Adopter Program
                 </a>
               </Button>
               <Button 
