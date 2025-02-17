@@ -118,7 +118,7 @@ export function RoadmapPage() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button size="lg" asChild>
                 <a href="https://app.perception.to/auth/sign-up">
-                  Join Early Adopter Program
+                  Join the Beta
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="group">

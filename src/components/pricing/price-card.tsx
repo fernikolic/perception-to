@@ -45,7 +45,7 @@ export function PriceCard({ name, description, price, features, popular }: Price
           asChild
         >
           <a href="https://app.perception.to/auth/sign-up">
-            Join Early Adopter Program
+            Join the Beta
           </a>
         </Button>
       </CardFooter>

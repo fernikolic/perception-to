@@ -110,7 +110,7 @@ export function CompaniesLanding() {
         segment="companies"
         title={<>Stay Ahead in the <span className="whitespace-nowrap">Bitcoin Industry</span></>}
         subtitle="Discover real-time trends, analyze sentiment, and track competitors with ease. Whether you're a decision-maker, researcher, or builder in the Bitcoin space, unlock the insights you need to drive your strategy."
-        ctaText="Join Early Adopter Program"
+        ctaText="Join the Beta"
         backgroundClass="bg-gradient-to-br from-blue-500/5 via-slate-600/5 to-neutral-700/5"
       />
 
@@ -165,7 +165,7 @@ export function CompaniesLanding() {
           <CTASection
             title="Stay Informed, Stay Competitive"
             subtitle="Don't get left behind in the fast-moving Bitcoin industry. Start using Perception to lead the conversation, track competitors, and identify key opportunities."
-            primaryCTA="Join Early Adopter Program"
+            primaryCTA="Join the Beta"
             secondaryCTA=""
             backgroundClass="group"
           >

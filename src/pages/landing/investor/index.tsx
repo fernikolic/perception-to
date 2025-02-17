@@ -99,7 +99,7 @@ export function InvestorLanding() {
         segment="investor"
         title="Make Data-Driven Decisions: Stay Ahead of Bitcoin Market Trends"
         subtitle="Track real-time sentiment, discover emerging trends, and decode market psychology to gain the edge you need in Bitcoin trading."
-        ctaText="Join Early Adopter Program"
+        ctaText="Join the Beta"
         backgroundClass="bg-gradient-to-br from-blue-500/5 via-slate-600/5 to-neutral-700/5"
       />
 
@@ -150,7 +150,7 @@ export function InvestorLanding() {
           <CTASection
             title="Start Trading with Confidence"
             subtitle="Join professional traders who use our platform to gain a competitive edge."
-            primaryCTA="Join Early Adopter Program"
+            primaryCTA="Join the Beta"
             secondaryCTA="View Pricing"
             backgroundClass="group"
           >

@@ -51,7 +51,7 @@ export function Hero() {
                 What's new
               </span>
               <span className="inline-flex items-center gap-2 text-sm font-medium leading-6 text-white/60 group">
-                <span>Early Adopter Program now open</span>
+                <span>Beta now open</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </span>
             </a>
@@ -73,7 +73,7 @@ export function Hero() {
               asChild
             >
               <a href="https://app.perception.to/auth/sign-up">
-                Join Early Adopter Program
+                Join the Beta
               </a>
             </Button>
             <Button 

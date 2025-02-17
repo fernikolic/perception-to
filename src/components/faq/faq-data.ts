@@ -29,7 +29,7 @@ export const faqData = [
   },
   {
     question: "How can I access the platform?",
-    answer: "We are currently in a Closed Alpha phase. Sign up to become an early user and help shape the future of Bitcoin intelligence with your feedback."
+    answer: "We are currently in a Closed Beta phase. Sign up to become a beta user and help shape the future of Bitcoin intelligence with your feedback."
   },
   {
     question: "What languages and regions does the platform cover?",
@@ -37,7 +37,7 @@ export const faqData = [
   },
   {
     question: "How will early users benefit?",
-    answer: "As an early user, you'll get exclusive access to test the platform, influence its features, and be among the first to uncover actionable Bitcoin trends."
+    answer: "As a beta user, you'll get exclusive access to test the platform, influence its features, and be among the first to uncover actionable Bitcoin trends."
   },
   {
     question: "Can I provide feedback or request features?",

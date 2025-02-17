@@ -83,6 +83,78 @@ export function Testimonials() {
         tweetUrl: '1755711589234188433'
       }
     },
+    { 
+      author: {
+        name: "BitcoinMagazine",
+        role: "Publication",
+        company: "Bitcoin Magazine",
+        image: "/avatars/bitcoinmagazine.jpg",
+        tweetUrl: '1841099680350040548'
+      }
+    },
+    { 
+      author: {
+        name: "DocumentingBTC",
+        role: "Analyst",
+        company: "Bitcoin",
+        image: "/avatars/documentingbtc.jpg",
+        tweetUrl: '1841170799192277013'
+      }
+    },
+    { 
+      author: {
+        name: "BitcoinEcon",
+        role: "Analyst",
+        company: "Bitcoin",
+        image: "/avatars/bitcoinecon.jpg",
+        tweetUrl: '1841056431766446473'
+      }
+    },
+    { 
+      author: {
+        name: "Cointelegraph",
+        role: "Publication",
+        company: "Cointelegraph",
+        image: "/avatars/cointelegraph.jpg",
+        tweetUrl: '1864669668486570299'
+      }
+    },
+    { 
+      author: {
+        name: "DecentraSuze",
+        role: "Analyst",
+        company: "Bitcoin",
+        image: "/avatars/decentrasuze.jpg",
+        tweetUrl: '1831274055309136058'
+      }
+    },
+    { 
+      author: {
+        name: "TFTC",
+        role: "Publication",
+        company: "Tales from the Crypt",
+        image: "/avatars/tftc.jpg",
+        tweetUrl: '1884708908608229649'
+      }
+    },
+    { 
+      author: {
+        name: "La__Cuen",
+        role: "Journalist",
+        company: "Bitcoin",
+        image: "/avatars/lacuen.jpg",
+        tweetUrl: '1706680030795841806'
+      }
+    },
+    { 
+      author: {
+        name: "BitcoinNewsCom",
+        role: "Publication",
+        company: "Bitcoin News",
+        image: "/avatars/bitcoinnews.jpg",
+        tweetUrl: '1790429744325919027'
+      }
+    }
   ];
 
   return (
