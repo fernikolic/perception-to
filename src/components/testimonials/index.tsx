@@ -154,6 +154,22 @@ export function Testimonials() {
         image: "/avatars/bitcoinnews.jpg",
         tweetUrl: '1790429744325919027'
       }
+    },
+    { 
+      author: {
+        name: "JAN3",
+        role: "Company",
+        company: "JAN3",
+        tweetUrl: '1897738823293190589'
+      }
+    },
+    { 
+      author: {
+        name: "Stephan Livera",
+        role: "Podcast Host",
+        company: "Bitcoin",
+        tweetUrl: '1894962511192965184'
+      }
     }
   ];
 

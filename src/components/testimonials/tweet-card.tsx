@@ -5,7 +5,7 @@ interface TweetCardProps {
     name: string;
     role: string;
     company: string;
-    image: string;
+    image?: string;
     tweetUrl: string;
   };
 }
