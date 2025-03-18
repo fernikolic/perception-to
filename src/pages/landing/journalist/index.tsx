@@ -86,8 +86,8 @@ export function JournalistLanding() {
 
       <HeroSection
         segment="journalist"
-        title="Uncover the Stories That Matter in Bitcoin"
-        subtitle="Discover emerging trends, decode sentiment, and create data-backed stories with tools built for the fast-paced world of content creation."
+        title="Uncover the stories that matter in Bitcoin"
+        subtitle="Discover emerging trends, decode sentiment, and create data-backed stories with tools built for the fast-paced world of content creation"
         ctaText="Join the Beta"
         backgroundClass="bg-gradient-to-br from-blue-500/5 via-slate-600/5 to-neutral-700/5"
       />
@@ -122,8 +122,8 @@ export function JournalistLanding() {
       
       <div className="space-y-8 sm:space-y-12 mt-16 sm:mt-24">
         <ValuePropSection
-          title="Everything You Need to Create Engaging Crypto Content"
-          subtitle="Transform complex market data into compelling stories that your audience will love."
+          title="Everything you need to create engaging crypto content"
+          subtitle="Transform complex market data into compelling stories that your audience will love"
           benefits={benefits}
         />
 
@@ -136,10 +136,10 @@ export function JournalistLanding() {
           <FeatureSection features={features} />
           
           <CTASection
-            title="Start Creating Data-Driven Content Today"
-            subtitle="Join thousands of content creators who use our platform to stay ahead of the crypto narrative."
+            title="Start creating data-driven content today"
+            subtitle="Join thousands of content creators who use our platform to stay ahead of the crypto narrative"
             primaryCTA="Join the Beta"
-            secondaryCTA="Schedule Demo"
+            secondaryCTA=""
             backgroundClass="group"
           >
             <div className="absolute inset-0 -z-10">

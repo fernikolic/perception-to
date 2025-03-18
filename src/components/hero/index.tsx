@@ -71,23 +71,23 @@ export function Hero() {
               <div className="relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white/5 px-3 py-1 ring-1 ring-white/10 transition-colors duration-300 hover:bg-white/10 hover:ring-white/20">
                 <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,0.12),transparent)]" />
                 <Sparkles className="h-4 w-4 text-primary animate-pulse" />
-                <span className="text-sm font-semibold leading-6">What's new</span>
+                <span className="text-sm font-semibold leading-6">Limited Time</span>
               </div>
               <a 
                 href="#" 
                 className="group inline-flex items-center space-x-2 text-sm font-medium leading-6 text-white/60 transition-colors hover:text-white"
               >
-                <span>Early Adopter Program now open</span>
+                <span>Early Adopter Program - Join Now</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
             
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl gradient-text">
-              Track Bitcoin trends, decode market sentiment, uncover narratives. All in one place.
+              Unlock the Power of Bitcoin Market Intelligence
             </h1>
             
             <p className="mt-6 text-lg leading-8 text-white/60">
-              Save hours staying ahead of the Bitcoin market.
+              <span className="text-blue-950 font-semibold dark:text-blue-400">Save 10+ hours weekly</span> with AI-powered insights that help you make smarter decisions in Bitcoin.
             </p>
             
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
@@ -97,7 +97,7 @@ export function Hero() {
                 className="bg-white text-black hover:bg-white/90 transition-all"
               >
                 <a href="https://app.perception.to/auth/sign-up">
-                  Early Adopter Program
+                  Get Early Access
                 </a>
               </Button>
               <Button 
@@ -105,7 +105,7 @@ export function Hero() {
                 size="lg" 
                 className="border-white/20 text-white hover:bg-white/10 group"
               >
-                Learn more{' '}
+                See How It Works{' '}
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>

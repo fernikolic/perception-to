@@ -52,7 +52,7 @@ export function AsSeenOn() {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                "group relative flex h-16 items-center justify-center",
+                "group relative flex h-28 items-center justify-center",
                 "transition-all duration-300",
                 "hover:opacity-100"
               )}
@@ -61,7 +61,7 @@ export function AsSeenOn() {
               <div className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-b from-blue-950/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               
               <img
-                className="max-h-12 w-auto max-w-[10rem] object-contain transition-all duration-300 group-hover:scale-105"
+                className="max-h-20 w-auto max-w-[14.5rem] object-contain transition-all duration-300 group-hover:scale-105"
                 src={publication.logo}
                 alt={publication.name}
                 loading="lazy"

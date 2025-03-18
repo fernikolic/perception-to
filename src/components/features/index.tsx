@@ -4,24 +4,24 @@ import { XCircle, ChevronDown } from 'lucide-react';
 
 const painPoints = [
   {
-    problem: 'Manual sentiment analysis across multiple platforms',
-    consequence: 'Delayed response to market shifts',
+    problem: 'No real-time sentiment data available',
+    consequence: 'Miss critical narrative shifts that drive price movements',
   },
   {
-    problem: 'Information overload from unstructured data sources',
-    consequence: 'Reduced analytical effectiveness',
+    problem: 'Manual tracking across social media',
+    consequence: 'Waste hours reading Twitter and Reddit to gauge market sentiment',
   },
   {
-    problem: 'Fragmented market intelligence',
-    consequence: 'Missed strategic opportunities',
+    problem: 'Scattered market narratives',
+    consequence: 'Lose track of how different stories impact market sentiment',
   },
   {
-    problem: 'Multiple disconnected analysis tools',
-    consequence: 'Inefficient workflow and decision-making',
+    problem: 'Multiple disconnected tools',
+    consequence: 'Can\'t correlate sentiment with price movements effectively',
   },
   {
-    problem: 'Limited access to comprehensive market data',
-    consequence: 'Incomplete market understanding',
+    problem: 'Limited historical sentiment data',
+    consequence: 'Can\'t learn from past narrative-driven market moves',
   },
 ];
 
@@ -45,12 +45,16 @@ export function Features() {
         {/* Pain Points Section */}
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1">
-            <span className="text-sm font-medium">Market Analysis Challenges</span>
+            <span className="text-sm font-medium">Market Sentiment Challenges</span>
           </div>
           
           <h2 className="mt-8 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Critical Challenges in Bitcoin Market Analysis
+            Why Bitcoin market narratives are hard to track
           </h2>
+
+          <p className="mt-6 text-xl text-muted-foreground">
+            No platform offers real-time sentiment data. Hours spent scrolling through social media. Missed narrative shifts. Here's why tracking Bitcoin market sentiment is broken.
+          </p>
 
           <div className="mt-8 flex justify-center">
             <ChevronDown className="h-8 w-8 animate-bounce text-muted-foreground" />
@@ -62,10 +66,11 @@ export function Features() {
             {painPoints.map((point, index) => (
               <div 
                 key={index}
-                className="group relative flex items-start gap-6 rounded-xl border border-primary/10 bg-blue-950/[0.03] dark:bg-card p-8 shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                className="group relative flex items-start gap-6 rounded-xl border border-primary/10 bg-gradient-to-br from-blue-100/[0.5] via-blue-50/[0.3] to-transparent dark:from-blue-950/[0.05] dark:via-blue-950/[0.03] dark:to-transparent p-8 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/10"
               >
-                {/* Subtle gradient overlay that appears on hover */}
-                <div className="absolute inset-0 -z-10 rounded-xl bg-gradient-to-b from-blue-950/[0.07] to-blue-950/[0.03] opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-blue-500/5 dark:to-transparent" />
+                {/* Enhanced gradient overlay with glow effect */}
+                <div className="absolute inset-0 -z-10 rounded-xl bg-gradient-to-br from-blue-200/[0.3] via-blue-100/[0.2] to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100 dark:from-blue-400/[0.07] dark:via-blue-950/[0.05] dark:to-transparent" />
+                <div className="absolute inset-0 -z-10 rounded-xl bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1),transparent_50%)] opacity-0 transition-all duration-500 group-hover:opacity-100" />
 
                 {/* Card content wrapper */}
                 <div className="relative flex items-start gap-6 w-full">
@@ -90,13 +95,15 @@ export function Features() {
         {/* Solution Section */}
         <div className="mx-auto mt-32 max-w-2xl text-center">
           <h2 className="mt-8 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl flex flex-col gap-6">
+              The solution:
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-orange-500">
-              There is a better way:
-            </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-orange-500">
-              Decode Bitcoin market sentiment in one place
+              Real-time Bitcoin market intelligence
             </span>
           </h2>
+
+          <p className="mt-6 text-xl text-muted-foreground">
+            Get actionable insights, spot trends early, and make informed decisions with confidence.
+          </p>
 
           <div className="mt-8 flex justify-center">
             <ChevronDown className="h-8 w-8 animate-bounce text-muted-foreground" />
@@ -108,8 +115,11 @@ export function Features() {
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
             <div className="text-left lg:pr-8">
               <h3 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                Correlate sentiment with price movements
+                Track sentiment and price movements
               </h3>
+              <p className="mt-4 text-xl text-muted-foreground">
+                See how market sentiment correlates with price movements across social media, news, and community discussions.
+              </p>
             </div>
             <div className="w-full">
               <ComposedChart data={chartData} />
@@ -123,8 +133,11 @@ export function Features() {
             </div>
             <div className="text-left lg:text-right lg:pl-8">
               <h3 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                Track breaking trends without the noise
+                Stay ahead of market trends
               </h3>
+              <p className="mt-4 text-xl text-muted-foreground">
+                Get real-time alerts on emerging narratives and market-moving trends, filtered from the noise.
+              </p>
             </div>
           </div>
         </div>

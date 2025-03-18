@@ -108,8 +108,8 @@ export function CompaniesLanding() {
 
       <HeroSection
         segment="companies"
-        title={<>Stay Ahead in the <span className="whitespace-nowrap">Bitcoin Industry</span></>}
-        subtitle="Discover real-time trends, analyze sentiment, and track competitors with ease. Whether you're a decision-maker, researcher, or builder in the Bitcoin space, unlock the insights you need to drive your strategy."
+        title={<>Stay ahead in the <span className="whitespace-nowrap">Bitcoin industry</span></>}
+        subtitle="Discover real-time trends, analyze sentiment, and track competitors with ease. Whether you're a decision-maker, researcher, or builder in the Bitcoin space, unlock the insights you need to drive your strategy"
         ctaText="Join the Beta"
         backgroundClass="bg-gradient-to-br from-blue-500/5 via-slate-600/5 to-neutral-700/5"
       />
@@ -149,8 +149,8 @@ export function CompaniesLanding() {
       
       <div className="space-y-8 sm:space-y-12 mt-16 sm:mt-24">
         <ValuePropSection
-          title="The Insights You Need to Stay Ahead"
-          subtitle="Empower your decisions with a comprehensive intelligence platform designed for the Bitcoin industry."
+          title="The insights you need to stay ahead"
+          subtitle="Empower your decisions with a comprehensive intelligence platform designed for the Bitcoin industry"
           benefits={benefits}
         />
 
@@ -163,8 +163,8 @@ export function CompaniesLanding() {
           <FeatureSection features={features} />
           
           <CTASection
-            title="Stay Informed, Stay Competitive"
-            subtitle="Don't get left behind in the fast-moving Bitcoin industry. Start using Perception to lead the conversation, track competitors, and identify key opportunities."
+            title="Stay informed, stay competitive"
+            subtitle="Don't get left behind in the fast-moving Bitcoin industry. Start using Perception to lead the conversation, track competitors, and identify key opportunities"
             primaryCTA="Join the Beta"
             secondaryCTA=""
             backgroundClass="group"

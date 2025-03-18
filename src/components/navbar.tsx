@@ -53,6 +53,8 @@ const resources: {
     title: "Learn", 
     href: "/learn",
     description: "Discover insights and analysis about Bitcoin markets",
+    disabled: true,
+    badge: "Coming Soon"
   },
   { 
     title: "Documentation", 
@@ -77,7 +79,7 @@ const resources: {
   { 
     title: "Methodology", 
     href: "/methodology", 
-    description: "Learn about our comprehensive data collection and analysis process" 
+    description: "Learn about our comprehensive data collection and analysis process"
   },
 ];
 
@@ -89,7 +91,11 @@ const company: {
   badge?: string;
   className?: string;
 }[] = [
-  { title: "About", href: "/about", description: "Learn about our mission and team" },
+  { 
+    title: "About", 
+    href: "/about", 
+    description: "Learn about our mission and team"
+  },
   { 
     title: "Careers", 
     href: "#",
@@ -97,8 +103,20 @@ const company: {
     disabled: true,
     badge: "Coming Soon"
   },
-  { title: "Press", href: "/press", description: "Latest news and media resources" },
-  { title: "Announcements", href: "/announcements", description: "Product updates and company news" },
+  { 
+    title: "Press", 
+    href: "/press", 
+    description: "Latest news and media resources",
+    disabled: true,
+    badge: "Coming Soon"
+  },
+  { 
+    title: "Announcements", 
+    href: "/announcements", 
+    description: "Product updates and company news",
+    disabled: true,
+    badge: "Coming Soon"
+  },
   { 
     title: "Roadmap", 
     href: "/roadmap",

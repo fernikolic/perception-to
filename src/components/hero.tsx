@@ -58,13 +58,10 @@ export function Hero() {
           </div>
           
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-foreground">
-            Track Bitcoin trends.
-            <br />
-            Decode market sentiment.
-            <br />
-            Uncover narratives.
-            <br />
-            All in one place.
+            <span className="block mb-4">Track Bitcoin trends.</span>
+            <span className="block mb-4">Decode market sentiment.</span>
+            <span className="block mb-4">Uncover narratives.</span>
+            <span className="block bg-gradient-to-r from-orange-500 to-orange-800 text-transparent bg-clip-text">All in one place.</span>
           </h1>
           
           <p className="mt-6 text-lg leading-8 text-foreground/60">

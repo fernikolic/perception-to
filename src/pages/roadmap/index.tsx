@@ -24,12 +24,23 @@ const milestones: Milestone[] = [
   {
     title: 'Trends Bookmarking',
     description: 'Save and organize important trends for later reference.',
-    status: 'in-progress',
+    status: 'completed',
     features: [
       'Bookmark favorite trends',
       'Organize bookmarks into collections',
       'Quick access to saved items',
       'Sync across devices',
+    ],
+  },
+  {
+    title: 'Mobile Responsiveness',
+    description: 'Optimizing the platform for seamless mobile experience.',
+    status: 'completed',
+    features: [
+      'Responsive layouts',
+      'Touch-friendly controls',
+      'Mobile-optimized charts',
+      'Progressive web app features',
     ],
   },
   {
@@ -41,6 +52,17 @@ const milestones: Milestone[] = [
       'Data loading improvements',
       'Caching enhancements',
       'Reduced load times',
+    ],
+  },
+  {
+    title: 'Research Hub',
+    description: 'Dedicated section for high-impact, low-frequency market events.',
+    status: 'in-progress',
+    features: [
+      'Critical event detection',
+      'Deep-dive analysis reports',
+      'Custom research filters',
+      'Important event notifications',
     ],
   },
   {
@@ -74,28 +96,6 @@ const milestones: Milestone[] = [
       'Technical analysis forecasts',
       'On-chain metrics prediction',
       'Combined prediction models',
-    ],
-  },
-  {
-    title: 'Research Hub',
-    description: 'Dedicated section for high-impact, low-frequency market events.',
-    status: 'idea',
-    features: [
-      'Critical event detection',
-      'Deep-dive analysis reports',
-      'Custom research filters',
-      'Important event notifications',
-    ],
-  },
-  {
-    title: 'Mobile Responsiveness',
-    description: 'Optimizing the platform for seamless mobile experience.',
-    status: 'idea',
-    features: [
-      'Responsive layouts',
-      'Touch-friendly controls',
-      'Mobile-optimized charts',
-      'Progressive web app features',
     ],
   },
 ];

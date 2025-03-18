@@ -5,21 +5,21 @@ const communities = [
   {
     name: 'Bitcoin Companies',
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/researchers.png',
-    description: 'Track market sentiment, monitor competitors, and stay ahead of industry trends with real-time intelligence.',
+    description: 'Get real-time market intelligence that gives you a competitive edge. Track sentiment shifts, monitor competitors, and spot opportunities early.',
     buttonText: 'Join the Beta',
     href: 'https://app.perception.to/auth/sign-up',
   },
   {
     name: 'Journalists & Creators',
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/journalists.png',
-    description: 'Instantly spot emerging trends and find what matters most across the Bitcoin ecosystem. Spend less time searching and more time creating.',
+    description: 'Find the stories that matter. Our platform surfaces the most impactful trends and narratives across the Bitcoin ecosystem.',
     buttonText: 'Join the Beta',
     href: 'https://app.perception.to/auth/sign-up',
   },
   {
     name: 'Investors & VCs',
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/investors.png',
-    description: 'Spot trends before they go mainstream. Get real-time signals, early insights, and sentiment analysis to make smarter decisions.',
+    description: 'Get early signals, sentiment analysis, and trend insights to help you spot opportunities and avoid costly mistakes.',
     buttonText: 'Join the Beta',
     href: 'https://app.perception.to/auth/sign-up',
   },
@@ -36,13 +36,12 @@ export function Community() {
           </div>
           
           <h2 className="mt-4 text-center text-4xl font-bold tracking-tight sm:text-5xl">
-          Your all-in-one Bitcoin intelligence platform
+            Your Bitcoin market intelligence command center
           </h2>
           
           <p className="mt-4 text-center text-xl text-muted-foreground">
-            <span className="text-foreground">No more</span>{' '}
-            <span className="text-foreground">switching</span> between{' '}
-            <span className="text-foreground">tools or wasting time</span>. From trend discovery to price analysis, everything you need is here.
+            <span className="text-foreground">One platform</span> for{' '}
+            <span className="text-foreground">all your Bitcoin insights</span>. Track trends, analyze sentiment, and stay informed with real-time data.
           </p>
         </div>
 

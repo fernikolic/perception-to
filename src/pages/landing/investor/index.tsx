@@ -97,8 +97,8 @@ export function InvestorLanding() {
 
       <HeroSection
         segment="investor"
-        title="Make Data-Driven Decisions: Stay Ahead of Bitcoin Market Trends"
-        subtitle="Track real-time sentiment, discover emerging trends, and decode market psychology to gain the edge you need in Bitcoin trading."
+        title="Make data-driven decisions: stay ahead of Bitcoin market trends"
+        subtitle="Track real-time sentiment, discover emerging trends, and decode market psychology to gain the edge you need in Bitcoin trading"
         ctaText="Join the Beta"
         backgroundClass="bg-gradient-to-br from-blue-500/5 via-slate-600/5 to-neutral-700/5"
       />
@@ -133,8 +133,8 @@ export function InvestorLanding() {
       
       <div className="space-y-8 sm:space-y-12 mt-16 sm:mt-24">
         <ValuePropSection
-          title="Everything You Need to Trade Smarter"
-          subtitle="Make data-driven decisions with our comprehensive suite of trading tools."
+          title="Everything you need to trade smarter"
+          subtitle="Make data-driven decisions with our comprehensive suite of trading tools"
           benefits={benefits}
         />
 
@@ -148,10 +148,10 @@ export function InvestorLanding() {
           <FeatureSection features={features} />
           
           <CTASection
-            title="Start Trading with Confidence"
-            subtitle="Join professional traders who use our platform to gain a competitive edge."
+            title="Start trading with confidence"
+            subtitle="Join professional traders who use our platform to gain a competitive edge"
             primaryCTA="Join the Beta"
-            secondaryCTA="View Pricing"
+            secondaryCTA=""
             backgroundClass="group"
           >
             <div className="absolute inset-0 -z-10">
