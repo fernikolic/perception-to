@@ -40,8 +40,7 @@ export function PriceCard({ name, description, price, features, popular }: Price
       </CardContent>
       <CardFooter>
         <Button 
-          className="w-full" 
-          variant={popular ? 'default' : 'outline'}
+          className="w-full bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl"
           asChild
         >
           <a href="https://app.perception.to/auth/sign-up">

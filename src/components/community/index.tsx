@@ -50,7 +50,7 @@ export function Community() {
           {communities.map((community) => (
             <Card
               key={community.name}
-              className="group relative overflow-hidden border-white/5 bg-black/20 transition-all duration-300 hover:border-white/10 hover:-translate-y-1"
+              className="group relative overflow-hidden bg-card/50 backdrop-blur-sm border border-border/50 transition-all duration-300 hover:-translate-y-1 hover:bg-card/60"
             >
               <CardContent className="p-0">
                 <div className="relative h-[200px] w-full overflow-hidden">
@@ -59,14 +59,13 @@ export function Community() {
                     alt={community.name}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
                 
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-semibold">{community.name}</h3>
+                <div className="p-6 text-center bg-card/50">
+                  <h3 className="text-xl font-semibold text-foreground">{community.name}</h3>
                   <p className="mt-2 text-muted-foreground">{community.description}</p>
                   <Button
-                    className="mt-6 rounded-full bg-white/10 px-8 hover:bg-white/20"
+                    className="mt-6 rounded-lg px-8 bg-blue-950 hover:bg-blue-900 text-white dark:bg-blue-600 dark:hover:bg-blue-500 transition-colors"
                     asChild
                   >
                     <a 

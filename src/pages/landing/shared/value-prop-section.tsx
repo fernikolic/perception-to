@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { LucideIcon } from 'lucide-react';
 
 interface ValueProp {
@@ -38,9 +39,17 @@ export function ValuePropSection({ title, subtitle, benefits }: ValuePropSection
               <h3 className="text-2xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
                 {benefit.title}
               </h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground mb-8">
                 {benefit.description}
               </p>
+              <Button 
+                className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl w-full"
+                asChild
+              >
+                <a href="https://app.perception.to/auth/sign-up">
+                  Join the Beta
+                </a>
+              </Button>
             </div>
           );
         })}

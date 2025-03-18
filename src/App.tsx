@@ -46,8 +46,8 @@ function HomePage() {
 
 const App = () => {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
-      <div className="min-h-screen bg-background text-foreground dark">
+    <ThemeProvider defaultTheme="light" storageKey="ui-theme">
+      <div className="min-h-screen bg-background text-foreground">
         <Navbar />
         <PageTransition>
           <Routes>

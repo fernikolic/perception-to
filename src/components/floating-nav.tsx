@@ -25,14 +25,14 @@ export function FloatingNav() {
     <div
       className={cn(
         'fixed bottom-[20vh] right-8 z-40 flex items-center gap-4 rounded-full bg-background/80 p-4 shadow-lg backdrop-blur-lg transition-all duration-300',
-        'border border-white/10',
+        'border border-border',
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'
       )}
     >
       <Button
         size="icon"
         variant="ghost"
-        className="rounded-full hover:bg-white/10"
+        className="rounded-full hover:bg-accent hover:text-accent-foreground"
         onClick={scrollToTop}
       >
         <ArrowUp className="h-5 w-5" />

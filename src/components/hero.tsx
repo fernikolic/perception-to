@@ -18,7 +18,7 @@ export function Hero() {
   return (
     <div 
       ref={heroRef}
-      className="relative isolate overflow-hidden"
+      className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95"
       onMouseMove={handleMouseMove}
     >
       {/* Interactive Glow Background */}
@@ -28,7 +28,7 @@ export function Hero() {
           background: `
             radial-gradient(
               1200px circle at ${mousePosition.x}px ${mousePosition.y}px,
-              rgba(255,255,255,0.06),
+              rgba(30, 58, 138, 0.08),
               transparent 40%
             )
           `,
@@ -36,7 +36,7 @@ export function Hero() {
       />
 
       {/* Base Gradient */}
-      <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
+      <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
         <div className="mx-auto max-w-3xl text-center">
@@ -47,29 +47,34 @@ export function Hero() {
               rel="noopener noreferrer" 
               className="inline-flex flex-col sm:flex-row items-center gap-3"
             >
-              <span className="inline-flex items-center rounded-full bg-white/5 px-3 py-1 text-sm font-semibold leading-6 text-white ring-1 ring-inset ring-white/20">
+              <span className="inline-flex items-center rounded-full bg-blue-950/10 px-3 py-1 text-sm font-semibold leading-6 text-blue-950 ring-1 ring-inset ring-blue-950/20">
                 What's new
               </span>
-              <span className="inline-flex items-center gap-2 text-sm font-medium leading-6 text-white/60 group">
+              <span className="inline-flex items-center gap-2 text-sm font-medium leading-6 text-foreground/60 group">
                 <span>Beta now open</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </span>
             </a>
           </div>
           
-          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl gradient-text">
-            Track Bitcoin trends. Decode market sentiment. Uncover narratives. All in one place.
-
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-foreground">
+            Track Bitcoin trends.
+            <br />
+            Decode market sentiment.
+            <br />
+            Uncover narratives.
+            <br />
+            All in one place.
           </h1>
           
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white/60">
-            <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">Save hours</span> staying ahead of the Bitcoin market.
+          <p className="mt-6 text-lg leading-8 text-foreground/60">
+            <span className="text-blue-950 font-semibold dark:text-blue-400">Save hours</span> staying ahead of the Bitcoin market.
           </p>
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               size="lg" 
-              className="bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-white/90 transition-all"
+              className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all"
               asChild
             >
               <a href="https://app.perception.to/auth/sign-up">
@@ -79,7 +84,7 @@ export function Hero() {
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-gray-200 dark:border-white/20 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 group"
+              className="border-blue-950/20 text-blue-950 hover:bg-blue-950/5 dark:border-blue-400/20 dark:text-blue-400 dark:hover:bg-blue-400/10 group"
               asChild
             >
               <a href="https://x.com/BTCPerception/status/1877387322724909419" target="_blank" rel="noopener noreferrer">

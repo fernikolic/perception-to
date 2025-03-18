@@ -1,0 +1,170 @@
+/* Light Mode Specific Styles */
+.light {
+  /* Section Backgrounds */
+  .section-bg {
+    background: linear-gradient(
+      to bottom,
+      hsl(217.2 32.6% 97.5%),
+      hsl(0 0% 100%)
+    );
+  }
+
+  /* Cards */
+  .card {
+    background: linear-gradient(
+      145deg,
+      hsl(0 0% 100%),
+      hsl(217.2 32.6% 97.5%)
+    );
+    border: 1px solid hsl(214.3 31.8% 91.4%);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Navigation */
+  .nav-link {
+    color: hsl(222 47% 11%);
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: hsl(222 47% 11% / 0.8);
+  }
+
+  /* Buttons */
+  .btn-primary {
+    background: linear-gradient(
+      to right,
+      hsl(222 47% 11%),
+      hsl(222 47% 20%)
+    );
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.2);
+  }
+
+  /* Footer */
+  .footer {
+    background: linear-gradient(
+      to bottom,
+      hsl(217.2 32.6% 97.5%),
+      hsl(0 0% 100%)
+    );
+    border-top: 1px solid hsl(214.3 31.8% 91.4%);
+  }
+
+  /* Glass Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(30, 58, 138, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(30, 58, 138, 0.1);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(
+      to right,
+      hsl(222 47% 11%),
+      hsl(222 47% 30%)
+    );
+  }
+
+  /* Navigation Menu */
+  .navigation-menu {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(30, 58, 138, 0.1);
+  }
+
+  /* Floating Navigation */
+  .floating-nav {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(30, 58, 138, 0.1);
+  }
+
+  /* Feature Cards */
+  .feature-card {
+    background: linear-gradient(
+      145deg,
+      hsl(0 0% 100%),
+      hsl(217.2 32.6% 97.5%)
+    );
+    border: 1px solid hsl(214.3 31.8% 91.4%);
+    box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.1);
+  }
+
+  /* Testimonial Cards */
+  .testimonial-card {
+    background: linear-gradient(
+      145deg,
+      hsl(0 0% 100%),
+      hsl(217.2 32.6% 97.5%)
+    );
+    border: 1px solid hsl(214.3 31.8% 91.4%);
+    box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.1);
+  }
+
+  /* Pricing Cards */
+  .pricing-card {
+    background: linear-gradient(
+      145deg,
+      hsl(0 0% 100%),
+      hsl(217.2 32.6% 97.5%)
+    );
+    border: 1px solid hsl(214.3 31.8% 91.4%);
+    box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.1);
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    background: linear-gradient(
+      to bottom,
+      hsl(217.2 32.6% 97.5%),
+      hsl(0 0% 100%)
+    );
+  }
+
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(
+      to bottom,
+      hsl(217.2 32.6% 97.5%),
+      hsl(0 0% 100%)
+    );
+  }
+
+  /* Features Section */
+  .features-section {
+    background: linear-gradient(
+      to bottom,
+      hsl(217.2 32.6% 97.5%),
+      hsl(0 0% 100%)
+    );
+  }
+
+  /* Community Section */
+  .community-section {
+    background: linear-gradient(
+      to bottom,
+      hsl(217.2 32.6% 97.5%),
+      hsl(0 0% 100%)
+    );
+  }
+
+  /* Testimonials Section */
+  .testimonials-section {
+    background: linear-gradient(
+      to bottom,
+      hsl(217.2 32.6% 97.5%),
+      hsl(0 0% 100%)
+    );
+  }
+
+  /* Pricing Section */
+  .pricing-section {
+    background: linear-gradient(
+      to bottom,
+      hsl(217.2 32.6% 97.5%),
+      hsl(0 0% 100%)
+    );
+  }
+} 

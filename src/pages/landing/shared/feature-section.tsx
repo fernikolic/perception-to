@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 interface Feature {
@@ -54,7 +55,7 @@ export function FeatureSection({ features }: FeatureSectionProps) {
                   <p className="text-lg leading-7 text-muted-foreground mb-8">
                     {feature.description}
                   </p>
-                  <ul className="space-y-4">
+                  <ul className="space-y-4 mb-8">
                     {feature.benefits.map((benefit) => (
                       <li 
                         key={benefit}
@@ -65,6 +66,14 @@ export function FeatureSection({ features }: FeatureSectionProps) {
                       </li>
                     ))}
                   </ul>
+                  <Button 
+                    className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl w-full"
+                    asChild
+                  >
+                    <a href="https://app.perception.to/auth/sign-up">
+                      Join the Beta
+                    </a>
+                  </Button>
                 </div>
               </div>
             </div>

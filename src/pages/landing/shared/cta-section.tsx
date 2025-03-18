@@ -24,22 +24,24 @@ export function CTASection({ title, subtitle, primaryCTA, secondaryCTA, backgrou
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button 
-              className="bg-white text-black hover:bg-white/90 transition-all"
+              className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl"
               asChild
             >
               <a href="https://app.perception.to/auth/sign-up">
                 {primaryCTA}
               </a>
             </Button>
-            <Button 
-              variant="link" 
-              className="text-white hover:text-white/90"
-              asChild
-            >
-              <a href="/pricing">
-                {secondaryCTA}
-              </a>
-            </Button>
+            {secondaryCTA && (
+              <Button 
+                variant="link" 
+                className="text-white hover:text-white/90"
+                asChild
+              >
+                <a href="/pricing">
+                  {secondaryCTA}
+                </a>
+              </Button>
+            )}
           </div>
         </div>
       </div>

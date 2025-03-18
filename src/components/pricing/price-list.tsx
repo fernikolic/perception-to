@@ -2,8 +2,8 @@ import { PriceCard } from './price-card';
 
 const tiers = [
   {
-    name: 'Starter',
-    id: 'starter',
+    name: 'Pro',
+    id: 'pro',
     href: '#',
     description: 'For getting started with market intelligence',
     price: '$59',
@@ -17,13 +17,13 @@ const tiers = [
     ],
   },
   {
-    name: 'Pro',
-    id: 'pro',
+    name: 'Premium',
+    id: 'premium',
     href: '#',
     description: 'For market correlations and industry insights',
-    price: '$149',
+    price: '$99',
     features: [
-      'Everything in Starter, plus:',
+      'Everything in Pro, plus:',
       'Price & Perception Analysis',
       'Bitcoin Proxies',
       'Industry Segments',
@@ -38,7 +38,7 @@ const tiers = [
     description: 'For large organizations needing advanced features',
     price: 'Custom',
     features: [
-      'Everything in Pro, plus:',
+      'Everything in Premium, plus:',
       'Custom API integrations',
       'Dedicated account manager',
       'Custom reporting',

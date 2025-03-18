@@ -30,12 +30,21 @@ const publications = [
 
 export function AsSeenOn() {
   return (
-    <section className="border-t border-white/5 bg-black/20 backdrop-blur-sm">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <p className="text-center text-sm font-semibold leading-8 text-muted-foreground">
+    <section id="as-seen-on" className="relative border-t border-white/5">
+      {/* Gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-950/5 via-slate-900/5 to-transparent" />
+      
+      {/* Radial gradients for depth */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.05),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(30,58,138,0.05),transparent_50%)]" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <p className="text-center text-base font-medium tracking-wider text-muted-foreground/80">
           As featured in
         </p>
-        <div className="mx-auto mt-12 flex flex-wrap items-center justify-center gap-x-16 gap-y-10">
+        <div className="mx-auto mt-16 grid grid-cols-2 items-center gap-x-12 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
           {publications.map((publication) => (
             <a
               key={publication.name}
@@ -43,13 +52,16 @@ export function AsSeenOn() {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                "flex h-24 w-48 flex-shrink-0 items-center justify-center",
+                "group relative flex h-16 items-center justify-center",
                 "transition-all duration-300",
-                "opacity-90 hover:opacity-100"
+                "hover:opacity-100"
               )}
             >
+              {/* Hover effect */}
+              <div className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-b from-blue-950/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              
               <img
-                className="max-h-20 w-auto max-w-[12rem] object-contain"
+                className="max-h-12 w-auto max-w-[10rem] object-contain transition-all duration-300 group-hover:scale-105"
                 src={publication.logo}
                 alt={publication.name}
                 loading="lazy"

@@ -37,7 +37,7 @@ export function HeroSection({ segment, title, subtitle, ctaText, backgroundClass
           <div className="mt-10 flex items-center justify-center">
             <Button 
               size="lg" 
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl"
               asChild
             >
               <a href="https://app.perception.to/auth/sign-up">
