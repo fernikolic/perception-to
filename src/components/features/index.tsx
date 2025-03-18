@@ -4,24 +4,24 @@ import { XCircle, ChevronDown } from 'lucide-react';
 
 const painPoints = [
   {
-    problem: 'Tracking sentiment across Twitter, Reddit, and the news manually',
-    consequence: 'Missed critical shifts 😟',
+    problem: 'Manual sentiment analysis across multiple platforms',
+    consequence: 'Delayed response to market shifts',
   },
   {
-    problem: 'Scanning endless articles and threads for trends',
-    consequence: 'Drowning in noise 🌊',
+    problem: 'Information overload from unstructured data sources',
+    consequence: 'Reduced analytical effectiveness',
   },
   {
-    problem: 'Missing key market-moving developments',
-    consequence: 'Missed trading opportunities 💸',
+    problem: 'Fragmented market intelligence',
+    consequence: 'Missed strategic opportunities',
   },
   {
-    problem: 'Switching between dozens of tools for sentiment, price analysis, and news',
-    consequence: 'Burnt out 🔥',
+    problem: 'Multiple disconnected analysis tools',
+    consequence: 'Inefficient workflow and decision-making',
   },
   {
-    problem: 'Trying to predict trends without data',
-    consequence: 'Flying blind 🕶️',
+    problem: 'Limited access to comprehensive market data',
+    consequence: 'Incomplete market understanding',
   },
 ];
 
@@ -43,13 +43,13 @@ export function Features() {
       
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Pain Points Section */}
-        <div className="mx-auto max-w-2xl text-center">
-          <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">
-            <span className="text-sm font-medium">Current State</span>
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1">
+            <span className="text-sm font-medium">Market Analysis Challenges</span>
           </div>
           
           <h2 className="mt-8 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Common problems in Bitcoin market analysis
+            Critical Challenges in Bitcoin Market Analysis
           </h2>
 
           <div className="mt-8 flex justify-center">
@@ -57,24 +57,30 @@ export function Features() {
           </div>
         </div>
 
-        <div className="mx-auto mt-16 max-w-2xl">
-          <div className="space-y-8">
+        <div className="mx-auto mt-16 max-w-4xl">
+          <div className="grid grid-cols-1 gap-8 sm:gap-12">
             {painPoints.map((point, index) => (
               <div 
                 key={index}
-                className="flex items-start gap-4 rounded-lg border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/[0.07]"
+                className="group relative flex items-start gap-6 rounded-xl border border-primary/10 bg-blue-950/[0.03] dark:bg-card p-8 shadow-lg transition-all duration-300 hover:-translate-y-0.5"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-red-500/10">
-                  <XCircle className="h-6 w-6 text-red-500" />
-                </div>
-                
-                <div>
-                  <p className="text-base font-medium leading-7">
-                    {point.problem}
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    → {point.consequence}
-                  </p>
+                {/* Subtle gradient overlay that appears on hover */}
+                <div className="absolute inset-0 -z-10 rounded-xl bg-gradient-to-b from-blue-950/[0.07] to-blue-950/[0.03] opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-blue-500/5 dark:to-transparent" />
+
+                {/* Card content wrapper */}
+                <div className="relative flex items-start gap-6 w-full">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-red-500/10 transition-colors duration-300 group-hover:bg-red-500/20">
+                    <XCircle className="h-8 w-8 text-red-500 dark:text-red-400" />
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <p className="text-xl font-semibold leading-7 tracking-tight">
+                      {point.problem}
+                    </p>
+                    <p className="text-base text-muted-foreground/90">
+                      Result: {point.consequence}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -97,20 +103,30 @@ export function Features() {
           </div>
         </div>
         
-        <div className="mx-auto mt-8 grid grid-cols-1 gap-8">
-          <div className="space-y-4 text-center">
-            <h3 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-              Correlate sentiment with price movements
-            </h3>
+        <div className="mx-auto mt-8 grid grid-cols-1 gap-16">
+          {/* First row - Sentiment & Price */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
+            <div className="text-left lg:pr-8">
+              <h3 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+                Correlate sentiment with price movements
+              </h3>
+            </div>
+            <div className="w-full">
+              <ComposedChart data={chartData} />
+            </div>
           </div>
-          <ComposedChart data={chartData} />
           
-          <div className="space-y-4 text-center mt-16">
-            <h3 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-              Track breaking trends without the noise
-            </h3>
+          {/* Second row - Breaking Trends */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
+            <div className="w-full order-last lg:order-first">
+              <TrendingTopics />
+            </div>
+            <div className="text-left lg:text-right lg:pl-8">
+              <h3 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+                Track breaking trends without the noise
+              </h3>
+            </div>
           </div>
-          <TrendingTopics />
         </div>
       </div>
     </section>

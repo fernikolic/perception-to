@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/navigation-menu';
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const solutions = [
   {
@@ -147,13 +148,13 @@ export function Navbar() {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="fixed left-1/2 -translate-x-1/2 w-[90vw] max-w-[2400px]">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3 bg-background/80 backdrop-blur-xl rounded-lg border border-white/10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3 bg-background rounded-lg border shadow-lg">
                       {solutions.map((solution) => (
                         <NavigationMenuLink
                           key={solution.title}
                           href={solution.href}
                           className={cn(
-                            "block space-y-1 rounded-lg p-6 leading-none no-underline outline-none transition-colors hover:bg-white/8 hover:text-accent-foreground focus:bg-white/8 focus:text-accent-foreground",
+                            "block space-y-1 rounded-lg p-6 leading-none no-underline outline-none transition-colors hover:bg-accent/5 hover:text-foreground focus:bg-accent/5 focus:text-foreground",
                             solution.disabled && "cursor-not-allowed opacity-70"
                           )}
                           onClick={solution.disabled ? (e) => e.preventDefault() : undefined}
@@ -187,7 +188,7 @@ export function Navbar() {
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative -translate-x-1/2 bg-background/80 backdrop-blur-xl rounded-lg border border-white/10" style={{ left: 'calc(50% - 8px)' }}>
+                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative -translate-x-1/2 bg-background rounded-lg border shadow-lg" style={{ left: 'calc(50% - 8px)' }}>
                     {resources.map((item) => (
                       <li key={item.title}>
                         <NavigationMenuLink asChild>
@@ -195,7 +196,7 @@ export function Navbar() {
                             href={item.href}
                             className={cn(
                               "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
-                              item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-white/8 hover:text-accent-foreground focus:bg-white/8 focus:text-accent-foreground",
+                              item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/5 hover:text-foreground focus:bg-accent/5 focus:text-foreground",
                               item.className
                             )}
                             onClick={item.disabled ? (e) => e.preventDefault() : undefined}
@@ -226,7 +227,7 @@ export function Navbar() {
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative -translate-x-1/2 bg-background/80 backdrop-blur-xl rounded-lg border border-white/10" style={{ left: 'calc(50% - 8px)' }}>
+                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative -translate-x-1/2 bg-background rounded-lg border shadow-lg" style={{ left: 'calc(50% - 8px)' }}>
                     {company.map((item) => (
                       <li key={item.title}>
                         <NavigationMenuLink asChild>
@@ -234,7 +235,7 @@ export function Navbar() {
                             href={item.href}
                             className={cn(
                               "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
-                              item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-white/8 hover:text-accent-foreground focus:bg-white/8 focus:text-accent-foreground",
+                              item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/5 hover:text-foreground focus:bg-accent/5 focus:text-foreground",
                               item.className
                             )}
                             onClick={item.disabled ? (e) => e.preventDefault() : undefined}
@@ -270,6 +271,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex md:items-center md:space-x-6">
+          <ThemeToggle />
           <a 
             href="https://app.perception.to/auth/sign-in" 
             className="text-sm hover:text-primary"
@@ -277,7 +279,7 @@ export function Navbar() {
             Login
           </a>
           <Button 
-            className="bg-white text-black hover:bg-white/90 transition-all"
+            className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl"
             asChild
           >
             <a href="https://app.perception.to/auth/sign-up">
@@ -302,7 +304,7 @@ export function Navbar() {
         <div className="md:hidden bg-background border-b">
           <div className="px-4 py-3">
             <Button 
-              className="bg-white text-black hover:bg-white/90 transition-all w-full"
+              className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl w-full"
               asChild
             >
               <a href="https://app.perception.to/auth/sign-up">
@@ -314,7 +316,7 @@ export function Navbar() {
             <div className="space-y-2">
               <button
                 onClick={() => toggleSection('solutions')}
-                className="w-full flex items-center justify-between px-3 py-2 font-medium hover:bg-white/8 rounded-lg"
+                className="w-full flex items-center justify-between px-3 py-2 font-medium hover:bg-accent/5 rounded-lg"
               >
                 <span>Solutions</span>
                 {expandedSection === 'solutions' ? (
@@ -330,7 +332,7 @@ export function Navbar() {
                       key={solution.title}
                       href={solution.href}
                       className={cn(
-                        "block px-3 py-2 text-sm hover:bg-white/8 rounded-lg",
+                        "block px-3 py-2 text-sm hover:bg-accent/5 rounded-lg",
                         solution.disabled && "cursor-not-allowed opacity-70"
                       )}
                       onClick={solution.disabled ? (e) => e.preventDefault() : undefined}
@@ -350,7 +352,7 @@ export function Navbar() {
 
               <button
                 onClick={() => toggleSection('resources')}
-                className="w-full flex items-center justify-between px-3 py-2 font-medium hover:bg-white/8 rounded-lg"
+                className="w-full flex items-center justify-between px-3 py-2 font-medium hover:bg-accent/5 rounded-lg"
               >
                 <span>Resources</span>
                 {expandedSection === 'resources' ? (
@@ -366,7 +368,7 @@ export function Navbar() {
                       <a
                         key={item.title}
                         href={item.href}
-                        className={cn("block px-3 py-2 text-sm hover:bg-white/8 rounded-lg", item.className)}
+                        className={cn("block px-3 py-2 text-sm hover:bg-accent/5 rounded-lg", item.className)}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -376,7 +378,7 @@ export function Navbar() {
                       <a
                         key={item.title}
                         href={item.href}
-                        className={cn("block px-3 py-2 text-sm hover:bg-white/8 rounded-lg", item.className)}
+                        className={cn("block px-3 py-2 text-sm hover:bg-accent/5 rounded-lg", item.className)}
                       >
                         {item.title}
                       </a>
@@ -387,7 +389,7 @@ export function Navbar() {
 
               <button
                 onClick={() => toggleSection('company')}
-                className="w-full flex items-center justify-between px-3 py-2 font-medium hover:bg-white/8 rounded-lg"
+                className="w-full flex items-center justify-between px-3 py-2 font-medium hover:bg-accent/5 rounded-lg"
               >
                 <span>Company</span>
                 {expandedSection === 'company' ? (
@@ -403,7 +405,7 @@ export function Navbar() {
                       key={item.title}
                       href={item.href}
                       className={cn(
-                        "block px-3 py-2 text-sm hover:bg-white/8 rounded-lg",
+                        "block px-3 py-2 text-sm hover:bg-accent/5 rounded-lg",
                         item.disabled && "cursor-not-allowed opacity-70"
                       )}
                       onClick={item.disabled ? (e) => e.preventDefault() : undefined}
@@ -423,7 +425,7 @@ export function Navbar() {
 
               <a
                 href="/pricing"
-                className="block px-3 py-2 text-sm hover:bg-white/8 rounded-lg"
+                className="block px-3 py-2 text-sm hover:bg-accent/5 rounded-lg"
               >
                 Pricing
               </a>
@@ -431,7 +433,7 @@ export function Navbar() {
               <div className="space-y-2 pt-4">
                 <a
                   href="https://app.perception.to/auth/sign-in"
-                  className="block px-3 py-2 text-sm hover:bg-white/8 rounded-lg"
+                  className="block px-3 py-2 text-sm hover:bg-accent/5 rounded-lg"
                 >
                   Login
                 </a>
