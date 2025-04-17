@@ -199,7 +199,7 @@ export function ApiPage() {
       <section className="border-t py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold">Ready to Get Started?</h2>
+            <h2 className="text-3xl font-extralight">Ready to Get Started?</h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Sign up for a free API key and start building with our powerful API.
             </p>

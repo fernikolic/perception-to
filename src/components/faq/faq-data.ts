@@ -1,46 +1,46 @@
 export const faqData = [
   {
-    question: "What is Bitcoin Perception?",
-    answer: "Bitcoin Perception is a real-time intelligence platform that tracks sentiment, trends, and narratives in the Bitcoin ecosystem. Designed for Bitcoin companies, investors, and ecosystem builders, it saves time and helps you stay ahead of trends."
+    question: "What is Perception?",
+    answer: "Perception is a narrative and sentiment intelligence platform for Bitcoin and the broader digital finance ecosystem. It tracks trends, sentiment shifts, and institutional developments across media, social platforms, policy, and technical communities—giving professionals a high-signal view of where the market is headed."
   },
   {
     question: "Who is this platform for?",
-    answer: "The platform is designed for:\n• Bitcoin Companies: Track market sentiment, monitor competitors, and stay ahead of industry trends.\n• Journalists & Creators: Discover trends and measure sentiment to enhance your stories.\n• Investors & VCs: Make data-driven decisions with real-time market intelligence."
+    answer: "Perception is built for professionals who shape capital, policy, or strategy. This includes:\n• Institutional investors and fund managers\n• VCs and allocators\n• Fintech founders and operators\n• Policy analysts and researchers\n• Bitcoin-native companies and media professionals\n\nIf you're tracking narratives—not just prices—Perception is designed for you."
   },
   {
     question: "How does the platform analyze sentiment?",
-    answer: "We use proprietary technology—not AI or bots—to curate and analyze discussions and media coverage. All sources are hand-picked, high-signal platforms to cut out random noise and ensure you get actionable, accurate insights."
+    answer: "Perception uses a combination of natural language processing, AI-driven classification, and human-tuned signal scoring. Sentiment is analyzed at the topic level and weighted by source credibility, audience type, and contextual relevance. This allows us to surface not just how the market feels—but where that feeling is coming from and why it matters."
   },
   {
     question: "What sources does the platform track?",
-    answer: "We monitor 200+ highly curated sources across 15 countries and 8 languages, including:\n• Social media platforms like Twitter/X\n• Communities such as Reddit, Stacker News, and Hacker News\n• Top crypto and mainstream media outlets\n• Podcasts and long-form interviews\n\nNo bots, no random chatter—just high-quality, high-signal content."
+    answer: "We monitor over 100 sources across:\n• Financial media (Bloomberg, Reuters, CoinDesk, etc.)\n• Social platforms (X/Twitter, Reddit)\n• Developer communities (GitHub, Stacker News)\n• Policy outlets and think tanks\n• Corporate and institutional communications\n\nEvery data point is tagged, scored, and traceable—ensuring full transparency in analysis."
   },
   {
     question: "Is this platform focused only on Bitcoin?",
-    answer: "Yes, the platform currently specializes in Bitcoin sentiment and trend analysis. However, we plan to expand coverage in the future."
+    answer: "Bitcoin remains the anchor of the platform, but we also track adjacent narratives in:\n• Stablecoins (e.g. USDC, USDT)\n• Tokenized assets and real-world asset (RWA) issuance\n• CBDCs and central bank policy discourse\n• Regulated asset platforms (e.g. Liquid, Base, RWA.xyz)\n• Macro catalysts influencing digital asset markets\n\nYou can explore these themes individually or in correlation with Bitcoin."
   },
   {
     question: "What is the difference between the Starter and Pro plans?",
-    answer: "• Starter Plan ($59/month): Provides real-time trend tracking, basic sentiment analysis, breaking insights, and trend discovery with a curated feed.\n• Pro Plan ($149/month): Includes all Starter features plus Price & PErception Analysis, Bitcoin Proxies, Industry Segments, Company Tracker, and the most reliable real-time Fear & Greed Index."
+    answer: "The Starter plan is ideal for individuals who want curated insights, trend summaries, and access to the Perception Index.\n\nThe Pro plan is built for professionals who need:\n• Saved views and theme tracking\n• Entity-level monitoring\n• Deeper filters (e.g. sentiment by region or source type)\n• Access to archived narrative data\n\nEnterprise plans are available for teams and API access."
   },
   {
     question: "How much does the platform cost?",
-    answer: "Our pricing starts at $59/month for the Starter plan, with the Pro plan at $149/month. We also offer custom Enterprise solutions for large organizations needing advanced features."
+    answer: "Pricing will be announced at launch, with early users receiving preferred rates.\nWe offer monthly and annual billing options, and discounted plans for independent researchers, journalists, and non-profit analysts."
   },
   {
     question: "How can I access the platform?",
-    answer: "We are currently in a Closed Beta phase. Sign up to become a beta user and help shape the future of Bitcoin intelligence with your feedback."
+    answer: "You can request early access via the form above. Approved users will be onboarded in cohorts and given guided access to the platform. Once we launch publicly, you'll be able to create an account directly."
   },
   {
     question: "What languages and regions does the platform cover?",
-    answer: "The platform tracks 200+ carefully curated sources across 15 countries and 8 languages, giving you a global, high-signal view of Bitcoin sentiment and trends."
+    answer: "Perception currently focuses on English-language sources, with global geographic coverage.\nWe track sentiment and narratives from North America, Europe, Latin America, Asia, and MENA—filtered through local media, policy, and institutional lenses. Multilingual support is on our roadmap."
   },
   {
     question: "How will early users benefit?",
-    answer: "As a beta user, you'll get exclusive access to test the platform, influence its features, and be among the first to uncover actionable Bitcoin trends."
+    answer: "Early users receive:\n• Priority access to new features\n• Direct input into platform development\n• Founding user pricing for the life of their subscription\n• Access to private research briefs and beta-only insights\n\nYour feedback will shape how Perception evolves."
   },
   {
     question: "Can I provide feedback or request features?",
-    answer: "Absolutely! Early user feedback is critical to refining the platform. We encourage you to share your thoughts and help us build the tool you need."
+    answer: "Absolutely. We actively incorporate feedback from our early users.\nYou'll be able to submit ideas directly within the platform, or speak with the team during onboarding. Perception is built with—and for—its users."
   }
 ]; 

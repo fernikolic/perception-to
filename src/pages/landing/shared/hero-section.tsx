@@ -26,7 +26,7 @@ export function HeroSection({ segment, title, subtitle, ctaText, backgroundClass
             </span>
           </div>
           
-          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl gradient-text">
+          <h1 className="text-4xl font-extralight tracking-tight sm:text-hero gradient-text">
             {title}
           </h1>
           

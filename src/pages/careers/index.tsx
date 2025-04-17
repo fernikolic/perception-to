@@ -12,7 +12,7 @@ export function CareersPage() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(100,181,246,0.1),transparent_50%)]" />
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+            <h1 className="text-4xl font-extralight tracking-tight sm:text-6xl">
               Join Our Mission
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">

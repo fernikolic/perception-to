@@ -14,33 +14,6 @@ import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { ThemeToggle } from '@/components/theme-toggle';
 
-const solutions = [
-  {
-    title: "For Investors",
-    href: "/investor",
-    description: "Make data-driven decisions with real-time market intelligence",
-    image: "/logos/investors.png",
-    disabled: true,
-    badge: "Coming Soon"
-  },
-  {
-    title: "For Companies",
-    href: "/researcher",
-    description: "Track sentiment, monitor competitors, and stay ahead of trends",
-    image: "/logos/companies.png",
-    disabled: true,
-    badge: "Coming Soon"
-  },
-  {
-    title: "For Journalists",
-    href: "/journalist",
-    description: "Discover emerging stories and create data-backed content",
-    image: "/logos/journalists.png",
-    disabled: true,
-    badge: "Coming Soon"
-  },
-];
-
 const resources: {
   title: string;
   href: string;
@@ -162,47 +135,6 @@ export function Navbar() {
             <NavigationMenuList className="space-x-2">
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent">
-                  Solutions
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="fixed left-1/2 -translate-x-1/2 w-[90vw] max-w-[2400px]">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3 bg-background rounded-lg border shadow-lg">
-                      {solutions.map((solution) => (
-                        <NavigationMenuLink
-                          key={solution.title}
-                          href={solution.href}
-                          className={cn(
-                            "block space-y-1 rounded-lg p-6 leading-none no-underline outline-none transition-colors hover:bg-accent/5 hover:text-foreground focus:bg-accent/5 focus:text-foreground",
-                            solution.disabled && "cursor-not-allowed opacity-70"
-                          )}
-                          onClick={solution.disabled ? (e) => e.preventDefault() : undefined}
-                        >
-                          <div className="flex flex-col gap-2">
-                            <div>
-                              <div className="flex items-center gap-2">
-                                <div className="text-lg font-medium leading-none">
-                                  {solution.title}
-                                </div>
-                                {solution.badge && (
-                                  <Badge variant="secondary" className="text-xs">
-                                    {solution.badge}
-                                  </Badge>
-                                )}
-                              </div>
-                              <p className="mt-2 text-sm leading-snug text-muted-foreground">
-                                {solution.description}
-                              </p>
-                            </div>
-                          </div>
-                        </NavigationMenuLink>
-                      ))}
-                    </div>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent">
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -297,11 +229,11 @@ export function Navbar() {
             Login
           </a>
           <Button 
-            className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl"
+            className="bg-black text-white hover:bg-gray-900 dark:bg-black dark:hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl"
             asChild
           >
             <a href="https://app.perception.to/auth/sign-up">
-              Join the Beta
+              Go to platform
             </a>
           </Button>
         </div>
@@ -318,118 +250,42 @@ export function Navbar() {
         </button>
       </nav>
 
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-background border-b">
-          <div className="px-4 py-3">
-            <Button 
-              className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl w-full"
-              asChild
-            >
-              <a href="https://app.perception.to/auth/sign-up">
-                Join the Beta
-              </a>
-            </Button>
-          </div>
-          <div className="space-y-1 px-4 pb-3">
-            <div className="space-y-2">
+      {/* Mobile Menu */}
+      <div
+        className={cn(
+          "fixed inset-0 top-16 z-50 bg-background/95 backdrop-blur-xl transition-all duration-300 md:hidden",
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        )}
+      >
+        <div className="flex flex-col h-full overflow-y-auto">
+          <div className="px-4 py-6 space-y-6">
+            {/* Resources Section */}
+            <div>
               <button
-                onClick={() => toggleSection('solutions')}
-                className="w-full flex items-center justify-between px-3 py-2 font-medium hover:bg-accent/5 rounded-lg"
-              >
-                <span>Solutions</span>
-                {expandedSection === 'solutions' ? (
-                  <ChevronUp className="h-4 w-4" />
-                ) : (
-                  <ChevronDown className="h-4 w-4" />
-                )}
-              </button>
-              {expandedSection === 'solutions' && (
-                <div className="pl-4 space-y-1">
-                  {solutions.map((solution) => (
-                    <a
-                      key={solution.title}
-                      href={solution.href}
-                      className={cn(
-                        "block px-3 py-2 text-sm hover:bg-accent/5 rounded-lg",
-                        solution.disabled && "cursor-not-allowed opacity-70"
-                      )}
-                      onClick={solution.disabled ? (e) => e.preventDefault() : undefined}
-                    >
-                      <div className="flex items-center gap-2">
-                        {solution.title}
-                        {solution.badge && (
-                          <Badge variant="secondary" className="text-xs">
-                            {solution.badge}
-                          </Badge>
-                        )}
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              )}
-
-              <button
+                className="flex w-full items-center justify-between text-lg font-medium"
                 onClick={() => toggleSection('resources')}
-                className="w-full flex items-center justify-between px-3 py-2 font-medium hover:bg-accent/5 rounded-lg"
               >
-                <span>Resources</span>
+                Resources
                 {expandedSection === 'resources' ? (
-                  <ChevronUp className="h-4 w-4" />
+                  <ChevronUp className="h-5 w-5" />
                 ) : (
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="h-5 w-5" />
                 )}
               </button>
               {expandedSection === 'resources' && (
-                <div className="pl-4 space-y-1">
+                <div className="mt-4 space-y-4 pl-4">
                   {resources.map((item) => (
-                    item.href.startsWith('http') ? (
-                      <a
-                        key={item.title}
-                        href={item.href}
-                        className={cn("block px-3 py-2 text-sm hover:bg-accent/5 rounded-lg", item.className)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {item.title}
-                      </a>
-                    ) : (
-                      <a
-                        key={item.title}
-                        href={item.href}
-                        className={cn("block px-3 py-2 text-sm hover:bg-accent/5 rounded-lg", item.className)}
-                      >
-                        {item.title}
-                      </a>
-                    )
-                  ))}
-                </div>
-              )}
-
-              <button
-                onClick={() => toggleSection('company')}
-                className="w-full flex items-center justify-between px-3 py-2 font-medium hover:bg-accent/5 rounded-lg"
-              >
-                <span>Company</span>
-                {expandedSection === 'company' ? (
-                  <ChevronUp className="h-4 w-4" />
-                ) : (
-                  <ChevronDown className="h-4 w-4" />
-                )}
-              </button>
-              {expandedSection === 'company' && (
-                <div className="pl-4 space-y-1">
-                  {company.map((item) => (
                     <a
                       key={item.title}
                       href={item.href}
                       className={cn(
-                        "block px-3 py-2 text-sm hover:bg-accent/5 rounded-lg",
-                        item.disabled && "cursor-not-allowed opacity-70"
+                        "block text-muted-foreground hover:text-foreground transition-colors",
+                        item.disabled && "opacity-50 cursor-not-allowed"
                       )}
                       onClick={item.disabled ? (e) => e.preventDefault() : undefined}
                     >
                       <div className="flex items-center gap-2">
-                        {item.title}
+                        <span>{item.title}</span>
                         {item.badge && (
                           <Badge variant="secondary" className="text-xs">
                             {item.badge}
@@ -440,26 +296,75 @@ export function Navbar() {
                   ))}
                 </div>
               )}
+            </div>
 
-              <a
-                href="/pricing"
-                className="block px-3 py-2 text-sm hover:bg-accent/5 rounded-lg"
+            {/* Company Section */}
+            <div>
+              <button
+                className="flex w-full items-center justify-between text-lg font-medium"
+                onClick={() => toggleSection('company')}
               >
-                Pricing
-              </a>
+                Company
+                {expandedSection === 'company' ? (
+                  <ChevronUp className="h-5 w-5" />
+                ) : (
+                  <ChevronDown className="h-5 w-5" />
+                )}
+              </button>
+              {expandedSection === 'company' && (
+                <div className="mt-4 space-y-4 pl-4">
+                  {company.map((item) => (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      className={cn(
+                        "block text-muted-foreground hover:text-foreground transition-colors",
+                        item.disabled && "opacity-50 cursor-not-allowed"
+                      )}
+                      onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{item.title}</span>
+                        {item.badge && (
+                          <Badge variant="secondary" className="text-xs">
+                            {item.badge}
+                          </Badge>
+                        )}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
 
-              <div className="space-y-2 pt-4">
-                <a
-                  href="https://app.perception.to/auth/sign-in"
-                  className="block px-3 py-2 text-sm hover:bg-accent/5 rounded-lg"
-                >
-                  Login
+            <a href="/pricing" className="block text-lg font-medium">
+              Pricing
+            </a>
+          </div>
+
+          <div className="mt-auto p-4 space-y-4 border-t">
+            <div className="flex justify-center">
+              <ThemeToggle />
+            </div>
+            <div className="space-y-2">
+              <a 
+                href="https://app.perception.to/auth/sign-in" 
+                className="block w-full text-center text-sm hover:text-primary"
+              >
+                Login
+              </a>
+              <Button 
+                className="w-full bg-black text-white hover:bg-gray-900 dark:bg-black dark:hover:bg-gray-900"
+                asChild
+              >
+                <a href="https://app.perception.to/auth/sign-up">
+                  Go to platform
                 </a>
-              </div>
+              </Button>
             </div>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }

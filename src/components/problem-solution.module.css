@@ -1,0 +1,65 @@
+.container {
+  min-height: 300vh;
+  position: relative;
+  margin-top: 0; /* Remove the empty space above */
+  background-color: black;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: black;
+  transition: transform 0.5s ease;
+}
+
+.sticky.revealComplete {
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.textContainer {
+  font-size: 1.75rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .textContainer {
+    font-size: 2.25rem;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .textContainer {
+    font-size: 3rem;
+    padding: 0 2rem;
+  }
+}
+
+.word {
+  opacity: 0.2;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease, color 0.5s ease;
+  display: inline-block;
+  margin-right: 0.2em;
+  will-change: transform, opacity;
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.revealed.highlighted {
+  color: #fb923c; /* orange-400 */
+  opacity: 1;
+} 

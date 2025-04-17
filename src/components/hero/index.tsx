@@ -82,7 +82,7 @@ export function Hero() {
               </a>
             </div>
             
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl gradient-text">
+            <h1 className="text-4xl font-extralight tracking-tight sm:text-hero gradient-text">
               Unlock the Power of Bitcoin Market Intelligence
             </h1>
             

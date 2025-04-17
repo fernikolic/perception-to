@@ -1,12 +1,12 @@
 import { Hero } from '@/components/hero';
 import { Features } from '@/components/features';
-import { PainPoints } from '@/components/pain-points';
+import { ProblemSolution } from '@/components/problem-solution';
 
 export default function Home() {
   return (
     <main className="relative">
       <Hero />
-      <PainPoints />
+      <ProblemSolution />
       <Features />
     </main>
   );

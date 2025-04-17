@@ -2,6 +2,7 @@ import { ResponsiveContainer, AreaChart, Area, CartesianGrid, Tooltip } from 're
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { XAxis, YAxis } from './chart-axis';
 import { chartDefaults } from './chart-utils';
+import { BrowserFrame } from './browser-frame';
 
 interface AreaChartProps {
   data: Array<{
@@ -12,7 +13,8 @@ interface AreaChartProps {
 
 export function AreaChartComponent({ data }: AreaChartProps) {
   return (
-    <Card>
+    <Card className="overflow-hidden">
+      <BrowserFrame url="app.perception.to/companies" />
       <CardHeader>
         <CardTitle>Resource Usage</CardTitle>
       </CardHeader>

@@ -23,10 +23,23 @@ export function TweetCard({ author }: TweetCardProps) {
     };
   }, []);
 
+  // Extract tweet ID from URL if it's a full URL
+  const tweetId = author.tweetUrl.includes('x.com') 
+    ? author.tweetUrl.split('/').pop()
+    : author.tweetUrl;
+
+  // Add data-conversation="none" for Tuur Demeester's tweet
+  const isTuurTweet = author.name === "Tuur Demeester";
+
   return (
     <div className="rounded-xl bg-card p-6 h-full">
-      <blockquote className="twitter-tweet" data-theme="dark" data-width="100%">
-        <a href={`https://twitter.com/x/status/${author.tweetUrl}`}></a>
+      <blockquote 
+        className="twitter-tweet" 
+        data-theme="dark" 
+        data-width="100%"
+        data-conversation={isTuurTweet ? "none" : undefined}
+      >
+        <a href={`https://twitter.com/x/status/${tweetId}`}></a>
       </blockquote>
     </div>
   );

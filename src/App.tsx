@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/navbar';
 import { Hero } from '@/components/hero';
+import { ProblemSolution } from '@/components/problem-solution';
+import { ProblemCards } from '@/components/problem-cards';
 import { AsSeenOn } from '@/components/as-seen-on';
 import { Features } from '@/components/features';
 import { Integrations } from '@/components/integrations';
@@ -27,13 +29,16 @@ import { PrivacyPage } from '@/pages/legal/privacy';
 import { TermsPage } from '@/pages/legal/terms';
 import { LearnPage } from '@/pages/learn';
 import { ArticlePage } from '@/pages/learn/[slug]';
+import TestimonialsPage from '@/pages/testimonials';
 import PageTransition from '@/components/PageTransition';
 
 function HomePage() {
   return (
     <main>
       <Hero />
+      <ProblemSolution />
       <AsSeenOn />
+      <ProblemCards />
       <Features />
       <Integrations />
       <Community />
@@ -68,6 +73,7 @@ const App = () => {
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/learn" element={<LearnPage />} />
             <Route path="/learn/:slug" element={<ArticlePage />} />
+            <Route path="/testimonials" element={<TestimonialsPage />} />
           </Routes>
         </PageTransition>
         <Footer />

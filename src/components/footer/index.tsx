@@ -19,7 +19,7 @@ export function Footer() {
   return (
     <footer 
       ref={footerRef}
-      className="border-t relative isolate overflow-hidden" 
+      className="bg-black border-t border-white/10 relative isolate overflow-hidden" 
       onMouseMove={handleMouseMove}
     >
       {/* Interactive Gradient Background */}
@@ -30,7 +30,7 @@ export function Footer() {
             radial-gradient(
               1200px circle at ${mousePosition.x}px ${mousePosition.y}px,
               rgba(255,255,255,0.1),
-              transparent 60%
+              transparent 40%
             )
           `,
         }}
@@ -39,18 +39,19 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
         <div className="mb-12">
           <a href="/" className="flex items-center gap-2">
-            <Logo />
-            <span className="text-2xl font-bold">Perception</span>
+            <Logo white={true} />
+            <span className="text-2xl font-bold text-white">Perception</span>
           </a>
-          <p className="mt-4 max-w-md text-sm text-muted-foreground">
-          Uncover trends and insights that matter. Stay ahead of the Bitcoin market with our high-signal intelligence platform, delivering curated sentiment analysis and trend discovery across global sources.
+          <p className="mt-4 max-w-md text-sm text-white/60">
+            Stay ahead of the curve with real-time narrative intelligence.
+            Perception delivers high-signal sentiment analysis and trend discovery across Bitcoin, stablecoins, and digital finance—curated from the world's most credible sources.
           </p>
         </div>
         
         <FooterLinks />
         
-        <div className="mt-12 flex flex-col items-center justify-between border-t pt-8 sm:flex-row">
-          <p className="text-sm text-muted-foreground">
+        <div className="mt-12 flex flex-col items-center justify-between border-t border-white/10 pt-8 sm:flex-row">
+          <p className="text-sm text-white/60">
             © {new Date().getFullYear()} Perception. All rights reserved.
           </p>
           <FooterSocial />

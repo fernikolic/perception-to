@@ -27,7 +27,7 @@ export function FooterSocial() {
           variant="ghost"
           size="icon"
           asChild
-          className="hover:bg-neutral-600/70 hover:scale-110 transition-all duration-200"
+          className="text-white/60 hover:text-white hover:bg-white/10 hover:scale-110 transition-all duration-200"
         >
           <a
             href={href}

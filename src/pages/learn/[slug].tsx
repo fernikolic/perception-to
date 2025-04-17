@@ -113,7 +113,7 @@ export function ArticlePage() {
               </span>
             </div>
           )}
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
+          <h1 className="text-4xl font-extralight tracking-tight sm:text-5xl mb-4">
             {article.title}
           </h1>
           <p className="text-xl text-muted-foreground">

@@ -1,142 +1,229 @@
 import { ComposedChart } from './charts/composed-chart';
-import { TrendingTopics } from './trends';
-import { XCircle, ChevronDown } from 'lucide-react';
+import { SavedViews } from './saved-views';
+import { SourceFeed } from './source-feed';
+import { Card, CardContent } from '@/components/ui/card';
+import { TrendBarChart } from './trends/trend-bar-chart';
 
-const painPoints = [
-  {
-    problem: 'No real-time sentiment data available',
-    consequence: 'Miss critical narrative shifts that drive price movements',
-  },
-  {
-    problem: 'Manual tracking across social media',
-    consequence: 'Waste hours reading Twitter and Reddit to gauge market sentiment',
-  },
-  {
-    problem: 'Scattered market narratives',
-    consequence: 'Lose track of how different stories impact market sentiment',
-  },
-  {
-    problem: 'Multiple disconnected tools',
-    consequence: 'Can\'t correlate sentiment with price movements effectively',
-  },
-  {
-    problem: 'Limited historical sentiment data',
-    consequence: 'Can\'t learn from past narrative-driven market moves',
-  },
-];
-
-// Generate mock data for the last 12 months
+// Generate mock data for Apr 2024 to Mar 2025
 const generateMockData = () => {
-  return Array.from({ length: 12 }, (_, i) => ({
-    month: new Date(2023, i).toLocaleString('default', { month: 'short' }),
-    price: Math.floor(20000 + Math.random() * 30000 + i * 2000),
-    sentiment: Math.floor(40 + Math.random() * 60),
+  const months = [
+    'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024', 'Aug 2024', 'Sep 2024',
+    'Oct 2024', 'Nov 2024', 'Dec 2024', 'Jan 2025', 'Feb 2025', 'Mar 2025'
+  ];
+
+  // Bitcoin price data points from the image
+  const bitcoinPrices = [
+    65000, 65500, 65000, 63000, 60000, 60000,
+    70000, 80000, 90000, 100000, 95000, 85000
+  ];
+
+  // Perception index data points from the image
+  const perceptionValues = [
+    50, 55, 52, 48, 57, 63,
+    60, 57, 55, 53, 50, 57
+  ];
+
+  return months.map((date, i) => ({
+    date,
+    bitcoin: bitcoinPrices[i],
+    perception: perceptionValues[i]
   }));
 };
 
-const chartData = generateMockData();
-
 export function Features() {
+  const chartData = generateMockData();
+  
   return (
     <section id="features" className="relative overflow-hidden py-24 sm:py-32">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,0.05),transparent)]" />
       
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Pain Points Section */}
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1">
-            <span className="text-sm font-medium">Market Sentiment Challenges</span>
-          </div>
-          
-          <h2 className="mt-8 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Why Bitcoin market narratives are hard to track
+        <div className="mx-auto max-w-5xl text-center">
+          <h2 className="mt-8 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight">
+            Perception replaces hours of manual research with a single, authoritative view.
           </h2>
 
-          <p className="mt-6 text-xl text-muted-foreground">
-            No platform offers real-time sentiment data. Hours spent scrolling through social media. Missed narrative shifts. Here's why tracking Bitcoin market sentiment is broken.
-          </p>
-
-          <div className="mt-8 flex justify-center">
-            <ChevronDown className="h-8 w-8 animate-bounce text-muted-foreground" />
+          <div className="mt-12 sm:mt-16 lg:mt-24 max-w-6xl mx-auto">
+            <div className="relative aspect-video rounded-2xl overflow-hidden bg-black/50 border border-white/10 shadow-2xl">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/20 flex items-center justify-center">
+                  <svg className="w-8 h-8 sm:w-10 sm:h-10 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+              <img 
+                src="/demo-thumbnail.jpg" 
+                alt="Perception Demo" 
+                className="absolute inset-0 w-full h-full object-cover opacity-50"
+              />
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/tQbkhuYluOE?autoplay=1&mute=1&playsinline=1&enablejsapi=1"
+                title="Perception Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+            </div>
           </div>
         </div>
 
-        <div className="mx-auto mt-16 max-w-4xl">
-          <div className="grid grid-cols-1 gap-8 sm:gap-12">
-            {painPoints.map((point, index) => (
-              <div 
-                key={index}
-                className="group relative flex items-start gap-6 rounded-xl border border-primary/10 bg-gradient-to-br from-blue-100/[0.5] via-blue-50/[0.3] to-transparent dark:from-blue-950/[0.05] dark:via-blue-950/[0.03] dark:to-transparent p-8 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/10"
-              >
-                {/* Enhanced gradient overlay with glow effect */}
-                <div className="absolute inset-0 -z-10 rounded-xl bg-gradient-to-br from-blue-200/[0.3] via-blue-100/[0.2] to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100 dark:from-blue-400/[0.07] dark:via-blue-950/[0.05] dark:to-transparent" />
-                <div className="absolute inset-0 -z-10 rounded-xl bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1),transparent_50%)] opacity-0 transition-all duration-500 group-hover:opacity-100" />
+        {/* What Perception Tracks Section */}
+        <div className="mx-auto mt-16 sm:mt-24 lg:mt-32 max-w-7xl">
+          <div className="relative overflow-hidden rounded-3xl bg-zinc-900 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.04),transparent_70%)]" />
+            
+            <div className="space-y-8 sm:space-y-12">
+              <div className="space-y-4 sm:space-y-8">
+                <div className="inline-flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-orange-500" />
+                  <span className="text-sm font-light text-zinc-400">what Perception tracks</span>
+                </div>
 
-                {/* Card content wrapper */}
-                <div className="relative flex items-start gap-6 w-full">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-red-500/10 transition-colors duration-300 group-hover:bg-red-500/20">
-                    <XCircle className="h-8 w-8 text-red-500 dark:text-red-400" />
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight text-zinc-100 max-w-2xl">
+                  A comprehensive map of the digital financial landscape:
+                </h2>
+              </div>
+
+              <div className="flex justify-end">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full sm:w-[800px]">
+                  <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-10 hover:bg-zinc-900/80 transition-colors group relative">
+                    <div className="flex flex-col h-full">
+                      <div>
+                        <h3 className="text-sm font-medium text-zinc-200 uppercase tracking-wider">Bitcoin</h3>
+                        <p className="text-zinc-400 text-sm mt-2">The base layer. Institutional commentary, developer activity, regulatory narratives.</p>
+                      </div>
+                      <div className="flex items-center justify-center mt-auto">
+                        <img 
+                          src="/images/bitcoin.png" 
+                          alt="Bitcoin visualization" 
+                          className="w-48 h-48 sm:w-64 sm:h-64 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  
-                  <div className="space-y-3">
-                    <p className="text-xl font-semibold leading-7 tracking-tight">
-                      {point.problem}
-                    </p>
-                    <p className="text-base text-muted-foreground/90">
-                      Result: {point.consequence}
-                    </p>
+
+                  <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-10 hover:bg-zinc-900/80 transition-colors group relative">
+                    <div className="flex flex-col h-full">
+                      <div>
+                        <h3 className="text-sm font-medium text-zinc-200 uppercase tracking-wider">Stablecoins</h3>
+                        <p className="text-zinc-400 text-sm mt-2">Adoption trends, issuer movements, regional policy shifts.</p>
+                      </div>
+                      <div className="flex items-center justify-center mt-auto">
+                        <img 
+                          src="/images/stablecoins.png" 
+                          alt="Stablecoins visualization" 
+                          className="w-48 h-48 sm:w-64 sm:h-64 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-10 hover:bg-zinc-900/80 transition-colors group relative">
+                    <div className="flex flex-col h-full">
+                      <div>
+                        <h3 className="text-sm font-medium text-zinc-200 uppercase tracking-wider">Tokenized Assets</h3>
+                        <p className="text-zinc-400 text-sm mt-2">Real-world asset tokenization, market developments, regulatory frameworks.</p>
+                      </div>
+                      <div className="flex items-center justify-center mt-auto">
+                        <img 
+                          src="/images/tokenized assets.png" 
+                          alt="Tokenized Assets visualization" 
+                          className="w-48 h-48 sm:w-64 sm:h-64 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-10 hover:bg-zinc-900/80 transition-colors group relative">
+                    <div className="flex flex-col h-full">
+                      <div>
+                        <h3 className="text-sm font-medium text-zinc-200 uppercase tracking-wider">Macro Catalysts</h3>
+                        <p className="text-zinc-400 text-sm mt-2">Rate moves, FX flows, capital controls, and other drivers of digital asset narratives.</p>
+                      </div>
+                      <div className="flex items-center justify-center mt-auto">
+                        <img 
+                          src="/images/macro catalysts.png" 
+                          alt="Macro visualization" 
+                          className="w-48 h-48 sm:w-64 sm:h-64 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
 
-        {/* Solution Section */}
-        <div className="mx-auto mt-32 max-w-2xl text-center">
-          <h2 className="mt-8 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl flex flex-col gap-6">
-              The solution:
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-orange-500">
-              Real-time Bitcoin market intelligence
-            </span>
-          </h2>
-
-          <p className="mt-6 text-xl text-muted-foreground">
-            Get actionable insights, spot trends early, and make informed decisions with confidence.
-          </p>
-
-          <div className="mt-8 flex justify-center">
-            <ChevronDown className="h-8 w-8 animate-bounce text-muted-foreground" />
-          </div>
-        </div>
-        
-        <div className="mx-auto mt-8 grid grid-cols-1 gap-16">
-          {/* First row - Sentiment & Price */}
+        {/* Chart Sections */}
+        <div className="mx-auto mt-16 sm:mt-24 lg:mt-32 grid grid-cols-1 gap-8 sm:gap-16">
+          {/* First row - Perception Index */}
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
             <div className="text-left lg:pr-8">
-              <h3 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                Track sentiment and price movements
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight">
+                The Perception Index
               </h3>
-              <p className="mt-4 text-xl text-muted-foreground">
-                See how market sentiment correlates with price movements across social media, news, and community discussions.
+              <p className="mt-4 text-lg sm:text-xl text-muted-foreground">
+                Real-time sentiment across audience segments
               </p>
             </div>
             <div className="w-full">
               <ComposedChart data={chartData} />
             </div>
           </div>
-          
-          {/* Second row - Breaking Trends */}
+
+          {/* Second row - Trend Detection */}
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
             <div className="w-full order-last lg:order-first">
-              <TrendingTopics />
+              <Card className="overflow-hidden">
+                <CardContent className="border-none p-4 sm:p-6">
+                  <TrendBarChart data={[
+                    { name: "Bitcoin ETF", volume: 1200, description: "Growing discussion" },
+                    { name: "Layer 2", volume: 950, description: "Scaling solutions" },
+                    { name: "Institutional", volume: 800, description: "Market adoption" }
+                  ]} />
+                </CardContent>
+              </Card>
             </div>
             <div className="text-left lg:text-right lg:pl-8">
-              <h3 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                Stay ahead of market trends
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight">
+                Trend Detection
               </h3>
-              <p className="mt-4 text-xl text-muted-foreground">
-                Get real-time alerts on emerging narratives and market-moving trends, filtered from the noise.
+              <p className="mt-4 text-lg sm:text-xl text-muted-foreground">
+                Narrative clusters surfaced with summaries and highlights
+              </p>
+            </div>
+          </div>
+
+          {/* Third row - Source Transparency */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
+            <div className="text-left lg:pr-8">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight">
+                Source Transparency
+              </h3>
+              <p className="mt-4 text-lg sm:text-xl text-muted-foreground">
+                Filter by source type (media, social, technical, policy)
+              </p>
+            </div>
+            <div className="w-full">
+              <SourceFeed />
+            </div>
+          </div>
+
+          {/* Fourth row - Saved Views */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
+            <div className="w-full order-last lg:order-first">
+              <SavedViews />
+            </div>
+            <div className="text-left lg:text-right lg:pl-8">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight">
+                Saved Views
+              </h3>
+              <p className="mt-4 text-lg sm:text-xl text-muted-foreground">
+                Custom dashboards for your specific needs
               </p>
             </div>
           </div>

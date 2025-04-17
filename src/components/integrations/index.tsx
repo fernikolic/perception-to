@@ -190,7 +190,7 @@ export function Integrations() {
       
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          <h2 className="text-4xl font-extralight tracking-tight sm:text-5xl lg:text-6xl">
             Monitor sentiment across            <span className="bg-gradient-to-r from-orange-500 to-orange-800 inline-block text-transparent bg-clip-text">
               100+ channels
             </span>

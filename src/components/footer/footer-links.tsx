@@ -53,23 +53,23 @@ export function FooterLinks() {
     <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
       {footerSections.map((section) => (
         <div key={section.title}>
-          <h3 className="text-sm font-semibold">{section.title}</h3>
+          <h3 className="text-sm font-semibold text-white">{section.title}</h3>
           <ul className="mt-6 space-y-4">
             {section.links.map((link) => (
               <li key={link.label}>
                 {link.comingSoon ? (
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-muted-foreground cursor-not-allowed">
+                    <span className="text-sm text-white/40 cursor-not-allowed">
                       {link.label}
                     </span>
-                    <span className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 text-xs font-medium">
+                    <span className="inline-flex items-center rounded-md bg-white/10 px-1.5 py-0.5 text-[10px] font-medium text-white/60">
                       Coming soon
                     </span>
                   </div>
                 ) : (
                   <a
                     href={link.href}
-                    className={`text-sm text-muted-foreground transition-colors hover:text-primary ${link.className || ''}`}
+                    className={`text-sm text-white/60 transition-colors hover:text-white ${link.className || ''}`}
                     target={link.href.startsWith('http') ? '_blank' : undefined}
                     rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   >

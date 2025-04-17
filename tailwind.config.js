@@ -16,6 +16,29 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
+      fontWeight: {
+        h1: '200',
+        h2: '200',
+        h3: '200',
+        h4: '300',
+        h5: '300',
+        h6: '400',
+        thin: '100',
+        extralight: '200',
+        light: '300',
+      },
+      letterSpacing: {
+        'tight': '-0.02em',
+        'wider': '.1em',
+        'widest': '.25em',
+      },
+      fontSize: {
+        'display': ['4.5rem', { lineHeight: '1' }],
+        'hero': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

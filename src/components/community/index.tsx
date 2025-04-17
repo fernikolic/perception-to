@@ -3,23 +3,37 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const communities = [
   {
-    name: 'Bitcoin Companies',
-    image: 'https://storage.googleapis.com/btcp_bucket/marketing/researchers.png',
-    description: 'Get real-time market intelligence that gives you a competitive edge. Track sentiment shifts, monitor competitors, and spot opportunities early.',
-    buttonText: 'Join the Beta',
-    href: 'https://app.perception.to/auth/sign-up',
-  },
-  {
-    name: 'Journalists & Creators',
-    image: 'https://storage.googleapis.com/btcp_bucket/marketing/journalists.png',
-    description: 'Find the stories that matter. Our platform surfaces the most impactful trends and narratives across the Bitcoin ecosystem.',
-    buttonText: 'Join the Beta',
-    href: 'https://app.perception.to/auth/sign-up',
-  },
-  {
-    name: 'Investors & VCs',
+    name: 'Institutional Investors',
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/investors.png',
-    description: 'Get early signals, sentiment analysis, and trend insights to help you spot opportunities and avoid costly mistakes.',
+    description: 'Correlate sentiment with flows, allocation, and risk',
+    buttonText: 'Join the Beta',
+    href: 'https://app.perception.to/auth/sign-up',
+  },
+  {
+    name: 'Analysts & Researchers',
+    image: 'https://storage.googleapis.com/btcp_bucket/marketing/researchers.png',
+    description: 'Replace scattered tracking with a single intelligence layer',
+    buttonText: 'Join the Beta',
+    href: 'https://app.perception.to/auth/sign-up',
+  },
+  {
+    name: 'Fintech Founders',
+    image: '/images/fintech-founders.png',
+    description: 'Understand narrative shifts shaping adoption',
+    buttonText: 'Join the Beta',
+    href: 'https://app.perception.to/auth/sign-up',
+  },
+  {
+    name: 'VCs & Allocators',
+    image: '/images/vc-allocators.png',
+    description: 'Identify emerging themes before they hit traction',
+    buttonText: 'Join the Beta',
+    href: 'https://app.perception.to/auth/sign-up',
+  },
+  {
+    name: 'Policy Experts',
+    image: '/images/policy-experts.png',
+    description: 'Monitor public discourse and regulatory momentum',
     buttonText: 'Join the Beta',
     href: 'https://app.perception.to/auth/sign-up',
   },
@@ -27,59 +41,86 @@ const communities = [
 
 export function Community() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,0.05),transparent)]" />
+    <section className="relative overflow-hidden bg-black py-24 sm:py-32">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,0.1),transparent)]" />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex flex-col items-center gap-4">
-          <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">
-            <span className="text-sm font-medium">Use Cases</span>
+          <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1">
+            <span className="text-sm font-medium text-white">Use Cases</span>
           </div>
           
-          <h2 className="mt-4 text-center text-4xl font-bold tracking-tight sm:text-5xl">
-            Your Bitcoin market intelligence command center
+          <h2 className="mt-4 text-center text-7xl font-thin tracking-tight text-white sm:text-8xl lg:text-9xl">
+            Designed for the Strategic Class
           </h2>
           
-          <p className="mt-4 text-center text-xl text-muted-foreground">
-            <span className="text-foreground">One platform</span> for{' '}
-            <span className="text-foreground">all your Bitcoin insights</span>. Track trends, analyze sentiment, and stay informed with real-time data.
+          <p className="mt-4 text-center text-xl text-white/70">
+            Perception is not for speculators.
+            It's for those shaping capital, policy, and infrastructure.
           </p>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {communities.map((community) => (
-            <Card
-              key={community.name}
-              className="group relative overflow-hidden bg-card/50 backdrop-blur-sm border border-border/50 transition-all duration-300 hover:-translate-y-1 hover:bg-card/60"
-            >
-              <CardContent className="p-0">
-                <div className="relative h-[200px] w-full overflow-hidden">
-                  <img
-                    src={community.image}
-                    alt={community.name}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                
-                <div className="p-6 text-center bg-card/50">
-                  <h3 className="text-xl font-semibold text-foreground">{community.name}</h3>
-                  <p className="mt-2 text-muted-foreground">{community.description}</p>
-                  <Button
-                    className="mt-6 rounded-lg px-8 bg-blue-950 hover:bg-blue-900 text-white dark:bg-blue-600 dark:hover:bg-blue-500 transition-colors"
-                    asChild
-                  >
-                    <a 
-                      href={community.href} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2"
+        <div className="mt-16 space-y-8">
+          {/* First row with 2 items */}
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+            {communities.slice(0, 2).map((community) => (
+              <Card 
+                key={community.name} 
+                className="relative overflow-hidden border-white/20 bg-white/10 transition-colors hover:bg-white/20"
+              >
+                <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,0.1),transparent)]" />
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center text-center">
+                    <img
+                      src={community.image}
+                      alt={community.name}
+                      className="h-56 w-96 rounded-lg object-cover"
+                    />
+                    <h3 className="mt-6 text-3xl font-thin tracking-tight text-white">{community.name}</h3>
+                    <p className="mt-2 text-sm text-white/70">{community.description}</p>
+                    <Button 
+                      className="mt-4 bg-black text-white hover:bg-gray-900 dark:bg-black dark:hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl"
+                      asChild
                     >
-                      {community.buttonText}
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                      <a href={community.href}>
+                        Go to platform
+                      </a>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Second row with 3 items */}
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {communities.slice(2).map((community) => (
+              <Card 
+                key={community.name} 
+                className="relative overflow-hidden border-white/20 bg-white/10 transition-colors hover:bg-white/20"
+              >
+                <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,0.1),transparent)]" />
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center text-center">
+                    <img
+                      src={community.image}
+                      alt={community.name}
+                      className="h-56 w-96 rounded-lg object-cover"
+                    />
+                    <h3 className="mt-6 text-3xl font-thin tracking-tight text-white">{community.name}</h3>
+                    <p className="mt-2 text-sm text-white/70">{community.description}</p>
+                    <Button 
+                      className="mt-4 bg-black text-white hover:bg-gray-900 dark:bg-black dark:hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl"
+                      asChild
+                    >
+                      <a href={community.href}>
+                        Go to platform
+                      </a>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>

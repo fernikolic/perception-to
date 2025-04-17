@@ -2,6 +2,7 @@ import { ResponsiveContainer, BarChart, Bar, CartesianGrid, Tooltip } from 'rech
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { XAxis, YAxis } from './chart-axis';
 import { chartDefaults } from './chart-utils';
+import { BrowserFrame } from './browser-frame';
 
 interface BarChartProps {
   data: Array<{
@@ -12,7 +13,8 @@ interface BarChartProps {
 
 export function BarChartComponent({ data }: BarChartProps) {
   return (
-    <Card>
+    <Card className="overflow-hidden">
+      <BrowserFrame url="app.perception.to/bookmarks" />
       <CardHeader>
         <CardTitle>Monthly Performance</CardTitle>
       </CardHeader>
