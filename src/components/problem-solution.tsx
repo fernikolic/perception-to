@@ -17,17 +17,13 @@ export function ProblemSolution() {
     const handleScroll = () => {
       const sectionRect = section.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
-      const sectionCenter = sectionRect.top + (sectionRect.height / 2);
-      const viewportCenter = viewportHeight / 2;
       
-      // Calculate how far the section's center is from the viewport center
-      const distanceFromCenter = Math.abs(sectionCenter - viewportCenter);
-      const maxDistance = viewportHeight * 0.8; // Reduced from 1.2 to 0.8 for earlier reveal
+      // Calculate how far down the page we've scrolled relative to the section
+      const scrollProgress = -sectionRect.top / (sectionRect.height - viewportHeight);
       
-      if (!isRevealed) {
-        // Calculate progress based on how centered the section is
-        const progress = Math.max(0, 1 - (distanceFromCenter / maxDistance));
-        const wordsToShow = Math.floor(progress * totalWords);
+      if (!isRevealed && scrollProgress >= 0 && scrollProgress <= 1) {
+        // Calculate how many words to show based on scroll progress
+        const wordsToShow = Math.floor(scrollProgress * totalWords);
         
         words.forEach((word, index) => {
           if (index <= wordsToShow) {
@@ -37,17 +33,10 @@ export function ProblemSolution() {
           }
         });
 
-        // Check if all words are revealed and section is centered
-        const allRevealed = Array.from(words).every(word => 
-          word.classList.contains(styles.revealed)
-        );
-        const isCentered = distanceFromCenter < (viewportHeight * 0.3); // Increased from 0.2 to 0.3 for more lenient centering
-
-        if (allRevealed && isCentered) {
+        // Check if all words are revealed
+        if (wordsToShow >= totalWords - 1) {
           isRevealed = true;
           section.classList.add(styles.revealComplete);
-        } else {
-          section.classList.remove(styles.revealComplete);
         }
       }
     };
@@ -55,7 +44,9 @@ export function ProblemSolution() {
     // Initial check
     handleScroll();
 
+    // Add scroll listener with passive option for better performance
     window.addEventListener('scroll', handleScroll, { passive: true });
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
