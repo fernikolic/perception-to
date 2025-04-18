@@ -9,12 +9,12 @@ const tiers = [
     price: '$99',
     features: [
       'Perception Weekly Pro reports',
-      'Sentiment heatmaps (X, Reddit, media)',
+      'Sentiment heatmaps (X, Reddit, media, more)',
       'Access to market snapshot dashboard',
       'High-signal trend alerts',
     ],
-    cta: 'Subscribe Now',
-    ctaLink: 'https://app.perception.to/auth/sign-up',
+    cta: 'Save 15+ Hours Per Week',
+    ctaLink: 'https://buy.stripe.com/4gw4jm8xP0Fa5u8aEH',
   },
   {
     name: 'Institutional',
@@ -30,8 +30,8 @@ const tiers = [
       'Multi-channel topic filters',
       'Early access to API by request',
     ],
-    cta: 'Request Access',
-    ctaLink: 'https://app.perception.to/auth/sign-up',
+    cta: 'Get Instant Access',
+    ctaLink: 'https://buy.stripe.com/cN28zC15n2NibSw9AC',
   },
   {
     name: 'Founding Partner',
@@ -49,7 +49,7 @@ const tiers = [
       'White-glove onboarding',
     ],
     cta: 'Book a Strategy Call',
-    ctaLink: 'https://app.perception.to/auth/sign-up',
+    ctaLink: 'https://calendly.com/fernikolic/30min',
   },
 ];
 

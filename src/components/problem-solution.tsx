@@ -4,6 +4,7 @@ import styles from './problem-solution.module.css';
 export function ProblemSolution() {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const animationFrameRef = useRef<number>();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -15,30 +16,44 @@ export function ProblemSolution() {
     let isRevealed = false;
 
     const handleScroll = () => {
-      const sectionRect = section.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      
-      // Calculate how far down the page we've scrolled relative to the section
-      const scrollProgress = -sectionRect.top / (sectionRect.height - viewportHeight);
-      
-      if (!isRevealed && scrollProgress >= 0 && scrollProgress <= 1) {
-        // Calculate how many words to show based on scroll progress
-        const wordsToShow = Math.floor(scrollProgress * totalWords);
-        
-        words.forEach((word, index) => {
-          if (index <= wordsToShow) {
-            word.classList.add(styles.revealed);
-          } else {
-            word.classList.remove(styles.revealed);
-          }
-        });
-
-        // Check if all words are revealed
-        if (wordsToShow >= totalWords - 1) {
-          isRevealed = true;
-          section.classList.add(styles.revealComplete);
-        }
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
       }
+
+      animationFrameRef.current = requestAnimationFrame(() => {
+        const sectionRect = section.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        
+        // Calculate scroll progress relative to the viewport
+        const startTrigger = viewportHeight * 0.2; // Start when section is 20% into viewport
+        const endTrigger = viewportHeight * 0.8; // End when section is 80% into viewport
+        
+        // Normalize progress between start and end triggers
+        const rawProgress = (startTrigger - sectionRect.top) / (endTrigger - startTrigger);
+        const progress = Math.max(0, Math.min(1, rawProgress));
+        
+        if (!isRevealed) {
+          const wordsToShow = Math.floor(progress * totalWords);
+          
+          words.forEach((word, index) => {
+            // Add a slight delay between each word
+            const wordDelay = index * 50;
+            setTimeout(() => {
+              if (index <= wordsToShow) {
+                word.classList.add(styles.revealed);
+              } else {
+                word.classList.remove(styles.revealed);
+              }
+            }, wordDelay);
+          });
+
+          // Check if all words are revealed
+          if (progress >= 0.95) {
+            isRevealed = true;
+            section.classList.add(styles.revealComplete);
+          }
+        }
+      });
     };
 
     // Initial check
@@ -49,6 +64,9 @@ export function ProblemSolution() {
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
     };
   }, []);
 
@@ -70,6 +88,7 @@ export function ProblemSolution() {
                       <span 
                         key={i} 
                         className={`${styles.word} ${isHighlighted ? styles.highlighted : ''}`}
+                        style={{ transitionDelay: `${i * 50}ms` }}
                       >
                         {word}{' '}
                       </span>
@@ -83,7 +102,11 @@ export function ProblemSolution() {
                 <div className="h-px w-8 sm:w-12 bg-white/20" aria-hidden="true" />
                 <p className={styles.textContainer}>
                   {solutionText.split(' ').map((word, i) => (
-                    <span key={i} className={styles.word}>
+                    <span 
+                      key={i} 
+                      className={styles.word}
+                      style={{ transitionDelay: `${(problemText.split(' ').length + i) * 50}ms` }}
+                    >
                       {word}{' '}
                     </span>
                   ))}
