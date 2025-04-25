@@ -1,28 +1,63 @@
 .container {
-  min-height: 300vh;
-  position: relative;
-  margin-top: 0; /* Remove the empty space above */
+  width: 100%;
+  height: 100vh;
   background-color: black;
-  overflow-x: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
-.sticky {
-  position: sticky;
+.container.locked {
+  z-index: 9000;
+}
+
+.container.complete {
+  z-index: 5;
+}
+
+.lockInPlace {
+  position: fixed !important;
   top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
   height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
   background-color: black;
-  transform: translateZ(0);
-  will-change: transform, opacity;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.sticky.revealComplete {
-  transform: translateY(-25vh) translateZ(0);
-  opacity: 0;
+/* Style for when body is locked during reveal */
+:global(.bodyLocked) {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+  position: relative;
+}
+
+/* When the section is in view */
+.container.inView .content {
+  z-index: 5;
+}
+
+/* Once complete, allow normal scrolling */
+.container.complete .content {
+  z-index: 0;
 }
 
 .textContainer {
@@ -33,7 +68,6 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 0 1rem;
-  transform: translateZ(0);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -52,24 +86,33 @@
 }
 
 .word {
-  opacity: 0.1;
-  transform: translateY(30px) translateZ(0);
   display: inline-block;
   margin-right: 0.2em;
-  will-change: transform, opacity;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  white-space: nowrap;
+}
+
+/* Prevent "intelligence layer" from breaking */
+.noBreak {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.innerWord {
+  transition-property: opacity, filter, transform, color;
+  will-change: opacity, filter, transform, color;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transform-origin: center center;
+  display: inline-block;
 }
 
-.revealed {
-  opacity: 1;
-  transform: translateY(0) translateZ(0);
-}
-
-.revealed.highlighted {
+.highlighted {
   color: #fb923c; /* orange-400 */
-  opacity: 1;
+}
+
+/* Add smooth scrolling to the whole page */
+:global(html) {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
 } 

@@ -7,35 +7,35 @@ const communities = [
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/investors.png',
     description: 'Correlate sentiment with flows, allocation, and risk',
     buttonText: 'Join the Beta',
-    href: 'https://app.perception.to/auth/sign-up',
+    href: '/pricing',
   },
   {
     name: 'Analysts & Researchers',
     image: 'https://storage.googleapis.com/btcp_bucket/marketing/researchers.png',
     description: 'Replace scattered tracking with a single intelligence layer',
     buttonText: 'Join the Beta',
-    href: 'https://app.perception.to/auth/sign-up',
+    href: '/pricing',
   },
   {
     name: 'Fintech Founders',
     image: '/images/fintech-founders.png',
     description: 'Understand narrative shifts shaping adoption',
     buttonText: 'Join the Beta',
-    href: 'https://app.perception.to/auth/sign-up',
+    href: '/pricing',
   },
   {
     name: 'VCs & Allocators',
     image: '/images/vc-allocators.png',
     description: 'Identify emerging themes before they hit traction',
     buttonText: 'Join the Beta',
-    href: 'https://app.perception.to/auth/sign-up',
+    href: '/pricing',
   },
   {
     name: 'Policy Experts',
     image: '/images/policy-experts.png',
     description: 'Monitor public discourse and regulatory momentum',
     buttonText: 'Join the Beta',
-    href: 'https://app.perception.to/auth/sign-up',
+    href: '/pricing',
   },
 ];
 
@@ -82,7 +82,7 @@ export function Community() {
                       asChild
                     >
                       <a href={community.href}>
-                        Go to platform
+                        Get Started
                       </a>
                     </Button>
                   </div>
@@ -113,7 +113,7 @@ export function Community() {
                       asChild
                     >
                       <a href={community.href}>
-                        Go to platform
+                        Get Started
                       </a>
                     </Button>
                   </div>

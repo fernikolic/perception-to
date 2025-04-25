@@ -96,7 +96,7 @@ export function Hero() {
                 asChild
                 className="bg-white text-black hover:bg-white/90 transition-all"
               >
-                <a href="https://app.perception.to/auth/sign-up">
+                <a href="/pricing">
                   Get Early Access
                 </a>
               </Button>
