@@ -1,4 +1,22 @@
+import { useEffect, useState } from 'react';
+
 export function ProblemCards() {
+  const [currentDate, setCurrentDate] = useState('');
+  const [tomorrowDate, setTomorrowDate] = useState('');
+  
+  useEffect(() => {
+    // Format current date as YYYY-MM-DD
+    const today = new Date();
+    const formattedToday = today.toISOString().split('T')[0];
+    setCurrentDate(formattedToday);
+    
+    // Get tomorrow's date
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const formattedTomorrow = tomorrow.toISOString().split('T')[0];
+    setTomorrowDate(formattedTomorrow);
+  }, []);
+
   return (
     <section className="relative bg-gray-50 py-12 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -26,11 +44,10 @@ export function ProblemCards() {
               />
             </div>
             <h3 className="text-2xl sm:text-3xl font-extralight leading-tight">
-              Know where sentiment<br />
-              is headed
+              Quantify the mood
             </h3>
             <p className="mt-2 text-sm sm:text-base text-gray-600">
-              Track the evolution of sentiment across social media, news, and institutional commentary.
+              Live Perception Index™ and multi-channel heat-maps
             </p>
           </div>
 
@@ -44,29 +61,44 @@ export function ProblemCards() {
               />
             </div>
             <h3 className="text-2xl sm:text-3xl font-extralight leading-tight">
-              Know which narratives<br />
-              are gaining traction
+              Spot pivots early
             </h3>
             <p className="mt-2 text-sm sm:text-base text-gray-600">
-              Identify emerging themes and narratives that shape market perception and price action.
+              Trend clusters surface narrative shifts in real time
             </p>
           </div>
 
           {/* Market Actors Card */}
           <div className="flex flex-col bg-gray-50 rounded-xl p-4 sm:p-5">
             <div className="aspect-[3/2] relative overflow-hidden mb-4 bg-white rounded-xl">
-              <img
-                src="/images/How different market actors are reacting.png"
-                alt="How different market actors are reacting visualization"
-                className="absolute inset-0 w-full h-full object-contain transform scale-100 p-2"
-              />
+              <div className="absolute inset-0 w-full h-full p-2 overflow-auto font-mono text-xs sm:text-sm" style={{ background: "#1e293b" }}>
+                <pre className="text-green-400 p-2">
+                  <code>
+{`{
+  "${currentDate}": {
+    "Research": [
+      { "sentiment": "Positive", "total_entries": 120, "percentage": 60.0 },
+      { "sentiment": "Neutral", "total_entries": 50, "percentage": 25.0 },
+      { "sentiment": "Negative", "total_entries": 30, "percentage": 15.0 }
+    ],
+    "Tech Media": [
+      { "sentiment": "Positive", "total_entries": 80, "percentage": 40.0 },
+      { "sentiment": "Neutral", "total_entries": 70, "percentage": 35.0 },
+      { "sentiment": "Negative", "total_entries": 50, "percentage": 25.0 }
+    ]
+  },
+  "${tomorrowDate}": { "...": "..." }
+}`}
+                  </code>
+                </pre>
+                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#1e293b] to-transparent"></div>
+              </div>
             </div>
             <h3 className="text-2xl sm:text-3xl font-extralight leading-tight">
-              Know how market<br />
-              actors are reacting
+              Drop it where you work
             </h3>
             <p className="mt-2 text-sm sm:text-base text-gray-600">
-              Monitor how different market participants are responding to news and events in real-time.
+              Hourly Slack digests, rich dashboard, or API & Excel formulas
             </p>
           </div>
         </div>

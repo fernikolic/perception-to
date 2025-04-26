@@ -138,37 +138,39 @@ export function Navbar() {
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative -translate-x-1/2 bg-background rounded-lg border shadow-lg" style={{ left: 'calc(50% - 8px)' }}>
-                    {resources.map((item) => (
-                      <li key={item.title}>
-                        <NavigationMenuLink asChild>
-                          <a
-                            href={item.href}
-                            className={cn(
-                              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
-                              item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/5 hover:text-foreground focus:bg-accent/5 focus:text-foreground",
-                              item.className
-                            )}
-                            onClick={item.disabled ? (e) => e.preventDefault() : undefined}
-                          >
-                            <div className="flex items-center gap-2">
-                              <div className={cn("text-sm font-medium leading-none", item.className)}>
-                                {item.title}
-                              </div>
-                              {item.badge && (
-                                <Badge variant="secondary" className="text-xs">
-                                  {item.badge}
-                                </Badge>
+                  <div className="p-4 bg-background rounded-lg border shadow-lg w-[calc(100vw-2rem)] max-w-[800px]">
+                    <ul className="space-y-3">
+                      {resources.map((item) => (
+                        <li key={item.title}>
+                          <NavigationMenuLink asChild>
+                            <a
+                              href={item.href}
+                              className={cn(
+                                "block rounded-md p-3 transition-colors",
+                                item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/5 hover:text-foreground",
+                                item.className
                               )}
-                            </div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              {item.description}
-                            </p>
-                          </a>
-                        </NavigationMenuLink>
-                      </li>
-                    ))}
-                  </ul>
+                              onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                            >
+                              <div className="flex flex-wrap items-center gap-2 mb-2">
+                                <span className={cn("text-sm font-medium", item.className)}>
+                                  {item.title}
+                                </span>
+                                {item.badge && (
+                                  <Badge variant="secondary" className="text-xs">
+                                    {item.badge}
+                                  </Badge>
+                                )}
+                              </div>
+                              <p className="text-sm text-muted-foreground" style={{ maxWidth: "100%", wordWrap: "break-word" }}>
+                                {item.description}
+                              </p>
+                            </a>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
@@ -177,37 +179,39 @@ export function Navbar() {
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[calc(100vw-2rem)] max-w-[500px] gap-3 p-4 relative -translate-x-1/2 bg-background rounded-lg border shadow-lg" style={{ left: 'calc(50% - 8px)' }}>
-                    {company.map((item) => (
-                      <li key={item.title}>
-                        <NavigationMenuLink asChild>
-                          <a
-                            href={item.href}
-                            className={cn(
-                              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
-                              item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/5 hover:text-foreground focus:bg-accent/5 focus:text-foreground",
-                              item.className
-                            )}
-                            onClick={item.disabled ? (e) => e.preventDefault() : undefined}
-                          >
-                            <div className="flex items-center gap-2">
-                              <div className={cn("text-sm font-medium leading-none", item.className)}>
-                                {item.title}
-                              </div>
-                              {item.badge && (
-                                <Badge variant="secondary" className="text-xs">
-                                  {item.badge}
-                                </Badge>
+                  <div className="p-4 bg-background rounded-lg border shadow-lg w-[calc(100vw-2rem)] max-w-[800px]">
+                    <ul className="space-y-3">
+                      {company.map((item) => (
+                        <li key={item.title}>
+                          <NavigationMenuLink asChild>
+                            <a
+                              href={item.href}
+                              className={cn(
+                                "block rounded-md p-3 transition-colors",
+                                item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/5 hover:text-foreground",
+                                item.className
                               )}
-                            </div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              {item.description}
-                            </p>
-                          </a>
-                        </NavigationMenuLink>
-                      </li>
-                    ))}
-                  </ul>
+                              onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                            >
+                              <div className="flex flex-wrap items-center gap-2 mb-2">
+                                <span className={cn("text-sm font-medium", item.className)}>
+                                  {item.title}
+                                </span>
+                                {item.badge && (
+                                  <Badge variant="secondary" className="text-xs">
+                                    {item.badge}
+                                  </Badge>
+                                )}
+                              </div>
+                              <p className="text-sm text-muted-foreground" style={{ maxWidth: "100%", wordWrap: "break-word" }}>
+                                {item.description}
+                              </p>
+                            </a>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
@@ -233,7 +237,7 @@ export function Navbar() {
             asChild
           >
             <a href="/pricing">
-              Get Started
+              Start 7-Day API Trial
             </a>
           </Button>
         </div>
@@ -358,7 +362,7 @@ export function Navbar() {
                 asChild
               >
                 <a href="/pricing">
-                  Get Started
+                  Start 7-Day API Trial
                 </a>
               </Button>
             </div>

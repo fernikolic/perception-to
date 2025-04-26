@@ -2,63 +2,58 @@ import { PriceCard } from './price-card';
 
 const tiers = [
   {
-    name: 'Analyst',
-    id: 'analyst',
-    href: '#',
-    description: 'For researchers, analysts, and comms pros who want real-time signal.',
-    price: '$99',
+    name: 'PRO',
+    id: 'pro',
+    description: 'For analysts & comms leads — no code.',
+    price: '$299',
+    perUser: true,
     features: [
-      'Perception Weekly Pro reports',
-      'Sentiment heatmaps (X, Reddit, media, more)',
-      'Access to market snapshot dashboard',
-      'High-signal trend alerts',
+      'Live Perception Index™ & heat-maps',
+      'Trend Explorer dashboard (full history)',
+      'Hourly Slack digests — up to 3 channels',
+      'One-click PDF, CSV & image exports',
+      'Email support (48 h SLA)',
     ],
-    cta: 'Save 15+ Hours Per Week',
+    cta: 'Start 7-Day Pro Trial',
     ctaLink: 'https://buy.stripe.com/4gw4jm8xP0Fa5u8aEH',
+    microCopy: '7-day trial · no card',
+    dataplan: 'pro',
   },
   {
-    name: 'Institutional',
-    id: 'institutional',
-    href: '#',
-    description: 'For teams who need fast insight, clean dashboards, and internal narrative alignment.',
+    name: 'PRO + DATA API & Excel',
+    id: 'pro-data',
+    description: 'For desks that need Perception inside their models.',
     price: '$499',
+    perUser: true,
+    badge: 'Real-time data',
     features: [
-      'All Analyst features',
-      'Full access to trend + sentiment dashboards',
-      'Saved views for strategic themes',
-      'Export CSVs + charts for internal use',
-      'Multi-channel topic filters',
-      'Early access to API by request',
+      'Real-time Perception Index™ & Trend API (≤ 60 s)',
+      'Everything in Pro, plus:',
+      <>Excel / Google-Sheets formula pack <img src="/logos/excel.jpeg" alt="Excel logo" className="inline-block h-4 w-4 ml-1" /> <img src="/logos/Google_Sheets_logo_(2014-2020).svg.png" alt="Google Sheets logo" className="inline-block h-4 w-4 ml-1" /></>,
+      'Automated raw CSV & chart export',
+      'Slack Connect support (24 h SLA)',
     ],
-    cta: 'Get Instant Access',
+    featured: true,
+    cta: 'Upgrade to Data & API',
     ctaLink: 'https://buy.stripe.com/cN28zC15n2NibSw9AC',
-  },
-  {
-    name: 'Founding Partner',
-    id: 'founding-partner',
-    href: '#',
-    description: 'For funds, Bitcoin companies, and institutional teams who want Perception tailored to them.',
-    price: '$2,500',
-    features: [
-      'Everything in Institutional',
-      'Monthly narrative briefing reports (customized)',
-      'Advisory call + media sentiment consulting',
-      'Custom dashboard filters or entity tracking',
-      'Priority access to enterprise API by request',
-      'Includes up to 3 users',
-      'White-glove onboarding',
-    ],
-    cta: 'Book a Strategy Call',
-    ctaLink: 'https://calendly.com/fernikolic/30min',
+    microCopy: '7-day trial · no card',
+    dataplan: 'data',
   },
 ];
 
 export function PriceList() {
   return (
-    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {tiers.map((tier) => (
-        <PriceCard key={tier.name} {...tier} />
-      ))}
+    <div className="flex flex-col">
+      <div className="grid gap-8 md:grid-cols-2">
+        {tiers.map((tier) => (
+          <PriceCard key={tier.name} {...tier} />
+        ))}
+      </div>
+      <div className="mt-8 text-center p-3 bg-gray-50 rounded-lg border border-gray-100">
+        <p className="text-sm text-gray-600 font-medium">
+          Need 5+ users? Volume pricing: <a href="mailto:fernando@btcperception.com?subject=Request%20for%205%2B%20Perception%20seats" className="text-orange-600 hover:underline">contact sales</a>.
+        </p>
+      </div>
     </div>
   );
 }

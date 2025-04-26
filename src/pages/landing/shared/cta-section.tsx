@@ -37,7 +37,7 @@ export function CTASection({ title, subtitle, primaryCTA, secondaryCTA, backgrou
                 className="text-white hover:text-white/90"
                 asChild
               >
-                <a href="/pricing">
+                <a href="/pricing#pricing">
                   {secondaryCTA}
                 </a>
               </Button>

@@ -40,6 +40,65 @@
   }
 }
 
+@layer components {
+  .plan-card {
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .plan-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+  .plan-card.featured {
+    border: 2px solid #f97316; /* orange-500 */
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.08);
+  }
+  .plan-card.featured:hover {
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.12);
+  }
+  .plan-card .price {
+    font-size: 2.25rem; /* 36px */
+  }
+  .free-banner {
+    background: #f9fafb; /* gray-50 for light mode */
+    padding: 20px 24px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 32px;
+    border: 1px solid #f3f4f6; /* gray-100 for light mode */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .free-banner {
+      background: #1f2937; /* gray-800 for dark mode */
+      border-color: #374151; /* gray-700 for dark mode */
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .plan-card .price {
+      font-size: 1.75rem; /* 28px */
+    }
+    .plan-card .price + span {
+      font-size: 0.75rem; /* 12px */
+      display: block;
+    }
+    .free-banner {
+      padding: 16px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .plan-card {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+  }
+}
+
 @layer utilities {
   .animate-shimmer {
     animation: shimmer 2s linear infinite;

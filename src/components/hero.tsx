@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
 export function Hero() {
@@ -43,12 +42,12 @@ export function Hero() {
             </a>
           </div>
           
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-normal tracking-tight text-foreground max-w-3xl mx-auto">
-            Narrative Intelligence for the Future of Finance
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-normal tracking-tight text-foreground max-w-3xl mx-auto">
+            Real-Time Sentiment & Trend Intelligence for Bitcoin, Stablecoins & Tokenized Finance
           </h1>
           
           <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-foreground/60 font-light max-w-2xl mx-auto">
-            A high-signal platform for strategic thinkers tracking Bitcoin, stablecoins, tokenized assets, and the evolution of digital financial infrastructure.
+            Access our proprietary Perception Index™ fear & greed index and trend API to spot where market attention is heading before price follows.
           </p>
           
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
@@ -58,7 +57,7 @@ export function Hero() {
               asChild
             >
               <a href="/pricing">
-                Get started
+                Start 7-Day API Trial
               </a>
             </Button>
             <Button 
@@ -67,9 +66,13 @@ export function Hero() {
               className="w-full sm:w-auto border-foreground/20 text-foreground hover:bg-foreground/5 group font-normal"
               asChild
             >
-              <a href="https://x.com/BTCPerception/status/1877387322724909419" target="_blank" rel="noopener noreferrer">
-                Learn more{' '}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <a href="https://slack.com/oauth/v2/authorize?client_id=268627365575.8796942905360&scope=incoming-webhook,chat:write&redirect_uri=https://us-central1-triple-upgrade-245423.cloudfunctions.net/btcpApiFunction3-1/slack/oauth_redirect" target="_blank" rel="noopener noreferrer">
+                Connect to Slack{' '}
+                <img 
+                  src="/logos/Slack_icon_2019.svg.png" 
+                  alt="Slack logo" 
+                  className="ml-2 h-5 w-5 inline-block"
+                />
               </a>
             </Button>
           </div>

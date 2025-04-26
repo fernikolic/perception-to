@@ -20,27 +20,27 @@ export const faqData = [
     answer: "Bitcoin remains the anchor of the platform, but we also track adjacent narratives in:\n• Stablecoins (e.g. USDC, USDT)\n• Tokenized assets and real-world asset (RWA) issuance\n• CBDCs and central bank policy discourse\n• Regulated asset platforms (e.g. Liquid, Base, RWA.xyz)\n• Macro catalysts influencing digital asset markets\n\nYou can explore these themes individually or in correlation with Bitcoin."
   },
   {
-    question: "What is the difference between the Starter and Pro plans?",
-    answer: "The Starter plan is ideal for individuals who want curated insights, trend summaries, and access to the Perception Index.\n\nThe Pro plan is built for professionals who need:\n• Saved views and theme tracking\n• Entity-level monitoring\n• Deeper filters (e.g. sentiment by region or source type)\n• Access to archived narrative data\n\nEnterprise plans are available for teams and API access."
+    question: "What is the difference between the PRO and PRO + DATA plans?",
+    answer: "The PRO plan is ideal for analysts and communications leads who need live data and interactive dashboards without writing code.\n\nThe PRO + DATA plan is built for desks that need Perception inside their models, with:\n• Real-time Perception Index™ & Trend API (≤ 60 seconds)\n• Excel / Google-Sheets formula pack\n• Automated raw CSV & chart export\n• 5 seats and priority Slack Connect support\n\nBoth plans come with a 7-day free trial and self-serve cancellation."
   },
   {
     question: "How much does the platform cost?",
-    answer: "Pricing will be announced at launch, with early users receiving preferred rates.\nWe offer monthly and annual billing options, and discounted plans for independent researchers, journalists, and non-profit analysts."
+    answer: "We offer two paid plans:\n• PRO: $299/month - For analysts & comms leads — no code required\n• PRO + DATA: $499/month - For desks that need Perception inside their models\n\nWe also offer a free tier with delayed daily snapshots via Slack and weekly email digests."
   },
   {
-    question: "How can I access the platform?",
-    answer: "You can request early access via the form above. Approved users will be onboarded in cohorts and given guided access to the platform. Once we launch publicly, you'll be able to create an account directly."
+    question: "Is there a free version available?",
+    answer: "Yes! You can get delayed daily snapshots for free through our Slack Pulse (with 24-hour lag) and weekly email digest. This is perfect for those who want to stay informed but don't need real-time data or advanced features. Just click the 'Add Free Slack Bot' button on our pricing page to get started."
   },
   {
     question: "What languages and regions does the platform cover?",
     answer: "Perception currently focuses on English-language sources, with global geographic coverage.\nWe track sentiment and narratives from North America, Europe, Latin America, Asia, and MENA—filtered through local media, policy, and institutional lenses. Multilingual support is on our roadmap."
   },
   {
-    question: "How will early users benefit?",
-    answer: "Early users receive:\n• Priority access to new features\n• Direct input into platform development\n• Founding user pricing for the life of their subscription\n• Access to private research briefs and beta-only insights\n\nYour feedback will shape how Perception evolves."
+    question: "What's included in the 7-day free trial?",
+    answer: "Both our PRO and PRO + DATA plans come with a 7-day free trial that includes full access to all features of your chosen plan. No credit card is required to start your trial, and you can cancel at any time through the self-serve dashboard. If the platform doesn't save you at least five hours in the first week, you can cancel with no questions asked."
   },
   {
     question: "Can I provide feedback or request features?",
-    answer: "Absolutely. We actively incorporate feedback from our early users.\nYou'll be able to submit ideas directly within the platform, or speak with the team during onboarding. Perception is built with—and for—its users."
+    answer: "Absolutely. We actively incorporate feedback from our users.\nYou'll be able to submit ideas directly within the platform, or speak with the team during onboarding. Perception is built with—and for—its users."
   }
 ]; 

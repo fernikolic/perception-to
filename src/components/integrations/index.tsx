@@ -1,4 +1,6 @@
 import { IntegrationCard } from "./integration-card";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 const integrations = [
   // Social Media & Tech Platforms
@@ -184,26 +186,37 @@ const rows = [
 
 export function Integrations() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32">
+    <section className="relative overflow-hidden py-24 sm:py-32 bg-black">
       {/* Gradient Background */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,0.05),transparent)]" />
       
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-extralight tracking-tight sm:text-5xl lg:text-6xl">
+          <h2 className="text-4xl font-extralight tracking-tight sm:text-5xl lg:text-6xl text-white">
             Monitor sentiment across            <span className="bg-gradient-to-r from-orange-500 to-orange-800 inline-block text-transparent bg-clip-text">
               100+ channels
             </span>
           </h2>
-          <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Quickly track positive, negative, or neutral sentiment in the media to understand how Bitcoin is being discussed globally.
+          <p className="mt-6 text-lg leading-8 text-white">
+            From GitHub commits to Bloomberg, normalized into sentiment scores & trend clusters.
           </p>
+          <div className="mt-6 flex justify-center">
+            <Button 
+              className="bg-black text-white hover:bg-black/90 border border-white/20" 
+              size="sm"
+              asChild
+            >
+              <a href="/methodology">
+                See the full list <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+          </div>
         </div>
         
         <div className="mx-auto mt-16 max-w-7xl">
           <div className="relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-[150px] bg-gradient-to-r from-background to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-[150px] bg-gradient-to-l from-background to-transparent z-10" />
+            <div className="absolute left-0 top-0 bottom-0 w-[150px] bg-gradient-to-r from-black to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-[150px] bg-gradient-to-l from-black to-transparent z-10" />
             <div className="flex flex-col gap-4">
               {rows.map((row, rowIndex) => (
                 <div
