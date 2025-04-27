@@ -1,40 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getBlogPost } from '@/lib/strapi';
-
-interface Article {
-  id: number;
-  documentId: string;
-  title: string;
-  description: string;
-  content: string;
-  slug: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  cover: {
-    url: string;
-    alternativeText: string;
-    formats: {
-      large: {
-        url: string;
-      };
-    };
-  };
-  author: {
-    name: string;
-  };
-  category: {
-    name: string;
-    slug: string;
-  };
-  blocks: Array<{
-    __component: string;
-    id: number;
-    body?: string;
-    title?: string;
-  }>;
-}
+import { fetchArticleBySlug, Article } from '@/lib/googleSheetsClient';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import Markdown from 'react-markdown';
 
 export function ArticlePage() {
   const { slug } = useParams();
@@ -43,37 +12,39 @@ export function ArticlePage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchArticle = async () => {
-      try {
-        console.log('Fetching article with slug:', slug);
-        const response = await getBlogPost(slug as string);
-        console.log('Article response:', response);
-        
-        if (!response.data?.[0]) {
-          setError('Article not found');
-          setLoading(false);
-          return;
-        }
-
-        setArticle(response.data[0]);
+    const loadArticle = async () => {
+      if (!slug) {
+        setError("Article slug not found");
         setLoading(false);
+        return;
+      }
+
+      try {
+        setLoading(true);
+        const fetchedArticle = await fetchArticleBySlug(slug);
+        
+        if (!fetchedArticle) {
+          setError("Article not found");
+        } else {
+          setArticle(fetchedArticle);
+        }
       } catch (err) {
-        console.error('Error fetching article:', err);
-        setError(err instanceof Error ? err.message : 'Failed to load article');
+        console.error('Error loading article:', err);
+        setError('Failed to load article');
+      } finally {
         setLoading(false);
       }
     };
 
-    if (slug) {
-      fetchArticle();
-    }
+    loadArticle();
   }, [slug]);
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background pt-20">
-        <div className="mx-auto max-w-3xl px-6 py-24">
-          <div className="text-center">Loading...</div>
+      <div className="min-h-screen flex items-center justify-center pt-20">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-4 text-muted-foreground">Loading article...</p>
         </div>
       </div>
     );
@@ -81,23 +52,22 @@ export function ArticlePage() {
 
   if (error || !article) {
     return (
-      <div className="min-h-screen bg-background pt-20">
-        <div className="mx-auto max-w-3xl px-6 py-24">
-          <div className="text-center text-red-500">
-            {error || 'Article not found'}
-          </div>
-        </div>
+      <div className="min-h-screen flex flex-col items-center justify-center pt-20">
+        <h1 className="text-2xl font-bold mb-4">{error || "Article not found"}</h1>
+        <Link to="/learn">
+          <Button>Back to Learn</Button>
+        </Link>
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-background pt-20">
-      {article.cover && (
+      {article.imageUrl && (
         <div className="relative h-[40vh] overflow-hidden">
           <img
-            src={article.cover.formats.large.url}
-            alt={article.cover.alternativeText || article.title}
+            src={article.imageUrl}
+            alt={article.title}
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
@@ -109,7 +79,7 @@ export function ArticlePage() {
           {article.category && (
             <div className="mb-4">
               <span className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
-                {article.category.name}
+                {article.category}
               </span>
             </div>
           )}
@@ -121,7 +91,7 @@ export function ArticlePage() {
           </p>
           <div className="mt-6 flex items-center gap-4 text-sm text-muted-foreground">
             {article.author && (
-              <span>By {article.author.name}</span>
+              <span>By {article.author}</span>
             )}
             <time>
               {new Date(article.publishedAt).toLocaleDateString('en-US', {
@@ -133,21 +103,31 @@ export function ArticlePage() {
           </div>
         </header>
         
-        <div className="prose prose-lg prose-invert max-w-none">
-          {article.blocks?.map((block) => {
-            if (block.__component === 'shared.rich-text' && block.body) {
-              return <div key={block.id} dangerouslySetInnerHTML={{ __html: block.body }} />;
-            }
-            if (block.__component === 'shared.quote' && block.body) {
-              return (
-                <blockquote key={block.id} className="not-italic">
-                  <p>{block.body}</p>
-                  {block.title && <cite>— {block.title}</cite>}
-                </blockquote>
-              );
-            }
-            return null;
-          })}
+        <div className="prose prose-lg dark:prose-invert max-w-none">
+          <Markdown>{article.content}</Markdown>
+        </div>
+
+        {Array.isArray(article.tags) && article.tags.length > 0 && (
+          <div className="mt-12 border-t pt-6">
+            <h2 className="text-xl font-bold mb-4">Tags</h2>
+            <div className="flex flex-wrap gap-2">
+              {article.tags.map((tag) => (
+                <Link key={tag} to={`/learn/tag/${tag}`}>
+                  <span className="rounded-full bg-secondary px-3 py-1 text-sm">
+                    {tag}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+        
+        <div className="mt-12 flex justify-center">
+          <Link to="/learn">
+            <Button variant="outline">
+              ← Back to Learn
+            </Button>
+          </Link>
         </div>
       </article>
     </div>

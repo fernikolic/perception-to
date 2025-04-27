@@ -29,6 +29,8 @@ import { PrivacyPage } from '@/pages/legal/privacy';
 import { TermsPage } from '@/pages/legal/terms';
 import { LearnPage } from '@/pages/learn';
 import { ArticlePage } from '@/pages/learn/[slug]';
+import CategoryPage from '@/pages/learn/category/[slug]';
+import TagPage from '@/pages/learn/tag/[slug]';
 import TestimonialsPage from '@/pages/testimonials';
 import PageTransition from '@/components/PageTransition';
 
@@ -72,6 +74,8 @@ const App = () => {
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/learn" element={<LearnPage />} />
+            <Route path="/learn/category/:slug" element={<CategoryPage />} />
+            <Route path="/learn/tag/:slug" element={<TagPage />} />
             <Route path="/learn/:slug" element={<ArticlePage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
           </Routes>
