@@ -21,8 +21,8 @@ export function Pricing() {
           <div className="free-banner bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 py-4 md:py-5 px-4 md:px-6 text-center rounded-lg mb-6 md:mb-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-center md:space-x-4">
               <div>
-                <h2 className="text-base md:text-lg font-medium text-gray-900 dark:text-gray-100">Get a delayed daily snapshot free.</h2>
-                <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">Slack Pulse (1 digest / day, 24-h lag) + Weekly email.</p>
+                <h2 className="text-base md:text-lg font-medium text-gray-900 dark:text-gray-100">Try our free Slack integration</h2>
+                <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">Instant updates and multiple daily digests delivered right to your workspace</p>
               </div>
               <Button 
                 variant="outline" 
