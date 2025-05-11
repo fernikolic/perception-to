@@ -6,7 +6,7 @@ export function Pricing() {
     <section id="pricing" className="pt-8 pb-24 sm:pt-16 sm:pb-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-5xl font-thin tracking-tight sm:text-6xl lg:text-7xl pb-4">
+          <h2 className="text-3xl font-thin tracking-tight sm:text-4xl lg:text-5xl pb-4">
             Narratives move markets.
             <br />
             <span className="bg-gradient-to-r from-orange-500 to-orange-800 inline-block text-transparent bg-clip-text leading-relaxed">

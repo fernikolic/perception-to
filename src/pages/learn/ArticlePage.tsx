@@ -115,7 +115,7 @@ export default function ArticlePage() {
             </header>
             
             <div 
-              className="prose prose-lg max-w-none" 
+              className="prose prose-lg prose-headings:text-black dark:prose-headings:text-white prose-h1:text-black prose-h2:text-black prose-h3:text-black prose-h4:text-black prose-h5:text-black prose-h6:text-black dark:prose-h1:text-white dark:prose-h2:text-white dark:prose-h3:text-white dark:prose-h4:text-white dark:prose-h5:text-white dark:prose-h6:text-white max-w-none markdown-body bg-slate-50 dark:bg-gray-900 p-8 rounded-xl shadow-md border border-slate-200 dark:border-gray-800"
               dangerouslySetInnerHTML={{ __html: htmlContent }}
             />
             

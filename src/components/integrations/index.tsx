@@ -186,23 +186,23 @@ const rows = [
 
 export function Integrations() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32 bg-black">
+    <section className="relative overflow-hidden py-24 sm:py-32 !bg-black">
       {/* Gradient Background */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,0.05),transparent)]" />
       
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-extralight tracking-tight sm:text-5xl lg:text-6xl text-white">
+          <h2 className="text-4xl font-extralight tracking-tight sm:text-5xl lg:text-6xl !text-white">
             Monitor sentiment across            <span className="bg-gradient-to-r from-orange-500 to-orange-800 inline-block text-transparent bg-clip-text">
               100+ channels
             </span>
           </h2>
-          <p className="mt-6 text-lg leading-8 text-white">
+          <p className="mt-6 text-lg leading-8 !text-white/80">
             From GitHub commits to Bloomberg, normalized into sentiment scores & trend clusters.
           </p>
           <div className="mt-6 flex justify-center">
             <Button 
-              className="bg-black text-white hover:bg-black/90 border border-white/20" 
+              className="!bg-gray-800 !text-gray-200 hover:!bg-gray-700 !border-0 !shadow-none" 
               size="sm"
               asChild
             >

@@ -72,28 +72,28 @@ export function Features() {
 
         {/* What Perception Tracks Section */}
         <div className="mx-auto mt-16 sm:mt-24 lg:mt-32 max-w-7xl">
-          <div className="relative overflow-hidden rounded-3xl bg-zinc-900 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+          <div className="relative overflow-hidden rounded-3xl !bg-zinc-900 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.04),transparent_70%)]" />
             
             <div className="space-y-8 sm:space-y-12">
               <div className="space-y-4 sm:space-y-8">
                 <div className="inline-flex items-center gap-2">
                   <div className="h-1.5 w-1.5 rounded-full bg-orange-500" />
-                  <span className="text-sm font-light text-zinc-400">what Perception tracks</span>
+                  <span className="text-sm font-light !text-zinc-400">what Perception tracks</span>
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight text-zinc-100 max-w-2xl">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight !text-zinc-100 max-w-2xl">
                   A comprehensive map of the digital financial landscape:
                 </h2>
               </div>
 
               <div className="flex justify-end">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full sm:w-[800px]">
-                  <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-10 hover:bg-zinc-900/80 transition-colors group relative">
+                  <div className="rounded-2xl !border !border-zinc-800 !bg-zinc-900/50 p-6 sm:p-10 hover:!bg-zinc-900/80 transition-colors group relative">
                     <div className="flex flex-col h-full">
                       <div>
-                        <h3 className="text-sm font-medium text-zinc-200 uppercase tracking-wider">Bitcoin</h3>
-                        <p className="text-zinc-400 text-sm mt-2">The base layer. Institutional commentary, developer activity, regulatory narratives.</p>
+                        <h3 className="text-sm font-medium !text-zinc-200 uppercase tracking-wider">Bitcoin</h3>
+                        <p className="!text-zinc-400 text-sm mt-2">The base layer. Institutional commentary, developer activity, regulatory narratives.</p>
                       </div>
                       <div className="flex items-center justify-center mt-auto">
                         <img 
@@ -105,11 +105,11 @@ export function Features() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-10 hover:bg-zinc-900/80 transition-colors group relative">
+                  <div className="rounded-2xl !border !border-zinc-800 !bg-zinc-900/50 p-6 sm:p-10 hover:!bg-zinc-900/80 transition-colors group relative">
                     <div className="flex flex-col h-full">
                       <div>
-                        <h3 className="text-sm font-medium text-zinc-200 uppercase tracking-wider">Stablecoins</h3>
-                        <p className="text-zinc-400 text-sm mt-2">Adoption trends, issuer movements, regional policy shifts.</p>
+                        <h3 className="text-sm font-medium !text-zinc-200 uppercase tracking-wider">Stablecoins</h3>
+                        <p className="!text-zinc-400 text-sm mt-2">Adoption trends, issuer movements, regional policy shifts.</p>
                       </div>
                       <div className="flex items-center justify-center mt-auto">
                         <img 
@@ -121,11 +121,11 @@ export function Features() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-10 hover:bg-zinc-900/80 transition-colors group relative">
+                  <div className="rounded-2xl !border !border-zinc-800 !bg-zinc-900/50 p-6 sm:p-10 hover:!bg-zinc-900/80 transition-colors group relative">
                     <div className="flex flex-col h-full">
                       <div>
-                        <h3 className="text-sm font-medium text-zinc-200 uppercase tracking-wider">Tokenized Assets</h3>
-                        <p className="text-zinc-400 text-sm mt-2">Real-world asset tokenization, market developments, regulatory frameworks.</p>
+                        <h3 className="text-sm font-medium !text-zinc-200 uppercase tracking-wider">Tokenized Assets</h3>
+                        <p className="!text-zinc-400 text-sm mt-2">Real-world asset tokenization, market developments, regulatory frameworks.</p>
                       </div>
                       <div className="flex items-center justify-center mt-auto">
                         <img 
@@ -137,11 +137,11 @@ export function Features() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-10 hover:bg-zinc-900/80 transition-colors group relative">
+                  <div className="rounded-2xl !border !border-zinc-800 !bg-zinc-900/50 p-6 sm:p-10 hover:!bg-zinc-900/80 transition-colors group relative">
                     <div className="flex flex-col h-full">
                       <div>
-                        <h3 className="text-sm font-medium text-zinc-200 uppercase tracking-wider">Macro Catalysts</h3>
-                        <p className="text-zinc-400 text-sm mt-2">Rate moves, FX flows, capital controls, and other drivers of digital asset narratives.</p>
+                        <h3 className="text-sm font-medium !text-zinc-200 uppercase tracking-wider">Macro Catalysts</h3>
+                        <p className="!text-zinc-400 text-sm mt-2">Rate moves, FX flows, capital controls, and other drivers of digital asset narratives.</p>
                       </div>
                       <div className="flex items-center justify-center mt-auto">
                         <img 
@@ -159,72 +159,94 @@ export function Features() {
         </div>
 
         {/* Chart Sections */}
-        <div className="mx-auto mt-16 sm:mt-24 lg:mt-32 grid grid-cols-1 gap-8 sm:gap-16">
-          {/* First row - Perception Index */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
-            <div className="text-left lg:pr-8">
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight">
-                The Perception Index
-              </h3>
-              <p className="mt-4 text-lg sm:text-xl text-muted-foreground">
-                Real-time sentiment across audience segments
-              </p>
+        <div className="mx-auto mt-16 sm:mt-24 lg:mt-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 sm:gap-10">
+            {/* The Perception Index */}
+            <div className="bg-background/50 p-6 rounded-xl border border-border/50 shadow-sm">
+              <div className="text-center mb-4">
+                <h3 className="text-xl sm:text-2xl font-extralight tracking-tight">
+                  The Perception Index
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Real-time sentiment across audience segments
+                </p>
+              </div>
+              <div className="aspect-[16/9] w-full">
+                <ComposedChart data={chartData} />
+              </div>
+              <div className="mt-3 text-center">
+                <a href="/pricing" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                  Mock data. Sign up to access real-time data
+                </a>
+              </div>
             </div>
-            <div className="w-full">
-              <ComposedChart data={chartData} />
-            </div>
-          </div>
 
-          {/* Second row - Trend Detection */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
-            <div className="w-full order-last lg:order-first">
-              <Card className="overflow-hidden">
-                <CardContent className="border-none p-4 sm:p-6">
-                  <TrendBarChart data={[
-                    { name: "Bitcoin ETF", volume: 1200, description: "Growing discussion" },
-                    { name: "Layer 2", volume: 950, description: "Scaling solutions" },
-                    { name: "Institutional", volume: 800, description: "Market adoption" }
-                  ]} />
-                </CardContent>
-              </Card>
+            {/* Trend Detection */}
+            <div className="bg-background/50 p-6 rounded-xl border border-border/50 shadow-sm">
+              <div className="text-center mb-4">
+                <h3 className="text-xl sm:text-2xl font-extralight tracking-tight">
+                  Trend Detection
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Narrative clusters surfaced with summaries
+                </p>
+              </div>
+              <div className="aspect-[16/9] w-full">
+                <Card className="overflow-hidden border-none shadow-none">
+                  <CardContent className="border-none p-0">
+                    <TrendBarChart data={[
+                      { name: "Bitcoin ETF", volume: 1200, description: "Growing discussion" },
+                      { name: "Layer 2", volume: 950, description: "Scaling solutions" },
+                      { name: "Institutional", volume: 800, description: "Market adoption" }
+                    ]} />
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="mt-3 text-center">
+                <a href="/pricing" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                  Mock data. Sign up to access real-time data
+                </a>
+              </div>
             </div>
-            <div className="text-left lg:text-right lg:pl-8">
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight">
-                Trend Detection
-              </h3>
-              <p className="mt-4 text-lg sm:text-xl text-muted-foreground">
-                Narrative clusters surfaced with summaries and highlights
-              </p>
-            </div>
-          </div>
 
-          {/* Third row - Source Transparency */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
-            <div className="text-left lg:pr-8">
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight">
-                Source Transparency
-              </h3>
-              <p className="mt-4 text-lg sm:text-xl text-muted-foreground">
-                Filter by source type (media, social, technical, policy)
-              </p>
+            {/* Source Transparency */}
+            <div className="bg-background/50 p-6 rounded-xl border border-border/50 shadow-sm">
+              <div className="text-center mb-4">
+                <h3 className="text-xl sm:text-2xl font-extralight tracking-tight">
+                  Source Transparency
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Filter by source type
+                </p>
+              </div>
+              <div className="aspect-[16/9] w-full">
+                <SourceFeed />
+              </div>
+              <div className="mt-3 text-center">
+                <a href="/pricing" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                  Mock data. Sign up to access real-time data
+                </a>
+              </div>
             </div>
-            <div className="w-full">
-              <SourceFeed />
-            </div>
-          </div>
 
-          {/* Fourth row - Saved Views */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
-            <div className="w-full order-last lg:order-first">
-              <SavedViews />
-            </div>
-            <div className="text-left lg:text-right lg:pl-8">
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight">
-                Saved Views
-              </h3>
-              <p className="mt-4 text-lg sm:text-xl text-muted-foreground">
-                Custom dashboards for your specific needs
-              </p>
+            {/* Saved Views */}
+            <div className="bg-background/50 p-6 rounded-xl border border-border/50 shadow-sm">
+              <div className="text-center mb-4">
+                <h3 className="text-xl sm:text-2xl font-extralight tracking-tight">
+                  Saved Views
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Custom dashboards for specific needs
+                </p>
+              </div>
+              <div className="aspect-[16/9] w-full">
+                <SavedViews />
+              </div>
+              <div className="mt-3 text-center">
+                <a href="/pricing" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                  Mock data. Sign up to access real-time data
+                </a>
+              </div>
             </div>
           </div>
         </div>

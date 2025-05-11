@@ -207,23 +207,6 @@ export function ComposedChart({ data }: ComposedChartProps) {
           </motion.div>
         </CardContent>
       </Card>
-
-      <motion.div 
-        className="mt-4 text-center text-sm text-muted-foreground"
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-      >
-        <span>Mock data. </span>
-        <a 
-          href="https://app.perception.to" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="text-primary hover:underline"
-        >
-          Sign up to access real-time data
-        </a>
-      </motion.div>
     </motion.div>
   );
 }

@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import Markdown from 'react-markdown';
 
 export function ArticlePage() {
-  const { slug } = useParams();
+  const { slug, category } = useParams();
   const [article, setArticle] = useState<Article | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -21,6 +21,7 @@ export function ArticlePage() {
 
       try {
         setLoading(true);
+        console.log(`Loading article with slug: ${slug}, category: ${category || 'none'}`);
         const fetchedArticle = await fetchArticleBySlug(slug);
         
         if (!fetchedArticle) {
@@ -37,7 +38,7 @@ export function ArticlePage() {
     };
 
     loadArticle();
-  }, [slug]);
+  }, [slug, category]);
 
   if (loading) {
     return (
@@ -103,8 +104,11 @@ export function ArticlePage() {
           </div>
         </header>
         
-        <div className="prose prose-lg dark:prose-invert max-w-none">
-          <Markdown>{article.content}</Markdown>
+        <div className="prose prose-lg prose-headings:text-black dark:prose-headings:text-white dark:prose-invert max-w-none">
+          {article.content 
+            ? <div className="markdown-body bg-slate-50 dark:bg-gray-900 p-8 rounded-xl shadow-md border border-slate-200 dark:border-gray-800 prose-h1:text-black prose-h2:text-black prose-h3:text-black prose-h4:text-black prose-h5:text-black prose-h6:text-black dark:prose-h1:text-white dark:prose-h2:text-white dark:prose-h3:text-white dark:prose-h4:text-white dark:prose-h5:text-white dark:prose-h6:text-white"><Markdown>{article.content}</Markdown></div>
+            : <p>Coming soon — full write-up not published yet.</p>
+          }
         </div>
 
         {Array.isArray(article.tags) && article.tags.length > 0 && (

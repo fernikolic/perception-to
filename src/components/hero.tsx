@@ -57,7 +57,7 @@ export function Hero() {
               asChild
             >
               <a href="/pricing">
-                Start 7-Day API Trial
+                Start 7-Day Trial
               </a>
             </Button>
             <Button 

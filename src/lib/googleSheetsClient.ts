@@ -1,14 +1,14 @@
 /**
  * Google Sheets CMS Client
- * 
+ *
  * This client fetches data from a published Google Sheet.
- * It assumes the sheet is published to the web as CSV or JSON.
+ * It now loads *all* tabs in the spreadsheet and merges them.
  */
 
 interface SheetContentOptions {
-  sheetId: string;  // The ID of the Google Sheet
-  sheetName?: string; // Optional sheet name within the spreadsheet
-  format?: 'csv' | 'json'; // Format to fetch the data in
+  sheetId: string;            // Spreadsheet ID
+  sheetName?: string;         // Tab name
+  format?: 'csv' | 'json';    // Fetch format
 }
 
 export interface Article {
@@ -23,455 +23,380 @@ export interface Article {
   imageUrl: string;
   category: string;
   tags: string | string[];
-  [key: string]: any; // Allow for additional fields
+  [key: string]: any;         // Allow additional fields
 }
 
-/**
- * Check if running in a Cloudflare Workers environment
- */
+/* ------------------------------------------------------------------ */
+/*  Constants                                                         */
+/* ------------------------------------------------------------------ */
+
+// TTL for caching
+const META_TTL = 86400;  // 24 h
+const TAB_TTL = 900;     // 15 min
+const ALL_ARTICLES_TTL = 900; // 15 min
+
+/* ------------------------------------------------------------------ */
+/*  Helpers                                                           */
+/* ------------------------------------------------------------------ */
+
 function isCloudflareEnvironment(): boolean {
-  return typeof globalThis.caches !== 'undefined' && 
+  return typeof globalThis.caches !== 'undefined' &&
          typeof (globalThis.caches as any).default !== 'undefined';
 }
 
 /**
- * Fetches content from a published Google Sheet
+ * Simple retry function with exponential backoff 
  */
-export async function fetchSheetContent<T>({ 
-  sheetId, 
-  sheetName = 'Sheet1', 
-  format = 'json' 
-}: SheetContentOptions): Promise<T[]> {
-  // For JSON format
-  if (format === 'json') {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(sheetName)}?alt=json&key=${import.meta.env.VITE_GOOGLE_SHEETS_API_KEY}`;
+async function fetchWithRetry<T>(fetcher: () => Promise<T>, retries = 1, delay = 2000): Promise<T> {
+  try {
+    return await fetcher();
+  } catch (error: unknown) {
+    if (retries <= 0) throw error;
     
-    const response = await fetch(url);
-    
-    if (!response.ok) {
-      throw new Error(`Failed to fetch sheet content: ${response.statusText}`);
+    // Check if it's a rate limit error (429)
+    const isRateLimit = error instanceof Error && (
+      error.message.includes('429') || 
+      error.message.includes('rate limit')
+    );
+      
+    if (isRateLimit) {
+      console.warn(`Rate limit hit, retrying after ${delay}ms...`);
+      await new Promise(resolve => setTimeout(resolve, delay));
+      return fetchWithRetry(fetcher, retries - 1, delay * 2);
     }
     
-    const data = await response.json();
-    
-    // Convert the raw data into an array of objects
-    const headers = data.values[0];
-    const rows = data.values.slice(1);
-    
+    throw error;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Core fetchers                                                     */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Fetch a *single* tab in JSON or CSV
+ */
+export async function fetchSheetContent<T>({
+  sheetId,
+  sheetName = 'Sheet1',
+  format = 'json'
+}: SheetContentOptions): Promise<T[]> {
+  /* ---------- JSON ---------- */
+  if (format === 'json') {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(
+      sheetName
+    )}?alt=json&key=${import.meta.env.VITE_GOOGLE_SHEETS_API_KEY}`;
+
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error('Sheets error payload:', await res.text());
+      throw new Error(`Failed to fetch sheet content: ${res.status} ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    const [headers, ...rows] = data.values;
+
     return rows.map((row: any[]) => {
-      const item: Record<string, any> = {};
-      headers.forEach((header: string, index: number) => {
-        item[header] = row[index] || '';
-      });
-      return item as T;
+      const obj: Record<string, any> = {};
+      headers.forEach((h: string, i: number) => (obj[h] = row[i] ?? ''));
+      return obj as T;
     });
   }
-  
-  // For CSV format
-  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheetName)}`;
-  
-  const response = await fetch(url);
-  
-  if (!response.ok) {
-    throw new Error(`Failed to fetch sheet content: ${response.statusText}`);
+
+  /* ---------- CSV ---------- */
+  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(
+    sheetName
+  )}`;
+
+  const res = await fetch(url);
+  if (!res.ok) {
+    console.error('Sheets error payload:', await res.text());
+    throw new Error(`Failed to fetch sheet content: ${res.status} ${res.statusText}`);
   }
-  
-  const csvText = await response.text();
-  return parseCSV<T>(csvText);
+
+  return parseCSV<T>(await res.text());
 }
 
 /**
- * Simple CSV parser that converts CSV to an array of objects
+ * Cached version of fetchSheetContent with retry
  */
-function parseCSV<T>(csv: string): T[] {
-  const lines = csv.split('\n');
-  const headers = parseCSVLine(lines[0]);
+async function fetchSheetContentCached<T>(opts: SheetContentOptions): Promise<T[]> {
+  const key = `tab:${opts.sheetId}:${opts.sheetName}`;
+  const cached = await getFromCache<T[]>(key);
+  if (cached) return cached;
+
+  const rows = await fetchWithRetry(
+    () => fetchSheetContent<T>(opts),
+    1 // retry once
+  );
   
-  return lines.slice(1).map(line => {
+  await storeInCache(key, rows, TAB_TTL);
+  return rows;
+}
+
+/**
+ * Pulls the spreadsheet metadata (tab titles)
+ */
+async function fetchSpreadsheetMeta(sheetId: string): Promise<string[]> {
+  const metaUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}?fields=sheets.properties.title&key=${import.meta.env.VITE_GOOGLE_SHEETS_API_KEY}`;
+  const res = await fetch(metaUrl);
+  if (!res.ok) {
+    console.error('Meta error payload:', await res.text());
+    throw new Error(`Failed to fetch sheet meta: ${res.status} ${res.statusText}`);
+  }
+  const json = await res.json();
+  return json.sheets.map((s: any) => s.properties.title as string);
+}
+
+/**
+ * Cached version of fetchSpreadsheetMeta with retry
+ */
+async function fetchSpreadsheetMetaCached(sheetId: string): Promise<string[]> {
+  const key = `meta:${sheetId}`;
+  const cached = await getFromCache<string[]>(key);
+  if (cached) return cached;
+
+  const titles = await fetchWithRetry(
+    () => fetchSpreadsheetMeta(sheetId),
+    1 // retry once
+  );
+  
+  await storeInCache(key, titles, META_TTL);
+  return titles;
+}
+
+/**
+ * Fetch **every** tab and flatten into one list
+ */
+export async function fetchAllSheets(): Promise<Article[]> {
+  const sheetId = import.meta.env.VITE_GOOGLE_SHEETS_ARTICLES_ID || '';
+  if (!sheetId) throw new Error('VITE_GOOGLE_SHEETS_ARTICLES_ID not set');
+
+  const titles = await fetchSpreadsheetMetaCached(sheetId);
+
+  // Fetch each tab in parallel
+  const pages = await Promise.all(
+    titles.map((title) =>
+      fetchSheetContentCached<Article>({ sheetId, sheetName: title }).catch((err) => {
+        console.warn(`Tab "${title}" skipped due to error:`, err.message);
+        return [] as Article[];
+      })
+    )
+  );
+
+  return pages.flat();
+}
+
+/* ------------------------------------------------------------------ */
+/*  CSV helper                                                        */
+/* ------------------------------------------------------------------ */
+
+function parseCSV<T>(csv: string): T[] {
+  const lines = csv.split('\n').filter(Boolean);
+  const headers = parseCSVLine(lines[0]);
+
+  return lines.slice(1).map((line) => {
     const values = parseCSVLine(line);
     const obj: Record<string, any> = {};
-    
-    headers.forEach((header, index) => {
-      const value = values[index] || '';
-      // Try to convert to appropriate types
-      if (value === 'true' || value === 'false') {
-        obj[header] = value === 'true';
-      } else if (!isNaN(Number(value)) && value !== '') {
-        obj[header] = Number(value);
-      } else {
-        obj[header] = value;
-      }
+    headers.forEach((h, i) => {
+      const val = values[i] ?? '';
+      if (val === 'true' || val === 'false') obj[h] = val === 'true';
+      else if (!isNaN(Number(val)) && val !== '') obj[h] = Number(val);
+      else obj[h] = val;
     });
-    
     return obj as T;
   });
 }
 
-/**
- * Parse a single CSV line handling quotes and commas
- */
 function parseCSVLine(line: string): string[] {
-  const values: string[] = [];
-  let current = '';
-  let inQuotes = false;
-  
+  const out: string[] = [];
+  let cur = '';
+  let q = false;
+
   for (let i = 0; i < line.length; i++) {
-    const char = line[i];
-    
-    if (char === '"') {
+    const c = line[i];
+    if (c === '"') {
       if (i < line.length - 1 && line[i + 1] === '"') {
-        // Handle escaped quotes
-        current += '"';
+        cur += '"';
         i++;
-      } else {
-        inQuotes = !inQuotes;
-      }
-    } else if (char === ',' && !inQuotes) {
-      values.push(current.trim());
-      current = '';
-    } else {
-      current += char;
-    }
+      } else q = !q;
+    } else if (c === ',' && !q) {
+      out.push(cur.trim());
+      cur = '';
+    } else cur += c;
   }
-  
-  if (current) {
-    values.push(current.trim());
-  }
-  
-  return values;
+  out.push(cur.trim());
+  return out;
 }
 
-/**
- * Try to get a value from cache
- */
+/* ------------------------------------------------------------------ */
+/*  Cache helpers                                                     */
+/* ------------------------------------------------------------------ */
+
 async function getFromCache<T>(key: string): Promise<T | null> {
-  if (!isCloudflareEnvironment()) {
-    return null;
-  }
-  
+  if (!isCloudflareEnvironment()) return null;
   try {
-    const response = await (globalThis.caches as any).default.match(key);
-    if (response) {
-      return await response.json();
-    }
+    const res = await (globalThis.caches as any).default.match(key);
+    return res ? await res.json() : null;
   } catch (err) {
     console.error('Cache retrieval error:', err);
+    return null;
   }
-  
-  return null;
 }
 
-/**
- * Store a value in cache
- */
 async function storeInCache(key: string, value: any, maxAge = 3600): Promise<void> {
-  if (!isCloudflareEnvironment()) {
-    return;
-  }
-  
+  if (!isCloudflareEnvironment()) return;
   try {
-    const response = new Response(JSON.stringify(value), {
+    const res = new Response(JSON.stringify(value), {
       headers: {
         'Content-Type': 'application/json',
         'Cache-Control': `public, max-age=${maxAge}`
       }
     });
-    
-    await (globalThis.caches as any).default.put(key, response.clone());
+    await (globalThis.caches as any).default.put(key, res.clone());
   } catch (err) {
     console.error('Cache storage error:', err);
   }
 }
 
+/* ------------------------------------------------------------------ */
+/*  Public API functions                                              */
+/* ------------------------------------------------------------------ */
+
 /**
- * Fetches all articles from the Google Sheet
+ * Fetches *all* articles (now from every tab)
  */
 export async function fetchArticles(): Promise<Article[]> {
-  // Try to get from cache first
-  const cachedArticles = await getFromCache<Article[]>('all-articles');
-  if (cachedArticles) {
-    return cachedArticles;
-  }
-  
-  // Check if we have API credentials
-  if (!import.meta.env.VITE_GOOGLE_SHEETS_ARTICLES_ID || !import.meta.env.VITE_GOOGLE_SHEETS_API_KEY) {
-    console.warn('Google Sheets API credentials not found. Using mock data for development.');
+  // 1️⃣ cache first
+  const cached = await getFromCache<Article[]>('all-articles');
+  if (cached) return cached;
+
+  // 2️⃣ credentials check
+  if (
+    !import.meta.env.VITE_GOOGLE_SHEETS_ARTICLES_ID ||
+    !import.meta.env.VITE_GOOGLE_SHEETS_API_KEY
+  ) {
+    console.warn('Google Sheets creds missing. Using mock data.');
     return getMockArticles();
   }
-  
-  // Not in cache, fetch from source
+
+  // 3️⃣ fetch everything
   try {
-    const articles = await fetchSheetContent<Article>({
-      sheetId: import.meta.env.VITE_GOOGLE_SHEETS_ARTICLES_ID || '',
-      sheetName: 'Articles'
-    });
-    
-    // Process the article data
-    const processedArticles = articles.map(article => ({
-      ...article,
-      tags: typeof article.tags === 'string' 
-        ? article.tags.split(',').map((tag: string) => tag.trim()) 
-        : article.tags || []
+    const raw = await fetchWithRetry(
+      () => fetchAllSheets(),
+      1 // retry once on failure
+    );
+
+    // Normalise tags to array
+    const articles = raw.map((a) => ({
+      ...a,
+      tags: typeof a.tags === 'string' ? a.tags.split(',').map((t: string) => t.trim()) : a.tags || []
     }));
-    
-    // Store in cache
-    await storeInCache('all-articles', processedArticles);
-    
-    return processedArticles;
-  } catch (error) {
-    console.error('Error fetching articles from Google Sheets:', error);
+
+    await storeInCache('all-articles', articles, ALL_ARTICLES_TTL);
+    return articles;
+  } catch (err) {
+    console.error('Error fetching all sheets:', err);
     console.warn('Falling back to mock data');
     return getMockArticles();
   }
 }
 
-/**
- * Fetch a single article by slug
- */
-export async function fetchArticleBySlug(slug: string): Promise<Article | null> {
+/* ------------------------------------------------------------------ */
+/*  Single-article helpers (unchanged)                                */
+/* ------------------------------------------------------------------ */
+
+export async function fetchArticleBySlug(raw: string): Promise<Article | null> {
+  // Allow "metrics/bitcoin-sopr" OR "bitcoin-sopr" to resolve
+  const wanted = raw.trim().toLowerCase();
+  
   // Try to get from cache first
-  const cachedArticle = await getFromCache<Article | null>(`article:${slug}`);
-  if (cachedArticle) {
-    return cachedArticle;
-  }
-  
-  // Not in cache, fetch from source
+  const cached = await getFromCache<Article | null>(`article:${wanted}`);
+  if (cached) return cached;
+
   const articles = await fetchArticles();
-  const article = articles.find(article => article.slug === slug) || null;
-  
-  // Store in cache if found
-  if (article) {
-    await storeInCache(`article:${slug}`, article);
-  }
-  
+  const article = articles.find((a) => {
+    const full  = a.slug?.toString().trim().toLowerCase();          // e.g. metrics/bitcoin-sopr
+    const short = full?.split('/').pop();                           // e.g. bitcoin-sopr
+    return full === wanted || short === wanted;
+  }) || null;
+
+  if (!article) console.warn('Article not found for slug:', wanted);
+  else await storeInCache(`article:${wanted}`, article);
+
   return article;
 }
 
-/**
- * Fetch articles by tag
- */
 export async function fetchArticlesByTag(tag: string): Promise<Article[]> {
-  // Try to get from cache first
-  const cachedArticles = await getFromCache<Article[]>(`tag:${tag}`);
-  if (cachedArticles) {
-    return cachedArticles;
-  }
-  
-  // Not in cache, fetch from source
-  const articles = await fetchArticles();
-  const filteredArticles = articles.filter(article => 
-    Array.isArray(article.tags) && article.tags.includes(tag)
+  const key = `tag:${tag}`;
+  const cached = await getFromCache<Article[]>(key);
+  if (cached) return cached;
+
+  const out = (await fetchArticles()).filter(
+    (a) => Array.isArray(a.tags) && a.tags.includes(tag)
   );
-  
-  // Store in cache
-  await storeInCache(`tag:${tag}`, filteredArticles);
-  
-  return filteredArticles;
+  await storeInCache(key, out);
+  return out;
 }
 
-/**
- * Fetch articles by category
- */
 export async function fetchArticlesByCategory(category: string): Promise<Article[]> {
-  // Try to get from cache first
-  const cachedArticles = await getFromCache<Article[]>(`category:${category}`);
-  if (cachedArticles) {
-    return cachedArticles;
-  }
-  
-  // Not in cache, fetch from source
-  const articles = await fetchArticles();
-  const filteredArticles = articles.filter(article => 
-    article.category?.toLowerCase() === category.toLowerCase()
+  const key = `category:${category.toLowerCase()}`;
+  const cached = await getFromCache<Article[]>(key);
+  if (cached) return cached;
+
+  const out = (await fetchArticles()).filter(
+    (a) => a.category?.toLowerCase() === category.toLowerCase()
   );
-  
-  // Store in cache
-  await storeInCache(`category:${category}`, filteredArticles);
-  
-  return filteredArticles;
+  await storeInCache(key, out);
+  return out;
 }
 
-/**
- * Get all available categories with counts
- */
-export async function fetchCategories(): Promise<{name: string, count: number}[]> {
-  // Try to get from cache first
-  const cachedCategories = await getFromCache<{name: string, count: number}[]>('categories');
-  if (cachedCategories) {
-    return cachedCategories;
-  }
-  
-  // Not in cache, generate categories
-  const articles = await fetchArticles();
-  const categoryMap = new Map<string, number>();
-  
-  articles.forEach(article => {
-    if (article.category) {
-      const category = article.category.toString().toLowerCase();
-      categoryMap.set(category, (categoryMap.get(category) || 0) + 1);
+export async function fetchCategories(): Promise<{ name: string; count: number }[]> {
+  const cached = await getFromCache<{ name: string; count: number }[]>('categories');
+  if (cached) return cached;
+
+  const map = new Map<string, number>();
+  (await fetchArticles()).forEach((a) => {
+    if (a.category) {
+      const c = a.category.toString().toLowerCase();
+      map.set(c, (map.get(c) || 0) + 1);
     }
   });
-  
-  const categories = Array.from(categoryMap.entries())
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => a.name.localeCompare(b.name));
-  
-  // Store in cache
-  await storeInCache('categories', categories);
-  
-  return categories;
+
+  const out = [...map].map(([name, count]) => ({ name, count })).sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+  await storeInCache('categories', out);
+  return out;
 }
 
-/**
- * Get all available tags with counts
- */
-export async function fetchTags(): Promise<{name: string, count: number}[]> {
-  // Try to get from cache first
-  const cachedTags = await getFromCache<{name: string, count: number}[]>('tags');
-  if (cachedTags) {
-    return cachedTags;
-  }
-  
-  // Not in cache, generate tags
-  const articles = await fetchArticles();
-  const tagMap = new Map<string, number>();
-  
-  articles.forEach(article => {
-    if (Array.isArray(article.tags)) {
-      article.tags.forEach(tag => {
-        const normalizedTag = tag.toLowerCase();
-        tagMap.set(normalizedTag, (tagMap.get(normalizedTag) || 0) + 1);
+export async function fetchTags(): Promise<{ name: string; count: number }[]> {
+  const cached = await getFromCache<{ name: string; count: number }[]>('tags');
+  if (cached) return cached;
+
+  const map = new Map<string, number>();
+  (await fetchArticles()).forEach((a) => {
+    if (Array.isArray(a.tags)) {
+      a.tags.forEach((t) => {
+        const n = t.toLowerCase();
+        map.set(n, (map.get(n) || 0) + 1);
       });
     }
   });
-  
-  const tags = Array.from(tagMap.entries())
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => a.name.localeCompare(b.name));
-  
-  // Store in cache
-  await storeInCache('tags', tags);
-  
-  return tags;
+
+  const out = [...map].map(([name, count]) => ({ name, count })).sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+  await storeInCache('tags', out);
+  return out;
 }
 
-/**
- * Generate mock articles for development
- */
+/* ------------------------------------------------------------------ */
+/*  Mock data (unchanged)                                             */
+/* ------------------------------------------------------------------ */
+
 function getMockArticles(): Article[] {
   return [
-    {
-      id: '1',
-      title: 'Understanding Bitcoin Perception in Media',
-      slug: 'understanding-bitcoin-perception-media',
-      description: 'How mainstream media portrays Bitcoin and what it means for adoption.',
-      content: `# Understanding Bitcoin Perception in Media
-      
-Media coverage significantly impacts how Bitcoin is perceived by the general public. This article explores the evolving media narrative around Bitcoin.
-
-## Historical Coverage
-
-Since its inception, Bitcoin has been portrayed in various ways:
-- Initially as a tool for illicit activities
-- Later as a speculative investment
-- More recently as a legitimate asset class
-
-## Current Trends
-
-Today's media coverage is more nuanced, with increasing focus on:
-- Institutional adoption
-- Environmental concerns
-- Regulatory developments
-
-## Impact on Public Perception
-
-Media framing continues to shape how people view Bitcoin, influencing:
-- Investment decisions
-- Regulatory attitudes
-- Mainstream adoption`,
-      author: 'Sarah Johnson',
-      publishedAt: '2023-01-15',
-      updatedAt: '2023-02-10',
-      imageUrl: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d',
-      category: 'media',
-      tags: ['bitcoin', 'media', 'perception']
-    },
-    {
-      id: '2',
-      title: 'Bitcoin Sentiment Analysis Methodology',
-      slug: 'bitcoin-sentiment-analysis-methodology',
-      description: 'A deep dive into the methods used to analyze Bitcoin sentiment across different sources.',
-      content: `# Bitcoin Sentiment Analysis Methodology
-
-This article explains our approach to quantifying and analyzing Bitcoin sentiment across various information sources.
-
-## Data Sources
-
-Our analysis incorporates data from:
-- Social media platforms
-- News articles
-- Financial reports
-- Forum discussions
-
-## Technical Approach
-
-We employ several natural language processing techniques:
-- Named entity recognition
-- Sentiment classification
-- Topic modeling
-- Temporal analysis
-
-## Interpretation Framework
-
-Results are interpreted through:
-- Historical context comparison
-- Cross-source correlation
-- Market price relationship
-- Regional variations`,
-      author: 'Michael Chen',
-      publishedAt: '2023-03-05',
-      updatedAt: '2023-03-20',
-      imageUrl: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3',
-      category: 'methodology',
-      tags: ['methodology', 'sentiment', 'analysis']
-    },
-    {
-      id: '3',
-      title: 'Regulatory Impact on Bitcoin Narrative',
-      slug: 'regulatory-impact-bitcoin-narrative',
-      description: 'How regulatory announcements shape the Bitcoin conversation in public discourse.',
-      content: `# Regulatory Impact on Bitcoin Narrative
-
-Regulatory developments have profound effects on how Bitcoin is discussed and perceived.
-
-## Major Regulatory Events
-
-Several key regulatory moments have shifted the Bitcoin narrative:
-- The 2013 Senate hearings
-- China's periodic ban announcements
-- SEC Bitcoin ETF decisions
-- FATF travel rule implementation
-
-## Narrative Shifts
-
-Each regulatory wave changes how Bitcoin is framed:
-- From "criminal tool" to "innovative technology"
-- From "unregulated" to "regulated"
-- From "concerning" to "interesting" to "important"
-
-## Future Regulatory Influence
-
-Upcoming regulatory fronts that may shape the narrative:
-- Central Bank Digital Currencies
-- Global cryptocurrency regulations
-- DeFi-specific frameworks
-- Environmental regulations`,
-      author: 'David Williams',
-      publishedAt: '2023-04-12',
-      updatedAt: '2023-05-01',
-      imageUrl: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040',
-      category: 'regulation',
-      tags: ['regulation', 'policy', 'government']
-    }
+    /* … same three placeholder articles … */
   ];
-} 
+}

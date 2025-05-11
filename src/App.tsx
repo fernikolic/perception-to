@@ -13,6 +13,7 @@ import { Testimonials } from '@/components/testimonials';
 import { Faq } from '@/components/faq';
 import { Footer } from '@/components/footer';
 import { FloatingNav } from '@/components/floating-nav';
+import ScrollToTop from '@/components/ScrollToTop';
 import MethodologyPage from './pages/methodology';
 import { JournalistLanding } from '@/pages/landing/journalist';
 import { InvestorLanding } from '@/pages/landing/investor';
@@ -56,6 +57,7 @@ const App = () => {
     <ThemeProvider defaultTheme="light" storageKey="ui-theme">
       <div className="min-h-screen bg-background text-foreground">
         <Navbar />
+        <ScrollToTop />
         <PageTransition>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -76,6 +78,8 @@ const App = () => {
             <Route path="/learn" element={<LearnPage />} />
             <Route path="/learn/category/:slug" element={<CategoryPage />} />
             <Route path="/learn/tag/:slug" element={<TagPage />} />
+            <Route path="/learn/:category/:slug" element={<ArticlePage />} />
+            <Route path="/learn//:slug" element={<ArticlePage />} />
             <Route path="/learn/:slug" element={<ArticlePage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
           </Routes>

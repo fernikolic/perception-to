@@ -2,49 +2,64 @@ import { PriceCard } from './price-card';
 
 const tiers = [
   {
-    name: 'PRO',
+    name: 'Pro Plan',
     id: 'pro',
-    description: 'For analysts & comms leads — no code.',
-    price: '$299',
+    description: 'For journalists, content creators, and independent researchers.',
+    price: '$99',
     perUser: true,
     features: [
-      'Live Perception Index™ & heat-maps',
-      'Trend Explorer dashboard (full history)',
-      'Hourly Slack digests — up to 3 channels',
-      'One-click PDF, CSV & image exports',
-      'Email support (48 h SLA)',
+      'Track emerging topics and narratives in real-time',
+      'Get insights on Bitcoin coverage across media outlets',
+      'Monitor discussions across 100+ channels including Reddit, X, and more',
     ],
-    cta: 'Start 7-Day Pro Trial',
+    cta: 'Start Tracking Now',
     ctaLink: 'https://buy.stripe.com/4gw4jm8xP0Fa5u8aEH',
     microCopy: '7-day trial · no card',
     dataplan: 'pro',
   },
   {
-    name: 'PRO + DATA API & Excel',
-    id: 'pro-data',
-    description: 'For desks that need Perception inside their models.',
-    price: '$499',
+    name: 'Premium Plan',
+    id: 'premium',
+    description: 'For analysts, market researchers, and strategic planners.',
+    price: '$199',
     perUser: true,
-    badge: 'Real-time data',
+    badge: 'Enhanced Tracking',
     features: [
-      'Real-time Perception Index™ & Trend API (≤ 60 s)',
-      'Everything in Pro, plus:',
-      <>Excel / Google-Sheets formula pack <img src="/logos/excel.jpeg" alt="Excel logo" className="inline-block h-4 w-4 ml-1" /> <img src="/logos/Google_Sheets_logo_(2014-2020).svg.png" alt="Google Sheets logo" className="inline-block h-4 w-4 ml-1" /></>,
-      'Automated raw CSV & chart export',
-      'Slack Connect support (24 h SLA)',
+      'Everything in Pro Plan, plus:',
+      'Build custom views to track sentiment by outlet, topic, or region',
+      'Analyze price movements in relation to narrative sentiment',
+      'Access the real-time Perception Index™ fear and greed tracker',
+      'Seamless upgrade path to Enterprise for deeper insights',
     ],
     featured: true,
-    cta: 'Upgrade to Data & API',
-    ctaLink: 'https://buy.stripe.com/cN28zC15n2NibSw9AC',
+    cta: 'Start Tracking Now',
+    ctaLink: 'https://buy.stripe.com/8wMdTW7tLew03m0fZ2',
     microCopy: '7-day trial · no card',
-    dataplan: 'data',
+    dataplan: 'premium',
+  },
+  {
+    name: 'Enterprise Plan',
+    id: 'enterprise',
+    description: 'For institutions, funds, and high-stakes decision-makers.',
+    price: 'Custom',
+    perUser: false,
+    features: [
+      'Everything in Premium Plan, plus:',
+      'Tailored research reports with deep narrative synthesis',
+      'Dedicated research analyst for personalized insights',
+      'API access for integration with your systems',
+      'Strategic narrative consulting and competitor analysis',
+    ],
+    cta: 'Contact Us to Learn More',
+    ctaLink: 'mailto:fernando@btcperception.com?subject=Enterprise%20Plan%20Inquiry',
+    dataplan: 'enterprise',
   },
 ];
 
 export function PriceList() {
   return (
     <div className="flex flex-col">
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-8 md:grid-cols-3">
         {tiers.map((tier) => (
           <PriceCard key={tier.name} {...tier} />
         ))}

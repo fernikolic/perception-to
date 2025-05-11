@@ -21,9 +21,9 @@ export function ProblemCards() {
     <section className="relative bg-gray-50 py-12 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="flex justify-between items-start mb-8 sm:mb-12">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-gray-900 mb-4">
+        <div className="flex justify-center items-center mb-8 sm:mb-12">
+          <div className="max-w-3xl text-center">
+            <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-medium tracking-tight text-gray-900 mb-4 mx-auto max-w-[900px] leading-tight">
               Information fragmentation is costing professionals time and clarity
             </h2>
             <p className="text-lg sm:text-xl text-gray-600">

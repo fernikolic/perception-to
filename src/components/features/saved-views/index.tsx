@@ -19,19 +19,9 @@ const articles = [
     color: 'bg-green-100'
   },
   {
-    title: 'Bitcoin Adoption Accelerates in Central America',
-    date: 'Mar 31',
-    color: 'bg-green-100'
-  },
-  {
     title: 'Bitcoin Mining Centralization Concerns Resurface',
     date: 'Mar 31',
     color: 'bg-red-100'
-  },
-  {
-    title: "GameStop's Bitcoin Strategy Causes Market Jitters",
-    date: 'Mar 29',
-    color: 'bg-blue-100'
   }
 ];
 
