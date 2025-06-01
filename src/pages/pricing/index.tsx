@@ -13,7 +13,7 @@ export default function PricingPage() {
               Choose your signal depth
             </h1>
             <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-2">
-              7-day free trial with self-serve cancellation
+              Free access with self-serve cancellation
             </p>
             <p className="text-sm text-muted-foreground/80 max-w-md mx-auto">
               Pro guarantee: 5-hour time savings in week one or cancel

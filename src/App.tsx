@@ -33,6 +33,7 @@ import { ArticlePage } from '@/pages/learn/[slug]';
 import CategoryPage from '@/pages/learn/category/[slug]';
 import TagPage from '@/pages/learn/tag/[slug]';
 import TestimonialsPage from '@/pages/testimonials';
+import SlackTestingPage from '@/pages/slack-testing';
 import PageTransition from '@/components/PageTransition';
 
 function HomePage() {
@@ -82,6 +83,7 @@ const App = () => {
             <Route path="/learn//:slug" element={<ArticlePage />} />
             <Route path="/learn/:slug" element={<ArticlePage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
+            <Route path="/slack-testing" element={<SlackTestingPage />} />
           </Routes>
         </PageTransition>
         <Footer />

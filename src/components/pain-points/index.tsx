@@ -15,24 +15,24 @@ const throttle = (func: Function, limit: number) => {
 
 const painPoints = [
   {
-    problem: 'Tracking sentiment across Twitter, Reddit, and the news manually',
-    consequence: 'Missed critical shifts 😟',
+    problem: 'Tracking sentiment across 50+ fragmented sources daily',
+    consequence: 'Hours lost to manual research 🕐',
   },
   {
-    problem: 'Scanning endless articles and threads for trends',
-    consequence: 'Drowning in noise 🌊',
+    problem: 'Drowning in crypto media noise—Twitter, Reddit, news, and podcasts',
+    consequence: 'Missing critical signals 📡',
   },
   {
-    problem: 'Missing key market-moving developments',
+    problem: 'Switching between dozens of tabs and apps for market intelligence',
+    consequence: 'Burnt out from tool fatigue 🔥',
+  },
+  {
+    problem: 'No centralized view of narrative shifts across media channels',
+    consequence: 'Flying blind on trends 🕶️',
+  },
+  {
+    problem: 'Manually correlating price movements with media coverage',
     consequence: 'Missed trading opportunities 💸',
-  },
-  {
-    problem: 'Switching between dozens of tools for sentiment, price analysis, and news',
-    consequence: 'Burnt out 🔥',
-  },
-  {
-    problem: 'Trying to predict trends without data',
-    consequence: 'Flying blind 🕶️',
   },
 ];
 
@@ -132,7 +132,7 @@ export function PainPoints() {
             </div>
             
             <h2 className="mt-8 text-5xl font-bold tracking-tight sm:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">
-              Stop letting your workflow look like this:
+              Stop wasting hours on fragmented crypto research:
             </h2>
           </div>
 

@@ -21,7 +21,7 @@ export const faqData = [
   },
   {
     question: "What is the difference between the PRO and PRO + DATA plans?",
-    answer: "The PRO plan is ideal for analysts and communications leads who need live data and interactive dashboards without writing code.\n\nThe PRO + DATA plan is built for desks that need Perception inside their models, with:\n• Real-time Perception Index™ & Trend API (≤ 60 seconds)\n• Excel / Google-Sheets formula pack\n• Automated raw CSV & chart export\n• 5 seats and priority Slack Connect support\n\nBoth plans come with a 7-day free trial and self-serve cancellation."
+    answer: "The PRO plan is ideal for analysts and communications leads who need live data and interactive dashboards without writing code.\n\nThe PRO + DATA plan is built for teams that need our intelligence integrated into their existing workflows, with:\n• Real-time API access with sub-60 second data delivery\n• Excel / Google-Sheets formula integration\n• Automated raw CSV exports and custom charts\n• 5 seats and priority Slack Connect support\n\nBoth plans come with free access and self-serve cancellation."
   },
   {
     question: "How much does the platform cost?",
@@ -36,8 +36,8 @@ export const faqData = [
     answer: "Perception currently focuses on English-language sources, with global geographic coverage.\nWe track sentiment and narratives from North America, Europe, Latin America, Asia, and MENA—filtered through local media, policy, and institutional lenses. Multilingual support is on our roadmap."
   },
   {
-    question: "What's included in the 7-day free trial?",
-    answer: "Both our PRO and PRO + DATA plans come with a 7-day free trial that includes full access to all features of your chosen plan. No credit card is required to start your trial, and you can cancel at any time through the self-serve dashboard. If the platform doesn't save you at least five hours in the first week, you can cancel with no questions asked."
+    question: "What's included in the free access?",
+    answer: "Both our PRO and PRO + DATA plans come with free access that includes full access to all features of your chosen plan. No credit card is required to start, and you can cancel at any time through the self-serve dashboard. If the platform doesn't save you at least five hours in the first week, you can cancel with no questions asked."
   },
   {
     question: "Can I provide feedback or request features?",

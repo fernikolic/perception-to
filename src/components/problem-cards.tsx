@@ -47,7 +47,7 @@ export function ProblemCards() {
               Quantify the mood
             </h3>
             <p className="mt-2 text-sm sm:text-base text-gray-600">
-              Live Perception Index™ and multi-channel heat-maps
+              Live intelligence feeds and multi-channel analytics dashboard
             </p>
           </div>
 

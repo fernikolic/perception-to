@@ -237,7 +237,7 @@ export function Navbar() {
             asChild
           >
             <a href="/pricing">
-              Start 7-Day Trial
+              Get Instant Access
             </a>
           </Button>
         </div>
@@ -362,7 +362,7 @@ export function Navbar() {
                 asChild
               >
                 <a href="/pricing">
-                  Start 7-Day Trial
+                  Get Instant Access
                 </a>
               </Button>
             </div>

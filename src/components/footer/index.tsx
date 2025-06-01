@@ -43,8 +43,7 @@ export function Footer() {
             <span className="text-2xl font-bold text-white">Perception</span>
           </a>
           <p className="mt-4 max-w-md text-sm text-white/60">
-            Stay ahead of the curve with real-time narrative intelligence.
-            Perception delivers high-signal sentiment analysis and trend discovery across Bitcoin, stablecoins, and digital finance—curated from the world's most credible sources.
+            Cut through crypto media chaos. Perception aggregates intelligence from 200+ sources into one professional dashboard, saving you hours daily while keeping you ahead of breaking narratives.
           </p>
         </div>
         

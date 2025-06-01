@@ -47,7 +47,7 @@ export function Hero() {
           </h1>
           
           <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-foreground/60 font-light max-w-2xl mx-auto">
-            Access our proprietary Perception Index™ fear & greed index and trend API to spot where market attention is heading before price follows.
+            Cut through the noise of fragmented crypto media. Get real-time intelligence from 200+ sources—all in one dashboard. Save hours daily with AI-powered narrative synthesis that professionals trust.
           </p>
           
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
@@ -57,7 +57,7 @@ export function Hero() {
               asChild
             >
               <a href="/pricing">
-                Start 7-Day Trial
+                Get Instant Access
               </a>
             </Button>
             <Button 
