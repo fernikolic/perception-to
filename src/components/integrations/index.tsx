@@ -214,15 +214,15 @@ export function Integrations() {
         </div>
         
         <div className="mx-auto mt-16 max-w-7xl">
-          <div className="relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-[150px] bg-gradient-to-r from-black to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-[150px] bg-gradient-to-l from-black to-transparent z-10" />
+          <div className="scroll-container">
+            <div className="scroll-mask-left" />
+            <div className="scroll-mask-right" />
             <div className="flex flex-col gap-4">
               {rows.map((row, rowIndex) => (
                 <div
                   key={rowIndex}
-                  className={`flex gap-4 py-4 ${
-                    rowIndex % 2 === 0 ? 'animate-scroll-left' : 'animate-scroll-right'
+                  className={`scroll-track ${
+                    rowIndex % 2 === 0 ? 'scroll-track-left' : 'scroll-track-right'
                   }`}
                 >
                   {/* Quadruple the items to ensure smooth infinite scroll */}

@@ -47,7 +47,11 @@ export function Hero() {
           </h1>
           
           <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-foreground/60 font-light max-w-2xl mx-auto">
-            Cut through the noise of fragmented crypto media. Get real-time intelligence from 200+ sources—all in one dashboard. Save hours daily with AI-powered narrative synthesis that professionals trust.
+            Cut through the noise of fragmented media covering the future of finance. Get real-time intelligence from 200+ sources—all in one dashboard.{' '}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600 font-medium">
+              Save 3 hours daily
+            </span>
+            {' '}with narrative synthesis that professionals trust.
           </p>
           
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">

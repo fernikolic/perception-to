@@ -6,7 +6,7 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   theme: {
     container: {
       center: true,
@@ -17,27 +17,44 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['SF Pro Display', 'SF Pro', 'Inter', 'system-ui', 'sans-serif'],
       },
       fontWeight: {
-        h1: '200',
-        h2: '200',
-        h3: '200',
-        h4: '300',
-        h5: '300',
-        h6: '400',
         thin: '100',
         extralight: '200',
         light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
       },
       letterSpacing: {
         'tight': '-0.02em',
-        'wider': '.1em',
-        'widest': '.25em',
+        'normal': '0',
+        'wide': '0.02em',
+        'wider': '0.05em',
       },
       fontSize: {
-        'display': ['4.5rem', { lineHeight: '1' }],
+        'xs': ['0.75rem', { lineHeight: '1.25', letterSpacing: '0.02em' }],
+        'sm': ['0.875rem', { lineHeight: '1.35', letterSpacing: '0.01em' }],
+        'base': ['1rem', { lineHeight: '1.5', letterSpacing: '0' }],
+        'lg': ['1.125rem', { lineHeight: '1.5', letterSpacing: '0' }],
+        'xl': ['1.25rem', { lineHeight: '1.4', letterSpacing: '-0.01em' }],
+        '2xl': ['1.5rem', { lineHeight: '1.3', letterSpacing: '-0.01em' }],
+        '3xl': ['1.875rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+        '4xl': ['2.25rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        '5xl': ['3rem', { lineHeight: '1', letterSpacing: '-0.02em' }],
+        '6xl': ['3.75rem', { lineHeight: '1', letterSpacing: '-0.02em' }],
+        'display': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.02em' }],
         'hero': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+      },
+      spacing: {
+        '4.5': '1.125rem',
+        '5.5': '1.375rem',
+        '6.5': '1.625rem',
+        '7.5': '1.875rem',
+        '8.5': '2.125rem',
+        '9.5': '2.375rem',
       },
       colors: {
         border: "hsl(var(--border))",
@@ -88,43 +105,25 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
-        "scroll-left": {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(-50%)" },
+        "fade-in": {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
         },
-        "scroll-right": {
-          from: { transform: "translateX(-50%)" },
-          to: { transform: "translateX(0)" },
+        "slide-up": {
+          from: { transform: "translateY(20px)", opacity: 0 },
+          to: { transform: "translateY(0)", opacity: 1 },
         },
-        "card-enter": {
-          "0%": { 
-            opacity: "0",
-            transform: "translateY(20px) scale(0.95)"
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0) scale(1)"
-          }
+        "slide-down": {
+          from: { transform: "translateY(-20px)", opacity: 0 },
+          to: { transform: "translateY(0)", opacity: 1 },
         },
-        "card-active": {
-          "0%": {
-            transform: "scale(1)"
-          },
-          "50%": {
-            transform: "scale(1.05)"
-          },
-          "100%": {
-            transform: "scale(1)"
-          }
-        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "scroll-left": "scroll-left 50s linear infinite",
-        "scroll-right": "scroll-right 50s linear infinite",
-        "card-enter": "card-enter 0.5s ease-out forwards",
-        "card-active": "card-active 1s ease-in-out"
+        "fade-in": "fade-in 0.5s ease-out",
+        "slide-up": "slide-up 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+        "slide-down": "slide-down 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
       },
     },
   },
