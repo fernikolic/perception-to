@@ -105,9 +105,114 @@ export async function onRequest(context) {
       <rect x="60" y="522" width="2" height="48" fill="${colors.accent}" opacity="0.2" rx="1" />
     </svg>`;
 
-    return new Response(svg, {
+    // For better social media compatibility, we'll return an HTML page that renders as an image
+    // This works better with social crawlers than pure SVG
+    const html = `<!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=1200, height=630">
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { 
+            width: 1200px; 
+            height: 630px; 
+            background: linear-gradient(135deg, ${colors.background} 0%, ${theme === 'dark' ? '#111111' : '#f8f9fa'} 50%, ${colors.background} 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            color: ${colors.title};
+            position: relative;
+            overflow: hidden;
+            padding: 60px;
+          }
+          .bg-element { 
+            position: absolute; 
+            border-radius: 50%; 
+            opacity: 0.03; 
+            background: ${colors.accent}; 
+          }
+          .bg-1 { top: 90px; right: 250px; width: 240px; height: 240px; }
+          .bg-2 { bottom: 130px; right: 100px; width: 400px; height: 400px; opacity: 0.02; }
+          .bg-3 { top: 250px; left: 40px; width: 300px; height: 300px; opacity: 0.02; }
+          .container {
+            border: 1px solid ${colors.accent}10;
+            border-radius: 24px;
+            padding: 40px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+          }
+          .brand { margin-bottom: 60px; }
+          .brand-title { font-size: 28px; font-weight: 600; margin-bottom: 4px; }
+          .brand-subtitle { font-size: 13px; color: ${colors.description}; }
+          .content { display: flex; align-items: flex-start; margin-bottom: 40px; flex: 1; }
+          .icon { 
+            width: 64px; 
+            height: 64px; 
+            border-radius: 32px; 
+            background: ${colors.accent}10; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-right: 32px; 
+            font-size: 36px; 
+          }
+          .text { flex: 1; }
+          .title { font-size: 52px; font-weight: 700; line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.02em; }
+          .description { font-size: 22px; color: ${colors.description}; line-height: 1.4; opacity: 0.8; }
+          .footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+          .badge { 
+            background: ${colors.accent}08; 
+            padding: 8px 16px; 
+            border-radius: 16px; 
+            font-size: 14px; 
+            color: ${colors.accent}; 
+            font-weight: 500; 
+          }
+          .url { font-size: 16px; color: ${colors.description}; font-family: 'SF Mono', Monaco, monospace; opacity: 0.7; }
+          .accent { position: absolute; background: ${colors.accent}; opacity: 0.2; }
+          .accent-1 { top: 60px; right: 60px; width: 48px; height: 2px; }
+          .accent-2 { top: 60px; right: 156px; width: 2px; height: 48px; }
+          .accent-3 { bottom: 60px; left: 60px; width: 48px; height: 2px; }
+          .accent-4 { bottom: 60px; left: 156px; width: 2px; height: 48px; }
+        </style>
+      </head>
+      <body>
+        <div class="bg-element bg-1"></div>
+        <div class="bg-element bg-2"></div>
+        <div class="bg-element bg-3"></div>
+        
+        <div class="container">
+          <div class="brand">
+            <div class="brand-title">Perception</div>
+            <div class="brand-subtitle">Real-Time Sentiment & Trend Intelligence for Bitcoin, Stablecoins & Tokenized Finance</div>
+          </div>
+          
+          <div class="content">
+            <div class="icon">${pageIcon}</div>
+            <div class="text">
+              <div class="title">${title.slice(0, 45).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+              <div class="description">${description.slice(0, 75).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+            </div>
+          </div>
+
+          <div class="footer">
+            <div class="badge">📊 Real-time Sentiment Intelligence</div>
+            <div class="url">perception.to</div>
+          </div>
+        </div>
+
+        <div class="accent accent-1"></div>
+        <div class="accent accent-2"></div>
+        <div class="accent accent-3"></div>
+        <div class="accent accent-4"></div>
+      </body>
+    </html>`;
+
+    return new Response(html, {
       headers: {
-        'Content-Type': 'image/svg+xml',
+        'Content-Type': 'text/html',
         'Cache-Control': 'public, max-age=31536000, immutable',
       },
     });

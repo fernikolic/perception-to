@@ -131,7 +131,7 @@ function generateSocialImage({ title, description, path }: {
   const isDevelopment = import.meta.env.DEV;
   const baseUrl = isDevelopment 
     ? 'http://localhost:3001' 
-    : 'https://perception.to/api';
+    : 'https://perception.to';
     
-  return `${baseUrl}/og-image?${params.toString()}`;
+  return `${baseUrl}/api/og-image?${params.toString()}`;
 } 
