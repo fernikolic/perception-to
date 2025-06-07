@@ -1,4 +1,5 @@
-import { ImageResponse } from '@vercel/og';
+// Note: @vercel/og is not compatible with Cloudflare Workers
+// We'll create a simple SVG-based approach instead
 
 const PAGE_ICONS = {
   '/': '📊',
@@ -24,8 +25,8 @@ export async function onRequest(context) {
   try {
     const { request } = context;
     const { searchParams } = new URL(request.url);
-    const title = searchParams.get('title') || 'Bitcoin Perception';
-    const description = searchParams.get('description') || 'AI-powered Bitcoin sentiment analysis';
+    const title = searchParams.get('title') || 'Perception';
+    const description = searchParams.get('description') || 'Real-Time Sentiment & Trend Intelligence for Bitcoin, Stablecoins & Tokenized Finance';
     const path = searchParams.get('path') || '/';
     const theme = searchParams.get('theme') || 'dark';
 
@@ -36,184 +37,82 @@ export async function onRequest(context) {
       gradient: '#1a1a1a',
       title: '#ffffff',
       description: '#a1a1aa',
-      accent: '#f97316', // Bitcoin orange
-      secondary: '#facc15' // Bitcoin yellow
+      accent: '#f97316'
     } : {
       background: '#ffffff', 
       gradient: '#f8f9fa',
       title: '#1a1a1a',
       description: '#52525b',
-      accent: '#f97316',
-      secondary: '#facc15'
+      accent: '#f97316'
     };
 
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            background: `linear-gradient(135deg, ${colors.background} 0%, ${theme === 'dark' ? '#111111' : '#f8f9fa'} 50%, ${colors.background} 100%)`,
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            padding: '60px',
-            color: colors.title,
-            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-        >
-          {/* Subtle background elements */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '0',
-              left: '0',
-              right: '0',
-              bottom: '0',
-              backgroundImage: `radial-gradient(circle at 79% 24%, ${colors.accent}03 0%, transparent 50%), radial-gradient(circle at 92% 79%, ${colors.accent}02 0%, transparent 50%), radial-gradient(circle at 8% 63%, ${colors.accent}02 0%, transparent 50%)`,
-            }}
-          />
+    // Generate SVG-based social image for Cloudflare Workers
+    const svg = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:${colors.background};stop-opacity:1" />
+          <stop offset="50%" style="stop-color:${theme === 'dark' ? '#111111' : '#f8f9fa'};stop-opacity:1" />
+          <stop offset="100%" style="stop-color:${colors.background};stop-opacity:1" />
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge> 
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      
+      <!-- Background -->
+      <rect width="1200" height="630" fill="url(#bgGradient)" />
+      
+      <!-- Subtle background elements -->
+      <circle cx="950" cy="150" r="120" fill="${colors.accent}" opacity="0.03" />
+      <circle cx="1100" cy="500" r="200" fill="${colors.accent}" opacity="0.02" />
+      <circle cx="100" cy="400" r="150" fill="${colors.accent}" opacity="0.02" />
+      
+      <!-- Main content container -->
+      <rect x="60" y="60" width="1080" height="510" rx="24" fill="none" stroke="${colors.accent}" stroke-width="1" opacity="0.1" />
+      
+      <!-- Branding -->
+      <text x="100" y="140" font-family="SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="600" fill="${colors.title}">Perception</text>
+      <text x="100" y="160" font-family="SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="400" fill="${colors.description}">Real-Time Sentiment &amp; Trend Intelligence for Bitcoin, Stablecoins &amp; Tokenized Finance</text>
+      
+      <!-- Page icon -->
+      <circle cx="132" cy="220" r="32" fill="${colors.accent}" opacity="0.1" />
+      <text x="132" y="230" font-family="SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif" font-size="36" text-anchor="middle" fill="${colors.accent}">${pageIcon}</text>
+      
+      <!-- Title -->
+      <text x="200" y="240" font-family="SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif" font-size="52" font-weight="700" fill="${colors.title}">
+        ${title.slice(0, 45).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}
+      </text>
+      
+      <!-- Description -->
+      <text x="200" y="285" font-family="SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="400" fill="${colors.description}" opacity="0.8">
+        ${description.slice(0, 75).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}
+      </text>
+      
+      <!-- Bottom section -->
+      <rect x="100" y="520" width="280" height="32" rx="16" fill="${colors.accent}" opacity="0.08" />
+      <text x="112" y="541" font-family="SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="500" fill="${colors.accent}">📊 Real-time Sentiment Intelligence</text>
+      
+      <text x="1000" y="541" font-family="SF Mono, Monaco, monospace" font-size="16" font-weight="500" fill="${colors.description}" opacity="0.7">perception.to</text>
+      
+      <!-- Corner accents -->
+      <rect x="1140" y="60" width="48" height="2" fill="${colors.accent}" opacity="0.2" rx="1" />
+      <rect x="1186" y="60" width="2" height="48" fill="${colors.accent}" opacity="0.2" rx="1" />
+      <rect x="60" y="568" width="48" height="2" fill="${colors.accent}" opacity="0.2" rx="1" />
+      <rect x="60" y="522" width="2" height="48" fill="${colors.accent}" opacity="0.2" rx="1" />
+    </svg>`;
 
-          {/* Main content container */}
-          <div style={{
-            border: `1px solid ${colors.accent}10`,
-            borderRadius: '24px',
-            padding: '40px',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            position: 'relative',
-            zIndex: 1
-          }}>
-            
-            {/* Logo/Branding */}
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '60px' }}>
-              <div>
-                <div style={{ 
-                  fontSize: '28px', 
-                  fontWeight: '600',
-                  color: colors.title,
-                  lineHeight: 1,
-                  marginBottom: '4px'
-                }}>
-                  Perception
-                </div>
-                <div style={{ 
-                  fontSize: '13px', 
-                  color: colors.description,
-                  fontWeight: '400'
-                }}>
-                  Real-Time Sentiment & Trend Intelligence for Bitcoin, Stablecoins & Tokenized Finance
-                </div>
-              </div>
-            </div>
-            
-            {/* Page Content */}
-            <div style={{ 
-              display: 'flex', 
-              alignItems: 'flex-start', 
-              marginBottom: '40px',
-              flex: 1
-            }}>
-              <div style={{
-                width: '64px',
-                height: '64px',
-                borderRadius: '32px',
-                background: `${colors.accent}10`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '32px',
-                fontSize: '36px'
-              }}>
-                {pageIcon}
-              </div>
-              <div style={{ flex: 1 }}>
-                <div style={{ 
-                  fontSize: '52px', 
-                  fontWeight: '700', 
-                  color: colors.title,
-                  lineHeight: 1.1,
-                  marginBottom: '16px',
-                  letterSpacing: '-0.02em'
-                }}>
-                  {title.slice(0, 45)}
-                </div>
-                <div style={{ 
-                  fontSize: '22px', 
-                  color: colors.description,
-                  lineHeight: 1.4,
-                  opacity: 0.8,
-                  fontWeight: '400'
-                }}>
-                  {description.slice(0, 75)}
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom section */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginTop: 'auto'
-            }}>
-              <div style={{
-                background: `${colors.accent}08`,
-                padding: '8px 16px',
-                borderRadius: '16px',
-                fontSize: '14px',
-                color: colors.accent,
-                fontWeight: '500',
-                display: 'flex',
-                alignItems: 'center'
-              }}>
-                📊 Real-time Bitcoin Sentiment
-              </div>
-              <div style={{
-                fontSize: '16px',
-                color: colors.description,
-                fontWeight: '500',
-                fontFamily: 'SF Mono, Monaco, monospace',
-                opacity: 0.7
-              }}>
-                perception.to
-              </div>
-            </div>
-          </div>
-
-          {/* Corner accents */}
-          <div style={{
-            position: 'absolute',
-            top: '60px',
-            right: '60px',
-            width: '48px',
-            height: '2px',
-            background: colors.accent,
-            opacity: 0.2,
-            borderRadius: '1px'
-          }} />
-          <div style={{
-            position: 'absolute',
-            top: '60px',
-            right: '156px',
-            width: '2px',
-            height: '48px',
-            background: colors.accent,
-            opacity: 0.2,
-            borderRadius: '1px'
-          }} />
-        </div>
-      ),
-      {
-        width: 1200,
-        height: 630,
-      }
-    );
-  } catch (error) {
-    return new Response(`Failed to generate image: ${error.message}`, {
-      status: 500,
+    return new Response(svg, {
+      headers: {
+        'Content-Type': 'image/svg+xml',
+        'Cache-Control': 'public, max-age=31536000, immutable',
+      },
     });
+  } catch (error) {
+    console.error('Error generating OG image:', error);
+    return new Response('Error generating image', { status: 500 });
   }
 } 
