@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@/components/theme-provider';
+import { SocialMeta } from '@/components/seo/social-meta';
 import { Navbar } from '@/components/navbar';
 import { Hero } from '@/components/hero';
 import { ProblemSolution } from '@/components/problem-solution';
@@ -34,6 +35,7 @@ import CategoryPage from '@/pages/learn/category/[slug]';
 import TagPage from '@/pages/learn/tag/[slug]';
 import TestimonialsPage from '@/pages/testimonials';
 import SlackTestingPage from '@/pages/slack-testing';
+import SocialPreviewPage from '@/pages/social-preview';
 import PageTransition from '@/components/PageTransition';
 
 function HomePage() {
@@ -57,6 +59,7 @@ const App = () => {
   return (
     <ThemeProvider defaultTheme="light" storageKey="ui-theme">
       <div className="min-h-screen bg-background text-foreground">
+        <SocialMeta />
         <Navbar />
         <ScrollToTop />
         <PageTransition>
@@ -84,6 +87,7 @@ const App = () => {
             <Route path="/learn/:slug" element={<ArticlePage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/slack-testing" element={<SlackTestingPage />} />
+            <Route path="/social-preview" element={<SocialPreviewPage />} />
           </Routes>
         </PageTransition>
         <Footer />

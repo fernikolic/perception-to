@@ -36,8 +36,14 @@ export default {
     
     // Handle API requests (but don't proxy to another domain)
     if (url.pathname.startsWith('/api/')) {
-      // Here you would handle API requests directly
-      // For now, return a dummy response
+      // Handle OG image generation
+      if (url.pathname === '/api/og-image') {
+        // Import the OG image handler
+        const { onRequest } = await import('./api/og-image.js');
+        return onRequest({ request, env, ctx });
+      }
+      
+      // For other API requests, return a dummy response
       return new Response(JSON.stringify({ 
         message: 'API endpoint reached'
       }), {
