@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const app = express();
 
-// Configure CORS to allow requests from frontend (Vite dev server)
+// Configure CORS
 app.use(cors({
   origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175', 'http://localhost:3000'],
   credentials: true,
@@ -14,26 +14,23 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Redirect root to Admin panel
-app.get('/', (_, res) => {
-  res.redirect('/admin');
-});
-
 const start = async () => {
-  // Initialize Payload
+  // Initialize Payload with minimal config
   await payload.init({
     secret: process.env.PAYLOAD_SECRET || 'fallback-secret-key',
-    mongoURL: process.env.MONGODB_URI || 'mongodb://localhost/payload',
     express: app,
+    local: false,
     onInit: () => {
-      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+      console.log('Payload initialized successfully');
     },
   });
 
   const port = process.env.PORT || 3000;
-  app.listen(port, async () => {
-    payload.logger.info(`Server listening on port ${port}`);
+  app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
   });
 };
 
-start(); 
+start().catch(err => {
+  console.error('Failed to start server:', err);
+}); 

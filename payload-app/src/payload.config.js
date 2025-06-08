@@ -1,18 +1,22 @@
 const { buildConfig } = require('payload/config');
-const { webpackBundler } = require('@payloadcms/bundler-webpack');
+const { mongooseAdapter } = require('@payloadcms/db-mongodb');
 const path = require('path');
 const Users = require('./collections/Users');
 const Glossary = require('./collections/Glossary');
+const Learn = require('./collections/Learn');
 
 module.exports = buildConfig({
   collections: [
     Users,
     Glossary,
+    Learn,
   ],
-  mongoURL: process.env.MONGODB_URI || 'mongodb://localhost/payload',
   editor: {
     validate: () => true,
   },
+  db: mongooseAdapter({
+    url: process.env.MONGODB_URI || 'mongodb://localhost/payload',
+  }),
   admin: {
     disable: true, // Temporarily disabled due to webpack compilation issues
   },
