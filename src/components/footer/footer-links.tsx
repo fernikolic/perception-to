@@ -27,7 +27,7 @@ const footerSections: FooterSection[] = [
         href: 'https://bitcoinperception.com',
         className: 'text-orange-500 hover:text-orange-600'
       },
-      { label: 'Careers', href: '/careers', comingSoon: true },
+      // { label: 'Careers', href: '/careers', comingSoon: true },
       { label: 'Press', href: '/press' },
     ],
   },

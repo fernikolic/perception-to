@@ -25,34 +25,37 @@ const resources: {
   { 
     title: "Learn", 
     href: "/learn",
-    description: "Discover insights and analysis about Bitcoin markets",
-    disabled: true,
-    badge: "Coming Soon"
+    description: "Guides and market analysis"
+  },
+  { 
+    title: "Glossary", 
+    href: "/glossary",
+    description: "Terminology and concepts"
   },
   { 
     title: "Documentation", 
     href: "#",
-    description: "Learn how to integrate and use our platform",
+    description: "Platform integration guides",
     disabled: true,
     badge: "Coming Soon"
   },
   { 
     title: "API Reference", 
     href: "#",
-    description: "Detailed API documentation for developers",
+    description: "Developer documentation",
     disabled: true,
     badge: "Coming Soon"
   },
   { 
     title: "Bitcoin Media Research", 
     href: "https://bitcoinperception.com", 
-    description: "Join 1,000+ professionals receiving free research reports",
+    description: "Join 1,500+ subscribers",
     className: "text-orange-500"
   },
   { 
     title: "Methodology", 
     href: "/methodology", 
-    description: "Learn about our comprehensive data collection and analysis process"
+    description: "Our data collection process"
   },
 ];
 
@@ -69,13 +72,13 @@ const company: {
     href: "/about", 
     description: "Learn about our mission and team"
   },
-  { 
-    title: "Careers", 
-    href: "#",
-    description: "Join our growing team",
-    disabled: true,
-    badge: "Coming Soon"
-  },
+  // { 
+  //   title: "Careers", 
+  //   href: "#",
+  //   description: "Join our growing team",
+  //   disabled: true,
+  //   badge: "Coming Soon"
+  // },
   { 
     title: "Press", 
     href: "/press", 
@@ -138,7 +141,7 @@ export function Navbar() {
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="p-4 bg-background rounded-lg border shadow-lg w-[calc(100vw-2rem)] max-w-[800px]">
+                  <div className="p-4 bg-background rounded-lg border shadow-lg min-w-[500px] max-w-[600px]">
                     <ul className="space-y-3">
                       {resources.map((item) => (
                         <li key={item.title}>
@@ -162,9 +165,19 @@ export function Navbar() {
                                   </Badge>
                                 )}
                               </div>
-                              <p className="text-sm text-muted-foreground" style={{ maxWidth: "100%", wordWrap: "break-word" }}>
+                              <div 
+                                className="text-sm text-muted-foreground" 
+                                style={{ 
+                                  whiteSpace: 'normal', 
+                                  wordWrap: 'break-word', 
+                                  overflowWrap: 'break-word',
+                                  maxWidth: '100%',
+                                  width: '100%',
+                                  lineHeight: '1.4'
+                                }}
+                              >
                                 {item.description}
-                              </p>
+                              </div>
                             </a>
                           </NavigationMenuLink>
                         </li>
@@ -179,7 +192,7 @@ export function Navbar() {
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="p-4 bg-background rounded-lg border shadow-lg w-[calc(100vw-2rem)] max-w-[800px]">
+                  <div className="p-4 bg-background rounded-lg border shadow-lg min-w-[500px] max-w-[600px]">
                     <ul className="space-y-3">
                       {company.map((item) => (
                         <li key={item.title}>
@@ -203,9 +216,19 @@ export function Navbar() {
                                   </Badge>
                                 )}
                               </div>
-                              <p className="text-sm text-muted-foreground" style={{ maxWidth: "100%", wordWrap: "break-word" }}>
+                              <div 
+                                className="text-sm text-muted-foreground" 
+                                style={{ 
+                                  whiteSpace: 'normal', 
+                                  wordWrap: 'break-word', 
+                                  overflowWrap: 'break-word',
+                                  maxWidth: '100%',
+                                  width: '100%',
+                                  lineHeight: '1.4'
+                                }}
+                              >
                                 {item.description}
-                              </p>
+                              </div>
                             </a>
                           </NavigationMenuLink>
                         </li>

@@ -1,0 +1,21 @@
+{
+  "name": "payload-v1",
+  "version": "1.0.0",
+  "description": "Payload CMS v1 for programmatic SEO",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "build": "payload build",
+    "serve": "node src/server.js"
+  },
+  "keywords": ["payload", "cms", "seo"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^4.21.0",
+    "mongoose": "^8.15.1",
+    "payload": "^1.15.12"
+  }
+}

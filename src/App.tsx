@@ -20,7 +20,7 @@ import { JournalistLanding } from '@/pages/landing/journalist';
 import { InvestorLanding } from '@/pages/landing/investor';
 import { CompaniesLanding } from '@/pages/landing/companies';
 import { AboutPage } from '@/pages/about';
-import { CareersPage } from '@/pages/careers';
+// import { CareersPage } from '@/pages/careers';
 import { PressPage } from '@/pages/press';
 import { AnnouncementsPage } from '@/pages/announcements';
 import PricingPage from '@/pages/pricing';
@@ -33,6 +33,10 @@ import { LearnPage } from '@/pages/learn';
 import { ArticlePage } from '@/pages/learn/[slug]';
 import CategoryPage from '@/pages/learn/category/[slug]';
 import TagPage from '@/pages/learn/tag/[slug]';
+import { GlossaryPage } from '@/pages/glossary';
+import { GlossaryEntryPage } from '@/pages/glossary/[slug]';
+import { CmsLearnPage } from '@/pages/cms-learn';
+import { LearnArticlePage } from '@/pages/cms-learn/[slug]';
 import TestimonialsPage from '@/pages/testimonials';
 import SlackTestingPage from '@/pages/slack-testing';
 import SocialPreviewPage from '@/pages/social-preview';
@@ -70,7 +74,7 @@ const App = () => {
             <Route path="/investor" element={<InvestorLanding />} />
             <Route path="/researcher" element={<CompaniesLanding />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/careers" element={<CareersPage />} />
+            {/* <Route path="/careers" element={<CareersPage />} /> */}
             <Route path="/press" element={<PressPage />} />
             <Route path="/announcements" element={<AnnouncementsPage />} />
             <Route path="/pricing" element={<PricingPage />} />
@@ -79,12 +83,16 @@ const App = () => {
             <Route path="/roadmap" element={<RoadmapPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
-            <Route path="/learn" element={<LearnPage />} />
-            <Route path="/learn/category/:slug" element={<CategoryPage />} />
-            <Route path="/learn/tag/:slug" element={<TagPage />} />
-            <Route path="/learn/:category/:slug" element={<ArticlePage />} />
-            <Route path="/learn//:slug" element={<ArticlePage />} />
-            <Route path="/learn/:slug" element={<ArticlePage />} />
+            <Route path="/static-learn" element={<LearnPage />} />
+            <Route path="/static-learn/category/:slug" element={<CategoryPage />} />
+            <Route path="/static-learn/tag/:slug" element={<TagPage />} />
+            <Route path="/static-learn/:category/:slug" element={<ArticlePage />} />
+            <Route path="/static-learn//:slug" element={<ArticlePage />} />
+            <Route path="/static-learn/:slug" element={<ArticlePage />} />
+            <Route path="/glossary" element={<GlossaryPage />} />
+            <Route path="/glossary/:slug" element={<GlossaryEntryPage />} />
+            <Route path="/learn" element={<CmsLearnPage />} />
+            <Route path="/learn/:slug" element={<LearnArticlePage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/slack-testing" element={<SlackTestingPage />} />
             <Route path="/social-preview" element={<SocialPreviewPage />} />
