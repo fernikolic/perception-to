@@ -1,8 +1,8 @@
 const { buildConfig } = require('payload/config');
 const path = require('path');
-const Users = require('./collections/Users');
-const Glossary = require('./collections/Glossary');
-const Learn = require('./collections/Learn');
+const Users = require('./src/collections/Users');
+const Glossary = require('./src/collections/Glossary');
+const Learn = require('./src/collections/Learn');
 
 module.exports = buildConfig({
   admin: {
@@ -14,7 +14,6 @@ module.exports = buildConfig({
     Glossary,
     Learn,
   ],
-  // CORS handled by Express middleware in server.js
-  cors: false,
-  csrf: false,
+  // CSRF disabled - CORS handled by Express middleware
+  csrf: []
 }); 

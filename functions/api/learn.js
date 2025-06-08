@@ -21,10 +21,11 @@ export async function onRequest(context) {
     
     // Parse query parameters
     const search = searchParams.get('where[or][0][title][contains]') || 
-                  searchParams.get('where[or][1][excerpt][contains]');
+                   searchParams.get('where[or][1][excerpt][contains]');
     const category = searchParams.get('where[category][equals]');
     const limit = parseInt(searchParams.get('limit') || '50');
     const page = parseInt(searchParams.get('page') || '1');
+    const slug = searchParams.get('where[slug][equals]');
     
     // MongoDB Atlas Data API configuration
     const DATA_API_URL = 'https://us-east-1.aws.data.mongodb-api.com/app/data-rftve/endpoint/data/v1/action/find';
@@ -32,6 +33,10 @@ export async function onRequest(context) {
     
     // Build MongoDB filter
     let filter = { published: true };
+    
+    if (slug) {
+      filter.slug = slug;
+    }
     
     if (search) {
       filter.$or = [
@@ -69,7 +74,7 @@ export async function onRequest(context) {
     }
 
     const data = await response.json();
-    
+
     // Get total count for pagination
     const countResponse = await fetch('https://us-east-1.aws.data.mongodb-api.com/app/data-rftve/endpoint/data/v1/action/aggregate', {
       method: 'POST',

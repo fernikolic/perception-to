@@ -52,8 +52,8 @@ export interface LearnResponse {
   nextPage: number | null;
 }
 
-// Use environment variable for API base URL, fallback to production domain
-const PAYLOAD_BASE_URL = import.meta.env.VITE_PAYLOAD_API_URL || 'https://perception.to/api';
+// Use Cloudflare Workers for API endpoints
+const PAYLOAD_BASE_URL = 'https://perception.to/api';
 
 export async function fetchGlossaryEntries(params?: {
   search?: string;

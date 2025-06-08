@@ -8,7 +8,7 @@ const app = express();
 
 // Add CORS middleware before Payload initialization
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -22,18 +22,33 @@ app.use((req, res, next) => {
 
 // Initialize Payload
 const start = async () => {
-  await payload.init({
-    secret: process.env.PAYLOAD_SECRET,
-    mongoURL: process.env.MONGODB_URI,
-    express: app,
-    onInit: () => {
-      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
-    },
-  });
+  try {
+    console.log('🚀 Starting Payload CMS...');
+    console.log('📊 Environment:', process.env.NODE_ENV);
+    console.log('🔗 MongoDB URI:', process.env.MONGODB_URI ? 'Set' : 'Missing');
+    console.log('🔑 Payload Secret:', process.env.PAYLOAD_SECRET ? 'Set' : 'Missing');
 
-  app.listen(process.env.PORT || 3000, async () => {
-    console.log(`Server listening on port ${process.env.PORT || 3000}`);
-  });
+    await payload.init({
+      secret: process.env.PAYLOAD_SECRET,
+      mongoURL: process.env.MONGODB_URI,
+      express: app,
+      onInit: () => {
+        payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+      },
+    });
+
+    const port = parseInt(process.env.PORT) || 3000;
+    const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
+    
+    app.listen(port, host, () => {
+      console.log(`✅ Server listening on ${host}:${port}`);
+      console.log(`✅ Admin panel: http://${host}:${port}/admin`);
+    });
+
+  } catch (error) {
+    console.error('❌ Failed to start server:', error);
+    process.exit(1);
+  }
 };
 
 start();
