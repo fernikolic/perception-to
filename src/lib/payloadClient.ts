@@ -9,6 +9,23 @@ export interface GlossaryEntry {
   createdAt?: string;
 }
 
+export interface LearnArticle {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  category?: string;
+  tags?: string[];
+  readTime?: number;
+  difficulty?: 'beginner' | 'intermediate' | 'advanced';
+  featured?: boolean;
+  published?: boolean;
+  publishedAt?: string;
+  updatedAt?: string;
+  createdAt?: string;
+}
+
 export interface GlossaryResponse {
   docs: GlossaryEntry[];
   totalDocs: number;
@@ -22,7 +39,21 @@ export interface GlossaryResponse {
   nextPage: number | null;
 }
 
-const PAYLOAD_BASE_URL = 'http://localhost:3000/api';
+export interface LearnResponse {
+  docs: LearnArticle[];
+  totalDocs: number;
+  limit: number;
+  totalPages: number;
+  page: number;
+  pagingCounter: number;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: number | null;
+  nextPage: number | null;
+}
+
+// Use environment variable for API base URL, fallback to production domain
+const PAYLOAD_BASE_URL = import.meta.env.VITE_PAYLOAD_API_URL || 'https://perception.to/api';
 
 export async function fetchGlossaryEntries(params?: {
   search?: string;
@@ -71,6 +102,53 @@ export async function fetchGlossaryEntries(params?: {
   }
 }
 
+export async function fetchLearnArticles(params?: {
+  search?: string;
+  category?: string;
+  page?: number;
+  limit?: number;
+}): Promise<LearnResponse> {
+  try {
+    const searchParams = new URLSearchParams();
+    
+    if (params?.search) {
+      searchParams.append('where[or][0][title][contains]', params.search);
+      searchParams.append('where[or][1][excerpt][contains]', params.search);
+    }
+    
+    if (params?.category) {
+      searchParams.append('where[category][equals]', params.category);
+    }
+    
+    if (params?.page) {
+      searchParams.append('page', params.page.toString());
+    }
+    
+    if (params?.limit) {
+      searchParams.append('limit', params.limit.toString());
+    }
+    
+    // Only show published entries
+    searchParams.append('where[published][equals]', 'true');
+    
+    // Sort by publishedAt descending
+    searchParams.append('sort', '-publishedAt');
+    
+    const url = `${PAYLOAD_BASE_URL}/learn${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching learn articles:', error);
+    throw error;
+  }
+}
+
 export async function fetchGlossaryEntry(slug: string): Promise<GlossaryEntry | null> {
   try {
     const response = await fetch(`${PAYLOAD_BASE_URL}/glossary?where[slug][equals]=${slug}&where[published][equals]=true`);
@@ -83,6 +161,22 @@ export async function fetchGlossaryEntry(slug: string): Promise<GlossaryEntry | 
     return data.docs.length > 0 ? data.docs[0] : null;
   } catch (error) {
     console.error('Error fetching glossary entry:', error);
+    throw error;
+  }
+}
+
+export async function fetchLearnArticle(slug: string): Promise<LearnArticle | null> {
+  try {
+    const response = await fetch(`${PAYLOAD_BASE_URL}/learn?where[slug][equals]=${slug}&where[published][equals]=true`);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data: LearnResponse = await response.json();
+    return data.docs.length > 0 ? data.docs[0] : null;
+  } catch (error) {
+    console.error('Error fetching learn article:', error);
     throw error;
   }
 }

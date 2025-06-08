@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchArticles, Article } from '@/lib/googleSheetsClient';
+import { fetchLearnArticles, LearnArticle } from '@/lib/payloadClient';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -9,19 +9,23 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export function LearnPage() {
-  const [posts, setPosts] = useState<Article[]>([]);
+  const [posts, setPosts] = useState<LearnArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const featuredPost = posts.length > 0 ? posts[0] : null;
+  const featuredPost = posts.find(post => post.featured) || (posts.length > 0 ? posts[0] : null);
 
   useEffect(() => {
     const loadPosts = async () => {
       try {
         setLoading(true);
-        const articles = await fetchArticles();
-        setPosts(articles);
+        const response = await fetchLearnArticles({
+          search: searchTerm || undefined,
+          category: selectedCategory || undefined,
+          limit: 50
+        });
+        setPosts(response.docs);
       } catch (err) {
         console.error('Error loading articles:', err);
         setError('Failed to load articles');
@@ -31,7 +35,7 @@ export function LearnPage() {
     };
 
     loadPosts();
-  }, []);
+  }, [searchTerm, selectedCategory]);
 
   // Get unique categories
   const categories = Array.from(new Set(posts.map(post => post.category))).filter(Boolean);
@@ -40,7 +44,7 @@ export function LearnPage() {
   const filteredPosts = posts.filter(post => 
     (searchTerm === '' || 
       post.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.excerpt?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.category?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (Array.isArray(post.tags) && post.tags.some(tag => 
         tag.toLowerCase().includes(searchTerm.toLowerCase())
@@ -137,7 +141,7 @@ export function LearnPage() {
                 key={category}
                 variant={selectedCategory === category ? "secondary" : "ghost"}
                 size="sm"
-                onClick={() => setSelectedCategory(category)}
+                onClick={() => setSelectedCategory(category || null)}
                 className="whitespace-nowrap"
               >
                 {category}
@@ -159,24 +163,16 @@ export function LearnPage() {
             >
               <div className="grid gap-0 lg:grid-cols-2">
                 <div className="relative overflow-hidden">
-                  {featuredPost.imageUrl ? (
-                    <img
-                      src={featuredPost.imageUrl}
-                      alt={featuredPost.title || ''}
-                      className="h-full w-full object-cover"
-                    />
-                  ) : (
-                    <div className="flex h-full items-center justify-center bg-gradient-to-br from-primary/30 to-secondary/30">
-                      <BookOpen className="h-16 w-16 text-primary" />
-                    </div>
-                  )}
+                  <div className="flex h-full items-center justify-center bg-gradient-to-br from-primary/30 to-secondary/30">
+                    <BookOpen className="h-16 w-16 text-primary" />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
                 <div className="flex flex-col justify-center p-8 lg:p-12">
                   <Badge className="mb-3 w-fit">{featuredPost.category || 'Featured'}</Badge>
                   <h2 className="mb-4 text-3xl font-h2 tracking-tight">{featuredPost.title || 'Untitled'}</h2>
                   <p className="mb-6 text-lg text-muted-foreground">
-                    {featuredPost.description}
+                    {featuredPost.excerpt}
                   </p>
                   <div className="mb-8 flex items-center text-sm text-muted-foreground">
                     <Clock className="mr-2 h-4 w-4" />
@@ -249,17 +245,9 @@ export function LearnPage() {
                 <motion.div key={post.id || index} variants={itemVariants}>
                   <Card className="group h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
                     <div className="relative h-56 overflow-hidden bg-muted">
-                      {post.imageUrl ? (
-                        <img
-                          src={post.imageUrl}
-                          alt={post.title || ''}
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="flex h-full items-center justify-center bg-gradient-to-br from-muted to-muted/50">
-                          <BookOpen className="h-12 w-12 text-muted-foreground" />
-                        </div>
-                      )}
+                      <div className="flex h-full items-center justify-center bg-gradient-to-br from-muted to-muted/50">
+                        <BookOpen className="h-12 w-12 text-muted-foreground" />
+                      </div>
                       {post.category && (
                         <Badge className="absolute right-3 top-3 bg-background/80 backdrop-blur-sm">
                           {post.category}
@@ -277,7 +265,7 @@ export function LearnPage() {
                     </CardHeader>
                     <CardContent className="flex flex-1 flex-col">
                       <p className="line-clamp-3 flex-1 text-muted-foreground">
-                        {post.description}
+                        {post.excerpt}
                       </p>
                       
                       {post.tags && Array.isArray(post.tags) && post.tags.length > 0 && (

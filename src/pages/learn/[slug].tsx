@@ -1,33 +1,28 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchArticleBySlug, Article } from '@/lib/googleSheetsClient';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { fetchLearnArticle, LearnArticle } from '@/lib/payloadClient';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { ArrowLeft, Clock } from 'lucide-react';
 import Markdown from 'react-markdown';
 
-export function ArticlePage() {
-  const { slug, category } = useParams();
-  const [article, setArticle] = useState<Article | null>(null);
+export function LearnArticleDetailPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const [article, setArticle] = useState<LearnArticle | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadArticle = async () => {
-      if (!slug) {
-        setError("Article slug not found");
-        setLoading(false);
-        return;
-      }
-
+      if (!slug) return;
+      
       try {
         setLoading(true);
-        console.log(`Loading article with slug: ${slug}, category: ${category || 'none'}`);
-        const fetchedArticle = await fetchArticleBySlug(slug);
+        const fetchedArticle = await fetchLearnArticle(slug);
+        setArticle(fetchedArticle);
         
         if (!fetchedArticle) {
-          setError("Article not found");
-        } else {
-          setArticle(fetchedArticle);
+          setError('Article not found');
         }
       } catch (err) {
         console.error('Error loading article:', err);
@@ -38,7 +33,7 @@ export function ArticlePage() {
     };
 
     loadArticle();
-  }, [slug, category]);
+  }, [slug]);
 
   if (loading) {
     return (
@@ -64,43 +59,44 @@ export function ArticlePage() {
 
   return (
     <div className="min-h-screen bg-background pt-20">
-      {article.imageUrl && (
-        <div className="relative h-[40vh] overflow-hidden">
-          <img
-            src={article.imageUrl}
-            alt={article.title}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-        </div>
-      )}
-      
       <article className="mx-auto max-w-3xl px-6 py-24">
         <header className="mb-12">
           {article.category && (
             <div className="mb-4">
-              <span className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
+              <Badge variant="secondary" className="text-sm">
                 {article.category}
-              </span>
+              </Badge>
             </div>
           )}
           <h1 className="text-4xl font-extralight tracking-tight sm:text-5xl mb-4">
             {article.title}
           </h1>
           <p className="text-xl text-muted-foreground">
-            {article.description}
+            {article.excerpt}
           </p>
           <div className="mt-6 flex items-center gap-4 text-sm text-muted-foreground">
-            {article.author && (
-              <span>By {article.author}</span>
-            )}
+            <Clock className="h-4 w-4" />
             <time>
-              {new Date(article.publishedAt).toLocaleDateString('en-US', {
+              {article.publishedAt && new Date(article.publishedAt).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
               })}
             </time>
+            {article.readTime && (
+              <>
+                <span>•</span>
+                <span>{article.readTime} min read</span>
+              </>
+            )}
+            {article.difficulty && (
+              <>
+                <span>•</span>
+                <Badge variant="outline" className="text-xs">
+                  {article.difficulty}
+                </Badge>
+              </>
+            )}
           </div>
         </header>
         
@@ -117,9 +113,9 @@ export function ArticlePage() {
             <div className="flex flex-wrap gap-2">
               {article.tags.map((tag) => (
                 <Link key={tag} to={`/learn/tag/${tag}`}>
-                  <span className="rounded-full bg-secondary px-3 py-1 text-sm">
+                  <Badge variant="secondary" className="text-sm">
                     {tag}
-                  </span>
+                  </Badge>
                 </Link>
               ))}
             </div>
@@ -129,11 +125,14 @@ export function ArticlePage() {
         <div className="mt-12 flex justify-center">
           <Link to="/learn">
             <Button variant="outline">
-              ← Back to Learn
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Learn
             </Button>
           </Link>
         </div>
       </article>
     </div>
   );
-} 
+}
+
+export const ArticlePage = LearnArticleDetailPage; 

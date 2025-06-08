@@ -14,12 +14,7 @@ module.exports = buildConfig({
     Glossary,
     Learn,
   ],
-  cors: [
-    'http://localhost:3000',
-    'https://perception.to',
-  ],
-  csrf: [
-    'http://localhost:3000',
-    'https://perception.to',
-  ],
+  // CORS handled by Express middleware in server.js
+  cors: false,
+  csrf: false,
 }); 
