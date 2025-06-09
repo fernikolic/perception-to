@@ -24,6 +24,7 @@ import { AboutPage } from '@/pages/about';
 import { PressPage } from '@/pages/press';
 import { AnnouncementsPage } from '@/pages/announcements';
 import PricingPage from '@/pages/pricing';
+import BookACallPage from '@/pages/book-a-call';
 import { DocsPage } from '@/pages/docs';
 import { ApiPage } from '@/pages/api';
 import { RoadmapPage } from '@/pages/roadmap';
@@ -78,6 +79,7 @@ const App = () => {
             <Route path="/press" element={<PressPage />} />
             <Route path="/announcements" element={<AnnouncementsPage />} />
             <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/book-a-call" element={<BookACallPage />} />
             <Route path="/docs" element={<DocsPage />} />
             <Route path="/api" element={<ApiPage />} />
             <Route path="/roadmap" element={<RoadmapPage />} />

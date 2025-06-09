@@ -89,7 +89,7 @@ export function CmsLearnPage() {
               Learn
             </h1>
             <p className="mt-6 text-xl md:text-2xl font-light leading-relaxed text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              In-depth guides, market analysis, and educational content to help you navigate Bitcoin, DeFi, and the evolving financial landscape.
+              In-depth guides, market analysis, and educational content to help you navigate Bitcoin and the evolving financial landscape.
             </p>
             
             <div className="mt-16 flex items-center justify-center">

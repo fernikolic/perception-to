@@ -176,7 +176,7 @@ export function LearnArticlePage() {
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       {/* Header with back button */}
-      <div className="border-b border-gray-100 dark:border-gray-800 bg-white/80 dark:bg-black/80 backdrop-blur-xl sticky top-0 z-10">
+      <div className="border-b border-gray-100 dark:border-gray-800 bg-white/80 dark:bg-black/80 backdrop-blur-xl sticky top-16 z-10">
         <div className="mx-auto max-w-4xl px-6 py-4">
           <Link 
             to="/learn" 
@@ -189,7 +189,7 @@ export function LearnArticlePage() {
       </div>
 
       {/* Article content */}
-      <article className="mx-auto max-w-4xl px-6 py-16">
+      <article className="mx-auto max-w-4xl px-6 py-16 pt-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
