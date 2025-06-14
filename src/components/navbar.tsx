@@ -259,7 +259,7 @@ export function Navbar() {
             className="bg-black text-white hover:bg-gray-900 dark:bg-black dark:hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl"
             asChild
           >
-            <a href="/pricing">
+            <a href="https://app.perception.to/auth/sign-up">
               Get Instant Access
             </a>
           </Button>
@@ -384,7 +384,7 @@ export function Navbar() {
                 className="w-full bg-black text-white hover:bg-gray-900 dark:bg-black dark:hover:bg-gray-900"
                 asChild
               >
-                <a href="/pricing">
+                <a href="https://app.perception.to/auth/sign-up">
                   Get Instant Access
                 </a>
               </Button>

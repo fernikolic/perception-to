@@ -60,7 +60,7 @@ export function Hero() {
               className="w-full sm:w-auto bg-foreground text-background hover:bg-foreground/90 transition-all font-normal px-6 sm:px-8"
               asChild
             >
-              <a href="/pricing">
+              <a href="https://app.perception.to/auth/sign-up">
                 Get Instant Access
               </a>
             </Button>
