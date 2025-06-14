@@ -66,7 +66,7 @@ export function PriceList() {
       </div>
       <div className="mt-8 text-center p-3 bg-gray-50 rounded-lg border border-gray-100">
         <p className="text-sm text-gray-600 font-medium">
-          Need 5+ users? Volume pricing: <a href="mailto:fernando@btcperception.com?subject=Request%20for%205%2B%20Perception%20seats" className="text-orange-600 hover:underline">contact sales</a>.
+          Need 5+ users? Volume pricing: <a href="https://perception.to/book-a-call" className="text-orange-600 hover:underline">contact sales</a>.
         </p>
       </div>
     </div>
