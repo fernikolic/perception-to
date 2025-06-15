@@ -23,4 +23,8 @@ module.exports = buildConfig({
   graphQL: {
     disable: true, // Disabled due to field configuration issues
   },
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'https://perception.to',
+  routes: {
+    api: '/api',
+  },
 }); 

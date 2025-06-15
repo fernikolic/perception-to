@@ -34,26 +34,49 @@ export default {
       });
     }
     
-    // Handle API requests (but don't proxy to another domain)
+    // Handle API requests
     if (url.pathname.startsWith('/api/')) {
       // Handle OG image generation
       if (url.pathname === '/api/og-image') {
-        // Import the OG image handler
         const { onRequest } = await import('./api/og-image.js');
         return onRequest({ request, env, ctx });
       }
       
-      // For other API requests, return a dummy response
-      return new Response(JSON.stringify({ 
-        message: 'API endpoint reached'
-      }), {
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': origin,
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-        }
+      // Proxy other API requests to the Payload CMS backend
+      const payloadUrl = new URL(url.pathname + url.search, env.PAYLOAD_API_URL);
+      const payloadRequest = new Request(payloadUrl, {
+        method: request.method,
+        headers: request.headers,
+        body: request.body
       });
+      
+      try {
+        const response = await fetch(payloadRequest);
+        const data = await response.json();
+        
+        return new Response(JSON.stringify(data), {
+          status: response.status,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': origin,
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+          }
+        });
+      } catch (error) {
+        return new Response(JSON.stringify({ 
+          error: 'Failed to fetch from API',
+          details: error.message
+        }), {
+          status: 500,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': origin,
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+          }
+        });
+      }
     }
     
     // For all other routes, serve index.html
