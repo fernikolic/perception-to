@@ -1,0 +1,5 @@
+{
+  "name": "perception-to",
+  "compatibility_date": "2025-06-15",
+  "main": "functions/_worker.js"
+} 
