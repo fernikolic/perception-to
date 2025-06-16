@@ -11,7 +11,7 @@ export function ProblemSolution() {
   const problemRef = useRef<HTMLDivElement>(null);
   const solutionRef = useRef<HTMLDivElement>(null);
   
-  const problemText = "Institutional investors, analysts, and fintech operators spend 15+ hours a week scanning for market sentiment and narrative shifts.";
+  const problemText = "Institutional investors, industry professionals, and fintech operators spend 15+ hours a week scanning for market sentiment and narrative shifts.";
   // Break solution text into pieces to handle separately
   const solutionText1 = "Perception distills that work into a real-time, trusted";
   const solutionText2 = "intelligence layer."; // Keep these words together with the period
