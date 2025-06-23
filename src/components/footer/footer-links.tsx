@@ -53,7 +53,7 @@ export function FooterLinks() {
     <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
       {footerSections.map((section) => (
         <div key={section.title}>
-          <h3 className="text-sm font-semibold text-white">{section.title}</h3>
+          <h3 className="text-sm font-semibold text-white/90">{section.title}</h3>
           <ul className="mt-6 space-y-4">
             {section.links.map((link) => (
               <li key={link.label}>
