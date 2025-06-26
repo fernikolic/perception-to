@@ -15,6 +15,7 @@ const footerSections: FooterSection[] = [
     title: 'Product',
     links: [
       { label: 'Pricing', href: '/pricing' },
+      { label: 'Slack Integration', href: '/slack-integration' },
       { label: 'Roadmap', href: '/roadmap' },
     ],
   },

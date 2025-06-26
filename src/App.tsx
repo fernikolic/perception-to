@@ -40,6 +40,7 @@ import { CmsLearnPage } from '@/pages/cms-learn';
 import { LearnArticlePage } from '@/pages/cms-learn/[slug]';
 import TestimonialsPage from '@/pages/testimonials';
 import SlackTestingPage from '@/pages/slack-testing';
+import SlackIntegrationPage from '@/pages/slack-integration';
 import SocialPreviewPage from '@/pages/social-preview';
 import PageTransition from '@/components/PageTransition';
 
@@ -80,6 +81,7 @@ const App = () => {
             <Route path="/announcements" element={<AnnouncementsPage />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/book-a-call" element={<BookACallPage />} />
+            <Route path="/slack-integration" element={<SlackIntegrationPage />} />
             <Route path="/docs" element={<DocsPage />} />
             <Route path="/api" element={<ApiPage />} />
             <Route path="/roadmap" element={<RoadmapPage />} />

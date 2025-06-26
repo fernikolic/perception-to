@@ -18,62 +18,94 @@ export function ProblemCards() {
   }, []);
 
   return (
-    <section className="relative bg-gray-50 py-12 sm:py-16 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative py-24 sm:py-32 lg:py-40">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header Section */}
-        <div className="flex justify-center items-center mb-8 sm:mb-12">
-          <div className="max-w-3xl text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-medium tracking-tight text-gray-900 mb-4 mx-auto max-w-[900px] leading-tight">
-              Information fragmentation is costing professionals time and clarity
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600">
-              Our research shows that decision-makers spend 3+ hours daily trying to identify key market signals and trends.
-            </p>
-          </div>
+        <div className="mx-auto max-w-4xl text-center mb-20">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight tracking-tight text-gray-900 dark:text-gray-100 mb-8 leading-tight">
+            Information fragmentation is costing
+            <br />
+            professionals{' '}
+            <span className="bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent font-light">
+              time and clarity
+            </span>
+          </h2>
+          <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+            Our research shows that decision-makers spend 3+ hours daily trying to identify key market signals and trends.
+          </p>
         </div>
 
-        {/* Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        {/* Feature Cards - Stacked Vertically */}
+        <div className="space-y-16">
           {/* Sentiment Card */}
-          <div className="flex flex-col bg-gray-50 rounded-xl p-4 sm:p-5">
-            <div className="aspect-[3/2] relative overflow-hidden mb-4 bg-white rounded-xl">
-              <img
-                src="/images/Where sentiment is headed.png"
-                alt="Where sentiment is headed visualization"
-                className="absolute inset-0 w-full h-full object-contain transform scale-100 p-2"
-              />
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            <div className="flex-1 order-2 lg:order-1">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extralight tracking-tight text-gray-900 dark:text-gray-100 mb-6">
+                Quantify the mood
+              </h3>
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8">
+                Live intelligence feeds and multi-channel analytics dashboard that transforms scattered sentiment data into actionable insights.
+              </p>
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                <span>Real-time sentiment tracking</span>
+              </div>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extralight leading-tight">
-              Quantify the mood
-            </h3>
-            <p className="mt-2 text-sm sm:text-base text-gray-600">
-              Live intelligence feeds and multi-channel analytics dashboard
-            </p>
+            <div className="flex-1 order-1 lg:order-2">
+              <div className="aspect-[4/3] relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl shadow-2xl">
+                <img
+                  src="/images/Where sentiment is headed.png"
+                  alt="Where sentiment is headed visualization"
+                  className="absolute inset-0 w-full h-full object-contain p-6"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Narratives Card */}
-          <div className="flex flex-col bg-gray-50 rounded-xl p-4 sm:p-5">
-            <div className="aspect-[3/2] relative overflow-hidden mb-4 bg-white rounded-xl">
-              <img
-                src="/images/Which narratives are gaining traction.png"
-                alt="Which narratives are gaining traction visualization"
-                className="absolute inset-0 w-full h-full object-contain transform scale-100 p-2"
-              />
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
+            <div className="flex-1">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extralight tracking-tight text-gray-900 dark:text-gray-100 mb-6">
+                Spot pivots early
+              </h3>
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8">
+                Trend clusters surface narrative shifts in real time, giving you the edge to anticipate market movements before they become mainstream.
+              </p>
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span>Emerging narrative detection</span>
+              </div>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extralight leading-tight">
-              Spot pivots early
-            </h3>
-            <p className="mt-2 text-sm sm:text-base text-gray-600">
-              Trend clusters surface narrative shifts in real time
-            </p>
+            <div className="flex-1">
+              <div className="aspect-[4/3] relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl shadow-2xl">
+                <img
+                  src="/images/Which narratives are gaining traction.png"
+                  alt="Which narratives are gaining traction visualization"
+                  className="absolute inset-0 w-full h-full object-contain p-6"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Market Actors Card */}
-          <div className="flex flex-col bg-gray-50 rounded-xl p-4 sm:p-5">
-            <div className="aspect-[3/2] relative overflow-hidden mb-4 bg-white rounded-xl">
-              <div className="absolute inset-0 w-full h-full p-2 overflow-auto font-mono text-xs sm:text-sm" style={{ background: "#1e293b" }}>
-                <pre className="text-green-400 p-2">
-                  <code>
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            <div className="flex-1 order-2 lg:order-1">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extralight tracking-tight text-gray-900 dark:text-gray-100 mb-6">
+                Drop it where you work
+              </h3>
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8">
+                Hourly Slack digests, rich dashboard, or API & Excel formulas - integrate intelligence seamlessly into your existing workflow.
+              </p>
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                <span>Seamless workflow integration</span>
+              </div>
+            </div>
+            <div className="flex-1 order-1 lg:order-2">
+              <div className="aspect-[4/3] relative overflow-hidden bg-gray-900 dark:bg-gray-800 rounded-2xl shadow-2xl">
+                <div className="absolute inset-0 w-full h-full p-6 overflow-auto font-mono text-sm">
+                  <pre className="text-emerald-400">
+                    <code>
 {`{
   "${currentDate}": {
     "Research": [
@@ -89,17 +121,12 @@ export function ProblemCards() {
   },
   "${tomorrowDate}": { "...": "..." }
 }`}
-                  </code>
-                </pre>
-                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#1e293b] to-transparent"></div>
+                    </code>
+                  </pre>
+                  <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                </div>
               </div>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extralight leading-tight">
-              Drop it where you work
-            </h3>
-            <p className="mt-2 text-sm sm:text-base text-gray-600">
-              Hourly Slack digests, rich dashboard, or API & Excel formulas
-            </p>
           </div>
         </div>
       </div>

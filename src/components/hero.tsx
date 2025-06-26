@@ -64,21 +64,6 @@ export function Hero() {
                 Get Instant Access
               </a>
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="w-full sm:w-auto border-foreground/20 text-foreground hover:bg-foreground/5 group font-normal"
-              asChild
-            >
-              <a href="https://slack.com/oauth/v2/authorize?client_id=268627365575.8796942905360&scope=incoming-webhook,chat:write&redirect_uri=https://us-central1-triple-upgrade-245423.cloudfunctions.net/btcpApiFunction3-1/slack/oauth_redirect" target="_blank" rel="noopener noreferrer">
-                Connect to Slack{' '}
-                <img 
-                  src="/logos/Slack_icon_2019.svg.png" 
-                  alt="Slack logo" 
-                  className="ml-2 h-5 w-5 inline-block"
-                />
-              </a>
-            </Button>
           </div>
         </div>
 

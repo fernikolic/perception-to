@@ -13,19 +13,19 @@ export const faqData = [
   },
   {
     question: "What sources does the platform track?",
-    answer: "We monitor over 100 sources across:\n• Financial media (Bloomberg, Reuters, CoinDesk, etc.)\n• Social platforms (X/Twitter, Reddit)\n• Developer communities (GitHub, Stacker News)\n• Policy outlets and think tanks\n• Corporate and institutional communications\n\nEvery data point is tagged, scored, and traceable—ensuring full transparency in analysis."
+    answer: "We monitor over 200 sources across:\n• Financial media (Bloomberg, Reuters, CoinDesk, etc.)\n• Social platforms (X/Twitter, Reddit)\n• Developer communities (GitHub, Stacker News)\n• Policy outlets and think tanks\n• Corporate and institutional communications\n\nEvery data point is tagged, scored, and traceable—ensuring full transparency in analysis."
   },
   {
     question: "Is this platform focused only on Bitcoin?",
     answer: "Bitcoin remains the anchor of the platform, but we also track adjacent narratives in:\n• Stablecoins (e.g. USDC, USDT)\n• Tokenized assets and real-world asset (RWA) issuance\n• CBDCs and central bank policy discourse\n• Regulated asset platforms (e.g. Liquid, Base, RWA.xyz)\n• Macro catalysts influencing digital asset markets\n\nYou can explore these themes individually or in correlation with Bitcoin."
   },
   {
-    question: "What is the difference between the PRO and PRO + DATA plans?",
-    answer: "The PRO plan is ideal for analysts and communications leads who need live data and interactive dashboards without writing code.\n\nThe PRO + DATA plan is built for teams that need our intelligence integrated into their existing workflows, with:\n• Real-time API access with sub-60 second data delivery\n• Excel / Google-Sheets formula integration\n• Automated raw CSV exports and custom charts\n• 5 seats and priority Slack Connect support\n\nBoth plans come with free access and self-serve cancellation."
+    question: "What is the difference between the Pro and Premium plans?",
+    answer: "The Pro plan is ideal for journalists, content creators, and independent researchers who need to save time on manual research and track emerging narratives.\n\nThe Premium plan is built for analysts, market researchers, and strategic planners who need:\n• Unlimited keyword/entity/industry alerts\n• Custom dashboards by outlet, topic, or region\n• Advanced price-vs-narrative correlation tools\n• Professional-grade exports and API access\n• Priority support and strategic consultation calls\n\nBoth plans come with free access and self-serve cancellation."
   },
   {
     question: "How much does the platform cost?",
-    answer: "We offer two paid plans:\n• PRO: $299/month - For analysts & comms leads — no code required\n• PRO + DATA: $499/month - For desks that need Perception inside their models\n\nWe also offer a free tier with delayed daily snapshots via Slack and weekly email digests."
+    answer: "We offer three plans:\n• Pro: $49/month or $495/year (save 2 months) - For journalists, content creators, and independent researchers\n• Premium: $99/month or $999/year (save 2 months) - For analysts, market researchers, and strategic planners\n• Enterprise: Custom pricing - For institutions, funds, and high-stakes decision-makers\n\nWe also offer a free tier with delayed daily snapshots via Slack and weekly email digests."
   },
   {
     question: "Is there a free version available?",
@@ -37,7 +37,7 @@ export const faqData = [
   },
   {
     question: "What's included in the free access?",
-    answer: "Both our PRO and PRO + DATA plans come with free access that includes full access to all features of your chosen plan. No credit card is required to start, and you can cancel at any time through the self-serve dashboard. If the platform doesn't save you at least five hours in the first week, you can cancel with no questions asked."
+    answer: "Both our Pro and Premium plans come with free access that includes full access to all features of your chosen plan. No credit card is required to start, and you can cancel at any time through the self-serve dashboard. If the platform doesn't save you at least five hours in the first week, you can cancel with no questions asked."
   },
   {
     question: "Can I provide feedback or request features?",
