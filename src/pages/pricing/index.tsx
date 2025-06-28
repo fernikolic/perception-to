@@ -12,17 +12,20 @@ export default function PricingPage() {
               Choose your
               <br />
               <span className="bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent font-light">
-                signal depth.
+                signal depth
               </span>
             </h1>
             <p className="text-xl leading-relaxed text-muted-foreground max-w-xl mx-auto mb-6">
-              7-day free trial with self-serve cancellation
+              Start with a 7-day free trial. Cancel anytime.
             </p>
             <div className="flex justify-center mb-6">
               <span className="inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-900/30 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-300">
-                10-hour time savings guarantee or cancel
+                Save 10+ hours per week or it's on us
               </span>
             </div>
+            <p className="text-sm text-muted-foreground italic">
+              Trusted by Bitcoin pros, journalists, and fintech teams in 27+ countries.
+            </p>
           </div>
         </div>
       </section>

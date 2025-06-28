@@ -28,7 +28,10 @@ export interface LearnResponse {
   nextPage: number | null;
 }
 
-const PAYLOAD_BASE_URL = 'http://localhost:3000/api';
+// Use Cloudflare Workers for API endpoints
+const PAYLOAD_BASE_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:3000/api'
+  : 'https://perception.to/api';
 
 export async function fetchLearnArticles(params?: {
   search?: string;

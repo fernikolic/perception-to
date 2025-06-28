@@ -19,6 +19,7 @@ import MethodologyPage from './pages/methodology';
 import { JournalistLanding } from '@/pages/landing/journalist';
 import { InvestorLanding } from '@/pages/landing/investor';
 import { CompaniesLanding } from '@/pages/landing/companies';
+import { UseCasesLanding } from '@/pages/use-cases';
 import { AboutPage } from '@/pages/about';
 // import { CareersPage } from '@/pages/careers';
 import { PressPage } from '@/pages/press';
@@ -75,6 +76,7 @@ const App = () => {
             <Route path="/journalist" element={<JournalistLanding />} />
             <Route path="/investor" element={<InvestorLanding />} />
             <Route path="/researcher" element={<CompaniesLanding />} />
+            <Route path="/use-cases" element={<UseCasesLanding />} />
             <Route path="/about" element={<AboutPage />} />
             {/* <Route path="/careers" element={<CareersPage />} /> */}
             <Route path="/press" element={<PressPage />} />

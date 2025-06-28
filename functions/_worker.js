@@ -36,47 +36,37 @@ export default {
     
     // Handle API requests
     if (url.pathname.startsWith('/api/')) {
+      // Handle learn API
+      if (url.pathname === '/api/learn') {
+        const { onRequest } = await import('./api/learn.js');
+        return onRequest({ request, env, ctx });
+      }
+      
+      // Handle glossary API
+      if (url.pathname === '/api/glossary') {
+        const { onRequest } = await import('./api/glossary.js');
+        return onRequest({ request, env, ctx });
+      }
+      
       // Handle OG image generation
       if (url.pathname === '/api/og-image') {
         const { onRequest } = await import('./api/og-image.js');
         return onRequest({ request, env, ctx });
       }
       
-      // Proxy other API requests to the Payload CMS backend
-      const payloadUrl = new URL(url.pathname + url.search, env.PAYLOAD_API_URL);
-      const payloadRequest = new Request(payloadUrl, {
-        method: request.method,
-        headers: request.headers,
-        body: request.body
+      // Return 404 for unknown API endpoints
+      return new Response(JSON.stringify({ 
+        error: 'API endpoint not found',
+        path: url.pathname
+      }), {
+        status: 404,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': origin,
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        }
       });
-      
-      try {
-        const response = await fetch(payloadRequest);
-        const data = await response.json();
-        
-        return new Response(JSON.stringify(data), {
-          status: response.status,
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': origin,
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-          }
-        });
-      } catch (error) {
-        return new Response(JSON.stringify({ 
-          error: 'Failed to fetch from API',
-          details: error.message
-        }), {
-          status: 500,
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': origin,
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-          }
-        });
-      }
     }
     
     // For all other routes, serve index.html

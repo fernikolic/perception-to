@@ -17,6 +17,17 @@ const footerSections: FooterSection[] = [
       { label: 'Pricing', href: '/pricing' },
       { label: 'Slack Integration', href: '/slack-integration' },
       { label: 'Roadmap', href: '/roadmap' },
+      { label: 'Book a Demo', href: '/book-a-call' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Learn', href: '/learn' },
+      { label: 'Glossary', href: '/glossary' },
+      { label: 'Methodology', href: '/methodology' },
+      { label: 'Documentation', href: '/docs', comingSoon: true },
+      { label: 'API Reference', href: '/api', comingSoon: true },
     ],
   },
   {
@@ -28,23 +39,15 @@ const footerSections: FooterSection[] = [
         href: 'https://bitcoinperception.com',
         className: 'text-orange-500 hover:text-orange-600'
       },
-      // { label: 'Careers', href: '/careers', comingSoon: true },
       { label: 'Press', href: '/press' },
-    ],
-  },
-  {
-    title: 'Resources',
-    links: [
-      { label: 'Documentation', href: '/docs', comingSoon: true },
-      { label: 'API Reference', href: '/api', comingSoon: true },
-      { label: 'Methodology', href: '/methodology' },
+      { label: 'Careers', href: '/careers', comingSoon: true },
     ],
   },
   {
     title: 'Legal',
     links: [
-      { label: 'Privacy', href: '/privacy' },
-      { label: 'Terms', href: '/terms' },
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Terms of Service', href: '/terms' },
     ],
   },
 ];
@@ -54,23 +57,23 @@ export function FooterLinks() {
     <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
       {footerSections.map((section) => (
         <div key={section.title}>
-          <h3 className="text-sm font-semibold text-white/90">{section.title}</h3>
+          <h3 className="text-sm font-semibold !text-white text-white">{section.title}</h3>
           <ul className="mt-6 space-y-4">
             {section.links.map((link) => (
               <li key={link.label}>
                 {link.comingSoon ? (
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-white/40 cursor-not-allowed">
+                    <span className="text-sm !text-white/40 text-white/40 cursor-not-allowed">
                       {link.label}
                     </span>
-                    <span className="inline-flex items-center rounded-md bg-white/10 px-1.5 py-0.5 text-[10px] font-medium text-white/60">
+                    <span className="inline-flex items-center rounded-md bg-white/10 px-1.5 py-0.5 text-[10px] font-medium !text-white/60 text-white/60">
                       Coming soon
                     </span>
                   </div>
                 ) : (
                   <a
                     href={link.href}
-                    className={`text-sm text-white/60 transition-colors hover:text-white ${link.className || ''}`}
+                    className={`text-sm !text-white/60 text-white/60 transition-colors hover:!text-white hover:text-white ${link.className || ''}`}
                     target={link.href.startsWith('http') ? '_blank' : undefined}
                     rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   >

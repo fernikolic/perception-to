@@ -23,16 +23,6 @@ const resources: {
   className?: string;
 }[] = [
   { 
-    title: "Learn", 
-    href: "/learn",
-    description: "Guides and market analysis"
-  },
-  { 
-    title: "Glossary", 
-    href: "/glossary",
-    description: "Terminology and concepts"
-  },
-  { 
     title: "Documentation", 
     href: "#",
     description: "Platform integration guides",

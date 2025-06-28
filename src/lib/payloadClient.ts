@@ -53,7 +53,7 @@ export interface LearnResponse {
 }
 
 // Use Cloudflare Workers for API endpoints
-const PAYLOAD_BASE_URL = process.env.NODE_ENV === 'development' 
+const PAYLOAD_BASE_URL = window.location.hostname === 'localhost' 
   ? 'http://localhost:3000/api'
   : 'https://perception.to/api';
 
