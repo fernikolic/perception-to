@@ -25,6 +25,7 @@ const footerSections: FooterSection[] = [
     links: [
       { label: 'Learn', href: '/learn' },
       { label: 'Glossary', href: '/glossary' },
+      { label: 'Bitcoin Fear & Greed Index', href: '/bitcoin-fear-greed-index' },
       { label: 'Methodology', href: '/methodology' },
       { label: 'Documentation', href: '/docs', comingSoon: true },
       { label: 'API Reference', href: '/api', comingSoon: true },
