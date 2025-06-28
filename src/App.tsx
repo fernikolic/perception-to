@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from '@/components/theme-provider';
 import { SocialMeta } from '@/components/seo/social-meta';
 import { Navbar } from '@/components/navbar';
@@ -43,6 +44,7 @@ import TestimonialsPage from '@/pages/testimonials';
 import SlackTestingPage from '@/pages/slack-testing';
 import SlackIntegrationPage from '@/pages/slack-integration';
 import SocialPreviewPage from '@/pages/social-preview';
+import FearGreedIndexPage from '@/pages/bitcoin-fear-greed-index';
 import PageTransition from '@/components/PageTransition';
 
 function HomePage() {
@@ -64,50 +66,53 @@ function HomePage() {
 
 const App = () => {
   return (
-    <ThemeProvider defaultTheme="light" storageKey="ui-theme">
-      <div className="min-h-screen bg-background text-foreground">
-        <SocialMeta />
-        <Navbar />
-        <ScrollToTop />
-        <PageTransition>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/methodology" element={<MethodologyPage />} />
-            <Route path="/journalist" element={<JournalistLanding />} />
-            <Route path="/investor" element={<InvestorLanding />} />
-            <Route path="/researcher" element={<CompaniesLanding />} />
-            <Route path="/use-cases" element={<UseCasesLanding />} />
-            <Route path="/about" element={<AboutPage />} />
-            {/* <Route path="/careers" element={<CareersPage />} /> */}
-            <Route path="/press" element={<PressPage />} />
-            <Route path="/announcements" element={<AnnouncementsPage />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/book-a-call" element={<BookACallPage />} />
-            <Route path="/slack-integration" element={<SlackIntegrationPage />} />
-            <Route path="/docs" element={<DocsPage />} />
-            <Route path="/api" element={<ApiPage />} />
-            <Route path="/roadmap" element={<RoadmapPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/static-learn" element={<LearnPage />} />
-            <Route path="/static-learn/category/:slug" element={<CategoryPage />} />
-            <Route path="/static-learn/tag/:slug" element={<TagPage />} />
-            <Route path="/static-learn/:category/:slug" element={<ArticlePage />} />
-            <Route path="/static-learn//:slug" element={<ArticlePage />} />
-            <Route path="/static-learn/:slug" element={<ArticlePage />} />
-            <Route path="/glossary" element={<GlossaryPage />} />
-            <Route path="/glossary/:slug" element={<GlossaryEntryPage />} />
-            <Route path="/learn" element={<CmsLearnPage />} />
-            <Route path="/learn/:slug" element={<LearnArticlePage />} />
-            <Route path="/testimonials" element={<TestimonialsPage />} />
-            <Route path="/slack-testing" element={<SlackTestingPage />} />
-            <Route path="/social-preview" element={<SocialPreviewPage />} />
-          </Routes>
-        </PageTransition>
-        <Footer />
-        <FloatingNav />
-      </div>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider defaultTheme="light" storageKey="ui-theme">
+        <div className="min-h-screen bg-background text-foreground">
+          <SocialMeta />
+          <Navbar />
+          <ScrollToTop />
+          <PageTransition>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/methodology" element={<MethodologyPage />} />
+              <Route path="/journalist" element={<JournalistLanding />} />
+              <Route path="/investor" element={<InvestorLanding />} />
+              <Route path="/researcher" element={<CompaniesLanding />} />
+              <Route path="/use-cases" element={<UseCasesLanding />} />
+              <Route path="/about" element={<AboutPage />} />
+              {/* <Route path="/careers" element={<CareersPage />} /> */}
+              <Route path="/press" element={<PressPage />} />
+              <Route path="/announcements" element={<AnnouncementsPage />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/book-a-call" element={<BookACallPage />} />
+              <Route path="/slack-integration" element={<SlackIntegrationPage />} />
+              <Route path="/docs" element={<DocsPage />} />
+              <Route path="/api" element={<ApiPage />} />
+              <Route path="/roadmap" element={<RoadmapPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/static-learn" element={<LearnPage />} />
+              <Route path="/static-learn/category/:slug" element={<CategoryPage />} />
+              <Route path="/static-learn/tag/:slug" element={<TagPage />} />
+              <Route path="/static-learn/:category/:slug" element={<ArticlePage />} />
+              <Route path="/static-learn//:slug" element={<ArticlePage />} />
+              <Route path="/static-learn/:slug" element={<ArticlePage />} />
+              <Route path="/glossary" element={<GlossaryPage />} />
+              <Route path="/glossary/:slug" element={<GlossaryEntryPage />} />
+              <Route path="/learn" element={<CmsLearnPage />} />
+              <Route path="/learn/:slug" element={<LearnArticlePage />} />
+              <Route path="/testimonials" element={<TestimonialsPage />} />
+              <Route path="/slack-testing" element={<SlackTestingPage />} />
+              <Route path="/social-preview" element={<SocialPreviewPage />} />
+              <Route path="/bitcoin-fear-greed-index" element={<FearGreedIndexPage />} />
+            </Routes>
+          </PageTransition>
+          <Footer />
+          <FloatingNav />
+        </div>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 };
 

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Fear & Greed Index</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+      padding: 2rem; 
+      max-width: 1200px; 
+      margin: auto; 
+      background: #f8fafc;
+      color: #1e293b;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .header p {
+      font-size: 1.1rem;
+      color: #64748b;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .cards { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 1rem; 
+      margin-bottom: 3rem; 
+      justify-content: center;
+    }
+    
+    .card {
+      flex: 1 1 200px;
+      max-width: 220px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      background: white;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card h2 { 
+      font-size: 1rem; 
+      margin-bottom: 1rem; 
+      color: #64748b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .card .value { 
+      font-size: 2.5rem; 
+      margin: 0.5rem 0; 
+      color: #1e293b; 
+      font-weight: 700;
+    }
+    
+    .card .sentiment {
+      font-size: 0.875rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      display: inline-block;
+      margin: 0.5rem 0;
+      font-weight: 500;
+    }
+    
+    .sentiment.extreme-fear {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+    
+    .sentiment.fear {
+      background: #fff7ed;
+      color: #ea580c;
+      border: 1px solid #fed7aa;
+    }
+    
+    .sentiment.neutral {
+      background: #fefce8;
+      color: #ca8a04;
+      border: 1px solid #fef08a;
+    }
+    
+    .sentiment.greed {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+    }
+    
+    .sentiment.extreme-greed {
+      background: #f0fdf4;
+      color: #16a34a;
+      border: 1px solid #bbf7d0;
+    }
+    
+    .card .date { 
+      font-size: 0.75rem; 
+      color: #94a3b8; 
+      margin-top: 0.5rem;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .spinner {
+      border: 3px solid #f3f4f6;
+      border-top: 3px solid #3b82f6;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .error {
+      text-align: center;
+      padding: 2rem;
+      color: #dc2626;
+    }
+    
+    .retry-btn {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: background 0.2s;
+    }
+    
+    .retry-btn:hover {
+      background: #2563eb;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .card {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Bitcoin Fear & Greed Index</h1>
+    <p>Track market sentiment with real-time data from multiple sources including social media, volatility, market momentum, and more.</p>
+  </div>
+
+  <div class="cards" id="cards-container">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Loading Fear & Greed Index...</p>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'https://btcpapifunction-45998414364.us-central1.run.app';
+    const ENDPOINT = '/btcpapifunction/fear-greed-index';
+
+    // utility: return date string 'YYYY-MM-DD' offset by n days
+    function formatDate(offsetDays) {
+      const d = new Date();
+      d.setDate(d.getDate() + offsetDays);
+      return d.toISOString().slice(0,10);
+    }
+
+    // Get sentiment label and class based on value
+    function getSentimentInfo(value) {
+      if (value >= 0 && value <= 25) {
+        return { label: 'Extreme Fear', class: 'extreme-fear' };
+      } else if (value <= 45) {
+        return { label: 'Fear', class: 'fear' };
+      } else if (value <= 55) {
+        return { label: 'Neutral', class: 'neutral' };
+      } else if (value <= 75) {
+        return { label: 'Greed', class: 'greed' };
+      } else {
+        return { label: 'Extreme Greed', class: 'extreme-greed' };
+      }
+    }
+
+    // targets: label→offsetDays
+    const targets = [
+      { label: 'Today',        days:   0 },
+      { label: 'Yesterday',    days:  -1 },
+      { label: '7 Days Ago',   days:  -7 },
+      { label: '1 Month Ago',  days: -30 },
+      { label: '3 Months Ago', days: -90 },
+    ];
+
+    async function fetchData() {
+      // Calculate date range for the last 3 months
+      const endDate = new Date();
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - 90); // 3 months ago
+      
+      const params = new URLSearchParams({
+        startDate: startDate.toISOString().slice(0, 10),
+        endDate: endDate.toISOString().slice(0, 10)
+      });
+      
+      const res = await fetch(`${API_BASE}${ENDPOINT}?${params}`);
+      return res.ok ? await res.json() : [];
+    }
+
+    function findValueForDate(data, targetDate) {
+      // find exact match, or fallback to closest earlier
+      const sorted = data.slice().sort((a,b)=> a.date>b.date?1:-1);
+      for (let i = sorted.length-1; i >= 0; i--) {
+        if (sorted[i].date <= targetDate) return sorted[i].fear_greed_index;
+      }
+      return '—';
+    }
+
+    async function renderCards() {
+      const container = document.getElementById('cards-container');
+      
+      try {
+        const data = await fetchData();
+        
+        if (!data || data.length === 0) {
+          throw new Error('No data received');
+        }
+
+        container.innerHTML = '';
+
+        targets.forEach(({label, days}) => {
+          const dateStr = formatDate(days);
+          const value = findValueForDate(data, dateStr);
+          const sentiment = typeof value === 'number' ? getSentimentInfo(value) : null;
+          
+          const card = document.createElement('div');
+          card.className = 'card';
+          
+          let sentimentHtml = '';
+          if (sentiment) {
+            sentimentHtml = `<div class="sentiment ${sentiment.class}">${sentiment.label}</div>`;
+          }
+          
+          card.innerHTML = `
+            <h2>${label}</h2>
+            <div class="value">${value}</div>
+            ${sentimentHtml}
+            <div class="date">${dateStr}</div>
+          `;
+          container.appendChild(card);
+        });
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        container.innerHTML = `
+          <div class="error">
+            <p>Failed to load Fear & Greed Index data</p>
+            <button class="retry-btn" onclick="renderCards()">Try Again</button>
+          </div>
+        `;
+      }
+    }
+
+    // Initialize
+    renderCards();
+  </script>
+
+</body>
+</html> 
