@@ -26,7 +26,13 @@ const footerSections: FooterSection[] = [
       { label: 'Learn', href: '/learn' },
       { label: 'Glossary', href: '/glossary' },
       { label: 'Bitcoin Fear & Greed Index', href: '/bitcoin-fear-greed-index' },
+      { label: 'Bitcoin Market Sentiment', href: '/bitcoin-market-sentiment' },
       { label: 'Methodology', href: '/methodology' },
+    ],
+  },
+  {
+    title: 'Developer',
+    links: [
       { label: 'Documentation', href: '/docs', comingSoon: true },
       { label: 'API Reference', href: '/api', comingSoon: true },
     ],
@@ -41,6 +47,7 @@ const footerSections: FooterSection[] = [
         className: 'text-orange-500 hover:text-orange-600'
       },
       { label: 'Press', href: '/press' },
+      { label: 'Studio', href: '/studio', comingSoon: true },
       { label: 'Careers', href: '/careers', comingSoon: true },
     ],
   },
@@ -55,7 +62,7 @@ const footerSections: FooterSection[] = [
 
 export function FooterLinks() {
   return (
-    <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+    <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
       {footerSections.map((section) => (
         <div key={section.title}>
           <h3 className="text-sm font-semibold !text-white text-white">{section.title}</h3>

@@ -45,6 +45,8 @@ import SlackTestingPage from '@/pages/slack-testing';
 import SlackIntegrationPage from '@/pages/slack-integration';
 import SocialPreviewPage from '@/pages/social-preview';
 import FearGreedIndexPage from '@/pages/bitcoin-fear-greed-index';
+import BitcoinMarketSentimentIndexPage from '@/pages/bitcoin-market-sentiment';
+import BitcoinMarketSentimentPage from '@/pages/bitcoin-market-sentiment/[month]';
 import PageTransition from '@/components/PageTransition';
 
 function HomePage() {
@@ -106,6 +108,8 @@ const App = () => {
               <Route path="/slack-testing" element={<SlackTestingPage />} />
               <Route path="/social-preview" element={<SocialPreviewPage />} />
               <Route path="/bitcoin-fear-greed-index" element={<FearGreedIndexPage />} />
+              <Route path="/bitcoin-market-sentiment" element={<BitcoinMarketSentimentIndexPage />} />
+              <Route path="/bitcoin-market-sentiment/:month" element={<BitcoinMarketSentimentPage />} />
             </Routes>
           </PageTransition>
           <Footer />

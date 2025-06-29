@@ -365,17 +365,33 @@ export default function FearGreedIndexPage() {
                     Join leading institutions and traders who rely on real-time narrative signals to outpace the market.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                    <button className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 text-lg font-medium rounded-2xl transition-all duration-300 hover:scale-105">
+                    <a
+                      href="https://app.perception.to/auth/sign-up"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 text-lg font-medium rounded-2xl transition-all duration-300 hover:scale-105"
+                    >
+                      Start Free
+                    </a>
+                    <a
+                      href="https://perception.to/book-a-call"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-slate-800 border border-white/20 text-white hover:bg-slate-700 px-8 py-4 text-lg font-medium rounded-2xl transition-all duration-300 hover:scale-105"
+                    >
                       Get API Access
-                    </button>
-                    <button className="border border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg font-medium rounded-2xl transition-all duration-300 hover:scale-105">
-                      View Documentation
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
             </section>
           </div>
+        </div>
+      </div>
+      {/* Disclaimer Section */}
+      <div className="max-w-4xl mx-auto px-6 pb-12">
+        <div className="bg-slate-100 text-slate-500 text-xs rounded-xl p-6 text-center border border-slate-200/60">
+          Disclaimer: The Bitcoin Fear & Greed Index is provided for informational purposes only and does not constitute financial advice. Always do your own research before making investment decisions.
         </div>
       </div>
     </>

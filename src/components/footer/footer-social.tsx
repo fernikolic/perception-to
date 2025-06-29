@@ -1,4 +1,4 @@
-import { Linkedin, Github, Youtube } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const socialLinks = [
@@ -15,16 +15,6 @@ const socialLinks = [
     Icon: Linkedin, 
     href: 'https://www.linkedin.com/company/bitcoinperception/', 
     label: 'LinkedIn' 
-  },
-  { 
-    Icon: Github, 
-    href: 'https://github.com/bitcoinperception', 
-    label: 'GitHub' 
-  },
-  { 
-    Icon: Youtube, 
-    href: 'https://www.youtube.com/@bitcoinperception', 
-    label: 'YouTube' 
   },
 ];
 
