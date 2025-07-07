@@ -6,6 +6,26 @@ import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { marked } from 'marked';
 
+// Simple HTML sanitizer to prevent XSS attacks
+function sanitizeHtml(html: string): string {
+  // Remove script tags and their content
+  html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+  
+  // Remove javascript: URLs
+  html = html.replace(/javascript:/gi, '');
+  
+  // Remove on* event handlers
+  html = html.replace(/\son\w+\s*=\s*[^>]*/gi, '');
+  
+  // Remove style attributes that could contain javascript
+  html = html.replace(/style\s*=\s*[^>]*expression\s*\([^>]*\)/gi, '');
+  
+  // Remove data URIs that could contain javascript
+  html = html.replace(/data:\s*text\/html/gi, 'data:text/plain');
+  
+  return html;
+}
+
 export default function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
   const [article, setArticle] = useState<Article | null>(null);
@@ -66,8 +86,9 @@ export default function ArticlePage() {
     );
   }
 
-  // Parse the content as Markdown
-  const htmlContent = marked(article.content);
+  // Parse the content as Markdown and sanitize it to prevent XSS
+  const rawHtml = typeof marked(article.content) === 'string' ? marked(article.content) as string : '';
+  const htmlContent = sanitizeHtml(rawHtml);
 
   return (
     <>
