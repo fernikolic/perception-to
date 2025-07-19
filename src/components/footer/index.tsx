@@ -24,21 +24,65 @@ export function Footer() {
   const signupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (signupRef.current) {
-      // Remove any previous script
-      while (signupRef.current.firstChild) {
-        signupRef.current.removeChild(signupRef.current.firstChild);
+    let script: HTMLScriptElement | null = null;
+    let timeoutId: NodeJS.Timeout | null = null;
+
+    const initializeSignupForm = () => {
+      if (!signupRef.current) return;
+      
+      try {
+        // Clear any existing content
+        signupRef.current.innerHTML = '';
+        
+        // Create and configure the script
+        script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js';
+        script.async = true;
+        script.setAttribute('data-button-color', '#000000');
+        script.setAttribute('data-button-text-color', '#FFFFFF');
+        script.setAttribute('data-site', 'https://bitcoinperception.com/');
+        script.setAttribute('data-locale', 'en');
+        
+        // Add error handling for the script
+        script.onerror = () => {
+          console.warn('Failed to load Ghost signup form script');
+        };
+        
+        // Ensure the parent element still exists before appending
+        if (signupRef.current && signupRef.current.parentNode) {
+          signupRef.current.appendChild(script);
+        }
+      } catch (error) {
+        console.warn('Error initializing Ghost signup form:', error);
       }
-      // Create and append the script
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js';
-      script.async = true;
-      script.setAttribute('data-button-color', '#000000');
-      script.setAttribute('data-button-text-color', '#FFFFFF');
-      script.setAttribute('data-site', 'https://bitcoinperception.com/');
-      script.setAttribute('data-locale', 'en');
-      signupRef.current.appendChild(script);
-    }
+    };
+
+    // Use a small delay to ensure DOM is ready and avoid React StrictMode conflicts
+    timeoutId = setTimeout(initializeSignupForm, 100);
+
+    return () => {
+      // Cleanup function
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      
+      if (script && script.parentNode) {
+        try {
+          script.parentNode.removeChild(script);
+        } catch (error) {
+          // Ignore cleanup errors
+        }
+      }
+      
+      // Clear the signup container if it still exists
+      if (signupRef.current) {
+        try {
+          signupRef.current.innerHTML = '';
+        } catch (error) {
+          // Ignore cleanup errors
+        }
+      }
+    };
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {

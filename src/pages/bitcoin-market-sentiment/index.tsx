@@ -479,7 +479,7 @@ export default function BitcoinMarketSentimentIndexPage() {
                         </button>
                       )}
                     </div>
-                    <Link to={`/bitcoin-market-sentiment/${selectedMonth.slug}`}>
+                    <Link to={`/bitcoin-market-sentiment/${selectedMonth.year}/${selectedMonth.month.toLowerCase()}`}>
                       <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-full font-medium shadow-xl">
                         View Full Report
                         <ArrowRight className="w-4 h-4 ml-2" />
@@ -744,6 +744,83 @@ export default function BitcoinMarketSentimentIndexPage() {
                         Risk management insights
                       </li>
                     </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Daily Analysis Navigation */}
+            <section>
+              <div className="text-center mb-16">
+                <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
+                  Daily Sentiment Analysis
+                </h3>
+                <p className="text-xl text-slate-600 dark:text-white/60 max-w-3xl mx-auto">
+                  Get granular insights with daily sentiment tracking. Every day gets its own comprehensive analysis page.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-white/90 to-slate-100 dark:from-black/40 dark:to-slate-900/60 rounded-3xl p-12 border border-slate-200/50 dark:border-white/20 backdrop-blur-xl shadow-2xl mb-16">
+                <div className="grid md:grid-cols-2 gap-12">
+                  <div>
+                    <h4 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Recent Daily Analysis</h4>
+                    <p className="text-slate-600 dark:text-white/70 leading-relaxed mb-8">
+                      Access detailed sentiment analysis for individual days. Track hourly progression, key events, and market psychology.
+                    </p>
+                    <div className="space-y-3">
+                      {(() => {
+                        const recentDays = Array.from({ length: 7 }, (_, i) => {
+                          const date = new Date();
+                          date.setDate(date.getDate() - i);
+                          return date;
+                        });
+                        
+                        return recentDays.map((date) => {
+                          const dateStr = date.toISOString().split('T')[0];
+                          const formattedDate = date.toLocaleDateString('en-US', { 
+                            weekday: 'short',
+                            month: 'short',
+                            day: 'numeric'
+                          });
+                          
+                          return (
+                            <Link
+                              key={dateStr}
+                              to={`/bitcoin-market-sentiment/${date.getFullYear()}/${date.toLocaleDateString('en-US', { month: 'long' }).toLowerCase()}/${date.getDate()}`}
+                              className="flex items-center justify-between p-4 rounded-xl bg-white/50 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 border border-slate-200/50 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-300 group"
+                            >
+                              <div className="flex items-center gap-4">
+                                <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+                                <span className="font-medium text-slate-900 dark:text-white">{formattedDate}</span>
+                              </div>
+                              <ArrowRight className="w-4 h-4 text-slate-500 dark:text-white/50 group-hover:text-slate-700 dark:group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
+                            </Link>
+                          );
+                        });
+                      })()}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Browse by Date</h4>
+                    <p className="text-slate-600 dark:text-white/70 leading-relaxed mb-8">
+                      Jump to any specific date to see detailed sentiment analysis. Use the format YYYY-MM-DD in the URL.
+                    </p>
+                    
+                    <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-200 dark:border-white/10">
+                      <div className="text-sm text-slate-600 dark:text-white/60 mb-3 font-medium">URL Format:</div>
+                      <div className="font-mono text-sm bg-white dark:bg-black/30 rounded-lg p-3 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white/80 mb-4">
+                        /bitcoin-market-sentiment/year/month/day
+                      </div>
+                      <div className="text-sm text-slate-600 dark:text-white/60 mb-4">Example:</div>
+                      <Link 
+                        to="/bitcoin-market-sentiment/2025/july/19"
+                        className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300 font-medium"
+                      >
+                        July 19, 2025 Analysis
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -47,6 +47,7 @@ import SocialPreviewPage from '@/pages/social-preview';
 import FearGreedIndexPage from '@/pages/bitcoin-fear-greed-index';
 import BitcoinMarketSentimentIndexPage from '@/pages/bitcoin-market-sentiment';
 import BitcoinMarketSentimentPage from '@/pages/bitcoin-market-sentiment/[month]';
+import BitcoinDailySentimentPage from '@/pages/bitcoin-market-sentiment/[date]';
 import PageTransition from '@/components/PageTransition';
 
 function HomePage() {
@@ -109,7 +110,8 @@ const App = () => {
               <Route path="/social-preview" element={<SocialPreviewPage />} />
               <Route path="/bitcoin-fear-greed-index" element={<FearGreedIndexPage />} />
               <Route path="/bitcoin-market-sentiment" element={<BitcoinMarketSentimentIndexPage />} />
-              <Route path="/bitcoin-market-sentiment/:month" element={<BitcoinMarketSentimentPage />} />
+              <Route path="/bitcoin-market-sentiment/:year/:month" element={<BitcoinMarketSentimentPage />} />
+              <Route path="/bitcoin-market-sentiment/:year/:month/:day" element={<BitcoinDailySentimentPage />} />
             </Routes>
           </PageTransition>
           <Footer />
