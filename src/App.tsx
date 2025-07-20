@@ -49,6 +49,10 @@ import BitcoinMarketSentimentIndexPage from '@/pages/bitcoin-market-sentiment';
 import BitcoinMarketSentimentPage from '@/pages/bitcoin-market-sentiment/[month]';
 import BitcoinDailySentimentPage from '@/pages/bitcoin-market-sentiment/[date]';
 import PageTransition from '@/components/PageTransition';
+import ProgrammaticRouter from '@/components/programmatic-seo/ProgrammaticRouter';
+import KeywordTest from '@/components/programmatic-seo/KeywordTest';
+import ContentShowcase from '@/components/programmatic-seo/ContentShowcase';
+import CMSIntegration from '@/components/programmatic-seo/CMSIntegration';
 
 function HomePage() {
   return (
@@ -112,6 +116,18 @@ const App = () => {
               <Route path="/bitcoin-market-sentiment" element={<BitcoinMarketSentimentIndexPage />} />
               <Route path="/bitcoin-market-sentiment/:year/:month" element={<BitcoinMarketSentimentPage />} />
               <Route path="/bitcoin-market-sentiment/:year/:month/:day" element={<BitcoinDailySentimentPage />} />
+              
+              {/* Programmatic SEO Routes */}
+              <Route path="/sentiment/:slug" element={<ProgrammaticRouter />} />
+              <Route path="/analytics/:slug" element={<ProgrammaticRouter />} />
+              <Route path="/tools/:slug" element={<ProgrammaticRouter />} />
+              <Route path="/guides/:slug" element={<ProgrammaticRouter />} />
+              <Route path="/api-docs/:slug" element={<ProgrammaticRouter />} />
+              
+              {/* Test Routes for Development */}
+              <Route path="/keyword-test" element={<KeywordTest />} />
+              <Route path="/content-showcase" element={<ContentShowcase />} />
+              <Route path="/cms-integration" element={<CMSIntegration />} />
             </Routes>
           </PageTransition>
           <Footer />
