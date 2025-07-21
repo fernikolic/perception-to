@@ -1,0 +1,34 @@
+{
+  "generated": "2025-07-20T13:27:53.325Z",
+  "collections": {
+    "glossary": {
+      "count": 6,
+      "file": "payload-glossary-import.json",
+      "keyEntries": [
+        "bitcoin-sentiment",
+        "fear-and-greed-index",
+        "crypto-market-sentiment"
+      ]
+    },
+    "learn": {
+      "count": 5,
+      "file": "payload-learn-import.json",
+      "keyEntries": [
+        "bitcoin-sentiment-analysis",
+        "bitcoin-market-psychology"
+      ]
+    }
+  },
+  "totalEntries": 11,
+  "targetURLs": [
+    "https://perception.to/glossary/bitcoin-sentiment",
+    "https://perception.to/learn/bitcoin-sentiment-analysis"
+  ],
+  "importInstructions": [
+    "1. Access Payload CMS admin panel",
+    "2. Go to Collections > Import",
+    "3. Upload payload-glossary-import.json for glossary entries",
+    "4. Upload payload-learn-import.json for learn articles",
+    "5. Verify URLs are working: /glossary/bitcoin-sentiment and /learn/bitcoin-sentiment-analysis"
+  ]
+}

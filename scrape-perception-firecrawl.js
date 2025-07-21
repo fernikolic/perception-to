@@ -5,8 +5,13 @@ import fs from 'fs/promises';
 
 // Initialize Firecrawl with API key
 const firecrawl = new FirecrawlApp({
-  apiKey: process.env.FIRECRAWL_API_KEY || 'fc-b91b1b3a6f2545e988d621fedf845d5e'
+  apiKey: process.env.FIRECRAWL_API_KEY
 });
+
+if (!process.env.FIRECRAWL_API_KEY) {
+  console.error('❌ FIRECRAWL_API_KEY environment variable is required');
+  process.exit(1);
+}
 
 // URLs to scrape from perception.to
 const URLs_TO_SCRAPE = [

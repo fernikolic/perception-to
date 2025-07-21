@@ -1,0 +1,128 @@
+{
+  "version": "1.0.0",
+  "timestamp": "2025-07-20T13:27:53.324Z",
+  "collection": "glossary",
+  "docs": [
+    {
+      "id": "bitcoin-sentiment",
+      "title": "Bitcoin Sentiment",
+      "slug": "bitcoin-sentiment",
+      "description": "Bitcoin sentiment refers to the overall emotional attitude and market psychology of investors, traders, and the general public toward Bitcoin. It encompasses collective feelings ranging from fear and uncertainty to greed and optimism, which significantly influence buying and selling decisions in the cryptocurrency market.",
+      "category": "sentiment-analysis",
+      "status": "published",
+      "createdAt": "2025-07-20T13:27:53.324Z",
+      "updatedAt": "2025-07-20T13:27:53.324Z",
+      "meta": {
+        "title": "Bitcoin Sentiment | Bitcoin Glossary | Perception.to",
+        "description": "Learn about Bitcoin sentiment - definition, practical examples, and usage in cryptocurrency market analysis. Understand how market psychology drives Bitcoin prices.",
+        "keywords": "bitcoin sentiment, cryptocurrency sentiment, market psychology, bitcoin analysis, crypto emotions"
+      },
+      "content": {
+        "introduction": "Bitcoin sentiment is a crucial indicator that measures the collective emotional state of market participants toward Bitcoin. This psychological metric helps traders and analysts understand whether the market is driven by fear, greed, optimism, or pessimism at any given time.",
+        "keyPoints": [
+          "Sentiment analysis combines social media posts, news articles, and trading volumes",
+          "Fear often leads to selling pressure and price declines",
+          "Greed typically results in buying frenzies and price spikes",
+          "Neutral sentiment suggests a balanced, stable market condition",
+          "Extreme sentiment levels often signal potential market reversals"
+        ],
+        "examples": [
+          {
+            "scenario": "Extreme Fear",
+            "description": "During market crashes, Bitcoin sentiment becomes extremely fearful, with investors panic selling despite potentially oversold conditions."
+          },
+          {
+            "scenario": "Extreme Greed",
+            "description": "In bull markets, sentiment shifts to extreme greed, with FOMO (fear of missing out) driving prices to potentially unsustainable levels."
+          },
+          {
+            "scenario": "Institutional Adoption",
+            "description": "Positive sentiment spikes when major corporations or countries announce Bitcoin adoption, influencing market confidence."
+          }
+        ],
+        "relatedTerms": [
+          "Fear and Greed Index",
+          "Market Psychology",
+          "Sentiment Analysis",
+          "Social Sentiment",
+          "Market Sentiment Indicators"
+        ]
+      }
+    },
+    {
+      "id": "fear-and-greed-index",
+      "title": "Fear and Greed Index",
+      "slug": "fear-and-greed-index",
+      "description": "A market sentiment indicator that measures investor emotions ranging from extreme fear to extreme greed in the cryptocurrency market.",
+      "category": "market-psychology",
+      "status": "published",
+      "createdAt": "2025-07-20T13:27:53.324Z",
+      "updatedAt": "2025-07-20T13:27:53.324Z",
+      "meta": {
+        "title": "Fear and Greed Index | Bitcoin Glossary | Perception.to",
+        "description": "Learn about Fear and Greed Index - definition, practical examples, and usage in cryptocurrency market analysis.",
+        "keywords": "fear and greed index, bitcoin, cryptocurrency, glossary, definition"
+      }
+    },
+    {
+      "id": "crypto-market-sentiment",
+      "title": "Crypto Market Sentiment",
+      "slug": "crypto-market-sentiment",
+      "description": "The overall emotional attitude and collective psychology of market participants toward the cryptocurrency market as a whole.",
+      "category": "sentiment-analysis",
+      "status": "published",
+      "createdAt": "2025-07-20T13:27:53.324Z",
+      "updatedAt": "2025-07-20T13:27:53.324Z",
+      "meta": {
+        "title": "Crypto Market Sentiment | Bitcoin Glossary | Perception.to",
+        "description": "Learn about Crypto Market Sentiment - definition, practical examples, and usage in cryptocurrency market analysis.",
+        "keywords": "crypto market sentiment, bitcoin, cryptocurrency, glossary, definition"
+      }
+    },
+    {
+      "id": "social-sentiment",
+      "title": "Social Sentiment",
+      "slug": "social-sentiment",
+      "description": "Market sentiment derived from social media platforms, forums, and online communities discussing cryptocurrencies.",
+      "category": "sentiment-analysis",
+      "status": "published",
+      "createdAt": "2025-07-20T13:27:53.324Z",
+      "updatedAt": "2025-07-20T13:27:53.324Z",
+      "meta": {
+        "title": "Social Sentiment | Bitcoin Glossary | Perception.to",
+        "description": "Learn about Social Sentiment - definition, practical examples, and usage in cryptocurrency market analysis.",
+        "keywords": "social sentiment, bitcoin, cryptocurrency, glossary, definition"
+      }
+    },
+    {
+      "id": "market-psychology",
+      "title": "Market Psychology",
+      "slug": "market-psychology",
+      "description": "The study of investor behavior, emotions, and cognitive biases that influence trading decisions and market movements.",
+      "category": "market-psychology",
+      "status": "published",
+      "createdAt": "2025-07-20T13:27:53.324Z",
+      "updatedAt": "2025-07-20T13:27:53.324Z",
+      "meta": {
+        "title": "Market Psychology | Bitcoin Glossary | Perception.to",
+        "description": "Learn about Market Psychology - definition, practical examples, and usage in cryptocurrency market analysis.",
+        "keywords": "market psychology, bitcoin, cryptocurrency, glossary, definition"
+      }
+    },
+    {
+      "id": "sentiment-indicator",
+      "title": "Sentiment Indicator",
+      "slug": "sentiment-indicator",
+      "description": "A quantitative or qualitative measure that gauges market emotions and investor sentiment toward specific assets or markets.",
+      "category": "sentiment-analysis",
+      "status": "published",
+      "createdAt": "2025-07-20T13:27:53.324Z",
+      "updatedAt": "2025-07-20T13:27:53.324Z",
+      "meta": {
+        "title": "Sentiment Indicator | Bitcoin Glossary | Perception.to",
+        "description": "Learn about Sentiment Indicator - definition, practical examples, and usage in cryptocurrency market analysis.",
+        "keywords": "sentiment indicator, bitcoin, cryptocurrency, glossary, definition"
+      }
+    }
+  ]
+}
