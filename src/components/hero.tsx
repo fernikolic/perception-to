@@ -43,15 +43,15 @@ export function Hero() {
           </div>
           
           <h1 className="text-2xl sm:text-3xl lg:text-5xl font-normal tracking-tight text-foreground max-w-3xl mx-auto">
-            Real-Time Sentiment & Trend Intelligence for Bitcoin, Stablecoins & Tokenized Finance
+            Strategic Intelligence Platform for Emerging Finance Leaders
           </h1>
           
           <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-foreground/60 font-light max-w-2xl mx-auto">
-            Cut through the noise of fragmented media covering the future of finance. Get real-time intelligence from 200+ sources—all in one dashboard.{' '}
+            Turn market intelligence into competitive advantage. Identify opportunities 2-4 weeks before competitors across 200+ sources.{' '}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600 font-medium">
-              Save 3 hours daily
+              Skip the research, focus on action
             </span>
-            {' '}with narrative synthesis that professionals trust.
+            {' '}with pre-qualified opportunities that drive strategic decisions.
           </p>
           
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
@@ -61,7 +61,7 @@ export function Hero() {
               asChild
             >
               <a href="https://app.perception.to/auth/sign-up">
-                Get Instant Access
+                Start Finding Opportunities
               </a>
             </Button>
           </div>

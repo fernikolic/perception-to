@@ -54,6 +54,22 @@ const Glossary = {
           label: 'Macro',
           value: 'macro',
         },
+        {
+          label: 'Strategic Intelligence',
+          value: 'strategic-intelligence',
+        },
+        {
+          label: 'Competitive Intelligence',
+          value: 'competitive-intelligence',
+        },
+        {
+          label: 'Market Intelligence',
+          value: 'market-intelligence',
+        },
+        {
+          label: 'Risk Intelligence',
+          value: 'risk-intelligence',
+        },
       ],
     },
     {

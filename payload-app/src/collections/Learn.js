@@ -74,6 +74,38 @@ const Learn = {
           label: 'Data & Research',
           value: 'data-research',
         },
+        {
+          label: 'Opportunity Intelligence',
+          value: 'opportunity-intelligence',
+        },
+        {
+          label: 'Competitive Intelligence',
+          value: 'competitive-intelligence',
+        },
+        {
+          label: 'Market Timing',
+          value: 'market-timing',
+        },
+        {
+          label: 'Regulatory Intelligence',
+          value: 'regulatory-intelligence',
+        },
+        {
+          label: 'Partnership Intelligence',
+          value: 'partnership-intelligence',
+        },
+        {
+          label: 'Geographic Intelligence',
+          value: 'geographic-intelligence',
+        },
+        {
+          label: 'Sector Intelligence',
+          value: 'sector-intelligence',
+        },
+        {
+          label: 'Strategic Frameworks',
+          value: 'strategic-frameworks',
+        },
       ],
     },
     {
@@ -87,6 +119,52 @@ const Learn = {
       ],
       admin: {
         description: 'Add relevant tags for this article',
+      },
+    },
+    {
+      name: 'relatedArticles',
+      type: 'relationship',
+      relationTo: 'learn',
+      hasMany: true,
+      maxDepth: 1,
+      admin: {
+        description: 'Select related articles for internal linking',
+      },
+    },
+    {
+      name: 'keywordFocus',
+      type: 'text',
+      admin: {
+        description: 'Primary SEO keyword for this article',
+      },
+    },
+    {
+      name: 'metaDescription',
+      type: 'textarea',
+      maxLength: 160,
+      admin: {
+        description: 'SEO meta description (max 160 characters)',
+      },
+    },
+    {
+      name: 'strategicValue',
+      type: 'select',
+      options: [
+        {
+          label: 'High - Core strategic content',
+          value: 'high',
+        },
+        {
+          label: 'Medium - Supporting content',
+          value: 'medium',
+        },
+        {
+          label: 'Low - Supplementary content',
+          value: 'low',
+        },
+      ],
+      admin: {
+        description: 'Strategic importance for content hub architecture',
       },
     },
     {

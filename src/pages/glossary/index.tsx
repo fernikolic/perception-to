@@ -9,6 +9,7 @@ import { Search, BookOpen, ChevronRight, Clock } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { GlossaryStructuredData } from '@/components/seo/GlossaryStructuredData';
 
 export function GlossaryPage() {
   const [entries, setEntries] = useState<GlossaryEntry[]>([]);
@@ -67,6 +68,9 @@ export function GlossaryPage() {
 
       return (
       <div className="min-h-screen bg-white dark:bg-black">
+      {/* SEO and Structured Data */}
+      <GlossaryStructuredData entries={entries} />
+      
       {/* Hero Section - Apple-style clean */}
       <div className="relative bg-white dark:bg-black pt-20">
         <div className="mx-auto max-w-6xl px-6 pt-20 pb-32 lg:px-8">
@@ -77,13 +81,13 @@ export function GlossaryPage() {
             className="mx-auto max-w-4xl text-center"
           >
             <h1 className="text-6xl md:text-7xl font-light tracking-tight text-gray-900 dark:text-white leading-none mb-8">
-              Decode the Language of the{' '}
+              Master the Language of{' '}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-medium">
-                Future of Finance
+                Strategic Intelligence
               </span>
             </h1>
                          <p className="mt-6 text-xl md:text-2xl font-light leading-relaxed text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-               The essential glossary for Bitcoin, stablecoin and tokenized finance terminology, market mechanics, and policy concepts.
+               The comprehensive glossary for strategic intelligence, competitive analysis, and emerging finance terminology that gives leaders competitive advantage.
              </p>
             
             <div className="mt-16 flex items-center justify-center">

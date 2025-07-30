@@ -17,6 +17,10 @@ export interface LearnArticle {
   content: string;
   category?: string;
   tags?: string[];
+  relatedArticles?: LearnArticle[];
+  keywordFocus?: string;
+  metaDescription?: string;
+  strategicValue?: 'high' | 'medium' | 'low';
   readTime?: number;
   difficulty?: 'beginner' | 'intermediate' | 'advanced';
   featured?: boolean;
@@ -186,13 +190,34 @@ export async function fetchLearnArticle(slug: string): Promise<LearnArticle | nu
 export function getCategoryColor(category?: string): string {
   switch (category) {
     case 'bitcoin':
+    case 'bitcoin-basics':
       return 'bg-orange-50 text-orange-600 dark:bg-orange-900/20 dark:text-orange-400 border border-orange-200 dark:border-orange-800';
     case 'stablecoins':
+    case 'defi-stablecoins':
       return 'bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800';
     case 'regulation':
+    case 'policy-regulation':
+    case 'regulatory-intelligence':
       return 'bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 border border-red-200 dark:border-red-800';
     case 'macro':
+    case 'market-analysis':
+    case 'market-timing':
       return 'bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800';
+    case 'opportunity-intelligence':
+      return 'bg-purple-50 text-purple-600 dark:bg-purple-900/20 dark:text-purple-400 border border-purple-200 dark:border-purple-800';
+    case 'competitive-intelligence':
+      return 'bg-indigo-50 text-indigo-600 dark:bg-indigo-900/20 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800';
+    case 'strategic-frameworks':
+      return 'bg-violet-50 text-violet-600 dark:bg-violet-900/20 dark:text-violet-400 border border-violet-200 dark:border-violet-800';
+    case 'partnership-intelligence':
+      return 'bg-teal-50 text-teal-600 dark:bg-teal-900/20 dark:text-teal-400 border border-teal-200 dark:border-teal-800';
+    case 'geographic-intelligence':
+      return 'bg-cyan-50 text-cyan-600 dark:bg-cyan-900/20 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-800';
+    case 'sector-intelligence':
+      return 'bg-pink-50 text-pink-600 dark:bg-pink-900/20 dark:text-pink-400 border border-pink-200 dark:border-pink-800';
+    case 'technical-guides':
+    case 'data-research':
+      return 'bg-slate-50 text-slate-600 dark:bg-slate-900/20 dark:text-slate-400 border border-slate-200 dark:border-slate-800';
     default:
       return 'bg-gray-50 text-gray-600 dark:bg-gray-900/20 dark:text-gray-400 border border-gray-200 dark:border-gray-800';
   }
@@ -201,13 +226,37 @@ export function getCategoryColor(category?: string): string {
 export function formatCategoryName(category?: string): string {
   switch (category) {
     case 'bitcoin':
-      return 'Bitcoin';
+    case 'bitcoin-basics':
+      return 'Bitcoin Basics';
     case 'stablecoins':
-      return 'Stablecoins';
+    case 'defi-stablecoins':
+      return 'DeFi & Stablecoins';
     case 'regulation':
-      return 'Regulation';
+    case 'policy-regulation':
+      return 'Policy & Regulation';
+    case 'regulatory-intelligence':
+      return 'Regulatory Intelligence';
     case 'macro':
-      return 'Macro';
+    case 'market-analysis':
+      return 'Market Analysis';
+    case 'market-timing':
+      return 'Market Timing';
+    case 'opportunity-intelligence':
+      return 'Opportunity Intelligence';
+    case 'competitive-intelligence':
+      return 'Competitive Intelligence';
+    case 'strategic-frameworks':
+      return 'Strategic Frameworks';
+    case 'partnership-intelligence':
+      return 'Partnership Intelligence';
+    case 'geographic-intelligence':
+      return 'Geographic Intelligence';
+    case 'sector-intelligence':
+      return 'Sector Intelligence';
+    case 'technical-guides':
+      return 'Technical Guides';
+    case 'data-research':
+      return 'Data & Research';
     default:
       return 'General';
   }

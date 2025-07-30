@@ -1,0 +1,42 @@
+{
+  "opportunity-intelligence": [
+    "competitive-intelligence-emerging-finance-complete-guide",
+    "strategic-market-timing-emerging-finance-opportunities",
+    "strategic-decision-making-frameworks-emerging-finance-leaders"
+  ],
+  "competitive-intelligence": [
+    "identify-emerging-finance-opportunities-before-competitors",
+    "partnership-intelligence-strategic-alliance-opportunities",
+    "regulatory-intelligence-system-emerging-finance"
+  ],
+  "market-timing": [
+    "identify-emerging-finance-opportunities-before-competitors",
+    "competitive-intelligence-emerging-finance-complete-guide",
+    "geographic-intelligence-regional-opportunities-emerging-finance"
+  ],
+  "regulatory-intelligence": [
+    "competitive-intelligence-emerging-finance-complete-guide",
+    "geographic-intelligence-regional-opportunities-emerging-finance",
+    "strategic-decision-making-frameworks-emerging-finance-leaders"
+  ],
+  "partnership-intelligence": [
+    "competitive-intelligence-emerging-finance-complete-guide",
+    "geographic-intelligence-regional-opportunities-emerging-finance",
+    "sector-intelligence-industry-vertical-analysis-emerging-finance"
+  ],
+  "geographic-intelligence": [
+    "regulatory-intelligence-system-emerging-finance",
+    "sector-intelligence-industry-vertical-analysis-emerging-finance",
+    "strategic-market-timing-emerging-finance-opportunities"
+  ],
+  "sector-intelligence": [
+    "partnership-intelligence-strategic-alliance-opportunities",
+    "competitive-intelligence-emerging-finance-complete-guide",
+    "strategic-decision-making-frameworks-emerging-finance-leaders"
+  ],
+  "strategic-frameworks": [
+    "identify-emerging-finance-opportunities-before-competitors",
+    "competitive-intelligence-emerging-finance-complete-guide",
+    "strategic-market-timing-emerging-finance-opportunities"
+  ]
+}

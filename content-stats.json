@@ -1,0 +1,24 @@
+{
+  "totalArticles": 8,
+  "byCategory": {
+    "opportunity-intelligence": 1,
+    "competitive-intelligence": 1,
+    "market-timing": 1,
+    "regulatory-intelligence": 1,
+    "partnership-intelligence": 1,
+    "geographic-intelligence": 1,
+    "sector-intelligence": 1,
+    "strategic-frameworks": 1
+  },
+  "byDifficulty": {
+    "intermediate": 6,
+    "advanced": 2
+  },
+  "byStrategicValue": {
+    "high": 5,
+    "medium": 3
+  },
+  "totalReadTime": 103,
+  "averageReadTime": 13,
+  "featuredArticles": 4
+}

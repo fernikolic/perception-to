@@ -5,6 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Clock } from 'lucide-react';
 import Markdown from 'react-markdown';
+import { RelatedArticles } from '@/components/learn/RelatedArticles';
+import { LearningPaths } from '@/components/learn/LearningPaths';
+import { ArticleStructuredData } from '@/components/seo/ArticleStructuredData';
 
 export function LearnArticleDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -59,6 +62,9 @@ export function LearnArticleDetailPage() {
 
   return (
     <div className="min-h-screen bg-background pt-20">
+      {/* SEO and Structured Data */}
+      {article && <ArticleStructuredData article={article} />}
+      
       <article className="mx-auto max-w-3xl px-6 py-24">
         <header className="mb-12">
           {article.category && (
@@ -107,6 +113,21 @@ export function LearnArticleDetailPage() {
           }
         </div>
 
+        {/* Related Articles */}
+        {article && (
+          <div className="mt-16 border-t pt-12">
+            <RelatedArticles currentArticle={article} />
+          </div>
+        )}
+
+        {/* Learning Paths */}
+        {article && (
+          <div className="mt-16 border-t pt-12">
+            <LearningPaths currentArticleSlug={article.slug} />
+          </div>
+        )}
+
+        {/* Tags */}
         {Array.isArray(article.tags) && article.tags.length > 0 && (
           <div className="mt-12 border-t pt-6">
             <h2 className="text-xl font-bold mb-4">Tags</h2>

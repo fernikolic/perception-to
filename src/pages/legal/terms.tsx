@@ -26,7 +26,7 @@ export function TermsPage() {
 
           <h2>2. Description of Service</h2>
           <p>
-            Perception provides crypto market intelligence and analytics tools through its web platform
+            Perception provides emerging finance intelligence and analytics tools through its web platform
             and API services. We reserve the right to modify, suspend, or discontinue any aspect of our
             services at any time.
           </p>

@@ -7,6 +7,9 @@ import { Search, TrendingUp, Clock, BookOpen, ChevronRight, ArrowRight } from 'l
 import { Input } from '@/components/ui/input';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { IntelligenceNav } from '@/components/learn/IntelligenceNav';
+import { LearningPaths } from '@/components/learn/LearningPaths';
+import { LearnSectionStructuredData } from '@/components/seo/LearnSectionStructuredData';
 
 export function LearnPage() {
   const [posts, setPosts] = useState<LearnArticle[]>([]);
@@ -79,6 +82,9 @@ export function LearnPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* SEO and Structured Data */}
+      <LearnSectionStructuredData articles={posts} />
+      
       {/* Hero Section with gradient */}
       <div className="relative overflow-hidden bg-gradient-to-br from-primary/30 via-background to-background pt-20">
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
@@ -94,11 +100,11 @@ export function LearnPage() {
             <h1 className="text-display font-h1 tracking-tight text-foreground">
               <span className="relative inline-block">
                 <span className="absolute inset-x-0 bottom-0 h-3 bg-primary/20"></span>
-                <span className="relative">Sharpen Your Narrative Edge</span>
+                <span className="relative">Strategic Intelligence Mastery</span>
               </span>
             </h1>
             <p className="mt-6 text-xl leading-8 text-muted-foreground">
-              Curated guides, data primers, and playbooks that decode Bitcoin's discourse—so you out-think the market, not chase it.
+              Master the intelligence disciplines that give emerging finance leaders competitive advantage. Turn market signals into strategic opportunities.
             </p>
             
             <div className="mt-10 flex items-center justify-center">
@@ -122,6 +128,20 @@ export function LearnPage() {
           </motion.div>
         </div>
       </div>
+
+      {/* Intelligence Navigation */}
+      <section className="py-16 bg-muted/30">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <IntelligenceNav />
+        </div>
+      </section>
+
+      {/* Learning Paths */}
+      <section className="py-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <LearningPaths />
+        </div>
+      </section>
 
       {/* Categories Filter */}
       <div className="border-b border-border/40">

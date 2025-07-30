@@ -83,11 +83,11 @@ export function Hero() {
             </div>
             
             <h1 className="text-4xl font-extralight tracking-tight sm:text-hero gradient-text">
-              Unlock the Power of Bitcoin Market Intelligence
+              Turn Market Intelligence Into Competitive Advantage
             </h1>
             
             <p className="mt-6 text-lg leading-8 text-white/60">
-              <span className="text-blue-950 font-semibold dark:text-blue-400">Save 10+ hours weekly</span> with AI-powered insights that help you make smarter decisions in Bitcoin.
+              <span className="text-blue-950 font-semibold dark:text-blue-400">Get 2-4 weeks ahead of your competition</span> with actionable emerging finance opportunities delivered daily.
             </p>
             
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
@@ -97,7 +97,7 @@ export function Hero() {
                 className="bg-white text-black hover:bg-white/90 transition-all"
               >
                 <a href="https://app.perception.to/auth/sign-up">
-                  Get Early Access
+                  Start Finding Opportunities
                 </a>
               </Button>
               <Button 

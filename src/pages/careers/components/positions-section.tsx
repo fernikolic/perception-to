@@ -43,7 +43,7 @@ export function PositionsSection() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Open Positions</h2>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Join our team and help shape the future of crypto market intelligence.
+            Join our team and help shape the future of emerging finance intelligence.
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-3xl divide-y divide-white/10">

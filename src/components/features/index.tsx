@@ -9,7 +9,7 @@ export function Features() {
         {/* Pain Points Section */}
         <div className="mx-auto max-w-5xl text-center">
           <h2 className="mt-8 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight">
-            Perception replaces hours of manual research with a single, authoritative view.
+            Skip the research. Focus on the opportunities.
           </h2>
 
           <div className="mt-12 sm:mt-16 lg:mt-24 max-w-6xl mx-auto">
@@ -51,7 +51,7 @@ export function Features() {
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight !text-zinc-100 max-w-2xl">
-                  A comprehensive map of the digital financial landscape:
+                  Intelligence across the emerging finance ecosystem:
                 </h2>
               </div>
 

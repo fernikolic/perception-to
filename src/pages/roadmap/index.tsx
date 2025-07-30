@@ -113,12 +113,12 @@ export function RoadmapPage() {
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
               Explore our vision for the future. See what we're building and what's coming next
-              to help you make better decisions in the crypto market.
+              to help you make better decisions in emerging finance.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button size="lg" asChild>
                 <a href="https://app.perception.to/auth/sign-up">
-                  Join the Beta
+                  Start Finding Opportunities
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="group">

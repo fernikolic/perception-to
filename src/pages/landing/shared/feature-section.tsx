@@ -71,7 +71,7 @@ export function FeatureSection({ features }: FeatureSectionProps) {
                     asChild
                   >
                     <a href="https://app.perception.to/auth/sign-up">
-                      Join the Beta
+                      Start Finding Opportunities
                     </a>
                   </Button>
                 </div>

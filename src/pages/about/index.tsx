@@ -28,12 +28,12 @@ const milestones = [
   {
     year: '2024',
     title: 'Company Founded',
-    description: 'Started with a vision to provide comprehensive Bitcoin market intelligence.',
+    description: 'Started with a vision to transform market intelligence into actionable opportunities for emerging finance leaders.',
   },
   {
     year: '2025',
-    title: 'Closed Alpha Launch',
-    description: 'Launched our first alpha version of the platform to select partners.',
+    title: 'Intelligence Platform Launch',
+    description: 'Launched our intelligence platform, helping leaders identify opportunities 2-4 weeks before competitors.',
   },
 ];
 
@@ -46,10 +46,10 @@ export function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-              Leading Bitcoin Market Intelligence
+              Intelligence Platform for Emerging Finance Leaders
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              Bitcoin Perception is a leading market intelligence firm specializing in the analysis of Bitcoin-related discussions across social media, news outlets, and online communities.
+              Perception is an intelligence platform that transforms market signals into actionable opportunities for emerging finance founders, strategists, and decision-makers.
             </p>
           </div>
         </div>
@@ -62,16 +62,16 @@ export function AboutPage() {
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-8">Our Mission</h2>
             <div className="space-y-6 text-lg leading-8 text-muted-foreground">
               <p>
-                Our mission is to provide businesses, investors, and stakeholders with clear, actionable insights into the evolving public sentiment surrounding Bitcoin.
+                Our mission is to give emerging finance leaders a 2-4 week competitive advantage by identifying opportunities before they become mainstream.
               </p>
               <p>
-                In a landscape that is increasingly complex and fragmented, understanding how Bitcoin is perceived has never been more critical.
+                We transform market noise into strategic signals, helping founders, corporate strategists, and investors act on opportunities while competitors are still discovering them.
               </p>
               <p>
-                We track the volume, tone, and context of Bitcoin mentions across various platforms, monitor key topics, and analyze emerging trends to deliver comprehensive intelligence reports.
+                From regulatory windows and partnership opportunities to narrative shifts and market timing, we deliver pre-qualified opportunities with clear next steps.
               </p>
               <p>
-                Our goal is to offer a nuanced view of Bitcoin's standing in the public eye, helping our clients navigate the market with confidence.
+                Our goal is to replace hours of manual research with minutes of strategic decision-making, turning intelligence into competitive advantage.
               </p>
             </div>
           </div>
@@ -84,7 +84,7 @@ export function AboutPage() {
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Meet Our Founder</h2>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              Bringing deep expertise in Bitcoin market intelligence and communications.
+              Bringing deep expertise in emerging finance intelligence and strategic communications.
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-sm">
@@ -124,7 +124,7 @@ export function AboutPage() {
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Journey</h2>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              From our founding to today, we've been dedicated to innovation and excellence in crypto data analytics.
+              From our founding to today, we've been dedicated to turning market intelligence into competitive advantage for emerging finance leaders.
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl">
@@ -158,7 +158,7 @@ export function AboutPage() {
               className="bg-primary text-white hover:bg-primary-focus"
             >
               <a href="https://app.perception.to/auth/sign-up">
-                Join the Beta
+                Start Finding Opportunities
               </a>
             </Button>
           </div>

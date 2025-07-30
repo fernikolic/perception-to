@@ -1,0 +1,15 @@
+
+# Strategic Intelligence Section
+Sitemap: https://bitcoin-perception.com/sitemap-intelligence.xml
+
+# Allow crawling of intelligence content
+Allow: /learn/
+Allow: /learn/category/
+Allow: /learn/opportunity-intelligence/
+Allow: /learn/competitive-intelligence/
+Allow: /learn/market-timing/
+Allow: /learn/regulatory-intelligence/
+Allow: /learn/partnership-intelligence/
+Allow: /learn/geographic-intelligence/
+Allow: /learn/sector-intelligence/
+Allow: /learn/strategic-frameworks/

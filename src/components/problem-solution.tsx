@@ -11,10 +11,10 @@ export function ProblemSolution() {
   const problemRef = useRef<HTMLDivElement>(null);
   const solutionRef = useRef<HTMLDivElement>(null);
   
-  const problemText = "Institutional investors, industry professionals, and fintech operators spend 15+ hours a week scanning for market sentiment and narrative shifts.";
+  const problemText = "Emerging finance leaders spend 15+ hours a week scanning for opportunities, regulatory changes, and competitive intelligence across fragmented sources.";
   // Break solution text into pieces to handle separately
-  const solutionText1 = "Perception distills that work into a real-time, trusted";
-  const solutionText2 = "intelligence layer."; // Keep these words together with the period
+  const solutionText1 = "Perception delivers pre-qualified opportunities with clear next steps,";
+  const solutionText2 = "turning research into competitive advantage."; // Keep these words together with the period
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -38,7 +38,7 @@ export function ProblemSolution() {
       innerSpan.className = styles.innerWord;
       
       // Highlight specific words in orange
-      if (word === 'spend' || word === '15+' || word === 'hours' || word === 'a' || word === 'week') {
+      if (word === 'spend' || word === '15+' || word === 'hours' || word === 'a' || word === 'week' || word === 'scanning') {
         innerSpan.style.color = '#fb923c'; // Orange color
       }
       

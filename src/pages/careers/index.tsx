@@ -16,7 +16,7 @@ export function CareersPage() {
               Join Our Mission
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              Help us build the future of crypto market intelligence. We are looking for passionate
+              Help us build the future of emerging finance intelligence. We are looking for passionate
               individuals who want to make a real impact in the blockchain space.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
