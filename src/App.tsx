@@ -58,8 +58,8 @@ function HomePage() {
   return (
     <main>
       <Hero />
-      <ProblemSolution />
       <AsSeenOn />
+      <ProblemSolution />
       <ProblemCards />
       <Features />
       <Integrations />

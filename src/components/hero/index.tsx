@@ -109,6 +109,69 @@ export function Hero() {
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
+            
+            {/* As Seen On section integrated into hero */}
+            <div className="mt-16 sm:mt-20">
+              <div className="text-center">
+                <p className="text-sm font-medium tracking-wider text-white/60 mb-8">
+                  As featured in
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 items-center justify-items-center gap-x-6 sm:gap-x-8 lg:gap-x-12 gap-y-6 sm:gap-y-8 lg:gap-y-10 max-w-4xl mx-auto">
+                  <a
+                    href="https://cointelegraph.com/news/bitcoins-change-in-media-perception-from-0-to-100000-dollars"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-16 sm:h-20 lg:h-24 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-12 sm:max-h-16 lg:max-h-20 max-w-[80%] object-contain transition-all duration-300 group-hover:scale-105"
+                      src="/logos/Cointelegraph_Logo-removebg-preview.png"
+                      alt="Cointelegraph"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://web.archive.org/web/20240904132826/https://www.forbes.com/sites/digital-assets/2024/09/04/bbc-bitcoin-coverage-raises-concern-over-its-journalism-and-trust/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-16 sm:h-20 lg:h-24 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-12 sm:max-h-16 lg:max-h-20 max-w-[80%] object-contain transition-all duration-300 group-hover:scale-105"
+                      src="/logos/Forbes-logo-white.png"
+                      alt="Forbes"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://bitcoinmagazine.com/culture/left-leaning-outlets-amplify-their-anti-bitcoin-bias-following-trumps-endorsement-"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-16 sm:h-20 lg:h-24 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-12 sm:max-h-16 lg:max-h-20 max-w-[80%] object-contain transition-all duration-300 group-hover:scale-105"
+                      src="/logos/BTC_Mag_Logo-removebg-preview.png"
+                      alt="Bitcoin Magazine"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://www.binance.com/en/square/post/17159960284914"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-16 sm:h-20 lg:h-24 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-12 sm:max-h-16 lg:max-h-20 max-w-[80%] object-contain transition-all duration-300 group-hover:scale-105"
+                      src="/logos/binance_square_logo-removebg-preview.png"
+                      alt="Binance"
+                      loading="lazy"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="w-full lg:w-1/2">
             {/* Right side content will go here */}

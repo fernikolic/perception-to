@@ -1,20 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 export function ProblemCards() {
-  const [currentDate, setCurrentDate] = useState('');
-  const [tomorrowDate, setTomorrowDate] = useState('');
-  
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // Format current date as YYYY-MM-DD
-    const today = new Date();
-    const formattedToday = today.toISOString().split('T')[0];
-    setCurrentDate(formattedToday);
+    const handleScroll = () => {
+      if (!videoContainerRef.current) return;
+      
+      const rect = videoContainerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Calculate scale based on scroll position
+      const centerY = windowHeight / 2;
+      const elementCenterY = rect.top + rect.height / 2;
+      const distanceFromCenter = Math.abs(elementCenterY - centerY);
+      const maxDistance = windowHeight / 2;
+      
+      // Scale ranges from 1 to 1.3 based on scroll position
+      const normalizedDistance = Math.min(distanceFromCenter / maxDistance, 1);
+      const scale = 1 + (0.3 * (1 - normalizedDistance));
+      
+      videoContainerRef.current.style.transform = `scale(${scale})`;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial call
     
-    // Get tomorrow's date
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const formattedTomorrow = tomorrow.toISOString().split('T')[0];
-    setTomorrowDate(formattedTomorrow);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -35,98 +47,20 @@ export function ProblemCards() {
           </p>
         </div>
 
-        {/* Feature Cards - Stacked Vertically */}
-        <div className="space-y-16">
-          {/* Sentiment Card */}
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-            <div className="flex-1 order-2 lg:order-1">
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extralight tracking-tight text-gray-900 dark:text-gray-100 mb-6">
-                Quantify the mood
-              </h3>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8">
-                Live intelligence feeds and multi-channel analytics dashboard that transforms scattered sentiment data into actionable insights.
-              </p>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                <span>Real-time sentiment tracking</span>
-              </div>
-            </div>
-            <div className="flex-1 order-1 lg:order-2">
-              <div className="aspect-[4/3] relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl shadow-2xl">
-                <img
-                  src="/images/Where sentiment is headed.png"
-                  alt="Where sentiment is headed visualization"
-                  className="absolute inset-0 w-full h-full object-contain p-6"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Narratives Card */}
-          <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
-            <div className="flex-1">
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extralight tracking-tight text-gray-900 dark:text-gray-100 mb-6">
-                Spot pivots early
-              </h3>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8">
-                Trend clusters surface narrative shifts in real time, giving you the edge to anticipate market movements before they become mainstream.
-              </p>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                <span>Emerging narrative detection</span>
-              </div>
-            </div>
-            <div className="flex-1">
-              <div className="aspect-[4/3] relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl shadow-2xl">
-                <img
-                  src="/images/Which narratives are gaining traction.png"
-                  alt="Which narratives are gaining traction visualization"
-                  className="absolute inset-0 w-full h-full object-contain p-6"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Market Actors Card */}
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-            <div className="flex-1 order-2 lg:order-1">
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extralight tracking-tight text-gray-900 dark:text-gray-100 mb-6">
-                Drop it where you work
-              </h3>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8">
-                Hourly Slack digests, rich dashboard, or API & Excel formulas - integrate intelligence seamlessly into your existing workflow.
-              </p>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                <span>Seamless workflow integration</span>
-              </div>
-            </div>
-            <div className="flex-1 order-1 lg:order-2">
-              <div className="aspect-[4/3] relative overflow-hidden bg-gray-900 dark:bg-gray-800 rounded-2xl shadow-2xl">
-                <div className="absolute inset-0 w-full h-full p-6 overflow-auto font-mono text-sm">
-                  <pre className="text-emerald-400">
-                    <code>
-{`{
-  "${currentDate}": {
-    "Research": [
-      { "sentiment": "Positive", "total_entries": 120, "percentage": 60.0 },
-      { "sentiment": "Neutral", "total_entries": 50, "percentage": 25.0 },
-      { "sentiment": "Negative", "total_entries": 30, "percentage": 15.0 }
-    ],
-    "Tech Media": [
-      { "sentiment": "Positive", "total_entries": 80, "percentage": 40.0 },
-      { "sentiment": "Neutral", "total_entries": 70, "percentage": 35.0 },
-      { "sentiment": "Negative", "total_entries": 50, "percentage": 25.0 }
-    ]
-  },
-  "${tomorrowDate}": { "...": "..." }
-}`}
-                    </code>
-                  </pre>
-                  <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-gray-900 to-transparent"></div>
-                </div>
-              </div>
-            </div>
+        {/* Video Section */}
+        <div className="mt-12 sm:mt-16 lg:mt-24 max-w-6xl mx-auto">
+          <div 
+            ref={videoContainerRef}
+            className="relative aspect-video rounded-2xl overflow-hidden bg-black/50 border border-white/10 shadow-2xl transition-transform duration-300 ease-out"
+          >
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/Au3vd597SHw?autoplay=0&mute=0&playsinline=1&enablejsapi=1"
+              title="Bitcoin Perception Demo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
       </div>

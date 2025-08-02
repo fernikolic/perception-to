@@ -9,11 +9,32 @@ export function Hero() {
       if (!imageRef.current) return;
       
       const scrollPosition = window.scrollY;
-      const tilt = Math.min(scrollPosition * 0.1, 3); // Max tilt of 3 degrees
-      imageRef.current.style.transform = `perspective(1000px) rotateX(${tilt}deg)`;
+      const windowHeight = window.innerHeight;
+      const imageRect = imageRef.current.getBoundingClientRect();
+      
+      // Calculate how much of the image is in viewport (0 to 1)
+      const scrollProgress = Math.max(0, Math.min(1, (windowHeight - imageRect.top) / (windowHeight + imageRect.height)));
+      
+      // Subtle tilt effect (reduces as user scrolls)
+      const tilt = Math.max(0, (1 - scrollProgress) * 2);
+      
+      // Subtle scale effect (grows slightly as it comes into view)
+      const scale = 0.95 + (scrollProgress * 0.05);
+      
+      // Parallax movement (slower than scroll speed)
+      const translateY = scrollPosition * 0.1;
+      
+      imageRef.current.style.transform = `
+        perspective(1200px) 
+        rotateX(${tilt}deg) 
+        scale(${scale}) 
+        translateY(-${translateY}px)
+      `;
+      imageRef.current.style.opacity = '1';
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial call
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -68,15 +89,13 @@ export function Hero() {
         </div>
 
         {/* Platform Image */}
-        <div ref={imageRef} className="mt-12 sm:mt-16 lg:mt-24 relative w-screen -mx-4 sm:-mx-6 lg:-mx-32 transition-transform duration-300">
-          <div className="aspect-[16/9] overflow-hidden">
-            <img
-              src="/images/platform_interface.png"
-              alt="Platform interface"
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
+        <div ref={imageRef} className="mt-12 sm:mt-16 lg:mt-24 relative max-w-6xl mx-auto will-change-transform">
+          <img
+            src="/images/platform_interface.png"
+            alt="Platform interface"
+            className="w-full h-auto object-contain"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>

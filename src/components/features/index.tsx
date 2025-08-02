@@ -8,34 +8,6 @@ export function Features() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Pain Points Section */}
         <div className="mx-auto max-w-5xl text-center">
-          <h2 className="mt-8 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extralight tracking-tight">
-            Skip the research. Focus on the opportunities.
-          </h2>
-
-          <div className="mt-12 sm:mt-16 lg:mt-24 max-w-6xl mx-auto">
-            <div className="relative aspect-video rounded-2xl overflow-hidden bg-black/50 border border-white/10 shadow-2xl">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/20 flex items-center justify-center">
-                  <svg className="w-8 h-8 sm:w-10 sm:h-10 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-              <img 
-                src="/demo-thumbnail.jpg" 
-                alt="Perception Demo" 
-                className="absolute inset-0 w-full h-full object-cover opacity-50"
-              />
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/tQbkhuYluOE?autoplay=1&mute=1&playsinline=1&enablejsapi=1"
-                title="Perception Demo"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-              ></iframe>
-            </div>
-          </div>
         </div>
 
         {/* What Perception Tracks Section */}
