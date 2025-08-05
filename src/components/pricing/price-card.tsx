@@ -86,10 +86,10 @@ export function PriceCard({
   };
   
   return (
-    <Card className={`relative h-full flex flex-col border-0 shadow-lg hover:shadow-xl transition-all duration-300 ${
+    <Card className={`relative h-full flex flex-col shadow-xl hover:shadow-2xl transition-all duration-300 border ${
       featured 
-        ? 'bg-gradient-to-br from-blue-50/50 via-white to-indigo-50/30 dark:from-blue-900/20 dark:via-gray-800 dark:to-indigo-900/20 ring-1 ring-blue-200/50 dark:ring-blue-800/30' 
-        : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm'
+        ? 'bg-gradient-to-br from-blue-50 via-white to-indigo-50/50 dark:from-blue-950 dark:via-gray-800 dark:to-indigo-950/50 border-blue-200 dark:border-blue-700 ring-2 ring-blue-500/20' 
+        : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
     }`}>
       <div className="relative">
         {badge && (
@@ -108,7 +108,7 @@ export function PriceCard({
       <CardContent className="flex-grow pt-0">
         <div className="mb-10">
           <div className="flex items-baseline gap-2">
-            <span className="text-5xl font-extralight tracking-tight">{currentPrice}</span>
+            <span className="text-5xl font-semibold tracking-tight">{currentPrice}</span>
             {dataplan !== 'enterprise' && (
               <span className="text-lg text-muted-foreground font-light">
                 {isAnnual ? '/year' : perUser ? ' per user / month' : '/month'}
