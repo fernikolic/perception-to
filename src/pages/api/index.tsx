@@ -73,30 +73,42 @@ console.log(data);`,
 export function ApiPage() {
   return (
     <div className="min-h-screen bg-background pt-20">
-      {/* Hero Section */}
+      {/* Hero Section (image card with overlay) */}
       <section className="relative overflow-hidden py-24">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(100,181,246,0.1),transparent_50%)]" />
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-              API Reference
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              Integrate real-time crypto market data and sentiment analysis into your applications
-              with our powerful REST API.
-            </p>
-            
-            {/* Search Bar */}
-            <div className="mt-10 flex items-center gap-2">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  type="search"
-                  placeholder="Search API documentation..."
-                  className="w-full pl-10"
-                />
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <img 
+                src="/images/hero_image.avif"
+                alt="Background"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
+              <div className="mx-auto max-w-2xl text-center">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal tracking-tight text-black">
+                  API Reference
+                </h1>
+                <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light">
+                  Integrate real-time crypto market data and sentiment analysis into your applications with our powerful REST API.
+                </p>
+                
+                {/* Search Bar */}
+                <div className="mt-8 sm:mt-10 flex items-center gap-2">
+                  <div className="relative flex-1">
+                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-black/60" />
+                    <Input
+                      type="search"
+                      placeholder="Search API documentation..."
+                      className="w-full pl-10 border-black/30"
+                    />
+                  </div>
+                  <Button className="bg-black text-white hover:bg-black/90">Search</Button>
+                </div>
               </div>
-              <Button>Search</Button>
             </div>
           </div>
         </div>

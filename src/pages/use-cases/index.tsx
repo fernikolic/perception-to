@@ -62,43 +62,57 @@ export function UseCasesLanding() {
         />
       </div>
 
-      {/* Hero Section */}
+      {/* Hero Section (image card with overlay like homepage) */}
       <section className="relative overflow-hidden py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-8 animate-fade-in">
-              <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">
-                Use Cases
-              </span>
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <img 
+                src="/images/hero_image.avif"
+                alt="Background"
+                className="w-full h-full object-cover"
+              />
             </div>
-            
-            <h1 className="text-5xl font-extralight tracking-tight text-foreground sm:text-7xl animate-slide-up leading-tight">
-              Track the narrative before it moves the market.
-            </h1>
-            
-            <p className="mt-8 text-xl leading-8 text-muted-foreground animate-slide-up [animation-delay:200ms] max-w-3xl mx-auto">
-              From journalists to fund managers, Perception helps you surface what's being said — before it shapes sentiment.
-            </p>
-            
-            <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row animate-slide-up [animation-delay:400ms]">
-              <Button 
-                size="lg" 
-                className="group transition-all duration-300 shadow-sm hover:shadow-md px-8 py-3"
-                asChild
-              >
-                <a href="https://app.perception.to/auth/sign-up" className="flex items-center gap-2">
-                  Start Free Trial
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="transition-all duration-300 px-8 py-3"
-                asChild
-              >
-                <a href="/pricing">See Plans</a>
-              </Button>
+
+            {/* Content */}
+            <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
+              <div className="mx-auto max-w-4xl text-center">
+                <div className="mb-6 sm:mb-8 animate-fade-in">
+                  <span className="inline-flex items-center rounded-full bg-transparent px-4 py-2 text-sm font-medium text-black ring-1 ring-inset ring-black/30">
+                    Use Cases
+                  </span>
+                </div>
+
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal tracking-tight text-black animate-slide-up leading-tight">
+                  Track the narrative before it moves the market.
+                </h1>
+
+                <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto animate-slide-up [animation-delay:200ms]">
+                  From journalists to fund managers, Perception helps you surface what's being said — before it shapes sentiment.
+                </p>
+
+                <div className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-slide-up [animation-delay:400ms]">
+                  <Button 
+                    size="lg" 
+                    className="group bg-black text-white hover:bg-black/90 transition-all duration-300 shadow-sm hover:shadow-md px-8 py-3"
+                    asChild
+                  >
+                    <a href="https://app.perception.to/auth/sign-up" className="flex items-center gap-2">
+                      Start Free Trial
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </a>
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="transition-all duration-300 px-8 py-3 border-black/30 text-black hover:bg-black/5"
+                    asChild
+                  >
+                    <a href="/pricing">See Plans</a>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

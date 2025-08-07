@@ -5,55 +5,57 @@ import { Check, Zap, Clock, Users, TrendingUp, Shield } from 'lucide-react';
 export default function SlackIntegrationPage() {
   return (
     <div className="min-h-screen bg-background pt-16">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 md:py-32">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-gray-50/50 via-white to-gray-100/30 dark:from-gray-900/50 dark:via-gray-900 dark:to-gray-800/20" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(100,181,246,0.1),transparent_50%)]" />
-        
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-gray-800 to-black dark:from-gray-200 to-white rounded-2xl mb-6 shadow-lg">
-                <img 
-                  src="/logos/Slack_icon_2019.svg.png" 
-                  alt="Slack" 
-                  className="w-8 h-8 filter brightness-0 invert dark:brightness-0 dark:invert-0"
-                />
-              </div>
+      {/* Hero Section with Card Design */}
+      <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
+        {/* Subtle radial background like homepage */}
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.06),transparent_50%)]" />
+
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Hero Card with Background Image (matches homepage) */}
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <img 
+                src="/images/hero_image.avif"
+                alt="Background"
+                className="w-full h-full object-cover"
+              />
             </div>
-            
-            <h1 className="text-4xl md:text-6xl font-extralight tracking-tight mb-6">
-              Bitcoin Intelligence
-              <br />
-              <span className="bg-gradient-to-r from-gray-800 to-black dark:from-gray-200 to-white bg-clip-text text-transparent font-light">
-                Delivered to Your Workspace
-              </span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-              Get real-time Bitcoin narratives, sentiment shifts, and market intelligence 
-              delivered directly to your Slack channels. No more manual research.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-gray-800 to-black hover:from-gray-900 hover:to-gray-800 dark:from-gray-200 dark:to-white dark:hover:from-gray-100 dark:hover:to-gray-200 text-white dark:text-gray-900 px-8 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
-                asChild
-              >
-                <a href="https://slack.com/oauth/v2/authorize?client_id=268627365575.8796942905360&scope=incoming-webhook,chat:write&redirect_uri=https://us-central1-triple-upgrade-245423.cloudfunctions.net/btcpApiFunction3-1/slack/oauth_redirect" target="_blank" rel="noopener noreferrer">
-                  <img 
-                    src="/logos/Slack_icon_2019.svg.png" 
-                    alt="Slack" 
-                    className="w-5 h-5 mr-2 filter brightness-0 invert dark:brightness-0 dark:invert-0"
-                  />
-                  Connect to Slack
-                </a>
-              </Button>
-              
-              <p className="text-sm text-muted-foreground">
-                Free forever • No credit card required
-              </p>
+
+            {/* Content */}
+            <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
+              <div className="mx-auto max-w-3xl text-center">
+                {/* Segment badge */}
+                <div className="mb-6 sm:mb-8">
+                  <span className="inline-flex items-center rounded-full bg-transparent px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium leading-6 text-black ring-1 ring-inset ring-black/30 hover:ring-black/50 transition-all duration-300">
+                    For Bitcoin Companies
+                  </span>
+                </div>
+
+                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto">
+                  Bitcoin Intelligence Delivered to Your Workspace
+                </h1>
+                
+                <p className="mt-4 sm:mt-5 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto">
+                  Get real-time Bitcoin narratives, sentiment shifts, and market intelligence delivered directly to your Slack channels. No more manual research.
+                </p>
+
+                <div className="mt-6 sm:mt-8 lg:mt-10 flex items-center justify-center">
+                  <a 
+                    href="https://slack.com/oauth/v2/authorize?client_id=268627365575.8796942905360&scope=incoming-webhook,chat:write&redirect_uri=https://us-central1-triple-upgrade-245423.cloudfunctions.net/btcpApiFunction3-1/slack/oauth_redirect" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-black text-white hover:bg-black/90 transition-all font-normal px-6 lg:px-8 text-sm sm:text-base shadow-lg hover:shadow-xl py-3 lg:py-4 rounded-lg inline-flex items-center"
+                  >
+                    <img 
+                      src="/logos/Slack_icon_2019.svg.png" 
+                      alt="Slack" 
+                      className="w-5 h-5 mr-2 filter brightness-0 invert"
+                    />
+                    Connect to Slack
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

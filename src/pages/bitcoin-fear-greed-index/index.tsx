@@ -12,32 +12,78 @@ export default function FearGreedIndexPage() {
         image="/images/bitcoin.png"
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-        {/* Hero Section with Component */}
-        <div className="relative overflow-hidden">
-          {/* Background Elements */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-transparent to-purple-600/5"></div>
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl"></div>
-          
+      <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white">
+        {/* Hero Section with Card Design */}
+        <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
+          {/* Subtle radial background like homepage */}
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.06),transparent_50%)]" />
+
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* Hero Card with Background Image (matches homepage) */}
+            <div className="relative rounded-2xl overflow-hidden">
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img 
+                  src="/images/hero_image.avif"
+                  alt="Background"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
+                <div className="mx-auto max-w-3xl text-center">
+                  {/* Segment badge */}
+                  <div className="mb-6 sm:mb-8">
+                    <span className="inline-flex items-center rounded-full bg-transparent px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium leading-6 text-black ring-1 ring-inset ring-black/30 hover:ring-black/50 transition-all duration-300">
+                      For Traders & Investors
+                    </span>
+                  </div>
+
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto">
+                    Bitcoin Fear & Greed Index
+                  </h1>
+                  
+                  <p className="mt-4 sm:mt-5 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto">
+                    Real-time market sentiment analysis with our advanced Fear & Greed Index. Get instant alerts, API access, and detailed analysis of market psychology.
+                  </p>
+
+                  <div className="mt-6 sm:mt-8 lg:mt-10 flex items-center justify-center">
+                    <a
+                      href="https://app.perception.to/auth/sign-up"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-black text-white hover:bg-black/90 transition-all font-normal px-6 lg:px-8 text-sm sm:text-base shadow-lg hover:shadow-xl py-3 lg:py-4 rounded-lg"
+                    >
+                      Start Free
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Fear & Greed Index Component */}
+        <div className="relative">
           <FearGreedIndex />
         </div>
 
         {/* Detailed Content Section */}
         <div className="relative z-10">
-          <div className="max-w-6xl mx-auto px-6 py-24 space-y-32">
+          <div className="max-w-7xl mx-auto px-6 py-24 space-y-32">
             
             {/* What Is Section */}
             <section className="text-center">
               <div className="max-w-4xl mx-auto">
-                <h2 className="text-5xl font-light text-slate-900 mb-8 tracking-tight">
+                <h2 className="text-5xl font-bold mb-8 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
                   What Is the Bitcoin Fear & Greed Index?
                 </h2>
-                <p className="text-xl leading-relaxed text-slate-600 mb-8 font-light">
+                <p className="text-xl leading-relaxed text-slate-600 dark:text-white/70 mb-8 font-light">
                   The Bitcoin Fear & Greed Index is a quantitative gauge that measures the prevailing sentiment in the cryptocurrency market. 
                   By aggregating multiple data sources—social media chatter, on-chain transaction volumes, Google Trends, sentiment analysis on news headlines, and market volatility—it distills complex market dynamics into a single score from 0 (extreme fear) to 100 (extreme greed).
                 </p>
-                <p className="text-xl leading-relaxed text-slate-600 font-light">
+                <p className="text-xl leading-relaxed text-slate-600 dark:text-white/70 font-light">
                   This powerful tool helps traders, investors, and analysts understand market psychology and identify potential buying or selling opportunities based on crowd sentiment rather than just price action.
                 </p>
               </div>
@@ -46,8 +92,8 @@ export default function FearGreedIndexPage() {
             {/* How It's Calculated */}
             <section>
               <div className="text-center mb-16">
-                <h3 className="text-4xl font-light text-slate-900 mb-4 tracking-tight">How It's Calculated</h3>
-                <p className="text-xl text-slate-600 font-light max-w-4xl mx-auto">
+                <h3 className="text-4xl font-bold mb-4 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">How It's Calculated</h3>
+                <p className="text-xl text-slate-600 dark:text-white/70 font-light max-w-4xl mx-auto">
                   Unlike traditional metrics that rely on simple price data, our Fear & Greed Index uses advanced sentiment analysis 
                   from over 100+ sources, weighted by influence and velocity, to capture the true market psychology.
                 </p>
@@ -94,7 +140,7 @@ export default function FearGreedIndexPage() {
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+                <Card className="border-0 shadow-lg bg-white/80 dark:bg-white/5 dark:border-white/10 backdrop-blur-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
                   <CardHeader className="pb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 bg-neutral-100 rounded-2xl flex items-center justify-center">
@@ -119,7 +165,7 @@ export default function FearGreedIndexPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+                <Card className="border-0 shadow-lg bg-white/80 dark:bg-white/5 dark:border-white/10 backdrop-blur-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
                   <CardHeader className="pb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 bg-neutral-100 rounded-2xl flex items-center justify-center">
@@ -144,7 +190,7 @@ export default function FearGreedIndexPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+                <Card className="border-0 shadow-lg bg-white/80 dark:bg-white/5 dark:border-white/10 backdrop-blur-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
                   <CardHeader className="pb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 bg-neutral-100 rounded-2xl flex items-center justify-center">
@@ -170,12 +216,12 @@ export default function FearGreedIndexPage() {
                 </Card>
               </div>
 
-              <div className="bg-gradient-to-br from-slate-50 to-blue-50/30 rounded-3xl p-12 border border-slate-200/50 mb-16">
+              <div className="bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-white/5 dark:to-white/5 rounded-3xl p-12 border border-slate-200/50 dark:border-white/10 mb-16">
                 <h4 className="text-2xl font-medium text-slate-900 mb-8 text-center">Why This Beats Traditional Metrics</h4>
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h5 className="text-lg font-medium text-slate-900 mb-4">Beyond Simple Price Data</h5>
-                    <p className="text-slate-600 leading-relaxed mb-4">
+                    <p className="text-slate-600 dark:text-white/70 leading-relaxed mb-4">
                       Traditional metrics like volatility and dominance only tell you what happened. Our sentiment analysis tells you 
                       what's about to happen by capturing the psychological drivers behind market movements.
                     </p>
@@ -187,7 +233,7 @@ export default function FearGreedIndexPage() {
                   </div>
                   <div>
                     <h5 className="text-lg font-medium text-slate-900 mb-4">Predictive Power</h5>
-                    <p className="text-slate-600 leading-relaxed mb-4">
+                    <p className="text-slate-600 dark:text-white/70 leading-relaxed mb-4">
                       By analyzing sentiment velocity and weighted influence, we can identify market shifts before they appear in 
                       price data, giving you a significant trading advantage.
                     </p>
@@ -201,8 +247,8 @@ export default function FearGreedIndexPage() {
               </div>
 
               <div className="text-center">
-                <h4 className="text-2xl font-medium text-slate-900 mb-6">The Science Behind the Score</h4>
-                <p className="text-lg text-slate-600 font-light max-w-3xl mx-auto leading-relaxed">
+                <h4 className="text-2xl font-medium text-slate-900 dark:text-white mb-6">The Science Behind the Score</h4>
+                <p className="text-lg text-slate-600 dark:text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
                   Our algorithm uses natural language processing and machine learning to analyze sentiment across multiple dimensions: 
                   tone, context, source credibility, and temporal patterns. This creates a comprehensive view of market psychology 
                   that traditional metrics simply cannot provide.
@@ -213,8 +259,8 @@ export default function FearGreedIndexPage() {
             {/* Why It Matters */}
             <section>
               <div className="text-center mb-16">
-                <h3 className="text-4xl font-light text-slate-900 mb-4 tracking-tight">Why It Matters</h3>
-                <p className="text-xl text-slate-600 font-light max-w-3xl mx-auto">
+                <h3 className="text-4xl font-bold mb-4 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">Why It Matters</h3>
+                <p className="text-xl text-slate-600 dark:text-white/70 font-light max-w-3xl mx-auto">
                   Emotions drive markets. When fear grips investors, they may sell off in a panic, creating price dips. When greed takes over, irrational exuberance can inflate bubbles. 
                   The Fear & Greed Index helps traders, institutions, and crypto-savvy individuals identify contrarian entry or exit points.
                 </p>
@@ -259,8 +305,8 @@ export default function FearGreedIndexPage() {
             {/* Use Cases */}
             <section>
               <div className="text-center mb-16">
-                <h3 className="text-4xl font-light text-slate-900 mb-4 tracking-tight">Use Cases for Investors & Analysts</h3>
-                <p className="text-lg text-slate-600 font-light">Transform market sentiment into actionable insights</p>
+                <h3 className="text-4xl font-bold mb-4 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">Use Cases for Investors & Analysts</h3>
+                <p className="text-lg text-slate-600 dark:text-white/70 font-light">Transform market sentiment into actionable insights</p>
               </div>
               
               <div className="grid md:grid-cols-2 gap-8">
@@ -313,39 +359,39 @@ export default function FearGreedIndexPage() {
             {/* API Access */}
             <section>
               <div className="text-center mb-16">
-                <h3 className="text-4xl font-light text-slate-900 mb-4 tracking-tight">Real-Time Alerts & API Access</h3>
-                <p className="text-xl text-slate-600 font-light max-w-3xl mx-auto">
+                <h3 className="text-4xl font-bold mb-4 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">Real-Time Alerts & API Access</h3>
+                <p className="text-xl text-slate-600 dark:text-white/70 font-light max-w-3xl mx-auto">
                   Our Signal API delivers Fear & Greed scores with sub-90-second latency and can push alerts to Slack or MS Teams. 
                   Whether you're a developer building trading bots or an analyst monitoring risk dashboards, seamless integration means you never miss a market-sentiment shift.
                 </p>
               </div>
               
               <div className="bg-gradient-to-br from-slate-50 to-blue-50/30 rounded-3xl p-12 border border-slate-200/50">
-                <h4 className="text-2xl font-medium text-slate-900 mb-8 text-center">API Features</h4>
+                <h4 className="text-2xl font-medium text-slate-900 dark:text-white mb-8 text-center">API Features</h4>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   <div className="flex items-center gap-4">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-slate-700">REST & WebSocket endpoints with ≤90s latency</span>
+                    <span className="text-slate-700 dark:text-white/80">REST & WebSocket endpoints with ≤90s latency</span>
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-slate-700">Customizable alert rules (volume shocks, sentiment swings)</span>
+                    <span className="text-slate-700 dark:text-white/80">Customizable alert rules (volume shocks, sentiment swings)</span>
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-slate-700">Deep-links into our web viewer for detailed timelines</span>
+                    <span className="text-slate-700 dark:text-white/80">Deep-links into our web viewer for detailed timelines</span>
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-slate-700">Historical data access for backtesting</span>
+                    <span className="text-slate-700 dark:text-white/80">Historical data access for backtesting</span>
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-slate-700">Multiple data formats (JSON, CSV)</span>
+                    <span className="text-slate-700 dark:text-white/80">Multiple data formats (JSON, CSV)</span>
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-slate-700">Real-time sentiment analysis</span>
+                    <span className="text-slate-700 dark:text-white/80">Real-time sentiment analysis</span>
                   </div>
                 </div>
               </div>
@@ -360,7 +406,7 @@ export default function FearGreedIndexPage() {
                 <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-400/20 rounded-full blur-2xl"></div>
                 
                 <div className="relative z-10">
-                  <h3 className="text-4xl font-light !text-white mb-6 tracking-tight">Start Using the Bitcoin Fear & Greed Index Today</h3>
+                  <h3 className="text-4xl font-bold !text-white mb-6 tracking-tight">Start Using the Bitcoin Fear & Greed Index Today</h3>
                   <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto font-light">
                     Join leading institutions and traders who rely on real-time narrative signals to outpace the market.
                   </p>
@@ -369,7 +415,7 @@ export default function FearGreedIndexPage() {
                       href="https://app.perception.to/auth/sign-up"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 text-lg font-medium rounded-2xl transition-all duration-300 hover:scale-105"
+                      className="bg-gradient-to-r from-slate-700 to-slate-500 hover:from-slate-800 hover:to-slate-600 text-white px-8 py-4 text-lg font-medium rounded-full shadow-2xl shadow-slate-500/25 transition-all duration-300"
                     >
                       Start Free
                     </a>
@@ -377,7 +423,7 @@ export default function FearGreedIndexPage() {
                       href="https://perception.to/book-a-call"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-slate-800 border border-white/20 text-white hover:bg-slate-700 px-8 py-4 text-lg font-medium rounded-2xl transition-all duration-300 hover:scale-105"
+                      className="border border-slate-300 dark:border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg font-medium rounded-full backdrop-blur-xl transition-all duration-300"
                     >
                       Get API Access
                     </a>
@@ -390,7 +436,7 @@ export default function FearGreedIndexPage() {
       </div>
       {/* Disclaimer Section */}
       <div className="max-w-4xl mx-auto px-6 pb-12">
-        <div className="bg-slate-100 text-slate-500 text-xs rounded-xl p-6 text-center border border-slate-200/60">
+        <div className="bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-white/60 text-xs rounded-xl p-6 text-center border border-slate-200/60 dark:border-white/10">
           Disclaimer: The Bitcoin Fear & Greed Index is provided for informational purposes only and does not constitute financial advice. Always do your own research before making investment decisions.
         </div>
       </div>

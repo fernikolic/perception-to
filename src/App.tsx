@@ -32,14 +32,10 @@ import { ApiPage } from '@/pages/api';
 import { RoadmapPage } from '@/pages/roadmap';
 import { PrivacyPage } from '@/pages/legal/privacy';
 import { TermsPage } from '@/pages/legal/terms';
-import { LearnPage } from '@/pages/learn';
-import { ArticlePage } from '@/pages/learn/[slug]';
-import CategoryPage from '@/pages/learn/category/[slug]';
-import TagPage from '@/pages/learn/tag/[slug]';
 import { GlossaryPage } from '@/pages/glossary';
 import { GlossaryEntryPage } from '@/pages/glossary/[slug]';
-import { CmsLearnPage } from '@/pages/cms-learn';
-import { LearnArticlePage } from '@/pages/cms-learn/[slug]';
+import { LearnPage } from '@/pages/learn';
+import { LearnArticlePage } from '@/pages/learn/[slug]';
 import TestimonialsPage from '@/pages/testimonials';
 import SlackTestingPage from '@/pages/slack-testing';
 import SlackIntegrationPage from '@/pages/slack-integration';
@@ -99,15 +95,9 @@ const App = () => {
               <Route path="/roadmap" element={<RoadmapPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
-              <Route path="/static-learn" element={<LearnPage />} />
-              <Route path="/static-learn/category/:slug" element={<CategoryPage />} />
-              <Route path="/static-learn/tag/:slug" element={<TagPage />} />
-              <Route path="/static-learn/:category/:slug" element={<ArticlePage />} />
-              <Route path="/static-learn//:slug" element={<ArticlePage />} />
-              <Route path="/static-learn/:slug" element={<ArticlePage />} />
               <Route path="/glossary" element={<GlossaryPage />} />
               <Route path="/glossary/:slug" element={<GlossaryEntryPage />} />
-              <Route path="/learn" element={<CmsLearnPage />} />
+              <Route path="/learn" element={<LearnPage />} />
               <Route path="/learn/:slug" element={<LearnArticlePage />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/slack-testing" element={<SlackTestingPage />} />

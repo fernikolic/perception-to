@@ -41,15 +41,56 @@ export default function MethodologyPage() {
     <div className="min-h-screen flex flex-col bg-gray-50 font-sans">
       <Navbar />
       <main className="flex-grow">
-        <div className="container mx-auto px-4 py-24 max-w-5xl">
-          <div className="text-center mb-24">
-            <h1 className="text-6xl font-bold text-gray-900 mb-4 tracking-tighter">
-              Our Methodology
-            </h1>
-            <p className="text-xl text-gray-500 max-w-3xl mx-auto">
-              A comprehensive and transparent approach to tracking and analyzing Bitcoin's presence in global media and online platforms.
-            </p>
+        {/* Hero Section with Card Design */}
+        <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
+          {/* Subtle radial background like homepage */}
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.06),transparent_50%)]" />
+
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* Hero Card with Background Image (matches homepage) */}
+            <div className="relative rounded-2xl overflow-hidden">
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img 
+                  src="/images/hero_image.avif"
+                  alt="Background"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
+                <div className="mx-auto max-w-3xl text-center">
+                  {/* Segment badge */}
+                  <div className="mb-6 sm:mb-8">
+                    <span className="inline-flex items-center rounded-full bg-transparent px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium leading-6 text-black ring-1 ring-inset ring-black/30 hover:ring-black/50 transition-all duration-300">
+                      For Bitcoin Companies
+                    </span>
+                  </div>
+
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto">
+                    Our Methodology
+                  </h1>
+                  
+                  <p className="mt-4 sm:mt-5 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto">
+                    A comprehensive and transparent approach to tracking and analyzing Bitcoin's presence in global media and online platforms.
+                  </p>
+
+                  <div className="mt-6 sm:mt-8 lg:mt-10 flex items-center justify-center">
+                    <button 
+                      className="bg-black text-white hover:bg-black/90 transition-all font-normal px-6 lg:px-8 text-sm sm:text-base shadow-lg hover:shadow-xl py-3 lg:py-4 rounded-lg"
+                      onClick={() => document.querySelector('#methodology-content')?.scrollIntoView({ behavior: 'smooth' })}
+                    >
+                      Explore Our Process
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </section>
+
+        <div id="methodology-content" className="container mx-auto px-4 py-24 max-w-5xl">
           
           <div className="space-y-8">
             <div className="py-12">

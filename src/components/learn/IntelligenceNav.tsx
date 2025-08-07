@@ -147,7 +147,7 @@ export function IntelligenceNav({ currentCategory }: IntelligenceNavProps) {
                 <div className="mb-4">
                   <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
                     <Link 
-                      to={`/learn/category/${category.slug}`}
+                      to="/learn"
                       className="after:absolute after:inset-0"
                     >
                       {category.name}
@@ -188,20 +188,14 @@ export function IntelligenceNav({ currentCategory }: IntelligenceNavProps) {
       
       <div className="text-center">
         <p className="text-sm text-muted-foreground">
-          New to intelligence? Start with{' '}
+          New to intelligence? Explore our{' '}
           <Link 
-            to="/learn/identify-emerging-finance-opportunities-before-competitors" 
+            to="/learn" 
             className="text-primary hover:underline font-medium"
           >
-            Opportunity Intelligence fundamentals
+            learning articles
           </Link>
-          {' '}or explore our{' '}
-          <Link 
-            to="/learn#learning-paths" 
-            className="text-primary hover:underline font-medium"
-          >
-            structured learning paths
-          </Link>
+          {' '}and discover strategic insights for emerging finance leaders.
         </p>
       </div>
     </section>

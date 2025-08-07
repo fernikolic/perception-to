@@ -357,43 +357,54 @@ export default function BitcoinMarketSentimentIndexPage() {
           </div>
         </div>
 
-        {/* Hero Section */}
-        <div className="relative z-10">
-          <div className="max-w-7xl mx-auto px-6 py-32">
-            <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-2 bg-white/80 dark:bg-white/10 backdrop-blur-xl rounded-full px-6 py-3 mb-8 border border-slate-200/50 dark:border-white/20">
-                <span className="text-slate-700 dark:text-white/80 text-sm font-medium tracking-wide">Real-time Sentiment Analysis</span>
+        {/* Hero Section with Card Design */}
+        <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
+          {/* Subtle radial background like homepage */}
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.06),transparent_50%)]" />
+
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* Hero Card with Background Image (matches homepage) */}
+            <div className="relative rounded-2xl overflow-hidden">
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img 
+                  src="/images/hero_image.avif"
+                  alt="Background"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              
-              <h1 className="text-7xl font-bold mb-8 bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500 dark:from-white dark:via-slate-100 dark:to-slate-400 bg-clip-text text-transparent leading-tight">
-                Bitcoin Market
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-400 dark:from-slate-200 dark:to-slate-500">
-                  Sentiment
-                </span>
-              </h1>
-              
-              <p className="text-xl text-slate-600 dark:text-white/70 max-w-4xl mx-auto mb-12 leading-relaxed font-light">
-                Comprehensive monthly analysis of Bitcoin market psychology, social media sentiment, and institutional behavior. 
-                Track the fear & greed index and identify market trends across different time periods with real-time data.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Link to="/bitcoin-fear-greed-index">
-                  <Button size="lg" className="bg-gradient-to-r from-slate-700 to-slate-500 hover:from-slate-800 hover:to-slate-600 text-white px-8 py-4 rounded-full font-medium shadow-2xl shadow-slate-500/25">
-                    <TrendingUp className="w-5 h-5 mr-3" />
-                    Live Fear & Greed Index
-                  </Button>
-                </Link>
-                <Link to="https://app.perception.to/auth/sign-up" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" variant="outline" className="border-slate-300 dark:border-white/20 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 px-8 py-4 rounded-full font-medium backdrop-blur-xl">
-                    Get Access to Data
-                  </Button>
-                </Link>
+
+              {/* Content */}
+              <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
+                <div className="mx-auto max-w-3xl text-center">
+                  {/* Segment badge */}
+                  <div className="mb-6 sm:mb-8">
+                    <span className="inline-flex items-center rounded-full bg-transparent px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium leading-6 text-black ring-1 ring-inset ring-black/30 hover:ring-black/50 transition-all duration-300">
+                      For Traders & Investors
+                    </span>
+                  </div>
+
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto">
+                    Bitcoin Market Sentiment
+                  </h1>
+                  
+                  <p className="mt-4 sm:mt-5 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto">
+                    Comprehensive monthly analysis of Bitcoin market psychology, social media sentiment, and institutional behavior. Track the fear & greed index and identify market trends.
+                  </p>
+
+                  <div className="mt-6 sm:mt-8 lg:mt-10 flex items-center justify-center gap-4">
+                    <Link to="/bitcoin-fear-greed-index">
+                      <button className="bg-black text-white hover:bg-black/90 transition-all font-normal px-6 lg:px-8 text-sm sm:text-base shadow-lg hover:shadow-xl py-3 lg:py-4 rounded-lg inline-flex items-center">
+                        <TrendingUp className="w-5 h-5 mr-2" />
+                        Live Fear & Greed Index
+                      </button>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Content Section */}
         <div className="relative z-10">

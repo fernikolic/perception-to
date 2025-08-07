@@ -1,60 +1,56 @@
 import { useEffect, useState } from 'react';
-import { fetchLearnArticles, LearnArticle } from '@/lib/payloadClient';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Search, TrendingUp, Clock, BookOpen, ChevronRight, ArrowRight } from 'lucide-react';
+import { 
+  fetchLearnArticles, 
+  LearnArticle, 
+  getCategoryColor, 
+  getDifficultyColor,
+  formatCategoryName,
+  formatDifficultyName 
+} from '@/lib/learnClient';
+import { Search, BookOpen, ChevronRight, Clock, Star, TrendingUp } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { IntelligenceNav } from '@/components/learn/IntelligenceNav';
-import { LearningPaths } from '@/components/learn/LearningPaths';
-import { LearnSectionStructuredData } from '@/components/seo/LearnSectionStructuredData';
 
 export function LearnPage() {
-  const [posts, setPosts] = useState<LearnArticle[]>([]);
+  const [articles, setArticles] = useState<LearnArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const featuredPost = posts.find(post => post.featured) || (posts.length > 0 ? posts[0] : null);
+  const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadPosts = async () => {
+    const loadArticles = async () => {
       try {
         setLoading(true);
         const response = await fetchLearnArticles({
           search: searchTerm || undefined,
           category: selectedCategory || undefined,
+          difficulty: selectedDifficulty || undefined,
           limit: 50
         });
-        setPosts(response.docs);
+        setArticles(response.docs);
       } catch (err) {
-        console.error('Error loading articles:', err);
+        console.error('Error loading learn articles:', err);
         setError('Failed to load articles');
       } finally {
         setLoading(false);
       }
     };
 
-    loadPosts();
-  }, [searchTerm, selectedCategory]);
+    loadArticles();
+  }, [searchTerm, selectedCategory, selectedDifficulty]);
 
-  // Get unique categories
-  const categories = Array.from(new Set(posts.map(post => post.category))).filter(Boolean);
+  // Get unique categories and difficulties from articles
+  const categories = Array.from(new Set(articles.map(article => article.category))).filter(Boolean);
+  const difficulties = Array.from(new Set(articles.map(article => article.difficulty))).filter(Boolean);
 
-  // Filter posts based on search term and category
-  const filteredPosts = posts.filter(post => 
-    (searchTerm === '' || 
-      post.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.excerpt?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.category?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (Array.isArray(post.tags) && post.tags.some(tag => 
-        tag.toLowerCase().includes(searchTerm.toLowerCase())
-      ))
-    ) && 
-    (selectedCategory === null || post.category === selectedCategory)
-  );
+  // Get featured articles
+  const featuredArticles = articles.filter(article => article.featured);
+  const regularArticles = articles.filter(article => !article.featured);
 
   // Container variants for staggered animations
   const containerVariants = {
@@ -75,59 +71,67 @@ export function LearnPage() {
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 10
+        damping: 12
       }
     }
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* SEO and Structured Data */}
-      <LearnSectionStructuredData articles={posts} />
-      
-      {/* Hero Section with gradient */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-primary/30 via-background to-background pt-20">
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-        
-        <div className="relative mx-auto max-w-7xl px-6 pt-16 pb-24 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mx-auto max-w-3xl text-center"
-          >
-            <Badge className="mb-4 px-4 py-1.5 text-sm font-medium">Bitcoin Knowledge</Badge>
-            <h1 className="text-display font-h1 tracking-tight text-foreground">
-              <span className="relative inline-block">
-                <span className="absolute inset-x-0 bottom-0 h-3 bg-primary/20"></span>
-                <span className="relative">Strategic Intelligence Mastery</span>
-              </span>
-            </h1>
-            <p className="mt-6 text-xl leading-8 text-muted-foreground">
-              Master the intelligence disciplines that give emerging finance leaders competitive advantage. Turn market signals into strategic opportunities.
-            </p>
-            
-            <div className="mt-10 flex items-center justify-center">
-              <div className="relative w-full max-w-lg">
-                <div className="absolute -inset-0.5 rounded-lg bg-gradient-to-r from-primary/50 to-secondary/50 opacity-75 blur"></div>
-                <div className="relative flex items-center rounded-lg bg-background">
-                  <Search className="ml-4 h-5 w-5 text-muted-foreground" />
-                  <Input
-                    type="search"
-                    placeholder="Search articles, topics, or keywords..."
-                    className="border-0 pl-3 shadow-none focus-visible:ring-0"
-                    value={searchTerm}
-                    onChange={e => setSearchTerm(e.target.value)}
-                  />
-                  <Button size="sm" className="mr-1">
-                    Search
-                  </Button>
+    <div className="min-h-screen bg-white dark:bg-black">
+      {/* Hero Section with Card Design */}
+      <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
+        {/* Subtle radial background like homepage */}
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.06),transparent_50%)]" />
+
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Hero Card with Background Image (matches homepage) */}
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <img 
+                src="/images/hero_image.avif"
+                alt="Background"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
+              <div className="mx-auto max-w-3xl text-center">
+                {/* Segment badge */}
+                <div className="mb-6 sm:mb-8">
+                  <span className="inline-flex items-center rounded-full bg-transparent px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium leading-6 text-black ring-1 ring-inset ring-black/30 hover:ring-black/50 transition-all duration-300">
+                    For Traders & Investors
+                  </span>
+                </div>
+
+                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto">
+                  Strategic Intelligence Mastery
+                </h1>
+                
+                <p className="mt-4 sm:mt-5 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto">
+                  In-depth guides, market analysis, and educational content to help you navigate Bitcoin and the evolving financial landscape.
+                </p>
+
+                <div className="mt-6 sm:mt-8 lg:mt-10 flex items-center justify-center">
+                  <div className="relative w-full max-w-2xl">
+                    <div className="relative flex items-center bg-white/80 backdrop-blur-sm rounded-2xl border border-black/20 shadow-sm hover:shadow-md transition-all duration-300">
+                      <Search className="ml-6 h-5 w-5 text-black/60" />
+                      <Input
+                        type="search"
+                        placeholder="Search articles, guides, or topics..."
+                        className="border-0 bg-transparent pl-4 text-lg placeholder:text-black/50 focus-visible:ring-0 h-14 text-black"
+                        value={searchTerm}
+                        onChange={e => setSearchTerm(e.target.value)}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Intelligence Navigation */}
       <section className="py-16 bg-muted/30">
@@ -136,220 +140,285 @@ export function LearnPage() {
         </div>
       </section>
 
-      {/* Learning Paths */}
-      <section className="py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <LearningPaths />
-        </div>
-      </section>
 
-      {/* Categories Filter */}
-      <div className="border-b border-border/40">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="scrollbar-hide -mx-6 flex space-x-2 overflow-x-auto px-6 py-4">
-            <Button 
-              variant={selectedCategory === null ? "secondary" : "ghost"} 
-              size="sm"
-              onClick={() => setSelectedCategory(null)}
-              className="whitespace-nowrap"
-            >
-              All Topics
-            </Button>
-            
-            {categories.map(category => (
-              <Button
-                key={category}
-                variant={selectedCategory === category ? "secondary" : "ghost"}
-                size="sm"
-                onClick={() => setSelectedCategory(category || null)}
-                className="whitespace-nowrap"
-              >
-                {category}
-              </Button>
-            ))}
+      {/* Filters - Apple-style */}
+      <div className="bg-gray-50/80 dark:bg-gray-900/50 backdrop-blur-xl border-y border-gray-200/50 dark:border-gray-800/50">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="py-6">
+            {/* Categories */}
+            <div className="mb-4">
+              <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Categories</h4>
+              <div className="scrollbar-hide -mx-6 flex space-x-3 overflow-x-auto px-6">
+                <button
+                  onClick={() => setSelectedCategory(null)}
+                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 whitespace-nowrap text-sm ${
+                    selectedCategory === null
+                      ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg'
+                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
+                  }`}
+                >
+                  All Categories
+                </button>
+                
+                {categories.map(category => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category || null)}
+                    className={`px-4 py-2 rounded-full font-medium transition-all duration-300 whitespace-nowrap text-sm ${
+                      selectedCategory === category
+                        ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg'
+                        : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
+                    }`}
+                  >
+                    {formatCategoryName(category)}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Difficulties */}
+            <div>
+              <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Difficulty</h4>
+              <div className="scrollbar-hide -mx-6 flex space-x-3 overflow-x-auto px-6">
+                <button
+                  onClick={() => setSelectedDifficulty(null)}
+                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 whitespace-nowrap text-sm ${
+                    selectedDifficulty === null
+                      ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg'
+                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
+                  }`}
+                >
+                  All Levels
+                </button>
+                
+                {difficulties.map(difficulty => (
+                  <button
+                    key={difficulty}
+                    onClick={() => setSelectedDifficulty(difficulty || null)}
+                    className={`px-4 py-2 rounded-full font-medium transition-all duration-300 whitespace-nowrap text-sm ${
+                      selectedDifficulty === difficulty
+                        ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg'
+                        : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
+                    }`}
+                  >
+                    {formatDifficultyName(difficulty)}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Featured Article (if available) */}
-      {!loading && !error && featuredPost && (
-        <section className="py-12">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7 }}
-              className="overflow-hidden rounded-2xl bg-card shadow-lg"
-            >
-              <div className="grid gap-0 lg:grid-cols-2">
-                <div className="relative overflow-hidden">
-                  <div className="flex h-full items-center justify-center bg-gradient-to-br from-primary/30 to-secondary/30">
-                    <BookOpen className="h-16 w-16 text-primary" />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                </div>
-                <div className="flex flex-col justify-center p-8 lg:p-12">
-                  <Badge className="mb-3 w-fit">{featuredPost.category || 'Featured'}</Badge>
-                  <h2 className="mb-4 text-3xl font-h2 tracking-tight">{featuredPost.title || 'Untitled'}</h2>
-                  <p className="mb-6 text-lg text-muted-foreground">
-                    {featuredPost.excerpt}
-                  </p>
-                  <div className="mb-8 flex items-center text-sm text-muted-foreground">
-                    <Clock className="mr-2 h-4 w-4" />
-                    <time>{featuredPost.publishedAt && new Date(featuredPost.publishedAt).toLocaleDateString(undefined, {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}</time>
-                  </div>
-                  <Link to={`/learn/${featuredPost.slug}`}>
-                    <Button className="group w-fit">
-                      Read Article
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+      {/* Loading State - Apple-style */}
+      {loading && (
+        <div className="flex justify-center items-center py-32">
+          <div className="animate-spin rounded-full h-8 w-8 border-2 border-gray-200 border-t-gray-900 dark:border-gray-700 dark:border-t-white"></div>
+        </div>
       )}
 
-      {/* Articles Grid */}
-      <section className="py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mb-12 flex items-center justify-between">
-            <h2 className="text-3xl font-h2 tracking-tight">
-              {selectedCategory ? `${selectedCategory} Articles` : 'Latest Articles'}
-            </h2>
-            {selectedCategory && (
-              <Button variant="ghost" size="sm" onClick={() => setSelectedCategory(null)}>
-                View All <ChevronRight className="ml-1 h-4 w-4" />
-              </Button>
-            )}
+      {/* Error State - Apple-style */}
+      {error && (
+        <div className="mx-auto max-w-6xl px-6 py-32 lg:px-8">
+          <div className="text-center">
+            <div className="w-16 h-16 mx-auto bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6">
+              <BookOpen className="h-8 w-8 text-gray-400" />
+            </div>
+            <h3 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">Unable to load articles</h3>
+            <p className="text-gray-600 dark:text-gray-400">{error}</p>
           </div>
-
-          {loading ? (
-            <div className="flex h-64 items-center justify-center">
-              <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
-            </div>
-          ) : error ? (
-            <div className="rounded-lg bg-destructive/10 p-6 text-center text-destructive">
-              <p>{error}</p>
-              <Button variant="outline" className="mt-4" onClick={() => window.location.reload()}>
-                Try Again
-              </Button>
-            </div>
-          ) : filteredPosts.length === 0 ? (
-            <div className="rounded-lg bg-muted p-8 text-center">
-              <BookOpen className="mx-auto mb-4 h-12 w-12 text-muted-foreground" />
-              <h3 className="mb-2 text-xl font-h3">No articles found</h3>
-              <p className="mb-6 text-muted-foreground">
-                No articles match your current search or filter criteria.
-              </p>
-              <Button variant="outline" onClick={() => {
-                setSearchTerm('');
-                setSelectedCategory(null);
-              }}>
-                Clear filters
-              </Button>
-            </div>
-          ) : (
-            <motion.div 
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
-            >
-              {filteredPosts.map((post, index) => post && (
-                <motion.div key={post.id || index} variants={itemVariants}>
-                  <Card className="group h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
-                    <div className="relative h-56 overflow-hidden bg-muted">
-                      <div className="flex h-full items-center justify-center bg-gradient-to-br from-muted to-muted/50">
-                        <BookOpen className="h-12 w-12 text-muted-foreground" />
-                      </div>
-                      {post.category && (
-                        <Badge className="absolute right-3 top-3 bg-background/80 backdrop-blur-sm">
-                          {post.category}
-                        </Badge>
-                      )}
-                    </div>
-                    <CardHeader>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Clock className="h-3.5 w-3.5" />
-                        <time>{post.publishedAt && new Date(post.publishedAt).toLocaleDateString()}</time>
-                      </div>
-                      <CardTitle className="line-clamp-2 mt-2 transition-colors group-hover:text-primary">
-                        {post.title || 'Untitled'}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="flex flex-1 flex-col">
-                      <p className="line-clamp-3 flex-1 text-muted-foreground">
-                        {post.excerpt}
-                      </p>
-                      
-                      {post.tags && Array.isArray(post.tags) && post.tags.length > 0 && (
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {post.tags.slice(0, 3).map((tag: string, i: number) => (
-                            <Badge key={i} variant="outline" className="text-xs">
-                              {tag}
-                            </Badge>
-                          ))}
-                          {post.tags.length > 3 && (
-                            <Badge variant="outline" className="text-xs">
-                              +{post.tags.length - 3}
-                            </Badge>
-                          )}
-                        </div>
-                      )}
-                      
-                      <div className="mt-6 pt-4 border-t border-border/50">
-                        <Link to={`/learn/${post.slug}`} className="inline-block w-full">
-                          <Button variant="ghost" size="sm" className="w-full justify-between">
-                            Read article
-                            <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                          </Button>
-                        </Link>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
         </div>
-      </section>
-      
-      {/* Newsletter section */}
-      <section className="bg-muted/30 py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-2xl bg-primary p-8 lg:p-12">
-            <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-10 mix-blend-soft-light"></div>
-            <div className="absolute bottom-0 left-1/2 h-1/2 w-1/2 -translate-x-1/2 bg-white/10 blur-3xl"></div>
-            
-            <div className="relative mx-auto max-w-2xl text-center">
-              <TrendingUp className="mx-auto mb-4 h-10 w-10 text-primary-foreground/80" />
-              <h2 className="mb-4 text-3xl font-h2 tracking-tight text-primary-foreground">
-                Stay updated with Bitcoin insights
-              </h2>
-              <p className="mb-8 text-lg text-primary-foreground/80">
-                Join our newsletter to receive the latest articles and updates directly in your inbox.
-              </p>
+      )}
+
+      {/* Articles Content */}
+      {!loading && !error && (
+        <>
+          {/* Featured Articles Section */}
+          {featuredArticles.length > 0 && (
+            <section className="py-16 bg-white dark:bg-black">
+              <div className="mx-auto max-w-6xl px-6 lg:px-8">
+                <div className="mb-12">
+                  <h2 className="text-3xl font-light text-gray-900 dark:text-white mb-4">Featured Articles</h2>
+                  <p className="text-gray-600 dark:text-gray-400">Essential reading for understanding the evolving landscape</p>
+                </div>
+
+                <motion.div 
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+                >
+                  {featuredArticles.map((article) => (
+                    <motion.div key={article.id} variants={itemVariants}>
+                      <Link to={`/learn/${article.slug}`}>
+                        <div className="group bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1">
+                          <div className="flex items-start justify-between mb-4">
+                            <div className="flex items-center gap-2">
+                              <Star className="h-4 w-4 text-yellow-500" />
+                              <span className="text-xs font-medium text-yellow-600 dark:text-yellow-400">Featured</span>
+                            </div>
+                            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <ChevronRight className="h-5 w-5 text-gray-400" />
+                            </div>
+                          </div>
+                          
+                          <h3 className="text-xl font-semibold text-gray-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-3">
+                            {article.title}
+                          </h3>
+                          
+                          <p className="text-gray-600 dark:text-gray-400 line-clamp-3 leading-relaxed mb-6">
+                            {article.excerpt}
+                          </p>
+                          
+                          <div className="flex items-center gap-3 flex-wrap">
+                            <span className={`inline-flex px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(article.category)}`}>
+                              {formatCategoryName(article.category)}
+                            </span>
+                            <span className={`inline-flex px-3 py-1 rounded-full text-xs font-medium ${getDifficultyColor(article.difficulty)}`}>
+                              {formatDifficultyName(article.difficulty)}
+                            </span>
+                            <div className="flex items-center text-xs text-gray-400">
+                              <Clock className="mr-1.5 h-3 w-3" />
+                              {article.readTime} min read
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+            </section>
+          )}
+
+          {/* All Articles Section */}
+          <section className="py-16 bg-white dark:bg-black">
+            <div className="mx-auto max-w-6xl px-6 lg:px-8">
               
-              <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                <Input 
-                  type="email" 
-                  placeholder="Enter your email" 
-                  className="flex-1 border-primary-foreground/20 bg-white/10 text-primary-foreground placeholder:text-primary-foreground/60"
-                />
-                <Button size="lg" variant="secondary">
-                  Subscribe
-                </Button>
+              {/* Results Count and Clear Filters */}
+              <div className="mb-12 flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <span className="text-2xl font-light text-gray-900 dark:text-white">
+                    {articles.length} {articles.length === 1 ? 'article' : 'articles'}
+                  </span>
+                  {(searchTerm || selectedCategory || selectedDifficulty) && (
+                    <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full text-sm font-medium">
+                      {searchTerm && `"${searchTerm}"`}
+                      {searchTerm && (selectedCategory || selectedDifficulty) && ' • '}
+                      {selectedCategory && formatCategoryName(selectedCategory)}
+                      {selectedCategory && selectedDifficulty && ' • '}
+                      {selectedDifficulty && formatDifficultyName(selectedDifficulty)}
+                    </span>
+                  )}
+                </div>
+                
+                {(searchTerm || selectedCategory || selectedDifficulty) && (
+                  <button
+                    onClick={() => {
+                      setSearchTerm('');
+                      setSelectedCategory(null);
+                      setSelectedDifficulty(null);
+                    }}
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"
+                  >
+                    Clear filters
+                  </button>
+                )}
+              </div>
+
+              {/* Empty State */}
+              {articles.length === 0 && (
+                <div className="text-center py-32">
+                  <div className="w-16 h-16 mx-auto bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6">
+                    <BookOpen className="h-8 w-8 text-gray-400" />
+                  </div>
+                  <h3 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">No articles found</h3>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {searchTerm || selectedCategory || selectedDifficulty 
+                      ? 'Try adjusting your search or filters' 
+                      : 'No articles have been published yet'}
+                  </p>
+                </div>
+              )}
+
+              {/* Articles Grid */}
+              {articles.length > 0 && (
+                <motion.div 
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+                >
+                  {regularArticles.map((article) => (
+                    <motion.div key={article.id} variants={itemVariants}>
+                      <Link to={`/learn/${article.slug}`}>
+                        <div className="group bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700 hover:-translate-y-1">
+                          <div className="flex items-start justify-between mb-4">
+                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                              {article.title}
+                            </h3>
+                            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <ChevronRight className="h-5 w-5 text-gray-400" />
+                            </div>
+                          </div>
+                          
+                          <p className="text-gray-600 dark:text-gray-400 line-clamp-3 leading-relaxed mb-6">
+                            {article.excerpt}
+                          </p>
+                          
+                          <div className="flex items-center gap-3 flex-wrap">
+                            <span className={`inline-flex px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(article.category)}`}>
+                              {formatCategoryName(article.category)}
+                            </span>
+                            <span className={`inline-flex px-3 py-1 rounded-full text-xs font-medium ${getDifficultyColor(article.difficulty)}`}>
+                              {formatDifficultyName(article.difficulty)}
+                            </span>
+                            <div className="flex items-center text-xs text-gray-400">
+                              <Clock className="mr-1.5 h-3 w-3" />
+                              {article.readTime} min read
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+            </div>
+          </section>
+
+          {/* Newsletter section */}
+          <section className="bg-muted/30 py-24">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+              <div className="relative overflow-hidden rounded-2xl bg-primary p-8 lg:p-12">
+                <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-10 mix-blend-soft-light"></div>
+                <div className="absolute bottom-0 left-1/2 h-1/2 w-1/2 -translate-x-1/2 bg-white/10 blur-3xl"></div>
+                
+                <div className="relative mx-auto max-w-2xl text-center">
+                  <TrendingUp className="mx-auto mb-4 h-10 w-10 text-primary-foreground/80" />
+                  <h2 className="mb-4 text-3xl font-h2 tracking-tight text-primary-foreground">
+                    Stay updated with Bitcoin insights
+                  </h2>
+                  <p className="mb-8 text-lg text-primary-foreground/80">
+                    Join our newsletter to receive the latest articles and updates directly in your inbox.
+                  </p>
+                  
+                  <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+                    <Input 
+                      type="email" 
+                      placeholder="Enter your email" 
+                      className="flex-1 border-primary-foreground/20 bg-white/10 text-primary-foreground placeholder:text-primary-foreground/60"
+                    />
+                    <Button size="lg" variant="secondary">
+                      Subscribe
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        </>
+      )}
     </div>
   );
 }

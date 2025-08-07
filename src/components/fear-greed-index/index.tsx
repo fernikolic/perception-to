@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 interface FearGreedData {
@@ -116,11 +117,11 @@ function TodayCard({ value, delta, date }: { value: number; delta: number | null
   const isDeltaPositive = delta !== null && delta > 0;
 
   return (
-    <div className="rounded-2xl shadow-xl bg-white border border-slate-100 p-8 flex flex-col justify-between min-h-[340px] max-w-[340px] mx-auto relative">
+    <div className="rounded-2xl shadow-xl bg-white dark:bg-black/40 border border-slate-100 dark:border-white/10 p-8 flex flex-col justify-between min-h-[340px] max-w-[340px] mx-auto relative backdrop-blur-2xl">
       <div>
-        <div className="text-slate-500 text-sm font-semibold tracking-wide mb-2">PERCEPTION INDEX</div>
+        <div className="text-slate-500 dark:text-white/60 text-sm font-semibold tracking-wide mb-2">PERCEPTION INDEX</div>
         <div className="flex items-end gap-3 mb-2">
-          <span className="text-6xl font-semibold text-slate-900 leading-none">{value.toFixed(1)}</span>
+          <span className="text-6xl font-semibold text-slate-900 dark:text-white leading-none">{value.toFixed(1)}</span>
           {delta !== null && (
             <span className={`flex items-center text-lg font-medium ${isDeltaNegative ? 'text-red-500' : isDeltaPositive ? 'text-green-500' : 'text-slate-400'}`}>
               {isDeltaNegative && <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>}
@@ -129,7 +130,7 @@ function TodayCard({ value, delta, date }: { value: number; delta: number | null
             </span>
           )}
         </div>
-        <div className="text-slate-400 text-xs font-medium mb-4">Index Scale</div>
+        <div className="text-slate-400 dark:text-white/50 text-xs font-medium mb-4">Index Scale</div>
         <div className="relative h-6 mb-2">
           {/* Gradient scale */}
           <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-2 rounded-full bg-gradient-to-r from-red-400 via-yellow-400 to-green-500" />
@@ -142,7 +143,7 @@ function TodayCard({ value, delta, date }: { value: number; delta: number | null
             <div className="w-0 h-0 border-l-4 border-r-4 border-t-8 border-l-transparent border-r-transparent border-t-slate-900 mt-1" />
           </div>
         </div>
-        <div className="flex justify-between text-xs text-slate-400 font-medium mb-2">
+        <div className="flex justify-between text-xs text-slate-400 dark:text-white/60 font-medium mb-2">
           <span>0</span>
           <span>25</span>
           <span>50</span>
@@ -150,11 +151,11 @@ function TodayCard({ value, delta, date }: { value: number; delta: number | null
           <span>100</span>
         </div>
       </div>
-      <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-4">
-        <span className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+      <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-white/10 mt-4">
+        <span className="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-white/80">
           <span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse" /> LIVE DATA
         </span>
-        <span className="text-xs text-slate-400 font-medium">{formatPrettyDate(date)}</span>
+        <span className="text-xs text-slate-400 dark:text-white/60 font-medium">{formatPrettyDate(date)}</span>
       </div>
     </div>
   );
@@ -219,8 +220,8 @@ export function FearGreedIndex() {
     return (
       <div className="container mx-auto px-6 py-16 pt-24">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 border-4 border-slate-200 border-t-blue-500 rounded-full animate-spin mb-6"></div>
-          <p className="text-lg text-slate-600 font-light">Loading Fear & Greed Index...</p>
+          <div className="inline-flex items-center justify-center w-16 h-16 border-4 border-slate-200 dark:border-white/20 border-t-blue-500 dark:border-t-white rounded-full animate-spin mb-6"></div>
+          <p className="text-lg text-slate-600 dark:text-white/80 font-light">Loading Fear & Greed Index...</p>
         </div>
       </div>
     );
@@ -231,12 +232,12 @@ export function FearGreedIndex() {
       <div className="container mx-auto px-6 py-16 pt-24">
         <div className="text-center">
           <p className="text-red-500 text-lg mb-6">{error}</p>
-          <button 
+          <Button 
             onClick={() => window.location.reload()} 
-            className="px-6 py-3 bg-slate-900 text-white rounded-2xl hover:bg-slate-800 transition-colors duration-300 font-medium"
+            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-2xl font-medium shadow-xl"
           >
             Try Again
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -251,7 +252,7 @@ export function FearGreedIndex() {
   return (
     <div className="container mx-auto px-6 py-16 pt-24">
       <div className="text-center mb-16">
-        <h1 className="text-6xl font-light text-slate-900 mb-6 tracking-tight">
+        <h1 className="text-6xl font-bold mb-6 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
           Bitcoin Fear & Greed Index
         </h1>
         <p className="text-xl text-slate-600 font-light max-w-3xl mx-auto leading-relaxed">
@@ -265,9 +266,9 @@ export function FearGreedIndex() {
         {typeof today === 'number' && todayDate ? (
           <TodayCard value={today} delta={todayDelta} date={todayDate} />
         ) : (
-          <Card className="h-full flex items-center justify-center bg-white/80">
+          <Card className="h-full flex items-center justify-center bg-white/80 dark:bg-white/5 dark:border-white/10">
             <CardContent>
-              <span className="text-slate-400">No data</span>
+              <span className="text-slate-400 dark:text-white/60">No data</span>
             </CardContent>
           </Card>
         )}
@@ -280,7 +281,7 @@ export function FearGreedIndex() {
           return (
             <Card 
               key={index} 
-              className={`w-64 border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${sentiment?.bgColor || 'bg-white/80'} backdrop-blur-sm`}
+              className={`w-64 border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${sentiment?.bgColor || 'bg-white/80'} dark:bg-white/5 backdrop-blur-sm`}
             >
               <CardHeader className="pb-4">
                 <CardTitle className="text-sm font-medium text-slate-600 uppercase tracking-wider">
@@ -293,12 +294,12 @@ export function FearGreedIndex() {
                 </div>
                 {sentiment && (
                   <Badge 
-                    className={`${sentiment.textColor} border-current mb-4 bg-white/80 backdrop-blur-sm font-medium px-3 py-1 rounded-full`}
+                    className={`${sentiment.textColor} border-current mb-4 bg-white/80 dark:bg-white/10 backdrop-blur-sm font-medium px-3 py-1 rounded-full`}
                   >
                     {sentiment.label}
                   </Badge>
                 )}
-                <p className="text-xs text-slate-500 font-light">{formatPrettyDate(card.date)}</p>
+                <p className="text-xs text-slate-500 dark:text-white/60 font-light">{formatPrettyDate(card.date)}</p>
               </CardContent>
             </Card>
           );

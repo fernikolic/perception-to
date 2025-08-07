@@ -71,42 +71,60 @@ export function GlossaryPage() {
       {/* SEO and Structured Data */}
       <GlossaryStructuredData entries={entries} />
       
-      {/* Hero Section - Apple-style clean */}
-      <div className="relative bg-white dark:bg-black pt-20">
-        <div className="mx-auto max-w-6xl px-6 pt-20 pb-32 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mx-auto max-w-4xl text-center"
-          >
-            <h1 className="text-6xl md:text-7xl font-light tracking-tight text-gray-900 dark:text-white leading-none mb-8">
-              Master the Language of{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-medium">
-                Strategic Intelligence
-              </span>
-            </h1>
-                         <p className="mt-6 text-xl md:text-2xl font-light leading-relaxed text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-               The comprehensive glossary for strategic intelligence, competitive analysis, and emerging finance terminology that gives leaders competitive advantage.
-             </p>
-            
-            <div className="mt-16 flex items-center justify-center">
-              <div className="relative w-full max-w-2xl">
-                <div className="relative flex items-center bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition-all duration-300">
-                  <Search className="ml-6 h-5 w-5 text-gray-400" />
-                  <Input
-                    type="search"
-                    placeholder="Search terms, definitions, or concepts..."
-                    className="border-0 bg-transparent pl-4 text-lg placeholder:text-gray-400 focus-visible:ring-0 h-14"
-                    value={searchTerm}
-                    onChange={e => setSearchTerm(e.target.value)}
-                  />
+      {/* Hero Section with Card Design */}
+      <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
+        {/* Subtle radial background like homepage */}
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.06),transparent_50%)]" />
+
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Hero Card with Background Image (matches homepage) */}
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <img 
+                src="/images/hero_image.avif"
+                alt="Background"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
+              <div className="mx-auto max-w-3xl text-center">
+                {/* Segment badge */}
+                <div className="mb-6 sm:mb-8">
+                  <span className="inline-flex items-center rounded-full bg-transparent px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium leading-6 text-black ring-1 ring-inset ring-black/30 hover:ring-black/50 transition-all duration-300">
+                    For Content Creators
+                  </span>
+                </div>
+
+                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto">
+                  Master the Language of Strategic Intelligence
+                </h1>
+                
+                <p className="mt-4 sm:mt-5 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto">
+                  The comprehensive glossary for strategic intelligence, competitive analysis, and emerging finance terminology that gives leaders competitive advantage.
+                </p>
+
+                <div className="mt-6 sm:mt-8 lg:mt-10 flex items-center justify-center">
+                  <div className="relative w-full max-w-2xl">
+                    <div className="relative flex items-center bg-white/80 backdrop-blur-sm rounded-2xl border border-black/20 shadow-sm hover:shadow-md transition-all duration-300">
+                      <Search className="ml-6 h-5 w-5 text-black/60" />
+                      <Input
+                        type="search"
+                        placeholder="Search terms, definitions, or concepts..."
+                        className="border-0 bg-transparent pl-4 text-lg placeholder:text-black/50 focus-visible:ring-0 h-14 text-black"
+                        value={searchTerm}
+                        onChange={e => setSearchTerm(e.target.value)}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Categories Filter - Apple-style */}
       <div className="bg-gray-50/80 dark:bg-gray-900/50 backdrop-blur-xl border-y border-gray-200/50 dark:border-gray-800/50">

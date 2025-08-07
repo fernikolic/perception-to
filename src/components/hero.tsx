@@ -101,7 +101,7 @@ export function Hero() {
                   asChild
                 >
                   <a href="https://app.perception.to/auth/sign-up">
-                    Start Finding Opportunities
+                    Start Here
                   </a>
                 </Button>
                 <Button 

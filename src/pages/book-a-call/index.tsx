@@ -16,19 +16,34 @@ export default function BookACallPage() {
   }, []);
   return (
     <div className="min-h-screen bg-background pt-16">
+      {/* Hero Section (image card with overlay) */}
       <section className="relative overflow-hidden py-12 md:py-20">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(100,181,246,0.1),transparent_50%)]" />
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center mb-12">
-            <h1 className="text-3xl md:text-5xl font-extralight tracking-tight sm:text-6xl mb-6">
-              Schedule a demo
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
-              This is not a sales call.<br />
-              The goal is to understand your needs and to check together on Perception's abilities and see if it is a perfect fit for you.
-            </p>
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <img 
+                src="/images/hero_image.avif"
+                alt="Background"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-16">
+              <div className="mx-auto max-w-3xl text-center">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-black mb-4">
+                  Schedule a demo
+                </h1>
+                <p className="text-sm sm:text-base lg:text-lg leading-6 sm:leading-7 text-black/70 font-light max-w-2xl mx-auto">
+                  This is not a sales call. The goal is to understand your needs and to check together on Perception's abilities and see if it is a perfect fit for you.
+                </p>
+              </div>
+            </div>
           </div>
-          
+        </div>
+
+        <div className="mx-auto max-w-4xl px-6 lg:px-8 mt-12">
           {/* Calendly embed */}
           <div className="mb-16 bg-white rounded-xl shadow-xl border border-gray-200 p-6">
             <div 

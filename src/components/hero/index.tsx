@@ -97,7 +97,7 @@ export function Hero() {
                 className="bg-white text-black hover:bg-white/90 transition-all"
               >
                 <a href="https://app.perception.to/auth/sign-up">
-                  Start Finding Opportunities
+                  Start Here
                 </a>
               </Button>
               <Button 
