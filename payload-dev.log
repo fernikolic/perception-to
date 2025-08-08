@@ -955,3 +955,14 @@
     at /Users/fernandonikolic/bitcoin-perception/payload-app/node_modules/@payloadcms/db-mongodb/node_modules/mongoose/lib/model.js:3248:7
     at Array.forEach (<anonymous>)
     at /Users/fernandonikolic/bitcoin-perception/payload-app/node_modules/@payloadcms/db-mongodb/node_modules/mongoose/lib/model.js:3247:15[39m
+[07:55:31] [31mERROR[39m (payload): [36mMongoPoolClearedError: Connection pool for ac-rpl4ho2-shard-00-01.1gtyyut.mongodb.net:27017 was cleared because another operation failed with: "connection <monitor> to 34.66.8.21:27017 timed out"
+    at /Users/fernandonikolic/bitcoin-perception/payload-app/node_modules/@payloadcms/db-mongodb/node_modules/mongodb/lib/cmap/connection_pool.js:406:77
+    at callback (/Users/fernandonikolic/bitcoin-perception/payload-app/node_modules/@payloadcms/db-mongodb/node_modules/mongodb/lib/cmap/connect.js:67:9)
+    at /Users/fernandonikolic/bitcoin-perception/payload-app/node_modules/@payloadcms/db-mongodb/node_modules/mongodb/lib/cmap/connect.js:138:21
+    at /Users/fernandonikolic/bitcoin-perception/payload-app/node_modules/@payloadcms/db-mongodb/node_modules/mongodb/lib/cmap/auth/scram.js:165:20
+    at Connection.onMessage (/Users/fernandonikolic/bitcoin-perception/payload-app/node_modules/@payloadcms/db-mongodb/node_modules/mongodb/lib/cmap/connection.js:243:9)
+    at MessageStream.<anonymous> (/Users/fernandonikolic/bitcoin-perception/payload-app/node_modules/@payloadcms/db-mongodb/node_modules/mongodb/lib/cmap/connection.js:61:60)
+    at MessageStream.emit (node:events:517:28)
+    at processIncomingData (/Users/fernandonikolic/bitcoin-perception/payload-app/node_modules/@payloadcms/db-mongodb/node_modules/mongodb/lib/cmap/message_stream.js:125:16)
+    at MessageStream._write (/Users/fernandonikolic/bitcoin-perception/payload-app/node_modules/@payloadcms/db-mongodb/node_modules/mongodb/lib/cmap/message_stream.js:33:9)
+    at writeOrBuffer (node:internal/streams/writable:392:12)[39m
