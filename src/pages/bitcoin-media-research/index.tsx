@@ -24,7 +24,7 @@ const companies = [
   { name: 'Block', logo: '/logos/Block logo.png' },
   { name: 'Cointelegraph', logo: '/logos/Cointelegraph Logo.png' },
   { name: 'Forbes', logo: '/logos/forbes logo.png' },
-  { name: 'CoinShares', logo: '/logos/CoinShares_Logo.jpg' },
+  { name: 'CoinShares', logo: '/logos/CoinShares_Logo.webp' },
   { name: 'Bitwise', logo: '/logos/bitwise logo.png' },
   { name: 'Fidelity', logo: '/logos/fidelity-logo-PNG.webp' }
 ];
