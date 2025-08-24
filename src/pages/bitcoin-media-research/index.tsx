@@ -140,7 +140,7 @@ export function BitcoinMediaResearchPage() {
             {/* Ultra-thin hero title with color accent */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extralight tracking-tight text-white mb-12 leading-tight">
               Unlock insights into Bitcoin{' '}
-              <span className="font-thin bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">media trends</span> and bias
+              <span className="font-thin text-white">media trends</span> and bias
             </h1>
             
             {/* Signup Form Section */}
