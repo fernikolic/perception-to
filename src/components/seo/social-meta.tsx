@@ -62,7 +62,7 @@ const PAGE_METADATA: Record<string, any> = {
     title: 'Bitcoin Media Research - Perception',
     description: 'Unlock insights into Bitcoin media trends and bias. Weekly intelligence on narrative shifts, sentiment analysis, and market implications.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-graph.png'
+    image: 'https://perception.to/logos/Perception-logo-social-og.png'
   }
 };
 
