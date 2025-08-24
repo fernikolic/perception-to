@@ -170,7 +170,7 @@ export function BitcoinMediaResearchPage() {
               {/* Carousel - all companies with improved styling */}
               <div className="relative overflow-hidden">
                 <div className="flex items-center gap-x-4" style={{
-                  animation: 'scroll 15s linear infinite'
+                  animation: 'scroll-seamless 20s linear infinite'
                 }}>
                   {/* First set of logos */}
                   {companies.map((company) => (
@@ -208,18 +208,36 @@ export function BitcoinMediaResearchPage() {
                       />
                     </div>
                   ))}
+                  {/* Third set of logos for extra smooth transition */}
+                  {companies.map((company) => (
+                    <div key={`${company.name}-3`} className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 min-h-[70px] min-w-[120px] flex-shrink-0">
+                      <img 
+                        src={company.logo} 
+                        alt={`${company.name} logo`}
+                        className={`${
+                          company.name === 'Bitwise' || company.name === 'Fidelity' 
+                            ? 'h-10' 
+                            : 'h-14'
+                        } w-auto object-contain opacity-90 hover:opacity-100 transition-opacity ${
+                          company.name === 'Block' || company.name === 'CoinShares' || company.name === 'Fidelity' || company.name === 'Swan'
+                            ? 'filter-none' 
+                            : 'filter brightness-0 invert'
+                        }`}
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
               
               {/* Add CSS for the scrolling animation */}
               <style dangerouslySetInnerHTML={{
                 __html: `
-                  @keyframes scroll {
+                  @keyframes scroll-seamless {
                     0% {
                       transform: translateX(0);
                     }
                     100% {
-                      transform: translateX(-50%);
+                      transform: translateX(calc(-100% / 3));
                     }
                   }
                 `
