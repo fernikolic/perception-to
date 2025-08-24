@@ -167,14 +167,14 @@ export function BitcoinMediaResearchPage() {
               <p className="text-lg font-light leading-relaxed text-white/90 mb-4">
                 Read by industry professionals from
               </p>
-              {/* Single row - all companies */}
+              {/* Single row - all companies with improved styling */}
               <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
                 {companies.map((company) => (
-                  <div key={company.name} className="flex items-center">
+                  <div key={company.name} className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 min-h-[60px] min-w-[120px]">
                     <img 
                       src={company.logo} 
                       alt={`${company.name} logo`}
-                      className="h-12 w-auto object-contain opacity-60 hover:opacity-90 transition-opacity grayscale hover:grayscale-0"
+                      className="h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity filter brightness-0 invert"
                     />
                   </div>
                 ))}
