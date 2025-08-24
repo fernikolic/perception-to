@@ -170,11 +170,15 @@ export function BitcoinMediaResearchPage() {
               {/* Single row - all companies with improved styling */}
               <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
                 {companies.map((company) => (
-                  <div key={company.name} className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 min-h-[60px] min-w-[120px]">
+                  <div key={company.name} className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 min-h-[70px] min-w-[140px]">
                     <img 
                       src={company.logo} 
                       alt={`${company.name} logo`}
-                      className="h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity filter brightness-0 invert"
+                      className={`h-12 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity ${
+                        company.name === 'Block' || company.name === 'CoinShares' 
+                          ? 'filter-none' 
+                          : 'filter brightness-0 invert'
+                      }`}
                     />
                   </div>
                 ))}
