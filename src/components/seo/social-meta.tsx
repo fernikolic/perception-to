@@ -98,14 +98,24 @@ export function SocialMeta({ title, description, image, type = 'website', url }:
     updateMetaTag('og:type', finalType, 'property');
     updateMetaTag('og:url', finalUrl, 'property');
     updateMetaTag('og:image', finalImage, 'property');
+    updateMetaTag('og:image:secure_url', finalImage, 'property');
+    updateMetaTag('og:image:type', 'image/png', 'property');
     updateMetaTag('og:image:width', '1200', 'property');
     updateMetaTag('og:image:height', '630', 'property');
+    updateMetaTag('og:image:alt', finalTitle, 'property');
+    updateMetaTag('og:site_name', 'Perception', 'property');
     
     // Twitter Card tags
     updateMetaTag('twitter:card', 'summary_large_image');
     updateMetaTag('twitter:title', finalTitle);
     updateMetaTag('twitter:description', finalDescription);
     updateMetaTag('twitter:image', finalImage);
+    updateMetaTag('twitter:image:alt', finalTitle);
+    updateMetaTag('twitter:site', '@perception', 'name');
+    
+    // Additional fallback tags
+    updateMetaTag('image', finalImage, 'itemprop');
+    updateMetaTag('thumbnailUrl', finalImage, 'itemprop');
     
   }, [location.pathname, title, description, image, type, url]);
 

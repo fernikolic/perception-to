@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+Allow: /logos/
+Allow: /logos/Perception-logo-social-og.png
+
+# Social Media Crawlers
+User-agent: facebookexternalhit
+Allow: /
+Allow: /logos/
+
+User-agent: Twitterbot
+Allow: /
+Allow: /logos/
+
+User-agent: LinkedInBot
+Allow: /
+Allow: /logos/
+
+User-agent: WhatsApp
+Allow: /
+Allow: /logos/
+
+User-agent: TelegramBot
+Allow: /
+Allow: /logos/
+
+Sitemap: https://perception.to/sitemap.xml
