@@ -21,7 +21,7 @@ declare global {
 
 const companies = [
   { name: 'Swan', logo: '/logos/Swan Logo.webp' },
-  { name: 'Block', logo: '/logos/Block logo.avif' },
+  { name: 'Block', logo: '/logos/Block logo.png' },
   { name: 'Cointelegraph', logo: '/logos/Cointelegraph Logo.png' },
   { name: 'Forbes', logo: '/logos/forbes logo.png' },
   { name: 'CoinShares', logo: '/logos/CoinShares_Logo.jpg' },
