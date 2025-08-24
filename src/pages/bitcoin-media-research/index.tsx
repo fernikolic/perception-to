@@ -174,7 +174,11 @@ export function BitcoinMediaResearchPage() {
                     <img 
                       src={company.logo} 
                       alt={`${company.name} logo`}
-                      className={`h-12 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity ${
+                      className={`${
+                        company.name === 'Bitwise' || company.name === 'Fidelity' 
+                          ? 'h-12' 
+                          : 'h-16'
+                      } w-auto object-contain opacity-90 hover:opacity-100 transition-opacity ${
                         company.name === 'Block' || company.name === 'CoinShares' 
                           ? 'filter-none' 
                           : 'filter brightness-0 invert'
