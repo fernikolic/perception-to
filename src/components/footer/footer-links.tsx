@@ -43,7 +43,7 @@ const footerSections: FooterSection[] = [
       { label: 'About', href: '/about' },
       { 
         label: 'Bitcoin Media Research', 
-        href: 'https://bitcoinperception.com',
+        href: '/bitcoin-media-research',
         className: 'text-orange-500 hover:text-orange-600'
       },
       { label: 'Press', href: '/press' },

@@ -57,6 +57,12 @@ const PAGE_METADATA: Record<string, any> = {
     title: 'Learn - Perception',
     description: 'Educational resources about Bitcoin sentiment analysis and market psychology',
     type: 'website'
+  },
+  '/bitcoin-media-research': {
+    title: 'Bitcoin Media Research - Perception',
+    description: 'Unlock insights into Bitcoin media trends and bias. Weekly intelligence on narrative shifts, sentiment analysis, and market implications.',
+    type: 'website',
+    image: 'https://perception.to/logos/Perception-logo-social-graph.png'
   }
 };
 
@@ -79,7 +85,7 @@ export function SocialMeta({ title, description, image, type = 'website', url }:
     const finalUrl = url || `https://perception.to${currentPath}`;
     
     // Generate dynamic image URL
-    const finalImage = image || generateSocialImage({
+    const finalImage = image || pageMetadata.image || generateSocialImage({
       title: finalTitle,
       description: finalDescription,
       path: currentPath

@@ -38,7 +38,7 @@ const resources: {
   },
   { 
     title: "Bitcoin Media Research", 
-    href: "https://bitcoinperception.com", 
+    href: "/bitcoin-media-research", 
     description: "Join 1,500+ subscribers",
     className: "text-orange-500"
   },
