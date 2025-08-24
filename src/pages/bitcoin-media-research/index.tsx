@@ -121,23 +121,32 @@ export function BitcoinMediaResearchPage() {
         image="https://perception.to/logos/Perception-logo-social-graph.png"
         type="website"
       />
-      <div className="min-h-screen bg-white pt-16">
-      {/* Hero Section with Signup Form */}
-      <section className="relative overflow-hidden">
-        {/* Subtle gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 via-white to-blue-50/30" />
-        
-        <div className="relative mx-auto max-w-6xl px-6 py-16 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
+      <div className="min-h-screen bg-background pt-16">
+      {/* Hero Section with Background Image Card */}
+      <section className="relative overflow-hidden py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <img 
+                src="/images/hero_image.avif"
+                alt="Background"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
+              <div className="mx-auto max-w-4xl text-center">
             {/* Ultra-thin badge with color */}
             <div className="mb-8">
-              <span className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 px-4 py-1.5 text-sm font-light tracking-wide text-blue-800">
+              <span className="inline-flex items-center rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 px-4 py-1.5 text-sm font-light tracking-wide text-gray-800">
                 Join 1,500+ subscribers
               </span>
             </div>
             
             {/* Ultra-thin hero title with color accent */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extralight tracking-tight text-gray-900 mb-12 leading-tight">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extralight tracking-tight text-black mb-12 leading-tight">
               Unlock insights into Bitcoin{' '}
               <span className="font-thin bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">media trends</span> and bias
             </h1>
@@ -208,8 +217,10 @@ export function BitcoinMediaResearchPage() {
             <p className="text-sm font-light text-gray-500 tracking-wide">
               Free newsletter · Weekly insights · Unsubscribe anytime
             </p>
+            </div>
           </div>
         </div>
+      </div>
       </section>
 
 
