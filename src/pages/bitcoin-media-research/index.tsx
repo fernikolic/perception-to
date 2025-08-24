@@ -139,7 +139,7 @@ export function BitcoinMediaResearchPage() {
             
             {/* Ultra-thin hero title with color accent */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-hairline tracking-tight text-white mb-12 leading-tight" style={{ fontWeight: '100' }}>
-              Unlock insights into Bitcoin{' '}
+              Unlock insights into Bitcoin<br />
               <span className="font-hairline text-white" style={{ fontWeight: '100' }}>media trends</span> and bias
             </h1>
             
