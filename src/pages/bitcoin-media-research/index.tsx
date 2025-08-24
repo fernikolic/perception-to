@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { TweetCard } from '@/components/testimonials/tweet-card';
 import { testimonials } from '@/components/testimonials/testimonials-data';
-import { SocialMeta } from '@/components/seo/social-meta';
 
 // TypeScript declarations for GhostSignupForm
 declare global {
@@ -114,14 +113,7 @@ export function BitcoinMediaResearchPage() {
   }, []);
 
   return (
-    <>
-      <SocialMeta 
-        title="Bitcoin Media Research - Perception"
-        description="Unlock insights into Bitcoin media trends and bias. Weekly intelligence on narrative shifts, sentiment analysis, and market implications."
-        image="https://perception.to/logos/Perception-logo-social-graph.png"
-        type="website"
-      />
-      <div className="min-h-screen bg-background pt-16">
+    <div className="min-h-screen bg-background pt-16">
       {/* Hero Section with Background Image Card */}
       <section className="relative overflow-hidden py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -283,6 +275,5 @@ export function BitcoinMediaResearchPage() {
         </div>
       </section>
     </div>
-    </>
   );
 }
