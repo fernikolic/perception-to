@@ -138,9 +138,9 @@ export function BitcoinMediaResearchPage() {
             </div>
             
             {/* Ultra-thin hero title with color accent */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extralight tracking-tight text-black mb-12 leading-tight">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extralight tracking-tight text-white mb-12 leading-tight">
               Unlock insights into Bitcoin{' '}
-              <span className="font-thin bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">media trends</span> and bias
+              <span className="font-thin bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">media trends</span> and bias
             </h1>
             
             {/* Signup Form Section */}
@@ -164,7 +164,7 @@ export function BitcoinMediaResearchPage() {
 
             {/* Company list as subtitle */}
             <div className="mb-8 max-w-4xl mx-auto">
-              <p className="text-lg font-light leading-relaxed text-gray-600 mb-4">
+              <p className="text-lg font-light leading-relaxed text-white/90 mb-4">
                 Read by industry professionals from
               </p>
               {/* Single row - all companies */}
@@ -179,7 +179,7 @@ export function BitcoinMediaResearchPage() {
                   </div>
                 ))}
               </div>
-              <p className="mt-3 text-sm font-light text-gray-500">and many more</p>
+              <p className="mt-3 text-sm font-light text-white/70">and many more</p>
             </div>
 
             {/* Author credentials with image */}
@@ -206,7 +206,7 @@ export function BitcoinMediaResearchPage() {
             </div>
 
             {/* Minimalist footer text */}
-            <p className="text-sm font-light text-gray-500 tracking-wide">
+            <p className="text-sm font-light text-white/80 tracking-wide">
               Free newsletter · Weekly insights · Unsubscribe anytime
             </p>
             </div>
