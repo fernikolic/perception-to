@@ -183,7 +183,7 @@ export function BitcoinMediaResearchPage() {
                             ? 'h-10' 
                             : 'h-14'
                         } w-auto object-contain opacity-90 hover:opacity-100 transition-opacity ${
-                          company.name === 'Block' || company.name === 'CoinShares' 
+                          company.name === 'Block' || company.name === 'CoinShares' || company.name === 'Fidelity' || company.name === 'Swan'
                             ? 'filter-none' 
                             : 'filter brightness-0 invert'
                         }`}
@@ -201,7 +201,7 @@ export function BitcoinMediaResearchPage() {
                             ? 'h-10' 
                             : 'h-14'
                         } w-auto object-contain opacity-90 hover:opacity-100 transition-opacity ${
-                          company.name === 'Block' || company.name === 'CoinShares' 
+                          company.name === 'Block' || company.name === 'CoinShares' || company.name === 'Fidelity' || company.name === 'Swan'
                             ? 'filter-none' 
                             : 'filter brightness-0 invert'
                         }`}
