@@ -17,7 +17,7 @@ export default function SlackIntegrationPage() {
             <div className="absolute inset-0">
               <img 
                 src="/images/hero_image.avif"
-                alt="Background"
+                alt="Bitcoin sentiment analysis dashboard background"
                 className="w-full h-full object-cover"
               />
             </div>
