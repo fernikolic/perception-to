@@ -50,6 +50,7 @@ import KeywordTest from '@/components/programmatic-seo/KeywordTest';
 import ContentShowcase from '@/components/programmatic-seo/ContentShowcase';
 import CMSIntegration from '@/components/programmatic-seo/CMSIntegration';
 import { BitcoinMediaResearchPage } from '@/pages/bitcoin-media-research';
+import BitcoinBadTakes from '@/pages/bitcoin-bad-takes';
 
 function HomePage() {
   return (
@@ -108,6 +109,7 @@ const App = () => {
               <Route path="/bitcoin-market-sentiment/:year/:month" element={<BitcoinMarketSentimentPage />} />
               <Route path="/bitcoin-market-sentiment/:year/:month/:day" element={<BitcoinDailySentimentPage />} />
               <Route path="/bitcoin-media-research" element={<BitcoinMediaResearchPage />} />
+              <Route path="/bitcoin-bad-takes/*" element={<BitcoinBadTakes />} />
               
               {/* Programmatic SEO Routes */}
               <Route path="/sentiment/:slug" element={<ProgrammaticRouter />} />

@@ -18,6 +18,7 @@ const footerSections: FooterSection[] = [
       { label: 'Slack Integration', href: '/slack-integration' },
       { label: 'Roadmap', href: '/roadmap' },
       { label: 'Book a Demo', href: '/book-a-call' },
+      { label: 'Methodology', href: '/methodology' },
     ],
   },
   {
@@ -27,7 +28,7 @@ const footerSections: FooterSection[] = [
       { label: 'Glossary', href: '/glossary' },
       { label: 'Bitcoin Fear & Greed Index', href: '/bitcoin-fear-greed-index' },
       { label: 'Bitcoin Market Sentiment', href: '/bitcoin-market-sentiment' },
-      { label: 'Methodology', href: '/methodology' },
+      { label: 'Bad Bitcoin Takes', href: '/bitcoin-bad-takes' },
     ],
   },
   {
