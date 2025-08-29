@@ -43,12 +43,6 @@ const resources: {
     className: "text-orange-500"
   },
   { 
-    title: "Bitcoin Bad Takes", 
-    href: "/bitcoin-bad-takes", 
-    description: "The worst Bitcoin takes from media and experts",
-    className: "text-orange-500"
-  },
-  { 
     title: "Methodology", 
     href: "/methodology", 
     description: "Our data collection process"
