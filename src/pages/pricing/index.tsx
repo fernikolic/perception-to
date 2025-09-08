@@ -28,16 +28,8 @@ export default function PricingPage() {
                     intelligence level
                   </span>
                 </h1>
-                <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 max-w-2xl mx-auto mb-4 sm:mb-6">
+                <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 max-w-2xl mx-auto">
                   Start finding opportunities in minutes, not hours. 7-day free trial.
-                </p>
-                <div className="flex justify-center mb-4 sm:mb-6">
-                  <span className="inline-flex items-center rounded-full bg-emerald-500/20 px-4 py-2 text-sm font-medium text-emerald-800 backdrop-blur-sm border border-emerald-500/30">
-                    Get competitive advantage or it's on us
-                  </span>
-                </div>
-                <p className="text-sm text-black/60 italic">
-                  Trusted by emerging finance leaders, strategists, and decision-makers in 27+ countries.
                 </p>
               </div>
             </div>
@@ -50,15 +42,20 @@ export default function PricingPage() {
           {/* Pricing Section with Clear Background */}
           <div className="relative rounded-3xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 p-8 md:p-12">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-extralight tracking-tight mb-4">
-                Choose your
-                <span className="bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent font-light ml-2">
-                  signal depth
-                </span>
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Pick the intelligence level that matches your research needs
-              </p>
+              {/* Beta Pricing Lock-In Notice */}
+              <div className="bg-gradient-to-r from-emerald-50 to-emerald-100/50 dark:from-emerald-950/30 dark:to-emerald-900/20 rounded-xl p-6 border border-emerald-200/50 dark:border-emerald-800/30 max-w-2xl mx-auto">
+                <div className="flex items-center justify-center mb-2">
+                  <span className="inline-flex items-center rounded-full bg-emerald-500/20 px-3 py-1 text-sm font-semibold text-emerald-800 dark:text-emerald-300">
+                    🔒 Beta Pricing Lock-In
+                  </span>
+                </div>
+                <p className="text-sm font-medium text-emerald-900 dark:text-emerald-100 mb-2">
+                  Lock in these beta prices now and keep them forever
+                </p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-300">
+                  We guarantee your pricing will never increase, even after we exit beta and raise prices for new customers
+                </p>
+              </div>
             </div>
             <PriceList />
           </div>

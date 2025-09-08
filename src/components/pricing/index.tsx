@@ -15,16 +15,29 @@ export function Pricing() {
           <p className="text-xl leading-relaxed text-muted-foreground max-w-2xl mx-auto mb-6">
             See real-time sentiment shifts, rising institutional narratives, and breakout themes that shape capital, policy, and adoption.
           </p>
-          <div className="flex justify-center mb-6">
-            <span className="inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-900/30 px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-300">
-              10-hour time savings guarantee or cancel
-            </span>
-          </div>
           <p className="text-lg text-muted-foreground/80">
             Start with a 7-day free trial.
           </p>
         </div>
-        <div className="mx-auto mt-20 max-w-7xl">
+        
+        {/* Beta Pricing Lock-In Notice */}
+        <div className="mx-auto mt-16 max-w-2xl">
+          <div className="bg-gradient-to-r from-emerald-50 to-emerald-100/50 dark:from-emerald-950/30 dark:to-emerald-900/20 rounded-xl p-6 border border-emerald-200/50 dark:border-emerald-800/30 text-center">
+            <div className="flex items-center justify-center mb-2">
+              <span className="inline-flex items-center rounded-full bg-emerald-500/20 px-3 py-1 text-sm font-semibold text-emerald-800 dark:text-emerald-300">
+                🔒 Beta Pricing Lock-In
+              </span>
+            </div>
+            <p className="text-sm font-medium text-emerald-900 dark:text-emerald-100 mb-2">
+              Lock in these beta prices now and keep them forever
+            </p>
+            <p className="text-xs text-emerald-700 dark:text-emerald-300">
+              We guarantee your pricing will never increase, even after we exit beta and raise prices for new customers
+            </p>
+          </div>
+        </div>
+        
+        <div className="mx-auto mt-12 max-w-7xl">
           <PriceList />
         </div>
       </div>
