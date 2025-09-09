@@ -218,7 +218,7 @@ export function FearGreedIndex() {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-6 py-16 pt-24">
+      <div className="container mx-auto px-6 py-8">
         <div className="text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 border-4 border-slate-200 dark:border-white/20 border-t-blue-500 dark:border-t-white rounded-full animate-spin mb-6"></div>
           <p className="text-lg text-slate-600 dark:text-white/80 font-light">Loading Fear & Greed Index...</p>
@@ -229,7 +229,7 @@ export function FearGreedIndex() {
 
   if (error) {
     return (
-      <div className="container mx-auto px-6 py-16 pt-24">
+      <div className="container mx-auto px-6 py-8">
         <div className="text-center">
           <p className="text-red-500 text-lg mb-6">{error}</p>
           <Button 
@@ -250,17 +250,7 @@ export function FearGreedIndex() {
   const todayDate = cards[0]?.date;
 
   return (
-    <div className="container mx-auto px-6 py-16 pt-24">
-      <div className="text-center mb-16">
-        <h1 className="text-6xl font-bold mb-6 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
-          Bitcoin Fear & Greed Index
-        </h1>
-        <p className="text-xl text-slate-600 font-light max-w-3xl mx-auto leading-relaxed">
-          Track market sentiment with real-time data from multiple sources including social media, 
-          volatility, market momentum, and more.
-        </p>
-      </div>
-
+    <div className="container mx-auto px-6 py-8">
       {/* Today card - visually stunning */}
       <div className="flex justify-center mb-12">
         {typeof today === 'number' && todayDate ? (

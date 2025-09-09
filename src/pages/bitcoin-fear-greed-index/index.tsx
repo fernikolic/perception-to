@@ -33,19 +33,13 @@ export default function FearGreedIndexPage() {
               {/* Content */}
               <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
                 <div className="mx-auto max-w-3xl text-center">
-                  {/* Segment badge */}
-                  <div className="mb-6 sm:mb-8">
-                    <span className="inline-flex items-center rounded-full bg-transparent px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium leading-6 text-black ring-1 ring-inset ring-black/30 hover:ring-black/50 transition-all duration-300">
-                      For Traders & Investors
-                    </span>
-                  </div>
 
-                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto mb-6 sm:mb-8">
                     Bitcoin Fear & Greed Index
                   </h1>
                   
-                  <p className="mt-4 sm:mt-5 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto">
-                    Real-time market sentiment analysis with our advanced Fear & Greed Index. Get instant alerts, API access, and detailed analysis of market psychology.
+                  <p className="text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto">
+                    Track market sentiment with real-time data from multiple sources including social media, volatility, market momentum, and more.
                   </p>
 
                   <div className="mt-6 sm:mt-8 lg:mt-10 flex items-center justify-center">
