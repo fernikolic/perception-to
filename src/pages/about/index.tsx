@@ -15,7 +15,7 @@ const teamMembers = [
   {
     name: 'Fernando Nikolic',
     role: 'Founder',
-    image: 'https://pbs.twimg.com/profile_images/1850431899908608000/cy1MPF8Y_400x400.jpg',
+    image: 'https://pbs.twimg.com/profile_images/1963063161327910912/YfHniRP3_400x400.jpg',
     bio: '15 years of experience in marketing and communications at leading tech and Bitcoin companies.',
     social: {
       twitter: 'https://x.com/basedlayer',
@@ -56,7 +56,7 @@ export function AboutPage() {
             {/* Content */}
             <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
               <div className="mx-auto max-w-3xl text-center">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal tracking-tight text-black">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-black">
                   Intelligence Platform for Emerging Finance Leaders
                 </h1>
                 <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto">
