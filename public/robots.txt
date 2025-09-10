@@ -25,4 +25,3 @@ Allow: /
 Allow: /logos/
 
 Sitemap: https://perception.to/sitemap.xml
-Sitemap: https://perception.to/sitemap-intelligence.xml

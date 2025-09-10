@@ -13,7 +13,7 @@ const tiers = [
     features: [
       'Save 10+ hours per week of manual research',
       'Track emerging narratives across 200+ sources in real time (Reddit, Bloomberg, X, GitHub, and more)',
-      'Up to 5 custom keyword/topic alerts',
+      'Monitor up to 3 saved topics with real-time alerts',
       'Real-time blind-spot & sentiment notifications',
       'Instant setup. No sales calls.',
       'Trusted by 100+ independent creators',
@@ -33,7 +33,8 @@ const tiers = [
     badge: 'Most Popular',
     features: [
       'Everything in Pro, plus:',
-      'Up to 20 keyword/entity/industry alerts',
+      'Monitor up to 20 saved topics/keywords/entities with alerts',
+      'Generate up to 20 custom reports from your data',
       'Advanced price-vs-narrative correlation tools',
       'Custom dashboards by outlet, topic, or region',
       'Auto-generated narrative briefings — exportable in seconds',
@@ -54,6 +55,8 @@ const tiers = [
     perUser: false,
     features: [
       'Everything in Premium, plus:',
+      'Unlimited saved topics & alerts',
+      'Unlimited report generation',
       'API access & custom data integrations',
       'Competitive narrative benchmarking & strategic positioning support',
       'White-label dashboards & intelligence reports',

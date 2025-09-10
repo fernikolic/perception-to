@@ -88,29 +88,25 @@ export function ProblemSolution() {
       ...Array.from(solutionContainer.querySelectorAll(`.${styles.innerWord}`))
     ];
     
-    // Initially style all words
+    // Initially style all words - simpler initial state
     gsap.set(allInnerWords, { 
-      opacity: 0.15,
-      filter: "blur(2px)",
-      scale: 0.95,
+      opacity: 0.3,
       color: (_, target) => {
         // Preserve orange color for highlighted words
         if (target.style.color === 'rgb(251, 146, 60)') {
           return '#fb923c';
         }
-        return "rgba(255,255,255,0.5)";
+        return "rgba(255,255,255,0.3)";
       }
     });
     
-    // Create a basic timeline
-    const tl = gsap.timeline();
+    // Create a much simpler timeline that doesn't interfere with scroll
+    const tl = gsap.timeline({ paused: true });
     
-    // First, reveal first few words immediately but with a soft animation
-    for (let i = 0; i < Math.min(3, allInnerWords.length); i++) {
-      tl.to(allInnerWords[i], { 
-        opacity: 1, 
-        filter: "blur(0px)",
-        scale: 1,
+    // Animate words appearing more naturally
+    allInnerWords.forEach((word, index) => {
+      tl.to(word, {
+        opacity: 1,
         color: (_, target) => {
           // Keep highlighted words orange
           if (target.style.color === 'rgb(251, 146, 60)') {
@@ -118,47 +114,21 @@ export function ProblemSolution() {
           }
           return "rgba(255,255,255,1)";
         },
-        duration: 0.2,
-        ease: "power2.out" 
-      }, i * 0.03);
-    }
+        duration: 0.3,
+        ease: "power2.out"
+      }, index * 0.05);
+    });
     
-    // Then reveal the rest of the words
-    for (let i = 3; i < allInnerWords.length; i++) {
-      const startPosition = 0.05 + ((i - 3) / (allInnerWords.length - 3)) * 0.25;
-      
-      tl.to(allInnerWords[i], { 
-        opacity: 1, 
-        filter: "blur(0px)",
-        scale: 1,
-        color: (_, target) => {
-          // Keep highlighted words orange
-          if (target.style.color === 'rgb(251, 146, 60)') {
-            return '#fb923c';
-          }
-          return "rgba(255,255,255,1)";
-        },
-        duration: 0.15,
-        ease: "power1.inOut"
-      }, startPosition);
-    }
-    
-    // Make sure all words are fully revealed by 35% of the timeline
-    tl.set(allInnerWords, { 
-      opacity: 1, 
-      filter: "blur(0px)",
-      scale: 1,
-    }, 0.35);
-    
-    // Create a simpler ScrollTrigger setup
+    // Much more natural ScrollTrigger - shorter pin duration and no scrub
     ScrollTrigger.create({
       trigger: section,
-      start: "top top",
-      end: "+=400%", // Scroll distance - adjust as needed
-      pin: true,
-      pinSpacing: true,
-      scrub: 1,
-      animation: tl,
+      start: "top center",
+      end: "bottom center",
+      pin: false, // Remove pinning to allow natural scroll
+      onEnter: () => tl.play(),
+      onLeave: () => tl.reverse(),
+      onEnterBack: () => tl.play(),
+      onLeaveBack: () => tl.reverse(),
     });
     
     // Cleanup

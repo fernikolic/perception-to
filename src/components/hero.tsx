@@ -56,7 +56,7 @@ export function Hero() {
           {/* Background Image */}
           <div className="absolute inset-0">
             <img 
-              src="/images/hero_image.avif"
+              src="/images/hero_image.avif?v=2"
               alt="Background"
               className="w-full h-full object-cover"
             />
@@ -88,7 +88,7 @@ export function Hero() {
               
               <p className="mt-3 sm:mt-4 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto px-2">
                 Turn market intelligence into competitive advantage. Identify opportunities 2-4 weeks before competitors across 200+ sources.{' '}
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600 font-medium">
+                <span className="font-medium">
                   Skip the research, focus on action
                 </span>
                 {' '}with pre-qualified opportunities that drive strategic decisions.

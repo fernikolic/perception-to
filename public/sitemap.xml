@@ -107,19 +107,6 @@
   </url>
   
   <!-- Resources -->
-  <url>
-    <loc>https://perception.to/learn</loc>
-    <lastmod>2025-08-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://perception.to/glossary</loc>
-    <lastmod>2025-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
   
   <url>
     <loc>https://perception.to/testimonials</loc>

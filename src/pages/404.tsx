@@ -48,7 +48,7 @@ export default function NotFoundPage() {
               <span className="text-muted-foreground">•</span>
               <Link to="/api" className="text-sm hover:underline">API</Link>
               <span className="text-muted-foreground">•</span>
-              <Link to="/learn" className="text-sm hover:underline">Learn</Link>
+              <Link to="/docs" className="text-sm hover:underline">Docs</Link>
               <span className="text-muted-foreground">•</span>
               <Link to="/about" className="text-sm hover:underline">About</Link>
             </div>

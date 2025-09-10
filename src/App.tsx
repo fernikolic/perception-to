@@ -32,10 +32,6 @@ import { ApiPage } from '@/pages/api';
 import { RoadmapPage } from '@/pages/roadmap';
 import { PrivacyPage } from '@/pages/legal/privacy';
 import { TermsPage } from '@/pages/legal/terms';
-import { GlossaryPage } from '@/pages/glossary';
-import { GlossaryEntryPage } from '@/pages/glossary/[slug]';
-import { LearnPage } from '@/pages/learn';
-import { LearnArticlePage } from '@/pages/learn/[slug]';
 import TestimonialsPage from '@/pages/testimonials';
 import SlackTestingPage from '@/pages/slack-testing';
 import SlackIntegrationPage from '@/pages/slack-integration';
@@ -51,6 +47,7 @@ import ContentShowcase from '@/components/programmatic-seo/ContentShowcase';
 import CMSIntegration from '@/components/programmatic-seo/CMSIntegration';
 import { BitcoinMediaResearchPage } from '@/pages/bitcoin-media-research';
 import BitcoinBadTakes from '@/pages/bitcoin-bad-takes';
+import NotFoundPage from '@/pages/404';
 
 function HomePage() {
   return (
@@ -97,10 +94,6 @@ const App = () => {
               <Route path="/roadmap" element={<RoadmapPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
-              <Route path="/glossary" element={<GlossaryPage />} />
-              <Route path="/glossary/:slug" element={<GlossaryEntryPage />} />
-              <Route path="/learn" element={<LearnPage />} />
-              <Route path="/learn/:slug" element={<LearnArticlePage />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/slack-testing" element={<SlackTestingPage />} />
               <Route path="/social-preview" element={<SocialPreviewPage />} />
@@ -122,6 +115,9 @@ const App = () => {
               <Route path="/keyword-test" element={<KeywordTest />} />
               <Route path="/content-showcase" element={<ContentShowcase />} />
               <Route path="/cms-integration" element={<CMSIntegration />} />
+              
+              {/* 404 catch-all route */}
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </PageTransition>
           <Footer />

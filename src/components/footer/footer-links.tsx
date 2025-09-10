@@ -15,7 +15,6 @@ const footerSections: FooterSection[] = [
     title: 'Product',
     links: [
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Slack Integration', href: '/slack-integration' },
       { label: 'Roadmap', href: '/roadmap' },
       { label: 'Book a Demo', href: '/book-a-call' },
       { label: 'Methodology', href: '/methodology' },
@@ -24,8 +23,11 @@ const footerSections: FooterSection[] = [
   {
     title: 'Resources',
     links: [
-      { label: 'Learn', href: '/learn' },
-      { label: 'Glossary', href: '/glossary' },
+      { 
+        label: 'Bitcoin Media Research', 
+        href: '/bitcoin-media-research',
+        className: 'text-orange-500 hover:text-orange-600'
+      },
       { label: 'Bitcoin Fear & Greed Index', href: '/bitcoin-fear-greed-index' },
       { label: 'Bitcoin Market Sentiment', href: '/bitcoin-market-sentiment' },
       { label: 'Bad Bitcoin Takes', href: '/bitcoin-bad-takes' },
@@ -42,14 +44,8 @@ const footerSections: FooterSection[] = [
     title: 'Company',
     links: [
       { label: 'About', href: '/about' },
-      { 
-        label: 'Bitcoin Media Research', 
-        href: '/bitcoin-media-research',
-        className: 'text-orange-500 hover:text-orange-600'
-      },
       { label: 'Press', href: '/press' },
-      { label: 'Studio', href: '/studio', comingSoon: true },
-      { label: 'Careers', href: '/careers', comingSoon: true },
+      { label: 'Advisory', href: '/advisory', comingSoon: true },
     ],
   },
   {
