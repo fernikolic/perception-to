@@ -62,7 +62,7 @@ function generateTitle(keyword: string, intent: string): string {
 }
 
 function generateDescription(keyword: string, intent: string): string {
-  const baseDescription = `Get ${keyword} with real-time data from 200+ sources.`;
+  const baseDescription = `Get ${keyword} with real-time data from 100+ sources.`;
   
   switch (intent) {
     case 'informational':
@@ -138,7 +138,7 @@ export function generateHeroContent(keyword: KeywordData) {
   };
   
   const subheadlines = {
-    'informational': 'Comprehensive analysis with real-time data from 200+ sources',
+    'informational': 'Comprehensive analysis with real-time data from 100+ sources',
     'navigational': 'Live dashboards, tracking tools, and comprehensive analytics',
     'transactional': 'Robust API with real-time data, webhooks, and enterprise support',
     'commercial': 'Trusted by institutions, journalists, and professional traders'

@@ -9,11 +9,11 @@ export const faqData = [
   },
   {
     question: "How does the platform identify opportunities?",
-    answer: "Perception uses advanced intelligence analysis to identify pre-qualified opportunities across regulatory changes, market developments, partnership windows, and strategic timing. We analyze patterns across 200+ sources, filter for actionability, and provide clear next steps. This allows us to surface not just what's happening—but what you should act on and when."
+    answer: "Perception uses advanced intelligence analysis to identify pre-qualified opportunities across regulatory changes, market developments, partnership windows, and strategic timing. We analyze patterns across 100+ sources, filter for actionability, and provide clear next steps. This allows us to surface not just what's happening—but what you should act on and when."
   },
   {
     question: "What sources does the platform track?",
-    answer: "We monitor over 200 intelligence sources across:\n• Regulatory filings and policy announcements\n• Industry reports and analyst research\n• Corporate communications and strategic announcements\n• Financial media and institutional commentary\n• Developer activity and technical developments\n\nEvery opportunity is sourced, validated, and actionable—ensuring you can act with confidence."
+    answer: "We monitor over 100 intelligence sources across:\n• Regulatory filings and policy announcements\n• Industry reports and analyst research\n• Corporate communications and strategic announcements\n• Financial media and institutional commentary\n• Developer activity and technical developments\n\nEvery opportunity is sourced, validated, and actionable—ensuring you can act with confidence."
   },
   {
     question: "Is this platform focused only on Bitcoin?",

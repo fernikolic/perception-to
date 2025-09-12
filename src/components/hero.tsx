@@ -87,7 +87,7 @@ export function Hero() {
               </h1>
               
               <p className="mt-3 sm:mt-4 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto px-2">
-                Turn market intelligence into competitive advantage. Identify opportunities 2-4 weeks before competitors across 200+ sources.{' '}
+                Turn market intelligence into competitive advantage. Identify opportunities 2-4 weeks before competitors across 100+ sources.{' '}
                 <span className="font-medium">
                   Skip the research, focus on action
                 </span>

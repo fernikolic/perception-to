@@ -12,7 +12,7 @@ const tiers = [
     perUser: false,
     features: [
       'Save 10+ hours per week of manual research',
-      'Track emerging narratives across 200+ sources in real time (Reddit, Bloomberg, X, GitHub, and more)',
+      'Track emerging narratives across 100+ sources in real time (Reddit, Bloomberg, X, GitHub, and more)',
       'Monitor up to 3 saved topics with real-time alerts',
       'Real-time blind-spot & sentiment notifications',
       'Instant setup. No sales calls.',
