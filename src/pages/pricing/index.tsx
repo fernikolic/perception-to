@@ -1,8 +1,16 @@
 import { PriceList } from '@/components/pricing/price-list';
 import { FaqList } from '@/components/faq/faq-list';
+import SEO from '@/components/SEO';
 
 export default function PricingPage() {
   return (
+    <>
+      <SEO 
+        title="Pricing - Perception | Bitcoin Intelligence Platform"
+        description="Choose your intelligence level. Save 10+ hours per week with real-time Bitcoin market sentiment analysis. 7-day free trial. Beta pricing lock-in guarantee."
+        url="https://perception.to/pricing"
+        keywords={['Bitcoin pricing', 'sentiment analysis pricing', 'market intelligence pricing', 'Bitcoin analytics cost', 'crypto intelligence platform']}
+      />
     <div className="min-h-screen bg-background pt-16">
       <section id="pricing" className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(100,181,246,0.1),transparent_50%)]" />
@@ -69,5 +77,6 @@ export default function PricingPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

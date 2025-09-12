@@ -4,6 +4,7 @@ import { FeatureSection } from '../shared/feature-section';
 import { TestimonialSection } from '../shared/testimonial-section';
 import { CTASection } from '../shared/cta-section';
 import { LineChart, TrendingUp, Shield } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 export function InvestorLanding() {
   const benefits = [
@@ -87,7 +88,14 @@ export function InvestorLanding() {
   ];
 
   return (
-    <div className="relative">
+    <>
+      <SEO
+        title="Bitcoin Investment Intelligence & Market Analysis - Perception"
+        description="Make data-driven Bitcoin investment decisions. Track real-time sentiment, discover emerging trends, and decode market psychology to gain the edge in Bitcoin trading."
+        url="https://perception.to/landing/investor"
+        keywords={['Bitcoin investment', 'cryptocurrency trading', 'market analysis', 'investment intelligence', 'Bitcoin sentiment', 'crypto market data', 'trading insights', 'investment opportunities']}
+      />
+      <div className="relative">
       {/* Background gradients */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.15),rgba(59,130,246,0)_50%)]" />
@@ -162,5 +170,6 @@ export function InvestorLanding() {
         </div>
       </div>
     </div>
+    </>
   );
 }

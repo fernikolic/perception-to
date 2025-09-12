@@ -4,6 +4,7 @@ import { FeatureSection } from '../shared/feature-section';
 import { TestimonialSection } from '../shared/testimonial-section';
 import { CTASection } from '../shared/cta-section';
 import { FileText, TrendingUp, Bell } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 export function JournalistLanding() {
   const benefits = [
@@ -76,7 +77,14 @@ export function JournalistLanding() {
   ];
 
   return (
-    <div className="relative">
+    <>
+      <SEO
+        title="Bitcoin Journalism & Story Discovery - Perception"
+        description="Discover emerging trends, decode sentiment, and create data-backed Bitcoin stories. Track breaking news and trends from top publications with tools built for content creators."
+        url="https://perception.to/landing/journalist"
+        keywords={['Bitcoin journalism', 'cryptocurrency news', 'media research', 'story discovery', 'Bitcoin trends', 'crypto content creation', 'data journalism', 'market sentiment']}
+      />
+      <div className="relative">
       {/* Background gradients */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.15),rgba(59,130,246,0)_50%)]" />
@@ -150,5 +158,6 @@ export function JournalistLanding() {
         </div>
       </div>
     </div>
+    </>
   );
 }

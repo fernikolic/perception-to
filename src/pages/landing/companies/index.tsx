@@ -4,6 +4,7 @@ import { FeatureSection } from '../shared/feature-section';
 import { TestimonialSection } from '../shared/testimonial-section';
 import { CTASection } from '../shared/cta-section';
 import { TrendingUp, LineChart, Users } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 export function CompaniesLanding() {
   const benefits = [
@@ -98,7 +99,14 @@ export function CompaniesLanding() {
   ];
 
   return (
-    <div className="relative">
+    <>
+      <SEO
+        title="Bitcoin Corporate Intelligence & Strategic Insights - Perception"
+        description="Stay ahead in the Bitcoin industry with corporate intelligence. Track competitors, analyze sentiment, and discover real-time trends with strategic insights for competitive advantage."
+        url="https://perception.to/landing/companies"
+        keywords={['Bitcoin corporate intelligence', 'competitive analysis', 'strategic insights', 'corporate Bitcoin strategy', 'competitor monitoring', 'market intelligence', 'business intelligence', 'Bitcoin industry trends']}
+      />
+      <div className="relative">
       {/* Background gradients */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.15),rgba(59,130,246,0)_50%)]" />
@@ -177,5 +185,6 @@ export function CompaniesLanding() {
         </div>
       </div>
     </div>
+    </>
   );
 }

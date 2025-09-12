@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Linkedin } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 // Add custom X icon component
 const XIcon = () => (
@@ -39,6 +40,13 @@ const milestones = [
 
 export function AboutPage() {
   return (
+    <>
+      <SEO 
+        title="About - Perception | Intelligence Platform for Emerging Finance"
+        description="Learn about Perception's mission to transform market intelligence into actionable opportunities for emerging finance leaders. Meet our team and discover our vision."
+        url="https://perception.to/about"
+        keywords={['about Perception', 'Bitcoin intelligence team', 'market intelligence company', 'emerging finance platform', 'crypto analytics team']}
+      />
     <div className="min-h-screen bg-background pt-20">
       {/* Hero Section (image card with overlay) */}
       <section className="relative overflow-hidden py-24">
@@ -178,5 +186,6 @@ export function AboutPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

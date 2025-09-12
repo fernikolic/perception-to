@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Target, Globe } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 export function UseCasesLanding() {
   const useCases = [
@@ -49,7 +50,14 @@ export function UseCasesLanding() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-background">
+    <>
+      <SEO
+        title="Bitcoin Use Cases & Success Stories - Perception"
+        description="Discover practical applications of Bitcoin intelligence. From journalists to fund managers, see how Perception helps professionals track narratives before they move the market."
+        url="https://perception.to/use-cases"
+        keywords={['Bitcoin use cases', 'success stories', 'practical applications', 'implementation examples', 'Bitcoin intelligence', 'market narrative tracking', 'professional tools', 'industry applications']}
+      />
+      <div className="relative min-h-screen bg-background">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
         <div 
@@ -178,5 +186,6 @@ export function UseCasesLanding() {
         </div>
       </section>
     </div>
+    </>
   );
 } 
