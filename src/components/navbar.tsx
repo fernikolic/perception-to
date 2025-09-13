@@ -12,7 +12,6 @@ import {
 } from '@/components/ui/navigation-menu';
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { ThemeToggle } from '@/components/theme-toggle';
 
 const resources: {
   title: string;
@@ -82,11 +81,6 @@ const company: {
     description: "Product updates and company news",
     disabled: true,
     badge: "Coming Soon"
-  },
-  { 
-    title: "Roadmap", 
-    href: "/roadmap",
-    description: "See what we're building"
   },
 ];
 
@@ -238,7 +232,6 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex md:items-center md:space-x-6">
-          <ThemeToggle />
           <a 
             href="https://app.perception.to/auth/sign-in" 
             className="text-sm hover:text-primary"
@@ -360,9 +353,6 @@ export function Navbar() {
           </div>
 
           <div className="mt-auto p-4 space-y-4 border-t">
-            <div className="flex justify-center">
-              <ThemeToggle />
-            </div>
             <div className="space-y-2">
               <a 
                 href="https://app.perception.to/auth/sign-in" 

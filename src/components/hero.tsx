@@ -83,16 +83,19 @@ export function Hero() {
               </div>
               
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto px-2">
-                The Intelligence Platform for<br />Emerging Finance
+                Bitcoin intelligence that drives decisions
               </h1>
               
               <p className="mt-3 sm:mt-4 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto px-2">
-                Turn market intelligence into competitive advantage. Identify opportunities 2-4 weeks before competitors across 100+ sources.{' '}
-                <span className="font-medium">
-                  Skip the research, focus on action
-                </span>
-                {' '}with pre-qualified opportunities that drive strategic decisions.
+                8 hours of manual research, delivered in 5 minutes. 100+ sources filtered into actionable opportunities across Bitcoin, stablecoins, and tokenized finance.
               </p>
+
+              {/* Value Line */}
+              <div className="mt-4 sm:mt-6 lg:mt-8">
+                <p className="text-sm sm:text-base lg:text-lg font-bold text-black max-w-3xl mx-auto px-2">
+                  The unfair advantage over teams still reading newsletters.
+                </p>
+              </div>
               
               <div className="mt-6 sm:mt-8 lg:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-2">
                 <Button 
@@ -101,7 +104,7 @@ export function Hero() {
                   asChild
                 >
                   <a href="https://app.perception.to/auth/sign-up">
-                    Start Here
+                    Start here
                   </a>
                 </Button>
                 <Button 

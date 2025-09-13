@@ -21,8 +21,8 @@ const integrations = [
     icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/640px-YouTube_full-color_icon_%282017%29.svg.png",
   },
   {
-    name: "Medium",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Medium_logo_Monogram.svg/1200px-Medium_logo_Monogram.svg.png",
+    name: "Frankfurter Allgemeine Zeitung",
+    icon: "/logos/Frankfurter Allgemeine Zeitung logo.png",
   },
   {
     name: "Spotify",
@@ -119,8 +119,8 @@ const integrations = [
     icon: "https://store.bitcoinmagazine.com/cdn/shop/files/Bitcoin_Magazine_Logos_1.png?v=1631070162",
   },
   {
-    name: "BTC Times",
-    icon: "https://pbs.twimg.com/profile_images/1805169646661976064/Hz1nqCXI_400x400.jpg",
+    name: "Jyllands-Posten",
+    icon: "/logos/Jyllands-Posten Logo.png",
   },
   {
     name: "TechCrunch",
@@ -157,8 +157,8 @@ const integrations = [
     icon: "https://app.perception.to/logos/Bloomberg.svg",
   },
   {
-    name: "The Hill",
-    icon: "https://thehill.com/wp-content/themes/the-hill/images/the-hill-logo.png",
+    name: "Le Monde",
+    icon: "/logos/le monde logo.png",
   },
   {
     name: "Rolling Stone",
@@ -198,7 +198,7 @@ export function Integrations() {
             </span>
           </h2>
           <p className="mt-6 text-lg leading-8 !text-white/80">
-            From regulatory filings to industry reports, filtered into actionable opportunities & strategic insights.
+            From regulatory filings to industry reports, filtered into<br />actionable opportunities & strategic insights.
           </p>
           <div className="mt-6 flex justify-center">
             <Button 

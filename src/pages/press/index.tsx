@@ -9,53 +9,53 @@ interface PressRelease {
   description: string;
   link: string;
   tags: string[];
+  image?: string;
 }
 
 const pressReleases: PressRelease[] = [
   {
-    date: 'March 15, 2024',
-    title: 'Perception Launches Advanced Bitcoin Market Intelligence Platform',
-    description: 'New platform provides real-time sentiment analysis and market trends for Bitcoin investors and researchers.',
-    link: '#',
-    tags: ['Product Launch', 'Bitcoin'],
+    date: 'August 4, 2025',
+    title: 'Blockstream VP Fernando Nikolic Leaves To Launch Perception, A Bitcoin Market Intelligence Platform',
+    description: 'After four years at Blockstream, Fernando Nikolic steps down to start Perception, a platform aimed at addressing fragmented information in the Bitcoin and digital asset space.',
+    link: 'https://bitcoinmagazine.com/news/blockstream-vp-fernando-nikolic-leaves-to-launch-perception-a-bitcoin-market-intelligence-platform',
+    tags: ['Company Launch', 'Bitcoin', 'Market Intelligence'],
+    image: '/logos/BTC_Mag_Logo-removebg-preview.png',
   },
   {
-    date: 'February 28, 2024',
-    title: 'Perception Raises Series A Funding to Expand Crypto Analytics Platform',
-    description: 'Investment will accelerate development of advanced market intelligence tools and expand global reach.',
-    link: '#',
-    tags: ['Funding', 'Growth'],
-  },
-  {
-    date: 'January 10, 2024',
-    title: 'Perception Partners with Leading Crypto Research Firms',
-    description: 'Strategic partnerships enhance data coverage and analysis capabilities for institutional clients.',
-    link: '#',
-    tags: ['Partnership', 'Research'],
+    date: 'August 4, 2025',
+    title: 'Blockstream VP Fernando Nikolic Departs After Four Years to Launch Market Intelligence Platform',
+    description: 'Former Blockstream VP Fernando Nikolic announces departure to launch Perception, a comprehensive Bitcoin market intelligence platform designed for cryptocurrency professionals.',
+    link: 'https://btctimes.com/blockstream-vp-fernando-nikolic-departs-after-four-years-to-launch-market-intelligence-platform/',
+    tags: ['Leadership', 'Bitcoin', 'Analytics'],
+    image: 'https://btctimes.com/content/images/size/w1200/2025/08/Blockstream-VP-Fernando-Nikolic-Departs-After-Four-Years-To-Launch-Market-Intelligence-Platform.jpeg',
   },
 ];
 
 const mediaKit = [
   {
     title: 'Company Overview',
-    description: 'Learn about our mission, team, and impact in the crypto space.',
+    description: 'Learn about our mission and team.',
     link: '#',
+    disabled: false,
   },
   {
     title: 'Brand Assets',
     description: 'Download our logo, screenshots, and other brand materials.',
     link: '#',
+    disabled: true,
+    badge: 'Coming Soon',
   },
   {
     title: 'Media Contact',
     description: 'Get in touch with our communications team.',
     link: 'mailto:press@perception.to',
+    disabled: false,
   },
 ];
 
 export function PressPage() {
   return (
-    <div className="min-h-screen bg-background pt-20">
+    <div className="min-h-screen bg-white pt-20">
       {/* Hero Section (image card with overlay) */}
       <section className="relative overflow-hidden py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -92,66 +92,122 @@ export function PressPage() {
       </section>
 
       {/* Press Releases */}
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <h2 className="text-3xl font-bold">Latest News</h2>
-          <div className="mt-8 space-y-8">
-            {pressReleases.map((release) => (
-              <Card key={release.title} className="overflow-hidden transition-all hover:shadow-lg">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
-                    {release.date}
-                  </div>
-                  <h3 className="mt-2 text-xl font-semibold">{release.title}</h3>
-                  <p className="mt-2 text-muted-foreground">{release.description}</p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <div className="flex gap-2">
-                      {release.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary">
-                          {tag}
-                        </Badge>
-                      ))}
+      <section className="py-20 bg-gray-50">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-thin tracking-tight text-black mb-4">
+              Latest News
+            </h2>
+            <p className="text-lg font-light text-gray-600">
+              Recent coverage and announcements
+            </p>
+          </div>
+          
+          <div className="space-y-6">
+            {pressReleases.map((release, index) => (
+              <div key={release.title} className="bg-white rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div className="flex flex-col lg:flex-row">
+                  {release.image && (
+                    <div className="lg:w-80 flex items-center justify-center bg-black p-8">
+                      <img 
+                        src={release.image} 
+                        alt={release.title}
+                        className={`w-full h-32 lg:h-40 ${
+                          release.image.includes('/logos/') 
+                            ? 'object-contain' 
+                            : 'object-cover'
+                        }`}
+                      />
                     </div>
-                    <Button variant="ghost" className="group" asChild>
-                      <a href={release.link} className="inline-flex items-center gap-2">
-                        Read More
+                  )}
+                  <div className="flex-1 p-8 lg:p-12">
+                    <div className="text-sm font-medium text-gray-500 mb-3">
+                      {release.date}
+                    </div>
+                    <h3 className="text-2xl lg:text-3xl font-light text-black leading-tight mb-4">
+                      {release.title}
+                    </h3>
+                    <p className="text-lg font-light text-gray-600 leading-relaxed mb-6">
+                      {release.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex gap-2">
+                        {release.tags.map((tag) => (
+                          <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <a 
+                        href={release.link} 
+                        className="text-black text-sm font-medium hover:text-gray-600 transition-colors group inline-flex items-center gap-2"
+                      >
+                        Read article
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </a>
-                    </Button>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Media Kit */}
-      <section className="border-t py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <h2 className="text-3xl font-bold">Media Resources</h2>
-          <div className="mt-8 grid gap-8 md:grid-cols-3">
+      <section className="py-20 bg-white">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-thin tracking-tight text-black mb-4">
+              Media Resources
+            </h2>
+            <p className="text-lg font-light text-gray-600">
+              Everything you need to cover Perception
+            </p>
+          </div>
+          
+          <div className="grid gap-6 md:grid-cols-3">
             {mediaKit.map((item) => (
-              <Card key={item.title} className="group relative overflow-hidden">
-                <CardContent className="p-6">
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 ring-1 ring-primary/20">
-                    <LinkIcon className="h-6 w-6 text-primary" />
+              <div 
+                key={item.title} 
+                className={`relative bg-gray-50 rounded-3xl p-8 transition-all duration-300 ${
+                  item.disabled 
+                    ? 'opacity-60 cursor-not-allowed' 
+                    : 'hover:bg-gray-100 cursor-pointer'
+                }`}
+              >
+                {item.badge && (
+                  <span className="absolute top-6 right-6 px-3 py-1 bg-gray-200 text-gray-700 text-xs font-medium rounded-full">
+                    {item.badge}
+                  </span>
+                )}
+                
+                <div className="mb-6">
+                  <div className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center mb-4">
+                    <LinkIcon className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-muted-foreground">{item.description}</p>
-                  <Button 
-                    variant="ghost" 
-                    className="mt-4 group/button" 
-                    asChild
+                  <h3 className="text-2xl font-light text-black mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-lg font-light text-gray-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+                
+                {item.disabled ? (
+                  <div className="text-sm font-medium text-gray-400">
+                    Access
+                  </div>
+                ) : (
+                  <a 
+                    href={item.link} 
+                    className="text-black text-sm font-medium hover:text-gray-600 transition-colors group inline-flex items-center gap-2"
                   >
-                    <a href={item.link} className="inline-flex items-center gap-2">
-                      Access
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover/button:translate-x-1" />
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
+                    Access
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </a>
+                )}
+              </div>
             ))}
           </div>
         </div>

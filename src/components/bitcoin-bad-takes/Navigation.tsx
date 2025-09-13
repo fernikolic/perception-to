@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Bitcoin, Trophy, Send, ExternalLink, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { ThemeToggle } from './ThemeToggle';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,7 +31,6 @@ export default function Navigation() {
 
         {/* Mobile Menu Button */}
         <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="p-2 hover:bg-accent rounded-md"
@@ -72,7 +70,6 @@ export default function Navigation() {
             <span>By Bitcoin Perception</span>
             <ExternalLink className="h-3 w-3 ml-1.5 opacity-70" />
           </a>
-          <ThemeToggle />
         </div>
 
         {/* Mobile Navigation */}

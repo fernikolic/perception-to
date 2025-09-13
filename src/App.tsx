@@ -8,6 +8,7 @@ import { ProblemSolution } from '@/components/problem-solution';
 import { ProblemCards } from '@/components/problem-cards';
 import { AsSeenOn } from '@/components/as-seen-on';
 import { Features } from '@/components/features';
+import { ValueProps } from '@/components/value-props';
 import { Integrations } from '@/components/integrations';
 import { Community } from '@/components/community';
 import { Pricing } from '@/components/pricing';
@@ -56,6 +57,7 @@ function HomePage() {
       <AsSeenOn />
       <ProblemSolution />
       <ProblemCards />
+      <ValueProps />
       <Features />
       <Integrations />
       <Community />

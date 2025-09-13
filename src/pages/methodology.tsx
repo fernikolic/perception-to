@@ -61,13 +61,6 @@ export default function MethodologyPage() {
               {/* Content */}
               <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
                 <div className="mx-auto max-w-3xl text-center">
-                  {/* Segment badge */}
-                  <div className="mb-6 sm:mb-8">
-                    <span className="inline-flex items-center rounded-full bg-transparent px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium leading-6 text-black ring-1 ring-inset ring-black/30 hover:ring-black/50 transition-all duration-300">
-                      For Bitcoin Companies
-                    </span>
-                  </div>
-
                   <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto">
                     Our Methodology
                   </h1>
@@ -94,8 +87,7 @@ export default function MethodologyPage() {
           
           <div className="space-y-8">
             <div className="py-12">
-              <h2 className="flex items-center text-3xl font-light text-gray-800 mb-6">
-                <Newspaper className="mr-4 h-8 w-8 text-blue-500" />
+              <h2 className="text-3xl font-light text-gray-800 mb-6">
                 Media Outlets Tracked
               </h2>
               <div className="text-lg text-gray-600 space-y-4">
@@ -143,8 +135,7 @@ export default function MethodologyPage() {
             <Separator />
 
             <div className="py-12">
-              <h2 className="flex items-center text-3xl font-light text-gray-800 mb-6">
-                <Share2 className="mr-4 h-8 w-8 text-indigo-500" />
+              <h2 className="text-3xl font-light text-gray-800 mb-6">
                 Expanded Social and Web Metrics
               </h2>
               <div className="text-lg text-gray-600 space-y-4">
@@ -177,8 +168,7 @@ export default function MethodologyPage() {
             <Separator />
 
             <div className="py-12">
-              <h2 className="flex items-center text-3xl font-light text-gray-800 mb-6">
-                <Database className="mr-4 h-8 w-8 text-sky-500" />
+              <h2 className="text-3xl font-light text-gray-800 mb-6">
                 Data Collection Process
               </h2>
               <div className="text-lg text-gray-600 space-y-4">
@@ -189,8 +179,7 @@ export default function MethodologyPage() {
             <Separator />
 
             <div className="py-12">
-              <h2 className="flex items-center text-3xl font-light text-gray-800 mb-6">
-                <UserCheck className="mr-4 h-8 w-8 text-emerald-500" />
+              <h2 className="text-3xl font-light text-gray-800 mb-6">
                 Human Review and Analysis
               </h2>
               <div className="text-lg text-gray-600 space-y-4">
@@ -201,8 +190,7 @@ export default function MethodologyPage() {
             <Separator />
             
             <div className="py-12">
-              <h2 className="flex items-center text-3xl font-light text-gray-800 mb-6">
-                <Tags className="mr-4 h-8 w-8 text-rose-500" />
+              <h2 className="text-3xl font-light text-gray-800 mb-6">
                 Labeling Criteria
               </h2>
               <div className="text-lg text-gray-600 space-y-4">
@@ -236,8 +224,7 @@ export default function MethodologyPage() {
             <Separator />
 
             <div className="py-12">
-              <h2 className="flex items-center text-3xl font-light text-gray-800 mb-6">
-                <ShieldCheck className="mr-4 h-8 w-8 text-violet-500" />
+              <h2 className="text-3xl font-light text-gray-800 mb-6">
                 Data Integrity and Accessibility
               </h2>
               <div className="text-lg text-gray-600 space-y-4">
@@ -248,12 +235,111 @@ export default function MethodologyPage() {
             <Separator />
 
             <div className="py-12">
-              <h2 className="flex items-center text-3xl font-light text-gray-800 mb-6">
-                <Lightbulb className="mr-4 h-8 w-8 text-amber-500" />
+              <h2 className="text-3xl font-light text-gray-800 mb-6">
                 Implications and Uses of the Data
               </h2>
               <div className="text-lg text-gray-600 space-y-4">
                 <p>The data from Bitcoin Perception serves as a valuable resource for businesses, researchers, and enthusiasts. It offers a window into public sentiment and media trends surrounding Bitcoin, helping stakeholders make informed decisions and gain a deeper understanding of the ecosystem.</p>
+              </div>
+            </div>
+
+            <Separator />
+
+            <div className="py-24">
+              <div className="relative bg-black rounded-3xl px-8 sm:px-12 lg:px-16 xl:px-24 py-16 sm:py-20 lg:py-24 xl:py-32">
+                
+                <div className="max-w-7xl mx-auto">
+                  {/* Minimal header */}
+                  <div className="mb-16 sm:mb-20 lg:mb-24">
+                    <p className="text-sm font-light !text-white/60 mb-6">What perception tracks</p>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-thin !text-white tracking-tight leading-tight">
+                      Intelligence across the<br />emerging finance ecosystem
+                    </h2>
+                  </div>
+
+                  {/* Clean grid layout */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10">
+                    {/* Bitcoin */}
+                    <div className="bg-black p-8 sm:p-10 lg:p-12 xl:p-16 hover:bg-white/5 transition-all duration-500 group">
+                      <div className="flex flex-col h-full min-h-[280px]">
+                        <div className="mb-8">
+                          <h3 className="text-2xl sm:text-3xl font-thin !text-white mb-4">Bitcoin</h3>
+                          <p className="text-sm sm:text-base !text-white/60 font-light leading-relaxed">
+                            The base layer. Institutional commentary,<br />
+                            developer activity, regulatory narratives.
+                          </p>
+                        </div>
+                        <div className="mt-auto">
+                          <img 
+                            src="/images/bitcoin.png" 
+                            alt="Bitcoin" 
+                            className="w-24 h-24 sm:w-32 sm:h-32 object-contain opacity-40 group-hover:opacity-60 transition-opacity duration-500"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Stablecoins */}
+                    <div className="bg-black p-8 sm:p-10 lg:p-12 xl:p-16 hover:bg-white/5 transition-all duration-500 group">
+                      <div className="flex flex-col h-full min-h-[280px]">
+                        <div className="mb-8">
+                          <h3 className="text-2xl sm:text-3xl font-thin !text-white mb-4">Stablecoins</h3>
+                          <p className="text-sm sm:text-base !text-white/60 font-light leading-relaxed">
+                            Adoption trends, issuer movements,<br />
+                            regional policy shifts.
+                          </p>
+                        </div>
+                        <div className="mt-auto">
+                          <img 
+                            src="/images/stablecoins.png" 
+                            alt="Stablecoins" 
+                            className="w-24 h-24 sm:w-32 sm:h-32 object-contain opacity-40 group-hover:opacity-60 transition-opacity duration-500"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Tokenized assets */}
+                    <div className="bg-black p-8 sm:p-10 lg:p-12 xl:p-16 hover:bg-white/5 transition-all duration-500 group">
+                      <div className="flex flex-col h-full min-h-[280px]">
+                        <div className="mb-8">
+                          <h3 className="text-2xl sm:text-3xl font-thin !text-white mb-4">Tokenized assets</h3>
+                          <p className="text-sm sm:text-base !text-white/60 font-light leading-relaxed">
+                            Real-world asset tokenization,<br />
+                            market developments, regulatory frameworks.
+                          </p>
+                        </div>
+                        <div className="mt-auto">
+                          <img 
+                            src="/images/tokenized assets.png" 
+                            alt="Tokenized assets" 
+                            className="w-24 h-24 sm:w-32 sm:h-32 object-contain opacity-40 group-hover:opacity-60 transition-opacity duration-500"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Macro catalysts */}
+                    <div className="bg-black p-8 sm:p-10 lg:p-12 xl:p-16 hover:bg-white/5 transition-all duration-500 group">
+                      <div className="flex flex-col h-full min-h-[280px]">
+                        <div className="mb-8">
+                          <h3 className="text-2xl sm:text-3xl font-thin !text-white mb-4">Macro catalysts</h3>
+                          <p className="text-sm sm:text-base !text-white/60 font-light leading-relaxed">
+                            Rate moves, FX flows, capital controls,<br />
+                            and other drivers of digital asset narratives.
+                          </p>
+                        </div>
+                        <div className="mt-auto">
+                          <img 
+                            src="/images/macro catalysts.png" 
+                            alt="Macro catalysts" 
+                            className="w-24 h-24 sm:w-32 sm:h-32 object-contain opacity-40 group-hover:opacity-60 transition-opacity duration-500"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -76,14 +76,14 @@ export function PriceList() {
     <div className="flex flex-col">
       {/* Monthly/Annual Toggle */}
       <div className="flex justify-center mb-16">
-        <div className="flex items-center space-x-1 bg-gray-100 dark:bg-gray-800 rounded-2xl p-1 ring-1 ring-gray-200 dark:ring-gray-700 shadow-sm">
+        <div className="flex items-center space-x-1 bg-gray-800 rounded-2xl p-1 ring-1 ring-gray-600 shadow-sm">
           <Toggle
             pressed={!isAnnual}
             onPressedChange={() => setIsAnnual(false)}
             className={`px-6 py-3 rounded-xl transition-all duration-200 text-sm font-semibold ${
               !isAnnual 
-                ? 'bg-white dark:bg-gray-700 text-black dark:text-white shadow-sm' 
-                : 'text-black dark:text-white'
+                ? 'bg-white text-black shadow-sm' 
+                : 'text-white hover:bg-gray-700'
             }`}
           >
             Monthly
@@ -93,12 +93,12 @@ export function PriceList() {
             onPressedChange={() => setIsAnnual(true)}
             className={`px-6 py-3 rounded-xl transition-all duration-200 text-sm font-semibold relative ${
               isAnnual 
-                ? 'bg-white dark:bg-gray-700 text-black dark:text-white shadow-sm' 
-                : 'text-black dark:text-white'
+                ? 'bg-white text-black shadow-sm' 
+                : 'text-white hover:bg-gray-700'
             }`}
           >
             Annual
-            <span className="absolute -top-2 -right-2 bg-black dark:bg-white text-white dark:text-black text-xs px-2 py-0.5 rounded-full font-bold">
+            <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">
               Save 17%
             </span>
           </Toggle>
@@ -112,8 +112,8 @@ export function PriceList() {
       </div>
       
       <div className="mt-16 text-center">
-        <p className="text-sm text-muted-foreground">
-          Need 5+ users? <a href="https://perception.to/book-a-call" className="text-blue-600 dark:text-blue-400 hover:underline font-medium">Contact sales</a> for volume pricing.
+        <p className="text-sm !text-gray-400">
+          Need 5+ users? <a href="https://perception.to/book-a-call" className="text-blue-400 hover:underline font-medium">Contact sales</a> for volume pricing.
         </p>
       </div>
     </div>

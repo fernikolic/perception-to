@@ -86,10 +86,10 @@ export function PriceCard({
   };
   
   return (
-    <Card className={`relative h-full flex flex-col shadow-xl hover:shadow-2xl transition-all duration-300 border ${
+    <Card className={`relative h-full flex flex-col shadow-xl hover:shadow-2xl transition-all duration-300 border !bg-black ${
       featured 
-        ? 'bg-gradient-to-br from-blue-50 via-white to-indigo-50/50 dark:from-blue-950 dark:via-gray-800 dark:to-indigo-950/50 border-blue-200 dark:border-blue-700 ring-2 ring-blue-500/20' 
-        : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
+        ? 'border-blue-500 ring-2 ring-blue-500/30' 
+        : 'border-gray-700 hover:border-gray-600'
     }`}>
       <div className="relative">
         {badge && (
@@ -100,24 +100,24 @@ export function PriceCard({
           </div>
         )}
         <CardHeader className="pb-6">
-          <CardTitle className="text-2xl font-light tracking-tight">{name}</CardTitle>
-          <CardDescription className="text-base text-muted-foreground mt-2 leading-relaxed">{description}</CardDescription>
+          <CardTitle className="text-2xl font-light tracking-tight !text-white">{name}</CardTitle>
+          <CardDescription className="text-base !text-gray-400 mt-2 leading-relaxed">{description}</CardDescription>
         </CardHeader>
       </div>
       
       <CardContent className="flex-grow pt-0">
         <div className="mb-10">
           <div className="flex items-baseline gap-2">
-            <span className="text-5xl font-semibold tracking-tight">{currentPrice}</span>
+            <span className="text-5xl font-semibold tracking-tight !text-white">{currentPrice}</span>
             {dataplan !== 'enterprise' && (
-              <span className="text-lg text-muted-foreground font-light">
+              <span className="text-lg !text-gray-400 font-light">
                 {isAnnual ? '/year' : perUser ? ' per user / month' : '/month'}
               </span>
             )}
           </div>
           {showAnnualSavings && (
             <div className="mt-3">
-              <span className="inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1 text-sm font-medium text-emerald-700 dark:text-emerald-300">
+              <span className="inline-flex items-center rounded-full bg-emerald-900/30 px-3 py-1 text-sm font-medium text-emerald-400">
                 Save 2 months
               </span>
             </div>
@@ -127,11 +127,11 @@ export function PriceCard({
         <ul className="space-y-4">
           {features.map((feature, index) => (
             <li key={index} className="flex items-start gap-3">
-              <Check className="h-5 w-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
+              <Check className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
               <span className={`text-base leading-relaxed ${
                 String(feature).startsWith('Everything in') 
-                  ? 'font-medium text-gray-900 dark:text-gray-100' 
-                  : 'text-muted-foreground'
+                  ? 'font-medium !text-white' 
+                  : '!text-gray-400'
               }`}>
                 {feature}
               </span>
@@ -146,8 +146,8 @@ export function PriceCard({
             featured 
               ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl' 
               : dataplan === 'enterprise' 
-                ? 'border-2 border-gray-900 dark:border-gray-100 bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-900 dark:text-gray-100'
-                : 'bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700'
+                ? 'border-2 border-gray-100 bg-transparent hover:bg-gray-800 text-gray-100'
+                : 'bg-gray-800 text-gray-100 hover:bg-gray-700'
           }`}
           asChild
           data-plan={dataplan}
@@ -161,7 +161,7 @@ export function PriceCard({
           </a>
         </Button>
         {microCopy && (
-          <p className="text-xs text-muted-foreground mt-4 text-center">{microCopy}</p>
+          <p className="text-xs !text-gray-500 mt-4 text-center">{microCopy}</p>
         )}
       </CardFooter>
     </Card>
