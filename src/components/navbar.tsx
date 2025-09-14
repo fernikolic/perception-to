@@ -35,15 +35,20 @@ const resources: {
     disabled: true,
     badge: "Coming Soon"
   },
-  { 
-    title: "Bitcoin Media Research", 
-    href: "/bitcoin-media-research", 
+  {
+    title: "Bitcoin Media Research",
+    href: "/bitcoin-media-research",
     description: "Join 1,500+ subscribers",
     className: "text-orange-500"
   },
-  { 
-    title: "Methodology", 
-    href: "/methodology", 
+  {
+    title: "Crypto Conferences",
+    href: "/crypto-conferences",
+    description: "2025-2026 events calendar"
+  },
+  {
+    title: "Methodology",
+    href: "/methodology",
     description: "Our data collection process"
   },
 ];

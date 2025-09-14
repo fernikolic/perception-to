@@ -301,6 +301,63 @@ export function BitcoinMediaResearchPage() {
         </div>
       </section>
 
+      {/* Related Resources */}
+      <section className="relative py-20 bg-white">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-light tracking-tight text-gray-900 mb-6">
+              Related Bitcoin <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Analysis Tools</span>
+            </h3>
+            <p className="text-xl font-light leading-relaxed text-gray-600 max-w-3xl mx-auto">
+              Enhance your Bitcoin research with our comprehensive suite of market analysis and sentiment tracking tools
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gradient-to-br from-gray-50/80 to-white border border-gray-200/60 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <h4 className="text-xl font-semibold text-gray-900 mb-4">
+                <a href="/bitcoin-market-sentiment" className="hover:text-blue-600 transition-colors">
+                  Bitcoin Market Sentiment
+                </a>
+              </h4>
+              <p className="text-gray-600 mb-6 font-light leading-relaxed">
+                Track monthly and daily Bitcoin sentiment trends with comprehensive market psychology analysis and historical data.
+              </p>
+              <a href="/bitcoin-market-sentiment" className="text-blue-600 hover:text-blue-700 font-medium">
+                View Sentiment Analysis →
+              </a>
+            </div>
+
+            <div className="bg-gradient-to-br from-gray-50/80 to-white border border-gray-200/60 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <h4 className="text-xl font-semibold text-gray-900 mb-4">
+                <a href="/bitcoin-fear-greed-index" className="hover:text-blue-600 transition-colors">
+                  Bitcoin Fear & Greed Index
+                </a>
+              </h4>
+              <p className="text-gray-600 mb-6 font-light leading-relaxed">
+                Real-time Bitcoin market sentiment indicator combining multiple data sources for comprehensive emotion analysis.
+              </p>
+              <a href="/bitcoin-fear-greed-index" className="text-blue-600 hover:text-blue-700 font-medium">
+                View Live Index →
+              </a>
+            </div>
+
+            <div className="bg-gradient-to-br from-gray-50/80 to-white border border-gray-200/60 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <h4 className="text-xl font-semibold text-gray-900 mb-4">
+                <a href="/crypto-conferences" className="hover:text-blue-600 transition-colors">
+                  Crypto Conferences 2025-2026
+                </a>
+              </h4>
+              <p className="text-gray-600 mb-6 font-light leading-relaxed">
+                Discover Bitcoin, blockchain, and Web3 conferences worldwide. Network with industry leaders and track market sentiment at events.
+              </p>
+              <a href="/crypto-conferences" className="text-blue-600 hover:text-blue-700 font-medium">
+                View Conference Calendar →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="relative py-32 bg-gradient-to-br from-gray-50 via-white to-blue-50/20">

@@ -388,7 +388,61 @@ export default function FearGreedIndexPage() {
               </div>
             </section>
 
+            {/* Related Resources */}
+            <section className="py-16">
+              <div className="text-center mb-16">
+                <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
+                  Related Bitcoin Analysis Tools
+                </h3>
+                <p className="text-xl text-slate-600 dark:text-white/70 max-w-3xl mx-auto mb-12">
+                  Enhance your Bitcoin analysis with our comprehensive suite of research and sentiment tools
+                </p>
+              </div>
 
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-white/5 dark:to-white/10 rounded-3xl p-8 border border-slate-200 dark:border-white/10 backdrop-blur-xl hover:shadow-lg transition-all">
+                  <h4 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">
+                    <a href="/bitcoin-market-sentiment" className="hover:text-orange-500 transition-colors">
+                      Bitcoin Market Sentiment
+                    </a>
+                  </h4>
+                  <p className="text-slate-600 dark:text-white/60 mb-6">
+                    Monthly and daily sentiment analysis tracking Bitcoin market psychology and investor emotions over time.
+                  </p>
+                  <a href="/bitcoin-market-sentiment" className="text-orange-500 hover:text-orange-600 font-medium">
+                    View Sentiment Analysis →
+                  </a>
+                </div>
+
+                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-white/5 dark:to-white/10 rounded-3xl p-8 border border-slate-200 dark:border-white/10 backdrop-blur-xl hover:shadow-lg transition-all">
+                  <h4 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">
+                    <a href="/crypto-conferences" className="hover:text-orange-500 transition-colors">
+                      Crypto Conferences 2025-2026
+                    </a>
+                  </h4>
+                  <p className="text-slate-600 dark:text-white/60 mb-6">
+                    Stay connected with the crypto community at Bitcoin, blockchain, and Web3 conferences worldwide.
+                  </p>
+                  <a href="/crypto-conferences" className="text-orange-500 hover:text-orange-600 font-medium">
+                    View Conference Calendar →
+                  </a>
+                </div>
+
+                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-white/5 dark:to-white/10 rounded-3xl p-8 border border-slate-200 dark:border-white/10 backdrop-blur-xl hover:shadow-lg transition-all">
+                  <h4 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">
+                    <a href="/bitcoin-media-research" className="hover:text-orange-500 transition-colors">
+                      Bitcoin Media Research
+                    </a>
+                  </h4>
+                  <p className="text-slate-600 dark:text-white/60 mb-6">
+                    Weekly research analyzing Bitcoin media coverage and narrative trends from 100+ news sources.
+                  </p>
+                  <a href="/bitcoin-media-research" className="text-orange-500 hover:text-orange-600 font-medium">
+                    Subscribe to Research →
+                  </a>
+                </div>
+              </div>
+            </section>
 
           </div>
         </div>

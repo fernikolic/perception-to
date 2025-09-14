@@ -1,0 +1,748 @@
+import React, { useState, useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { CalendarIcon, MapPinIcon, UsersIcon, SearchIcon, FilterIcon, ChevronRightIcon } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
+interface Conference {
+  date: string;
+  name: string;
+  location: string;
+  type: string;
+  duration: string;
+  monthYear: string;
+  dateDisplay: string;
+}
+
+// Updated comprehensive conference data
+const allConferences: Conference[] = [
+  { date: '2025-01-14', name: 'CfC St. Moritz', location: 'St. Moritz, Switzerland', type: 'Digital Assets/Institutional', duration: 'Jan 14-16', monthYear: 'January 2025', dateDisplay: 'Jan 14, 2025' },
+  { date: '2025-01-21', name: 'Institutional Investor Summit: UK & Ireland', location: 'Bagshot, UK', type: 'Institutional Investment', duration: 'Jan 21', monthYear: 'January 2025', dateDisplay: 'Jan 21, 2025' },
+  { date: '2025-03-14', name: 'Canadian Bitcoin Conference', location: 'Montreal, Canada', type: 'Bitcoin', duration: 'Mar 14', monthYear: 'March 2025', dateDisplay: 'Mar 14, 2025' },
+  { date: '2025-03-19', name: 'Next Block Expo', location: 'Warsaw, Poland', type: 'Blockchain', duration: 'Mar 19-20', monthYear: 'March 2025', dateDisplay: 'Mar 19, 2025' },
+  { date: '2025-03-26', name: 'DC Blockchain Summit', location: 'Washington, DC, USA', type: 'Blockchain Policy', duration: 'Mar 26', monthYear: 'March 2025', dateDisplay: 'Mar 26, 2025' },
+  { date: '2025-03-26', name: 'Real World Crypto Symposium', location: 'Sofia, Bulgaria', type: 'Cryptography', duration: 'Mar 26-28', monthYear: 'March 2025', dateDisplay: 'Mar 26, 2025' },
+  { date: '2025-04-04', name: 'MIT Bitcoin Hackathon', location: 'Cambridge, Massachusetts, USA', type: 'Bitcoin Technical', duration: 'Apr 04-06', monthYear: 'April 2025', dateDisplay: 'Apr 04, 2025' },
+  { date: '2025-04-05', name: 'MIT Bitcoin Expo', location: 'Cambridge, Massachusetts, USA', type: 'Bitcoin Technical', duration: 'Apr 05-06', monthYear: 'April 2025', dateDisplay: 'Apr 05, 2025' },
+  { date: '2025-04-08', name: 'Paris Blockchain Week', location: 'Paris, France', type: 'Blockchain', duration: 'Apr 08-11', monthYear: 'April 2025', dateDisplay: 'Apr 08, 2025' },
+  { date: '2025-04-24', name: 'Bitcoin Standard Corporations Investor Day', location: 'New York City, USA', type: 'Corporate Bitcoin', duration: 'Apr 24', monthYear: 'April 2025', dateDisplay: 'Apr 24, 2025' },
+  { date: '2025-04-24', name: 'AIMA Digital Assets Conference', location: 'New York City, USA', type: 'Institutional Digital Assets', duration: 'Apr 24', monthYear: 'April 2025', dateDisplay: 'Apr 24, 2025' },
+  { date: '2025-04-25', name: 'Cornell Blockchain Conference', location: 'New York City, USA', type: 'Academic Blockchain', duration: 'Apr 25', monthYear: 'April 2025', dateDisplay: 'Apr 25, 2025' },
+  { date: '2025-04-25', name: 'Harvard Blockchain Conference', location: 'Cambridge, USA', type: 'Academic Blockchain', duration: 'Apr 25', monthYear: 'April 2025', dateDisplay: 'Apr 25, 2025' },
+  { date: '2025-04-25', name: 'ONCHAIN 2025 - Real World Assets Conference', location: 'Hong Kong', type: 'RWA/Traditional Finance', duration: 'Apr 25-26', monthYear: 'April 2025', dateDisplay: 'Apr 25, 2025' },
+  { date: '2025-05-06', name: 'Bitcoin for Corporations', location: 'Orlando, Florida, USA', type: 'Bitcoin Corporate', duration: 'May 06-07', monthYear: 'May 2025', dateDisplay: 'May 06, 2025' },
+  { date: '2025-05-07', name: 'Bitcoin++ Austin', location: 'Austin, Texas, USA', type: 'Bitcoin Technical', duration: 'May 07-08', monthYear: 'May 2025', dateDisplay: 'May 07, 2025' },
+  { date: '2025-05-13', name: 'Blockchain Futurist Conference', location: 'Toronto, Canada', type: 'Blockchain', duration: 'May 13-14', monthYear: 'May 2025', dateDisplay: 'May 13, 2025' },
+  { date: '2025-05-14', name: 'Consensus Toronto', location: 'Toronto, Canada', type: 'Blockchain/Institutional', duration: 'May 14-16', monthYear: 'May 2025', dateDisplay: 'May 14, 2025' },
+  { date: '2025-05-14', name: 'HODL Summit', location: 'Dubai, UAE', type: 'Institutional Blockchain', duration: 'May 14-15', monthYear: 'May 2025', dateDisplay: 'May 14, 2025' },
+  { date: '2025-05-26', name: 'Oslo Freedom Forum', location: 'Oslo, Norway', type: 'Bitcoin/Freedom', duration: 'May 26-28', monthYear: 'May 2025', dateDisplay: 'May 26, 2025' },
+  { date: '2025-05-27', name: 'Bitcoin Conference 2025', location: 'Las Vegas, Nevada, USA', type: 'Bitcoin', duration: 'May 27-29', monthYear: 'May 2025', dateDisplay: 'May 27, 2025' },
+  { date: '2025-06-02', name: 'ICBC 2025', location: 'Pisa, Italy', type: 'Academic Blockchain', duration: 'Jun 02-04', monthYear: 'June 2025', dateDisplay: 'Jun 02, 2025' },
+  { date: '2025-06-02', name: 'Canadian Finance Summit', location: 'Toronto, Canada', type: 'Banking/FinTech', duration: 'Jun 02-03', monthYear: 'June 2025', dateDisplay: 'Jun 02, 2025' },
+  { date: '2025-06-03', name: 'Money20/20 Europe', location: 'Amsterdam, Netherlands', type: 'FinTech/Payments', duration: 'Jun 03-05', monthYear: 'June 2025', dateDisplay: 'Jun 03, 2025' },
+  { date: '2025-06-05', name: 'Crypto Valley Conference', location: 'Rotkreuz, Switzerland', type: 'Institutional Crypto', duration: 'Jun 05-06', monthYear: 'June 2025', dateDisplay: 'Jun 05, 2025' },
+  { date: '2025-06-12', name: 'Blockchain Finance Summit', location: 'London, UK', type: 'Traditional Finance/Blockchain', duration: 'Jun 12', monthYear: 'June 2025', dateDisplay: 'Jun 12, 2025' },
+  { date: '2025-06-19', name: 'BTC Prague', location: 'Prague, Czech Republic', type: 'Bitcoin', duration: 'Jun 19-21', monthYear: 'June 2025', dateDisplay: 'Jun 19, 2025' },
+  { date: '2025-07-03', name: 'Blockchain Expo World', location: 'Istanbul, Turkey', type: 'Blockchain', duration: 'Jul 03-04', monthYear: 'July 2025', dateDisplay: 'Jul 03, 2025' },
+  { date: '2025-07-07', name: 'UBC Blockchain Summer Institute', location: 'Vancouver, Canada', type: 'Academic Blockchain', duration: 'Jul 07-18', monthYear: 'July 2025', dateDisplay: 'Jul 07, 2025' },
+  { date: '2025-07-24', name: 'Injective Summit: Bridging TradFi & Blockchain', location: 'New York City, USA', type: 'Traditional Finance/Blockchain', duration: 'Jul 24', monthYear: 'July 2025', dateDisplay: 'Jul 24, 2025' },
+  { date: '2025-08-04', name: 'Science of Blockchain Conference', location: 'Berkeley, California, USA', type: 'Academic Blockchain', duration: 'Aug 04-06', monthYear: 'August 2025', dateDisplay: 'Aug 04, 2025' },
+  { date: '2025-08-07', name: 'Bitcoin++ Riga', location: 'Riga, Latvia', type: 'Bitcoin Technical', duration: 'Aug 07-08', monthYear: 'August 2025', dateDisplay: 'Aug 07, 2025' },
+  { date: '2025-08-07', name: 'BitBlockBoom', location: 'Fort Worth, Texas, USA', type: 'Bitcoin', duration: 'Aug 07-09', monthYear: 'August 2025', dateDisplay: 'Aug 07, 2025' },
+  { date: '2025-08-09', name: 'Baltic Honeybadger', location: 'Riga, Latvia', type: 'Bitcoin', duration: 'Aug 09-10', monthYear: 'August 2025', dateDisplay: 'Aug 09, 2025' },
+  { date: '2025-08-13', name: 'Blockchain Futurist Conference Toronto', location: 'Toronto, Canada', type: 'Blockchain', duration: 'Aug 13-14', monthYear: 'August 2025', dateDisplay: 'Aug 13, 2025' },
+  { date: '2025-08-27', name: 'Stablecoin Conference Mexico', location: 'Mexico City, Mexico', type: 'Stablecoin', duration: 'Aug 27-28', monthYear: 'August 2025', dateDisplay: 'Aug 27, 2025' },
+  { date: '2025-09-02', name: 'Finance & Crypto Day', location: 'London, UK', type: 'Traditional Finance/Crypto', duration: 'Sep 02', monthYear: 'September 2025', dateDisplay: 'Sep 02, 2025' },
+  { date: '2025-09-03', name: 'CONF3RENCE', location: 'Dortmund, Germany', type: 'Blockchain', duration: 'Sep 03-04', monthYear: 'September 2025', dateDisplay: 'Sep 03, 2025' },
+  { date: '2025-09-09', name: 'CBDC Conference', location: 'Nassau, Bahamas', type: 'CBDC/Institutional', duration: 'Sep 09-11', monthYear: 'September 2025', dateDisplay: 'Sep 09, 2025' },
+  { date: '2025-09-16', name: 'Digital Assets and Blockchain Day', location: 'Toronto, Canada', type: 'Institutional Digital Assets', duration: 'Sep 16', monthYear: 'September 2025', dateDisplay: 'Sep 16, 2025' },
+  { date: '2025-09-18', name: 'CBC Summit USA', location: 'Washington, DC, USA', type: 'Crypto Banking', duration: 'Sep 18', monthYear: 'September 2025', dateDisplay: 'Sep 18, 2025' },
+  { date: '2025-09-22', name: 'Korea Blockchain Week', location: 'Seoul, South Korea', type: 'Blockchain', duration: 'Sep 22-27', monthYear: 'September 2025', dateDisplay: 'Sep 22, 2025' },
+  { date: '2025-09-24', name: 'Global Blockchain & Crypto Symposium', location: 'London, UK', type: 'Institutional Blockchain', duration: 'Sep 24', monthYear: 'September 2025', dateDisplay: 'Sep 24, 2025' },
+  { date: '2025-10-01', name: 'TOKEN2049 Singapore', location: 'Singapore', type: 'Institutional Crypto', duration: 'Oct 01-02', monthYear: 'October 2025', dateDisplay: 'Oct 01, 2025' },
+  { date: '2025-10-07', name: 'Future of Asset Management North America', location: 'USA', type: 'Asset Management/Digital Assets', duration: 'Oct 07', monthYear: 'October 2025', dateDisplay: 'Oct 07, 2025' },
+  { date: '2025-10-12', name: 'Future Blockchain Summit', location: 'Dubai, UAE', type: 'Blockchain/FinTech', duration: 'Oct 12-13', monthYear: 'October 2025', dateDisplay: 'Oct 12, 2025' },
+  { date: '2025-10-13', name: 'TABConf', location: 'Georgia, USA', type: 'Bitcoin Technical', duration: 'Oct 13-16', monthYear: 'October 2025', dateDisplay: 'Oct 13, 2025' },
+  { date: '2025-10-16', name: 'European Blockchain Convention', location: 'Barcelona, Spain', type: 'Blockchain', duration: 'Oct 16-17', monthYear: 'October 2025', dateDisplay: 'Oct 16, 2025' },
+  { date: '2025-10-28', name: 'Blockchain Life', location: 'Dubai, UAE', type: 'Blockchain', duration: 'Oct 28-29', monthYear: 'October 2025', dateDisplay: 'Oct 28, 2025' },
+  { date: '2025-10-30', name: 'Blockchain Africa Conference', location: 'Gauteng, South Africa', type: 'Blockchain', duration: 'Oct 30', monthYear: 'October 2025', dateDisplay: 'Oct 30, 2025' },
+  { date: '2025-11-03', name: 'OMFIF Public Blockchain Working Group Report Launch', location: 'Virtual', type: 'Banking/Public Blockchain', duration: 'Nov 03', monthYear: 'November 2025', dateDisplay: 'Nov 03, 2025' },
+  { date: '2025-11-05', name: 'Blockchain Futurist Conference Miami', location: 'Miami, Florida, USA', type: 'Blockchain', duration: 'Nov 05-06', monthYear: 'November 2025', dateDisplay: 'Nov 05, 2025' },
+  { date: '2025-11-07', name: 'SatsConf', location: 'São Paulo, Brazil', type: 'Bitcoin', duration: 'Nov 07-08', monthYear: 'November 2025', dateDisplay: 'Nov 07, 2025' },
+  { date: '2025-11-11', name: 'Mining Disrupt', location: 'Dallas, Texas, USA', type: 'Bitcoin Mining', duration: 'Nov 11-13', monthYear: 'November 2025', dateDisplay: 'Nov 11, 2025' },
+  { date: '2025-11-13', name: 'Bitcoin Amsterdam', location: 'Amsterdam, Netherlands', type: 'Bitcoin', duration: 'Nov 13-14', monthYear: 'November 2025', dateDisplay: 'Nov 13, 2025' },
+  { date: '2025-12-08', name: 'Blockchain Association Policy Summit', location: 'Washington, DC, USA', type: 'Policy/Regulation', duration: 'Dec 08', monthYear: 'December 2025', dateDisplay: 'Dec 08, 2025' },
+  { date: '2025-12-08', name: 'Bitcoin Abu Dhabi', location: 'Abu Dhabi, UAE', type: 'Bitcoin', duration: 'Dec 08-09', monthYear: 'December 2025', dateDisplay: 'Dec 08, 2025' },
+  { date: '2026-03-17', name: 'CBC Summit Europe', location: 'London, UK', type: 'Crypto Banking', duration: 'Mar 17', monthYear: 'March 2026', dateDisplay: 'Mar 17, 2026' },
+  { date: '2026-04-27', name: 'Bitcoin Conference 2026', location: 'Las Vegas, Nevada, USA', type: 'Bitcoin', duration: 'Apr 27-29', monthYear: 'April 2026', dateDisplay: 'Apr 27, 2026' },
+  { date: '2026-08-27', name: 'Bitcoin Hong Kong', location: 'Hong Kong', type: 'Bitcoin', duration: 'Aug 27-28', monthYear: 'August 2026', dateDisplay: 'Aug 27, 2026' },
+  { date: '2026-09-09', name: 'Stablecon', location: 'Washington, DC, USA', type: 'Stablecoin', duration: 'Sep 09-11', monthYear: 'September 2026', dateDisplay: 'Sep 09, 2026' }
+];
+
+// Remove conferences with unwanted categories (only exact matches to avoid over-filtering)
+const conferences: Conference[] = allConferences.filter(conf => {
+  const lowerType = conf.type.toLowerCase();
+  return !lowerType.includes('nft') &&
+         !lowerType.includes('defi') &&
+         !lowerType.includes('metaverse') &&
+         // Keep conferences that have Web3 or Ethereum as secondary types
+         !(lowerType === 'nft' || lowerType === 'defi' || lowerType === 'web3' ||
+           lowerType === 'ethereum' || lowerType === 'metaverse')
+});
+
+// Generate URL slug from conference name
+const generateSlug = (name: string): string => {
+  return name
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .trim();
+};
+
+// Generate URL from conference data
+const generateConferenceUrl = (conference: Conference): string => {
+  const year = new Date(conference.date).getFullYear();
+  const slug = generateSlug(conference.name);
+  return `/crypto-conferences/${year}/${slug}`;
+};
+
+// Generate URL for monthly page
+const generateMonthUrl = (monthYear: string): string => {
+  const [month, year] = monthYear.split(' ');
+  return `/crypto-conferences/${year}/${month.toLowerCase()}`;
+};
+
+export function CryptoConferencesPage() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedType, setSelectedType] = useState('all');
+  const [selectedLocation, setSelectedLocation] = useState('all');
+  const [selectedTimeframe, setSelectedTimeframe] = useState('all');
+
+  const conferenceTypes = useMemo(() => {
+    const types = Array.from(new Set(conferences.map(conf => conf.type)));
+    return types.sort();
+  }, []);
+
+  const locations = useMemo(() => {
+    const locs = Array.from(new Set(conferences.map(conf => {
+      const parts = conf.location.split(', ');
+      return parts[parts.length - 1]; // Get country/region
+    })));
+    return locs.sort();
+  }, []);
+
+  const filteredConferences = useMemo(() => {
+    const today = new Date('2025-09-13'); // Current date
+
+    return conferences.filter(conference => {
+      // Only show current and future events
+      const conferenceDate = new Date(conference.date);
+      const isFutureOrCurrent = conferenceDate >= today;
+
+      const matchesSearch = conference.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           conference.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           conference.type.toLowerCase().includes(searchTerm.toLowerCase());
+
+      const matchesType = selectedType === 'all' || conference.type === selectedType;
+
+      const matchesLocation = selectedLocation === 'all' ||
+                            conference.location.toLowerCase().includes(selectedLocation.toLowerCase());
+
+      const matchesTimeframe = selectedTimeframe === 'all' ||
+                              (selectedTimeframe === '2025' && conference.date.startsWith('2025')) ||
+                              (selectedTimeframe === '2026' && conference.date.startsWith('2026'));
+
+      return isFutureOrCurrent && matchesSearch && matchesType && matchesLocation && matchesTimeframe;
+    });
+  }, [searchTerm, selectedType, selectedLocation, selectedTimeframe]);
+
+  const upcomingConferences = useMemo(() => {
+    const today = new Date('2025-09-13');
+    return conferences
+      .filter(conf => new Date(conf.date) >= today)
+      .slice(0, 6);
+  }, []);
+
+  const conferencesByMonth = useMemo(() => {
+    const today = new Date('2025-09-13');
+    const futureConferences = conferences.filter(conf => new Date(conf.date) >= today);
+
+    const grouped = futureConferences.reduce((acc, conf) => {
+      const month = conf.monthYear;
+      if (!acc[month]) acc[month] = [];
+      acc[month].push(conf);
+      return acc;
+    }, {} as Record<string, Conference[]>);
+    return grouped;
+  }, []);
+
+  return (
+    <>
+      <Helmet>
+        <title>Crypto Conferences 2025-2026 | Bitcoin, Blockchain & Web3 Events Calendar</title>
+        <meta name="description" content="Comprehensive directory of 55+ crypto conferences 2025-2026 including Bitcoin meetups, blockchain summits, institutional events, and academic symposiums. Find cryptocurrency conferences by date, location, and type across 30+ global cities." />
+        <meta name="keywords" content="crypto conferences 2025, bitcoin conferences 2026, blockchain events, institutional crypto summits, cryptocurrency conventions, bitcoin meetups, blockchain summits, digital asset conferences, TOKEN2049, Consensus, Bitcoin Conference, Paris Blockchain Week, Korea Blockchain Week, crypto events calendar" />
+        <link rel="canonical" href="https://perception.to/crypto-conferences" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Crypto Conferences 2025-2026 | Bitcoin, Blockchain & Institutional Events" />
+        <meta property="og:description" content="Discover upcoming crypto conferences worldwide. Complete calendar of Bitcoin, blockchain, institutional, and academic events with dates, locations, and types." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://perception.to/crypto-conferences" />
+        <meta property="og:image" content="https://perception.to/images/crypto-conferences-og.jpg" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Crypto Conferences 2025-2026 Calendar" />
+        <meta name="twitter:description" content="Complete directory of Bitcoin and blockchain conferences worldwide" />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "EventSeries",
+            "name": "Crypto Conferences 2025-2026",
+            "description": "Global directory of cryptocurrency, Bitcoin, and blockchain conferences",
+            "organizer": {
+              "@type": "Organization",
+              "name": "Bitcoin Perception",
+              "url": "https://perception.to"
+            },
+            "location": {
+              "@type": "Place",
+              "name": "Global",
+              "address": "Worldwide"
+            }
+          })}
+        </script>
+      </Helmet>
+
+      <div className="min-h-screen bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Hero Section with Card Design */}
+          <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
+            {/* Subtle radial background like homepage */}
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.06),transparent_50%)]" />
+
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              {/* Hero Card with Background Image (matches homepage) */}
+              <div className="relative rounded-2xl overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <img
+                    src="/images/hero_image.avif"
+                    alt="Background"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Dark overlay for better text readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60" />
+
+                {/* Content */}
+                <div className="relative px-8 sm:px-16 py-20 sm:py-32 text-center text-white">
+                  <h1
+                    className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight"
+                    style={{ color: 'white' }}
+                  >
+                    Bitcoin & Blockchain
+                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
+                      Conferences
+                    </span>
+                  </h1>
+                  <p className="text-lg sm:text-xl lg:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed text-white/90">
+                    The definitive directory of cryptocurrency conferences, Bitcoin meetups, and blockchain summits.
+                    Connecting the global crypto community across {conferences.length} events worldwide.
+                  </p>
+
+                  {/* Stats */}
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+                    <div className="text-center">
+                      <div className="text-3xl lg:text-4xl font-bold text-white mb-2">{conferences.length}</div>
+                      <div className="text-sm lg:text-base font-medium text-white/80">Global Events</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl lg:text-4xl font-bold text-white mb-2">30+</div>
+                      <div className="text-sm lg:text-base font-medium text-white/80">Countries</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl lg:text-4xl font-bold text-white mb-2">15+</div>
+                      <div className="text-sm lg:text-base font-medium text-white/80">Event Types</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl lg:text-4xl font-bold text-white mb-2">50+</div>
+                      <div className="text-sm lg:text-base font-medium text-white/80">Cities</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Search Section - Apple Style */}
+          <section className="py-12">
+            <div className="max-w-3xl mx-auto">
+              <div className="relative mb-8">
+                <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                <Input
+                  placeholder="Search conferences, locations, or event types"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-12 h-14 text-lg border-gray-200 rounded-2xl bg-gray-50 focus:bg-white transition-all duration-200 focus:ring-0 focus:border-gray-300"
+                />
+              </div>
+
+              {/* Refined Filters */}
+              <div className="flex flex-wrap justify-center gap-3 mb-8">
+                <Select value={selectedType} onValueChange={setSelectedType}>
+                  <SelectTrigger className="w-auto min-w-[140px] h-11 rounded-full border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors">
+                    <SelectValue placeholder="Event Type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Types</SelectItem>
+                    {conferenceTypes.map(type => (
+                      <SelectItem key={type} value={type}>{type}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <Select value={selectedLocation} onValueChange={setSelectedLocation}>
+                  <SelectTrigger className="w-auto min-w-[140px] h-11 rounded-full border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors">
+                    <SelectValue placeholder="Location" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Locations</SelectItem>
+                    {locations.map(location => (
+                      <SelectItem key={location} value={location}>{location}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <Select value={selectedTimeframe} onValueChange={setSelectedTimeframe}>
+                  <SelectTrigger className="w-auto min-w-[100px] h-11 rounded-full border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors">
+                    <SelectValue placeholder="Year" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Years</SelectItem>
+                    <SelectItem value="2025">2025</SelectItem>
+                    <SelectItem value="2026">2026</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Results count */}
+              <div className="text-center text-gray-600">
+                {filteredConferences.length} conferences found
+              </div>
+            </div>
+          </section>
+
+          {/* Featured Upcoming Events - Apple Style */}
+          <section className="py-20 bg-white">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
+                  Upcoming events
+                </h2>
+                <p className="text-xl text-gray-600">
+                  Next major conferences and events
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {upcomingConferences.map((conference, index) => (
+                  <Link
+                    key={index}
+                    to={generateConferenceUrl(conference)}
+                    className="group rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200 overflow-hidden block"
+                  >
+                    <div className="p-6 space-y-4">
+                      <div className="flex justify-between items-start">
+                        <span className="inline-block px-3 py-1 text-sm font-medium bg-blue-100 text-blue-700 rounded-full">
+                          {conference.type}
+                        </span>
+                        <span className="text-sm font-medium text-gray-900">
+                          {conference.dateDisplay}
+                        </span>
+                      </div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                        {conference.name}
+                      </h3>
+                      <div className="flex items-center gap-2 text-gray-600">
+                        <MapPinIcon className="h-4 w-4 text-gray-400" />
+                        {conference.location}
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-600">
+                        <CalendarIcon className="h-4 w-4 text-gray-400" />
+                        {conference.duration}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Main Conference Listing - Apple Style */}
+          <section className="py-20 bg-gray-50/30">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
+                  All conferences
+                </h2>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  Browse the complete directory of Bitcoin and blockchain events worldwide.
+                </p>
+              </div>
+
+              <Tabs defaultValue="grid" className="space-y-8">
+                <div className="flex justify-center">
+                  <TabsList className="bg-gray-100 p-1 rounded-2xl border-0">
+                    <TabsTrigger value="grid" className="rounded-xl px-6 py-2 text-sm font-medium">
+                      Grid
+                    </TabsTrigger>
+                    <TabsTrigger value="timeline" className="rounded-xl px-6 py-2 text-sm font-medium">
+                      Timeline
+                    </TabsTrigger>
+                    <TabsTrigger value="monthly" className="rounded-xl px-6 py-2 text-sm font-medium">
+                      Monthly
+                    </TabsTrigger>
+                  </TabsList>
+                </div>
+
+                <TabsContent value="grid" className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredConferences.map((conference, index) => (
+                      <Link
+                        key={index}
+                        to={generateConferenceUrl(conference)}
+                        className="group rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200 overflow-hidden block"
+                      >
+                        <div className="p-5 space-y-3">
+                          <div className="flex justify-between items-start">
+                            <span className="inline-block px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded">
+                              {conference.type}
+                            </span>
+                            <span className="text-sm font-medium text-gray-900">
+                              {conference.dateDisplay}
+                            </span>
+                          </div>
+                          <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                            {conference.name}
+                          </h4>
+                          <div className="space-y-2 text-sm text-gray-600">
+                            <div className="flex items-center gap-2">
+                              <MapPinIcon className="h-4 w-4 text-gray-400" />
+                              {conference.location}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="inline-block px-2 py-0.5 text-xs bg-gray-100 text-gray-700 rounded">
+                                {conference.type}
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <CalendarIcon className="h-4 w-4 text-gray-400" />
+                              {conference.duration}
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </TabsContent>
+
+              <TabsContent value="timeline" className="space-y-4">
+                <div className="max-w-4xl mx-auto space-y-3">
+                  {filteredConferences.map((conference, index) => (
+                    <Link
+                      key={index}
+                      to={generateConferenceUrl(conference)}
+                      className="group relative rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all duration-200 overflow-hidden block"
+                    >
+                      <div className="p-5">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                          <div className="flex-1">
+                            <div className="flex items-start gap-3 mb-2">
+                              <div className="text-sm font-medium text-gray-900 min-w-[80px]">
+                                {conference.dateDisplay}
+                              </div>
+                              <div className="flex-1">
+                                <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
+                                  {conference.name}
+                                </h4>
+                                <p className="text-sm text-gray-600 flex items-center gap-1">
+                                  <MapPinIcon className="h-3 w-3 text-gray-400" />
+                                  {conference.location}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded whitespace-nowrap">
+                              {conference.type}
+                            </span>
+                            <ChevronRightIcon className="h-4 w-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="monthly" className="space-y-12">
+                {Object.entries(conferencesByMonth).map(([month, monthConferences]) => {
+                  const filteredMonthConfs = monthConferences.filter(conf => filteredConferences.includes(conf));
+                  if (filteredMonthConfs.length === 0) return null;
+
+                  return (
+                    <div key={month} className="space-y-6">
+                      <div className="text-center">
+                        <Link
+                          to={generateMonthUrl(month)}
+                          className="inline-block group hover:text-blue-600 transition-colors"
+                        >
+                          <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                            {month}
+                          </h3>
+                          <div className="w-12 h-0.5 bg-gray-300 group-hover:bg-blue-600 transition-colors mx-auto"></div>
+                        </Link>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {filteredMonthConfs.map((conference, index) => (
+                          <Link
+                            key={index}
+                            to={generateConferenceUrl(conference)}
+                            className="group rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200 overflow-hidden block"
+                          >
+                            <div className="p-5 space-y-3">
+                              <div className="flex justify-between items-start">
+                                <span className="inline-block px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded">
+                                  {conference.type}
+                                </span>
+                                <span className="text-sm font-medium text-gray-900">
+                                  {conference.dateDisplay}
+                                </span>
+                              </div>
+                              <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                {conference.name}
+                              </h4>
+                              <div className="text-sm text-gray-600 space-y-1">
+                                <div className="flex items-center gap-2">
+                                  <MapPinIcon className="h-3 w-3 text-gray-400" />
+                                  {conference.location}
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <CalendarIcon className="h-3 w-3 text-gray-400" />
+                                  {conference.duration}
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </TabsContent>
+            </Tabs>
+            </div>
+          </section>
+
+          {/* Conference Types Guide - Apple Style */}
+          <section className="py-20 bg-white">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
+                  Event categories
+                </h2>
+                <p className="text-xl text-gray-600">
+                  Understanding different types of crypto events
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="rounded-3xl bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center">
+                      <span className="text-2xl">₿</span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900">Bitcoin events</h3>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed">
+                    Pure Bitcoin conferences focusing on the original cryptocurrency, featuring technical discussions,
+                    adoption strategies, and Lightning Network developments.
+                  </p>
+                </div>
+
+                <div className="rounded-3xl bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center">
+                      <span className="text-2xl">🔗</span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900">Blockchain technology</h3>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed">
+                    Technical conferences exploring blockchain infrastructure, consensus mechanisms,
+                    scalability solutions, and enterprise blockchain applications.
+                  </p>
+                </div>
+
+                <div className="rounded-3xl bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center">
+                      <span className="text-2xl">🏛️</span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900">Institutional events</h3>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed">
+                    High-level conferences for institutional investors, asset managers, and traditional
+                    finance professionals entering the digital asset space.
+                  </p>
+                </div>
+
+                <div className="rounded-3xl bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center">
+                      <span className="text-2xl">🎓</span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900">Academic conferences</h3>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed">
+                    University-hosted events featuring peer-reviewed research, academic papers,
+                    and scholarly discussions on cryptography and blockchain technology.
+                  </p>
+                </div>
+
+                <div className="rounded-3xl bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-yellow-100 rounded-2xl flex items-center justify-center">
+                      <span className="text-2xl">⚖️</span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900">Policy & regulation</h3>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed">
+                    Government and regulatory-focused events discussing compliance, policy development,
+                    and the intersection of crypto with traditional legal frameworks.
+                  </p>
+                </div>
+
+                <div className="rounded-3xl bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center">
+                      <span className="text-2xl">🌐</span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900">Global summits</h3>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed">
+                    Large-scale international conferences bringing together diverse stakeholders
+                    from across the cryptocurrency and blockchain ecosystem.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Geographic Distribution - Apple Style */}
+          <section className="py-20 bg-gray-50/30">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
+                  Global event distribution
+                </h2>
+                <p className="text-xl text-gray-600">
+                  Conferences happening worldwide
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="text-center p-8 rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
+                  <div className="text-4xl lg:text-5xl font-light text-gray-900 mb-2">🇺🇸</div>
+                  <div className="text-xl font-semibold text-gray-900 mb-1">North America</div>
+                  <div className="text-gray-600">Major hubs in USA & Canada</div>
+                </div>
+                <div className="text-center p-8 rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
+                  <div className="text-4xl lg:text-5xl font-light text-gray-900 mb-2">🇪🇺</div>
+                  <div className="text-xl font-semibold text-gray-900 mb-1">Europe</div>
+                  <div className="text-gray-600">Leading crypto innovation regions</div>
+                </div>
+                <div className="text-center p-8 rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
+                  <div className="text-4xl lg:text-5xl font-light text-gray-900 mb-2">🌏</div>
+                  <div className="text-xl font-semibold text-gray-900 mb-1">Asia Pacific</div>
+                  <div className="text-gray-600">Fast-growing crypto markets</div>
+                </div>
+                <div className="text-center p-8 rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
+                  <div className="text-4xl lg:text-5xl font-light text-gray-900 mb-2">🌍</div>
+                  <div className="text-xl font-semibold text-gray-900 mb-1">Global</div>
+                  <div className="text-gray-600">Worldwide adoption events</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Related Resources */}
+          <section className="py-20">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-light text-gray-900 mb-4">
+                Related resources
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Enhance your conference experience with market intelligence
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <Link
+                to="/bitcoin-market-sentiment"
+                className="bg-white rounded-3xl p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer group block"
+              >
+                <div className="mb-6">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                    Bitcoin market sentiment
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Track Bitcoin sentiment trends and market perception analysis to time your conference attendance with market cycles.
+                  </p>
+                </div>
+              </Link>
+
+              <Link
+                to="/bitcoin-fear-greed-index"
+                className="bg-white rounded-3xl p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer group block"
+              >
+                <div className="mb-6">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                    Fear & greed index
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Monitor crypto market emotions to understand the sentiment context during conference events.
+                  </p>
+                </div>
+              </Link>
+
+              <Link
+                to="/bitcoin-media-research"
+                className="bg-white rounded-3xl p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer group block"
+              >
+                <div className="mb-6">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                    Bitcoin media research
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Stay updated on Bitcoin and crypto media coverage, including conference highlights and industry news.
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default CryptoConferencesPage;

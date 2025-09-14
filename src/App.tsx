@@ -48,6 +48,8 @@ import ContentShowcase from '@/components/programmatic-seo/ContentShowcase';
 import CMSIntegration from '@/components/programmatic-seo/CMSIntegration';
 import { BitcoinMediaResearchPage } from '@/pages/bitcoin-media-research';
 import BitcoinBadTakes from '@/pages/bitcoin-bad-takes';
+import CryptoConferencesPage from '@/pages/crypto-conferences';
+import ConferencePage from '@/pages/crypto-conferences/[conference]';
 import NotFoundPage from '@/pages/404';
 
 function HomePage() {
@@ -104,6 +106,11 @@ const App = () => {
               <Route path="/bitcoin-market-sentiment/:year/:month" element={<BitcoinMarketSentimentPage />} />
               <Route path="/bitcoin-market-sentiment/:year/:month/:day" element={<BitcoinDailySentimentPage />} />
               <Route path="/bitcoin-media-research" element={<BitcoinMediaResearchPage />} />
+              <Route path="/crypto-conferences" element={<CryptoConferencesPage />} />
+              <Route
+                path="/crypto-conferences/:year/:slug"
+                element={<ConferencePage />}
+              />
               <Route path="/bitcoin-bad-takes/*" element={<BitcoinBadTakes />} />
               
               {/* Programmatic SEO Routes */}
