@@ -248,7 +248,7 @@ export function Navbar() {
             asChild
           >
             <a href="https://app.perception.to/auth/sign-up">
-              Start Here
+              Start here
             </a>
           </Button>
         </div>
@@ -370,7 +370,7 @@ export function Navbar() {
                 asChild
               >
                 <a href="https://app.perception.to/auth/sign-up">
-                  Start Here
+                  Start here
                 </a>
               </Button>
             </div>

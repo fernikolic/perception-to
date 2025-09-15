@@ -213,7 +213,7 @@ export function AboutPage() {
               href="https://app.perception.to/auth/sign-up"
               className="inline-flex items-center justify-center px-12 py-4 text-lg font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
             >
-              Start Here
+              Start here
             </a>
           </div>
         </div>

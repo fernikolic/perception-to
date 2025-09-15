@@ -23,13 +23,14 @@ const footerSections: FooterSection[] = [
   {
     title: 'Resources',
     links: [
-      { 
-        label: 'Bitcoin Media Research', 
+      {
+        label: 'Bitcoin Media Research',
         href: '/bitcoin-media-research',
         className: 'text-orange-500 hover:text-orange-600'
       },
       { label: 'Bitcoin Fear & Greed Index', href: '/bitcoin-fear-greed-index' },
       { label: 'Bitcoin Market Sentiment', href: '/bitcoin-market-sentiment' },
+      { label: 'Bitcoin Toxicity Index™', href: '/bitcoin-social-media-sentiment-leaderboard' },
       { label: 'Bad Bitcoin Takes', href: '/bitcoin-bad-takes' },
     ],
   },

@@ -128,7 +128,7 @@ export function RoadmapPage() {
                 <div className="mt-8 sm:mt-10 flex items-center justify-center gap-x-6">
                   <Button size="lg" className="bg-black text-white hover:bg-black/90" asChild>
                     <a href="https://app.perception.to/auth/sign-up">
-                      Start Here
+                      Start here
                     </a>
                   </Button>
                   <Button variant="outline" size="lg" className="group border-black/30 text-black hover:bg-black/5">

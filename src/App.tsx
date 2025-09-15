@@ -16,6 +16,7 @@ import { Testimonials } from '@/components/testimonials';
 import { Faq } from '@/components/faq';
 import { Footer } from '@/components/footer';
 import { FloatingNav } from '@/components/floating-nav';
+import { ExitIntentPopup } from '@/components/exit-intent-popup';
 import ScrollToTop from '@/components/ScrollToTop';
 import MethodologyPage from './pages/methodology';
 import { JournalistLanding } from '@/pages/landing/journalist';
@@ -50,6 +51,7 @@ import { BitcoinMediaResearchPage } from '@/pages/bitcoin-media-research';
 import BitcoinBadTakes from '@/pages/bitcoin-bad-takes';
 import CryptoConferencesPage from '@/pages/crypto-conferences';
 import ConferencePage from '@/pages/crypto-conferences/[conference]';
+import TwitterSentimentLeaderboard from '@/pages/twitter-sentiment-leaderboard-apple';
 import NotFoundPage from '@/pages/404';
 
 function HomePage() {
@@ -112,7 +114,8 @@ const App = () => {
                 element={<ConferencePage />}
               />
               <Route path="/bitcoin-bad-takes/*" element={<BitcoinBadTakes />} />
-              
+              <Route path="/bitcoin-social-media-sentiment-leaderboard" element={<TwitterSentimentLeaderboard />} />
+
               {/* Programmatic SEO Routes */}
               <Route path="/sentiment/:slug" element={<ProgrammaticRouter />} />
               <Route path="/analytics/:slug" element={<ProgrammaticRouter />} />
@@ -131,6 +134,7 @@ const App = () => {
           </PageTransition>
           <Footer />
           <FloatingNav />
+          <ExitIntentPopup />
         </div>
       </ThemeProvider>
     </HelmetProvider>

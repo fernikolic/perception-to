@@ -96,7 +96,7 @@ export function JournalistLanding() {
         segment="journalist"
         title="Uncover the stories that matter in Bitcoin"
         subtitle="Discover emerging trends, decode sentiment, and create data-backed stories with tools built for the fast-paced world of content creation"
-        ctaText="Start Here"
+        ctaText="Start here"
         backgroundClass="bg-gradient-to-br from-blue-500/5 via-slate-600/5 to-neutral-700/5"
       />
 
@@ -146,7 +146,7 @@ export function JournalistLanding() {
           <CTASection
             title="Start creating data-driven content today"
             subtitle="Join thousands of content creators who use our platform to stay ahead of the crypto narrative"
-            primaryCTA="Start Here"
+            primaryCTA="Start here"
             secondaryCTA=""
             backgroundClass="group"
           >
