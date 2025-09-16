@@ -1,0 +1,3 @@
+[submodule "crypto-conference-api"]
+	path = crypto-conference-api
+	url = https://github.com/fernikolic/crypto-conference-api.git
