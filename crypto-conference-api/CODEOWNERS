@@ -1,0 +1,15 @@
+# CODEOWNERS file
+# This file defines who must review changes to specific files
+# Only these users can approve changes to protected files
+
+# Global owner for all files
+* @fernikolic
+
+# Critical files that need extra protection
+/.github/ @fernikolic
+/scripts/ @fernikolic
+CODEOWNERS @fernikolic
+SECURITY.md @fernikolic
+
+# Data files can be updated by Actions but PRs need review
+/data/ @fernikolic

@@ -1,0 +1,47 @@
+{
+  "last_updated": "2025-09-13T22:30:00.000000",
+  "total_events": 3,
+  "events": [
+    {
+      "name": "Bitcoin 2025",
+      "start_date": "2025-05-15",
+      "end_date": "2025-05-17",
+      "location": "Miami, USA",
+      "category": "Bitcoin",
+      "price_range": "$199-$999",
+      "registration_url": "https://b.tc/conference",
+      "description": "The world's largest Bitcoin conference"
+    },
+    {
+      "name": "TOKEN2049 Singapore",
+      "start_date": "2025-09-18",
+      "end_date": "2025-09-19",
+      "location": "Singapore",
+      "category": "Web3",
+      "price_range": "$599-$1999",
+      "registration_url": "https://token2049.com",
+      "description": "Premier crypto event in Asia"
+    },
+    {
+      "name": "Consensus 2025",
+      "start_date": "2025-06-09",
+      "end_date": "2025-06-11",
+      "location": "Austin, USA",
+      "category": "Blockchain",
+      "price_range": "$799-$2499",
+      "registration_url": "https://consensus.coindesk.com",
+      "description": "The most influential blockchain and crypto event"
+    }
+  ],
+  "categories": [
+    "Bitcoin",
+    "Web3",
+    "Blockchain"
+  ],
+  "locations": [
+    "Miami, USA",
+    "Singapore",
+    "Austin, USA"
+  ],
+  "update_source": "sample_data"
+}

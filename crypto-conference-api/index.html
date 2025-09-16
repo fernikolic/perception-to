@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Events Calendar - Bitcoin, Stablecoins & Tokenized Finance Conferences</title>
+    <meta name="description" content="Comprehensive calendar of cryptocurrency conferences, Bitcoin events, stablecoin summits, and tokenized finance gatherings. Updated weekly with 100+ global events.">
+    <meta name="keywords" content="crypto conferences, bitcoin events, stablecoin summit, defi conference, web3 events, blockchain conference, TOKEN2049, Consensus, crypto calendar">
+    <meta property="og:title" content="Crypto Events Calendar - Global Conference Directory">
+    <meta property="og:description" content="Find upcoming cryptocurrency and blockchain conferences worldwide. Bitcoin, DeFi, Web3, and stablecoin events updated weekly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fernikolic.github.io/crypto-conference-api">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .filters {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            background: transparent;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .search-box {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-input {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 400px;
+            font-size: 1em;
+        }
+
+        .events {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .event {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #f8fafc;
+            transition: transform 0.2s;
+        }
+
+        .event:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .event-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+
+        .event-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .event-detail {
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .event-detail-icon {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+
+        .event-detail a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .event-detail a:hover {
+            text-decoration: underline;
+        }
+
+        .event-category {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+
+        .event-description {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .export-btn {
+            background: #48bb78;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: background 0.3s;
+        }
+
+        .export-btn:hover {
+            background: #38a169;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+
+        .no-events {
+            text-align: center;
+            color: #666;
+            padding: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .event-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Crypto Events Calendar</h1>
+            <p>Bitcoin, Stablecoins & Tokenized Finance Conferences • Updated Weekly</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" id="total-events">-</div>
+                    <div class="stat-label">Total Events</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="upcoming-events">-</div>
+                    <div class="stat-label">Upcoming</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="categories-count">-</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="countries-count">-</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <input type="text" class="search-input" id="search-input" placeholder="Search events, locations, or categories...">
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" onclick="showAll()">All Events</button>
+                <button class="filter-btn" onclick="filterByCategory('Bitcoin')">Bitcoin</button>
+                <button class="filter-btn" onclick="filterByCategory('DeFi')">DeFi</button>
+                <button class="filter-btn" onclick="filterByCategory('Web3')">Web3</button>
+                <button class="filter-btn" onclick="filterByCategory('Stablecoin')">Stablecoins</button>
+                <button class="filter-btn" onclick="filterByCategory('Tokenization')">Tokenization</button>
+                <button class="filter-btn" onclick="showUpcoming()">Next 30 Days</button>
+            </div>
+
+            <div class="export-buttons">
+                <button class="export-btn" onclick="exportCalendar()">📅 Export to Calendar</button>
+                <button class="export-btn" onclick="exportCSV()">📊 Download CSV</button>
+                <button class="export-btn" onclick="exportJSON()">🔧 Get JSON API</button>
+            </div>
+        </div>
+
+        <div class="events">
+            <div id="events-container" class="loading">
+                Loading crypto events...
+            </div>
+            <div class="last-updated" id="last-updated"></div>
+        </div>
+    </div>
+
+    <script>
+        let eventsData = null;
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        // Load events data
+        async function loadEvents() {
+            try {
+                const response = await fetch('data/events.json');
+                eventsData = await response.json();
+
+                updateStats();
+                displayEvents(eventsData.events);
+
+                if (eventsData.last_updated) {
+                    document.getElementById('last-updated').textContent =
+                        `Last updated: ${new Date(eventsData.last_updated).toLocaleDateString()} at ${new Date(eventsData.last_updated).toLocaleTimeString()}`;
+                }
+
+            } catch (error) {
+                console.error('Error loading events:', error);
+                document.getElementById('events-container').innerHTML =
+                    '<div class="no-events">Failed to load events data. Please try again later.</div>';
+            }
+        }
+
+        function updateStats() {
+            const now = new Date();
+            const upcoming = eventsData.events.filter(event => new Date(event.start_date) >= now);
+
+            // Extract unique countries from locations
+            const countries = new Set(eventsData.events.map(event =>
+                event.location ? event.location.split(',').pop().trim() : ''
+            ).filter(Boolean));
+
+            document.getElementById('total-events').textContent = eventsData.total_events || eventsData.events.length;
+            document.getElementById('upcoming-events').textContent = upcoming.length;
+            document.getElementById('categories-count').textContent = eventsData.categories ? eventsData.categories.length : 0;
+            document.getElementById('countries-count').textContent = countries.size;
+        }
+
+        function displayEvents(events) {
+            const container = document.getElementById('events-container');
+
+            // Apply search filter if there's a search term
+            if (searchTerm) {
+                events = events.filter(event => {
+                    const searchLower = searchTerm.toLowerCase();
+                    return (
+                        event.name?.toLowerCase().includes(searchLower) ||
+                        event.location?.toLowerCase().includes(searchLower) ||
+                        event.category?.toLowerCase().includes(searchLower) ||
+                        event.description?.toLowerCase().includes(searchLower)
+                    );
+                });
+            }
+
+            if (events.length === 0) {
+                container.innerHTML = '<div class="no-events">No events match your filter</div>';
+                return;
+            }
+
+            const eventsHTML = events.map(event => {
+                const startDate = new Date(event.start_date);
+                const endDate = event.end_date ? new Date(event.end_date) : null;
+                const dateStr = startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                const endDateStr = endDate && endDate.getTime() !== startDate.getTime() ?
+                    ' - ' + endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+
+                return `
+                <div class="event">
+                    <div class="event-name">${event.name}</div>
+                    <div class="event-details">
+                        <div class="event-detail">
+                            <span class="event-detail-icon">📅</span>
+                            ${dateStr}${endDateStr}
+                        </div>
+                        <div class="event-detail">
+                            <span class="event-detail-icon">📍</span>
+                            ${event.location}
+                        </div>
+                        <div class="event-detail">
+                            <span class="event-detail-icon">💰</span>
+                            ${event.price_range || 'TBA'}
+                        </div>
+                        ${event.registration_url ? `
+                        <div class="event-detail">
+                            <span class="event-detail-icon">🔗</span>
+                            <a href="${event.registration_url}" target="_blank" rel="noopener">Register</a>
+                        </div>
+                        ` : ''}
+                    </div>
+                    <span class="event-category">${event.category || 'Conference'}</span>
+                    ${event.description ? `<div class="event-description">${event.description}</div>` : ''}
+                </div>
+            `;
+            }).join('');
+
+            container.innerHTML = eventsHTML;
+        }
+
+        function showAll() {
+            currentFilter = 'all';
+            updateActiveFilter(event);
+            displayEvents(eventsData.events);
+        }
+
+        function filterByCategory(category) {
+            currentFilter = category;
+            updateActiveFilter(event);
+            const filtered = eventsData.events.filter(event =>
+                event.category?.toLowerCase().includes(category.toLowerCase()) ||
+                event.name?.toLowerCase().includes(category.toLowerCase()) ||
+                event.description?.toLowerCase().includes(category.toLowerCase())
+            );
+            displayEvents(filtered);
+        }
+
+        function showUpcoming() {
+            currentFilter = 'upcoming';
+            updateActiveFilter(event);
+            const now = new Date();
+            const thirtyDaysFromNow = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+            const upcoming = eventsData.events.filter(event => {
+                const eventDate = new Date(event.start_date);
+                return eventDate >= now && eventDate <= thirtyDaysFromNow;
+            });
+            displayEvents(upcoming);
+        }
+
+        function updateActiveFilter(evt) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if (evt && evt.target) {
+                evt.target.classList.add('active');
+            }
+        }
+
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', function(e) {
+                searchTerm = e.target.value;
+                displayEvents(eventsData ? eventsData.events : []);
+            });
+        });
+
+        function exportCSV() {
+            if (!eventsData || !eventsData.events) return;
+
+            const csv = [
+                ['Name', 'Start Date', 'End Date', 'Location', 'Category', 'Price', 'Registration URL', 'Description'],
+                ...eventsData.events.map(event => [
+                    event.name,
+                    event.start_date,
+                    event.end_date || '',
+                    event.location,
+                    event.category || '',
+                    event.price_range || '',
+                    event.registration_url || '',
+                    event.description || ''
+                ])
+            ].map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `crypto-events-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function exportCalendar() {
+            if (!eventsData || !eventsData.events) return;
+
+            const ical = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Crypto Events Calendar//EN',
+                'CALSCALE:GREGORIAN',
+                ...eventsData.events.flatMap(event => [
+                    'BEGIN:VEVENT',
+                    `DTSTART;VALUE=DATE:${event.start_date.replace(/-/g, '')}`,
+                    `DTEND;VALUE=DATE:${(event.end_date || event.start_date).replace(/-/g, '')}`,
+                    `SUMMARY:${event.name}`,
+                    `LOCATION:${event.location}`,
+                    `DESCRIPTION:${event.description || event.category || ''} - Price: ${event.price_range || 'TBA'}`,
+                    event.registration_url ? `URL:${event.registration_url}` : '',
+                    `UID:${event.start_date}-${event.name.replace(/\s/g, '-')}@crypto-events`,
+                    'END:VEVENT'
+                ]).filter(Boolean),
+                'END:VCALENDAR'
+            ].join('\r\n');
+
+            const blob = new Blob([ical], { type: 'text/calendar' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `crypto-events-${new Date().toISOString().split('T')[0]}.ics`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function exportJSON() {
+            const jsonUrl = window.location.origin + window.location.pathname.replace('index.html', '') + 'data/events.json';
+            window.open(jsonUrl, '_blank');
+        }
+
+        // Load events on page load
+        loadEvents();
+
+        // Refresh events every 5 minutes while page is open
+        setInterval(loadEvents, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
