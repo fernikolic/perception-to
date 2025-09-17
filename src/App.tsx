@@ -46,7 +46,6 @@ import PageTransition from '@/components/PageTransition';
 import ProgrammaticRouter from '@/components/programmatic-seo/ProgrammaticRouter';
 import KeywordTest from '@/components/programmatic-seo/KeywordTest';
 import ContentShowcase from '@/components/programmatic-seo/ContentShowcase';
-import CMSIntegration from '@/components/programmatic-seo/CMSIntegration';
 import { BitcoinMediaResearchPage } from '@/pages/bitcoin-media-research';
 import BitcoinBadTakes from '@/pages/bitcoin-bad-takes';
 import CryptoConferencesPage from '@/pages/crypto-conferences';
@@ -126,7 +125,6 @@ const App = () => {
               {/* Test Routes for Development */}
               <Route path="/keyword-test" element={<KeywordTest />} />
               <Route path="/content-showcase" element={<ContentShowcase />} />
-              <Route path="/cms-integration" element={<CMSIntegration />} />
               
               {/* 404 catch-all route */}
               <Route path="*" element={<NotFoundPage />} />
