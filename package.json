@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "social:generate": "node scripts/generate-social-images-config.js",
+    "prebuild": "npm run social:generate"
   },
   "dependencies": {
     "@babel/helpers": "~7.26.10",
