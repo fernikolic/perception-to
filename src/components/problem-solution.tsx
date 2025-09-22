@@ -13,7 +13,7 @@ export function ProblemSolution() {
   
   const problemText = "Emerging finance leaders spend 15+ hours a week scanning for opportunities, regulatory changes, and competitive intelligence across fragmented sources.";
   // Break solution text into pieces to handle separately
-  const solutionText1 = "Perception delivers pre-qualified opportunities with clear next steps,";
+  const solutionText1 = "Perception delivers opportunities with clear next steps,";
   const solutionText2 = "turning research into competitive advantage."; // Keep these words together with the period
 
   useEffect(() => {

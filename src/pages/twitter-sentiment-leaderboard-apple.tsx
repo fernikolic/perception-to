@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpIcon, ArrowDownIcon, CalendarIcon, ChevronRightIcon, Activity, TrendingUp, TrendingDown, Lock, X, Share2, Check } from 'lucide-react';
 import { Logo } from '@/components/ui/logo';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { getTwitterProfileImageUrl, getTwitterHandleInitials } from '@/lib/utils';
 
 interface Tweet {
   content: string;
@@ -22,6 +24,7 @@ interface TwitterAccount {
   lastUpdate: string;
   tweets: Tweet[];
   weightedScore: number; // Single weighted score for ranking
+  profileImageUrl?: string; // Twitter profile image URL
 }
 
 interface FeedData {
@@ -134,6 +137,26 @@ function AppleCard({ account, rank, expanded, onToggle, filter }: {
               `}>
                 {rank}
               </div>
+
+              {/* Profile Picture */}
+              <Avatar className="w-14 h-14 ring-2 ring-white shadow-lg transition-all duration-300 hover:ring-4 hover:ring-blue-100">
+                <AvatarImage
+                  src={getTwitterProfileImageUrl(account.handle, 'bigger')}
+                  alt={`${account.name} profile`}
+                  className="object-cover"
+                  loading="lazy"
+                />
+                <AvatarFallback className={`
+                  text-white font-semibold text-lg transition-all duration-300
+                  ${isTopRank && filter === 'negative'
+                    ? 'bg-gradient-to-br from-red-500 to-red-700'
+                    : isTopRank && filter === 'positive'
+                    ? 'bg-gradient-to-br from-green-500 to-green-700'
+                    : 'bg-gradient-to-br from-blue-500 to-purple-600'}
+                `}>
+                  {getTwitterHandleInitials(account.handle)}
+                </AvatarFallback>
+              </Avatar>
 
               {/* Account Info */}
               <div>
@@ -288,6 +311,7 @@ function SkeletonCard({ rank }: { rank: number }) {
         <div className="flex items-start justify-between mb-6">
           <div className="flex items-center gap-5">
             <div className="w-12 h-12 bg-gray-200 rounded-2xl" />
+            <div className="w-14 h-14 bg-gray-200 rounded-full" />
             <div>
               <div className="h-5 w-32 bg-gray-200 rounded-lg mb-2" />
               <div className="h-4 w-24 bg-gray-200 rounded-lg" />
@@ -572,7 +596,8 @@ export default function AppleTwitterSentimentLeaderboard() {
               negativePercentage,
               lastUpdate: data.lastUpdate,
               tweets: data.tweets.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-              weightedScore: weightedScore
+              weightedScore: weightedScore,
+              profileImageUrl: getTwitterProfileImageUrl(data.realHandle, 'bigger')
             };
           })
           .filter(account => {
