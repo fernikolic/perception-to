@@ -83,11 +83,15 @@ export function Hero() {
             </div>
             
             <h1 className="text-4xl font-extralight tracking-tight sm:text-hero gradient-text">
-              Turn Market Intelligence Into Competitive Advantage
+              Your competitors are still reading. You're already executing.
             </h1>
-            
+
             <p className="mt-6 text-lg leading-8 text-white/60">
-              <span className="text-blue-950 font-semibold dark:text-blue-400">Get 2-4 weeks ahead of your competition</span> with actionable emerging finance opportunities delivered daily.
+              Every morning, your rivals spend 3 hours connecting dots across 100+ sources. You spend 10 minutes acting on opportunities we've already identified.
+            </p>
+
+            <p className="mt-4 text-xl font-semibold text-white">
+              The intelligence platform that replaces your entire research team.
             </p>
             
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
@@ -97,7 +101,7 @@ export function Hero() {
                 className="bg-white text-black hover:bg-white/90 transition-all"
               >
                 <a href="https://app.perception.to/auth/sign-up">
-                  Start here
+                  Start 7-day trial
                 </a>
               </Button>
               <Button 
@@ -105,7 +109,7 @@ export function Hero() {
                 size="lg" 
                 className="border-white/20 text-white hover:bg-white/10 group"
               >
-                See How It Works{' '}
+                See actual opportunities{' '}
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>

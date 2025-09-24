@@ -63,7 +63,7 @@ const tiers = [
       'Dedicated account team & quarterly strategy reviews',
       'Includes onboarding for internal comms, research, or IR teams',
     ],
-    cta: 'Contact Sales',
+    cta: 'Start 7-day trial - No demo required',
     ctaLink: 'https://perception.to/book-a-call',
     dataplan: 'enterprise',
   },

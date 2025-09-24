@@ -9,8 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const valuePropItems = [
   {
-    title: "Cross-regional<br/>opportunity mapping",
-    description: "Connect developments across APAC, LATAM, EMEA, MENA and North America that individually look unrelated but together signal major market opportunities before competitors see the pattern.",
+    title: "See the full picture<br/>in minutes, not hours",
+    description: "We don't just track Bitcoin mentions. We connect a Singapore regulatory filing to a Brazilian bank announcement to a European fund movement - showing you the opportunity your competitors won't see for weeks.",
     image: "/images/Value Props/Cross-Regional Opportunity Mapping.png",
     Icon: Globe,
     gradient: "from-blue-500/20 to-cyan-500/20",
@@ -18,8 +18,8 @@ const valuePropItems = [
     delay: 0
   },
   {
-    title: "Signal intelligence over noise",
-    description: "Stop drowning in 500 daily articles and social posts. Get the signal that actually matters.",
+    title: "Act on intelligence,<br/>not information",
+    description: "Skip the \"Bitcoin sentiment is up 12%\" dashboards. Get \"Deutsche Bank's blockchain hire + Germany's new crypto framework = launch your institutional product there by Q2.\"",
     image: "/images/Value Props/Signal Intelligence Over Noise.png",
     Icon: Zap,
     gradient: "from-yellow-500/20 to-orange-500/20",
@@ -27,8 +27,8 @@ const valuePropItems = [
     delay: 0.1
   },
   {
-    title: "Custom entity intelligence",
-    description: "Group related topics with entities you track and generate comprehensive custom briefs in seconds. Turn scattered information into focused intelligence reports tailored to your specific interests.",
+    title: "Custom intelligence<br/>for YOUR specific game",
+    description: "Track your exact competitors, your target regions, your narrative. We turn noise into your personalized playbook - whether you're launching in LATAM or fighting for enterprise contracts.",
     image: "/images/Value Props/Custom Entity Intelligence.png",
     Icon: GitBranch,
     gradient: "from-purple-500/20 to-pink-500/20",
@@ -36,22 +36,13 @@ const valuePropItems = [
     delay: 0.2
   },
   {
-    title: "Trend intelligence",
-    description: "Track competitors, partners, industry segments and detect emerging trends before they become obvious to everyone else.",
+    title: "Replace guesswork<br/>with pattern recognition",
+    description: "Our system has processed hundreds of thousands of signals. When three unrelated events suddenly correlate, we alert you to the opportunity - not the data points.",
     image: "/images/Value Props/Trend Intelligence.png",
     Icon: TrendingUp,
     gradient: "from-green-500/20 to-emerald-500/20",
     iconColor: "text-green-400",
     delay: 0.3
-  },
-  {
-    title: "Actionable intelligence, not data",
-    description: "Translate scattered information into specific opportunities - saving hours of research while surfacing moves competitors will miss.",
-    image: "/images/Value Props/Actionable Intelligence, Not Data.png",
-    Icon: Target,
-    gradient: "from-red-500/20 to-rose-500/20",
-    iconColor: "text-red-400",
-    delay: 0.4
   }
 ];
 
@@ -149,14 +140,12 @@ export function ValueProps() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-4xl text-center mb-12 lg:mb-16">
-          <h2 
+          <h2
             ref={titleRef}
             className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight leading-[1.1] mb-6 value-props-main-title"
             style={{ color: '#ffffff !important', fontWeight: '300' }}
           >
-            See how peers get ahead
-            <br />
-            by spotting info <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">others miss</span>
+            How smart teams win
           </h2>
         </div>
 
