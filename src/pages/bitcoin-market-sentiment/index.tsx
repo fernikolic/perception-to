@@ -331,18 +331,19 @@ export default function BitcoinMarketSentimentIndexPage() {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Bitcoin Market Sentiment Analysis - Monthly Reports & Trends"
         description="Comprehensive Bitcoin market sentiment analysis with monthly reports, fear & greed index tracking, and market psychology insights. Stay ahead of market trends."
         keywords={[
           "Bitcoin market sentiment",
-          "Bitcoin fear greed index", 
+          "Bitcoin fear greed index",
           "crypto sentiment analysis",
           "Bitcoin price prediction",
           "market psychology",
           "trading signals",
           "monthly sentiment reports"
         ]}
+        url="https://perception.to/bitcoin-market-sentiment"
         image="/images/bitcoin.png"
       />
       

@@ -132,6 +132,18 @@ const PAGE_METADATA: Record<string, any> = {
     description: 'Get Bitcoin sentiment alerts directly in Slack. Real-time notifications and market intelligence for your team.',
     type: 'website',
     image: 'https://perception.to/logos/Perception-logo-social-og.png'
+  },
+  '/bitcoin-bad-takes': {
+    title: 'Bitcoin Bad Takes - Perception',
+    description: 'Track and analyze the worst Bitcoin takes on social media. Community-driven collection of FUD, misinformation, and bad predictions.',
+    type: 'website',
+    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+  },
+  '/search': {
+    title: 'Search - Perception',
+    description: 'Search Bitcoin sentiment analysis, market intelligence, and cryptocurrency insights on Perception.',
+    type: 'website',
+    image: 'https://perception.to/logos/Perception-logo-social-og.png'
   }
 };
 
@@ -147,12 +159,19 @@ export function SocialMeta({ title, description, image, type = 'website', url }:
   useEffect(() => {
     const currentPath = location.pathname;
     const pageMetadata = PAGE_METADATA[currentPath] || DEFAULT_METADATA;
-    
+
     const finalTitle = title || pageMetadata.title;
     const finalDescription = description || pageMetadata.description;
     const finalType = type || pageMetadata.type;
-    const finalUrl = url || `https://perception.to${currentPath}`;
-    
+
+    // Generate clean canonical URL (without query parameters)
+    let canonicalPath = currentPath;
+    // Handle special cases where query parameters should be stripped
+    if (currentPath === '/' || currentPath === '/search') {
+      canonicalPath = currentPath; // Keep as is, query params are automatically excluded
+    }
+    const finalUrl = url || `https://perception.to${canonicalPath}`;
+
     // Generate dynamic image URL using validator
     const socialImageConfig = getSocialImageForPath(currentPath);
     const finalImage = image || pageMetadata.image || socialImageConfig.url;
@@ -187,6 +206,9 @@ export function SocialMeta({ title, description, image, type = 'website', url }:
     // Additional fallback tags
     updateMetaTag('image', finalImage, 'itemprop');
     updateMetaTag('thumbnailUrl', finalImage, 'itemprop');
+
+    // Add canonical link (this will update or create the canonical link)
+    updateCanonicalLink(finalUrl);
     
   }, [location.pathname, title, description, image, type, url]);
 
@@ -217,6 +239,16 @@ function updateMetaTag(name: string, content: string, attr = 'name') {
     document.head.appendChild(element);
   }
   element.setAttribute('content', content);
+}
+
+function updateCanonicalLink(url: string) {
+  let element = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+  if (!element) {
+    element = document.createElement('link');
+    element.setAttribute('rel', 'canonical');
+    document.head.appendChild(element);
+  }
+  element.setAttribute('href', url);
 }
 
 // Removed generateSocialImage function - now using social-image-validator

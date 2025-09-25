@@ -426,7 +426,7 @@ export default function BitcoinDailySentimentPage() {
   return (
     <>
       {actualDate && (
-        <SEO 
+        <SEO
           title={pageTitle}
           description={pageDescription}
           keywords={[
@@ -437,6 +437,7 @@ export default function BitcoinDailySentimentPage() {
             `market psychology ${actualDate}`,
             `trading signals ${actualDate}`
           ]}
+          url={`https://perception.to/bitcoin-market-sentiment/${year}/${month}/${day}`}
           image="/images/bitcoin.png"
         />
       )}

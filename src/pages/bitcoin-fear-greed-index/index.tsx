@@ -12,10 +12,11 @@ export default function FearGreedIndexPage() {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Bitcoin Fear & Greed Index - Real-Time Market Sentiment Analysis"
         description="Track Bitcoin market sentiment with our real-time Fear & Greed Index. Get instant alerts, API access, and detailed analysis of market psychology from 0 (extreme fear) to 100 (extreme greed)."
         keywords={["Bitcoin Fear & Greed Index", "market sentiment", "crypto sentiment analysis", "Bitcoin price prediction", "market psychology", "trading signals"]}
+        url="https://perception.to/bitcoin-fear-greed-index"
         image="/images/bitcoin.png"
       />
       
