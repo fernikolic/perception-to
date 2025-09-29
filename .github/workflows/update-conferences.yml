@@ -1,0 +1,52 @@
+name: Update Conference Data
+
+on:
+  # Run every Sunday at 00:00 UTC
+  schedule:
+    - cron: '0 0 * * 0'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  update-conferences:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Sync conference data
+        run: node scripts/sync-conferences.js
+
+      - name: Regenerate conference sitemap
+        run: node scripts/generate-conference-sitemap.cjs
+
+      - name: Build project
+        run: npm run build
+
+      - name: Commit and push if changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/conferences.ts public/sitemap-conferences.xml
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update: Weekly conference data sync
+
+          - Updated conference data from crypto-conference-api
+          - Regenerated conference sitemap
+          - Updated $(date +'%Y-%m-%d %H:%M:%S UTC')
+
+          Co-Authored-By: GitHub Actions <github-actions[bot]@users.noreply.github.com>" && git push)
+
+      - name: Summary
+        run: |
+          echo "✅ Conference data updated successfully"
+          echo "📊 Check the commit for details"

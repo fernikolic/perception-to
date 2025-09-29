@@ -12,6 +12,8 @@
     "preview": "vite preview",
     "social:generate": "node scripts/generate-social-images-config.js",
     "sitemap:conferences": "node scripts/generate-conference-sitemap.cjs",
+    "conferences:fetch": "node scripts/fetch-conferences.js",
+    "conferences:update": "npm run conferences:fetch && npm run sitemap:conferences",
     "prebuild": "npm run social:generate && npm run sitemap:conferences"
   },
   "dependencies": {
