@@ -4,6 +4,9 @@
   "exclude": [
     "/js/*",
     "/css/*",
-    "/assets/*"
+    "/assets/*",
+    "/*.xml",
+    "/*.txt",
+    "/*.ico"
   ]
 } 
