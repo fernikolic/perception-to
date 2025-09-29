@@ -1,0 +1,9 @@
+name = "perception-redirect-worker"
+main = "redirect-worker.js"
+compatibility_date = "2025-09-29"
+compatibility_flags = ["nodejs_compat"]
+
+# Route configuration will be added after deployment
+# routes = [
+#   { pattern = "perception.to/*", zone_name = "perception.to" }
+# ]
