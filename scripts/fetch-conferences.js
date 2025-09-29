@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Fetch Conference Data using Perplexity API
+ * Fetch Conference Data using OpenAI API
  *
- * Uses Perplexity's search API to find the latest crypto conferences
+ * Uses OpenAI to search for and compile crypto conference data
  */
 
 import fs from 'fs';
@@ -12,21 +12,23 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
-const API_URL = 'https://api.perplexity.ai/chat/completions';
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const API_URL = 'https://api.openai.com/v1/chat/completions';
 
 async function fetchConferences() {
-  if (!PERPLEXITY_API_KEY) {
-    console.error('❌ PERPLEXITY_API_KEY environment variable not set');
-    console.log('💡 Set it with: export PERPLEXITY_API_KEY=your-key-here');
+  if (!OPENAI_API_KEY) {
+    console.error('❌ OPENAI_API_KEY environment variable not set');
+    console.log('💡 Set it with: export OPENAI_API_KEY=your-key-here');
     return null;
   }
 
-  console.log('📡 Fetching conferences from Perplexity API...');
+  console.log('📡 Fetching conferences from OpenAI API...');
 
   const currentDate = new Date().toISOString().split('T')[0];
 
-  const query = `Find all major cryptocurrency, blockchain, and Bitcoin conferences scheduled from ${currentDate} through December 2026. Include:
+  const query = `You are a crypto events researcher with access to the web. Find all major cryptocurrency, blockchain, and Bitcoin conferences scheduled from ${currentDate} through December 2026.
+
+Search comprehensively and include:
 
 MAJOR CONFERENCES:
 - Bitcoin conferences (Bitcoin 2025/2026, BTC Prague, Bitcoin Amsterdam, etc.)
@@ -64,21 +66,21 @@ For each event, provide EXACTLY this JSON format:
   "description": "Brief description"
 }
 
-Return ONLY a valid JSON array with 60+ upcoming events. Sort by date.`;
+Return ONLY a valid JSON array with 60+ upcoming events. Sort by date. Be comprehensive and accurate.`;
 
   const payload = {
-    model: 'sonar',
+    model: 'gpt-4o',
     messages: [
       {
         role: 'system',
-        content: 'You are a crypto events researcher. Return ONLY a valid JSON array. No explanatory text before or after. Just the JSON array starting with [ and ending with ].'
+        content: 'You are a crypto events researcher with access to current web information. Search the web for crypto conferences and return ONLY a valid JSON array. No explanatory text before or after. Just the JSON array starting with [ and ending with ]. Use your web search capabilities to find real, current conference data.'
       },
       {
         role: 'user',
         content: query
       }
     ],
-    max_tokens: 8000,
+    max_tokens: 16000,
     temperature: 0.1
   };
 
@@ -86,7 +88,7 @@ Return ONLY a valid JSON array with 60+ upcoming events. Sort by date.`;
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${PERPLEXITY_API_KEY}`,
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload)
@@ -103,11 +105,12 @@ Return ONLY a valid JSON array with 60+ upcoming events. Sort by date.`;
     const jsonMatch = content.match(/\[[\s\S]*\]/);
     if (!jsonMatch) {
       console.error('❌ No JSON array found in response');
+      console.log('Response content:', content.substring(0, 500));
       return null;
     }
 
     const events = JSON.parse(jsonMatch[0]);
-    console.log(`✅ Fetched ${events.length} events from Perplexity`);
+    console.log(`✅ Fetched ${events.length} events from OpenAI`);
 
     return events;
   } catch (error) {
@@ -156,7 +159,7 @@ function transformEvents(events) {
 function saveConferences(events) {
   const tsCode = `// Auto-generated conference data
 // Last updated: ${new Date().toISOString()}
-// Source: Perplexity API
+// Source: OpenAI API (GPT-4)
 // DO NOT EDIT MANUALLY - This file is automatically updated weekly
 
 export interface Conference {

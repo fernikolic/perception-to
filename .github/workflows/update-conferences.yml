@@ -24,8 +24,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Sync conference data
-        run: node scripts/sync-conferences.js
+      - name: Fetch conference data from OpenAI
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node scripts/fetch-conferences.js
 
       - name: Regenerate conference sitemap
         run: node scripts/generate-conference-sitemap.cjs
@@ -40,7 +42,7 @@ jobs:
           git add src/data/conferences.ts public/sitemap-conferences.xml
           git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update: Weekly conference data sync
 
-          - Updated conference data from crypto-conference-api
+          - Updated conference data from OpenAI API (GPT-4)
           - Regenerated conference sitemap
           - Updated $(date +'%Y-%m-%d %H:%M:%S UTC')
 

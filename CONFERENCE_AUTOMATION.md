@@ -5,7 +5,7 @@ This document explains how the automated conference data system works.
 ## Overview
 
 The system automatically fetches and updates crypto conference data weekly using:
-- **Perplexity API** for web search and data gathering
+- **OpenAI API (GPT-4)** for comprehensive conference data gathering
 - **GitHub Actions** for weekly automation
 - **TypeScript data file** for centralized conference management
 - **Auto-generated sitemaps** for SEO
@@ -14,7 +14,7 @@ The system automatically fetches and updates crypto conference data weekly using
 
 ```
 ┌─────────────────────┐
-│  Perplexity API     │  ← Searches web for conferences
+│  OpenAI API (GPT-4) │  ← Researches conferences
 └──────────┬──────────┘
            │
            ▼
@@ -41,17 +41,17 @@ The system automatically fetches and updates crypto conference data weekly using
 
 ## Setup Instructions
 
-### 1. Get Perplexity API Key
+### 1. Get OpenAI API Key
 
-1. Go to https://www.perplexity.ai/settings/api
+1. Go to https://platform.openai.com/api-keys
 2. Create an API key
-3. Copy the key (starts with `pplx-`)
+3. Copy the key (starts with `sk-`)
 
 ### 2. Set API Key in GitHub
 
 1. Go to repository **Settings** → **Secrets and variables** → **Actions**
 2. Click **New repository secret**
-3. Name: `PERPLEXITY_API_KEY`
+3. Name: `OPENAI_API_KEY`
 4. Value: Your API key
 5. Click **Add secret**
 
@@ -59,7 +59,7 @@ The system automatically fetches and updates crypto conference data weekly using
 
 ```bash
 # Set API key
-export PERPLEXITY_API_KEY=pplx-your-key-here
+export OPENAI_API_KEY=sk-your-key-here
 
 # Fetch conference data
 npm run conferences:fetch
@@ -91,7 +91,7 @@ To trigger manually:
 
 ## Data Structure
 
-### Source Format (Perplexity API)
+### Source Format (OpenAI API)
 ```json
 {
   "name": "Bitcoin 2025",
@@ -125,7 +125,7 @@ bitcoin-perception/
 │   └── workflows/
 │       └── update-conferences.yml    # Weekly automation
 ├── scripts/
-│   ├── fetch-conferences.js          # Perplexity API fetcher
+│   ├── fetch-conferences.js          # OpenAI API fetcher (GPT-4)
 │   ├── generate-conference-sitemap.cjs  # Sitemap generator
 │   └── sync-conferences.js           # Alternative: external API sync
 ├── src/
@@ -144,7 +144,7 @@ bitcoin-perception/
 
 | Command | Description |
 |---------|-------------|
-| `npm run conferences:fetch` | Fetch latest data from Perplexity |
+| `npm run conferences:fetch` | Fetch latest data from OpenAI (GPT-4) |
 | `npm run sitemap:conferences` | Regenerate sitemap |
 | `npm run conferences:update` | Fetch + regenerate sitemap |
 
@@ -155,6 +155,7 @@ bitcoin-perception/
 View the timestamp in `src/data/conferences.ts`:
 ```typescript
 // Last updated: 2025-09-29T22:00:00.000Z
+// Source: OpenAI API (GPT-4)
 ```
 
 ### Check GitHub Actions
@@ -167,7 +168,7 @@ View the timestamp in `src/data/conferences.ts`:
 
 **Problem: No conferences fetched**
 - Check API key is set correctly in GitHub Secrets
-- Check Perplexity API quota/limits
+- Check OpenAI API quota/credits
 - Check workflow logs for errors
 
 **Problem: Old data showing on site**
@@ -182,14 +183,19 @@ View the timestamp in `src/data/conferences.ts`:
 
 ## Cost Estimate
 
-- **Perplexity API**: ~$0.50/request
+- **OpenAI API (GPT-4o)**:
+  - Input: $2.50 per 1M tokens (~$0.05 per request)
+  - Output: $10.00 per 1M tokens (~$0.20 per request)
+  - **~$0.25 per request** (estimated)
 - **GitHub Actions**: Free (2000 minutes/month)
-- **Weekly runs**: ~52 requests/year = **~$26/year**
+- **Weekly runs**: ~52 requests/year = **~$13/year**
 - **Manual runs**: Add as needed
+
+Note: Costs may vary based on response length. GPT-4o is more cost-effective than GPT-4 Turbo.
 
 ## Future Enhancements
 
-- [ ] Add OpenAI as backup data source
+- [ ] Add Perplexity as backup data source
 - [ ] Email notifications for new conferences
 - [ ] Conference change detection (new/removed events)
 - [ ] Price tracking and alerts
@@ -204,7 +210,7 @@ For issues:
 1. Check GitHub Actions logs
 2. Verify API key is set
 3. Test locally with `npm run conferences:fetch`
-4. Check Perplexity API status
+4. Check OpenAI API status and credits
 
 ---
 
