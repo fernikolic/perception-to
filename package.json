@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "social:generate": "node scripts/generate-social-images-config.js",
-    "prebuild": "npm run social:generate"
+    "sitemap:conferences": "node scripts/generate-conference-sitemap.cjs",
+    "prebuild": "npm run social:generate && npm run sitemap:conferences"
   },
   "dependencies": {
     "@babel/helpers": "~7.26.10",
