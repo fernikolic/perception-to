@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run copy:functions",
+    "copy:functions": "mkdir -p dist/functions && cp -r functions/* dist/functions/",
     "lint": "eslint .",
     "preview": "vite preview",
     "social:generate": "node scripts/generate-social-images-config.js",
