@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
- * Fetch Conference Data using OpenAI API
+ * Fetch Conference Data using Perplexity API
  *
- * Uses OpenAI to search for and compile crypto conference data
+ * Uses Perplexity's Sonar model with real-time web search to find
+ * current crypto conference data
  */
 
 import fs from 'fs';
@@ -12,64 +13,68 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-const API_URL = 'https://api.openai.com/v1/chat/completions';
+const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
+const API_URL = 'https://api.perplexity.ai/chat/completions';
 
 async function fetchConferences() {
-  if (!OPENAI_API_KEY) {
-    console.error('❌ OPENAI_API_KEY environment variable not set');
-    console.log('💡 Set it with: export OPENAI_API_KEY=your-key-here');
+  if (!PERPLEXITY_API_KEY) {
+    console.error('❌ PERPLEXITY_API_KEY environment variable not set');
+    console.log('💡 Set it with: export PERPLEXITY_API_KEY=your-key-here');
     return null;
   }
 
-  console.log('📡 Fetching conferences from OpenAI API...');
+  console.log('📡 Fetching conferences from Perplexity API with real-time web search...');
 
   const currentDate = new Date().toISOString().split('T')[0];
 
-  const query = `You are a crypto events researcher with access to the web. Find all major cryptocurrency, blockchain, and Bitcoin conferences scheduled from ${currentDate} through December 2026.
+  const query = `Search the web for upcoming cryptocurrency and blockchain conferences from ${currentDate} through December 2026. Find REAL, CONFIRMED events from official conference websites, event listing sites like Coinmarketcap Events, 10times.com, and official announcements.
 
-Search comprehensively and include:
+Find AT LEAST 40-50 conferences including:
 
-MAJOR CONFERENCES:
-- Bitcoin conferences (Bitcoin 2025/2026, BTC Prague, Bitcoin Amsterdam, etc.)
-- TOKEN2049 (all locations)
-- Consensus
-- Korea Blockchain Week
+PRIORITY CONFERENCES (must include if happening):
+- Bitcoin 2025/2026 - Las Vegas/Miami
+- TOKEN2049 - Singapore, Dubai, London
+- Consensus - Austin/NYC
+- Korea Blockchain Week - Seoul
 - Paris Blockchain Week
+- BTC Prague
+- Bitcoin Amsterdam
 - Solana Breakpoint
-- EthCC, Devcon
+- EthCC
+- Devcon
 - Permissionless
-- Mining conferences (Mining Disrupt, etc.)
-- Enterprise blockchain events
+- Mining Disrupt
+- Money20/20
+- DC Blockchain Summit
+- Web Summit (crypto track)
 
-INSTITUTIONAL & FINANCE:
-- Stablecoin conferences
-- CBDC summits
-- Traditional finance crypto events (Money20/20, etc.)
-- Digital asset institutional conferences
-- Crypto banking summits
-
-REGIONAL EVENTS:
-- Asian crypto events
-- European blockchain conferences
-- Americas crypto conferences
-- Middle East blockchain events
+ALSO INCLUDE:
+- Regional crypto conferences (Asia, Europe, Americas, Middle East)
+- Institutional/finance crypto events
+- Enterprise blockchain summits
+- Bitcoin-specific events
+- Major DeFi, NFT, and Web3 conferences
 
 For each event, provide EXACTLY this JSON format:
 {
-  "name": "Event Name",
+  "name": "Official Event Name",
   "start_date": "YYYY-MM-DD",
   "end_date": "YYYY-MM-DD",
   "location": "City, Country",
-  "type": "Bitcoin|Blockchain|Institutional|Academic|etc",
+  "type": "Bitcoin|Blockchain|Institutional|DeFi|NFT|Web3|etc",
   "duration": "Mon DD-DD",
   "description": "Brief description"
 }
 
-Return ONLY a valid JSON array with 60+ upcoming events. Sort by date. Be comprehensive and accurate.`;
+IMPORTANT:
+- Return ONLY a valid JSON array
+- Include 40-50 events minimum
+- Use REAL dates from actual conference websites
+- Sort by date ascending
+- Ensure JSON is complete and ends with ]`;
 
   const payload = {
-    model: 'gpt-4o',
+    model: 'sonar-pro',
     messages: [
       {
         role: 'system',
@@ -88,29 +93,52 @@ Return ONLY a valid JSON array with 60+ upcoming events. Sort by date. Be compre
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${OPENAI_API_KEY}`,
+        'Authorization': `Bearer ${PERPLEXITY_API_KEY}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload)
     });
 
     if (!response.ok) {
+      const errorBody = await response.text();
+      console.error('API Error Response:', errorBody);
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const result = await response.json();
-    const content = result.choices[0].message.content;
+    const choice = result.choices[0];
+    const content = choice.message.content;
 
-    // Extract JSON from response
-    const jsonMatch = content.match(/\[[\s\S]*\]/);
-    if (!jsonMatch) {
-      console.error('❌ No JSON array found in response');
-      console.log('Response content:', content.substring(0, 500));
-      return null;
+    console.log('API finish_reason:', choice.finish_reason);
+    if (choice.finish_reason === 'length') {
+      console.warn('⚠️  Response was truncated due to max_tokens limit. Increasing limit...');
     }
 
-    const events = JSON.parse(jsonMatch[0]);
-    console.log(`✅ Fetched ${events.length} events from OpenAI`);
+    // Try to parse the content directly as JSON first
+    let events;
+    try {
+      events = JSON.parse(content);
+    } catch (e) {
+      console.log('Direct JSON parse failed:', e.message);
+      console.log('Content length:', content.length);
+      console.log('Content starts with:', content.substring(0, 100));
+      console.log('Content ends with:', content.substring(content.length - 100));
+
+      // If direct parsing fails, try to extract JSON from response
+      const jsonMatch = content.match(/\[[\s\S]*\]/);
+      if (!jsonMatch) {
+        console.error('❌ No JSON array found in response');
+        console.log('Response content:', content.substring(0, 1000));
+        return null;
+      }
+      try {
+        events = JSON.parse(jsonMatch[0]);
+      } catch (parseError) {
+        console.error('❌ Failed to parse extracted JSON:', parseError.message);
+        return null;
+      }
+    }
+    console.log(`✅ Fetched ${events.length} events from Perplexity with real-time web search`);
 
     return events;
   } catch (error) {
@@ -159,7 +187,7 @@ function transformEvents(events) {
 function saveConferences(events) {
   const tsCode = `// Auto-generated conference data
 // Last updated: ${new Date().toISOString()}
-// Source: OpenAI API (GPT-4)
+// Source: Perplexity API (Sonar with real-time web search)
 // DO NOT EDIT MANUALLY - This file is automatically updated weekly
 
 export interface Conference {

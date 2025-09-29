@@ -27,9 +27,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Fetch conference data from OpenAI
+      - name: Fetch conference data from Perplexity
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
         run: node scripts/fetch-conferences.js
 
       - name: Regenerate conference sitemap
@@ -42,7 +42,7 @@ jobs:
           git add src/data/conferences.ts public/sitemap-conferences.xml
           git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update: Weekly conference data sync
 
-          - Updated conference data from OpenAI API (GPT-4)
+          - Updated conference data from Perplexity API (Sonar Pro with real-time web search)
           - Regenerated conference sitemap
           - Updated $(date +'%Y-%m-%d %H:%M:%S UTC')
 
