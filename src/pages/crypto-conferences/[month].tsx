@@ -178,7 +178,7 @@ export function MonthlyConferencePage() {
         <meta name="description" content={`Complete list of cryptocurrency and blockchain conferences in ${monthDisplay} ${year}. Find ${monthlyConferences.length} events including Bitcoin, blockchain, and digital asset conferences.`} />
         <meta property="og:title" content={`${monthDisplay} ${year} Crypto Conferences | Event Calendar`} />
         <meta property="og:description" content={`Complete list of cryptocurrency and blockchain conferences in ${monthDisplay} ${year}. Find ${monthlyConferences.length} events including Bitcoin, blockchain, and digital asset conferences.`} />
-        <link rel="canonical" href={`https://bitcoinperception.com/crypto-conferences/${year}/${month}`} />
+        <link rel="canonical" href={`https://perception.to/crypto-conferences/${year}/${month}`} />
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900">

@@ -159,7 +159,7 @@ export function ConferencePage() {
         <meta name="description" content={`${conference.name} - ${conference.location} on ${conference.dateDisplay}. A comprehensive guide to this ${conference.type.toLowerCase()} conference.`} />
         <meta property="og:title" content={`${conference.name} ${year} | Crypto Conferences`} />
         <meta property="og:description" content={`${conference.name} - ${conference.location} on ${conference.dateDisplay}. A comprehensive guide to this ${conference.type.toLowerCase()} conference.`} />
-        <link rel="canonical" href={`https://bitcoinperception.com${generateConferenceUrl(conference)}`} />
+        <link rel="canonical" href={`https://perception.to${generateConferenceUrl(conference)}`} />
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900">
