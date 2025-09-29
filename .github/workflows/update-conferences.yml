@@ -32,9 +32,6 @@ jobs:
       - name: Regenerate conference sitemap
         run: node scripts/generate-conference-sitemap.cjs
 
-      - name: Build project
-        run: npm run build
-
       - name: Commit and push if changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
