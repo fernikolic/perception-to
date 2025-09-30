@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Leaderboard() {
   const [selectedYear, setSelectedYear] = useState('All Time');
-  const { takes, loading, error, updateVotes } = useTakes();
+  const { takes, loading, error } = useTakes();
   const location = useLocation();
   const navigate = useNavigate();
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -53,7 +53,7 @@ export default function Leaderboard() {
       if (selectedYear === 'Pre-2020') return parseInt(takeYear) < 2020;
       return takeYear === selectedYear;
     })
-    .sort((a, b) => b.votes - a.votes);
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -93,9 +93,8 @@ export default function Leaderboard() {
           <div className="space-y-6 mt-8">
             {filteredTakes.map((take) => (
               <div key={take.id} className="relative">
-                <TakeCard 
+                <TakeCard
                   take={take}
-                  onVote={(newVotes) => updateVotes(take.id, newVotes)}
                 />
               </div>
             ))}

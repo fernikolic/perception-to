@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { ref, onValue, off, set } from 'firebase/database';
-import { db } from '../data/bitcoin-bad-takes/firebase';
 import type { Take } from '../data/bitcoin-bad-takes/types';
 import { slugify } from '@/lib/utils';
 
@@ -39,7 +37,6 @@ function parseSheetData(rows: string[][]): Take[] {
     url: row[3] || '',
     outlet: row[4] || '',
     date: row[5] || new Date().toISOString().split('T')[0],
-    votes: 0,
     bitcoinPrice: 0,
     category: row[6] || 'Uncategorized',
     slug: slugify(`${row[0]}-${row[4]}-${row[5]}`),
@@ -58,22 +55,11 @@ export function useTakes() {
         const response = await fetch(SHEETS_API_URL);
         if (!response.ok) throw new Error('Failed to fetch data');
         const data = await response.json();
-        
+
         if (data.values) {
           const parsedTakes = parseSheetData(data.values);
           setTakes(parsedTakes);
         }
-
-        const votesRef = ref(db, 'votes');
-        onValue(votesRef, (snapshot) => {
-          const votes = snapshot.val() || {};
-          setTakes(currentTakes => 
-            currentTakes.map(take => ({
-              ...take,
-              votes: votes[take.id] || 0
-            }))
-          );
-        });
 
         setLoading(false);
       } catch (err) {
@@ -83,42 +69,29 @@ export function useTakes() {
     };
 
     fetchData();
-
-    return () => {
-      const votesRef = ref(db, 'votes');
-      off(votesRef);
-    };
   }, []);
 
-  const updateVotes = async (takeId: string, newVotes: number) => {
-    try {
-      await set(ref(db, `votes/${takeId}`), newVotes);
-    } catch (err) {
-      console.error('Failed to update votes:', err);
-    }
-  };
-
-  return { takes, loading, error, updateVotes };
+  return { takes, loading, error };
 }
 
 export function useTakeOfTheDay() {
-  const { takes, loading, error, updateVotes } = useTakes();
+  const { takes, loading, error } = useTakes();
   const [takeOfDay, setTakeOfDay] = useState<Take | null>(null);
   const [contentType, setContentType] = useState<'video' | 'image'>('video');
 
   const getRandomTake = (currentTakeId?: string) => {
     if (takes.length === 0) return null;
-    
+
     // Filter takes by content type first
     let availableTakes = takes.filter(take => take.contentType === contentType);
-    
+
     if (currentTakeId) {
       availableTakes = availableTakes.filter(t => t.id !== currentTakeId);
     }
-    
+
     // If no takes of the selected type are available, return null
     if (availableTakes.length === 0) return null;
-    
+
     const randomIndex = Math.floor(Math.random() * availableTakes.length);
     return availableTakes[randomIndex];
   };
@@ -128,16 +101,10 @@ export function useTakeOfTheDay() {
     setTakeOfDay(getRandomTake());
   }, [contentType, takes]);
 
-  const handleVoteAndNewTake = async (takeId: string, newVotes: number) => {
-    await updateVotes(takeId, newVotes);
-    setTakeOfDay(getRandomTake(takeId));
-  };
-
-  return { 
-    take: takeOfDay, 
-    loading, 
+  return {
+    take: takeOfDay,
+    loading,
     error,
-    updateVotes: handleVoteAndNewTake,
     contentType,
     setContentType
   };
@@ -161,24 +128,16 @@ export function useTake(slug: string | undefined) {
     }
 
     const foundTake = takes.find(t => t.slug === slug);
-    
+
     if (!foundTake) {
       setError('Take not found');
       setTake(null);
     } else {
       setTake(foundTake);
     }
-    
+
     setLoading(false);
   }, [slug, takes, takesLoading]);
 
-  const updateVotes = async (takeId: string, newVotes: number) => {
-    try {
-      await set(ref(db, `votes/${takeId}`), newVotes);
-    } catch (err) {
-      console.error('Failed to update votes:', err);
-    }
-  };
-
-  return { take, loading: loading || takesLoading, error: error || takesError, updateVotes };
+  return { take, loading: loading || takesLoading, error: error || takesError };
 }

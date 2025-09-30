@@ -7,7 +7,7 @@ import SEO from '../../components/bitcoin-bad-takes/SEO';
 
 export default function TakeDetails() {
   const { slug } = useParams();
-  const { take, loading, error, updateVotes } = useTake(slug);
+  const { take, loading, error } = useTake(slug);
 
   if (loading) {
     return (
@@ -63,9 +63,8 @@ export default function TakeDetails() {
       />
       
       <div className="max-w-3xl mx-auto">
-        <TakeCard 
+        <TakeCard
           take={take}
-          onVote={(newVotes) => updateVotes(take.id, newVotes)}
           showShareButton
         />
       </div>

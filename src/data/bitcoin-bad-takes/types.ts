@@ -3,7 +3,6 @@ export interface Take {
   outlet: string;
   description: string;
   date: string;
-  votes: number;
   media?: string;
   url: string;
   slug: string;
