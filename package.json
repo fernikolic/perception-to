@@ -13,7 +13,8 @@
     "social:generate": "node scripts/generate-social-images-config.js",
     "sitemap:conferences": "node scripts/generate-conference-sitemap.cjs",
     "conferences:fetch": "node scripts/fetch-conferences.js",
-    "conferences:update": "npm run conferences:fetch && npm run sitemap:conferences",
+    "conferences:save": "node scripts/save-to-firestore.js",
+    "conferences:update": "npm run conferences:fetch && npm run sitemap:conferences && npm run conferences:save",
     "prebuild": "npm run social:generate && npm run sitemap:conferences"
   },
   "dependencies": {

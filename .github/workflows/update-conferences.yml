@@ -35,6 +35,9 @@ jobs:
       - name: Regenerate conference sitemap
         run: node scripts/generate-conference-sitemap.cjs
 
+      - name: Save to Firestore for historical tracking
+        run: node scripts/save-to-firestore.js
+
       - name: Commit and push if changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"

@@ -3,14 +3,14 @@ import { getDatabase } from 'firebase/database';
 import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB2wmiqHRTTqU4aHodRoLJ9OBnJaNRMgL0",
-  authDomain: "proof-of-cringe-72a1a.firebaseapp.com",
-  databaseURL: "https://proof-of-cringe-72a1a-default-rtdb.firebaseio.com",
-  projectId: "proof-of-cringe-72a1a",
-  storageBucket: "proof-of-cringe-72a1a.firebasestorage.app",
-  messagingSenderId: "576220861794",
-  appId: "1:576220861794:web:bce3a2464580a5342e083b",
-  measurementId: "G-DT8BHG4PL3"
+  apiKey: "AIzaSyBhfpFHV1zBsC6O6m12UqqxnQ0QMeo0z9c",
+  authDomain: "perception-marketing-site.firebaseapp.com",
+  databaseURL: "https://perception-marketing-site-default-rtdb.firebaseio.com",
+  projectId: "perception-marketing-site",
+  storageBucket: "perception-marketing-site.firebasestorage.app",
+  messagingSenderId: "128328954007",
+  appId: "1:128328954007:web:adfe5470f1e187d165b9d2",
+  measurementId: "G-N636BYJDMX"
 };
 
 // Initialize Firebase
