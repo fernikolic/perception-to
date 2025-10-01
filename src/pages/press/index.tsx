@@ -18,7 +18,7 @@ const pressReleases: PressRelease[] = [
     title: 'Blockstream VP Fernando Nikolic Leaves To Launch Perception, A Bitcoin Market Intelligence Platform',
     description: 'After four years at Blockstream, Fernando Nikolic steps down to start Perception, a platform aimed at addressing fragmented information in the Bitcoin and digital asset space.',
     link: 'https://bitcoinmagazine.com/news/blockstream-vp-fernando-nikolic-leaves-to-launch-perception-a-bitcoin-market-intelligence-platform',
-    tags: ['Company Launch', 'Bitcoin', 'Market Intelligence'],
+    tags: ['Bitcoin Magazine'],
     image: '/logos/BTC_Mag_Logo-removebg-preview.png',
   },
   {
@@ -26,8 +26,32 @@ const pressReleases: PressRelease[] = [
     title: 'Blockstream VP Fernando Nikolic Departs After Four Years to Launch Market Intelligence Platform',
     description: 'Former Blockstream VP Fernando Nikolic announces departure to launch Perception, a comprehensive Bitcoin market intelligence platform designed for cryptocurrency professionals.',
     link: 'https://btctimes.com/blockstream-vp-fernando-nikolic-departs-after-four-years-to-launch-market-intelligence-platform/',
-    tags: ['Leadership', 'Bitcoin', 'Analytics'],
+    tags: ['BTC Times'],
     image: 'https://btctimes.com/content/images/size/w1200/2025/08/Blockstream-VP-Fernando-Nikolic-Departs-After-Four-Years-To-Launch-Market-Intelligence-Platform.jpeg',
+  },
+  {
+    date: 'July 9, 2025',
+    title: 'Mainstream Financial Publications Largely Ignored Bitcoin in Q2, Report Reveals',
+    description: 'According to a new report by market intelligence firm Bitcoin Perception, mainstream media coverage remained strikingly sparse and divided.',
+    link: 'https://beincrypto.com/bitcoin-media-coverage-q2-2025/',
+    tags: ['BeInCrypto'],
+    image: 'https://beincrypto.com/_mfes/post/_next/image/?url=https%3A%2F%2Fbeincrypto.com%2Fwp-content%2Fuploads%2F2023%2F07%2Fbic_Bitcoin_etf_ETFs_General_4-covers_neutral.png&w=1920&q=75',
+  },
+  {
+    date: 'July 9, 2025',
+    title: 'Bitcoin lacked mass media coverage in Q2: Report',
+    description: 'Major news outlets The Wall Street Journal, the Financial Times and The New York Times published just 13 articles on Bitcoin in Q2, according to research from Perception.',
+    link: 'https://cointelegraph.com/news/bitcoin-lacked-coverage-mass-media-q2-report',
+    tags: ['Cointelegraph'],
+    image: 'https://images.cointelegraph.com/cdn-cgi/image/format=auto,onerror=redirect,quality=90,width=717/https://s3.cointelegraph.com/uploads/2025-07/0197ecff-0c82-7883-b261-5a2176d22dbb',
+  },
+  {
+    date: 'December 5, 2024',
+    title: 'Bitcoin at $100K: How the media\'s perception has shifted since 2009',
+    description: 'The ratio of positive Bitcoin stories has increased as Bitcoin soared to new highs and became more institutionalized in the early 2020s, according to Bitcoin Perception data shared exclusively with Cointelegraph.',
+    link: 'https://cointelegraph.com/news/bitcoins-change-in-media-perception-from-0-to-100000-dollars',
+    tags: ['Cointelegraph'],
+    image: 'https://images.cointelegraph.com/cdn-cgi/image/format=auto,onerror=redirect,quality=90,width=717/https://s3.cointelegraph.com/uploads/2024-11/0193477d-2339-770b-9f14-aa63749d849f',
   },
 ];
 
@@ -35,7 +59,7 @@ const mediaKit = [
   {
     title: 'Company Overview',
     description: 'Learn about our mission and team.',
-    link: '#',
+    link: '/about',
     disabled: false,
   },
   {
@@ -79,10 +103,12 @@ export function PressPage() {
                   Get the latest news and updates about Perception's mission to make emerging finance intelligence accessible to everyone.
                 </p>
                 <div className="mt-8 sm:mt-10 flex items-center justify-center gap-x-6">
-                  <Button size="lg" className="bg-black text-white hover:bg-black/90">Contact Press Team</Button>
-                  <Button variant="outline" size="lg" className="group border-black/30 text-black hover:bg-black/5">
-                    Download Media Kit{' '}
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <Button size="lg" className="bg-black text-white hover:bg-black/90" asChild>
+                    <a href="mailto:press@perception.to">Contact Press Team</a>
+                  </Button>
+                  <Button variant="outline" size="lg" className="relative border-black/30 text-black opacity-60 cursor-not-allowed" disabled>
+                    Download Media Kit
+                    <span className="ml-2 px-2 py-0.5 bg-gray-200 text-gray-600 text-xs font-medium rounded">Soon</span>
                   </Button>
                 </div>
               </div>
@@ -103,52 +129,53 @@ export function PressPage() {
             </p>
           </div>
           
-          <div className="space-y-6">
-            {pressReleases.map((release, index) => (
-              <div key={release.title} className="bg-white rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-300">
-                <div className="flex flex-col lg:flex-row">
+          <div className="space-y-8">
+            {pressReleases.map((release) => (
+              <a
+                key={release.title}
+                href={release.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group"
+              >
+                <div className="flex flex-col md:flex-row h-full">
                   {release.image && (
-                    <div className="lg:w-80 flex items-center justify-center bg-black p-8">
-                      <img 
-                        src={release.image} 
+                    <div className="md:w-72 h-56 md:h-auto relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
+                      <img
+                        src={release.image}
                         alt={release.title}
-                        className={`w-full h-32 lg:h-40 ${
-                          release.image.includes('/logos/') 
-                            ? 'object-contain' 
-                            : 'object-cover'
-                        }`}
+                        className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
                       />
                     </div>
                   )}
-                  <div className="flex-1 p-8 lg:p-12">
-                    <div className="text-sm font-medium text-gray-500 mb-3">
-                      {release.date}
-                    </div>
-                    <h3 className="text-2xl lg:text-3xl font-light text-black leading-tight mb-4">
-                      {release.title}
-                    </h3>
-                    <p className="text-lg font-light text-gray-600 leading-relaxed mb-6">
-                      {release.description}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex gap-2">
+                  <div className="flex-1 p-6 md:p-8 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-3 mb-3">
                         {release.tags.map((tag) => (
-                          <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">
+                          <span key={tag} className="px-3 py-1 bg-orange-50 text-orange-600 text-xs font-semibold rounded-md border border-orange-100">
                             {tag}
                           </span>
                         ))}
                       </div>
-                      <a 
-                        href={release.link} 
-                        className="text-black text-sm font-medium hover:text-gray-600 transition-colors group inline-flex items-center gap-2"
-                      >
+                      <h3 className="text-xl md:text-2xl font-semibold text-gray-900 leading-snug mb-3 group-hover:text-orange-600 transition-colors">
+                        {release.title}
+                      </h3>
+                      <p className="text-base text-gray-600 leading-relaxed mb-4">
+                        {release.description}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                      <div className="text-sm text-gray-500 font-medium">
+                        {release.date}
+                      </div>
+                      <div className="text-orange-600 text-sm font-semibold inline-flex items-center gap-2">
                         Read article
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
