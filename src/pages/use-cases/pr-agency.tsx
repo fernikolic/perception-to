@@ -125,30 +125,30 @@ export function PRAgencyPage() {
                 </div>
 
                 {/* Reporter Intelligence - Emphasized */}
-                <div className="border-2 border-slate-900 dark:border-white rounded-2xl p-8 bg-slate-900 dark:bg-white">
+                <div className="border-2 border-slate-900 rounded-2xl p-8 bg-slate-900 [&_*]:!text-white">
                   <div className="mb-6">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white dark:bg-black border border-slate-200 dark:border-slate-800 mb-4">
-                      <Target className="w-6 h-6 text-slate-900 dark:text-white" />
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/10 border border-white/20 mb-4">
+                      <Target className="w-6 h-6" />
                     </div>
-                    <h3 className="text-xl font-semibold text-white dark:text-black mb-2">
+                    <h3 className="text-xl font-semibold mb-2">
                       Reporter Intelligence
                     </h3>
                   </div>
                   <ul className="space-y-3">
-                    <li className="flex gap-2 text-sm text-slate-300 dark:text-slate-700">
-                      <Check className="w-5 h-5 text-white dark:text-black flex-shrink-0" />
+                    <li className="flex gap-2 text-sm">
+                      <Check className="w-5 h-5 flex-shrink-0" />
                       <span>Track individual reporters</span>
                     </li>
-                    <li className="flex gap-2 text-sm text-slate-300 dark:text-slate-700">
-                      <Check className="w-5 h-5 text-white dark:text-black flex-shrink-0" />
+                    <li className="flex gap-2 text-sm">
+                      <Check className="w-5 h-5 flex-shrink-0" />
                       <span>Sentiment per reporter</span>
                     </li>
-                    <li className="flex gap-2 text-sm text-slate-300 dark:text-slate-700">
-                      <Check className="w-5 h-5 text-white dark:text-black flex-shrink-0" />
+                    <li className="flex gap-2 text-sm">
+                      <Check className="w-5 h-5 flex-shrink-0" />
                       <span>Coverage history analysis</span>
                     </li>
-                    <li className="flex gap-2 text-sm text-slate-300 dark:text-slate-700">
-                      <Check className="w-5 h-5 text-white dark:text-black flex-shrink-0" />
+                    <li className="flex gap-2 text-sm">
+                      <Check className="w-5 h-5 flex-shrink-0" />
                       <span>Strategic targeting</span>
                     </li>
                   </ul>
@@ -185,7 +185,7 @@ export function PRAgencyPage() {
               </div>
 
               <p className="text-xl font-light text-slate-900 dark:text-white text-center py-8 border-t border-b border-slate-200 dark:border-slate-800">
-                That's not PR. That's intelligence-driven growth.
+                That's intelligence-driven growth.
               </p>
             </div>
           </div>
