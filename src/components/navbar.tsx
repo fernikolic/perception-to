@@ -53,6 +53,36 @@ const resources: {
   },
 ];
 
+const useCases: {
+  title: string;
+  href: string;
+  description: string;
+  disabled?: boolean;
+  badge?: string;
+  className?: string;
+}[] = [
+  {
+    title: "Executive Intelligence",
+    href: "/use-cases/executive-intelligence",
+    description: "Board-ready competitive intelligence"
+  },
+  {
+    title: "Stakeholder Communications",
+    href: "/use-cases/stakeholder-communications",
+    description: "Automated stakeholder reports"
+  },
+  {
+    title: "Data-Backed Journalism",
+    href: "/use-cases/journalism",
+    description: "Quantifiable media intelligence"
+  },
+  {
+    title: "PR Agency Intelligence",
+    href: "/use-cases/pr-agency",
+    description: "Reporter targeting & client tracking"
+  },
+];
+
 const company: {
   title: string;
   href: string;
@@ -61,9 +91,9 @@ const company: {
   badge?: string;
   className?: string;
 }[] = [
-  { 
-    title: "About", 
-    href: "/about", 
+  {
+    title: "About",
+    href: "/about",
     description: "Learn about our mission and team"
   },
   // { 
@@ -73,17 +103,15 @@ const company: {
   //   disabled: true,
   //   badge: "Coming Soon"
   // },
-  { 
-    title: "Press", 
-    href: "/press", 
-    description: "Latest news and media resources",
-    disabled: true,
-    badge: "Coming Soon"
+  {
+    title: "Press",
+    href: "/press",
+    description: "Latest news and media resources"
   },
-  { 
-    title: "Announcements", 
-    href: "/announcements", 
-    description: "Product updates and company news",
+  {
+    title: "Advisory",
+    href: "#",
+    description: "Strategic advisory services",
     disabled: true,
     badge: "Coming Soon"
   },
@@ -228,6 +256,57 @@ export function Navbar() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent">
+                  Use Cases
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="p-4 bg-background rounded-lg border shadow-lg min-w-[500px] max-w-[600px]">
+                    <ul className="space-y-3">
+                      {useCases.map((item) => (
+                        <li key={item.title}>
+                          <NavigationMenuLink asChild>
+                            <a
+                              href={item.href}
+                              className={cn(
+                                "block rounded-md p-3 transition-colors",
+                                item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/5 hover:text-foreground",
+                                item.className
+                              )}
+                              onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                            >
+                              <div className="flex flex-wrap items-center gap-2 mb-2">
+                                <span className={cn("text-sm font-medium", item.className)}>
+                                  {item.title}
+                                </span>
+                                {item.badge && (
+                                  <Badge variant="secondary" className="text-xs">
+                                    {item.badge}
+                                  </Badge>
+                                )}
+                              </div>
+                              <div
+                                className="text-sm text-muted-foreground"
+                                style={{
+                                  whiteSpace: 'normal',
+                                  wordWrap: 'break-word',
+                                  overflowWrap: 'break-word',
+                                  maxWidth: '100%',
+                                  width: '100%',
+                                  lineHeight: '1.4'
+                                }}
+                              >
+                                {item.description}
+                              </div>
+                            </a>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
                 <a href="/pricing" className="text-sm hover:text-primary">
                   Pricing
                 </a>
@@ -329,6 +408,45 @@ export function Navbar() {
               {expandedSection === 'company' && (
                 <div className="mt-4 space-y-4 pl-4">
                   {company.map((item) => (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      className={cn(
+                        "block text-muted-foreground hover:text-foreground transition-colors",
+                        item.disabled && "opacity-50 cursor-not-allowed"
+                      )}
+                      onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{item.title}</span>
+                        {item.badge && (
+                          <Badge variant="secondary" className="text-xs">
+                            {item.badge}
+                          </Badge>
+                        )}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Use Cases Section */}
+            <div>
+              <button
+                className="flex w-full items-center justify-between text-lg font-medium"
+                onClick={() => toggleSection('usecases')}
+              >
+                Use Cases
+                {expandedSection === 'usecases' ? (
+                  <ChevronUp className="h-5 w-5" />
+                ) : (
+                  <ChevronDown className="h-5 w-5" />
+                )}
+              </button>
+              {expandedSection === 'usecases' && (
+                <div className="mt-4 space-y-4 pl-4">
+                  {useCases.map((item) => (
                     <a
                       key={item.title}
                       href={item.href}

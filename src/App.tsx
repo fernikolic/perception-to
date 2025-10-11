@@ -23,6 +23,10 @@ import { JournalistLanding } from '@/pages/landing/journalist';
 import { InvestorLanding } from '@/pages/landing/investor';
 import { CompaniesLanding } from '@/pages/landing/companies';
 import { UseCasesLanding } from '@/pages/use-cases';
+import { ExecutiveIntelligencePage } from '@/pages/use-cases/executive-intelligence';
+import { StakeholderCommunicationsPage } from '@/pages/use-cases/stakeholder-communications';
+import { JournalismPage } from '@/pages/use-cases/journalism';
+import { PRAgencyPage } from '@/pages/use-cases/pr-agency';
 import { AboutPage } from '@/pages/about';
 // import { CareersPage } from '@/pages/careers';
 import { PressPage } from '@/pages/press';
@@ -87,6 +91,10 @@ const App = () => {
               <Route path="/investor" element={<InvestorLanding />} />
               <Route path="/researcher" element={<CompaniesLanding />} />
               <Route path="/use-cases" element={<UseCasesLanding />} />
+              <Route path="/use-cases/executive-intelligence" element={<ExecutiveIntelligencePage />} />
+              <Route path="/use-cases/stakeholder-communications" element={<StakeholderCommunicationsPage />} />
+              <Route path="/use-cases/journalism" element={<JournalismPage />} />
+              <Route path="/use-cases/pr-agency" element={<PRAgencyPage />} />
               <Route path="/about" element={<AboutPage />} />
               {/* <Route path="/careers" element={<CareersPage />} /> */}
               <Route path="/press" element={<PressPage />} />
