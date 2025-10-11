@@ -174,7 +174,8 @@ export function SocialMeta({ title, description, image, type = 'website', url }:
 
     // Generate dynamic image URL using validator
     const socialImageConfig = getSocialImageForPath(currentPath);
-    const finalImage = image || pageMetadata.image || socialImageConfig.url;
+    // Priority: 1) prop image, 2) custom social image, 3) page metadata image
+    const finalImage = image || socialImageConfig.url || pageMetadata.image;
 
     // Generate comprehensive social image meta tags
     const socialImageTags = generateSocialImageTags(currentPath, finalTitle);

@@ -11,6 +11,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "social:generate": "node scripts/generate-social-images-config.js",
+    "social:audit": "node scripts/social-image-helper.cjs",
     "sitemap:conferences": "node scripts/generate-conference-sitemap.cjs",
     "conferences:fetch": "node scripts/fetch-conferences.js",
     "conferences:save": "node scripts/save-to-firestore.js",
