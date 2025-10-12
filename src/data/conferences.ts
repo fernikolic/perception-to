@@ -1,5 +1,5 @@
 // Auto-generated conference data
-// Last updated: 2025-10-05T01:49:55.703Z
+// Last updated: 2025-10-12T01:46:47.788Z
 // Source: Perplexity API (Sonar with real-time web search)
 // DO NOT EDIT MANUALLY - This file is automatically updated weekly
 
@@ -15,184 +15,112 @@ export interface Conference {
 
 export const allConferences: Conference[] = [
   {
-    "date": "2025-10-09",
-    "name": "Bitcoin Amsterdam 2025",
-    "location": "Amsterdam, Netherlands",
-    "type": "Bitcoin",
-    "duration": "Oct 9-10",
-    "monthYear": "October 2025",
-    "dateDisplay": "Oct 9, 2025"
-  },
-  {
     "date": "2025-10-13",
-    "name": "Permissionless III",
-    "location": "Austin, USA",
-    "type": "DeFi|Web3|Blockchain",
-    "duration": "Oct 13-15",
+    "name": "Devcon 2025",
+    "location": "Bangkok, Thailand",
+    "type": "Web3",
+    "duration": "Oct 13-16",
     "monthYear": "October 2025",
     "dateDisplay": "Oct 13, 2025"
   },
   {
-    "date": "2025-10-26",
-    "name": "Money20/20 USA 2025",
-    "location": "Las Vegas, USA",
-    "type": "Institutional|Finance|Blockchain",
-    "duration": "Oct 26-29",
+    "date": "2025-10-15",
+    "name": "Blockchain Life 2025",
+    "location": "Dubai, UAE",
+    "type": "Blockchain",
+    "duration": "Oct 15-16",
     "monthYear": "October 2025",
-    "dateDisplay": "Oct 26, 2025"
+    "dateDisplay": "Oct 15, 2025"
   },
   {
-    "date": "2025-11-03",
-    "name": "Web Summit 2025 (Crypto Track)",
-    "location": "Lisbon, Portugal",
-    "type": "Web3|Blockchain|NFT|DeFi",
-    "duration": "Nov 3-6",
+    "date": "2025-10-20",
+    "name": "Permissionless 2025",
+    "location": "Austin, USA",
+    "type": "DeFi",
+    "duration": "Oct 20-22",
+    "monthYear": "October 2025",
+    "dateDisplay": "Oct 20, 2025"
+  },
+  {
+    "date": "2025-10-27",
+    "name": "Mining Disrupt 2025",
+    "location": "Miami, USA",
+    "type": "Bitcoin",
+    "duration": "Oct 27-29",
+    "monthYear": "October 2025",
+    "dateDisplay": "Oct 27, 2025"
+  },
+  {
+    "date": "2025-10-27",
+    "name": "Money20/20 USA 2025",
+    "location": "Las Vegas, USA",
+    "type": "Institutional",
+    "duration": "Oct 27-30",
+    "monthYear": "October 2025",
+    "dateDisplay": "Oct 27, 2025"
+  },
+  {
+    "date": "2025-11-05",
+    "name": "DC Blockchain Summit 2025",
+    "location": "Washington, DC, USA",
+    "type": "Institutional",
+    "duration": "Nov 5-6",
     "monthYear": "November 2025",
-    "dateDisplay": "Nov 3, 2025"
+    "dateDisplay": "Nov 5, 2025"
+  },
+  {
+    "date": "2025-11-05",
+    "name": "Blockchain Expo North America 2025",
+    "location": "Santa Clara, USA",
+    "type": "Blockchain",
+    "duration": "Nov 5-6",
+    "monthYear": "November 2025",
+    "dateDisplay": "Nov 5, 2025"
   },
   {
     "date": "2025-11-10",
-    "name": "Solana Breakpoint 2025",
+    "name": "Web Summit 2025 (Crypto Track)",
     "location": "Lisbon, Portugal",
-    "type": "Blockchain|Web3|DeFi|NFT",
+    "type": "Blockchain",
     "duration": "Nov 10-13",
     "monthYear": "November 2025",
     "dateDisplay": "Nov 10, 2025"
   },
   {
+    "date": "2025-11-13",
+    "name": "Bitcoin Amsterdam 2025",
+    "location": "Amsterdam, Netherlands",
+    "type": "Bitcoin",
+    "duration": "Nov 13-14",
+    "monthYear": "November 2025",
+    "dateDisplay": "Nov 13, 2025"
+  },
+  {
     "date": "2025-11-18",
-    "name": "Devcon 7",
-    "location": "Bangkok, Thailand",
-    "type": "Blockchain|Web3|DeFi",
-    "duration": "Nov 18-21",
+    "name": "World Blockchain Summit 2025",
+    "location": "Dubai, UAE",
+    "type": "Blockchain",
+    "duration": "Nov 18-19",
     "monthYear": "November 2025",
     "dateDisplay": "Nov 18, 2025"
   },
   {
-    "date": "2025-12-03",
+    "date": "2025-11-30",
     "name": "Blockchain Expo Global 2025",
     "location": "London, UK",
-    "type": "Blockchain|Enterprise|Web3",
-    "duration": "Dec 3-4",
+    "type": "Blockchain",
+    "duration": "Nov 30-Dec 1",
+    "monthYear": "November 2025",
+    "dateDisplay": "Nov 30, 2025"
+  },
+  {
+    "date": "2025-12-08",
+    "name": "TOKEN2049 Dubai 2025",
+    "location": "Dubai, UAE",
+    "type": "Blockchain",
+    "duration": "Dec 8-9",
     "monthYear": "December 2025",
-    "dateDisplay": "Dec 3, 2025"
-  },
-  {
-    "date": "2026-01-14",
-    "name": "Crypto Finance Conference St. Moritz 2026",
-    "location": "St. Moritz, Switzerland",
-    "type": "Institutional|Blockchain|Finance",
-    "duration": "Jan 14-16",
-    "monthYear": "January 2026",
-    "dateDisplay": "Jan 14, 2026"
-  },
-  {
-    "date": "2026-01-28",
-    "name": "World Crypto Conference 2026",
-    "location": "Zurich, Switzerland",
-    "type": "Blockchain|Web3|DeFi|NFT",
-    "duration": "Jan 28-29",
-    "monthYear": "January 2026",
-    "dateDisplay": "Jan 28, 2026"
-  },
-  {
-    "date": "2026-02-11",
-    "name": "European Blockchain Convention 2026",
-    "location": "Barcelona, Spain",
-    "type": "Blockchain|Web3|DeFi|NFT",
-    "duration": "Feb 11-13",
-    "monthYear": "February 2026",
-    "dateDisplay": "Feb 11, 2026"
-  },
-  {
-    "date": "2026-02-20",
-    "name": "NFT Paris 2026",
-    "location": "Paris, France",
-    "type": "NFT|Web3|Blockchain",
-    "duration": "Feb 20-21",
-    "monthYear": "February 2026",
-    "dateDisplay": "Feb 20, 2026"
-  },
-  {
-    "date": "2026-03-04",
-    "name": "Crypto Expo Europe 2026",
-    "location": "Bucharest, Romania",
-    "type": "Blockchain|Web3|DeFi|NFT",
-    "duration": "Mar 4-5",
-    "monthYear": "March 2026",
-    "dateDisplay": "Mar 4, 2026"
-  },
-  {
-    "date": "2026-03-05",
-    "name": "Blockchain Africa Conference 2026",
-    "location": "Johannesburg, South Africa",
-    "type": "Blockchain|Web3|DeFi",
-    "duration": "Mar 5-6",
-    "monthYear": "March 2026",
-    "dateDisplay": "Mar 5, 2026"
-  },
-  {
-    "date": "2026-03-17",
-    "name": "DC Blockchain Summit 2026",
-    "location": "Washington DC, USA",
-    "type": "Blockchain|Institutional|Policy",
-    "duration": "Mar 17-18",
-    "monthYear": "March 2026",
-    "dateDisplay": "Mar 17, 2026"
-  },
-  {
-    "date": "2026-03-18",
-    "name": "World Blockchain Summit Dubai 2026",
-    "location": "Dubai, UAE",
-    "type": "Blockchain|Web3|DeFi|NFT",
-    "duration": "Mar 18-19",
-    "monthYear": "March 2026",
-    "dateDisplay": "Mar 18, 2026"
-  },
-  {
-    "date": "2026-03-25",
-    "name": "Crypto Expo Dubai 2026",
-    "location": "Dubai, UAE",
-    "type": "Blockchain|Web3|DeFi|NFT",
-    "duration": "Mar 25-26",
-    "monthYear": "March 2026",
-    "dateDisplay": "Mar 25, 2026"
-  },
-  {
-    "date": "2026-04-07",
-    "name": "Paris Blockchain Week 2026",
-    "location": "Paris, France",
-    "type": "Blockchain|Web3|DeFi|NFT",
-    "duration": "Apr 7-9",
-    "monthYear": "April 2026",
-    "dateDisplay": "Apr 7, 2026"
-  },
-  {
-    "date": "2026-04-07",
-    "name": "NFT.NYC 2026",
-    "location": "New York, USA",
-    "type": "NFT|Web3|Blockchain",
-    "duration": "Apr 7-9",
-    "monthYear": "April 2026",
-    "dateDisplay": "Apr 7, 2026"
-  },
-  {
-    "date": "2026-04-15",
-    "name": "TOKEN2049 Dubai 2026",
-    "location": "Dubai, UAE",
-    "type": "Blockchain|Web3|DeFi|NFT",
-    "duration": "Apr 15-16",
-    "monthYear": "April 2026",
-    "dateDisplay": "Apr 15, 2026"
-  },
-  {
-    "date": "2026-04-15",
-    "name": "Blockchain Life 2026",
-    "location": "Dubai, UAE",
-    "type": "Blockchain|Web3|DeFi|NFT",
-    "duration": "Apr 15-16",
-    "monthYear": "April 2026",
-    "dateDisplay": "Apr 15, 2026"
+    "dateDisplay": "Dec 8, 2025"
   },
   {
     "date": "2026-04-27",
@@ -204,148 +132,247 @@ export const allConferences: Conference[] = [
     "dateDisplay": "Apr 27, 2026"
   },
   {
-    "date": "2026-05-08",
-    "name": "Blockchain Economy Istanbul Summit 2026",
-    "location": "Istanbul, Turkey",
-    "type": "Blockchain|Web3|DeFi|NFT",
-    "duration": "May 8-9",
-    "monthYear": "May 2026",
-    "dateDisplay": "May 8, 2026"
-  },
-  {
     "date": "2026-05-27",
     "name": "Consensus 2026",
     "location": "Austin, USA",
-    "type": "Blockchain|Institutional|Web3",
+    "type": "Blockchain",
     "duration": "May 27-29",
     "monthYear": "May 2026",
     "dateDisplay": "May 27, 2026"
   },
   {
-    "date": "2026-06-11",
+    "date": "2026-06-09",
+    "name": "Paris Blockchain Week 2026",
+    "location": "Paris, France",
+    "type": "Blockchain",
+    "duration": "Jun 9-13",
+    "monthYear": "June 2026",
+    "dateDisplay": "Jun 9, 2026"
+  },
+  {
+    "date": "2026-06-16",
+    "name": "Crypto Expo Europe 2026",
+    "location": "Zurich, Switzerland",
+    "type": "Blockchain",
+    "duration": "Jun 16-17",
+    "monthYear": "June 2026",
+    "dateDisplay": "Jun 16, 2026"
+  },
+  {
+    "date": "2026-06-19",
+    "name": "NFT NYC 2026",
+    "location": "New York, USA",
+    "type": "NFT",
+    "duration": "Jun 19-21",
+    "monthYear": "June 2026",
+    "dateDisplay": "Jun 19, 2026"
+  },
+  {
+    "date": "2026-07-13",
+    "name": "Korea Blockchain Week 2026",
+    "location": "Seoul, South Korea",
+    "type": "Blockchain",
+    "duration": "Jul 13-19",
+    "monthYear": "July 2026",
+    "dateDisplay": "Jul 13, 2026"
+  },
+  {
+    "date": "2026-07-16",
     "name": "BTC Prague 2026",
     "location": "Prague, Czech Republic",
     "type": "Bitcoin",
-    "duration": "Jun 11-13",
-    "monthYear": "June 2026",
-    "dateDisplay": "Jun 11, 2026"
+    "duration": "Jul 16-18",
+    "monthYear": "July 2026",
+    "dateDisplay": "Jul 16, 2026"
   },
   {
-    "date": "2026-06-17",
-    "name": "Blockchain Expo North America 2026",
-    "location": "Santa Clara, USA",
-    "type": "Blockchain|Enterprise|Web3",
-    "duration": "Jun 17-18",
-    "monthYear": "June 2026",
-    "dateDisplay": "Jun 17, 2026"
-  },
-  {
-    "date": "2026-06-24",
-    "name": "Crypto Expo Asia 2026",
-    "location": "Singapore, Singapore",
-    "type": "Blockchain|Web3|DeFi|NFT",
-    "duration": "Jun 24-25",
-    "monthYear": "June 2026",
-    "dateDisplay": "Jun 24, 2026"
-  },
-  {
-    "date": "2026-07-14",
+    "date": "2026-07-20",
     "name": "EthCC 2026",
-    "location": "Paris, France",
-    "type": "Blockchain|Web3|DeFi",
-    "duration": "Jul 14-16",
+    "location": "Brussels, Belgium",
+    "type": "Web3",
+    "duration": "Jul 20-23",
     "monthYear": "July 2026",
-    "dateDisplay": "Jul 14, 2026"
+    "dateDisplay": "Jul 20, 2026"
   },
   {
-    "date": "2026-07-21",
-    "name": "Mining Disrupt 2026",
+    "date": "2026-08-11",
+    "name": "Crypto Expo Americas 2026",
     "location": "Miami, USA",
-    "type": "Bitcoin|Mining|Blockchain",
-    "duration": "Jul 21-23",
-    "monthYear": "July 2026",
-    "dateDisplay": "Jul 21, 2026"
+    "type": "Blockchain",
+    "duration": "Aug 11-12",
+    "monthYear": "August 2026",
+    "dateDisplay": "Aug 11, 2026"
   },
   {
-    "date": "2026-09-07",
-    "name": "Korea Blockchain Week 2026",
-    "location": "Seoul, South Korea",
-    "type": "Blockchain|Web3|DeFi|NFT",
-    "duration": "Sep 7-13",
+    "date": "2026-09-02",
+    "name": "Crypto Expo Asia 2026",
+    "location": "Singapore",
+    "type": "Blockchain",
+    "duration": "Sep 2-3",
     "monthYear": "September 2026",
-    "dateDisplay": "Sep 7, 2026"
+    "dateDisplay": "Sep 2, 2026"
+  },
+  {
+    "date": "2026-09-09",
+    "name": "DeFi Summit 2026",
+    "location": "London, UK",
+    "type": "DeFi",
+    "duration": "Sep 9-11",
+    "monthYear": "September 2026",
+    "dateDisplay": "Sep 9, 2026"
+  },
+  {
+    "date": "2026-09-14",
+    "name": "Solana Breakpoint 2026",
+    "location": "Amsterdam, Netherlands",
+    "type": "Web3",
+    "duration": "Sep 14-16",
+    "monthYear": "September 2026",
+    "dateDisplay": "Sep 14, 2026"
   },
   {
     "date": "2026-09-23",
-    "name": "TOKEN2049 Singapore 2026",
-    "location": "Singapore, Singapore",
-    "type": "Blockchain|Web3|DeFi|NFT",
+    "name": "Blockchain Expo Europe 2026",
+    "location": "Amsterdam, Netherlands",
+    "type": "Blockchain",
     "duration": "Sep 23-24",
     "monthYear": "September 2026",
     "dateDisplay": "Sep 23, 2026"
   },
   {
-    "date": "2026-09-24",
-    "name": "Blockchain Expo Europe 2026",
-    "location": "Amsterdam, Netherlands",
-    "type": "Blockchain|Enterprise|Web3",
-    "duration": "Sep 24-25",
+    "date": "2026-09-27",
+    "name": "TOKEN2049 Singapore 2026",
+    "location": "Singapore",
+    "type": "Blockchain",
+    "duration": "Sep 27-28",
     "monthYear": "September 2026",
-    "dateDisplay": "Sep 24, 2026"
+    "dateDisplay": "Sep 27, 2026"
   },
   {
-    "date": "2026-10-08",
-    "name": "Bitcoin Amsterdam 2026",
-    "location": "Amsterdam, Netherlands",
-    "type": "Bitcoin",
-    "duration": "Oct 8-9",
+    "date": "2026-10-07",
+    "name": "Crypto Expo Dubai 2026",
+    "location": "Dubai, UAE",
+    "type": "Blockchain",
+    "duration": "Oct 7-8",
     "monthYear": "October 2026",
-    "dateDisplay": "Oct 8, 2026"
+    "dateDisplay": "Oct 7, 2026"
   },
   {
     "date": "2026-10-12",
-    "name": "Permissionless IV",
-    "location": "Miami, USA",
-    "type": "DeFi|Web3|Blockchain",
-    "duration": "Oct 12-14",
+    "name": "Devcon 2026",
+    "location": "TBD",
+    "type": "Web3",
+    "duration": "Oct 12-15",
     "monthYear": "October 2026",
     "dateDisplay": "Oct 12, 2026"
   },
   {
-    "date": "2026-10-25",
-    "name": "Money20/20 USA 2026",
-    "location": "Las Vegas, USA",
-    "type": "Institutional|Finance|Blockchain",
-    "duration": "Oct 25-28",
+    "date": "2026-10-14",
+    "name": "Blockchain Life 2026",
+    "location": "Dubai, UAE",
+    "type": "Blockchain",
+    "duration": "Oct 14-15",
     "monthYear": "October 2026",
-    "dateDisplay": "Oct 25, 2026"
+    "dateDisplay": "Oct 14, 2026"
   },
   {
-    "date": "2026-11-02",
-    "name": "Web Summit 2026 (Crypto Track)",
-    "location": "Lisbon, Portugal",
-    "type": "Web3|Blockchain|NFT|DeFi",
-    "duration": "Nov 2-5",
+    "date": "2026-10-19",
+    "name": "Permissionless 2026",
+    "location": "Austin, USA",
+    "type": "DeFi",
+    "duration": "Oct 19-21",
+    "monthYear": "October 2026",
+    "dateDisplay": "Oct 19, 2026"
+  },
+  {
+    "date": "2026-10-26",
+    "name": "Mining Disrupt 2026",
+    "location": "Miami, USA",
+    "type": "Bitcoin",
+    "duration": "Oct 26-28",
+    "monthYear": "October 2026",
+    "dateDisplay": "Oct 26, 2026"
+  },
+  {
+    "date": "2026-10-26",
+    "name": "Money20/20 USA 2026",
+    "location": "Las Vegas, USA",
+    "type": "Institutional",
+    "duration": "Oct 26-29",
+    "monthYear": "October 2026",
+    "dateDisplay": "Oct 26, 2026"
+  },
+  {
+    "date": "2026-11-03",
+    "name": "TOKEN2049 London 2026",
+    "location": "London, UK",
+    "type": "Blockchain",
+    "duration": "Nov 3-4",
     "monthYear": "November 2026",
-    "dateDisplay": "Nov 2, 2026"
+    "dateDisplay": "Nov 3, 2026"
+  },
+  {
+    "date": "2026-11-04",
+    "name": "DC Blockchain Summit 2026",
+    "location": "Washington, DC, USA",
+    "type": "Institutional",
+    "duration": "Nov 4-5",
+    "monthYear": "November 2026",
+    "dateDisplay": "Nov 4, 2026"
+  },
+  {
+    "date": "2026-11-04",
+    "name": "Blockchain Expo North America 2026",
+    "location": "Santa Clara, USA",
+    "type": "Blockchain",
+    "duration": "Nov 4-5",
+    "monthYear": "November 2026",
+    "dateDisplay": "Nov 4, 2026"
   },
   {
     "date": "2026-11-09",
-    "name": "Solana Breakpoint 2026",
+    "name": "Web Summit 2026 (Crypto Track)",
     "location": "Lisbon, Portugal",
-    "type": "Blockchain|Web3|DeFi|NFT",
+    "type": "Blockchain",
     "duration": "Nov 9-12",
     "monthYear": "November 2026",
     "dateDisplay": "Nov 9, 2026"
   },
   {
+    "date": "2026-11-12",
+    "name": "Bitcoin Amsterdam 2026",
+    "location": "Amsterdam, Netherlands",
+    "type": "Bitcoin",
+    "duration": "Nov 12-13",
+    "monthYear": "November 2026",
+    "dateDisplay": "Nov 12, 2026"
+  },
+  {
     "date": "2026-11-17",
-    "name": "Devcon 8",
-    "location": "TBD",
-    "type": "Blockchain|Web3|DeFi",
-    "duration": "Nov 17-20",
+    "name": "World Blockchain Summit 2026",
+    "location": "Dubai, UAE",
+    "type": "Blockchain",
+    "duration": "Nov 17-18",
     "monthYear": "November 2026",
     "dateDisplay": "Nov 17, 2026"
+  },
+  {
+    "date": "2026-11-29",
+    "name": "Blockchain Expo Global 2026",
+    "location": "London, UK",
+    "type": "Blockchain",
+    "duration": "Nov 29-30",
+    "monthYear": "November 2026",
+    "dateDisplay": "Nov 29, 2026"
+  },
+  {
+    "date": "2026-12-07",
+    "name": "TOKEN2049 Dubai 2026",
+    "location": "Dubai, UAE",
+    "type": "Blockchain",
+    "duration": "Dec 7-8",
+    "monthYear": "December 2026",
+    "dateDisplay": "Dec 7, 2026"
   }
 ];
 
