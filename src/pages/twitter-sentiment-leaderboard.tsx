@@ -602,14 +602,14 @@ export default function TwitterSentimentLeaderboard() {
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-6">
               <TwitterIcon className="w-8 h-8 text-blue-500" />
-              <h1 className="text-4xl font-bold text-slate-900">Bitcoin Twitter Sentiment Leaderboard</h1>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">Bitcoin Twitter Sentiment Leaderboard</h1>
               {loading && (
                 <div className="ml-3">
                   <div className="w-5 h-5 border-2 border-slate-300 border-t-blue-500 rounded-full animate-spin"></div>
                 </div>
               )}
             </div>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-4">
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-4">
               Discover active Bitcoin Twitter accounts with real tweets - based on real-time sentiment analysis from 100+ sources
             </p>
             {!loading && sortedAccounts.length > 0 && (
@@ -622,13 +622,13 @@ export default function TwitterSentimentLeaderboard() {
             )}
 
             {/* Filter Controls */}
-            <div className="flex flex-col items-center gap-6 mb-8">
+            <div className="flex flex-col items-center gap-4 sm:gap-6 mb-8">
               {/* Sentiment Filter Buttons */}
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                 <Button
                   variant={filter === 'positive' ? 'default' : 'outline'}
                   onClick={() => setFilter('positive')}
-                  className="px-6 py-3"
+                  className="px-6 py-3 w-full sm:w-auto"
                   disabled={loading}
                 >
                   <ArrowUpIcon className="w-4 h-4 mr-2" />
@@ -637,7 +637,7 @@ export default function TwitterSentimentLeaderboard() {
                 <Button
                   variant={filter === 'negative' ? 'default' : 'outline'}
                   onClick={() => setFilter('negative')}
-                  className="px-6 py-3"
+                  className="px-6 py-3 w-full sm:w-auto"
                   disabled={loading}
                 >
                   <ArrowDownIcon className="w-4 h-4 mr-2" />
@@ -646,14 +646,14 @@ export default function TwitterSentimentLeaderboard() {
               </div>
 
               {/* Time Period Selector */}
-              <div className="flex items-center gap-4">
-                <CalendarIcon className="w-4 h-4 text-slate-500" />
-                <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <CalendarIcon className="w-4 h-4 text-slate-500 hidden sm:block" />
+                <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                   <Button
                     variant={timePeriod === '24h' ? 'default' : 'outline'}
                     onClick={() => setTimePeriod('24h')}
                     size="sm"
-                    className="px-4 py-2"
+                    className="px-4 py-2 w-full sm:w-auto"
                     disabled={loading}
                   >
                     Last 24 Hours
@@ -662,7 +662,7 @@ export default function TwitterSentimentLeaderboard() {
                     variant="outline"
                     onClick={() => setShowSignupPopup(true)}
                     size="sm"
-                    className="px-4 py-2 relative"
+                    className="px-4 py-2 relative w-full sm:w-auto"
                     disabled={loading}
                   >
                     <Lock className="w-3 h-3 mr-1" />
@@ -672,7 +672,7 @@ export default function TwitterSentimentLeaderboard() {
                     variant="outline"
                     onClick={() => setShowSignupPopup(true)}
                     size="sm"
-                    className="px-4 py-2 relative"
+                    className="px-4 py-2 relative w-full sm:w-auto"
                     disabled={loading}
                   >
                     <Lock className="w-3 h-3 mr-1" />

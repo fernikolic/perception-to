@@ -12,14 +12,14 @@ export function CareersPage() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(100,181,246,0.1),transparent_50%)]" />
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-extralight tracking-tight sm:text-6xl">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extralight tracking-tight">
               Join Our Mission
             </h1>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            <p className="mt-6 text-base sm:text-lg leading-8 text-muted-foreground">
               Help us build the future of emerging finance intelligence. We are looking for passionate
               individuals who want to make a real impact in the blockchain space.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-x-6">
               <Button size="lg">View Open Positions</Button>
               <Button variant="outline" size="lg" className="group">
                 Learn About Culture{' '}

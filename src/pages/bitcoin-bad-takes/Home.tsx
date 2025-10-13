@@ -73,7 +73,7 @@ export default function Home() {
         <div className="relative max-w-5xl mx-auto px-8">
           <div className="relative flex items-start justify-center min-h-[600px]">
             {/* Left Navigation with Content Type Selector */}
-            <div className="fixed left-8 top-1/2 -translate-y-1/2 z-10 flex flex-col items-center gap-4">
+            <div className="fixed left-2 sm:left-8 top-1/2 -translate-y-1/2 z-10 flex flex-col items-center gap-4">
               {/* Content Type Selector - Vertical */}
               <div className="flex flex-col bg-muted/30 backdrop-blur-md rounded-2xl p-1 border border-border/20">
                 <button
@@ -134,7 +134,7 @@ export default function Home() {
             <button
               onClick={handleNext}
               disabled={currentIndex === filteredTakes.length - 1}
-              className="fixed right-8 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border/20 shadow-lg hover:shadow-xl hover:bg-background transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-background/80 group"
+              className="fixed right-2 sm:right-8 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border/20 shadow-lg hover:shadow-xl hover:bg-background transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-background/80 group"
             >
               <svg className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -75,14 +75,14 @@ export function PriceList() {
   return (
     <div className="flex flex-col">
       {/* Monthly/Annual Toggle */}
-      <div className="flex justify-center mb-16">
-        <div className="flex items-center space-x-1 bg-gray-800 rounded-2xl p-1 ring-1 ring-gray-600 shadow-sm">
+      <div className="flex justify-center mb-20">
+        <div className="flex items-center space-x-2 bg-gray-800 rounded-2xl p-2 ring-2 ring-gray-600 shadow-lg">
           <Toggle
             pressed={!isAnnual}
             onPressedChange={() => setIsAnnual(false)}
-            className={`px-6 py-3 rounded-xl transition-all duration-200 text-sm font-semibold ${
-              !isAnnual 
-                ? 'bg-white text-black shadow-sm' 
+            className={`px-8 py-4 rounded-xl transition-all duration-300 text-base sm:text-lg font-bold ${
+              !isAnnual
+                ? 'bg-white text-black shadow-lg scale-105'
                 : 'text-white hover:bg-gray-700'
             }`}
           >
@@ -91,14 +91,14 @@ export function PriceList() {
           <Toggle
             pressed={isAnnual}
             onPressedChange={() => setIsAnnual(true)}
-            className={`px-6 py-3 rounded-xl transition-all duration-200 text-sm font-semibold relative ${
-              isAnnual 
-                ? 'bg-white text-black shadow-sm' 
+            className={`px-8 py-4 rounded-xl transition-all duration-300 text-base sm:text-lg font-bold relative ${
+              isAnnual
+                ? 'bg-white text-black shadow-lg scale-105'
                 : 'text-white hover:bg-gray-700'
             }`}
           >
             Annual
-            <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">
+            <span className="absolute -top-3 -right-3 bg-green-500 text-white text-sm px-3 py-1 rounded-full font-bold shadow-lg">
               Save 17%
             </span>
           </Toggle>
@@ -110,10 +110,10 @@ export function PriceList() {
           <PriceCard key={tier.name} {...tier} isAnnual={isAnnual} />
         ))}
       </div>
-      
-      <div className="mt-16 text-center">
-        <p className="text-sm !text-gray-400">
-          Need 5+ users? <a href="https://perception.to/book-a-call" className="text-blue-400 hover:underline font-medium">Contact sales</a> for volume pricing.
+
+      <div className="mt-20 text-center">
+        <p className="text-base sm:text-lg !text-gray-400 font-light">
+          Need 5+ users? <a href="https://perception.to/book-a-call" className="text-blue-400 hover:underline font-semibold">Contact sales</a> for volume pricing.
         </p>
       </div>
     </div>

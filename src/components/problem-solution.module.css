@@ -3,6 +3,12 @@
   min-height: 100vh;
   background-color: black;
   position: relative;
+  /* Ensure smooth pinning across browsers */
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 .content {
@@ -58,6 +64,9 @@
   transition-property: opacity, color;
   will-change: opacity, color;
   display: inline-block;
+  /* Force GPU acceleration for smoother animations across browsers */
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .highlighted {

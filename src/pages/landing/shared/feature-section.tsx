@@ -16,18 +16,18 @@ interface FeatureSectionProps {
 export function FeatureSection({ features }: FeatureSectionProps) {
   return (
     <div className="py-12 sm:py-16">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto space-y-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto space-y-16 sm:space-y-20 lg:space-y-32">
           {features.map((feature, index) => (
-            <div 
+            <div
               key={feature.title}
               className={cn(
-                "group relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center",
+                "group relative grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center",
                 index % 2 === 1 && "lg:grid-flow-col-dense"
               )}
             >
               <div className={cn(
-                "relative aspect-[4/3] overflow-hidden rounded-2xl",
+                "relative aspect-[4/3] overflow-hidden rounded-xl sm:rounded-2xl",
                 index % 2 === 1 && "lg:col-start-2"
               )}>
                 <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/10 to-transparent z-10" />
@@ -39,35 +39,36 @@ export function FeatureSection({ features }: FeatureSectionProps) {
                   className="h-full w-full object-cover transition-all duration-700 scale-[1.01] group-hover:scale-105"
                 />
               </div>
-              
+
               <div className={cn(
                 "relative",
                 index % 2 === 1 && "lg:col-start-1"
               )}>
                 <div className={cn(
-                  "relative rounded-2xl p-8 transition-all duration-300",
+                  "relative rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all duration-300",
                   "bg-gradient-to-br border border-white/10",
                   feature.gradient || 'from-white/5 to-white/10'
                 )}>
-                  <h3 className="text-2xl font-semibold leading-7 mb-4">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold leading-tight mb-3 sm:mb-4">
                     {feature.title}
                   </h3>
-                  <p className="text-lg leading-7 text-muted-foreground mb-8">
+                  <p className="text-base sm:text-lg leading-relaxed text-muted-foreground mb-6 sm:mb-8">
                     {feature.description}
                   </p>
-                  <ul className="space-y-4 mb-8">
+                  <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                     {feature.benefits.map((benefit) => (
-                      <li 
+                      <li
                         key={benefit}
-                        className="flex items-center gap-3 text-sm text-muted-foreground"
+                        className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base text-muted-foreground"
                       >
-                        <div className="h-1.5 w-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors" />
+                        <div className="h-1.5 w-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors flex-shrink-0" />
                         {benefit}
                       </li>
                     ))}
                   </ul>
-                  <Button 
-                    className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl w-full"
+                  <Button
+                    size="lg"
+                    className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl hover:scale-105 w-full text-sm sm:text-base py-5 sm:py-6 rounded-xl"
                     asChild
                   >
                     <a href="https://app.perception.to/auth/sign-up">

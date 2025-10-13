@@ -359,16 +359,16 @@ export default function BitcoinMarketSentimentIndexPage() {
         </div>
 
         {/* Hero Section with Card Design */}
-        <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
+        <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28 border-b border-slate-200 dark:border-slate-800">
           {/* Subtle radial background like homepage */}
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.06),transparent_50%)]" />
 
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             {/* Hero Card with Background Image (matches homepage) */}
-            <div className="relative rounded-2xl overflow-hidden">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
               {/* Background Image */}
               <div className="absolute inset-0">
-                <img 
+                <img
                   src="/images/hero_image.avif"
                   alt="Background"
                   className="w-full h-full object-cover"
@@ -376,27 +376,27 @@ export default function BitcoinMarketSentimentIndexPage() {
               </div>
 
               {/* Content */}
-              <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
-                <div className="mx-auto max-w-3xl text-center">
+              <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-24">
+                <div className="mx-auto max-w-5xl text-center">
                   {/* Segment badge */}
-                  <div className="mb-6 sm:mb-8">
-                    <span className="inline-flex items-center rounded-full bg-transparent px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium leading-6 text-black ring-1 ring-inset ring-black/30 hover:ring-black/50 transition-all duration-300">
+                  <div className="mb-4 sm:mb-6">
+                    <span className="inline-flex items-center rounded-full bg-transparent border border-black/30 px-3 sm:px-4 py-1 sm:py-1.5 text-xs font-medium text-black">
                       For Traders & Investors
                     </span>
                   </div>
 
-                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto">
+                  <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight sm:leading-[0.95] text-black mb-6 sm:mb-10 lg:mb-14 px-2">
                     Bitcoin Market Sentiment
                   </h1>
-                  
-                  <p className="mt-4 sm:mt-5 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto">
+
+                  <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light leading-relaxed text-black/70 max-w-4xl mx-auto mb-8 sm:mb-12 px-2">
                     Comprehensive monthly analysis of Bitcoin market psychology, social media sentiment, and institutional behavior. Track the fear & greed index and identify market trends.
                   </p>
 
-                  <div className="mt-6 sm:mt-8 lg:mt-10 flex items-center justify-center gap-4">
+                  <div className="flex items-center justify-center px-2">
                     <Link to="/bitcoin-fear-greed-index">
-                      <button className="bg-black text-white hover:bg-black/90 transition-all font-normal px-6 lg:px-8 text-sm sm:text-base shadow-lg hover:shadow-xl py-3 lg:py-4 rounded-lg inline-flex items-center">
-                        <TrendingUp className="w-5 h-5 mr-2" />
+                      <button className="w-full sm:w-auto bg-black text-white hover:bg-gray-900 transition-all duration-300 font-semibold px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl inline-flex items-center justify-center">
+                        <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
                         Live Fear & Greed Index
                       </button>
                     </Link>
@@ -409,25 +409,25 @@ export default function BitcoinMarketSentimentIndexPage() {
 
         {/* Content Section */}
         <div className="relative z-10">
-          <div className="max-w-7xl mx-auto px-6 pb-32 space-y-24">
-            
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 lg:pb-32 space-y-12 sm:space-y-16 lg:space-y-24">
+
             {/* Monthly Selection */}
             <section>
-              <div className="text-center mb-16">
-                <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
+              <div className="text-center mb-12 sm:mb-16">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent px-2">
                   Historical Sentiment Data
                 </h2>
-                <p className="text-xl text-slate-600 dark:text-white/60 max-w-2xl mx-auto">
+                <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-white/60 max-w-2xl mx-auto px-2">
                   Explore sentiment trends across all available months with interactive visualizations
                 </p>
               </div>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
                 {monthlyData.map((monthData) => (
                   <button
                     key={monthData.slug}
                     onClick={() => setSelectedMonth(monthData)}
-                    className={`group relative p-6 rounded-2xl border transition-all duration-500 text-left overflow-hidden ${
+                    className={`group relative p-4 sm:p-6 rounded-xl sm:rounded-2xl border transition-all duration-500 text-left overflow-hidden ${
                       selectedMonth?.slug === monthData.slug
                         ? 'border-slate-500/50 bg-gradient-to-br from-slate-200/60 to-slate-100/80 dark:from-slate-800/40 dark:to-slate-900/60 shadow-2xl shadow-slate-500/25'
                         : 'border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 hover:shadow-xl hover:shadow-slate-500/5 dark:hover:shadow-white/5'
@@ -437,25 +437,25 @@ export default function BitcoinMarketSentimentIndexPage() {
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-200/10 to-slate-100/10 dark:from-slate-800/10 dark:to-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     
                     <div className="relative z-10">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="font-semibold text-slate-900 dark:text-white text-lg">
+                      <div className="flex items-center justify-between mb-3 sm:mb-4">
+                        <span className="font-semibold text-slate-900 dark:text-white text-base sm:text-lg">
                           {monthData.month} {monthData.year}
                         </span>
                         {monthData.isCurrent && (
-                          <span className="text-xs bg-slate-500/10 text-slate-700 dark:text-slate-300 px-3 py-1 rounded-full border border-slate-500/30">
+                          <span className="text-xs bg-slate-500/10 text-slate-700 dark:text-slate-300 px-2 sm:px-3 py-1 rounded-full border border-slate-500/30">
                             Current
                           </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-4xl font-bold text-slate-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                        <span className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
                           {monthData.averageSentiment}
                         </span>
                         {(() => { const cat = getSentimentCategory(monthData.averageSentiment); return (
-                          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${cat.color}`}>{cat.label}</span>
+                          <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-semibold ${cat.color}`}>{cat.label}</span>
                         ); })()}
                       </div>
-                      <div className="text-sm text-slate-600 dark:text-white/60 font-medium">
+                      <div className="text-xs sm:text-sm text-slate-600 dark:text-white/60 font-medium">
                         Fear & Greed Index
                       </div>
                     </div>

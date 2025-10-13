@@ -89,10 +89,10 @@ export function ApiPage() {
             {/* Content */}
             <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
               <div className="mx-auto max-w-2xl text-center">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal tracking-tight text-black">
+                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-black">
                   API Reference
                 </h1>
-                <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light">
+                <p className="mt-4 sm:mt-6 text-base sm:text-xl lg:text-2xl xl:text-3xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light">
                   Integrate real-time crypto market data and sentiment analysis into your applications with our powerful REST API.
                 </p>
                 
@@ -117,7 +117,7 @@ export function ApiPage() {
       {/* Features Grid */}
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature) => (
               <Card key={feature.title} className="group relative overflow-hidden">
                 <CardContent className="p-6">
@@ -137,8 +137,8 @@ export function ApiPage() {
       <section className="border-t py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-3xl font-bold">Quick Start</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <h2 className="text-2xl sm:text-3xl font-bold">Quick Start</h2>
+            <p className="mt-4 text-base sm:text-lg text-muted-foreground">
               Get started with our API in minutes. Here's a simple example to fetch cryptocurrency prices:
             </p>
             
@@ -174,8 +174,8 @@ export function ApiPage() {
       <section className="border-t py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-3xl font-bold">API Endpoints</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <h2 className="text-2xl sm:text-3xl font-bold">API Endpoints</h2>
+            <p className="mt-4 text-base sm:text-lg text-muted-foreground">
               Explore our comprehensive API endpoints for market data and sentiment analysis.
             </p>
             
@@ -211,8 +211,8 @@ export function ApiPage() {
       <section className="border-t py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-extralight">Ready to Get Started?</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <h2 className="text-2xl sm:text-3xl font-extralight">Ready to Get Started?</h2>
+            <p className="mt-4 text-base sm:text-lg text-muted-foreground">
               Sign up for a free API key and start building with our powerful API.
             </p>
             <div className="mt-8">

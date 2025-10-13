@@ -89,7 +89,7 @@ export function ProblemSolution() {
     ];
     
     // Initially style all words - simpler initial state
-    gsap.set(allInnerWords, { 
+    gsap.set(allInnerWords, {
       opacity: 0.3,
       color: (_, target) => {
         // Preserve orange color for highlighted words
@@ -97,7 +97,8 @@ export function ProblemSolution() {
           return '#fb923c';
         }
         return "rgba(255,255,255,0.3)";
-      }
+      },
+      force3D: true // Force GPU acceleration for better cross-browser performance
     });
     
     // Create a much simpler timeline that doesn't interfere with scroll
@@ -115,24 +116,37 @@ export function ProblemSolution() {
           return "rgba(255,255,255,1)";
         },
         duration: 0.3,
-        ease: "power2.out"
+        ease: "power2.out",
+        force3D: true // Force GPU acceleration for better cross-browser performance
       }, index * 0.05);
     });
     
-    // Much more natural ScrollTrigger - shorter pin duration and no scrub
+    // Scroll-scrubbing effect: pins section and ties animation to scroll progress
     ScrollTrigger.create({
       trigger: section,
-      start: "top center",
-      end: "bottom center",
-      pin: false, // Remove pinning to allow natural scroll
-      onEnter: () => tl.play(),
-      onLeave: () => tl.reverse(),
-      onEnterBack: () => tl.play(),
-      onLeaveBack: () => tl.reverse(),
+      start: "top top", // Pin when section reaches top of viewport
+      end: "+=200%", // Section stays pinned for 200% of viewport height worth of scrolling
+      pin: true, // Pin the section in place
+      pinSpacing: true, // Ensure consistent spacing across browsers
+      scrub: 1, // Smoothly tie animation progress to scroll position (1 second delay for smoothness)
+      animation: tl, // Link the timeline to scroll progress
+      anticipatePin: 1, // Helps prevent jump on pin (better mobile Safari support)
+      invalidateOnRefresh: true, // Recalculate on window resize/orientation change
+      fastScrollEnd: true, // Better handling of fast scrolling on mobile
     });
     
+    // Handle window resize and orientation changes
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+
     // Cleanup
     return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
       ScrollTrigger.getAll().forEach(st => st.kill());
       tl.kill();
     };

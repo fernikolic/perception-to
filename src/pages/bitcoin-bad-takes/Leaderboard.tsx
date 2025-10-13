@@ -56,7 +56,7 @@ export default function Leaderboard() {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <SEO
         title="Hall of Shame - Proof of Cringe"
         description="The most catastrophically wrong Bitcoin takes, ranked by the community."
@@ -64,11 +64,11 @@ export default function Leaderboard() {
       <header className="text-center mb-12">
         <div className="flex items-center justify-center mb-4">
           <Trophy className="h-8 w-8 text-orange-500 mr-3" />
-          <h1 className="text-4xl font-bold text-orange-500">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-orange-500">
             Hall of Shame
           </h1>
         </div>
-        <p className="text-gray-400 max-w-2xl mx-auto">
+        <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto">
           The most catastrophically wrong Bitcoin takes, ranked by the community.
         </p>
       </header>

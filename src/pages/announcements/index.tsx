@@ -55,10 +55,10 @@ export function AnnouncementsPage() {
             {/* Content */}
             <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
               <div className="mx-auto max-w-2xl text-center">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal tracking-tight text-black">
+                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-black">
                   Announcements
                 </h1>
-                <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light">
+                <p className="mt-4 sm:mt-6 text-base sm:text-xl lg:text-2xl xl:text-3xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light">
                   Stay updated with the latest news, product updates, and insights from the Perception team.
                 </p>
               </div>

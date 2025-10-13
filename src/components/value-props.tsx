@@ -79,52 +79,48 @@ export function ValueProps() {
 
     if (!section || !title || !cards) return;
 
-    // Initial states
-    gsap.set(title, { 
-      opacity: 0, 
-      y: 30,
+    // Initial states - More dramatic
+    gsap.set(title, {
+      opacity: 0,
+      y: 50,
+      scale: 0.9
+    });
+
+    gsap.set(cards.children, {
+      opacity: 0,
+      y: 100,
       scale: 0.95
     });
 
-    gsap.set(cards.children, { 
-      opacity: 0, 
-      y: 60,
-      scale: 0.9,
-      rotateX: 15
-    });
-
-    // Animation timeline
-    const tl = gsap.timeline({
+    // Title animation - Bold entrance
+    gsap.to(title, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 1.2,
+      ease: "power4.out",
       scrollTrigger: {
-        trigger: section,
-        start: "top 70%",
-        end: "bottom 30%",
+        trigger: title,
+        start: "top 80%",
         toggleActions: "play none none reverse"
       }
     });
 
-    // Title animation with Apple-like precision
-    tl.to(title, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.8,
-      ease: "power3.out"
-    })
-    
-    // Staggered card animations
-    .to(cards.children, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      rotateX: 0,
-      duration: 0.7,
-      ease: "power3.out",
-      stagger: {
-        amount: 0.3,
-        from: "start"
-      }
-    }, "-=0.3");
+    // Individual card animations - Each animates on scroll
+    Array.from(cards.children).forEach((card, index) => {
+      gsap.to(card, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 75%",
+          toggleActions: "play none none reverse"
+        }
+      });
+    });
 
     return () => {
       ScrollTrigger.getAll().forEach(st => st.kill());
@@ -132,85 +128,101 @@ export function ValueProps() {
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      className="relative overflow-hidden pt-12 sm:pt-16 lg:pt-20 pb-0 bg-black"
+      className="relative overflow-hidden py-12 sm:py-20 lg:py-32 bg-black"
     >
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mx-auto max-w-4xl text-center mb-12 lg:mb-16">
+      <div className="relative">
+        {/* Header - More dramatic */}
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 mb-16 sm:mb-24 lg:mb-32">
           <h2
             ref={titleRef}
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight leading-[1.1] mb-6 value-props-main-title"
-            style={{ color: '#ffffff !important', fontWeight: '300' }}
+            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[0.95] value-props-main-title"
+            style={{ color: '#ffffff', fontWeight: '700' }}
           >
             How smart teams win
           </h2>
         </div>
 
-        {/* Value Props Grid - Simplified for larger screenshots */}
-        <div 
+        {/* Value Props - Bold, full-width cards */}
+        <div
           ref={cardsRef}
-          className="grid gap-6 lg:gap-8"
+          className="space-y-0"
         >
           {valuePropItems.map((item, index) => (
             <div
               key={item.title}
-              className="group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.1] transition-all duration-700 ease-out hover:scale-[1.01] p-8 sm:p-10 lg:p-12"
+              className="group relative min-h-[85vh] flex items-center overflow-hidden"
               style={{
-                background: `linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005))`
+                background: index % 2 === 0
+                  ? 'linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 100%)'
+                  : 'linear-gradient(135deg, rgba(10,10,10,1) 0%, rgba(0,0,0,1) 100%)'
               }}
             >
-              {/* Card glow effect */}
-              <div 
+              {/* Bold gradient overlay */}
+              <div
                 className={`
-                  absolute inset-0 opacity-0 group-hover:opacity-100 
+                  absolute inset-0 opacity-20 group-hover:opacity-30
                   transition-opacity duration-700 ease-out
-                  bg-gradient-to-br ${item.gradient} blur-xl
+                  bg-gradient-to-br ${item.gradient}
                 `}
               />
-              
-              {/* Content - Adjusted for larger screenshots */}
-              <div className="relative z-10 grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-                {/* Text Content - Takes 2 columns */}
-                <div className={`lg:col-span-2 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <h3 
-                    className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-medium mb-6 lg:mb-8 leading-tight value-prop-title" 
-                    style={{ 
-                      color: '#ffffff !important',
-                      fontWeight: '500 !important'
-                    }}
-                    dangerouslySetInnerHTML={{ __html: item.title }}
-                  />
-                  <p className="text-lg sm:text-xl lg:text-2xl text-white/70 font-light leading-relaxed mb-6">
-                    {item.description}
-                  </p>
-                </div>
 
-                {/* Large Screenshot Area - Takes 3 columns */}
-                <div className={`lg:col-span-3 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                  <div 
-                    className="overflow-hidden rounded-2xl border border-white/[0.1] group-hover:border-white/[0.2] transition-all duration-500 shadow-2xl cursor-pointer hover:scale-[1.02]"
-                    onClick={() => {
-                      setSelectedImage(item.image);
-                      setSelectedTitle(item.title);
-                    }}
-                  >
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
+              {/* Dramatic lighting effect */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
+                style={{
+                  background: `radial-gradient(circle at ${index % 2 === 0 ? '30%' : '70%'} 50%, rgba(255,255,255,0.03) 0%, transparent 50%)`
+                }}
+              />
+
+              {/* Content */}
+              <div className="relative z-10 w-full mx-auto px-6 sm:px-8 lg:px-12">
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center max-w-[1600px] mx-auto">
+                  {/* Text Content - Bold and dramatic */}
+                  <div className={`lg:col-span-5 space-y-8 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                    <h3
+                      className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[0.95] tracking-tight value-prop-title"
+                      style={{
+                        color: '#ffffff',
+                        fontWeight: '700'
+                      }}
+                      dangerouslySetInnerHTML={{ __html: item.title }}
                     />
+                    <p className="text-xl sm:text-2xl lg:text-3xl text-white/80 font-light leading-relaxed max-w-2xl">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Image - Much larger and more prominent */}
+                  <div className={`lg:col-span-7 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                    <div
+                      className="relative overflow-hidden rounded-3xl border-2 border-white/[0.15] group-hover:border-white/[0.3] transition-all duration-700 shadow-2xl cursor-pointer transform group-hover:scale-[1.02] group-hover:rotate-1"
+                      onClick={() => {
+                        setSelectedImage(item.image);
+                        setSelectedTitle(item.title);
+                      }}
+                      style={{
+                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+                      }}
+                    >
+                      {/* Gradient overlay on image */}
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-700 mix-blend-overlay z-10`}
+                      />
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Subtle border animation */}
-              <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-white/[0.02] to-transparent animate-pulse" />
-              </div>
+              {/* Bottom border separator */}
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.1] to-transparent" />
             </div>
           ))}
         </div>
@@ -218,8 +230,8 @@ export function ValueProps() {
 
       {/* Image Modal */}
       {selectedImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+        <div
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
           <div className="relative max-w-7xl max-h-full">
@@ -228,14 +240,14 @@ export function ValueProps() {
                 e.stopPropagation();
                 setSelectedImage(null);
               }}
-              className="absolute -top-4 -right-4 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-2 transition-all duration-300"
+              className="absolute -top-4 -right-4 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-all duration-300"
             >
-              <X className="w-6 h-6 text-white" />
+              <X className="w-8 h-8 text-white" />
             </button>
             <img
               src={selectedImage}
               alt={selectedTitle}
-              className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl"
+              className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
           </div>

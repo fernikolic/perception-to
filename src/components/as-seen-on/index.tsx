@@ -35,11 +35,11 @@ export function AsSeenOn() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(30,58,138,0.1),transparent_50%)]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
-        <p className="text-center text-sm sm:text-base font-medium tracking-wider text-muted-foreground/80">
+      <div className="relative mx-auto max-w-7xl px-8 lg:px-12 py-20 sm:py-24 lg:py-28">
+        <p className="text-center text-base sm:text-lg lg:text-xl font-semibold tracking-wide text-muted-foreground/80 uppercase">
           As featured in
         </p>
-        <div className="mx-auto mt-8 sm:mt-12 lg:mt-16 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 items-center justify-items-center gap-x-6 sm:gap-x-8 lg:gap-x-12 gap-y-6 sm:gap-y-8 lg:gap-y-10">
+        <div className="mx-auto mt-12 sm:mt-16 lg:mt-20 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 items-center justify-items-center gap-x-8 sm:gap-x-10 lg:gap-x-16 gap-y-8 sm:gap-y-10 lg:gap-y-12">
           {publications.map((publication) => (
             <a
               key={publication.name}

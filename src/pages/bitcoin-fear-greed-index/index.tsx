@@ -43,11 +43,11 @@ export default function FearGreedIndexPage() {
               {/* Content */}
               <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
                 <div className="mx-auto max-w-3xl text-center">
-                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto mb-6 sm:mb-8">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal tracking-tight text-black max-w-4xl mx-auto mb-6 sm:mb-8">
                     Bitcoin fear & greed index
                   </h1>
-                  
-                  <p className="text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto mb-8">
+
+                  <p className="text-base sm:text-lg lg:text-xl xl:text-2xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto mb-8">
                     Track market sentiment with real-time data from multiple sources including social media, volatility, market momentum, and more.
                   </p>
 
@@ -74,7 +74,7 @@ export default function FearGreedIndexPage() {
 
         {/* Detailed Content Section */}
         <div className="relative z-10">
-          <div className="max-w-7xl mx-auto px-6 py-32 space-y-40">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-32 space-y-16 sm:space-y-24 lg:space-y-40">
             
             {/* What Is Section */}
             <section className="text-center">
@@ -87,7 +87,7 @@ export default function FearGreedIndexPage() {
                     <span className="font-medium">Market Psychology Decoded</span>
                   </div>
                   
-                  <h2 className="text-5xl font-bold mb-8 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent px-2">
                     What is the bitcoin fear & greed index?
                   </h2>
                 </div>
@@ -158,8 +158,8 @@ export default function FearGreedIndexPage() {
                   <span className="font-medium">Advanced Algorithm</span>
                 </div>
                 
-                <h3 className="text-4xl font-bold mb-4 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">How it's calculated</h3>
-                <p className="text-xl text-slate-600 dark:text-white/70 font-light max-w-4xl mx-auto">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent px-2">How it's calculated</h3>
+                <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-white/70 font-light max-w-4xl mx-auto px-2">
                   Unlike traditional metrics that rely on simple price data, our Fear & Greed Index uses advanced sentiment analysis 
                   from over 100+ sources, weighted by influence and velocity, to capture the true market psychology.
                 </p>
@@ -316,9 +316,9 @@ export default function FearGreedIndexPage() {
                   <span className="font-medium">Market Psychology Intelligence</span>
                 </div>
                 
-                <h3 className="text-4xl font-bold mb-4 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">Why it matters</h3>
-                <p className="text-xl text-slate-600 dark:text-white/70 font-light max-w-3xl mx-auto">
-                  Emotions drive markets. When fear grips the market, people may sell in a panic, creating price dips. When greed takes over, irrational exuberance can inflate bubbles. 
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent px-2">Why it matters</h3>
+                <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-white/70 font-light max-w-3xl mx-auto px-2">
+                  Emotions drive markets. When fear grips the market, people may sell in a panic, creating price dips. When greed takes over, irrational exuberance can inflate bubbles.
                   The Fear & Greed Index helps anyone interested in Bitcoin understand market sentiment and spot potential market turning points.
                 </p>
               </div>
@@ -391,11 +391,11 @@ export default function FearGreedIndexPage() {
 
             {/* Related Resources */}
             <section className="py-16">
-              <div className="text-center mb-16">
-                <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
+              <div className="text-center mb-12 sm:mb-16">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent px-2">
                   Related Bitcoin Analysis Tools
                 </h3>
-                <p className="text-xl text-slate-600 dark:text-white/70 max-w-3xl mx-auto mb-12">
+                <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-white/70 max-w-3xl mx-auto mb-8 sm:mb-12 px-2">
                   Enhance your Bitcoin analysis with our comprehensive suite of research and sentiment tools
                 </p>
               </div>

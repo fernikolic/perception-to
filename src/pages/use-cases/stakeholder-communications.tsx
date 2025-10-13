@@ -33,10 +33,10 @@ export function StakeholderCommunicationsPage() {
                   </a>
 
                   <div className="mb-8">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-black mb-6">
+                    <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-black mb-6">
                       Stakeholder Communications
                     </h1>
-                    <p className="text-xl text-black/70">
+                    <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light text-black/70">
                       Automated weekly stakeholder reports for public companies
                     </p>
                   </div>
@@ -53,7 +53,7 @@ export function StakeholderCommunicationsPage() {
               <div className="mb-4">
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">The Challenge</span>
               </div>
-              <p className="text-2xl sm:text-3xl font-light text-slate-900 dark:text-white leading-relaxed">
+              <p className="text-xl sm:text-2xl md:text-3xl font-light text-slate-900 dark:text-white leading-relaxed">
                 Your shareholders and stakeholders want regular updates on your media presence, but your team wastes hours each week manually tracking mentions and compiling coverage summaries.
               </p>
             </div>
@@ -66,7 +66,7 @@ export function StakeholderCommunicationsPage() {
             <div className="mx-auto max-w-3xl">
               <div className="mb-12">
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4 block">The Solution</span>
-                <h2 className="text-3xl sm:text-4xl font-semibold text-slate-900 dark:text-white mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
                   Automated weekly/monthly stakeholder reports
                 </h2>
               </div>
@@ -141,7 +141,7 @@ export function StakeholderCommunicationsPage() {
         <section className="py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl sm:text-4xl font-semibold text-slate-900 dark:text-white mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
                 Consistent communication without the burden
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-10">

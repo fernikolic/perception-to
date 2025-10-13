@@ -21,15 +21,15 @@ export default function Timeline() {
     .sort((a, b) => a.date.getTime() - b.date.getTime());
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <header className="text-center mb-12">
         <div className="flex items-center justify-center mb-4">
           <Clock3 className="h-8 w-8 text-orange-500 mr-3" />
-          <h1 className="text-4xl font-bold text-orange-500">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-orange-500">
             Timeline of Takes
           </h1>
         </div>
-        <p className="text-gray-400 max-w-2xl mx-auto">
+        <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto">
           Watch Bitcoin grow while critics get it wrong, again and again.
         </p>
       </header>

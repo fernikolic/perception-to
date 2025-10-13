@@ -33,10 +33,10 @@ export function JournalismPage() {
                   </a>
 
                   <div className="mb-8">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-black mb-6">
+                    <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-black mb-6">
                       Data-Backed Journalism
                     </h1>
-                    <p className="text-xl text-black/70">
+                    <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light text-black/70">
                       Turn insights into evidence with quantifiable media intelligence
                     </p>
                   </div>
@@ -53,7 +53,7 @@ export function JournalismPage() {
               <div className="mb-4">
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">The Challenge</span>
               </div>
-              <p className="text-2xl sm:text-3xl font-light text-slate-900 dark:text-white leading-relaxed">
+              <p className="text-xl sm:text-2xl md:text-3xl font-light text-slate-900 dark:text-white leading-relaxed">
                 You're writing about a trend or controversy, but you need quantifiable data to back up your reporting. Traditional sentiment tools give you generic social media metrics, not media-specific intelligence.
               </p>
             </div>
@@ -66,7 +66,7 @@ export function JournalismPage() {
             <div className="mx-auto max-w-3xl">
               <div className="mb-12">
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4 block">The Solution</span>
-                <h2 className="text-3xl sm:text-4xl font-semibold text-slate-900 dark:text-white mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
                   Turn insights into evidence
                 </h2>
               </div>
@@ -115,7 +115,7 @@ export function JournalismPage() {
         <section className="py-24 sm:py-32 border-b border-slate-200 dark:border-slate-800">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
-              <p className="text-3xl sm:text-4xl font-light text-slate-900 dark:text-white leading-relaxed">
+              <p className="text-2xl sm:text-3xl md:text-4xl font-light text-slate-900 dark:text-white leading-relaxed">
                 You publish with data.<br/>
                 Your competitors publish with opinions.
               </p>
@@ -127,7 +127,7 @@ export function JournalismPage() {
         <section className="py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl sm:text-4xl font-semibold text-slate-900 dark:text-white mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
                 Build authority through quantifiable insights
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-10">

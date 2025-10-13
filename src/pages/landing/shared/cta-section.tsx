@@ -12,19 +12,20 @@ interface CTASectionProps {
 
 export function CTASection({ title, subtitle, primaryCTA, secondaryCTA, backgroundClass, children }: CTASectionProps) {
   return (
-    <div className={cn("relative py-24 sm:py-32", backgroundClass)}>
+    <div className={cn("relative py-12 sm:py-16 lg:py-20", backgroundClass)}>
       {children}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extralight tracking-tight sm:text-4xl">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight px-2">
             {title}
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-3xl text-base sm:text-lg lg:text-xl leading-relaxed text-muted-foreground px-2">
             {subtitle}
           </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Button 
-              className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl"
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-2">
+            <Button
+              size="lg"
+              className="w-full sm:w-auto bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl hover:scale-105 px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl font-semibold rounded-2xl"
               asChild
             >
               <a href="https://app.perception.to/auth/sign-up">
@@ -32,9 +33,9 @@ export function CTASection({ title, subtitle, primaryCTA, secondaryCTA, backgrou
               </a>
             </Button>
             {secondaryCTA && (
-              <Button 
-                variant="link" 
-                className="text-white hover:text-white/90"
+              <Button
+                variant="link"
+                className="text-white hover:text-white/90 text-sm sm:text-base"
                 asChild
               >
                 <a href="/pricing#pricing">

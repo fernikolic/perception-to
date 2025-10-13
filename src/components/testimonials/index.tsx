@@ -15,26 +15,30 @@ export function Testimonials() {
     });
 
   return (
-    <section id="testimonials" className="py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-extralight tracking-tight sm:text-5xl lg:text-6xl">
+    <section id="testimonials" className="py-32 sm:py-40 lg:py-48">
+      <div className="mx-auto max-w-7xl px-8 lg:px-12">
+        <div className="mx-auto max-w-4xl text-center mb-20 sm:mb-24">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.2] pb-4 overflow-visible">
             Backed by those
             <br />
-            <span className="bg-gradient-to-r from-orange-500 to-orange-800 inline-block text-transparent bg-clip-text leading-tight">
+            <span className="bg-gradient-to-r from-orange-500 to-orange-800 inline-block text-transparent bg-clip-text font-bold pb-2">
               defining what's next
             </span>
           </h2>
         </div>
-        <div className="mx-auto mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto mt-20 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredTestimonials.map((testimonial, index) => (
             <div key={index}>
               <TweetCard author={testimonial.author} />
             </div>
           ))}
         </div>
-        <div className="mt-12 text-center">
-          <Button variant="outline" asChild>
+        <div className="mt-16 sm:mt-20 text-center">
+          <Button
+            variant="outline"
+            className="text-base sm:text-lg px-8 py-6 rounded-2xl font-semibold hover:scale-105 transition-all duration-300"
+            asChild
+          >
             <Link to="/testimonials">
               View All Testimonials
             </Link>

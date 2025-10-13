@@ -14,7 +14,7 @@ export function PrivacyPage() {
           Back
         </Button>
 
-        <h1 className="mb-8 text-4xl font-bold">Privacy Policy</h1>
+        <h1 className="mb-8 text-2xl sm:text-3xl md:text-4xl font-bold">Privacy Policy</h1>
         <div className="prose prose-neutral dark:prose-invert max-w-none">
           <p className="lead">Last updated: August 7, 2025</p>
 

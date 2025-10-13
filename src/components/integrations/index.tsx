@@ -186,34 +186,35 @@ const rows = [
 
 export function Integrations() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32 !bg-black">
+    <section className="relative overflow-hidden py-32 sm:py-40 lg:py-48 !bg-black">
       {/* Gradient Background */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,0.05),transparent)]" />
-      
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-extralight tracking-tight sm:text-5xl lg:text-6xl !text-white">
-            Track opportunities across            <span className="bg-gradient-to-r from-orange-500 to-orange-800 inline-block text-transparent bg-clip-text">
+
+      <div className="mx-auto max-w-7xl px-8 lg:px-12">
+        <div className="mx-auto max-w-5xl text-center mb-20 sm:mb-24">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] !text-white">
+            Track opportunities across{' '}
+            <span className="bg-gradient-to-r from-orange-500 to-orange-800 inline-block text-transparent bg-clip-text font-bold">
               100+ sources
             </span>
           </h2>
-          <p className="mt-6 text-lg leading-8 !text-white/80">
-            From regulatory filings to industry reports, filtered into<br />actionable opportunities & strategic insights.
+          <p className="mt-8 sm:mt-10 text-xl sm:text-2xl lg:text-3xl leading-relaxed !text-white/80 font-light">
+            From regulatory filings to industry reports, filtered into
+            actionable opportunities & strategic insights.
           </p>
-          <div className="mt-6 flex justify-center">
-            <Button 
-              className="!bg-gray-800 !text-gray-200 hover:!bg-gray-700 !border-0 !shadow-none" 
-              size="sm"
+          <div className="mt-10 sm:mt-12 flex justify-center">
+            <Button
+              className="!bg-gray-800 !text-white hover:!bg-gray-700 !border-0 !shadow-lg hover:scale-105 transition-all duration-300 text-base sm:text-lg px-8 py-6 rounded-2xl font-semibold"
               asChild
             >
               <a href="/methodology">
-                See the full list <ArrowRight className="ml-2 h-4 w-4" />
+                See the full list <ArrowRight className="ml-2 h-5 w-5" />
               </a>
             </Button>
           </div>
         </div>
-        
-        <div className="mx-auto mt-16 max-w-7xl">
+
+        <div className="mx-auto mt-20 sm:mt-24 max-w-7xl">
           <div className="scroll-container">
             <div className="scroll-mask-left" />
             <div className="scroll-mask-right" />

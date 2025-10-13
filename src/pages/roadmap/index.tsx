@@ -119,10 +119,10 @@ export function RoadmapPage() {
             {/* Content */}
             <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
               <div className="mx-auto max-w-2xl text-center">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal tracking-tight text-black">
+                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-black">
                   Product Roadmap
                 </h1>
-                <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light">
+                <p className="mt-4 sm:mt-6 text-base sm:text-xl lg:text-2xl xl:text-3xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light">
                   Explore our vision for the future. See what we're building and what's coming next to help you make better decisions in emerging finance.
                 </p>
                 <div className="mt-8 sm:mt-10 flex items-center justify-center gap-x-6">
@@ -145,11 +145,11 @@ export function RoadmapPage() {
       {/* Simple Gantt Chart Section */}
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Ideas Column */}
             <div className="space-y-4">
               <div className="mb-6">
-                <h2 className="text-xl font-semibold text-center">Ideas</h2>
+                <h2 className="text-lg sm:text-xl font-semibold text-center">Ideas</h2>
                 <div className="mt-1 h-1 bg-muted rounded-full" />
               </div>
               {milestones.filter(m => m.status === 'idea').map((milestone) => (
@@ -175,7 +175,7 @@ export function RoadmapPage() {
             {/* In Progress Column */}
             <div className="space-y-4">
               <div className="mb-6">
-                <h2 className="text-xl font-semibold text-center">In Progress</h2>
+                <h2 className="text-lg sm:text-xl font-semibold text-center">In Progress</h2>
                 <div className="mt-1 h-1 bg-primary rounded-full" />
               </div>
               {milestones.filter(m => m.status === 'in-progress').map((milestone) => (
@@ -201,7 +201,7 @@ export function RoadmapPage() {
             {/* Completed Column */}
             <div className="space-y-4">
               <div className="mb-6">
-                <h2 className="text-xl font-semibold text-center">Completed</h2>
+                <h2 className="text-lg sm:text-xl font-semibold text-center">Completed</h2>
                 <div className="mt-1 h-1 bg-green-500 rounded-full" />
               </div>
               {milestones.filter(m => m.status === 'completed').map((milestone) => (
@@ -231,8 +231,8 @@ export function RoadmapPage() {
       <section className="border-t py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold">Shape Our Future</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <h2 className="text-2xl sm:text-3xl font-bold">Shape Our Future</h2>
+            <p className="mt-4 text-base sm:text-lg text-muted-foreground">
               Have suggestions for our roadmap? We'd love to hear from you.
               Your feedback helps us build better features.
             </p>

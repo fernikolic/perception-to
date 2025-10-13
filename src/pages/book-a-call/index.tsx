@@ -32,10 +32,10 @@ export default function BookACallPage() {
             {/* Content */}
             <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-10 sm:py-14 lg:py-16">
               <div className="mx-auto max-w-3xl text-center">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-black mb-4">
+                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-black mb-4">
                   Schedule a demo
                 </h1>
-                <p className="text-sm sm:text-base lg:text-lg leading-6 sm:leading-7 text-black/70 font-light max-w-2xl mx-auto">
+                <p className="text-base sm:text-xl lg:text-2xl leading-6 sm:leading-7 text-black/70 font-light max-w-2xl mx-auto">
                   This is not a sales call. The goal is to understand your needs and to check together on Perception's abilities and see if it is a perfect fit for you.
                 </p>
               </div>
@@ -55,10 +55,10 @@ export default function BookACallPage() {
           
           {/* Email contact option */}
           <div className="text-center mb-20 bg-gray-50 rounded-xl p-8 border border-gray-100">
-            <h3 className="text-lg font-medium text-gray-900 mb-3">
+            <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-3">
               Prefer email?
             </h3>
-            <p className="text-base text-gray-600">
+            <p className="text-sm sm:text-base text-gray-600">
               Send any questions to{' '}
               <a 
                 href="mailto:fernando@btcperception.com" 
@@ -76,7 +76,7 @@ export default function BookACallPage() {
       <section className="relative pb-16 md:pb-24 bg-gray-50/50">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="pt-16 md:pt-24">
-            <h2 className="text-2xl md:text-3xl font-extralight text-center mb-10 md:mb-14">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extralight text-center mb-10 md:mb-14">
               Frequently Asked Questions
             </h2>
             <FaqList />

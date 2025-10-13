@@ -33,10 +33,10 @@ export function PRAgencyPage() {
                   </a>
 
                   <div className="mb-8">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-black mb-6">
+                    <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-black mb-6">
                       PR Agency Intelligence & Opportunity Engine
                     </h1>
-                    <p className="text-xl text-black/70">
+                    <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light text-black/70">
                       Stop guessing. Start targeting with data-driven precision.
                     </p>
                   </div>
@@ -53,7 +53,7 @@ export function PRAgencyPage() {
               <div className="mb-4">
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">The Challenge</span>
               </div>
-              <p className="text-2xl sm:text-3xl font-light text-slate-900 dark:text-white leading-relaxed">
+              <p className="text-xl sm:text-2xl md:text-3xl font-light text-slate-900 dark:text-white leading-relaxed">
                 You're drowning in manual research. Tracking client performance takes hours. Finding pitching angles feels like guesswork. You can't prove ROI beyond "here are your clips."
               </p>
             </div>
@@ -66,12 +66,12 @@ export function PRAgencyPage() {
             <div className="mx-auto max-w-5xl">
               <div className="mb-16">
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4 block">The Solution</span>
-                <h2 className="text-3xl sm:text-4xl font-semibold text-slate-900 dark:text-white mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
                   Your unfair PR advantage
                 </h2>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Client Performance Tracking */}
                 <div className="border border-slate-200 dark:border-slate-800 rounded-2xl p-8 bg-white dark:bg-black">
                   <div className="mb-6">
@@ -164,7 +164,7 @@ export function PRAgencyPage() {
             <div className="mx-auto max-w-3xl">
               <div className="mb-8">
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4 block">Example in Action</span>
-                <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white mb-6">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-900 dark:text-white mb-6">
                   Your client is a Bitcoin mining company. You want to pitch a sustainability story.
                 </h2>
               </div>
@@ -195,7 +195,7 @@ export function PRAgencyPage() {
         <section className="py-24 sm:py-32 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl">
-              <div className="grid sm:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                 <div>
                   <div className="text-5xl font-semibold text-slate-900 dark:text-white mb-2">
                     15+
@@ -229,7 +229,7 @@ export function PRAgencyPage() {
         <section className="py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl sm:text-4xl font-semibold text-slate-900 dark:text-white mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
                 Transform your PR from guesswork to precision
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-10">

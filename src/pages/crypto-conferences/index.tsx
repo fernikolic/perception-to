@@ -138,7 +138,8 @@ export function CryptoConferencesPage() {
   }, []);
 
   const filteredConferences = useMemo(() => {
-    const today = new Date('2025-09-13'); // Current date
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set to start of day for accurate comparison
 
     return conferences.filter(conference => {
       // Only show current and future events
@@ -163,14 +164,16 @@ export function CryptoConferencesPage() {
   }, [searchTerm, selectedType, selectedLocation, selectedTimeframe]);
 
   const upcomingConferences = useMemo(() => {
-    const today = new Date('2025-09-13');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set to start of day for accurate comparison
     return conferences
       .filter(conf => new Date(conf.date) >= today)
       .slice(0, 6);
   }, []);
 
   const conferencesByMonth = useMemo(() => {
-    const today = new Date('2025-09-13');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set to start of day for accurate comparison
     const futureConferences = conferences.filter(conf => new Date(conf.date) >= today);
 
     const grouped = futureConferences.reduce((acc, conf) => {
@@ -226,13 +229,13 @@ export function CryptoConferencesPage() {
       <div className="min-h-screen bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Hero Section with Card Design */}
-          <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
+          <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28">
             {/* Subtle radial background like homepage */}
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.06),transparent_50%)]" />
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
               {/* Hero Card with Background Image (matches homepage) */}
-              <div className="relative rounded-2xl overflow-hidden">
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
                 {/* Background Image */}
                 <div className="absolute inset-0">
                   <img
@@ -246,9 +249,9 @@ export function CryptoConferencesPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60" />
 
                 {/* Content */}
-                <div className="relative px-8 sm:px-16 py-20 sm:py-32 text-center text-white">
+                <div className="relative px-4 sm:px-8 lg:px-16 py-12 sm:py-20 lg:py-32 text-center text-white">
                   <h1
-                    className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight"
+                    className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 lg:mb-10 leading-tight sm:leading-[0.95] px-2"
                     style={{ color: 'white' }}
                   >
                     Bitcoin & Blockchain
@@ -256,28 +259,28 @@ export function CryptoConferencesPage() {
                       Conferences
                     </span>
                   </h1>
-                  <p className="text-lg sm:text-xl lg:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed text-white/90">
+                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-10 sm:mb-12 lg:mb-16 max-w-4xl mx-auto leading-relaxed text-white/90 font-light px-2">
                     The definitive directory of cryptocurrency conferences, Bitcoin meetups, and blockchain summits.
                     Connecting the global crypto community across {conferences.length} events worldwide.
                   </p>
 
                   {/* Stats */}
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-8 sm:mt-12 lg:mt-16">
                     <div className="text-center">
-                      <div className="text-3xl lg:text-4xl font-bold text-white mb-2">{conferences.length}</div>
-                      <div className="text-sm lg:text-base font-medium text-white/80">Global Events</div>
+                      <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-1 sm:mb-2">{conferences.length}</div>
+                      <div className="text-xs sm:text-sm lg:text-base font-medium text-white/80">Global Events</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl lg:text-4xl font-bold text-white mb-2">30+</div>
-                      <div className="text-sm lg:text-base font-medium text-white/80">Countries</div>
+                      <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-1 sm:mb-2">30+</div>
+                      <div className="text-xs sm:text-sm lg:text-base font-medium text-white/80">Countries</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl lg:text-4xl font-bold text-white mb-2">15+</div>
-                      <div className="text-sm lg:text-base font-medium text-white/80">Event Types</div>
+                      <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-1 sm:mb-2">15+</div>
+                      <div className="text-xs sm:text-sm lg:text-base font-medium text-white/80">Event Types</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl lg:text-4xl font-bold text-white mb-2">50+</div>
-                      <div className="text-sm lg:text-base font-medium text-white/80">Cities</div>
+                      <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-1 sm:mb-2">50+</div>
+                      <div className="text-xs sm:text-sm lg:text-base font-medium text-white/80">Cities</div>
                     </div>
                   </div>
                 </div>
@@ -286,20 +289,20 @@ export function CryptoConferencesPage() {
           </section>
 
           {/* Search Section - Apple Style */}
-          <section className="py-12">
-            <div className="max-w-3xl mx-auto">
-              <div className="relative mb-8">
-                <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+          <section className="py-8 sm:py-12">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6">
+              <div className="relative mb-6 sm:mb-8">
+                <SearchIcon className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
                 <Input
                   placeholder="Search conferences, locations, or event types"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 h-14 text-lg border-gray-200 rounded-2xl bg-gray-50 focus:bg-white transition-all duration-200 focus:ring-0 focus:border-gray-300"
+                  className="pl-10 sm:pl-12 h-12 sm:h-14 text-base sm:text-lg border-gray-200 rounded-xl sm:rounded-2xl bg-gray-50 focus:bg-white transition-all duration-200 focus:ring-0 focus:border-gray-300"
                 />
               </div>
 
               {/* Refined Filters */}
-              <div className="flex flex-wrap justify-center gap-3 mb-8">
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
                 <Select value={selectedType} onValueChange={setSelectedType}>
                   <SelectTrigger className="w-auto min-w-[140px] h-11 rounded-full border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors">
                     <SelectValue placeholder="Event Type" />
@@ -342,13 +345,13 @@ export function CryptoConferencesPage() {
           </section>
 
           {/* Featured Upcoming Events - Apple Style */}
-          <section className="py-20 bg-white">
-            <div className="max-w-6xl mx-auto px-6">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
+          <section className="py-12 sm:py-16 lg:py-20 bg-white">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+              <div className="text-center mb-12 sm:mb-16">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-4 sm:mb-6 px-2">
                   Upcoming events
                 </h2>
-                <p className="text-xl text-gray-600">
+                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-600 font-light px-2">
                   Next major conferences and events
                 </p>
               </div>
@@ -388,13 +391,13 @@ export function CryptoConferencesPage() {
           </section>
 
           {/* Main Conference Listing - Apple Style */}
-          <section className="py-20 bg-gray-50/30">
-            <div className="max-w-6xl mx-auto px-6">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
+          <section className="py-12 sm:py-16 lg:py-20 bg-gray-50/30">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+              <div className="text-center mb-12 sm:mb-16">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-4 sm:mb-6 px-2">
                   All conferences
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-base sm:text-lg lg:text-xl text-gray-600 font-light max-w-3xl mx-auto px-2">
                   Browse the complete directory of Bitcoin and blockchain events worldwide.
                 </p>
               </div>
@@ -554,91 +557,91 @@ export function CryptoConferencesPage() {
           </section>
 
           {/* Conference Types Guide - Apple Style */}
-          <section className="py-20 bg-white">
-            <div className="max-w-6xl mx-auto px-6">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
+          <section className="py-12 sm:py-16 lg:py-20 bg-white">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+              <div className="text-center mb-12 sm:mb-16">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-4 sm:mb-6 px-2">
                   Event categories
                 </h2>
-                <p className="text-xl text-gray-600">
+                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-600 font-light px-2">
                   Understanding different types of crypto events
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="rounded-3xl bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center">
-                      <span className="text-2xl">₿</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                <div className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl sm:text-2xl">₿</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">Bitcoin events</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Bitcoin events</h3>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Pure Bitcoin conferences focusing on the original cryptocurrency, featuring technical discussions,
                     adoption strategies, and Lightning Network developments.
                   </p>
                 </div>
 
-                <div className="rounded-3xl bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center">
-                      <span className="text-2xl">🔗</span>
+                <div className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl sm:text-2xl">🔗</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">Blockchain technology</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Blockchain technology</h3>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Technical conferences exploring blockchain infrastructure, consensus mechanisms,
                     scalability solutions, and enterprise blockchain applications.
                   </p>
                 </div>
 
-                <div className="rounded-3xl bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center">
-                      <span className="text-2xl">🏛️</span>
+                <div className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl sm:text-2xl">🏛️</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">Institutional events</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Institutional events</h3>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     High-level conferences for institutional investors, asset managers, and traditional
                     finance professionals entering the digital asset space.
                   </p>
                 </div>
 
-                <div className="rounded-3xl bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center">
-                      <span className="text-2xl">🎓</span>
+                <div className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl sm:text-2xl">🎓</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">Academic conferences</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Academic conferences</h3>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     University-hosted events featuring peer-reviewed research, academic papers,
                     and scholarly discussions on cryptography and blockchain technology.
                   </p>
                 </div>
 
-                <div className="rounded-3xl bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-yellow-100 rounded-2xl flex items-center justify-center">
-                      <span className="text-2xl">⚖️</span>
+                <div className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl sm:text-2xl">⚖️</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">Policy & regulation</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Policy & regulation</h3>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Government and regulatory-focused events discussing compliance, policy development,
                     and the intersection of crypto with traditional legal frameworks.
                   </p>
                 </div>
 
-                <div className="rounded-3xl bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center">
-                      <span className="text-2xl">🌐</span>
+                <div className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl sm:text-2xl">🌐</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">Global summits</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Global summits</h3>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Large-scale international conferences bringing together diverse stakeholders
                     from across the cryptocurrency and blockchain ecosystem.
                   </p>
@@ -648,62 +651,63 @@ export function CryptoConferencesPage() {
           </section>
 
           {/* Geographic Distribution - Apple Style */}
-          <section className="py-20 bg-gray-50/30">
-            <div className="max-w-6xl mx-auto px-6">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
+          <section className="py-12 sm:py-16 lg:py-20 bg-gray-50/30">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+              <div className="text-center mb-12 sm:mb-16">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-4 sm:mb-6 px-2">
                   Global event distribution
                 </h2>
-                <p className="text-xl text-gray-600">
+                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-600 font-light px-2">
                   Conferences happening worldwide
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div className="text-center p-8 rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
-                  <div className="text-4xl lg:text-5xl font-light text-gray-900 mb-2">🇺🇸</div>
-                  <div className="text-xl font-semibold text-gray-900 mb-1">North America</div>
-                  <div className="text-gray-600">Major hubs in USA & Canada</div>
+              <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                <div className="text-center p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-1 sm:mb-2">🇺🇸</div>
+                  <div className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-0.5 sm:mb-1">North America</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Major hubs in USA & Canada</div>
                 </div>
-                <div className="text-center p-8 rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
-                  <div className="text-4xl lg:text-5xl font-light text-gray-900 mb-2">🇪🇺</div>
-                  <div className="text-xl font-semibold text-gray-900 mb-1">Europe</div>
-                  <div className="text-gray-600">Leading crypto innovation regions</div>
+                <div className="text-center p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-1 sm:mb-2">🇪🇺</div>
+                  <div className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-0.5 sm:mb-1">Europe</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Leading crypto innovation regions</div>
                 </div>
-                <div className="text-center p-8 rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
-                  <div className="text-4xl lg:text-5xl font-light text-gray-900 mb-2">🌏</div>
-                  <div className="text-xl font-semibold text-gray-900 mb-1">Asia Pacific</div>
-                  <div className="text-gray-600">Fast-growing crypto markets</div>
+                <div className="text-center p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-1 sm:mb-2">🌏</div>
+                  <div className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-0.5 sm:mb-1">Asia Pacific</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Fast-growing crypto markets</div>
                 </div>
-                <div className="text-center p-8 rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
-                  <div className="text-4xl lg:text-5xl font-light text-gray-900 mb-2">🌍</div>
-                  <div className="text-xl font-semibold text-gray-900 mb-1">Global</div>
-                  <div className="text-gray-600">Worldwide adoption events</div>
+                <div className="text-center p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-1 sm:mb-2">🌍</div>
+                  <div className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-0.5 sm:mb-1">Global</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Worldwide adoption events</div>
                 </div>
               </div>
             </div>
           </section>
 
           {/* Related Resources */}
-          <section className="py-20">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl font-light text-gray-900 mb-4">
-                Related resources
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Enhance your conference experience with market intelligence
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <section className="py-12 sm:py-16 lg:py-20">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+              <div className="text-center mb-12 sm:mb-16">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-4 sm:mb-6 px-2">
+                  Related resources
+                </h2>
+                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-600 font-light max-w-3xl mx-auto px-2">
+                  Enhance your conference experience with market intelligence
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
               <Link
                 to="/bitcoin-market-sentiment"
-                className="bg-white rounded-3xl p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer group block"
+                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer group block"
               >
-                <div className="mb-6">
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                <div className="mb-4 sm:mb-6">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-3 group-hover:text-blue-600 transition-colors">
                     Bitcoin market sentiment
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Track Bitcoin sentiment trends and market perception analysis to time your conference attendance with market cycles.
                   </p>
                 </div>
@@ -711,13 +715,13 @@ export function CryptoConferencesPage() {
 
               <Link
                 to="/bitcoin-fear-greed-index"
-                className="bg-white rounded-3xl p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer group block"
+                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer group block"
               >
-                <div className="mb-6">
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                <div className="mb-4 sm:mb-6">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-3 group-hover:text-blue-600 transition-colors">
                     Fear & greed index
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Monitor crypto market emotions to understand the sentiment context during conference events.
                   </p>
                 </div>
@@ -725,17 +729,18 @@ export function CryptoConferencesPage() {
 
               <Link
                 to="/bitcoin-media-research"
-                className="bg-white rounded-3xl p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer group block"
+                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer group block"
               >
-                <div className="mb-6">
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                <div className="mb-4 sm:mb-6">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-3 group-hover:text-blue-600 transition-colors">
                     Bitcoin media research
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Stay updated on Bitcoin and crypto media coverage, including conference highlights and industry news.
                   </p>
                 </div>
               </Link>
+              </div>
             </div>
           </section>
 
