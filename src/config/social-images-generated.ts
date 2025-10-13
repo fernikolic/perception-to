@@ -1,5 +1,5 @@
 // Auto-generated file - do not edit manually
-// Generated on: 2025-10-13T05:15:50.603Z
+// Generated on: 2025-10-13T05:28:17.743Z
 
 export interface AvailableSocialImage {
   url: string;

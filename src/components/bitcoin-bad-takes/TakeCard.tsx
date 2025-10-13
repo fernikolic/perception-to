@@ -64,7 +64,7 @@ export default function TakeCard({ take, showShareButton = false }: TakeCardProp
   const isDetailPage = location.pathname === `/bitcoin-bad-takes/take/${take.slug}`;
 
   return (
-    <div 
+    <div
       className={cn(
         "w-full max-w-4xl mx-auto bg-background/60 backdrop-blur-xl rounded-3xl border border-border/10 shadow-2xl shadow-black/5 transition-all duration-500 hover:shadow-3xl hover:shadow-black/10 min-h-[600px] flex flex-col",
         isHovered && "scale-[1.01]"
@@ -75,16 +75,16 @@ export default function TakeCard({ take, showShareButton = false }: TakeCardProp
       <div className="p-4 sm:p-6 flex flex-col flex-1">
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-4">
           {!isDetailPage ? (
-            <Link 
+            <Link
               to={`/bitcoin-bad-takes/take/${take.slug}`}
-              className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground/70 hover:text-foreground transition-all duration-300 font-medium"
+              className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground/70 hover:text-foreground transition-all duration-300 font-bold"
             >
               <span>{format(new Date(take.date), 'MMM d, yyyy')}</span>
               <span className="w-1 h-1 bg-muted-foreground/40 rounded-full"></span>
               <span>{take.outlet}</span>
             </Link>
           ) : (
-            <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground/70 font-medium">
+            <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground/70 font-bold">
               <span>{format(new Date(take.date), 'MMM d, yyyy')}</span>
               <span className="w-1 h-1 bg-muted-foreground/40 rounded-full"></span>
               <span>{take.outlet}</span>
@@ -94,15 +94,15 @@ export default function TakeCard({ take, showShareButton = false }: TakeCardProp
             {(showShareButton !== false) && (
               <button
                 onClick={handleShare}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/30 backdrop-blur-sm border border-border/20 hover:bg-muted/50 hover:border-[#1DA1F2]/30 text-muted-foreground hover:text-[#1DA1F2] transition-all duration-300 text-sm font-medium"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/30 backdrop-blur-sm border border-border/20 hover:bg-muted/50 hover:border-[#1DA1F2]/30 text-muted-foreground hover:text-[#1DA1F2] transition-all duration-300 text-sm font-bold"
               >
                 <XIcon />
                 <span className="hidden sm:inline">Share</span>
               </button>
             )}
-            <a 
-              href={take.url} 
-              target="_blank" 
+            <a
+              href={take.url}
+              target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-muted/30 backdrop-blur-sm border border-border/20 hover:bg-muted/50 hover:border-foreground/30 text-muted-foreground hover:text-foreground transition-all duration-300 group"
             >
@@ -164,7 +164,7 @@ export default function TakeCard({ take, showShareButton = false }: TakeCardProp
 
         <div className="relative flex-1 flex items-center">
           <div className="bg-gradient-to-br from-muted/20 to-muted/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-border/10 w-full">
-            <blockquote className="text-base sm:text-lg leading-relaxed font-light text-foreground/90 italic relative">
+            <blockquote className="text-base sm:text-lg leading-relaxed font-medium text-foreground/90 italic relative">
               <span className="absolute -top-1 -left-1 text-3xl text-muted-foreground/30 font-serif">"</span>
               {take.description}
               <span className="absolute -bottom-3 -right-1 text-3xl text-muted-foreground/30 font-serif">"</span>
