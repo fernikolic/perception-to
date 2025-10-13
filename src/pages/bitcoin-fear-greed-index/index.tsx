@@ -22,18 +22,18 @@ export default function FearGreedIndexPage() {
       
       <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white">
         {/* Hero Section with Original Card Design */}
-        <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
+        <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28 border-b border-slate-200 dark:border-slate-800">
           {/* Subtle radial background like homepage */}
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.06),transparent_50%)]" />
 
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             {/* Hero Card with Background Image (matches homepage) */}
-            <div className={`relative rounded-2xl overflow-hidden transform transition-all duration-1000 ease-out ${
+            <div className={`relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out ${
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>
               {/* Background Image */}
               <div className="absolute inset-0">
-                <img 
+                <img
                   src="/images/hero_image.avif"
                   alt="Background"
                   className="w-full h-full object-cover"
@@ -41,22 +41,22 @@ export default function FearGreedIndexPage() {
               </div>
 
               {/* Content */}
-              <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
-                <div className="mx-auto max-w-3xl text-center">
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal tracking-tight text-black max-w-4xl mx-auto mb-6 sm:mb-8">
+              <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-24">
+                <div className="mx-auto max-w-5xl text-center">
+                  <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight sm:leading-[0.95] text-black mb-6 sm:mb-10 lg:mb-14 px-2">
                     Bitcoin fear & greed index
                   </h1>
 
-                  <p className="text-base sm:text-lg lg:text-xl xl:text-2xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto mb-8">
+                  <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light leading-relaxed text-black/70 max-w-4xl mx-auto mb-8 sm:mb-12 px-2">
                     Track market sentiment with real-time data from multiple sources including social media, volatility, market momentum, and more.
                   </p>
 
-                  <div className="flex justify-center">
+                  <div className="flex items-center justify-center px-2">
                     <a
                       href="https://app.perception.to/auth/sign-up"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-black text-white hover:bg-black/90 transition-all font-normal px-6 lg:px-8 text-sm sm:text-base shadow-lg hover:shadow-xl py-3 lg:py-4 rounded-lg"
+                      className="w-full sm:w-auto bg-black text-white hover:bg-gray-900 transition-all duration-300 font-semibold px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl inline-flex items-center justify-center"
                     >
                       Start free
                     </a>
@@ -92,13 +92,13 @@ export default function FearGreedIndexPage() {
                   </h2>
                 </div>
                 
-                <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+                <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 items-center mb-12 sm:mb-16">
                   <div className="text-left">
-                    <p className="text-xl leading-relaxed text-slate-600 dark:text-white/70 mb-8 font-light">
-                      The Bitcoin Fear & Greed Index is a quantitative gauge that measures the prevailing sentiment in the cryptocurrency market. 
+                    <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-slate-600 dark:text-white/70 mb-6 sm:mb-8 font-light">
+                      The Bitcoin Fear & Greed Index is a quantitative gauge that measures the prevailing sentiment in the cryptocurrency market.
                       By aggregating multiple data sources—social media chatter, on-chain transaction volumes, Google Trends, sentiment analysis on news headlines, and market volatility—it distills complex market dynamics into a single score from 0 (extreme fear) to 100 (extreme greed).
                     </p>
-                    <p className="text-xl leading-relaxed text-slate-600 dark:text-white/70 font-light">
+                    <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-slate-600 dark:text-white/70 font-light">
                       This powerful tool helps people understand market psychology and identify potential market trends based on crowd sentiment rather than just price movements.
                     </p>
                   </div>
@@ -165,45 +165,45 @@ export default function FearGreedIndexPage() {
                 </p>
               </div>
               
-              <div className="grid lg:grid-cols-3 gap-8 mb-20">
+              <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-20">
                 <div className="lg:col-span-2">
-                  <div className="bg-gradient-to-br from-white via-slate-50 to-blue-50/50 dark:from-white/5 dark:via-white/10 dark:to-blue-900/10 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-3xl p-10 shadow-2xl">
-                    <h4 className="text-2xl lg:text-3xl font-light text-slate-900 dark:text-white mb-8 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
+                  <div className="bg-gradient-to-br from-white via-slate-50 to-blue-50/50 dark:from-white/5 dark:via-white/10 dark:to-blue-900/10 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-2xl">
+                    <h4 className="text-xl sm:text-2xl lg:text-3xl font-light text-slate-900 dark:text-white mb-6 sm:mb-8 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
                       Sentiment Intelligence Engine
                     </h4>
                     
-                    <div className="space-y-6">
-                      <div className="flex gap-4">
-                        <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                          <span className="text-white text-sm font-bold">1</span>
+                    <div className="space-y-4 sm:space-y-6">
+                      <div className="flex gap-3 sm:gap-4">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                          <span className="text-white text-xs sm:text-sm font-bold">1</span>
                         </div>
                         <div>
-                          <h5 className="font-semibold text-slate-900 dark:text-white mb-2">Multi-Source Aggregation</h5>
-                          <p className="text-slate-600 dark:text-white/70 leading-relaxed">
+                          <h5 className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white mb-1 sm:mb-2">Multi-Source Aggregation</h5>
+                          <p className="text-sm sm:text-base text-slate-600 dark:text-white/70 leading-relaxed">
                             Continuously ingests sentiment from institutional reports, social platforms, news outlets, and on-chain activity—each weighted by credibility and market impact.
                           </p>
                         </div>
                       </div>
                       
-                      <div className="flex gap-4">
-                        <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                          <span className="text-white text-sm font-bold">2</span>
+                      <div className="flex gap-3 sm:gap-4">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                          <span className="text-white text-xs sm:text-sm font-bold">2</span>
                         </div>
                         <div>
-                          <h5 className="font-semibold text-slate-900 dark:text-white mb-2">Velocity Analysis</h5>
-                          <p className="text-slate-600 dark:text-white/70 leading-relaxed">
+                          <h5 className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white mb-1 sm:mb-2">Velocity Analysis</h5>
+                          <p className="text-sm sm:text-base text-slate-600 dark:text-white/70 leading-relaxed">
                             Tracks sentiment acceleration and deceleration patterns, identifying market shifts hours or days before price movements.
                           </p>
                         </div>
                       </div>
-                      
-                      <div className="flex gap-4">
-                        <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                          <span className="text-white text-sm font-bold">3</span>
+
+                      <div className="flex gap-3 sm:gap-4">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                          <span className="text-white text-xs sm:text-sm font-bold">3</span>
                         </div>
                         <div>
-                          <h5 className="font-semibold text-slate-900 dark:text-white mb-2">Predictive Scoring</h5>
-                          <p className="text-slate-600 dark:text-white/70 leading-relaxed">
+                          <h5 className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white mb-1 sm:mb-2">Predictive Scoring</h5>
+                          <p className="text-sm sm:text-base text-slate-600 dark:text-white/70 leading-relaxed">
                             Converts complex sentiment patterns into a simple 0-100 fear-to-greed scale, updated every 90 seconds with sub-latency alerts.
                           </p>
                         </div>
@@ -212,8 +212,8 @@ export default function FearGreedIndexPage() {
                   </div>
                 </div>
                 
-                <div className="space-y-6">
-                  <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-slate-800/20 dark:to-slate-700/10 border border-slate-200 dark:border-slate-700/30 rounded-2xl p-6">
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-slate-800/20 dark:to-slate-700/10 border border-slate-200 dark:border-slate-700/30 rounded-xl sm:rounded-2xl p-4 sm:p-6">
                     <h5 className="font-semibold text-slate-700 dark:text-slate-300 mb-3 text-sm uppercase tracking-wide">Premium Sources</h5>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-200">
@@ -231,32 +231,32 @@ export default function FearGreedIndexPage() {
                     </div>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-slate-800/20 dark:to-slate-700/10 border border-slate-200 dark:border-slate-700/30 rounded-2xl p-6">
-                    <h5 className="font-semibold text-slate-700 dark:text-slate-300 mb-3 text-sm uppercase tracking-wide">Update Frequency</h5>
-                    <div className="text-2xl font-light text-slate-800 dark:text-slate-200 mb-1">90 seconds</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-300">Real-time processing</div>
+                  <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-slate-800/20 dark:to-slate-700/10 border border-slate-200 dark:border-slate-700/30 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                    <h5 className="font-semibold text-slate-700 dark:text-slate-300 mb-2 sm:mb-3 text-xs sm:text-sm uppercase tracking-wide">Update Frequency</h5>
+                    <div className="text-xl sm:text-2xl font-light text-slate-800 dark:text-slate-200 mb-1">90 seconds</div>
+                    <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Real-time processing</div>
                   </div>
-                  
-                  <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-slate-800/20 dark:to-slate-700/10 border border-slate-200 dark:border-slate-700/30 rounded-2xl p-6">
-                    <h5 className="font-semibold text-slate-700 dark:text-slate-300 mb-3 text-sm uppercase tracking-wide">Accuracy Rate</h5>
-                    <div className="text-2xl font-light text-slate-800 dark:text-slate-200 mb-1">94.3%</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-300">Directional prediction</div>
+
+                  <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-slate-800/20 dark:to-slate-700/10 border border-slate-200 dark:border-slate-700/30 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                    <h5 className="font-semibold text-slate-700 dark:text-slate-300 mb-2 sm:mb-3 text-xs sm:text-sm uppercase tracking-wide">Accuracy Rate</h5>
+                    <div className="text-xl sm:text-2xl font-light text-slate-800 dark:text-slate-200 mb-1">94.3%</div>
+                    <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Directional prediction</div>
                   </div>
                 </div>
               </div>
 
 
-              <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-12 shadow-2xl relative overflow-hidden mb-16">
+              <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl sm:rounded-3xl p-6 sm:p-12 shadow-2xl relative overflow-hidden mb-12 sm:mb-16">
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-600/10 via-transparent to-purple-600/10"></div>
                 <div className="absolute top-10 right-10 w-32 h-32 bg-blue-400/20 rounded-full blur-2xl"></div>
                 <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-400/20 rounded-full blur-2xl"></div>
                 
                 <div className="relative z-10">
-                  <h4 className="text-3xl font-light !text-white mb-8 text-center bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+                  <h4 className="text-xl sm:text-2xl lg:text-3xl font-light !text-white mb-6 sm:mb-8 text-center bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent px-2">
                     Competitive Intelligence Advantage
                   </h4>
-                  
-                  <div className="grid md:grid-cols-3 gap-8">
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
                     <div className="text-center">
                       <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
                         <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -297,8 +297,8 @@ export default function FearGreedIndexPage() {
               </div>
 
               <div className="text-center">
-                <h4 className="text-2xl font-medium text-slate-900 dark:text-white mb-6">The Science Behind the Score</h4>
-                <p className="text-lg text-slate-600 dark:text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
+                <h4 className="text-xl sm:text-2xl font-medium text-slate-900 dark:text-white mb-4 sm:mb-6 px-2">The Science Behind the Score</h4>
+                <p className="text-base sm:text-lg text-slate-600 dark:text-white/70 font-light max-w-3xl mx-auto leading-relaxed px-2">
                   Our algorithm uses natural language processing and machine learning to analyze sentiment across multiple dimensions: 
                   tone, context, source credibility, and temporal patterns. This creates a comprehensive view of market psychology 
                   that traditional metrics simply cannot provide.
@@ -323,20 +323,20 @@ export default function FearGreedIndexPage() {
                 </p>
               </div>
               
-              <div className="grid lg:grid-cols-3 gap-8 mb-16">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
                 <div className="group relative">
                   <div className="absolute inset-0 bg-slate-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-105" />
                   
-                  <div className="relative bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-slate-900/20 dark:to-slate-800/10 border border-slate-200 dark:border-slate-700/30 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 backdrop-blur-xl">
-                    <div className="w-16 h-16 bg-slate-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                  <div className="relative bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-slate-900/20 dark:to-slate-800/10 border border-slate-200 dark:border-slate-700/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 backdrop-blur-xl">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-slate-700 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg">
                       <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                       </svg>
                     </div>
                     
-                    <h4 className="text-xl font-medium text-slate-800 dark:text-slate-200 mb-4">Extreme Fear (0–25)</h4>
-                    
-                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+                    <h4 className="text-lg sm:text-xl font-medium text-slate-800 dark:text-slate-200 mb-3 sm:mb-4">Extreme Fear (0–25)</h4>
+
+                    <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed mb-4 sm:mb-6">
                       Potential buying opportunity as prices may be undervalued. Market sentiment is extremely negative, often indicating a bottom.
                     </p>
                     
@@ -400,14 +400,14 @@ export default function FearGreedIndexPage() {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-white/5 dark:to-white/10 rounded-3xl p-8 border border-slate-200 dark:border-white/10 backdrop-blur-xl hover:shadow-lg transition-all">
-                  <h4 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-white/5 dark:to-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-white/10 backdrop-blur-xl hover:shadow-lg transition-all">
+                  <h4 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white mb-3 sm:mb-4">
                     <a href="/bitcoin-market-sentiment" className="hover:text-orange-500 transition-colors">
                       Bitcoin Market Sentiment
                     </a>
                   </h4>
-                  <p className="text-slate-600 dark:text-white/60 mb-6">
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-white/60 mb-4 sm:mb-6">
                     Monthly and daily sentiment analysis tracking Bitcoin market psychology and investor emotions over time.
                   </p>
                   <a href="/bitcoin-market-sentiment" className="text-orange-500 hover:text-orange-600 font-medium">
@@ -415,13 +415,13 @@ export default function FearGreedIndexPage() {
                   </a>
                 </div>
 
-                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-white/5 dark:to-white/10 rounded-3xl p-8 border border-slate-200 dark:border-white/10 backdrop-blur-xl hover:shadow-lg transition-all">
-                  <h4 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">
+                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-white/5 dark:to-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-white/10 backdrop-blur-xl hover:shadow-lg transition-all">
+                  <h4 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white mb-3 sm:mb-4">
                     <a href="/crypto-conferences" className="hover:text-orange-500 transition-colors">
                       Crypto Conferences 2025-2026
                     </a>
                   </h4>
-                  <p className="text-slate-600 dark:text-white/60 mb-6">
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-white/60 mb-4 sm:mb-6">
                     Stay connected with the crypto community at Bitcoin, blockchain, and Web3 conferences worldwide.
                   </p>
                   <a href="/crypto-conferences" className="text-orange-500 hover:text-orange-600 font-medium">
@@ -429,13 +429,13 @@ export default function FearGreedIndexPage() {
                   </a>
                 </div>
 
-                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-white/5 dark:to-white/10 rounded-3xl p-8 border border-slate-200 dark:border-white/10 backdrop-blur-xl hover:shadow-lg transition-all">
-                  <h4 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">
+                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-white/5 dark:to-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-white/10 backdrop-blur-xl hover:shadow-lg transition-all">
+                  <h4 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white mb-3 sm:mb-4">
                     <a href="/bitcoin-media-research" className="hover:text-orange-500 transition-colors">
                       Bitcoin Media Research
                     </a>
                   </h4>
-                  <p className="text-slate-600 dark:text-white/60 mb-6">
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-white/60 mb-4 sm:mb-6">
                     Weekly research analyzing Bitcoin media coverage and narrative trends from 100+ news sources.
                   </p>
                   <a href="/bitcoin-media-research" className="text-orange-500 hover:text-orange-600 font-medium">

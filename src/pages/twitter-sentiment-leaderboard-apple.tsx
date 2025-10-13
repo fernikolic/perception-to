@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpIcon, ArrowDownIcon, CalendarIcon, ChevronRightIcon, Activity, TrendingUp, TrendingDown, Lock, X, Share2, Check } from 'lucide-react';
+import { ArrowUpIcon, ArrowDownIcon, CalendarIcon, ChevronRightIcon, Activity, TrendingUp, TrendingDown, Lock, X, Check } from 'lucide-react';
 import { Logo } from '@/components/ui/logo';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { getTwitterProfileImageUrl, getTwitterHandleInitials } from '@/lib/utils';
@@ -65,8 +65,7 @@ function AppleCard({ account, rank, expanded, onToggle, filter }: {
   onToggle: () => void;
   filter: 'positive' | 'negative';
 }) {
-  const isPositive = account.positivePercentage > 60;
-  const isNegative = account.negativePercentage > 40;
+  const isTopThree = rank <= 3;
   const isTopRank = rank === 1;
 
   return (
@@ -79,254 +78,298 @@ function AppleCard({ account, rank, expanded, onToggle, filter }: {
         delay: rank * 0.05,
         ease: [0.25, 0.46, 0.45, 0.94]
       }}
-      className="group relative"
+      className={`group relative ${isTopThree ? 'mb-8' : 'mb-4'}`}
     >
-      {/* Top Rank Crown/Badge for #1 */}
-      {isTopRank && (
-        <div className={`
-          absolute -top-4 left-8 z-10 px-4 py-2 rounded-full text-sm font-bold
-          flex items-center gap-2 shadow-lg
-          ${filter === 'negative'
-            ? 'bg-red-600 text-white shadow-red-200'
-            : 'bg-green-600 text-white shadow-green-200'}
-        `}>
-          <span className="text-base">🏆</span>
-          Most {filter === 'negative' ? 'Negative' : 'Positive'}
-        </div>
-      )}
-
       <div
         className={`
           relative backdrop-blur-2xl rounded-3xl overflow-hidden
           border transition-all duration-700 ease-out cursor-pointer
-          ${isTopRank && filter === 'negative'
-            ? 'bg-red-50/90 border-red-200 shadow-[0_12px_48px_rgba(239,68,68,0.15)] hover:shadow-[0_16px_64px_rgba(239,68,68,0.2)]'
-            : isTopRank && filter === 'positive'
-            ? 'bg-green-50/90 border-green-200 shadow-[0_12px_48px_rgba(34,197,94,0.15)] hover:shadow-[0_16px_64px_rgba(34,197,94,0.2)]'
-            : 'bg-white/80 border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)]'}
+          ${isTopRank && filter === 'positive'
+            ? 'bg-gradient-to-br from-emerald-950 via-emerald-900 to-gray-900 border-emerald-900/50 shadow-[0_20px_60px_rgba(16,185,129,0.3)] hover:shadow-[0_24px_80px_rgba(16,185,129,0.4)]'
+            : isTopRank && filter === 'negative'
+            ? 'bg-gradient-to-br from-red-950 via-red-900 to-gray-900 border-red-900/50 shadow-[0_20px_60px_rgba(127,29,29,0.4)] hover:shadow-[0_24px_80px_rgba(127,29,29,0.5)]'
+            : isTopThree && filter === 'positive'
+            ? 'bg-gradient-to-br from-emerald-900 to-gray-800 border-emerald-800/50 shadow-[0_16px_48px_rgba(16,185,129,0.2)] hover:shadow-[0_20px_60px_rgba(16,185,129,0.3)]'
+            : isTopThree && filter === 'negative'
+            ? 'bg-gradient-to-br from-red-900 to-gray-800 border-red-800/50 shadow-[0_16px_48px_rgba(127,29,29,0.3)] hover:shadow-[0_20px_60px_rgba(127,29,29,0.4)]'
+            : 'bg-white border-gray-200 shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)]'}
           ${expanded ? 'bg-opacity-95' : ''}
         `}
         onClick={onToggle}
       >
-        {/* Enhanced gradient overlay for top rank */}
-        <div className={`
-          absolute inset-0
-          ${isTopRank && filter === 'negative'
-            ? 'bg-gradient-to-br from-red-500/5 to-rose-600/5'
-            : isTopRank && filter === 'positive'
-            ? 'bg-gradient-to-br from-green-500/5 to-emerald-600/5'
-            : isPositive
-            ? 'bg-gradient-to-br from-green-500/[0.02] to-emerald-500/[0.02]'
-            : isNegative
-            ? 'bg-gradient-to-br from-red-500/[0.02] to-rose-500/[0.02]'
-            : 'bg-gradient-to-br from-slate-500/[0.02] to-gray-500/[0.02]'}
-        `} />
-
-        <div className="relative p-8">
-          <div className="flex items-start justify-between mb-6">
-            <div className="flex items-center gap-5">
-              {/* Rank Badge */}
+        <div className={`relative ${isTopThree ? 'p-10' : 'p-8'}`}>
+          {/* Top Section - Rank and Profile */}
+          <div className="flex items-start gap-8 mb-8">
+            {/* MASSIVE Rank Number */}
+            <div className="flex-shrink-0">
               <div className={`
-                flex items-center justify-center w-12 h-12 rounded-2xl
-                font-bold text-lg
-                ${rank === 1 && filter === 'negative' ? 'bg-gradient-to-br from-red-500 to-red-700 text-white shadow-lg shadow-red-200' :
-                  rank === 1 && filter === 'positive' ? 'bg-gradient-to-br from-green-500 to-green-700 text-white shadow-lg shadow-green-200' :
-                  rank === 2 ? 'bg-gradient-to-br from-gray-300 to-gray-400 text-white shadow-lg shadow-gray-200' :
-                  rank === 3 ? 'bg-gradient-to-br from-orange-400 to-orange-500 text-white shadow-lg shadow-orange-200' :
-                  'bg-gray-100 text-gray-600'}
+                font-bold tracking-tighter leading-none
+                ${isTopThree ? 'text-8xl' : 'text-6xl'}
+                ${isTopThree ? 'text-white' : 'text-gray-900'}
+                ${isTopRank && filter === 'positive' ? 'drop-shadow-[0_0_20px_rgba(16,185,129,0.5)]' : ''}
+                ${isTopRank && filter === 'negative' ? 'drop-shadow-[0_0_20px_rgba(220,38,38,0.5)]' : ''}
               `}>
                 {rank}
               </div>
+              {isTopRank && (
+                <div className={`mt-2 text-sm font-semibold tracking-wider uppercase ${
+                  filter === 'positive' ? 'text-emerald-300' :
+                  filter === 'negative' ? 'text-red-300' : 'text-white/60'
+                }`}>
+                  #1
+                </div>
+              )}
+            </div>
 
-              {/* Profile Picture */}
-              <Avatar className="w-14 h-14 ring-2 ring-white shadow-lg transition-all duration-300 hover:ring-4 hover:ring-blue-100">
-                <AvatarImage
-                  src={getTwitterProfileImageUrl(account.handle, 'bigger')}
-                  alt={`${account.name} profile`}
-                  className="object-cover"
-                  loading="lazy"
-                />
-                <AvatarFallback className={`
-                  text-white font-semibold text-lg transition-all duration-300
-                  ${isTopRank && filter === 'negative'
-                    ? 'bg-gradient-to-br from-red-500 to-red-700'
-                    : isTopRank && filter === 'positive'
-                    ? 'bg-gradient-to-br from-green-500 to-green-700'
-                    : 'bg-gradient-to-br from-blue-500 to-purple-600'}
-                `}>
-                  {getTwitterHandleInitials(account.handle)}
-                </AvatarFallback>
-              </Avatar>
+            {/* Profile and Info */}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-start gap-5 mb-6">
+                {/* Profile Picture */}
+                <Avatar className={`flex-shrink-0 ring-4 shadow-xl transition-all duration-300 ${
+                  isTopThree && filter === 'positive'
+                    ? 'w-20 h-20 ring-emerald-500/30 hover:ring-emerald-500/50'
+                    : isTopThree && filter === 'negative'
+                    ? 'w-20 h-20 ring-red-500/30 hover:ring-red-500/50'
+                    : isTopThree
+                    ? 'w-20 h-20 ring-white/20 hover:ring-white/40'
+                    : 'w-16 h-16 ring-gray-200 hover:ring-gray-300'
+                }`}>
+                  <AvatarImage
+                    src={getTwitterProfileImageUrl(account.handle, 'bigger')}
+                    alt={`${account.name} profile`}
+                    className="object-cover"
+                    loading="lazy"
+                  />
+                  <AvatarFallback className="bg-gradient-to-br from-gray-600 to-gray-800 text-white font-semibold text-2xl">
+                    {getTwitterHandleInitials(account.handle)}
+                  </AvatarFallback>
+                </Avatar>
 
-              {/* Account Info */}
-              <div>
-                <h3 className={`
-                  text-xl font-semibold tracking-tight
-                  ${isTopRank && filter === 'negative' ? 'text-red-900' :
-                    isTopRank && filter === 'positive' ? 'text-green-900' :
-                    'text-gray-900'}
+                {/* Account Info */}
+                <div className="flex-1 min-w-0">
+                  {isTopThree ? (
+                    <>
+                      <h3
+                        className="font-bold tracking-tight mb-2 text-3xl [&]:!text-white"
+                        style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}
+                      >
+                        {account.name}
+                      </h3>
+                      <p
+                        className="text-base font-medium [&]:!text-white"
+                        style={{ color: '#ffffff', opacity: 0.9 }}
+                      >
+                        @{account.handle}
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <h3 className="text-2xl font-bold tracking-tight mb-2 text-gray-900">
+                        {account.name}
+                      </h3>
+                      <p className="text-base font-medium text-gray-500">
+                        @{account.handle}
+                      </p>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Massive Sentiment Score */}
+              <div className="mb-6">
+                <div className={`
+                  text-6xl font-bold tracking-tighter mb-2
+                  ${isTopThree ? 'text-white' : 'text-gray-900'}
+                  ${isTopThree && filter === 'positive' ? 'drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]' : ''}
+                  ${isTopThree && filter === 'negative' ? 'drop-shadow-[0_0_30px_rgba(220,38,38,0.3)]' : ''}
                 `}>
-                  {account.name}
-                </h3>
-                <p className="text-sm text-gray-500 mt-0.5">@{account.handle}</p>
+                  {account.sentimentScore.toFixed(0)}
+                  <span className={`text-3xl font-light ${
+                    isTopThree && filter === 'positive' ? 'text-emerald-300' :
+                    isTopThree && filter === 'negative' ? 'text-red-300' :
+                    isTopThree ? 'text-white/60' : 'text-gray-500'
+                  }`}>/100</span>
+                </div>
+                <div className={`text-sm font-medium uppercase tracking-wider ${
+                  isTopThree && filter === 'positive' ? 'text-emerald-300/80' :
+                  isTopThree && filter === 'negative' ? 'text-red-300/80' :
+                  isTopThree ? 'text-white/60' : 'text-gray-500'
+                }`}>
+                  Sentiment Score
+                </div>
+              </div>
+
+              {/* Stats Grid - Simplified */}
+              <div className="grid grid-cols-3 gap-6">
+                <div>
+                  <p className={`text-sm font-medium uppercase tracking-wider mb-2 ${
+                    isTopThree ? 'text-white/60' : 'text-gray-500'
+                  }`}>
+                    Positive
+                  </p>
+                  <p className={`text-2xl font-bold ${isTopThree ? 'text-white' : 'text-gray-900'}`}>
+                    {account.positivePercentage.toFixed(0)}%
+                  </p>
+                </div>
+                <div>
+                  <p className={`text-sm font-medium uppercase tracking-wider mb-2 ${
+                    isTopThree ? 'text-white/60' : 'text-gray-500'
+                  }`}>
+                    Negative
+                  </p>
+                  <p className={`text-2xl font-bold ${isTopThree ? 'text-white' : 'text-gray-900'}`}>
+                    {account.negativePercentage.toFixed(0)}%
+                  </p>
+                </div>
+                <div>
+                  <p className={`text-sm font-medium uppercase tracking-wider mb-2 ${
+                    isTopThree ? 'text-white/60' : 'text-gray-500'
+                  }`}>
+                    Posts
+                  </p>
+                  <p className={`text-2xl font-bold ${isTopThree ? 'text-white' : 'text-gray-900'}`}>
+                    {account.totalMentions}
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Sentiment Indicator */}
-            <div className="flex items-center gap-3">
-              <div className={`
-                px-4 py-2 rounded-full flex items-center gap-2 font-semibold
-                ${account.sentimentScore >= 70 ? 'bg-green-100 text-green-800' :
-                  account.sentimentScore >= 50 ? 'bg-blue-100 text-blue-800' :
-                  account.sentimentScore >= 30 ? 'bg-yellow-100 text-yellow-800' :
-                  'bg-red-100 text-red-800'}
-                ${isTopRank ? 'ring-2 ring-current ring-opacity-30' : ''}
-              `}>
-                {account.sentimentScore >= 70 ? <TrendingUp className="w-4 h-4" /> :
-                 account.sentimentScore >= 30 ? <Activity className="w-4 h-4" /> :
-                 <TrendingDown className="w-4 h-4" />}
-                <span className={`text-sm ${isTopRank ? 'font-bold' : 'font-medium'}`}>
-                  {account.sentimentScore.toFixed(2)}/100
-                </span>
-              </div>
-
+            {/* Expand Icon */}
+            <div className="flex-shrink-0">
               <ChevronRightIcon className={`
-                w-5 h-5 text-gray-400 transition-transform duration-300
+                w-6 h-6 transition-transform duration-300
+                ${isTopThree ? 'text-white/40' : 'text-gray-400'}
                 ${expanded ? 'rotate-90' : ''}
               `} />
             </div>
           </div>
 
-          {/* Sentiment Bar */}
-          <div className="relative h-2 bg-gray-100 rounded-full overflow-hidden mb-6">
-            <motion.div
-              className="absolute left-0 top-0 h-full bg-gradient-to-r from-red-500 via-yellow-500 to-green-500"
-              initial={{ width: 0 }}
-              animate={{ width: '100%' }}
-              transition={{ duration: 1, delay: rank * 0.1 }}
-            />
-            <motion.div
-              className="absolute top-0 h-full w-1 bg-white rounded-full shadow-lg border border-gray-300"
-              style={{
-                boxShadow: '0 0 0 1px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.3)'
-              }}
-              initial={{ left: 0 }}
-              animate={{ left: `${account.sentimentScore}%` }}
-              transition={{ duration: 1, delay: rank * 0.1 + 0.3 }}
-            />
-          </div>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-4 gap-4">
-            <div>
-              <p className="text-xs text-gray-500 mb-1">Sentiment Score</p>
-              <p className={`text-lg font-semibold ${
-                account.sentimentScore >= 70 ? 'text-green-600' :
-                account.sentimentScore >= 50 ? 'text-blue-600' :
-                account.sentimentScore >= 30 ? 'text-yellow-600' :
-                'text-red-600'
-              }`}>
-                {account.sentimentScore.toFixed(2)}/100
-              </p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-500 mb-1">Positive</p>
-              <p className="text-lg font-semibold text-green-600">
-                {account.positivePercentage.toFixed(1)}%
-              </p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-500 mb-1">Negative</p>
-              <p className="text-lg font-semibold text-red-600">
-                {account.negativePercentage.toFixed(1)}%
-              </p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-500 mb-1">Posts</p>
-              <p className="text-lg font-semibold text-gray-900">
-                {account.totalMentions}
-              </p>
-            </div>
-          </div>
+          {/* Expanded Tweet Section */}
+          <AnimatePresence>
+            {expanded && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className={`border-t mt-8 pt-8 ${isTopThree ? 'border-white/10' : 'border-gray-100'}`}
+              >
+                <div className="space-y-4">
+                  <p className={`text-sm font-semibold uppercase tracking-wider mb-6 ${
+                    isTopThree ? 'text-white/60' : 'text-gray-500'
+                  }`}>
+                    Recent Posts
+                  </p>
+                  {account.tweets.slice(0, 3).map((tweet, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className={`p-5 rounded-2xl ${
+                        isTopThree ? 'bg-white/5 border border-white/10' : 'bg-gray-50'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <span className={`
+                          text-xs font-semibold px-3 py-1 rounded-lg uppercase tracking-wider
+                          ${tweet.sentiment === 'Positive'
+                            ? (isTopThree ? 'bg-white/20 text-white' : 'bg-gray-700 text-white')
+                            : tweet.sentiment === 'Negative'
+                            ? (isTopThree ? 'bg-white/10 text-white/80' : 'bg-gray-500 text-white')
+                            : (isTopThree ? 'bg-white/5 text-white/60' : 'bg-gray-200 text-gray-700')}
+                        `}>
+                          {tweet.sentiment}
+                        </span>
+                        <span className={`text-xs ${isTopThree ? 'text-white/40' : 'text-gray-500'}`}>
+                          {formatPrettyDate(tweet.date)}
+                        </span>
+                      </div>
+                      <p className={`text-sm leading-relaxed line-clamp-2 ${
+                        isTopThree ? 'text-white/80' : 'text-gray-700'
+                      }`}>
+                        {tweet.content}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-
-        {/* Expanded Tweet Section */}
-        <AnimatePresence>
-          {expanded && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="border-t border-gray-100"
-            >
-              <div className="p-8 pt-6 space-y-3">
-                <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">
-                  Recent Tweets
-                </p>
-                {account.tweets.slice(0, 3).map((tweet, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="p-4 bg-gray-50 rounded-2xl"
-                  >
-                    <div className="flex items-start justify-between mb-2">
-                      <span className={`
-                        text-xs font-medium px-2 py-1 rounded-lg
-                        ${tweet.sentiment === 'Positive' ? 'bg-green-100 text-green-700' :
-                          tweet.sentiment === 'Negative' ? 'bg-red-100 text-red-700' :
-                          'bg-gray-100 text-gray-700'}
-                      `}>
-                        {tweet.sentiment}
-                      </span>
-                      <span className="text-xs text-gray-500">
-                        {formatPrettyDate(tweet.date)}
-                      </span>
-                    </div>
-                    <p className="text-sm text-gray-700 leading-relaxed line-clamp-2">
-                      {tweet.content}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </motion.div>
   );
 }
 
-function SkeletonCard({ rank }: { rank: number }) {
+function SkeletonCard({ rank, filter }: { rank: number; filter?: 'positive' | 'negative' }) {
+  const isTopThree = rank <= 3;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3, delay: rank * 0.05 }}
-      className="bg-white/80 backdrop-blur-2xl rounded-3xl p-8 border border-white/50"
+      className={`rounded-3xl border ${
+        isTopThree && filter === 'positive'
+          ? 'bg-gradient-to-br from-emerald-950 to-gray-900 border-emerald-900/50 p-10'
+          : isTopThree && filter === 'negative'
+          ? 'bg-gradient-to-br from-red-950 to-gray-900 border-red-900/50 p-10'
+          : isTopThree
+          ? 'bg-gray-900 border-gray-800 p-10'
+          : 'bg-white border-gray-200 p-8'
+      }`}
     >
       <div className="animate-pulse">
-        <div className="flex items-start justify-between mb-6">
-          <div className="flex items-center gap-5">
-            <div className="w-12 h-12 bg-gray-200 rounded-2xl" />
-            <div className="w-14 h-14 bg-gray-200 rounded-full" />
-            <div>
-              <div className="h-5 w-32 bg-gray-200 rounded-lg mb-2" />
-              <div className="h-4 w-24 bg-gray-200 rounded-lg" />
+        <div className="flex items-start gap-8 mb-8">
+          {/* Rank placeholder */}
+          <div className={`
+            rounded-lg
+            ${isTopThree ? 'w-24 h-24 bg-gray-800' : 'w-20 h-20 bg-gray-200'}
+          `} />
+
+          <div className="flex-1">
+            <div className="flex items-start gap-5 mb-6">
+              {/* Avatar */}
+              <div className={`
+                rounded-full
+                ${isTopThree ? 'w-20 h-20 bg-gray-800' : 'w-16 h-16 bg-gray-200'}
+              `} />
+              {/* Name */}
+              <div className="flex-1">
+                <div className={`
+                  rounded-lg mb-2
+                  ${isTopThree ? 'h-8 w-48 bg-gray-800' : 'h-7 w-40 bg-gray-200'}
+                `} />
+                <div className={`
+                  rounded-lg
+                  ${isTopThree ? 'h-5 w-32 bg-gray-800' : 'h-5 w-28 bg-gray-200'}
+                `} />
+              </div>
+            </div>
+
+            {/* Score */}
+            <div className={`
+              rounded-lg mb-6
+              ${isTopThree ? 'h-16 w-36 bg-gray-800' : 'h-14 w-32 bg-gray-200'}
+            `} />
+
+            {/* Stats grid */}
+            <div className="grid grid-cols-3 gap-6">
+              {[...Array(3)].map((_, i) => (
+                <div key={i}>
+                  <div className={`
+                    rounded mb-2
+                    ${isTopThree ? 'h-4 w-16 bg-gray-800' : 'h-3 w-14 bg-gray-200'}
+                  `} />
+                  <div className={`
+                    rounded
+                    ${isTopThree ? 'h-7 w-12 bg-gray-800' : 'h-6 w-10 bg-gray-200'}
+                  `} />
+                </div>
+              ))}
             </div>
           </div>
-          <div className="h-9 w-20 bg-gray-200 rounded-full" />
-        </div>
-        <div className="h-2 bg-gray-200 rounded-full mb-6" />
-        <div className="grid grid-cols-4 gap-4">
-          {[...Array(4)].map((_, i) => (
-            <div key={i}>
-              <div className="h-3 w-16 bg-gray-200 rounded mb-2" />
-              <div className="h-5 w-12 bg-gray-200 rounded" />
-            </div>
-          ))}
         </div>
       </div>
     </motion.div>
@@ -364,28 +407,28 @@ function SignupPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
 
           <div className="space-y-3 mb-6">
             <div className="flex items-center text-sm text-gray-600">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+              <div className="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
               Extended sentiment analysis history
             </div>
             <div className="flex items-center text-sm text-gray-600">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+              <div className="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
               Advanced filtering and insights
             </div>
             <div className="flex items-center text-sm text-gray-600">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+              <div className="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
               API access for developers
             </div>
           </div>
 
           <div className="space-y-3">
             <button
-              className="w-full bg-gray-900 hover:bg-gray-800 text-white py-3 px-6 rounded-full font-medium transition-all duration-200"
+              className="w-full bg-gradient-to-r from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 text-white py-4 px-6 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               onClick={() => window.open('https://app.perception.to/auth/sign-up', '_blank')}
             >
               Sign Up for Perception
             </button>
             <button
-              className="w-full border border-gray-200 text-gray-700 py-3 px-6 rounded-full font-medium hover:bg-gray-50 transition-all duration-200"
+              className="w-full border-2 border-gray-200 text-gray-700 py-4 px-6 rounded-full font-semibold hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 hover:scale-105"
               onClick={onClose}
             >
               Continue with 24 hours
@@ -643,16 +686,20 @@ export default function AppleTwitterSentimentLeaderboard() {
   // Show top 20 for each filter
   const displayedAccounts = allAccountsData.slice(0, 20);
 
-  // Share functionality
-  const handleShare = async () => {
-    try {
-      const url = window.location.href;
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy URL:', err);
-    }
+  // Share functionality - Posts to X (Twitter)
+  const handleShare = () => {
+    const url = 'https://perception.to/bitcoin-social-media-sentiment-leaderboard';
+    const text = `Bitcoin Influence Index: Real-time sentiment ranking of Bitcoin's most influential voices on X 📊\n\nDiscover who's shaping the Bitcoin conversation right now:`;
+
+    // Create Twitter intent URL
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+
+    // Open in new window
+    window.open(twitterUrl, '_blank', 'width=550,height=420');
+
+    // Show feedback
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -674,7 +721,7 @@ export default function AppleTwitterSentimentLeaderboard() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="relative rounded-2xl overflow-hidden"
+              className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
             >
               {/* Background Image */}
               <div className="absolute inset-0">
@@ -686,23 +733,14 @@ export default function AppleTwitterSentimentLeaderboard() {
               </div>
 
               {/* Content */}
-              <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-8 sm:py-12 lg:py-20">
-                <div className="mx-auto max-w-4xl text-center">
-                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto px-2">
-                    The Bitcoin Toxicity Index™
+              <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-24">
+                <div className="mx-auto max-w-5xl text-center">
+                  <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight sm:leading-[0.95] text-black mb-6 sm:mb-10 lg:mb-14 max-w-4xl mx-auto px-2">
+                    Bitcoin Influence Index
                   </h1>
 
-                  <p className="mt-3 sm:mt-4 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto px-2">
-                    Who's poisoning the conversation and who's actually building? Live sentiment data from{' '}
-                    <a
-                      href="https://perception.to"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-black hover:text-black/80 font-medium underline decoration-1 underline-offset-2 transition-colors duration-200"
-                    >
-                      Perception
-                    </a>{' '}
-                    reveals X's most toxic and most valuable Bitcoin voices.
+                  <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light leading-relaxed text-black/70 max-w-4xl mx-auto px-2">
+                    Real-time sentiment ranking of Bitcoin's most influential voices on X, powered by 100+ data sources
                   </p>
 
                 </div>
@@ -718,30 +756,42 @@ export default function AppleTwitterSentimentLeaderboard() {
               {/* Share Button */}
               <button
                 onClick={handleShare}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-transparent hover:bg-black/10 text-black border border-black/20 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105"
+                className={`
+                  inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-bold
+                  transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl
+                  ${copied
+                    ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white'
+                    : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700'}
+                `}
               >
                 {copied ? (
                   <>
-                    ✅ Copied!
+                    <Check className="w-4 h-4" />
+                    Shared!
                   </>
                 ) : (
                   <>
-                    📋 Share
+                    <span>Post on</span>
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
                   </>
                 )}
               </button>
 
               {/* Sentiment Toggle */}
-              <div className="relative bg-gray-100 rounded-full p-1">
+              <div className="relative bg-gradient-to-r from-gray-100 to-gray-50 rounded-full p-1.5 shadow-inner">
                 <div className={`
-                  absolute top-1 h-[calc(100%-8px)] rounded-full bg-white shadow-sm transition-all duration-300
-                  ${filter === 'positive' ? 'left-1 w-24' : 'left-[100px] w-24'}
+                  absolute top-1.5 h-[calc(100%-12px)] rounded-full shadow-lg transition-all duration-300
+                  ${filter === 'positive'
+                    ? 'left-1.5 w-28 bg-gradient-to-r from-emerald-500 to-emerald-400'
+                    : 'left-[118px] w-28 bg-gradient-to-r from-red-500 to-red-400'}
                 `} />
                 <button
                   onClick={() => setFilter('positive')}
                   className={`
-                    relative px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300
-                    ${filter === 'positive' ? 'text-gray-900' : 'text-gray-500'}
+                    relative px-7 py-2.5 rounded-full text-sm font-bold transition-all duration-300
+                    ${filter === 'positive' ? 'text-white' : 'text-gray-600 hover:text-gray-900'}
                   `}
                 >
                   Positive
@@ -749,8 +799,8 @@ export default function AppleTwitterSentimentLeaderboard() {
                 <button
                   onClick={() => setFilter('negative')}
                   className={`
-                    relative px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300
-                    ${filter === 'negative' ? 'text-gray-900' : 'text-gray-500'}
+                    relative px-7 py-2.5 rounded-full text-sm font-bold transition-all duration-300
+                    ${filter === 'negative' ? 'text-white' : 'text-gray-600 hover:text-gray-900'}
                   `}
                 >
                   Negative
@@ -758,16 +808,16 @@ export default function AppleTwitterSentimentLeaderboard() {
               </div>
 
               {/* Time Period Pills */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <button
                   onClick={() => setTimePeriod('24h')}
                   disabled={loading}
                   className={`
-                    px-5 py-2 rounded-full text-sm font-medium transition-all duration-300
+                    px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 hover:scale-105
                     ${timePeriod === '24h'
-                      ? 'bg-gray-900 text-white shadow-lg'
-                      : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'}
-                    ${loading ? 'opacity-50' : ''}
+                      ? 'bg-gradient-to-r from-gray-900 to-gray-800 text-white shadow-lg hover:shadow-xl'
+                      : 'bg-white text-gray-700 hover:bg-gray-50 border-2 border-gray-200 hover:border-gray-300'}
+                    ${loading ? 'opacity-50 cursor-not-allowed' : ''}
                   `}
                 >
                   24 Hours
@@ -776,22 +826,24 @@ export default function AppleTwitterSentimentLeaderboard() {
                   onClick={() => setShowSignupPopup(true)}
                   disabled={loading}
                   className={`
-                    px-5 py-2 rounded-full text-sm font-medium transition-all duration-300
-                    bg-white text-gray-600 hover:bg-gray-100 border border-gray-200
-                    ${loading ? 'opacity-50' : ''}
+                    relative px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 hover:scale-105
+                    bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 hover:from-gray-200 hover:to-gray-100 border-2 border-gray-200
+                    ${loading ? 'opacity-50 cursor-not-allowed' : ''}
                   `}
                 >
+                  <Lock className="w-3 h-3 inline mr-1.5" />
                   7 Days
                 </button>
                 <button
                   onClick={() => setShowSignupPopup(true)}
                   disabled={loading}
                   className={`
-                    px-5 py-2 rounded-full text-sm font-medium transition-all duration-300
-                    bg-white text-gray-600 hover:bg-gray-100 border border-gray-200
-                    ${loading ? 'opacity-50' : ''}
+                    relative px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 hover:scale-105
+                    bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 hover:from-gray-200 hover:to-gray-100 border-2 border-gray-200
+                    ${loading ? 'opacity-50 cursor-not-allowed' : ''}
                   `}
                 >
+                  <Lock className="w-3 h-3 inline mr-1.5" />
                   30 Days
                 </button>
               </div>
@@ -801,16 +853,16 @@ export default function AppleTwitterSentimentLeaderboard() {
 
         {/* Main Content */}
         <div className="container mx-auto px-6 py-12">
-          <div className="max-w-4xl mx-auto space-y-4">
+          <div className="max-w-6xl mx-auto">
             {loading ? (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {loadingProgress && (
-                  <div className="text-center py-4">
-                    <p className="text-gray-600 text-sm">{loadingProgress}</p>
+                  <div className="text-center py-8">
+                    <p className="text-gray-600 text-lg font-light">{loadingProgress}</p>
                   </div>
                 )}
                 {[...Array(15)].map((_, index) => (
-                  <SkeletonCard key={index} rank={index + 1} />
+                  <SkeletonCard key={index} rank={index + 1} filter={filter} />
                 ))}
               </div>
             ) : error ? (
@@ -819,17 +871,17 @@ export default function AppleTwitterSentimentLeaderboard() {
                 animate={{ opacity: 1 }}
                 className="text-center py-20"
               >
-                <p className="text-gray-500 mb-4">{error}</p>
+                <p className="text-gray-500 text-lg mb-6">{error}</p>
                 <button
                   onClick={() => window.location.reload()}
-                  className="px-6 py-2 bg-gray-900 text-white rounded-full text-sm font-medium"
+                  className="px-10 py-4 bg-gradient-to-r from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 text-white rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   Retry
                 </button>
               </motion.div>
             ) : displayedAccounts.length > 0 ? (
               <>
-                <div className="space-y-4">
+                <div className="space-y-6">
                   {displayedAccounts.map((account, index) => (
                     <AppleCard
                       key={account.handle}

@@ -65,51 +65,46 @@ function formatPrettyDate(dateStr: string): string {
 
 function LeaderboardCardSkeleton({ rank }: { rank: number }) {
   return (
-    <Card className="border-slate-200">
+    <Card className="bg-white border-gray-100 rounded-2xl shadow-sm">
       <CardContent className="p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4">
-            <div className={`flex items-center justify-center w-10 h-10 rounded-full ${
-              rank === 1 ? 'bg-yellow-500' :
-              rank === 2 ? 'bg-slate-400' :
-              rank === 3 ? 'bg-amber-600' :
-              'bg-slate-100'
-            }`}>
-              <Skeleton className="w-6 h-6 bg-white/30" />
+            <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-gray-100">
+              <Skeleton className="w-6 h-6 bg-gray-200" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <TwitterIcon className="w-4 h-4 text-blue-500" />
-                <Skeleton className="h-5 w-32" />
+                <Skeleton className="h-5 w-32 bg-gray-200" />
               </div>
-              <Skeleton className="h-4 w-24 mt-1" />
+              <Skeleton className="h-4 w-24 mt-1 bg-gray-200" />
             </div>
           </div>
-          <Skeleton className="h-7 w-20 rounded-full" />
+          <Skeleton className="h-7 w-20 rounded-lg bg-gray-200" />
         </div>
 
         <div className="grid grid-cols-3 gap-4 mb-4">
           <div className="text-center">
-            <div className="text-sm text-slate-500 mb-1">Positive</div>
-            <Skeleton className="h-6 w-16 mx-auto" />
+            <div className="text-sm text-gray-500 mb-1">Positive</div>
+            <Skeleton className="h-6 w-16 mx-auto bg-gray-200" />
           </div>
           <div className="text-center">
-            <div className="text-sm text-slate-500 mb-1">Neutral</div>
-            <Skeleton className="h-6 w-16 mx-auto" />
+            <div className="text-sm text-gray-500 mb-1">Neutral</div>
+            <Skeleton className="h-6 w-16 mx-auto bg-gray-200" />
           </div>
           <div className="text-center">
-            <div className="text-sm text-slate-500 mb-1">Negative</div>
-            <Skeleton className="h-6 w-16 mx-auto" />
+            <div className="text-sm text-gray-500 mb-1">Negative</div>
+            <Skeleton className="h-6 w-16 mx-auto bg-gray-200" />
           </div>
         </div>
 
         <div className="flex justify-between items-center">
-          <Skeleton className="h-4 w-24" />
-          <Skeleton className="h-4 w-32" />
+          <Skeleton className="h-4 w-24 bg-gray-200" />
+          <Skeleton className="h-4 w-32 bg-gray-200" />
         </div>
 
-        <div className="mt-4 pt-4 border-t border-slate-100">
-          <Skeleton className="h-8 w-full" />
+        <div className="mt-4 pt-4 border-t border-gray-200">
+          <Skeleton className="h-8 w-full bg-gray-200" />
         </div>
       </CardContent>
     </Card>
@@ -118,81 +113,58 @@ function LeaderboardCardSkeleton({ rank }: { rank: number }) {
 
 function LeaderboardCard({ account, rank, isTop }: { account: TwitterAccount; rank: number; isTop: boolean }) {
   const [expanded, setExpanded] = useState(false);
-  const sentimentColor = getSentimentColor(account.positivePercentage);
-  const sentimentIcon = getSentimentIcon(account.positivePercentage);
-
-  const getSentimentBadgeColor = (sentiment: string) => {
-    switch (sentiment.toLowerCase()) {
-      case 'positive':
-        return 'bg-green-100 text-green-700 border-green-200';
-      case 'negative':
-        return 'bg-red-100 text-red-700 border-red-200';
-      default:
-        return 'bg-slate-100 text-slate-700 border-slate-200';
-    }
-  };
 
   return (
-    <div className={`relative group ${isTop ? 'transform hover:scale-[1.02]' : 'transform hover:scale-[1.01]'} transition-all duration-300`}>
-      {isTop && (
-        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-amber-400/20 rounded-2xl blur-xl opacity-50" />
-      )}
-
-      <Card className={`relative ${isTop ? 'border-yellow-300 shadow-2xl bg-gradient-to-br from-yellow-50 to-amber-50' : 'border-slate-200 hover:shadow-lg'} transition-all duration-300`}>
+    <div className="relative group transition-all duration-300 hover:shadow-lg">
+      <Card className="relative bg-white border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
-              <div className={`flex items-center justify-center w-10 h-10 rounded-full font-bold text-lg ${
-                rank === 1 ? 'bg-yellow-500 text-white' :
-                rank === 2 ? 'bg-slate-400 text-white' :
-                rank === 3 ? 'bg-amber-600 text-white' :
-                'bg-slate-100 text-slate-700'
-              }`}>
+              <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-gray-100 text-gray-700 font-medium">
                 {rank}
               </div>
 
               <div>
                 <div className="flex items-center gap-2">
                   <TwitterIcon className="w-4 h-4 text-blue-500" />
-                  <h3 className="font-semibold text-lg text-slate-900">{account.name}</h3>
+                  <h3 className="font-medium text-gray-900">{account.name}</h3>
                 </div>
-                <p className="text-slate-600">@{account.handle}</p>
+                <p className="text-gray-500 text-sm">@{account.handle}</p>
               </div>
             </div>
 
-            <div className={`flex items-center gap-2 px-3 py-1 rounded-full border ${sentimentColor}`}>
-              {sentimentIcon}
-              <span className="font-semibold">{account.positivePercentage.toFixed(1)}%</span>
+            <div className="flex items-center gap-2 px-3 py-1 rounded-lg bg-gray-100 border border-gray-200">
+              <span className="text-sm text-gray-900 font-medium">{account.positivePercentage.toFixed(1)}%</span>
             </div>
           </div>
 
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div className="text-center">
-              <div className="text-sm text-slate-500 mb-1">Positive</div>
-              <div className="text-lg font-semibold text-green-600">{account.positivePercentage.toFixed(1)}%</div>
+              <div className="text-sm text-gray-500 mb-1">Positive</div>
+              <div className="text-lg font-medium text-gray-900">{account.positivePercentage.toFixed(1)}%</div>
             </div>
             <div className="text-center">
-              <div className="text-sm text-slate-500 mb-1">Neutral</div>
-              <div className="text-lg font-semibold text-slate-600">{account.neutralPercentage.toFixed(1)}%</div>
+              <div className="text-sm text-gray-500 mb-1">Neutral</div>
+              <div className="text-lg font-medium text-gray-600">{account.neutralPercentage.toFixed(1)}%</div>
             </div>
             <div className="text-center">
-              <div className="text-sm text-slate-500 mb-1">Negative</div>
-              <div className="text-lg font-semibold text-red-600">{account.negativePercentage.toFixed(1)}%</div>
+              <div className="text-sm text-gray-500 mb-1">Negative</div>
+              <div className="text-lg font-medium text-gray-900">{account.negativePercentage.toFixed(1)}%</div>
             </div>
           </div>
 
-          <div className="flex justify-between items-center text-sm text-slate-500">
+          <div className="flex justify-between items-center text-sm text-gray-500">
             <span>{account.totalMentions} mentions</span>
             <span>Updated {formatPrettyDate(account.lastUpdate)}</span>
           </div>
 
           {/* View Tweets Button */}
-          <div className="mt-4 pt-4 border-t border-slate-100">
+          <div className="mt-4 pt-4 border-t border-gray-200">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setExpanded(!expanded)}
-              className="w-full justify-between text-slate-600 hover:text-slate-900"
+              className="w-full justify-between text-gray-600 hover:text-gray-900 hover:bg-gray-100"
             >
               <span>View Tweets ({account.tweets.length})</span>
               {expanded ? (
@@ -209,12 +181,12 @@ function LeaderboardCard({ account, rank, isTop }: { account: TwitterAccount; ra
               {account.tweets.slice(0, 5).map((tweet, index) => (
                 <div
                   key={index}
-                  className="bg-slate-50 rounded-lg p-3 border border-slate-200"
+                  className="bg-gray-50 rounded-lg p-3 border border-gray-200"
                 >
                   <div className="flex items-start justify-between mb-2">
                     <Badge
                       variant="outline"
-                      className={`text-xs ${getSentimentBadgeColor(tweet.sentiment)}`}
+                      className="text-xs border-gray-300 text-gray-700"
                     >
                       {tweet.sentiment}
                     </Badge>
@@ -222,23 +194,23 @@ function LeaderboardCard({ account, rank, isTop }: { account: TwitterAccount; ra
                       href={tweet.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-slate-400 hover:text-slate-600"
+                      className="text-gray-400 hover:text-gray-700"
                     >
                       <ExternalLinkIcon className="w-3 h-3" />
                     </a>
                   </div>
-                  <p className="text-sm text-slate-700 leading-relaxed mb-2">
+                  <p className="text-sm text-gray-700 leading-relaxed mb-2">
                     {tweet.content.length > 200
                       ? `${tweet.content.substring(0, 200)}...`
                       : tweet.content}
                   </p>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-gray-500">
                     {formatPrettyDate(tweet.date)}
                   </p>
                 </div>
               ))}
               {account.tweets.length > 5 && (
-                <p className="text-xs text-slate-500 text-center py-2">
+                <p className="text-xs text-gray-500 text-center py-2">
                   Showing latest 5 of {account.tweets.length} tweets
                 </p>
               )}
@@ -565,13 +537,13 @@ export default function TwitterSentimentLeaderboard() {
         <Helmet>
           <title>Error Loading Leaderboard | Bitcoin Perception</title>
         </Helmet>
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-12">
+        <div className="min-h-screen bg-white py-24">
           <div className="container mx-auto px-6">
             <div className="text-center">
-              <div className="bg-red-50 border border-red-200 rounded-2xl p-8 max-w-md mx-auto">
-                <p className="text-red-700 text-lg font-medium mb-2">Unable to Load Data</p>
-                <p className="text-red-600 text-sm mb-6">{error}</p>
-                <Button onClick={() => window.location.reload()}>
+              <div className="bg-white border border-gray-200 rounded-2xl p-8 max-w-md mx-auto shadow-sm">
+                <p className="text-gray-900 text-lg font-medium mb-2">Unable to Load Data</p>
+                <p className="text-gray-600 text-sm mb-6">{error}</p>
+                <Button onClick={() => window.location.reload()} className="bg-black text-white hover:bg-gray-800">
                   Retry Loading
                 </Button>
               </div>
@@ -596,39 +568,57 @@ export default function TwitterSentimentLeaderboard() {
         <meta name="twitter:description" content="Real-time ranking of all Bitcoin Twitter accounts with actual tweets and sentiment analysis" />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-12">
-        <div className="container mx-auto px-6">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <TwitterIcon className="w-8 h-8 text-blue-500" />
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">Bitcoin Twitter Sentiment Leaderboard</h1>
-              {loading && (
-                <div className="ml-3">
-                  <div className="w-5 h-5 border-2 border-slate-300 border-t-blue-500 rounded-full animate-spin"></div>
+      <div className="min-h-screen bg-white">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img
+                  src="/images/hero_image.avif"
+                  alt="Background"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-24">
+                <div className="mx-auto max-w-5xl text-center">
+                  <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight sm:leading-[0.95] text-black mb-6 sm:mb-10 lg:mb-14 px-2">
+                    Bitcoin social media sentiment leaderboard
+                  </h1>
+                  <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light leading-relaxed text-black/70 max-w-4xl mx-auto px-2">
+                    Real-time ranking of Bitcoin Twitter accounts based on sentiment analysis from 100+ sources
+                  </p>
                 </div>
-              )}
+              </div>
             </div>
-            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-4">
-              Discover active Bitcoin Twitter accounts with real tweets - based on real-time sentiment analysis from 100+ sources
-            </p>
-            {!loading && sortedAccounts.length > 0 && (
-              <p className="text-sm text-slate-500 mb-6">
-                Showing {displayedAccounts.length} of {sortedAccounts.length} accounts
-                {timePeriod === '24h' && ' (minimum 5 posts)'}
-                {timePeriod === 'weekly' && ' (minimum 10 posts)'}
-                {timePeriod === 'monthly' && ' (minimum 15 posts)'}
-              </p>
-            )}
+          </div>
+        </section>
+
+        {/* Leaderboard Section */}
+        <section className="relative py-12 sm:py-20 lg:py-32 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Header */}
+            <div className="text-center mb-16">
+              {!loading && sortedAccounts.length > 0 && (
+                <p className="text-sm text-gray-500 mb-6">
+                  Showing {displayedAccounts.length} of {sortedAccounts.length} accounts
+                  {timePeriod === '24h' && ' • minimum 5 posts'}
+                  {timePeriod === 'weekly' && ' • minimum 10 posts'}
+                  {timePeriod === 'monthly' && ' • minimum 15 posts'}
+                </p>
+              )}
 
             {/* Filter Controls */}
-            <div className="flex flex-col items-center gap-4 sm:gap-6 mb-8">
+            <div className="flex flex-col items-center gap-6 mb-12">
               {/* Sentiment Filter Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <div className="flex gap-3">
                 <Button
                   variant={filter === 'positive' ? 'default' : 'outline'}
                   onClick={() => setFilter('positive')}
-                  className="px-6 py-3 w-full sm:w-auto"
+                  className={filter === 'positive' ? 'bg-black text-white hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-100'}
                   disabled={loading}
                 >
                   <ArrowUpIcon className="w-4 h-4 mr-2" />
@@ -637,7 +627,7 @@ export default function TwitterSentimentLeaderboard() {
                 <Button
                   variant={filter === 'negative' ? 'default' : 'outline'}
                   onClick={() => setFilter('negative')}
-                  className="px-6 py-3 w-full sm:w-auto"
+                  className={filter === 'negative' ? 'bg-black text-white hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-100'}
                   disabled={loading}
                 >
                   <ArrowDownIcon className="w-4 h-4 mr-2" />
@@ -646,39 +636,36 @@ export default function TwitterSentimentLeaderboard() {
               </div>
 
               {/* Time Period Selector */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                <CalendarIcon className="w-4 h-4 text-slate-500 hidden sm:block" />
-                <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-                  <Button
-                    variant={timePeriod === '24h' ? 'default' : 'outline'}
-                    onClick={() => setTimePeriod('24h')}
-                    size="sm"
-                    className="px-4 py-2 w-full sm:w-auto"
-                    disabled={loading}
-                  >
-                    Last 24 Hours
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => setShowSignupPopup(true)}
-                    size="sm"
-                    className="px-4 py-2 relative w-full sm:w-auto"
-                    disabled={loading}
-                  >
-                    <Lock className="w-3 h-3 mr-1" />
-                    7 Days
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => setShowSignupPopup(true)}
-                    size="sm"
-                    className="px-4 py-2 relative w-full sm:w-auto"
-                    disabled={loading}
-                  >
-                    <Lock className="w-3 h-3 mr-1" />
-                    30 Days
-                  </Button>
-                </div>
+              <div className="flex items-center gap-3">
+                <Button
+                  variant={timePeriod === '24h' ? 'default' : 'outline'}
+                  onClick={() => setTimePeriod('24h')}
+                  size="sm"
+                  className={timePeriod === '24h' ? 'bg-black text-white hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-100'}
+                  disabled={loading}
+                >
+                  24 Hours
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => setShowSignupPopup(true)}
+                  size="sm"
+                  className="border-gray-300 text-gray-700 hover:bg-gray-100"
+                  disabled={loading}
+                >
+                  <Lock className="w-3 h-3 mr-1" />
+                  7 Days
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => setShowSignupPopup(true)}
+                  size="sm"
+                  className="border-gray-300 text-gray-700 hover:bg-gray-100"
+                  disabled={loading}
+                >
+                  <Lock className="w-3 h-3 mr-1" />
+                  30 Days
+                </Button>
               </div>
             </div>
           </div>
@@ -712,7 +699,7 @@ export default function TwitterSentimentLeaderboard() {
                       disabled={isLoadingMore}
                       variant="outline"
                       size="lg"
-                      className="min-w-[200px]"
+                      className="min-w-[200px] border-gray-300 text-gray-700 hover:bg-gray-100"
                     >
                       {isLoadingMore ? (
                         <>
@@ -722,7 +709,7 @@ export default function TwitterSentimentLeaderboard() {
                       ) : (
                         <>
                           Load More
-                          <span className="ml-2 text-sm text-slate-500">
+                          <span className="ml-2 text-sm text-gray-500">
                             ({displayCount} of {sortedAccounts.length})
                           </span>
                         </>
@@ -733,28 +720,29 @@ export default function TwitterSentimentLeaderboard() {
               </>
             ) : (
               <div className="text-center py-12">
-                <p className="text-slate-500 text-lg">No data available for the selected period</p>
+                <p className="text-gray-500 text-lg">No data available for the selected period</p>
               </div>
             )}
           </div>
 
           {/* Footer Info */}
-          <div className="text-center mt-16 pt-8 border-t border-slate-200">
-            <p className="text-sm text-slate-500 mb-2">
+          <div className="text-center mt-16 pt-8 border-t border-gray-200">
+            <p className="text-sm text-gray-500 mb-2">
               Data updated every 24 hours • Based on Twitter/X posts from the {
                 timePeriod === '24h' ? 'last 24 hours' :
                 timePeriod === 'weekly' ? 'past week' :
                 'past month'
               }
             </p>
-            <p className="text-xs text-slate-400 mb-2">
+            <p className="text-xs text-gray-400 mb-2">
               Real Twitter accounts with expandable tweet viewing and sentiment analysis
             </p>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-gray-400">
               Powered by Bitcoin Perception Feed API analyzing real-time social media data
             </p>
           </div>
-        </div>
+          </div>
+        </section>
         <SignupPopup isOpen={showSignupPopup} onClose={() => setShowSignupPopup(false)} />
       </div>
     </>
