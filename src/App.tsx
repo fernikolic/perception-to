@@ -55,7 +55,6 @@ import BitcoinBadTakes from '@/pages/bitcoin-bad-takes';
 import CryptoConferencesPage from '@/pages/crypto-conferences';
 import ConferencePage from '@/pages/crypto-conferences/[conference]';
 import TwitterSentimentLeaderboard from '@/pages/twitter-sentiment-leaderboard-apple';
-import ConveyorDemo from '@/pages/conveyor-demo';
 import NotFoundPage from '@/pages/404';
 
 function HomePage() {
@@ -134,8 +133,7 @@ const App = () => {
               {/* Test Routes for Development */}
               <Route path="/keyword-test" element={<KeywordTest />} />
               <Route path="/content-showcase" element={<ContentShowcase />} />
-              <Route path="/conveyor-demo" element={<ConveyorDemo />} />
-              
+
               {/* 404 catch-all route */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
