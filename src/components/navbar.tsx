@@ -137,24 +137,25 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-50 w-full transition-all duration-300">
-      <nav 
+      <nav
         className={cn(
-          "mx-auto flex h-16 w-full items-center justify-between px-4 sm:px-6 lg:px-8",
-          isScrolled 
-            ? "bg-background/80 backdrop-blur-xl shadow-lg" 
+          "w-full",
+          isScrolled
+            ? "bg-background/80 backdrop-blur-xl shadow-lg"
             : "bg-transparent"
         )}
       >
-        <a href="/" className="flex items-center gap-2">
-          <Logo />
-          <span className="text-2xl font-bold">Perception</span>
-        </a>
+        <div className="mx-auto max-w-[1800px] flex h-16 items-center justify-between px-6 sm:px-8 lg:px-12">
+          <a href="/" className="flex items-center gap-2">
+            <Logo />
+            <span className="text-2xl font-bold">Perception</span>
+          </a>
 
         <div className="hidden md:flex md:flex-1 md:justify-center">
           <NavigationMenu className="w-full">
             <NavigationMenuList className="space-x-2">
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent">
+                <NavigationMenuTrigger className="bg-transparent font-semibold">
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -205,7 +206,7 @@ export function Navbar() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent">
+                <NavigationMenuTrigger className="bg-transparent font-semibold">
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -256,7 +257,7 @@ export function Navbar() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent">
+                <NavigationMenuTrigger className="bg-transparent font-semibold">
                   Use Cases
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -307,7 +308,7 @@ export function Navbar() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <a href="/pricing" className="text-sm hover:text-primary">
+                <a href="/pricing" className="text-sm font-semibold hover:text-primary">
                   Pricing
                 </a>
               </NavigationMenuItem>
@@ -316,9 +317,9 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex md:items-center md:space-x-6">
-          <a 
-            href="https://app.perception.to/auth/sign-in" 
-            className="text-sm hover:text-primary"
+          <a
+            href="https://app.perception.to/auth/sign-in"
+            className="text-sm font-semibold hover:text-primary"
           >
             Login
           </a>
@@ -342,6 +343,7 @@ export function Navbar() {
             <Menu className="h-6 w-6" />
           )}
         </button>
+        </div>
       </nav>
 
       {/* Mobile Menu */}

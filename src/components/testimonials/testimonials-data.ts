@@ -1,5 +1,6 @@
 export interface Author {
   name: string;
+  handle: string;
   role: string;
   company: string;
   image?: string;
@@ -8,35 +9,46 @@ export interface Author {
 
 export interface Testimonial {
   author: Author;
+  content: string;
+  date?: string;
 }
 
 export const testimonials: Testimonial[] = [
-  { 
+  {
     author: {
       name: "Sina",
+      handle: "@Sino_Isdead",
       role: "Analyst",
       company: "Bitcoin",
       image: "/avatars/sina.jpg",
       tweetUrl: '1829897498065813883'
-    }
+    },
+    content: "Extremely useful tool for tracking Bitcoin narrative and sentiment shifts across different regions and communities.",
+    date: "Aug 31, 2024"
   },
-  { 
+  {
     author: {
       name: "Jameson Lopp",
+      handle: "@lopp",
       role: "CTO",
       company: "Casa",
       image: "/avatars/lopp.jpg",
       tweetUrl: '1840349046709289442'
-    }
+    },
+    content: "Finally, a comprehensive way to track what's actually happening in Bitcoin beyond the noise.",
+    date: "Sep 29, 2024"
   },
-  { 
+  {
     author: {
       name: "Tuur Demeester",
+      handle: "@TuurDemeester",
       role: "Analyst",
       company: "Bitcoin",
       image: "/avatars/tuur.jpg",
       tweetUrl: 'https://x.com/TuurDemeester/status/1749104052346999040'
-    }
+    },
+    content: "This is exactly what the industry needs - real signal extraction from the constant stream of information.",
+    date: "Jan 21, 2024"
   },
   { 
     author: {
@@ -119,14 +131,17 @@ export const testimonials: Testimonial[] = [
       tweetUrl: '1841056431766446473'
     }
   },
-  { 
+  {
     author: {
       name: "Cointelegraph",
+      handle: "@Cointelegraph",
       role: "Publication",
       company: "Cointelegraph",
       image: "/avatars/cointelegraph.jpg",
       tweetUrl: '1864669668486570299'
-    }
+    },
+    content: "Bitcoin Perception provides invaluable insights into market sentiment and emerging trends.",
+    date: "Dec 5, 2024"
   },
   { 
     author: {
@@ -137,14 +152,17 @@ export const testimonials: Testimonial[] = [
       tweetUrl: '1831274055309136058'
     }
   },
-  { 
+  {
     author: {
       name: "TFTC",
+      handle: "@TFTC21",
       role: "Publication",
       company: "Tales from the Crypt",
       image: "/avatars/tftc.jpg",
       tweetUrl: '1884708908608229649'
-    }
+    },
+    content: "Essential resource for anyone serious about understanding Bitcoin's global impact.",
+    date: "Jan 29, 2025"
   },
   { 
     author: {
@@ -155,14 +173,17 @@ export const testimonials: Testimonial[] = [
       tweetUrl: '1706680030795841806'
     }
   },
-  { 
+  {
     author: {
       name: "BitcoinNewsCom",
+      handle: "@BitcoinNewsCom",
       role: "Publication",
       company: "Bitcoin News",
       image: "/avatars/bitcoinnews.jpg",
       tweetUrl: '1790429744325919027'
-    }
+    },
+    content: "Game-changing platform for tracking Bitcoin adoption and sentiment across the globe.",
+    date: "May 14, 2024"
   },
   { 
     author: {

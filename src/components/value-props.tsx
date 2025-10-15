@@ -9,8 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const valuePropItems = [
   {
-    title: "See the full picture<br/>in minutes, not hours",
-    description: "We don't just track Bitcoin mentions. We connect a Singapore regulatory filing to a Brazilian bank announcement to a European fund movement - showing you the opportunity your competitors won't see for weeks.",
+    title: "See the <em style='font-style: italic; font-family: Georgia, serif;'>full picture</em><br/>in <em style='font-style: italic; font-family: Georgia, serif;'>minutes, not hours</em>",
+    description: "Connect global signals across regions and spot opportunities weeks before your competitors.",
     image: "/images/Value Props/Cross-Regional Opportunity Mapping.png",
     Icon: Globe,
     gradient: "from-blue-500/20 to-cyan-500/20",
@@ -18,8 +18,8 @@ const valuePropItems = [
     delay: 0
   },
   {
-    title: "Act on intelligence,<br/>not information",
-    description: "Skip the \"Bitcoin sentiment is up 12%\" dashboards. Get \"Deutsche Bank's blockchain hire + Germany's new crypto framework = launch your institutional product there by Q2.\"",
+    title: "Act on <em style='font-style: italic; font-family: Georgia, serif;'>intelligence</em>,<br/>not <em style='font-style: italic; font-family: Georgia, serif;'>information</em>",
+    description: "Skip generic dashboards. Get actionable opportunities your competitors are missing.",
     image: "/images/Value Props/Signal Intelligence Over Noise.png",
     Icon: Zap,
     gradient: "from-yellow-500/20 to-orange-500/20",
@@ -27,8 +27,8 @@ const valuePropItems = [
     delay: 0.1
   },
   {
-    title: "Custom intelligence<br/>for YOUR specific game",
-    description: "Track your exact competitors, your target regions, your narrative. We turn noise into your personalized playbook - whether you're launching in LATAM or fighting for enterprise contracts.",
+    title: "<em style='font-style: italic; font-family: Georgia, serif;'>Custom</em> intelligence<br/>for <em style='font-style: italic; font-family: Georgia, serif;'>YOUR specific game</em>",
+    description: "Track what matters to you. Custom intelligence for your competitors, regions, and targets.",
     image: "/images/Value Props/Custom Entity Intelligence.png",
     Icon: GitBranch,
     gradient: "from-purple-500/20 to-pink-500/20",
@@ -36,8 +36,8 @@ const valuePropItems = [
     delay: 0.2
   },
   {
-    title: "Replace guesswork<br/>with pattern recognition",
-    description: "Our system has processed hundreds of thousands of signals. When three unrelated events suddenly correlate, we alert you to the opportunity - not the data points.",
+    title: "Replace <em style='font-style: italic; font-family: Georgia, serif;'>guesswork</em><br/>with <em style='font-style: italic; font-family: Georgia, serif;'>pattern recognition</em>",
+    description: "Pattern recognition across thousands of signals. We alert you to opportunities, not data.",
     image: "/images/Value Props/Trend Intelligence.png",
     Icon: TrendingUp,
     gradient: "from-green-500/20 to-emerald-500/20",
@@ -134,7 +134,7 @@ export function ValueProps() {
     >
       <div className="relative">
         {/* Header - More dramatic */}
-        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 mb-16 sm:mb-24 lg:mb-32">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 mb-16 sm:mb-24 lg:mb-32 text-center">
           <h2
             ref={titleRef}
             className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[0.95] value-props-main-title"
@@ -144,60 +144,58 @@ export function ValueProps() {
           </h2>
         </div>
 
-        {/* Value Props - Bold, full-width cards */}
+        {/* Value Props - 2x2 Grid Layout */}
         <div
           ref={cardsRef}
-          className="space-y-0"
+          className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12"
         >
-          {valuePropItems.map((item, index) => (
-            <div
-              key={item.title}
-              className="group relative min-h-[85vh] flex items-center overflow-hidden"
-              style={{
-                background: index % 2 === 0
-                  ? 'linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 100%)'
-                  : 'linear-gradient(135deg, rgba(10,10,10,1) 0%, rgba(0,0,0,1) 100%)'
-              }}
-            >
-              {/* Bold gradient overlay */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+            {valuePropItems.map((item, index) => (
               <div
-                className={`
-                  absolute inset-0 opacity-20 group-hover:opacity-30
-                  transition-opacity duration-700 ease-out
-                  bg-gradient-to-br ${item.gradient}
-                `}
-              />
-
-              {/* Dramatic lighting effect */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
+                key={item.title}
+                className="group relative min-h-[500px] lg:min-h-[600px] flex flex-col overflow-hidden rounded-2xl"
                 style={{
-                  background: `radial-gradient(circle at ${index % 2 === 0 ? '30%' : '70%'} 50%, rgba(255,255,255,0.03) 0%, transparent 50%)`
+                  background: 'linear-gradient(135deg, rgba(20,20,20,1) 0%, rgba(10,10,10,1) 100%)'
                 }}
-              />
+              >
+                {/* Bold gradient overlay */}
+                <div
+                  className={`
+                    absolute inset-0 opacity-20 group-hover:opacity-30
+                    transition-opacity duration-700 ease-out
+                    bg-gradient-to-br ${item.gradient}
+                  `}
+                />
 
-              {/* Content */}
-              <div className="relative z-10 w-full mx-auto px-6 sm:px-8 lg:px-12">
-                <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center max-w-[1600px] mx-auto">
-                  {/* Text Content - Bold and dramatic */}
-                  <div className={`lg:col-span-5 space-y-8 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                {/* Dramatic lighting effect */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
+                  style={{
+                    background: `radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 50%)`
+                  }}
+                />
+
+                {/* Content */}
+                <div className="relative z-10 flex flex-col h-full p-8 lg:p-10 items-center text-center">
+                  {/* Text Content */}
+                  <div className="space-y-6 mb-8">
                     <h3
-                      className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[0.95] tracking-tight value-prop-title"
+                      className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight value-prop-title"
                       style={{
                         color: '#ffffff',
                         fontWeight: '700'
                       }}
                       dangerouslySetInnerHTML={{ __html: item.title }}
                     />
-                    <p className="text-xl sm:text-2xl lg:text-3xl text-white/80 font-light leading-relaxed max-w-2xl">
+                    <p className="text-base sm:text-lg lg:text-xl text-white/70 font-light leading-relaxed">
                       {item.description}
                     </p>
                   </div>
 
-                  {/* Image - Much larger and more prominent */}
-                  <div className={`lg:col-span-7 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                  {/* Image */}
+                  <div className="flex-1 min-h-[250px] w-full flex items-center justify-center">
                     <div
-                      className="relative overflow-hidden rounded-3xl border-2 border-white/[0.15] group-hover:border-white/[0.3] transition-all duration-700 shadow-2xl cursor-pointer transform group-hover:scale-[1.02] group-hover:rotate-1"
+                      className="relative h-full w-full overflow-hidden rounded-xl border border-white/[0.15] group-hover:border-white/[0.3] transition-all duration-700 shadow-2xl cursor-pointer transform group-hover:scale-[1.02]"
                       onClick={() => {
                         setSelectedImage(item.image);
                         setSelectedTitle(item.title);
@@ -213,18 +211,15 @@ export function ValueProps() {
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                         loading="lazy"
                       />
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* Bottom border separator */}
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.1] to-transparent" />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 

@@ -24,7 +24,7 @@ export function TweetCard({ author }: TweetCardProps) {
   }, []);
 
   // Extract tweet ID from URL if it's a full URL
-  const tweetId = author.tweetUrl.includes('x.com') 
+  const tweetId = author.tweetUrl.includes('x.com')
     ? author.tweetUrl.split('/').pop()
     : author.tweetUrl;
 
@@ -33,9 +33,9 @@ export function TweetCard({ author }: TweetCardProps) {
 
   return (
     <div className="rounded-xl bg-card p-6 h-full">
-      <blockquote 
-        className="twitter-tweet" 
-        data-theme="dark" 
+      <blockquote
+        className="twitter-tweet"
+        data-theme="dark"
         data-width="100%"
         data-conversation={isTuurTweet ? "none" : undefined}
       >
@@ -43,4 +43,4 @@ export function TweetCard({ author }: TweetCardProps) {
       </blockquote>
     </div>
   );
-} 
+}

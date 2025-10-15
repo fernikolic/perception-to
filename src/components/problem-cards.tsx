@@ -9,6 +9,21 @@ export function ProblemCards() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
 
+  // Force white text color
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      .problem-section-title {
+        color: #ffffff !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   // Scroll-triggered animations
   useEffect(() => {
     const title = titleRef.current;
@@ -74,24 +89,24 @@ export function ProblemCards() {
   }, []);
 
   return (
-    <section className="relative py-32 sm:py-40 lg:py-48 bg-gradient-to-b from-background to-background/95">
+    <section className="relative py-32 sm:py-40 lg:py-48" style={{
+      background: 'linear-gradient(to bottom, #000000 0%, #000000 35%, #0a1929 45%, #1e3a8a 60%, #1d4ed8 75%, #2563eb 85%, #3b82f6 100%)'
+    }}>
       <div className="mx-auto max-w-7xl px-8 lg:px-12">
         {/* Header Section */}
         <div className="mx-auto max-w-5xl text-center mb-24 sm:mb-32">
           <h2
             ref={titleRef}
-            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-10 sm:mb-12 leading-[1.05]"
+            className="problem-section-title text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-10 sm:mb-12 leading-[1.05]"
+            style={{ color: '#ffffff !important' }}
           >
-            Information fragmentation is costing
+            Information fragmentation is costing professionals
             <br />
-            professionals{' '}
-            <span className="bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent font-bold">
-              time and clarity
-            </span>
+            time and clarity
           </h2>
           <p
             ref={subtitleRef}
-            className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground leading-relaxed max-w-4xl mx-auto font-light"
+            className="text-xl sm:text-2xl lg:text-3xl text-blue-100/80 leading-relaxed max-w-4xl mx-auto font-light"
           >
             Our research shows that decision-makers spend 3+ hours daily trying to identify key market signals and trends.
           </p>

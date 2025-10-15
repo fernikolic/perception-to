@@ -5,8 +5,7 @@ import gsap from 'gsap';
 export function Hero() {
   const imageRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const valueLineRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
 
@@ -15,7 +14,7 @@ export function Hero() {
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
     // Set initial states
-    gsap.set([badgeRef.current, titleRef.current, subtitleRef.current, valueLineRef.current, ctaRef.current, imageRef.current], {
+    gsap.set([badgeRef.current, titleRef.current, subtitleRef.current, ctaRef.current, imageRef.current], {
       opacity: 0,
       y: 30
     });
@@ -24,7 +23,6 @@ export function Hero() {
     tl.to(badgeRef.current, { opacity: 1, y: 0, duration: 0.8 })
       .to(titleRef.current, { opacity: 1, y: 0, duration: 1, scale: 1 }, '-=0.4')
       .to(subtitleRef.current, { opacity: 1, y: 0, duration: 0.8 }, '-=0.6')
-      .to(valueLineRef.current, { opacity: 1, y: 0, duration: 0.8 }, '-=0.6')
       .to(ctaRef.current, { opacity: 1, y: 0, duration: 0.8 }, '-=0.6')
       .to(imageRef.current, { opacity: 1, y: 0, duration: 1 }, '-=0.4');
 
@@ -33,46 +31,6 @@ export function Hero() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!imageRef.current) return;
-
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const imageRect = imageRef.current.getBoundingClientRect();
-
-      // Calculate how much of the image is in viewport (0 to 1)
-      const scrollProgress = Math.max(0, Math.min(1, (windowHeight - imageRect.top) / (windowHeight + imageRect.height)));
-
-      // Enhanced tilt effect with slight rotation
-      const tilt = Math.max(0, (1 - scrollProgress) * 8);
-      const rotate = Math.sin(scrollProgress * Math.PI) * 2;
-
-      // More pronounced scale effect
-      const scale = 0.85 + (scrollProgress * 0.15);
-
-      // Parallax movement with slight horizontal drift
-      const translateY = scrollPosition * 0.15;
-      const translateX = Math.sin(scrollProgress * Math.PI) * 10;
-
-      imageRef.current.style.transform = `
-        perspective(1200px)
-        rotateX(${tilt}deg)
-        rotateZ(${rotate}deg)
-        scale(${scale})
-        translateY(-${translateY}px)
-        translateX(${translateX}px)
-      `;
-      imageRef.current.style.opacity = imageRef.current.style.opacity || '1';
-
-      // Remove any filters
-      imageRef.current.style.filter = 'none';
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial call
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95">
@@ -133,14 +91,12 @@ export function Hero() {
                 Bitcoin intelligence that{'\u00A0'}drives{'\u00A0'}decisions
               </h1>
 
-              <p ref={subtitleRef} className="text-lg sm:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-black/70 font-light max-w-3xl mx-auto px-2 mb-5 sm:mb-6 lg:mb-8">
-                8 hours of manual research, delivered in 5{'\u00A0'}minutes. 100+ sources filtered into actionable opportunities across Bitcoin, stablecoins, and{'\u00A0'}tokenized{'\u00A0'}finance.
-              </p>
-
-              {/* Value Line */}
-              <div ref={valueLineRef} className="mb-6 sm:mb-8 lg:mb-10">
-                <p className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-black max-w-3xl mx-auto px-2 leading-tight">
-                  The unfair advantage over teams still{'\u00A0'}reading{'\u00A0'}newsletters.
+              <div ref={subtitleRef} className="max-w-3xl mx-auto px-2 mb-6 sm:mb-8 lg:mb-10">
+                <p className="text-lg sm:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-black/70 font-semibold mb-3">
+                  8 hours of manual research, delivered in 5{'\u00A0'}minutes.
+                </p>
+                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl leading-relaxed text-black/60 font-light">
+                  100+ sources filtered into actionable opportunities across Bitcoin, stablecoins, and{'\u00A0'}tokenized{'\u00A0'}finance.
                 </p>
               </div>
 
@@ -192,7 +148,7 @@ export function Hero() {
             </div>
 
             {/* Platform Image */}
-            <div ref={imageRef} className="mt-16 sm:mt-20 lg:mt-28 relative max-w-7xl mx-auto will-change-transform">
+            <div ref={imageRef} className="-mt-4 sm:-mt-2 lg:mt-0 relative max-w-7xl mx-auto will-change-transform">
               <img
                 src="/images/platform_interface.png"
                 alt="Platform interface"
