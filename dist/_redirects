@@ -1,2 +1,11 @@
+# Force HTTPS redirect
+http://perception.to/* https://perception.to/:splat 301!
+
+# Clean up double slashes
 /learn//:slug /learn/:slug 301
+
+# Handle legacy /x path (old Twitter link)
+/x https://x.com/perceptionBTC 301
+
+# SPA fallback - must be last
 /* /index.html 200 

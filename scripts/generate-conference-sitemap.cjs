@@ -99,34 +99,55 @@ entries.push({
   priority: '0.8'
 });
 
-// Add monthly pages
+// Add monthly pages - only include FUTURE/CURRENT months with conferences
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
 const monthlyPages = new Set();
+const monthlyConferenceCounts = new Map();
+
 filteredConferences.forEach(conf => {
   const date = new Date(conf.date);
-  const year = date.getFullYear();
-  const month = date.toLocaleString('en-US', { month: 'long' }).toLowerCase();
-  monthlyPages.add(`${year}/${month}`);
+
+  // Only include if conference is today or in the future
+  if (date >= today) {
+    const year = date.getFullYear();
+    const month = date.toLocaleString('en-US', { month: 'long' }).toLowerCase();
+    const monthKey = `${year}/${month}`;
+
+    monthlyPages.add(monthKey);
+    monthlyConferenceCounts.set(monthKey, (monthlyConferenceCounts.get(monthKey) || 0) + 1);
+  }
 });
 
+// Only add monthly pages that have at least one future conference
 monthlyPages.forEach(monthPath => {
-  entries.push({
-    url: `${baseUrl}/crypto-conferences/${monthPath}`,
-    lastmod: currentDate,
-    changefreq: 'monthly',
-    priority: '0.6'
-  });
+  const conferenceCount = monthlyConferenceCounts.get(monthPath) || 0;
+  if (conferenceCount > 0) {
+    entries.push({
+      url: `${baseUrl}/crypto-conferences/${monthPath}`,
+      lastmod: currentDate,
+      changefreq: 'monthly',
+      priority: '0.6'
+    });
+  }
 });
 
-// Add individual conference pages
+// Add individual conference pages - only future/current conferences
 filteredConferences.forEach(conf => {
-  const year = new Date(conf.date).getFullYear();
-  const slug = generateSlug(conf.name);
-  entries.push({
-    url: `${baseUrl}/crypto-conferences/${year}/${slug}`,
-    lastmod: currentDate,
-    changefreq: 'monthly',
-    priority: '0.5'
-  });
+  const conferenceDate = new Date(conf.date);
+
+  // Only include if conference is today or in the future
+  if (conferenceDate >= today) {
+    const year = conferenceDate.getFullYear();
+    const slug = generateSlug(conf.name);
+    entries.push({
+      url: `${baseUrl}/crypto-conferences/${year}/${slug}`,
+      lastmod: currentDate,
+      changefreq: 'monthly',
+      priority: '0.5'
+    });
+  }
 });
 
 // Generate XML

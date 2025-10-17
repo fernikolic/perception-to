@@ -13,10 +13,12 @@
     "social:generate": "node scripts/generate-social-images-config.js",
     "social:audit": "node scripts/social-image-helper.cjs",
     "sitemap:conferences": "node scripts/generate-conference-sitemap.cjs",
+    "sitemap:sentiment": "node scripts/generate-sentiment-sitemap.cjs",
+    "sitemap:all": "npm run sitemap:conferences && npm run sitemap:sentiment",
     "conferences:fetch": "node scripts/fetch-conferences.js",
     "conferences:save": "node scripts/save-to-firestore.js",
     "conferences:update": "npm run conferences:fetch && npm run sitemap:conferences && npm run conferences:save",
-    "prebuild": "npm run social:generate && npm run sitemap:conferences"
+    "prebuild": "npm run social:generate && npm run sitemap:all"
   },
   "dependencies": {
     "@babel/helpers": "~7.26.10",

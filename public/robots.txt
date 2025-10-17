@@ -27,3 +27,4 @@ Allow: /logos/
 Sitemap: https://perception.to/sitemap-index.xml
 Sitemap: https://perception.to/sitemap.xml
 Sitemap: https://perception.to/sitemap-conferences.xml
+Sitemap: https://perception.to/sitemap-sentiment.xml

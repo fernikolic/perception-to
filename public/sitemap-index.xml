@@ -12,4 +12,8 @@
     <loc>https://perception.to/sitemap-conferences.xml</loc>
     <lastmod>2025-09-29</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>https://perception.to/sitemap-sentiment.xml</loc>
+    <lastmod>2025-10-16</lastmod>
+  </sitemap>
 </sitemapindex>

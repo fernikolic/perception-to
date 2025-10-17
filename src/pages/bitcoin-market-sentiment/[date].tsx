@@ -423,6 +423,41 @@ export default function BitcoinDailySentimentPage() {
     { name: 'Negative', value: sentimentData.sentimentBreakdown.negative, color: CHART_COLORS.negative }
   ];
 
+  // Generate structured data for better SEO
+  const structuredData = actualDate ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": pageTitle,
+    "description": pageDescription,
+    "datePublished": actualDate,
+    "dateModified": actualDate,
+    "author": {
+      "@type": "Organization",
+      "name": "Perception",
+      "url": "https://perception.to"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Perception",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://perception.to/logos/Perception-logo-social-og.png"
+      }
+    },
+    "image": "https://perception.to/images/bitcoin.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://perception.to/bitcoin-market-sentiment/${year}/${month}/${day}`
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Bitcoin Market Sentiment",
+      "description": "Daily Bitcoin market sentiment analysis including fear & greed index"
+    },
+    "keywords": `Bitcoin market sentiment ${actualDate}, Bitcoin fear greed index ${actualDate}, crypto sentiment analysis ${actualDate}`,
+    "articleBody": `Bitcoin market sentiment analysis for ${formattedDate}. Fear & Greed Index: ${sentimentData?.sentiment || 'N/A'}. Positive sentiment: ${sentimentData?.sentimentBreakdown.positive || 0}%, Neutral: ${sentimentData?.sentimentBreakdown.neutral || 0}%, Negative: ${sentimentData?.sentimentBreakdown.negative || 0}%. Total social media mentions: ${sentimentData?.keyMetrics.socialMediaMentions || 0}.`
+  } : null;
+
   return (
     <>
       {actualDate && (
@@ -439,7 +474,17 @@ export default function BitcoinDailySentimentPage() {
           ]}
           url={`https://perception.to/bitcoin-market-sentiment/${year}/${month}/${day}`}
           image="/images/bitcoin.png"
-        />
+        >
+          {/* Structured Data for SEO */}
+          {structuredData && (
+            <script type="application/ld+json">
+              {JSON.stringify(structuredData)}
+            </script>
+          )}
+          {/* Meta robots for indexing hints */}
+          <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+          <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        </SEO>
       )}
       
       <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white overflow-hidden">
@@ -867,7 +912,7 @@ export default function BitcoinDailySentimentPage() {
                   Important events and trends that shaped market sentiment on this day
                 </p>
               </div>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {sentimentData.keyEvents.map((event: string, index: number) => (
                   <div key={index} className="group bg-gradient-to-br from-white/90 to-slate-100 dark:from-black/40 dark:to-slate-900/60 rounded-2xl p-8 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-500 backdrop-blur-xl hover:shadow-2xl">
@@ -879,6 +924,28 @@ export default function BitcoinDailySentimentPage() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* SEO Content - Hidden but crawlable text for better indexing */}
+              <div className="sr-only">
+                <h4>Bitcoin Market Sentiment Analysis - {formattedDate}</h4>
+                <p>
+                  On {formattedDate}, the Bitcoin Fear & Greed Index measured {sentimentData.sentiment},
+                  indicating {sentimentData.sentimentLabel.toLowerCase()} in the cryptocurrency market.
+                  Our analysis tracked {sentimentData.keyMetrics.socialMediaMentions.toLocaleString()} social media mentions
+                  and {sentimentData.keyMetrics.newsArticles} news articles related to Bitcoin.
+                </p>
+                <p>
+                  The sentiment breakdown showed {sentimentData.sentimentBreakdown.positive}% positive sentiment,
+                  {sentimentData.sentimentBreakdown.neutral}% neutral, and {sentimentData.sentimentBreakdown.negative}% negative.
+                  This daily Bitcoin sentiment report is part of our comprehensive market psychology tracking system.
+                </p>
+                <p>
+                  Related reports:
+                  <Link to="/bitcoin-market-sentiment">Monthly Bitcoin Sentiment Archive</Link> |
+                  <Link to="/bitcoin-fear-greed-index">Live Bitcoin Fear & Greed Index</Link> |
+                  <Link to="/bitcoin-media-research">Bitcoin Media Research</Link>
+                </p>
               </div>
             </section>
 
