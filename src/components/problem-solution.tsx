@@ -13,8 +13,8 @@ export function ProblemSolution() {
   
   const problemText = "Emerging finance leaders spend 15+ hours a week scanning for opportunities, regulatory changes, and competitive intelligence across fragmented sources.";
   // Break solution text into pieces to handle separately
-  const solutionText1 = "Perception delivers opportunities with clear next steps,";
-  const solutionText2 = "turning research into competitive advantage."; // Keep these words together with the period
+  const solutionText1 = "Perception delivers opportunities, intelligence,";
+  const solutionText2 = "and next steps in 5 minutes."; // Keep these words together with the period
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -37,9 +37,16 @@ export function ProblemSolution() {
       const innerSpan = document.createElement('span');
       innerSpan.className = styles.innerWord;
       
-      // Highlight specific words in orange
-      if (word === 'spend' || word === '15+' || word === 'hours' || word === 'a' || word === 'week' || word === 'scanning') {
-        innerSpan.style.color = '#fb923c'; // Orange color
+      // Highlight specific words with orange gradient and cursive font
+      if (word === 'spend' || word === '15+' || word === 'hours' || word === 'a' || word === 'week') {
+        innerSpan.style.background = 'linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fdba74 100%)';
+        innerSpan.style.webkitBackgroundClip = 'text';
+        innerSpan.style.backgroundClip = 'text';
+        innerSpan.style.webkitTextFillColor = 'transparent';
+        innerSpan.style.fontStyle = 'italic';
+        innerSpan.style.fontFamily = 'Georgia, serif';
+        innerSpan.style.paddingBottom = '0.1em';
+        innerSpan.style.display = 'inline-block';
       }
       
       innerSpan.textContent = word;
@@ -49,38 +56,53 @@ export function ProblemSolution() {
     });
     
     // Handle solution text in two parts for better line break control
-    
-    // First part (everything before "intelligence layer")
+
+    // First part
     const part1Words = solutionText1.split(' ');
     part1Words.forEach((word, index) => {
       const wordSpan = document.createElement('span');
       wordSpan.className = styles.word;
       wordSpan.setAttribute('data-index', `p1-${index}`);
-      
+
       const innerSpan = document.createElement('span');
       innerSpan.className = styles.innerWord;
       innerSpan.textContent = word;
-      
+
       wordSpan.appendChild(innerSpan);
       wordSpan.innerHTML += ' '; // Add space after word
       solutionContainer.appendChild(wordSpan);
     });
-    
-    // Second part ("intelligence layer." as a single unit with the period)
-    const wordSpan = document.createElement('span');
-    wordSpan.className = styles.word;
-    wordSpan.style.whiteSpace = 'nowrap';
-    wordSpan.style.display = 'inline-block';
-    wordSpan.setAttribute('data-index', 'p2-0');
-    
-    const innerSpan = document.createElement('span');
-    innerSpan.className = styles.innerWord;
-    innerSpan.textContent = solutionText2; // Now includes the period
-    innerSpan.style.whiteSpace = 'nowrap';
-    
-    wordSpan.appendChild(innerSpan);
-    // Don't add a space after the last word with period
-    solutionContainer.appendChild(wordSpan);
+
+    // Second part - split into words to style "5" and "minutes"
+    const part2Words = solutionText2.split(' ');
+    part2Words.forEach((word, index) => {
+      const wordSpan = document.createElement('span');
+      wordSpan.className = styles.word;
+      wordSpan.setAttribute('data-index', `p2-${index}`);
+
+      const innerSpan = document.createElement('span');
+      innerSpan.className = styles.innerWord;
+
+      // Highlight "5" and "minutes" with orange gradient and cursive font
+      if (word === '5' || word.startsWith('minutes')) {
+        innerSpan.style.background = 'linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fdba74 100%)';
+        innerSpan.style.webkitBackgroundClip = 'text';
+        innerSpan.style.backgroundClip = 'text';
+        innerSpan.style.webkitTextFillColor = 'transparent';
+        innerSpan.style.fontStyle = 'italic';
+        innerSpan.style.fontFamily = 'Georgia, serif';
+        innerSpan.style.paddingBottom = '0.1em';
+        innerSpan.style.display = 'inline-block';
+      }
+
+      innerSpan.textContent = word;
+
+      wordSpan.appendChild(innerSpan);
+      if (index < part2Words.length - 1) {
+        wordSpan.innerHTML += ' '; // Add space after word except for last
+      }
+      solutionContainer.appendChild(wordSpan);
+    });
     
     // Get all inner word elements for animation
     const allInnerWords = [
@@ -92,26 +114,26 @@ export function ProblemSolution() {
     gsap.set(allInnerWords, {
       opacity: 0.3,
       color: (_, target) => {
-        // Preserve orange color for highlighted words
-        if (target.style.color === 'rgb(251, 146, 60)') {
-          return '#fb923c';
+        // Preserve gradient for highlighted words (check if gradient is applied)
+        if (target.style.webkitTextFillColor === 'transparent') {
+          return undefined; // Don't override gradient
         }
         return "rgba(255,255,255,0.3)";
       },
       force3D: true // Force GPU acceleration for better cross-browser performance
     });
-    
+
     // Create a much simpler timeline that doesn't interfere with scroll
     const tl = gsap.timeline({ paused: true });
-    
+
     // Animate words appearing more naturally
     allInnerWords.forEach((word, index) => {
       tl.to(word, {
         opacity: 1,
         color: (_, target) => {
-          // Keep highlighted words orange
-          if (target.style.color === 'rgb(251, 146, 60)') {
-            return '#fb923c';
+          // Keep gradient for highlighted words
+          if (target.style.webkitTextFillColor === 'transparent') {
+            return undefined; // Don't override gradient
           }
           return "rgba(255,255,255,1)";
         },
@@ -156,17 +178,17 @@ export function ProblemSolution() {
     <div ref={sectionRef} className={styles.container} key="problem-solution-section-period-fixed">
       <div className={styles.content}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:max-w-3xl">
+          <div className="mx-auto max-w-full">
             <div className="grid gap-8 sm:gap-16 lg:gap-24">
               {/* Problem */}
               <div className="space-y-4 sm:space-y-6">
-                <p ref={problemRef} className={styles.textContainer}></p>
+                <p ref={problemRef} className={`${styles.textContainer} text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[0.95] text-center`}></p>
               </div>
 
               {/* Solution */}
               <div className="space-y-4 sm:space-y-6">
-                <div className="h-px w-8 sm:w-12 bg-white/20" aria-hidden="true" />
-                <p ref={solutionRef} className={styles.textContainer}></p>
+                <div className="h-px w-8 sm:w-12 bg-white/20 mx-auto" aria-hidden="true" />
+                <p ref={solutionRef} className={`${styles.textContainer} text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[0.95] text-center`}></p>
               </div>
             </div>
           </div>
