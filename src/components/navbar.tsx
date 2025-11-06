@@ -38,13 +38,8 @@ const resources: {
   {
     title: "Bitcoin Media Research",
     href: "/bitcoin-media-research",
-    description: "Join 1,500+ subscribers",
+    description: "Join 2,000+ subscribers",
     className: "text-orange-500"
-  },
-  {
-    title: "Crypto Conferences",
-    href: "/crypto-conferences",
-    description: "2025-2026 events calendar"
   },
   {
     title: "Methodology",

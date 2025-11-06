@@ -25,7 +25,6 @@ const companies = [
   { name: 'Cointelegraph', logo: '/logos/Cointelegraph Logo.png' },
   { name: 'Forbes', logo: '/logos/forbes logo.png' },
   { name: 'CoinShares', logo: '/logos/CoinShares_Logo.webp' },
-  { name: 'Bitwise', logo: '/logos/bitwise logo.png' },
   { name: 'Fidelity', logo: '/logos/fidelity-logo-PNG.webp' }
 ];
 
@@ -133,7 +132,7 @@ export function BitcoinMediaResearchPage() {
             {/* Badge */}
             <div className="mb-4 sm:mb-6 lg:mb-10">
               <span className="inline-flex items-center rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 px-4 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold tracking-wide text-gray-800">
-                Join 1,500+ subscribers
+                Join 2,000+ subscribers
               </span>
             </div>
 
@@ -178,7 +177,7 @@ export function BitcoinMediaResearchPage() {
                         src={company.logo}
                         alt={`${company.name} logo`}
                         className={`${
-                          company.name === 'Bitwise' || company.name === 'Fidelity'
+                          company.name === 'Fidelity'
                             ? 'h-6 sm:h-10'
                             : 'h-8 sm:h-14'
                         } w-auto object-contain opacity-90 hover:opacity-100 transition-opacity ${
@@ -196,7 +195,7 @@ export function BitcoinMediaResearchPage() {
                         src={company.logo}
                         alt={`${company.name} logo`}
                         className={`${
-                          company.name === 'Bitwise' || company.name === 'Fidelity'
+                          company.name === 'Fidelity'
                             ? 'h-6 sm:h-10'
                             : 'h-8 sm:h-14'
                         } w-auto object-contain opacity-90 hover:opacity-100 transition-opacity ${
@@ -214,7 +213,7 @@ export function BitcoinMediaResearchPage() {
                         src={company.logo}
                         alt={`${company.name} logo`}
                         className={`${
-                          company.name === 'Bitwise' || company.name === 'Fidelity'
+                          company.name === 'Fidelity'
                             ? 'h-6 sm:h-10'
                             : 'h-8 sm:h-14'
                         } w-auto object-contain opacity-90 hover:opacity-100 transition-opacity ${

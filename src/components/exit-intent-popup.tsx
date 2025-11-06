@@ -238,7 +238,7 @@ export function ExitIntentPopup() {
               worth your time
             </h2>
             <p className="text-center text-lg text-gray-600 font-light">
-              Join 1,500+ industry professionals
+              Join 2,000+ industry professionals
             </p>
           </div>
         </div>
@@ -267,13 +267,6 @@ export function ExitIntentPopup() {
                   src="/logos/forbes logo.png"
                   alt="Forbes"
                   className="h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity grayscale"
-                />
-              </div>
-              <div className="bg-gray-50 rounded-xl px-4 py-3 flex items-center justify-center min-w-[100px]">
-                <img
-                  src="/logos/bitwise logo.png"
-                  alt="Bitwise"
-                  className="h-8 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity grayscale"
                 />
               </div>
               <div className="bg-gray-50 rounded-xl px-4 py-3 flex items-center justify-center min-w-[100px]">
@@ -314,7 +307,7 @@ export function ExitIntentPopup() {
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 6L4.5 8.5L10 3" stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span className="text-xs text-gray-600">1,500+ subscribers</span>
+              <span className="text-xs text-gray-600">2,000+ subscribers</span>
             </div>
             <div className="flex items-center space-x-1">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
