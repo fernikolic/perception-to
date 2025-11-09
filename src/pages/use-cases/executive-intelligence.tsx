@@ -1,106 +1,152 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Check } from 'lucide-react';
 import SEO from '@/components/SEO';
+import BouncingPointCloud from '@/components/BouncingPointCloud';
 
 export function ExecutiveIntelligencePage() {
   return (
     <>
       <SEO
-        title="Executive Intelligence Briefings - Perception"
-        description="Generate board-ready competitive intelligence reports in minutes. Track your market performance with data-backed insights for C-Suite and board members."
+        title="Executive Intelligence Briefings - Perception | Intelligence Workspace"
+        description="Board wants competitive intel? Generate it from your Space with the Board Update Recipe. Track with watchlists, organize in Spaces, deliver with one click."
         url="https://perception.to/use-cases/executive-intelligence"
-        keywords={['executive intelligence', 'competitive intelligence', 'board reports', 'market analysis', 'C-suite intelligence']}
+        keywords={['executive intelligence workspace', 'board intelligence reports', 'competitive intelligence platform', 'executive deliverables', 'board update automation']}
       />
       <div className="min-h-screen bg-white dark:bg-black">
-        {/* Hero */}
-        <section className="relative py-24 sm:py-32 border-b border-slate-200 dark:border-slate-800">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="relative rounded-2xl overflow-hidden">
-              {/* Background Image */}
-              <div className="absolute inset-0">
-                <img
-                  src="/images/hero_image.avif"
-                  alt="Background"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+        {/* Hero Section */}
+        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-16">
+          {/* Base Gradient */}
+          <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 
-              {/* Content */}
-              <div className="relative z-10 px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
-                <div className="mx-auto max-w-3xl">
-                  <a href="/use-cases" className="inline-flex items-center text-sm text-black/70 hover:text-black mb-8">
-                    ← Back to Use Cases
-                  </a>
+          <div className="mx-auto max-w-[1800px] px-6 sm:px-8 py-8 sm:py-12 lg:py-16 lg:px-12">
+            {/* Hero Card with Side-by-Side Layout */}
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <div className="flex flex-col lg:flex-row min-h-[600px]">
+                {/* Bouncing Point Cloud - Left Side (50%) */}
+                <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-[600px]">
+                  <BouncingPointCloud />
+                </div>
 
-                  <div className="mb-8">
-                    <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-black mb-6">
-                      Executive Intelligence Briefings
+                {/* Content - Right Side (50%) */}
+                <div className="w-full lg:w-1/2 px-6 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16 flex flex-col justify-center" style={{ background: '#F0EEE6' }}>
+                  <div className="mx-auto max-w-2xl">
+                    <div className="mb-4 sm:mb-6 lg:mb-8 text-center lg:text-left">
+                      <a href="/use-cases" className="flex items-center text-sm text-black/70 hover:text-black mb-4">
+                        ← Back to Use Cases
+                      </a>
+                      <div className="group relative inline-flex items-center rounded-full px-5 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base font-semibold leading-6"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(255, 255, 255, 0.2)',
+                          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                        }}
+                      >
+                        <span className="relative flex items-center gap-2">
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-40"></span>
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-slate-400"></span>
+                          </span>
+                          <span className="relative font-bold text-black">USE CASE</span>
+                        </span>
+                        <span className="ml-2.5 text-black/80">For Executives</span>
+                      </div>
+                    </div>
+
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-black mb-5 sm:mb-6 lg:mb-8 text-center lg:text-left">
+                      Executive Intelligence{'\u00A0'}Briefings
                     </h1>
-                    <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light text-black/70">
-                      Generate board-ready competitive intelligence reports in minutes, not days
-                    </p>
+
+                    <div className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
+                      <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
+                        Board wants competitive intel? It's already in your{'\u00A0'}<em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Space</em>.
+                      </p>
+                      <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
+                        Set up watchlists for your company and competitors. Organize everything in a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Space</em>. Generate board-ready reports with the Board Update{'\u00A0'}<em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em>.
+                      </p>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-6">
+                      <Button
+                        size="lg"
+                        className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
+                        asChild
+                      >
+                        <a href="https://app.perception.to/auth/sign-up">
+                          Start free trial
+                        </a>
+                      </Button>
+                      <Button
+                        size="lg"
+                        className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
+                        onClick={() => {
+                          document.getElementById('solution-section')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
+                        Learn more
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
         {/* The Challenge */}
-        <section className="py-24 sm:py-32 border-b border-slate-200 dark:border-slate-800">
+        <section className="py-24 sm:py-32 border-b border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl">
               <div className="mb-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">The Challenge</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">The Challenge</span>
               </div>
-              <p className="text-xl sm:text-2xl md:text-3xl font-light text-slate-900 dark:text-white leading-relaxed">
-                Your executive team asks "How are we performing in the market?" and you spend 3 days pulling fragmented coverage data into a deck that's outdated by the time you present it.
+              <p className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 leading-relaxed">
+                Board meeting next week. They want competitive intel. You spend 3 days pulling coverage from different sources, building a deck from scratch, and it's outdated by the time you present it.
               </p>
             </div>
           </div>
         </section>
 
         {/* The Solution */}
-        <section className="py-24 sm:py-32 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+        <section id="solution-section" className="py-24 sm:py-32 bg-gray-50 border-b border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl">
               <div className="mb-12">
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4 block">The Solution</span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-                  Generate comprehensive executive reports in minutes
+                <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4 block">The Solution</span>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                  Your intel is already organized. Just generate the report.
                 </h2>
               </div>
 
               <div className="space-y-8">
                 {[
                   {
-                    title: "Competitive Benchmarking",
-                    description: "Your coverage volume vs. top 3 competitors across any date range"
+                    title: "Set Up Watchlists Once",
+                    description: "Track your company and top 3 competitors. We monitor 100+ sources automatically."
                   },
                   {
-                    title: "Sentiment Analysis",
-                    description: "Who's winning the perception battle? Track positive/negative coverage ratios"
+                    title: "Organize in a Space",
+                    description: "Create a \"Board Prep\" Space. All your competitive intel, sentiment data, and trend analysis lives there."
                   },
                   {
-                    title: "Industry Narrative Tracking",
-                    description: "Monitor how your entire sector is being portrayed (Bitcoin mining sentiment down 15%, treasury narrative up 23%)"
+                    title: "Generate with a Recipe",
+                    description: "Click the Board Update Recipe. Get a ready-to-send report with competitive benchmarking, sentiment analysis, and full citations."
                   },
                   {
-                    title: "Board-Ready Deliverables",
-                    description: "Export polished reports that answer \"How are we perceived?\" with hard data"
+                    title: "Update It Anytime",
+                    description: "Next quarter? Same Space, click the Recipe again. Fresh data, same professional format."
                   }
                 ].map((feature, index) => (
                   <div key={index} className="flex gap-4">
                     <div className="flex-shrink-0 mt-1">
-                      <div className="w-6 h-6 rounded-full bg-slate-900 dark:bg-white flex items-center justify-center">
-                        <Check className="w-4 h-4 text-white dark:text-black" />
+                      <div className="w-6 h-6 rounded-full bg-black flex items-center justify-center">
+                        <Check className="w-4 h-4 text-white" />
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
                         {feature.title}
                       </h3>
-                      <p className="text-slate-600 dark:text-slate-400">
+                      <p className="text-gray-600">
                         {feature.description}
                       </p>
                     </div>
@@ -112,24 +158,24 @@ export function ExecutiveIntelligencePage() {
         </section>
 
         {/* Impact */}
-        <section className="py-24 sm:py-32 border-b border-slate-200 dark:border-slate-800">
+        <section className="py-24 sm:py-32 border-b border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl">
               <div className="grid sm:grid-cols-2 gap-8">
                 <div>
-                  <div className="text-5xl font-semibold text-slate-900 dark:text-white mb-2">
-                    3 days
+                  <div className="text-5xl font-semibold text-gray-900 mb-2">
+                    One click
                   </div>
-                  <div className="text-slate-600 dark:text-slate-400">
-                    Reduced to 15 minutes
+                  <div className="text-gray-600">
+                    Instead of 3 days
                   </div>
                 </div>
                 <div>
-                  <div className="text-5xl font-semibold text-slate-900 dark:text-white mb-2">
-                    100%
+                  <div className="text-5xl font-semibold text-gray-900 mb-2">
+                    Always fresh
                   </div>
-                  <div className="text-slate-600 dark:text-slate-400">
-                    Data-backed decisions
+                  <div className="text-gray-600">
+                    Never outdated
                   </div>
                 </div>
               </div>
@@ -141,30 +187,30 @@ export function ExecutiveIntelligencePage() {
         <section className="py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-                Ready to transform your executive reporting?
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                Ready to stop rebuilding board decks from scratch?
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400 mb-10">
-                Start your 7-day free trial and see the difference data-backed intelligence makes.
+              <p className="text-lg text-gray-600 mb-10">
+                Set up watchlists once. Organize in a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Space</em>. Generate reports with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>. 7-day free trial.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-100 px-8"
+                  className="bg-black text-white hover:bg-gray-900 px-8"
                   asChild
                 >
                   <a href="https://app.perception.to/auth/sign-up" className="flex items-center gap-2">
-                    Start Free Trial
+                    Start free trial
                     <ArrowRight className="w-4 h-4" />
                   </a>
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-slate-300 dark:border-slate-700 px-8"
+                  className="border-gray-300 px-8"
                   asChild
                 >
-                  <a href="/book-a-call">Book a Demo</a>
+                  <a href="/book-a-call">Book a demo</a>
                 </Button>
               </div>
             </div>

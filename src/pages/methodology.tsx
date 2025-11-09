@@ -1,6 +1,10 @@
 import { Navbar } from "@/components/navbar";
 import { Separator } from "@/components/ui/separator";
 import { Newspaper, Globe, Share2, Database, UserCheck, Tags, CheckCircle, XCircle, MinusCircle, ShieldCheck, Lightbulb } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Metamorphosis from "@/components/Metamorphosis";
+import FlowingPattern from "@/components/FlowingPattern";
+import DelicateAsciiDots from "@/components/DelicateAsciiDots";
 
 const northAmericanOutlets = [
   "CBS News", "Vice", "NBC News", "CNBC", "The Wall Street Journal",
@@ -33,95 +37,129 @@ const latinAmericanOutlets = [
   "Milenio", "TV Azteca", "El Financiero", "El Comercio",
   "Página/12", "Clarín", "El Tiempo", "La Nación",
   "El Universal", "Todo Noticias", "Excélsior", "Reforma",
-  "Crónica", "El Universal", "El Nacional", "El Debate"
+  "Crónica", "El Nacional", "El Debate"
 ];
 
 export default function MethodologyPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 font-sans">
+    <div className="min-h-screen flex flex-col bg-black font-sans">
       <Navbar />
       <main className="flex-grow">
-        {/* Hero Section with Card Design */}
-        <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28">
-          {/* Subtle radial background like homepage */}
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.06),transparent_50%)]" />
+        {/* Hero Section */}
+        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-16">
+          {/* Base Gradient */}
+          <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            {/* Hero Card with Background Image (matches homepage) */}
-            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
-              {/* Background Image */}
-              <div className="absolute inset-0">
-                <img
-                  src="/images/hero_image.avif"
-                  alt="Background"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+          <div className="mx-auto max-w-[1800px] px-6 sm:px-8 py-8 sm:py-12 lg:py-16 lg:px-12">
+            {/* Hero Card with Side-by-Side Layout */}
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <div className="flex flex-col lg:flex-row min-h-[600px]">
+                {/* Metamorphosis - Left Side (50%) */}
+                <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-[600px]">
+                  <Metamorphosis />
+                </div>
 
-              {/* Content */}
-              <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-24">
-                <div className="mx-auto max-w-5xl text-center">
-                  <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight sm:leading-[0.95] text-black mb-6 sm:mb-10 lg:mb-14 max-w-4xl mx-auto px-2">
-                    Our Methodology
-                  </h1>
+                {/* Content - Right Side (50%) */}
+                <div className="w-full lg:w-1/2 px-6 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16 flex flex-col justify-center" style={{ background: '#F0EEE6' }}>
+                  <div className="mx-auto max-w-2xl">
+                    <div className="mb-4 sm:mb-6 lg:mb-8 text-center lg:text-left">
+                      <div className="group relative inline-flex items-center rounded-full px-5 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base font-semibold leading-6"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(255, 255, 255, 0.2)',
+                          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                        }}
+                      >
+                        <span className="relative flex items-center gap-2">
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-40"></span>
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-400"></span>
+                          </span>
+                          <span className="relative font-bold text-black">TRANSPARENCY</span>
+                        </span>
+                        <span className="ml-2.5 text-black/80">Our approach</span>
+                      </div>
+                    </div>
 
-                  <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light leading-relaxed text-black/70 max-w-3xl mx-auto mb-8 sm:mb-12 px-2">
-                    A comprehensive and transparent approach to tracking and analyzing Bitcoin's presence in global media and online{'  '}platforms.
-                  </p>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-black mb-5 sm:mb-6 lg:mb-8 text-center lg:text-left">
+                      How We Monitor the Intelligence{'\u00A0'}Landscape
+                    </h1>
 
-                  <div className="flex items-center justify-center">
-                    <button
-                      className="bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
-                      onClick={() => document.querySelector('#methodology-content')?.scrollIntoView({ behavior: 'smooth' })}
-                    >
-                      Explore Our Process
-                    </button>
+                    <div className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
+                      <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
+                        100+ sources. Automatic trend clustering. Real-time{'\u00A0'}monitoring.
+                      </p>
+                      <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
+                        See exactly what we track and how we turn raw coverage into organized intelligence that powers your watchlists, <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, and{'\u00A0'}<em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>.
+                      </p>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-6">
+                      <Button
+                        size="lg"
+                        className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
+                        onClick={() => {
+                          document.getElementById('methodology-content')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
+                        Explore our process
+                      </Button>
+                      <Button
+                        size="lg"
+                        className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
+                        asChild
+                      >
+                        <a href="https://app.perception.to/auth/sign-up">
+                          Start free trial
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
         <div id="methodology-content" className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 max-w-6xl">
 
           <div className="space-y-12 sm:space-y-16 lg:space-y-20">
             <div className="py-8 sm:py-10 lg:py-12">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-6 sm:mb-8 lg:mb-10">
-                Media Outlets Tracked
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight !text-white mb-6 sm:mb-8 lg:mb-10">
+                100+ Sources Monitored 24/7
               </h2>
-              <div className="text-base sm:text-lg lg:text-xl text-gray-600 space-y-4">
-                <p>We monitor a curated list of influential media outlets across the globe to capture a broad spectrum of reporting on Bitcoin.</p>
-                <div className="mt-6 sm:mt-8 bg-white rounded-xl sm:rounded-2xl shadow-sm p-6 sm:p-8 lg:p-10">
+              <div className="text-base sm:text-lg lg:text-xl text-white/70 space-y-4">
+                <p>From Bloomberg to crypto-native media, we're monitoring the complete information landscape. Every trend we surface, every watchlist alert, every <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em> output is backed by this coverage.</p>
+                <div className="mt-6 sm:mt-8 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-10">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
                     <div>
-                      <h3 className="font-semibold text-base sm:text-lg text-gray-700 mb-3 sm:mb-4 flex items-center">
-                        <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-blue-500" />
+                      <h3 className="font-semibold text-base sm:text-lg text-white mb-3 sm:mb-4 flex items-center">
+                        <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white/40" />
                         North America
                       </h3>
-                      <ul className="space-y-2 sm:space-y-2.5 text-sm sm:text-base text-gray-500">
+                      <ul className="space-y-2 sm:space-y-2.5 text-sm sm:text-base text-white/50">
                         {northAmericanOutlets.map((outlet) => (
                           <li key={outlet}>{outlet}</li>
                         ))}
                       </ul>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-base sm:text-lg text-gray-700 mb-3 sm:mb-4 flex items-center">
-                        <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-green-500" />
+                      <h3 className="font-semibold text-base sm:text-lg text-white mb-3 sm:mb-4 flex items-center">
+                        <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white/40" />
                         Europe
                       </h3>
-                      <ul className="space-y-2 sm:space-y-2.5 text-sm sm:text-base text-gray-500">
+                      <ul className="space-y-2 sm:space-y-2.5 text-sm sm:text-base text-white/50">
                         {europeanOutlets.map((outlet) => (
                           <li key={outlet}>{outlet}</li>
                         ))}
                       </ul>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-base sm:text-lg text-gray-700 mb-3 sm:mb-4 flex items-center">
-                        <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-orange-500" />
+                      <h3 className="font-semibold text-base sm:text-lg text-white mb-3 sm:mb-4 flex items-center">
+                        <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white/40" />
                         Latin America
                       </h3>
-                      <ul className="space-y-2 sm:space-y-2.5 text-sm sm:text-base text-gray-500">
+                      <ul className="space-y-2 sm:space-y-2.5 text-sm sm:text-base text-white/50">
                         {latinAmericanOutlets.map((outlet) => (
                           <li key={outlet}>{outlet}</li>
                         ))}
@@ -135,31 +173,31 @@ export default function MethodologyPage() {
             <Separator />
 
             <div className="py-8 sm:py-10 lg:py-12">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-6 sm:mb-8 lg:mb-10">
-                Expanded Social and Web Metrics
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight !text-white mb-6 sm:mb-8 lg:mb-10">
+                Social Media and Crypto-Native Coverage
               </h2>
-              <div className="text-base sm:text-lg lg:text-xl text-gray-600 space-y-4">
-                <p>In addition to traditional media, we track influential sources across social and web platforms to provide a more holistic view of Bitcoin's market perception.</p>
+              <div className="text-base sm:text-lg lg:text-xl text-white/70 space-y-4">
+                <p>Beyond Bloomberg and the Financial Times, we're tracking where conversations actually happen. Reddit discussions, X threads, GitHub activity, YouTube analysis. This is where trends start before they hit mainstream coverage.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-6">
                   {[
-                    { name: "Reddit", logo: "/logos/social/reddit.svg", desc: "Monitoring discussions and trends in key Bitcoin subreddits." },
-                    { name: "Twitter/X", logo: "/logos/social/x.svg", desc: "Tracking tweets from influential accounts." },
-                    { name: "GitHub", logo: "/logos/social/github.svg", desc: "Monitoring activity and discussions in the Bitcoin repository." },
-                    { name: "YouTube", logo: "/logos/social/youtube.svg", desc: "Tracking popular videos and channels discussing Bitcoin." }
+                    { name: "Reddit", logo: "/logos/social/reddit.svg", desc: "Key subreddits where community sentiment shifts first.", invertLogo: false },
+                    { name: "Twitter/X", logo: "/logos/social/x.svg", desc: "Influential voices and emerging narratives.", invertLogo: true },
+                    { name: "GitHub", logo: "/logos/social/github.svg", desc: "Developer activity and technical discussions.", invertLogo: true },
+                    { name: "YouTube", logo: "/logos/social/youtube.svg", desc: "Video analysis and commentary channels.", invertLogo: false }
                   ].map((platform) => (
-                    <div key={platform.name} className="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-sm flex items-start space-x-3 sm:space-x-4">
-                      {platform.logo && <img src={platform.logo} alt={`${platform.name} logo`} className="h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0" />}
+                    <div key={platform.name} className="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl flex items-start space-x-3 sm:space-x-4">
+                      {platform.logo && <img src={platform.logo} alt={`${platform.name} logo`} className={`h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0 ${platform.invertLogo ? 'invert opacity-80' : 'opacity-60'}`} />}
                       <div>
-                        <h4 className="font-semibold text-sm sm:text-base text-gray-800 mb-1">{platform.name}</h4>
-                        <p className="text-xs sm:text-sm text-gray-500">{platform.desc}</p>
+                        <h4 className="font-semibold text-sm sm:text-base text-white mb-1">{platform.name}</h4>
+                        <p className="text-xs sm:text-sm text-white/50">{platform.desc}</p>
                       </div>
                     </div>
                   ))}
                 </div>
                 <div className="pt-4 sm:pt-6">
-                  <div className="p-6 sm:p-8 bg-white rounded-xl sm:rounded-2xl shadow-sm">
-                    <h4 className="font-semibold text-base sm:text-lg text-gray-800 mb-2">Crypto Outlets</h4>
-                    <p className="text-sm sm:text-base text-gray-500">Including leading sources like Cointelegraph, CoinDesk, Bitcoin Magazine, CryptoSlate, The Defiant, Crypto News, The Block, BeInCrypto, Blockworks, and Decrypt.</p>
+                  <div className="p-6 sm:p-8 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl">
+                    <h4 className="font-semibold text-base sm:text-lg !text-white mb-2">Crypto-Native Media</h4>
+                    <p className="text-sm sm:text-base text-white/50">Cointelegraph, CoinDesk, Bitcoin Magazine, The Block, BeInCrypto, Blockworks, Decrypt, and more. These outlets often break stories days before mainstream media picks them up.</p>
                   </div>
                 </div>
               </div>
@@ -167,86 +205,102 @@ export default function MethodologyPage() {
 
             <Separator />
 
+            {/* Grid Layout for Process Sections */}
             <div className="py-8 sm:py-10 lg:py-12">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-6 sm:mb-8 lg:mb-10">
-                Data Collection Process
-              </h2>
-              <div className="text-base sm:text-lg lg:text-xl text-gray-600 space-y-4">
-                <p>Every mention of Bitcoin across these platforms and media outlets is included in our analysis. This approach ensures a holistic view of Bitcoin's presence in both traditional and modern media, capturing dedicated articles, social media posts, and incidental mentions.</p>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
+                {/* Data Collection Process */}
+                <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 overflow-hidden">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold !text-white mb-4 sm:mb-6">
+                    We Track Everything
+                  </h3>
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-6">
+                    Every Bitcoin mention across 100+ sources gets captured. Dedicated articles, social posts, passing references. This comprehensive monitoring is what powers your watchlists and feeds the trend clustering you see in your <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>.
+                  </p>
+                  <div className="rounded-lg overflow-hidden border border-white/10 mt-4" style={{ height: '200px', filter: 'invert(1)' }}>
+                    <FlowingPattern />
+                  </div>
+                </div>
+
+                {/* Human Review and Analysis */}
+                <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 overflow-hidden">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold !text-white mb-4 sm:mb-6">
+                    Expert Analysts, Not Just Algorithms
+                  </h3>
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-6">
+                    Our team reviews content for context and sentiment. Is Bitcoin the story or just mentioned in passing? What's the actual tone beyond keywords? This human analysis is what makes your sentiment tracking and <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em> outputs accurate.
+                  </p>
+                  <div className="rounded-lg overflow-hidden border border-white/10 mt-4" style={{ height: '200px', filter: 'invert(1)' }}>
+                    <DelicateAsciiDots />
+                  </div>
+                </div>
+
+                {/* Data Integrity and Accessibility */}
+                <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 overflow-hidden">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold !text-white mb-4 sm:mb-6">
+                    Only Public Sources
+                  </h3>
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-6">
+                    We only track publicly available content. No invasive scraping, no paywalled breaches. This keeps the data clean and the methodology transparent. What you see in your watchlists and <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> comes from legitimate, verifiable sources.
+                  </p>
+                  <div className="rounded-lg overflow-hidden border border-white/10 mt-4" style={{ height: '200px', filter: 'invert(1)' }}>
+                    <Metamorphosis />
+                  </div>
+                </div>
+
+                {/* Implications and Uses */}
+                <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 overflow-hidden">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold !text-white mb-4 sm:mb-6">
+                    From Monitoring to Deliverables
+                  </h3>
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-6">
+                    This comprehensive monitoring powers your entire workflow. Create watchlists for what matters. Organize everything into <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> by project or stakeholder. Then generate professional deliverables with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>. All backed by verified, analyzed coverage.
+                  </p>
+                  <div className="rounded-lg overflow-hidden border border-white/10 mt-4" style={{ height: '200px', filter: 'invert(1)' }}>
+                    <FlowingPattern />
+                  </div>
+                </div>
               </div>
             </div>
 
             <Separator />
 
+            {/* Labeling Criteria - Full Width */}
             <div className="py-8 sm:py-10 lg:py-12">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-6 sm:mb-8 lg:mb-10">
-                Human Review and Analysis
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight !text-white mb-6 sm:mb-8 lg:mb-10">
+                How We Label Sentiment
               </h2>
-              <div className="text-base sm:text-lg lg:text-xl text-gray-600 space-y-4">
-                <p>A team of expert analysts reviews each piece of content. They delve into the context and sentiment of the Bitcoin mentions, whether it's the focal point or a peripheral mention. This human element is crucial for an accurate and nuanced understanding of Bitcoin's portrayal across different platforms.</p>
-              </div>
-            </div>
-
-            <Separator />
-
-            <div className="py-8 sm:py-10 lg:py-12">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-6 sm:mb-8 lg:mb-10">
-                Labeling Criteria
-              </h2>
-              <div className="text-base sm:text-lg lg:text-xl text-gray-600 space-y-4">
-                <p>Content is categorized based on a detailed assessment of its tone, context, and specific language. This comprehensive review allows for a more refined and accurate categorization than purely automated systems.</p>
+              <div className="text-base sm:text-lg lg:text-xl text-white/70 space-y-4">
+                <p>We categorize content based on tone, context, and language. Not just keywords, actual meaning. This is why the sentiment data you see in your watchlists and <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> is reliable.</p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 pt-6">
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-green-500 mt-1 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-white/40 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-sm sm:text-base text-gray-800 mb-1">Positive</h4>
-                      <p className="text-xs sm:text-sm lg:text-base text-gray-500">Content that portrays Bitcoin favorably or highlights its benefits.</p>
+                      <h4 className="font-semibold text-sm sm:text-base !text-white mb-1">Positive</h4>
+                      <p className="text-xs sm:text-sm lg:text-base text-white/50">Content that portrays Bitcoin favorably or highlights its benefits.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <XCircle className="h-5 w-5 sm:h-6 sm:w-6 text-red-500 mt-1 flex-shrink-0" />
+                    <XCircle className="h-5 w-5 sm:h-6 sm:w-6 text-white/40 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-sm sm:text-base text-gray-800 mb-1">Negative</h4>
-                      <p className="text-xs sm:text-sm lg:text-base text-gray-500">Content that portrays Bitcoin unfavorably or highlights concerns.</p>
+                      <h4 className="font-semibold text-sm sm:text-base !text-white mb-1">Negative</h4>
+                      <p className="text-xs sm:text-sm lg:text-base text-white/50">Content that portrays Bitcoin unfavorably or highlights concerns.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <MinusCircle className="h-5 w-5 sm:h-6 sm:w-6 text-gray-500 mt-1 flex-shrink-0" />
+                    <MinusCircle className="h-5 w-5 sm:h-6 sm:w-6 text-white/40 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-sm sm:text-base text-gray-800 mb-1">Balanced</h4>
-                      <p className="text-xs sm:text-sm lg:text-base text-gray-500">Content that presents both positive and negative aspects neutrally.</p>
+                      <h4 className="font-semibold text-sm sm:text-base !text-white mb-1">Balanced</h4>
+                      <p className="text-xs sm:text-sm lg:text-base text-white/50">Content that presents both positive and negative aspects neutrally.</p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <Separator />
-
-            <div className="py-8 sm:py-10 lg:py-12">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-6 sm:mb-8 lg:mb-10">
-                Data Integrity and Accessibility
-              </h2>
-              <div className="text-base sm:text-lg lg:text-xl text-gray-600 space-y-4">
-                <p>Our commitment to ethical data practices is exemplified by our reliance on publicly available sources. We do not use invasive data scraping, ensuring respect for both data integrity and content creators. The collected data is made freely accessible for transparent insight into Bitcoin's media and social portrayal.</p>
-              </div>
-            </div>
-
-            <Separator />
-
-            <div className="py-8 sm:py-10 lg:py-12">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-6 sm:mb-8 lg:mb-10">
-                Implications and Uses of the Data
-              </h2>
-              <div className="text-base sm:text-lg lg:text-xl text-gray-600 space-y-4">
-                <p>The data from Bitcoin Perception serves as a valuable resource for businesses, researchers, and enthusiasts. It offers a window into public sentiment and media trends surrounding Bitcoin, helping stakeholders make informed decisions and gain a deeper understanding of the ecosystem.</p>
               </div>
             </div>
 
             <Separator />
 
             <div className="py-12 sm:py-16 lg:py-24">
-              <div className="relative bg-black rounded-2xl sm:rounded-3xl px-6 sm:px-12 lg:px-16 xl:px-24 py-12 sm:py-16 lg:py-24 xl:py-32">
+              <div className="relative bg-black border border-white/20 rounded-2xl sm:rounded-3xl px-6 sm:px-12 lg:px-16 xl:px-24 py-12 sm:py-16 lg:py-24 xl:py-32">
 
                 <div className="max-w-7xl mx-auto">
                   {/* Minimal header */}

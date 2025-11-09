@@ -1,5 +1,7 @@
 import { Linkedin } from 'lucide-react';
 import SEO from '@/components/SEO';
+import { Button } from '@/components/ui/button';
+import VerticalBarsNoise from '@/components/VerticalBarsNoise';
 
 const XIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,55 +27,103 @@ const milestones = [
   {
     year: '2024',
     title: 'Company Founded',
-    description: 'Started with a vision to transform market intelligence into actionable opportunities for emerging finance leaders.',
+    description: 'Started with a vision to stop professionals from rebuilding deliverables from scratch every single time.',
   },
   {
     year: '2025',
     title: 'Beta Launch',
-    description: 'Launched our beta platform, helping early users identify opportunities 2-4 weeks before competitors.',
+    description: 'Launched the Intelligence Workspace with Watchlists, Spaces, and Recipes. Early users are turning weeks of monitoring into ready-to-send outputs.',
   },
 ];
 
 export function AboutPage() {
   return (
     <>
-      <SEO 
-        title="About - Perception | Intelligence Platform for Emerging Finance"
-        description="Learn about Perception's mission to transform market intelligence into actionable opportunities for emerging finance leaders. Meet our team and discover our vision."
+      <SEO
+        title="About - Perception | Intelligence Workspace for Bitcoin & Stablecoins"
+        description="Intelligence Workspace for Bitcoin, stablecoins, and tokenized finance. Track with watchlists, organize in Spaces, generate deliverables with Recipes. Meet our team."
         url="https://perception.to/about"
-        keywords={['about Perception', 'Bitcoin intelligence team', 'market intelligence company', 'emerging finance platform', 'crypto analytics team']}
+        keywords={['about Perception', 'Bitcoin intelligence workspace', 'stablecoin intelligence', 'market intelligence platform', 'crypto intelligence team']}
       />
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Original with Apple styling */}
-      <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
-            {/* Background Image */}
-            <div className="absolute inset-0">
-              <img
-                src="/images/hero_image.avif"
-                alt="Background"
-                className="w-full h-full object-cover"
-              />
-            </div>
+      {/* Hero Section */}
+      <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-16">
+        {/* Base Gradient */}
+        <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 
-            {/* Content */}
-            <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-24">
-              <div className="mx-auto max-w-5xl text-center">
-                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight sm:leading-[0.95] text-black mb-6 sm:mb-10 lg:mb-14 px-2">
-                  The Intelligence Platform for Emerging Finance
-                </h1>
-                <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light leading-relaxed text-black/70 max-w-4xl mx-auto px-2">
-                  Perception is an intelligence platform that transforms market signals into actionable opportunities for emerging finance founders, strategists, and decision-makers.
-                </p>
+        <div className="mx-auto max-w-[1800px] px-6 sm:px-8 py-8 sm:py-12 lg:py-16 lg:px-12">
+          {/* Hero Card with Side-by-Side Layout */}
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="flex flex-col lg:flex-row min-h-[600px]">
+              {/* Vertical Bars Noise - Left Side (50%) */}
+              <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-[600px]">
+                <VerticalBarsNoise />
+              </div>
+
+              {/* Content - Right Side (50%) */}
+              <div className="w-full lg:w-1/2 px-6 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16 flex flex-col justify-center" style={{ background: '#F0EEE6' }}>
+                <div className="mx-auto max-w-2xl">
+                  <div className="mb-4 sm:mb-6 lg:mb-8 text-center lg:text-left">
+                    <div className="group relative inline-flex items-center rounded-full px-5 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base font-semibold leading-6"
+                      style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                      }}
+                    >
+                      <span className="relative flex items-center gap-2">
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-40"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-400"></span>
+                        </span>
+                        <span className="relative font-bold text-black">ABOUT US</span>
+                      </span>
+                      <span className="ml-2.5 text-black/80">Our story</span>
+                    </div>
+                  </div>
+
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-black mb-5 sm:mb-6 lg:mb-8 text-center lg:text-left">
+                    Intelligence Workspace for Bitcoin, Stablecoins & Tokenized{'\u00A0'}Finance
+                  </h1>
+
+                  <div className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
+                    <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
+                      From monitoring to deliverables in one{'\u00A0'}workflow.
+                    </p>
+                    <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
+                      Track with watchlists, organize in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, generate with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>. Built for professionals who need to create deliverables{'\u00A0'}constantly.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-6">
+                    <Button
+                      size="lg"
+                      className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
+                      asChild
+                    >
+                      <a href="https://app.perception.to/auth/sign-up">
+                        Start here
+                      </a>
+                    </Button>
+                    <Button
+                      size="lg"
+                      className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
+                      onClick={() => {
+                        document.getElementById('mission-section')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      Learn more
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Mission Section - Apple Style */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-gray-50">
+      <section id="mission-section" className="py-12 sm:py-16 lg:py-24 bg-gray-50">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-4 sm:mb-6 px-2">
@@ -84,21 +134,21 @@ export function AboutPage() {
             <div className="space-y-6 sm:space-y-8">
               <div className="space-y-4 sm:space-y-6 text-base sm:text-lg lg:text-xl leading-relaxed text-gray-700 font-light">
                 <p>
-                  We give emerging finance leaders a 2–4 week competitive advantage by identifying opportunities before they become mainstream.
+                  Stop starting from scratch every time you need to create a deliverable. Your board wants competitive intel? It's already organized in a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Space</em>. Generate it with a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em>.
                 </p>
                 <p>
-                  From regulatory windows to narrative shifts, we deliver opportunities with clear next steps.
+                  We monitor 100+ sources automatically. You set up watchlists for what matters. Everything gets organized into <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> by project or stakeholder. Then you generate professional deliverables with one click.
                 </p>
                 <p>
-                  Our goal is simple: replace hours of manual research with minutes of strategic decision-making.
+                  Our goal is simple: turn weeks of monitoring into ready-to-send outputs. Board updates, pitch intelligence, sector deep dives. All with full citations.
                 </p>
               </div>
             </div>
             <div className="relative mt-8 md:mt-0">
               <div className="aspect-square rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-100 p-8 sm:p-12 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-5xl sm:text-6xl lg:text-7xl font-thin text-indigo-600 mb-3 sm:mb-4">2–4</div>
-                  <div className="text-lg sm:text-xl lg:text-2xl font-light text-gray-700">weeks ahead</div>
+                  <div className="text-5xl sm:text-6xl lg:text-7xl font-thin text-indigo-600 mb-3 sm:mb-4">100+</div>
+                  <div className="text-lg sm:text-xl lg:text-2xl font-light text-gray-700">sources monitored</div>
                 </div>
               </div>
             </div>
@@ -114,7 +164,7 @@ export function AboutPage() {
               Meet Our Founder
             </h2>
             <p className="text-base sm:text-lg lg:text-xl xl:text-2xl font-light text-gray-600 max-w-3xl mx-auto px-2">
-              Bringing deep expertise in emerging finance intelligence and strategic communications.
+              15 years in marketing and communications at leading tech and Bitcoin companies.
             </p>
           </div>
 
@@ -171,7 +221,7 @@ export function AboutPage() {
               Our Journey
             </h2>
             <p className="text-base sm:text-lg lg:text-xl xl:text-2xl font-light text-gray-600 max-w-4xl mx-auto px-2">
-              From founding to today, we've been dedicated to turning market intelligence into competitive advantage.
+              From founding to beta launch, building the Intelligence Workspace professionals actually need.
             </p>
           </div>
 
@@ -204,10 +254,10 @@ export function AboutPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-6 sm:mb-8 px-2">
-              Ready to get started?
+              Ready to stop starting from scratch?
             </h2>
             <p className="text-base sm:text-lg lg:text-xl xl:text-2xl font-light text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto px-2">
-              Join emerging finance leaders who are already 2–4 weeks ahead.
+              Set up watchlists, organize in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, generate with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>. 7-day free trial.
             </p>
             <a
               href="https://app.perception.to/auth/sign-up"

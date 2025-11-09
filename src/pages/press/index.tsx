@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Calendar, Link as LinkIcon } from 'lucide-react';
+import FlowingPattern from '@/components/FlowingPattern';
 
 interface PressRelease {
   date: string;
@@ -58,20 +59,20 @@ const pressReleases: PressRelease[] = [
 const mediaKit = [
   {
     title: 'Company Overview',
-    description: 'Learn about our mission and team.',
+    description: 'Learn about the Intelligence Workspace and our team.',
     link: '/about',
     disabled: false,
   },
   {
     title: 'Brand Assets',
-    description: 'Download our logo, screenshots, and other brand materials.',
+    description: 'Logo, screenshots, and brand materials.',
     link: '#',
     disabled: true,
     badge: 'Coming Soon',
   },
   {
     title: 'Media Contact',
-    description: 'Get in touch with our communications team.',
+    description: 'Get in touch with our press team.',
     link: 'mailto:press@perception.to',
     disabled: false,
   },
@@ -79,46 +80,85 @@ const mediaKit = [
 
 export function PressPage() {
   return (
-    <div className="min-h-screen bg-white pt-20">
-      {/* Hero Section (image card with overlay) */}
-      <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
-            {/* Background Image */}
-            <div className="absolute inset-0">
-              <img
-                src="/images/hero_image.avif"
-                alt="Background"
-                className="w-full h-full object-cover"
-              />
-            </div>
+    <div className="min-h-screen bg-white pt-16">
+      {/* Hero Section */}
+      <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95">
+        {/* Base Gradient */}
+        <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 
-            {/* Content */}
-            <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-24">
-              <div className="mx-auto max-w-5xl text-center">
-                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight sm:leading-[0.95] text-black mb-6 sm:mb-10 lg:mb-14 px-2">
-                  Press Center
-                </h1>
-                <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light leading-relaxed text-black/70 max-w-4xl mx-auto mb-8 sm:mb-12 px-2">
-                  Get the latest news and updates about Perception's mission to make emerging finance intelligence accessible to everyone.
-                </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-2">
-                  <Button size="lg" className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl" asChild>
-                    <a href="mailto:press@perception.to">Contact Press Team</a>
-                  </Button>
-                  <Button variant="outline" size="lg" className="w-full sm:w-auto relative border-black/30 text-black opacity-60 cursor-not-allowed px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl rounded-2xl" disabled>
-                    Download Media Kit
-                    <span className="ml-2 px-2 py-0.5 bg-gray-200 text-gray-600 text-xs font-medium rounded">Soon</span>
-                  </Button>
+        <div className="mx-auto max-w-[1800px] px-6 sm:px-8 py-8 sm:py-12 lg:py-16 lg:px-12">
+          {/* Hero Card with Side-by-Side Layout */}
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="flex flex-col lg:flex-row min-h-[600px]">
+              {/* Flowing Pattern - Left Side (50%) */}
+              <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-[600px]">
+                <FlowingPattern />
+              </div>
+
+              {/* Content - Right Side (50%) */}
+              <div className="w-full lg:w-1/2 px-6 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16 flex flex-col justify-center" style={{ background: '#F0EEE6' }}>
+                <div className="mx-auto max-w-2xl">
+                  <div className="mb-4 sm:mb-6 lg:mb-8 text-center lg:text-left">
+                    <div className="group relative inline-flex items-center rounded-full px-5 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base font-semibold leading-6"
+                      style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                      }}
+                    >
+                      <span className="relative flex items-center gap-2">
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-40"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-gray-400"></span>
+                        </span>
+                        <span className="relative font-bold text-black">PRESS</span>
+                      </span>
+                      <span className="ml-2.5 text-black/80">News & Media</span>
+                    </div>
+                  </div>
+
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-black mb-5 sm:mb-6 lg:mb-8 text-center lg:text-left">
+                    Press{'\u00A0'}Center
+                  </h1>
+
+                  <div className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
+                    <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
+                      Latest news and coverage about{'\u00A0'}Perception.
+                    </p>
+                    <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
+                      The Intelligence Workspace for Bitcoin, stablecoins, and tokenized finance. Track with watchlists, organize in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, generate with{'\u00A0'}<em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-6">
+                    <Button
+                      size="lg"
+                      className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
+                      asChild
+                    >
+                      <a href="mailto:press@perception.to">
+                        Contact press team
+                      </a>
+                    </Button>
+                    <Button
+                      size="lg"
+                      className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
+                      onClick={() => {
+                        document.getElementById('latest-news')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      View news
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Press Releases */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <section id="latest-news" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-4 sm:mb-6 px-2">

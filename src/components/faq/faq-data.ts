@@ -1,23 +1,23 @@
 export const faqData = [
   {
     question: "What is Perception?",
-    answer: "Perception is a Bitcoin intelligence platform that drives decisions. We filter 100+ sources into actionable opportunities across Bitcoin, stablecoins, and tokenized finance, shown daily. What takes teams 8 hours to research manually, you get in minutes."
+    answer: "Perception is an intelligence workspace for Bitcoin, stablecoins, and tokenized finance. Track what matters with watchlists, organize everything in Spaces by project or stakeholder, and generate professional deliverables with Recipes. Turn weeks of monitoring into ready-to-send board updates, pitch intelligence, and reports."
   },
   {
     question: "Who is this platform for?",
-    answer: "Perception is built for teams who measure success in capital raised and market share, not media mentions. This includes:\n• Founders and executives\n• Business development teams pursuing strategic partnerships\n• Reporters, marketing and PR leaders who need to capitalize on narratives\n• Corporate development teams tracking competitive moves\n• Anyone who needs to see opportunities before competitors do"
+    answer: "Perception is built for professionals who need to create deliverables constantly. This includes:\n• Executives who need board updates and competitive intelligence\n• PR and communications teams who need pitch intelligence and stakeholder updates\n• Analysts and researchers who need sector deep dives\n• Marketing teams who need content briefs\n• Anyone tired of rebuilding the same deliverables from scratch every time"
   },
   {
-    question: "How does the platform identify opportunities?",
-    answer: "We monitor 100+ sources in real-time for regulatory windows, market shifts, partnership opportunities, and narrative changes. Our intelligence filters out noise and surfaces only opportunities with clear actions."
+    question: "How do Watchlists, Spaces, and Recipes work?",
+    answer: "Watchlists monitor the trends, companies, sectors, or people you care about automatically. Spaces organize your intelligence by project or stakeholder (board prep in one Space, competitive intel in another). Recipes let you generate professional deliverables with one click: Board Updates, Interview Prep, PR Pitch Intelligence, Sector Deep Dives, and more. All with full source citations."
   },
   {
     question: "What sources does the platform track?",
-    answer: "We monitor over 100 sources including:\n• Regulatory filings and policy frameworks\n• Institutional movements and corporate announcements\n• Technical developments and protocol changes\n• Regional market developments\n• Conference opportunities and strategic events"
+    answer: "We monitor 100+ sources across Bitcoin, stablecoins, and tokenized finance. This includes Bloomberg, Financial Times, Reuters, crypto-native media like CoinDesk and The Block, social platforms, regulatory announcements, and more. Every trend we cluster, every watchlist alert, every Recipe output is backed by comprehensive source coverage."
   },
   {
-    question: "Is this platform only for Bitcoin companies?",
-    answer: "We track opportunities across Bitcoin, stablecoins, and tokenized finance. Whether you're building on Bitcoin, launching stablecoins, tokenizing real-world assets, or entering new markets with digital payment rails - if it involves programmable money, we track the opportunities."
+    question: "What can I create with Recipes?",
+    answer: "Recipes are pre-built templates for common deliverables. Generate Board Updates with competitive intelligence, Interview Prep briefs, PR Pitch Intelligence showing what journalists are covering, Sector Deep Dives with sentiment analysis, Stakeholder Communications, Content Creation Briefs, and more. All include full source citations."
   },
   {
     question: "How much does the platform cost?",
@@ -25,15 +25,15 @@ export const faqData = [
   },
   {
     question: "What's included in the 7-day free trial?",
-    answer: "Full platform access for 7 days for the requested plan. See every opportunity, test every feature, experience the daily intelligence flow. If you don't find actionable opportunities in your first week, cancel with one click. No questions, no hassle."
+    answer: "Full platform access for 7 days. Set up watchlists, create Spaces, try all the Recipes. See how much time you save creating deliverables. If it doesn't work for you, cancel with one click. No questions, no hassle."
   },
   {
-    question: "How is this different from sentiment tracking tools?",
-    answer: "Sentiment tools tell you \"Bitcoin perception is positive in Germany.\" We tell you \"German privacy law creates Bitcoin custody opportunity - BaFin accepting applications until March 31\" We don't just track data. We track opportunities."
+    question: "How is this different from news aggregators or ChatGPT?",
+    answer: "News aggregators just show you articles. ChatGPT requires you to manually input context and doesn't cite sources. Perception monitors everything automatically through watchlists, organizes it in Spaces, and generates professional deliverables with Recipes. All with full source citations. It's a complete intelligence workspace, not a search tool."
   },
   {
-    question: "Can I focus on specific regions or sectors?",
-    answer: "Yes. Filter opportunities by region (North America, Europe, Asia, LATAM, MENA) or focus area (regulatory, partnerships, market entry, narrative shifts). Set alerts for what matters to your strategy."
+    question: "Can I customize what I track?",
+    answer: "Absolutely. Create unlimited watchlists for any company, person, sector, or narrative you care about. Organize them into Spaces by project, stakeholder, or client. We automatically cluster trends and show you what's heating up, and you decide what goes where."
   },
   {
     question: "What if I need strategic advisory beyond the platform?",
@@ -41,6 +41,6 @@ export const faqData = [
   },
   {
     question: "Can I provide feedback or request features?",
-    answer: "Yes. The platform has built-in feedback mechanisms. We're building this for teams who need real competitive advantage, and we actively incorporate user input. But we stay focused - this is an intelligence platform for opportunities, not another analytics dashboard."
+    answer: "Absolutely. The platform has built-in feedback mechanisms. We're building this for professionals who need to create deliverables efficiently, and we actively incorporate user input. We stay focused on making the Watchlists, Spaces, and Recipes workflow as powerful as possible."
   }
 ]; 
