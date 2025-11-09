@@ -179,6 +179,7 @@ export function Navbar() {
             // Only set if the background is not transparent
             if (bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') {
               isDark = luminance < 128;
+              console.log(`Navbar detection - BG: ${bgColor}, Luminance: ${luminance.toFixed(2)}, isDark: ${isDark}`);
               break;
             }
           }
@@ -218,7 +219,7 @@ export function Navbar() {
             <Logo white={isOverDarkSection} />
             <span className={cn(
               "text-xl font-bold tracking-tight transition-colors group-hover:text-primary",
-              isOverDarkSection ? "text-white" : ""
+              isOverDarkSection ? "text-white" : "text-black dark:text-white"
             )}>Perception</span>
           </a>
 
@@ -228,7 +229,7 @@ export function Navbar() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={cn(
                   "bg-transparent font-medium text-sm hover:text-primary transition-colors",
-                  isOverDarkSection ? "text-white" : ""
+                  isOverDarkSection ? "text-white" : "text-black dark:text-white"
                 )}>
                   Resources
                 </NavigationMenuTrigger>
@@ -300,7 +301,7 @@ export function Navbar() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={cn(
                   "bg-transparent font-medium text-sm hover:text-primary transition-colors",
-                  isOverDarkSection ? "text-white" : ""
+                  isOverDarkSection ? "text-white" : "text-black dark:text-white"
                 )}>
                   Company
                 </NavigationMenuTrigger>
@@ -372,7 +373,7 @@ export function Navbar() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={cn(
                   "bg-transparent font-medium text-sm hover:text-primary transition-colors",
-                  isOverDarkSection ? "text-white" : ""
+                  isOverDarkSection ? "text-white" : "text-black dark:text-white"
                 )}>
                   Use Cases
                 </NavigationMenuTrigger>
@@ -444,7 +445,7 @@ export function Navbar() {
               <NavigationMenuItem>
                 <a href="/pricing" className={cn(
                   "text-sm font-medium hover:text-primary transition-colors px-4 py-2",
-                  isOverDarkSection ? "text-white" : ""
+                  isOverDarkSection ? "text-white" : "text-black dark:text-white"
                 )}>
                   Pricing
                 </a>
@@ -458,7 +459,7 @@ export function Navbar() {
             href="https://app.perception.to/auth/sign-in"
             className={cn(
               "text-sm font-medium hover:text-primary transition-colors",
-              isOverDarkSection ? "text-white" : ""
+              isOverDarkSection ? "text-white" : "text-black dark:text-white"
             )}
           >
             Login
