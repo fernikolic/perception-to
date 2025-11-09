@@ -1,3 +1,5 @@
+import { Logo } from '@/components/ui/logo';
+
 export default function Footer() {
   return (
     <footer className="bg-black">
@@ -5,11 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1">
             <a href="/" className="flex items-center">
-              <img
-                src="/logos/Perception Logo.svg"
-                alt="Perception Logo"
-                className="h-8 w-auto"
-              />
+              <Logo white={true} />
             </a>
           </div>
           {/* Add footer columns here */}

@@ -57,7 +57,7 @@ export function HeroConveyor() {
           <div className="grinder-section">
             <div className="section-label">Process</div>
             <div className="processor-logo">
-              <img src="/logos/Perception Logo.svg" alt="Perception" />
+              <img src="/logos/perception-logo-dark.png" alt="Perception" />
             </div>
           </div>
 

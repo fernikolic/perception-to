@@ -135,12 +135,28 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [isOverDarkSection, setIsOverDarkSection] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
+
+      // Check if navbar is over a dark section
+      const navbarHeight = 100; // approximate navbar height including padding
+      const elementAtNavbar = document.elementFromPoint(window.innerWidth / 2, navbarHeight);
+
+      if (elementAtNavbar) {
+        const bgColor = window.getComputedStyle(elementAtNavbar).backgroundColor;
+        const parent = elementAtNavbar.closest('[data-dark-section="true"]') ||
+                      elementAtNavbar.closest('.bg-black') ||
+                      elementAtNavbar.closest('.bg-gray-900') ||
+                      elementAtNavbar.closest('.dark\\:bg-black');
+
+        setIsOverDarkSection(!!parent);
+      }
     };
 
+    handleScroll(); // Check on mount
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -165,15 +181,21 @@ export function Navbar() {
       >
         <div className="mx-auto max-w-5xl flex h-16 items-center justify-between px-8 lg:px-10">
           <a href="/" className="flex items-center gap-2 group">
-            <Logo />
-            <span className="text-xl font-bold tracking-tight transition-colors group-hover:text-primary">Perception</span>
+            <Logo white={isOverDarkSection} />
+            <span className={cn(
+              "text-xl font-bold tracking-tight transition-colors group-hover:text-primary",
+              isOverDarkSection ? "text-white" : ""
+            )}>Perception</span>
           </a>
 
         <div className="hidden md:flex md:flex-1 md:justify-center">
           <NavigationMenu className="w-full">
             <NavigationMenuList className="space-x-1">
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent font-medium text-sm hover:text-primary transition-colors">
+                <NavigationMenuTrigger className={cn(
+                  "bg-transparent font-medium text-sm hover:text-primary transition-colors",
+                  isOverDarkSection ? "text-white" : ""
+                )}>
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -242,7 +264,10 @@ export function Navbar() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent font-medium text-sm hover:text-primary transition-colors">
+                <NavigationMenuTrigger className={cn(
+                  "bg-transparent font-medium text-sm hover:text-primary transition-colors",
+                  isOverDarkSection ? "text-white" : ""
+                )}>
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -311,7 +336,10 @@ export function Navbar() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent font-medium text-sm hover:text-primary transition-colors">
+                <NavigationMenuTrigger className={cn(
+                  "bg-transparent font-medium text-sm hover:text-primary transition-colors",
+                  isOverDarkSection ? "text-white" : ""
+                )}>
                   Use Cases
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -380,7 +408,10 @@ export function Navbar() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <a href="/pricing" className="text-sm font-medium hover:text-primary transition-colors px-4 py-2">
+                <a href="/pricing" className={cn(
+                  "text-sm font-medium hover:text-primary transition-colors px-4 py-2",
+                  isOverDarkSection ? "text-white" : ""
+                )}>
                   Pricing
                 </a>
               </NavigationMenuItem>
@@ -388,10 +419,13 @@ export function Navbar() {
           </NavigationMenu>
         </div>
 
-        <div className="hidden md:flex md:items-center md:space-x-4">
+        <div className="hidden md:flex md:items-center md:space-x-8">
           <a
             href="https://app.perception.to/auth/sign-in"
-            className="text-sm font-medium hover:text-primary transition-colors"
+            className={cn(
+              "text-sm font-medium hover:text-primary transition-colors",
+              isOverDarkSection ? "text-white" : ""
+            )}
           >
             Login
           </a>
