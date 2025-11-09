@@ -193,18 +193,20 @@ export function Integrations() {
       <div className="mx-auto max-w-7xl px-8 lg:px-12">
         <div className="mx-auto max-w-5xl text-center mb-20 sm:mb-24">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] !text-white">
-            Track opportunities across{' '}
+            Intelligence Across{' '}
             <span className="bg-gradient-to-r from-orange-500 to-orange-800 inline-block text-transparent bg-clip-text font-bold">
-              100+ sources
+              100+ Sources
             </span>
           </h2>
           <p className="mt-8 sm:mt-10 text-xl sm:text-2xl lg:text-3xl leading-relaxed !text-white/80 font-light">
-            From regulatory filings to industry reports, filtered into
-            actionable opportunities & strategic insights.
+            From Bloomberg and the Financial Times to crypto-native media and social platforms. We're monitoring the whole landscape so you don't have to. Every trend we surface, every watchlist alert, every <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em> output is backed by this coverage.
+          </p>
+          <p className="mt-6 text-lg sm:text-xl lg:text-2xl leading-relaxed !text-white/60 font-light">
+            We read them all. You organize what matters. <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em> handle the rest.
           </p>
           <div className="mt-10 sm:mt-12 flex justify-center">
             <Button
-              className="!bg-gray-800 !text-white hover:!bg-gray-700 !border-0 !shadow-lg hover:scale-105 transition-all duration-300 text-base sm:text-lg px-8 py-6 rounded-2xl font-semibold"
+              className="!bg-transparent !text-white hover:!bg-white/10 !border-[0.5px] !border-gray-400 !shadow-lg hover:scale-105 transition-all duration-300 text-base sm:text-lg px-8 py-6 rounded-2xl font-semibold"
               asChild
             >
               <a href="/methodology">

@@ -115,51 +115,51 @@ function LeaderboardCard({ account, rank, isTop }: { account: TwitterAccount; ra
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="relative group transition-all duration-300 hover:shadow-lg">
-      <Card className="relative bg-white border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-        <CardContent className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-gray-100 text-gray-700 font-medium">
+    <div className="relative group">
+      <Card className="relative bg-white border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <CardContent className="p-4">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center w-8 h-8 rounded bg-gray-100 text-gray-700 text-sm font-medium">
                 {rank}
               </div>
 
               <div>
-                <div className="flex items-center gap-2">
-                  <TwitterIcon className="w-4 h-4 text-blue-500" />
-                  <h3 className="font-medium text-gray-900">{account.name}</h3>
+                <div className="flex items-center gap-1.5">
+                  <TwitterIcon className="w-3.5 h-3.5 text-blue-500" />
+                  <h3 className="font-medium text-gray-900 text-sm">{account.name}</h3>
                 </div>
-                <p className="text-gray-500 text-sm">@{account.handle}</p>
+                <p className="text-gray-500 text-xs">@{account.handle}</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 px-3 py-1 rounded-lg bg-gray-100 border border-gray-200">
-              <span className="text-sm text-gray-900 font-medium">{account.positivePercentage.toFixed(1)}%</span>
+            <div className="px-2 py-1 rounded bg-gray-100">
+              <span className="text-xs text-gray-900 font-medium">{account.positivePercentage.toFixed(1)}%</span>
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4 mb-4">
+          <div className="grid grid-cols-3 gap-3 mb-3">
             <div className="text-center">
-              <div className="text-sm text-gray-500 mb-1">Positive</div>
-              <div className="text-lg font-medium text-gray-900">{account.positivePercentage.toFixed(1)}%</div>
+              <div className="text-xs text-gray-500 mb-0.5">Positive</div>
+              <div className="text-sm font-medium text-gray-900">{account.positivePercentage.toFixed(1)}%</div>
             </div>
             <div className="text-center">
-              <div className="text-sm text-gray-500 mb-1">Neutral</div>
-              <div className="text-lg font-medium text-gray-600">{account.neutralPercentage.toFixed(1)}%</div>
+              <div className="text-xs text-gray-500 mb-0.5">Neutral</div>
+              <div className="text-sm font-medium text-gray-600">{account.neutralPercentage.toFixed(1)}%</div>
             </div>
             <div className="text-center">
-              <div className="text-sm text-gray-500 mb-1">Negative</div>
-              <div className="text-lg font-medium text-gray-900">{account.negativePercentage.toFixed(1)}%</div>
+              <div className="text-xs text-gray-500 mb-0.5">Negative</div>
+              <div className="text-sm font-medium text-gray-900">{account.negativePercentage.toFixed(1)}%</div>
             </div>
           </div>
 
-          <div className="flex justify-between items-center text-sm text-gray-500">
+          <div className="flex justify-between items-center text-xs text-gray-500">
             <span>{account.totalMentions} mentions</span>
-            <span>Updated {formatPrettyDate(account.lastUpdate)}</span>
+            <span className="text-xs">{formatPrettyDate(account.lastUpdate)}</span>
           </div>
 
           {/* View Tweets Button */}
-          <div className="mt-4 pt-4 border-t border-gray-200">
+          <div className="mt-3 pt-3 border-t border-gray-200">
             <Button
               variant="ghost"
               size="sm"
@@ -568,105 +568,82 @@ export default function TwitterSentimentLeaderboard() {
         <meta name="twitter:description" content="Real-time ranking of all Bitcoin Twitter accounts with actual tweets and sentiment analysis" />
       </Helmet>
 
-      <div className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
-              {/* Background Image */}
-              <div className="absolute inset-0">
-                <img
-                  src="/images/hero_image.avif"
-                  alt="Background"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-24">
-                <div className="mx-auto max-w-5xl text-center">
-                  <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight sm:leading-[0.95] text-black mb-6 sm:mb-10 lg:mb-14 px-2">
-                    Bitcoin social media sentiment leaderboard
-                  </h1>
-                  <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light leading-relaxed text-black/70 max-w-4xl mx-auto px-2">
-                    Real-time ranking of Bitcoin Twitter accounts based on sentiment analysis from 100+ sources
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
+      <div className="min-h-screen bg-white pt-16">
         {/* Leaderboard Section */}
-        <section className="relative py-12 sm:py-20 lg:py-32 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-8 sm:py-12">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header */}
-            <div className="text-center mb-16">
+            <div className="mb-8">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Bitcoin Influence Index</h1>
+              <p className="text-sm text-gray-600">Ranked by positive sentiment from 100+ sources</p>
+            </div>
+
+            <div className="mb-8">
               {!loading && sortedAccounts.length > 0 && (
-                <p className="text-sm text-gray-500 mb-6">
-                  Showing {displayedAccounts.length} of {sortedAccounts.length} accounts
-                  {timePeriod === '24h' && ' • minimum 5 posts'}
-                  {timePeriod === 'weekly' && ' • minimum 10 posts'}
-                  {timePeriod === 'monthly' && ' • minimum 15 posts'}
+                <p className="text-xs text-gray-500 mb-4">
+                  {displayedAccounts.length} accounts
+                  {timePeriod === '24h' && ' • min. 5 posts'}
+                  {timePeriod === 'weekly' && ' • min. 10 posts'}
+                  {timePeriod === 'monthly' && ' • min. 15 posts'}
                 </p>
               )}
 
             {/* Filter Controls */}
-            <div className="flex flex-col items-center gap-6 mb-12">
+            <div className="flex flex-wrap items-center gap-2 mb-6">
               {/* Sentiment Filter Buttons */}
-              <div className="flex gap-3">
-                <Button
-                  variant={filter === 'positive' ? 'default' : 'outline'}
-                  onClick={() => setFilter('positive')}
-                  className={filter === 'positive' ? 'bg-black text-white hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-100'}
-                  disabled={loading}
-                >
-                  <ArrowUpIcon className="w-4 h-4 mr-2" />
-                  Most Positive
-                </Button>
-                <Button
-                  variant={filter === 'negative' ? 'default' : 'outline'}
-                  onClick={() => setFilter('negative')}
-                  className={filter === 'negative' ? 'bg-black text-white hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-100'}
-                  disabled={loading}
-                >
-                  <ArrowDownIcon className="w-4 h-4 mr-2" />
-                  Most Negative
-                </Button>
-              </div>
+              <Button
+                variant={filter === 'positive' ? 'default' : 'outline'}
+                onClick={() => setFilter('positive')}
+                size="sm"
+                className={filter === 'positive' ? 'bg-black text-white hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-100'}
+                disabled={loading}
+              >
+                <ArrowUpIcon className="w-3 h-3 mr-1" />
+                Positive
+              </Button>
+              <Button
+                variant={filter === 'negative' ? 'default' : 'outline'}
+                onClick={() => setFilter('negative')}
+                size="sm"
+                className={filter === 'negative' ? 'bg-black text-white hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-100'}
+                disabled={loading}
+              >
+                <ArrowDownIcon className="w-3 h-3 mr-1" />
+                Negative
+              </Button>
+
+              <div className="w-px h-4 bg-gray-300 mx-1"></div>
 
               {/* Time Period Selector */}
-              <div className="flex items-center gap-3">
-                <Button
-                  variant={timePeriod === '24h' ? 'default' : 'outline'}
-                  onClick={() => setTimePeriod('24h')}
-                  size="sm"
-                  className={timePeriod === '24h' ? 'bg-black text-white hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-100'}
-                  disabled={loading}
-                >
-                  24 Hours
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => setShowSignupPopup(true)}
-                  size="sm"
-                  className="border-gray-300 text-gray-700 hover:bg-gray-100"
-                  disabled={loading}
-                >
-                  <Lock className="w-3 h-3 mr-1" />
-                  7 Days
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => setShowSignupPopup(true)}
-                  size="sm"
-                  className="border-gray-300 text-gray-700 hover:bg-gray-100"
-                  disabled={loading}
-                >
-                  <Lock className="w-3 h-3 mr-1" />
-                  30 Days
-                </Button>
-              </div>
+              <Button
+                variant={timePeriod === '24h' ? 'default' : 'outline'}
+                onClick={() => setTimePeriod('24h')}
+                size="sm"
+                className={timePeriod === '24h' ? 'bg-black text-white hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-100'}
+                disabled={loading}
+              >
+                24h
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setShowSignupPopup(true)}
+                size="sm"
+                className="border-gray-300 text-gray-700 hover:bg-gray-100"
+                disabled={loading}
+              >
+                <Lock className="w-3 h-3 mr-1" />
+                7d
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setShowSignupPopup(true)}
+                size="sm"
+                className="border-gray-300 text-gray-700 hover:bg-gray-100"
+                disabled={loading}
+              >
+                <Lock className="w-3 h-3 mr-1" />
+                30d
+              </Button>
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpIcon, ArrowDownIcon, CalendarIcon, ChevronRightIcon, Activity, TrendingUp, TrendingDown, Lock, X, Check } from 'lucide-react';
+import { ChevronRightIcon, Lock, X, Check } from 'lucide-react';
 import { Logo } from '@/components/ui/logo';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { getTwitterProfileImageUrl, getTwitterHandleInitials } from '@/lib/utils';
@@ -25,6 +25,7 @@ interface TwitterAccount {
   tweets: Tweet[];
   weightedScore: number; // Single weighted score for ranking
   profileImageUrl?: string; // Twitter profile image URL
+  rankChange?: number; // Rank change from 24h ago (positive = moved up)
 }
 
 interface FeedData {
@@ -78,169 +79,105 @@ function AppleCard({ account, rank, expanded, onToggle, filter }: {
         delay: rank * 0.05,
         ease: [0.25, 0.46, 0.45, 0.94]
       }}
-      className={`group relative ${isTopThree ? 'mb-8' : 'mb-4'}`}
+      className="group relative mb-2"
     >
       <div
         className={`
-          relative backdrop-blur-2xl rounded-3xl overflow-hidden
-          border transition-all duration-700 ease-out cursor-pointer
-          ${isTopRank && filter === 'positive'
-            ? 'bg-gradient-to-br from-emerald-950 via-emerald-900 to-gray-900 border-emerald-900/50 shadow-[0_20px_60px_rgba(16,185,129,0.3)] hover:shadow-[0_24px_80px_rgba(16,185,129,0.4)]'
-            : isTopRank && filter === 'negative'
-            ? 'bg-gradient-to-br from-red-950 via-red-900 to-gray-900 border-red-900/50 shadow-[0_20px_60px_rgba(127,29,29,0.4)] hover:shadow-[0_24px_80px_rgba(127,29,29,0.5)]'
-            : isTopThree && filter === 'positive'
-            ? 'bg-gradient-to-br from-emerald-900 to-gray-800 border-emerald-800/50 shadow-[0_16px_48px_rgba(16,185,129,0.2)] hover:shadow-[0_20px_60px_rgba(16,185,129,0.3)]'
+          relative rounded-lg overflow-hidden transition-all duration-200 cursor-pointer
+          ${isTopThree && filter === 'positive'
+            ? 'bg-gradient-to-br from-emerald-900 to-gray-800 border border-emerald-800/50 shadow-lg hover:shadow-xl'
             : isTopThree && filter === 'negative'
-            ? 'bg-gradient-to-br from-red-900 to-gray-800 border-red-800/50 shadow-[0_16px_48px_rgba(127,29,29,0.3)] hover:shadow-[0_20px_60px_rgba(127,29,29,0.4)]'
-            : 'bg-white border-gray-200 shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.12)]'}
-          ${expanded ? 'bg-opacity-95' : ''}
+            ? 'bg-gradient-to-br from-red-900 to-gray-800 border border-red-800/50 shadow-lg hover:shadow-xl'
+            : 'bg-white border border-gray-200 hover:shadow-sm'}
         `}
         onClick={onToggle}
       >
-        <div className={`relative ${isTopThree ? 'p-10' : 'p-8'}`}>
+        <div className="relative p-2.5">
           {/* Top Section - Rank and Profile */}
-          <div className="flex items-start gap-8 mb-8">
-            {/* MASSIVE Rank Number */}
-            <div className="flex-shrink-0">
-              <div className={`
-                font-bold tracking-tighter leading-none
-                ${isTopThree ? 'text-8xl' : 'text-6xl'}
-                ${isTopThree ? 'text-white' : 'text-gray-900'}
-                ${isTopRank && filter === 'positive' ? 'drop-shadow-[0_0_20px_rgba(16,185,129,0.5)]' : ''}
-                ${isTopRank && filter === 'negative' ? 'drop-shadow-[0_0_20px_rgba(220,38,38,0.5)]' : ''}
-              `}>
-                {rank}
-              </div>
-              {isTopRank && (
-                <div className={`mt-2 text-sm font-semibold tracking-wider uppercase ${
-                  filter === 'positive' ? 'text-emerald-300' :
-                  filter === 'negative' ? 'text-red-300' : 'text-white/60'
+          <div className="flex items-center gap-2.5">
+            {/* Rank Number with Change Indicator */}
+            <div className="flex-shrink-0 w-12 flex items-center gap-1">
+              <div className={`text-base font-bold ${
+                isTopThree ? 'text-white' : 'text-gray-700'
+              }`}>{rank}</div>
+              {account.rankChange !== undefined && account.rankChange !== 0 && (
+                <div className={`text-[10px] font-bold ${
+                  account.rankChange > 0
+                    ? (isTopThree ? 'text-emerald-300' : 'text-emerald-600')
+                    : (isTopThree ? 'text-red-300' : 'text-red-600')
                 }`}>
-                  #1
+                  {account.rankChange > 0 ? '↑' : '↓'}{Math.abs(account.rankChange)}
                 </div>
               )}
             </div>
 
-            {/* Profile and Info */}
-            <div className="flex-1 min-w-0">
-              <div className="flex items-start gap-5 mb-6">
-                {/* Profile Picture */}
-                <Avatar className={`flex-shrink-0 ring-4 shadow-xl transition-all duration-300 ${
-                  isTopThree && filter === 'positive'
-                    ? 'w-20 h-20 ring-emerald-500/30 hover:ring-emerald-500/50'
-                    : isTopThree && filter === 'negative'
-                    ? 'w-20 h-20 ring-red-500/30 hover:ring-red-500/50'
-                    : isTopThree
-                    ? 'w-20 h-20 ring-white/20 hover:ring-white/40'
-                    : 'w-16 h-16 ring-gray-200 hover:ring-gray-300'
-                }`}>
-                  <AvatarImage
-                    src={getTwitterProfileImageUrl(account.handle, 'bigger')}
-                    alt={`${account.name} profile`}
-                    className="object-cover"
-                    loading="lazy"
-                  />
-                  <AvatarFallback className="bg-gradient-to-br from-gray-600 to-gray-800 text-white font-semibold text-2xl">
-                    {getTwitterHandleInitials(account.handle)}
-                  </AvatarFallback>
-                </Avatar>
+            {/* Profile Picture */}
+            <Avatar className="flex-shrink-0 w-9 h-9">
+              <AvatarImage
+                src={getTwitterProfileImageUrl(account.handle, 'bigger')}
+                alt={`${account.name} profile`}
+                className="object-cover"
+                loading="lazy"
+              />
+              <AvatarFallback className="bg-gray-200 text-gray-700 text-sm font-medium">
+                {getTwitterHandleInitials(account.handle)}
+              </AvatarFallback>
+            </Avatar>
 
-                {/* Account Info */}
-                <div className="flex-1 min-w-0">
-                  {isTopThree ? (
-                    <>
-                      <h3
-                        className="font-bold tracking-tight mb-2 text-3xl [&]:!text-white"
-                        style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}
-                      >
-                        {account.name}
-                      </h3>
-                      <p
-                        className="text-base font-medium [&]:!text-white"
-                        style={{ color: '#ffffff', opacity: 0.9 }}
-                      >
-                        @{account.handle}
-                      </p>
-                    </>
-                  ) : (
-                    <>
-                      <h3 className="text-2xl font-bold tracking-tight mb-2 text-gray-900">
-                        {account.name}
-                      </h3>
-                      <p className="text-base font-medium text-gray-500">
-                        @{account.handle}
-                      </p>
-                    </>
-                  )}
-                </div>
-              </div>
+            {/* Account Info */}
+            <div className="flex-1 min-w-0 flex items-center">
+              <p className={`text-sm font-semibold truncate ${
+                isTopThree ? 'text-white' : 'text-gray-900'
+              }`}>@{account.handle}</p>
+            </div>
 
-              {/* Massive Sentiment Score */}
-              <div className="mb-6">
-                <div className={`
-                  text-6xl font-bold tracking-tighter mb-2
-                  ${isTopThree ? 'text-white' : 'text-gray-900'}
-                  ${isTopThree && filter === 'positive' ? 'drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]' : ''}
-                  ${isTopThree && filter === 'negative' ? 'drop-shadow-[0_0_30px_rgba(220,38,38,0.3)]' : ''}
-                `}>
-                  {account.sentimentScore.toFixed(0)}
-                  <span className={`text-3xl font-light ${
-                    isTopThree && filter === 'positive' ? 'text-emerald-300' :
-                    isTopThree && filter === 'negative' ? 'text-red-300' :
-                    isTopThree ? 'text-white/60' : 'text-gray-500'
-                  }`}>/100</span>
-                </div>
-                <div className={`text-sm font-medium uppercase tracking-wider ${
-                  isTopThree && filter === 'positive' ? 'text-emerald-300/80' :
-                  isTopThree && filter === 'negative' ? 'text-red-300/80' :
+            {/* Sentiment Score */}
+            <div className="flex-shrink-0 text-right">
+              <div className={`text-xl font-bold ${
+                isTopThree ? 'text-white' : 'text-gray-900'
+              }`}>
+                {account.sentimentScore.toFixed(0)}
+                <span className={`text-xs font-normal ${
                   isTopThree ? 'text-white/60' : 'text-gray-500'
-                }`}>
-                  Sentiment Score
-                </div>
-              </div>
-
-              {/* Stats Grid - Simplified */}
-              <div className="grid grid-cols-3 gap-6">
-                <div>
-                  <p className={`text-sm font-medium uppercase tracking-wider mb-2 ${
-                    isTopThree ? 'text-white/60' : 'text-gray-500'
-                  }`}>
-                    Positive
-                  </p>
-                  <p className={`text-2xl font-bold ${isTopThree ? 'text-white' : 'text-gray-900'}`}>
-                    {account.positivePercentage.toFixed(0)}%
-                  </p>
-                </div>
-                <div>
-                  <p className={`text-sm font-medium uppercase tracking-wider mb-2 ${
-                    isTopThree ? 'text-white/60' : 'text-gray-500'
-                  }`}>
-                    Negative
-                  </p>
-                  <p className={`text-2xl font-bold ${isTopThree ? 'text-white' : 'text-gray-900'}`}>
-                    {account.negativePercentage.toFixed(0)}%
-                  </p>
-                </div>
-                <div>
-                  <p className={`text-sm font-medium uppercase tracking-wider mb-2 ${
-                    isTopThree ? 'text-white/60' : 'text-gray-500'
-                  }`}>
-                    Posts
-                  </p>
-                  <p className={`text-2xl font-bold ${isTopThree ? 'text-white' : 'text-gray-900'}`}>
-                    {account.totalMentions}
-                  </p>
-                </div>
+                }`}>/100</span>
               </div>
             </div>
 
             {/* Expand Icon */}
             <div className="flex-shrink-0">
-              <ChevronRightIcon className={`
-                w-6 h-6 transition-transform duration-300
-                ${isTopThree ? 'text-white/40' : 'text-gray-400'}
-                ${expanded ? 'rotate-90' : ''}
-              `} />
+              <ChevronRightIcon className={`w-4 h-4 transition-transform duration-200 ${
+                isTopThree ? 'text-white/40' : 'text-gray-400'
+              } ${expanded ? 'rotate-90' : ''}`} />
+            </div>
+          </div>
+
+          {/* Stats Row */}
+          <div className={`grid grid-cols-3 gap-2 mt-2 pt-2 ${
+            isTopThree ? 'border-t border-white/10' : 'border-t border-gray-100'
+          }`}>
+            <div className="text-center">
+              <p className={`text-[10px] uppercase tracking-wide ${
+                isTopThree ? 'text-white/60' : 'text-gray-500'
+              }`}>Positive</p>
+              <p className={`text-xs font-semibold ${
+                isTopThree ? 'text-white' : 'text-gray-900'
+              }`}>{account.positivePercentage.toFixed(0)}%</p>
+            </div>
+            <div className="text-center">
+              <p className={`text-[10px] uppercase tracking-wide ${
+                isTopThree ? 'text-white/60' : 'text-gray-500'
+              }`}>Negative</p>
+              <p className={`text-xs font-semibold ${
+                isTopThree ? 'text-white' : 'text-gray-900'
+              }`}>{account.negativePercentage.toFixed(0)}%</p>
+            </div>
+            <div className="text-center">
+              <p className={`text-[10px] uppercase tracking-wide ${
+                isTopThree ? 'text-white/60' : 'text-gray-500'
+              }`}>Posts</p>
+              <p className={`text-xs font-semibold ${
+                isTopThree ? 'text-white' : 'text-gray-900'
+              }`}>{account.totalMentions}</p>
             </div>
           </div>
 
@@ -303,73 +240,45 @@ function AppleCard({ account, rank, expanded, onToggle, filter }: {
 }
 
 function SkeletonCard({ rank, filter }: { rank: number; filter?: 'positive' | 'negative' }) {
-  const isTopThree = rank <= 3;
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3, delay: rank * 0.05 }}
-      className={`rounded-3xl border ${
-        isTopThree && filter === 'positive'
-          ? 'bg-gradient-to-br from-emerald-950 to-gray-900 border-emerald-900/50 p-10'
-          : isTopThree && filter === 'negative'
-          ? 'bg-gradient-to-br from-red-950 to-gray-900 border-red-900/50 p-10'
-          : isTopThree
-          ? 'bg-gray-900 border-gray-800 p-10'
-          : 'bg-white border-gray-200 p-8'
-      }`}
+      className="mb-2 rounded-lg border bg-white border-gray-200 p-2.5"
     >
       <div className="animate-pulse">
-        <div className="flex items-start gap-8 mb-8">
+        {/* Top row */}
+        <div className="flex items-center gap-2.5">
           {/* Rank placeholder */}
-          <div className={`
-            rounded-lg
-            ${isTopThree ? 'w-24 h-24 bg-gray-800' : 'w-20 h-20 bg-gray-200'}
-          `} />
+          <div className="w-7 h-5 bg-gray-200 rounded" />
 
-          <div className="flex-1">
-            <div className="flex items-start gap-5 mb-6">
-              {/* Avatar */}
-              <div className={`
-                rounded-full
-                ${isTopThree ? 'w-20 h-20 bg-gray-800' : 'w-16 h-16 bg-gray-200'}
-              `} />
-              {/* Name */}
-              <div className="flex-1">
-                <div className={`
-                  rounded-lg mb-2
-                  ${isTopThree ? 'h-8 w-48 bg-gray-800' : 'h-7 w-40 bg-gray-200'}
-                `} />
-                <div className={`
-                  rounded-lg
-                  ${isTopThree ? 'h-5 w-32 bg-gray-800' : 'h-5 w-28 bg-gray-200'}
-                `} />
-              </div>
-            </div>
+          {/* Avatar */}
+          <div className="w-9 h-9 bg-gray-200 rounded-full flex-shrink-0" />
 
-            {/* Score */}
-            <div className={`
-              rounded-lg mb-6
-              ${isTopThree ? 'h-16 w-36 bg-gray-800' : 'h-14 w-32 bg-gray-200'}
-            `} />
-
-            {/* Stats grid */}
-            <div className="grid grid-cols-3 gap-6">
-              {[...Array(3)].map((_, i) => (
-                <div key={i}>
-                  <div className={`
-                    rounded mb-2
-                    ${isTopThree ? 'h-4 w-16 bg-gray-800' : 'h-3 w-14 bg-gray-200'}
-                  `} />
-                  <div className={`
-                    rounded
-                    ${isTopThree ? 'h-7 w-12 bg-gray-800' : 'h-6 w-10 bg-gray-200'}
-                  `} />
-                </div>
-              ))}
-            </div>
+          {/* Name/Handle */}
+          <div className="flex-1 min-w-0">
+            <div className="h-4 w-32 bg-gray-200 rounded mb-1" />
+            <div className="h-3 w-24 bg-gray-200 rounded" />
           </div>
+
+          {/* Score */}
+          <div className="flex-shrink-0 text-right">
+            <div className="h-6 w-12 bg-gray-200 rounded" />
+          </div>
+
+          {/* Arrow */}
+          <div className="w-4 h-4 bg-gray-200 rounded flex-shrink-0" />
+        </div>
+
+        {/* Stats row */}
+        <div className="grid grid-cols-3 gap-2 mt-2 pt-2 border-t border-gray-100">
+          {[...Array(3)].map((_, i) => (
+            <div key={i} className="text-center">
+              <div className="h-2.5 w-12 bg-gray-200 rounded mx-auto mb-1" />
+              <div className="h-3 w-8 bg-gray-200 rounded mx-auto" />
+            </div>
+          ))}
         </div>
       </div>
     </motion.div>
@@ -441,7 +350,6 @@ function SignupPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
 }
 
 export default function AppleTwitterSentimentLeaderboard() {
-  const [accounts, setAccounts] = useState<TwitterAccount[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
@@ -449,8 +357,14 @@ export default function AppleTwitterSentimentLeaderboard() {
   const [timePeriod, setTimePeriod] = useState<'24h' | 'weekly' | 'monthly'>('24h');
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [showSignupPopup, setShowSignupPopup] = useState(false);
-  const [allAccountsData, setAllAccountsData] = useState<TwitterAccount[]>([]);
+  const [positiveAccounts, setPositiveAccounts] = useState<TwitterAccount[]>([]);
+  const [negativeAccounts, setNegativeAccounts] = useState<TwitterAccount[]>([]);
   const [copied, setCopied] = useState(false);
+
+  // Reset expanded card when filter changes
+  useEffect(() => {
+    setExpandedCard(null);
+  }, [filter]);
 
   useEffect(() => {
     async function fetchSentimentData() {
@@ -470,11 +384,11 @@ export default function AppleTwitterSentimentLeaderboard() {
 
         const startDate = new Date(Date.now() - daysBack * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 
-        // Comprehensive fetching strategy to get all available data
-        const maxPagesToFetch = timePeriod === '24h' ? 20 : timePeriod === 'weekly' ? 40 : 60; // Increased for comprehensive data
+        // Comprehensive fetching strategy to get ALL available data
+        const maxPagesToFetch = timePeriod === '24h' ? 50 : timePeriod === 'weekly' ? 70 : 100; // Fetch many more pages
 
         // Fetch first batch in parallel for faster initial load
-        const initialBatchSize = Math.min(5, maxPagesToFetch);
+        const initialBatchSize = Math.min(20, maxPagesToFetch); // Fetch many more pages initially
         setLoadingProgress(`Fetching ${initialBatchSize} pages in parallel...`);
 
         const fetchPromises = [];
@@ -585,8 +499,8 @@ export default function AppleTwitterSentimentLeaderboard() {
           }
         });
 
-        // Calculate minimum posts based on time period - reduced for more results
-        const minPosts = timePeriod === '24h' ? 3 : 5; // Lower threshold for more accounts
+        // Calculate minimum posts based on time period - very low threshold to get more accounts
+        const minPosts = timePeriod === '24h' ? 1 : 2; // Just 1 post minimum for 24h to maximize accounts
 
         // Calculate weighted score based on unified sentiment score (0-100) and volume
         const calculateWeightedScore = (sentimentScore: number, totalPosts: number, positivePosts: number, negativePosts: number) => {
@@ -611,7 +525,8 @@ export default function AppleTwitterSentimentLeaderboard() {
           }
         };
 
-        const accountsData: TwitterAccount[] = Array.from(twitterData.entries())
+        // First, create ALL accounts data without filtering by sentiment
+        const allAccountsRaw: TwitterAccount[] = Array.from(twitterData.entries())
           .filter(([_, data]) => data.totalMentions >= minPosts) // Minimum post threshold
           .map(([key, data]) => {
             const positivePercentage = (data.positiveMentions / data.totalMentions) * 100;
@@ -642,34 +557,93 @@ export default function AppleTwitterSentimentLeaderboard() {
               weightedScore: weightedScore,
               profileImageUrl: getTwitterProfileImageUrl(data.realHandle, 'bigger')
             };
-          })
-          .filter(account => {
-            // Filter accounts based on the selected filter - no overlap
-            if (filter === 'positive') {
-              return account.sentimentScore > 50; // Must be actually positive (above neutral)
-            } else {
-              return account.sentimentScore < 50; // Must be actually negative (below neutral)
-            }
-          })
+          });
+
+        // Filter and sort accounts by sentiment - NO OVERLAP
+        // Positive: Only accounts with sentiment > 50 (actually bullish)
+        const sortedByPositive = [...allAccountsRaw]
+          .filter(account => account.sentimentScore > 50)
           .sort((a, b) => {
-            // Prioritize sentiment extremes within volume tiers
-            const aVolumeTier = Math.floor(a.totalMentions / 10); // Group by volume tiers of 10
+            const aVolumeTier = Math.floor(a.totalMentions / 10);
             const bVolumeTier = Math.floor(b.totalMentions / 10);
+            if (aVolumeTier !== bVolumeTier) return bVolumeTier - aVolumeTier;
+            return b.sentimentScore - a.sentimentScore; // Higher score first
+          });
 
-            if (aVolumeTier !== bVolumeTier) {
-              return bVolumeTier - aVolumeTier; // Higher volume tier first
+        // Negative: Only accounts with sentiment < 50 (actually bearish)
+        const sortedByNegative = [...allAccountsRaw]
+          .filter(account => account.sentimentScore < 50)
+          .sort((a, b) => {
+            const aVolumeTier = Math.floor(a.totalMentions / 10);
+            const bVolumeTier = Math.floor(b.totalMentions / 10);
+            if (aVolumeTier !== bVolumeTier) return bVolumeTier - aVolumeTier;
+            return a.sentimentScore - b.sentimentScore; // Lower score first
+          });
+
+        console.log('Total accounts fetched:', allAccountsRaw.length);
+        console.log('Positive accounts (score > 50):', sortedByPositive.length);
+        console.log('Negative accounts (score < 50):', sortedByNegative.length);
+        console.log('Top 5 positive:', sortedByPositive.slice(0, 5).map(a => ({ handle: a.handle, score: a.sentimentScore })));
+        console.log('Top 5 negative:', sortedByNegative.slice(0, 5).map(a => ({ handle: a.handle, score: a.sentimentScore })));
+
+        // Calculate rank changes for both positive and negative lists
+        const now = Date.now();
+
+        // Helper function to add rank changes to a list
+        const addRankChanges = (accountsList: TwitterAccount[], filterType: 'positive' | 'negative') => {
+          const storageKey = `leaderboard_${filterType}_${timePeriod}`;
+          const previousDataStr = localStorage.getItem(storageKey);
+
+          let accountsWithRankChange = accountsList;
+
+          if (previousDataStr) {
+            try {
+              const previousData = JSON.parse(previousDataStr);
+              const previousTimestamp = previousData.timestamp || 0;
+              const hoursSinceLastUpdate = (now - previousTimestamp) / (1000 * 60 * 60);
+
+              // Only use previous data if it's between 20-28 hours old (roughly 24h with some buffer)
+              if (hoursSinceLastUpdate >= 20 && hoursSinceLastUpdate <= 28) {
+                const previousRankings = previousData.rankings || {};
+
+                accountsWithRankChange = accountsList.map((account, currentIndex) => {
+                  const currentRank = currentIndex + 1;
+                  const previousRank = previousRankings[account.handle];
+
+                  if (previousRank) {
+                    // Positive rankChange means moved UP (lower rank number = better)
+                    const rankChange = previousRank - currentRank;
+                    return { ...account, rankChange };
+                  }
+
+                  return account; // New entry, no rank change
+                });
+              }
+            } catch (e) {
+              console.error('Error parsing previous rankings:', e);
             }
+          }
 
-            // Within same volume tier, prioritize extreme sentiment scores
-            if (filter === 'positive') {
-              return b.sentimentScore - a.sentimentScore; // Higher sentiment for positive (closer to 100)
-            } else {
-              return a.sentimentScore - b.sentimentScore; // Lower sentiment for negative (closer to 0)
-            }
-          })
-          // Store all accounts without limiting
+          // Store current rankings for next comparison (24h from now)
+          const currentRankings: Record<string, number> = {};
+          accountsList.forEach((account, index) => {
+            currentRankings[account.handle] = index + 1;
+          });
 
-        setAllAccountsData(accountsData);
+          localStorage.setItem(storageKey, JSON.stringify({
+            timestamp: now,
+            rankings: currentRankings
+          }));
+
+          return accountsWithRankChange;
+        };
+
+        // Add rank changes to both lists
+        const positiveWithRankChanges = addRankChanges(sortedByPositive, 'positive');
+        const negativeWithRankChanges = addRankChanges(sortedByNegative, 'negative');
+
+        setPositiveAccounts(positiveWithRankChanges);
+        setNegativeAccounts(negativeWithRankChanges);
         setError(null);
       } catch (err) {
         console.error('Error fetching sentiment data:', err);
@@ -681,9 +655,10 @@ export default function AppleTwitterSentimentLeaderboard() {
     }
 
     fetchSentimentData();
-  }, [filter, timePeriod]);
+  }, [timePeriod]); // Only refetch when time period changes, not filter
 
-  // Show top 20 for each filter
+  // Get the current accounts based on filter and show top 20
+  const allAccountsData = filter === 'positive' ? positiveAccounts : negativeAccounts;
   const displayedAccounts = allAccountsData.slice(0, 20);
 
   // Share functionality - Posts to X (Twitter)
@@ -709,49 +684,18 @@ export default function AppleTwitterSentimentLeaderboard() {
         <meta name="description" content="Real-time Bitcoin Twitter sentiment analysis with an elegant, Apple-inspired interface." />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50">
-        {/* Hero Section */}
-        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95">
-          {/* Base Gradient */}
-          <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
-
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:px-8">
-            {/* Hero Card with Background Image */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
-            >
-              {/* Background Image */}
-              <div className="absolute inset-0">
-                <img
-                  src="/images/hero_image.avif?v=2"
-                  alt="Background"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-24">
-                <div className="mx-auto max-w-5xl text-center">
-                  <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight sm:leading-[0.95] text-black mb-6 sm:mb-10 lg:mb-14 max-w-4xl mx-auto px-2">
-                    Bitcoin Influence Index
-                  </h1>
-
-                  <p className="text-base sm:text-xl lg:text-2xl xl:text-3xl font-light leading-relaxed text-black/70 max-w-4xl mx-auto px-2">
-                    Real-time sentiment ranking of Bitcoin's most influential voices on X, powered by 100+ data sources
-                  </p>
-
-                </div>
-              </div>
-            </motion.div>
+      <div className="min-h-screen bg-white pt-16">
+        {/* Header */}
+        <div className="border-b border-gray-200 mt-8">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Who's bullish? Who's bearish?</h1>
+            <p className="text-sm text-gray-600 mb-4">Real-time sentiment ranking of Bitcoin's most influential voices on X</p>
           </div>
         </div>
 
         {/* Filter Pills */}
-        <div className="sticky top-0 z-40 bg-white/70 backdrop-blur-xl border-b border-gray-200/50">
-          <div className="container mx-auto px-6 py-4">
+        <div className="sticky top-16 z-40 bg-white/90 backdrop-blur-xl border-b border-gray-200">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3">
             <div className="flex items-center justify-center gap-8">
               {/* Share Button */}
               <button
@@ -852,8 +796,8 @@ export default function AppleTwitterSentimentLeaderboard() {
         </div>
 
         {/* Main Content */}
-        <div className="container mx-auto px-6 py-12">
-          <div className="max-w-6xl mx-auto">
+        <div className="container mx-auto px-6 py-8">
+          <div className="max-w-3xl mx-auto">
             {loading ? (
               <div className="space-y-6">
                 {loadingProgress && (
@@ -927,18 +871,6 @@ export default function AppleTwitterSentimentLeaderboard() {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-20 py-12 border-t border-gray-200">
-          <div className="container mx-auto px-6 text-center">
-            <p className="text-sm text-gray-500 mb-2">
-              Powered by Perception • Analyzing 100+ sources in real-time
-            </p>
-            <p className="text-xs text-gray-400">
-              Rankings weighted by sentiment strength and engagement volume •
-              High-volume negative posters prioritized for impact assessment
-            </p>
-          </div>
-        </div>
         <SignupPopup isOpen={showSignupPopup} onClose={() => setShowSignupPopup(false)} />
       </div>
     </>

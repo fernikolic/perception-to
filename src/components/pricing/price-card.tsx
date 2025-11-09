@@ -86,15 +86,15 @@ export function PriceCard({
   };
   
   return (
-    <Card className={`relative h-full flex flex-col shadow-xl hover:shadow-2xl transition-all duration-300 border !bg-black ${
-      featured 
-        ? 'border-blue-500 ring-2 ring-blue-500/30' 
-        : 'border-gray-700 hover:border-gray-600'
+    <Card className={`relative h-full flex flex-col shadow-xl hover:shadow-2xl transition-all duration-300 !bg-black ${
+      featured
+        ? 'border-2 border-gray-400'
+        : 'border border-gray-700 hover:border-gray-600'
     }`}>
       <div className="relative">
         {badge && (
           <div className="absolute top-6 right-6">
-            <span className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-3 py-1 text-xs font-medium text-white shadow-sm">
+            <span className="inline-flex items-center rounded-full bg-gray-400 px-3 py-1 text-xs font-medium text-black shadow-sm">
               {badge}
             </span>
           </div>
@@ -117,7 +117,7 @@ export function PriceCard({
           </div>
           {showAnnualSavings && (
             <div className="mt-3">
-              <span className="inline-flex items-center rounded-full bg-emerald-900/30 px-3 py-1 text-sm font-medium text-emerald-400">
+              <span className="inline-flex items-center rounded-full bg-gray-400/20 px-3 py-1 text-sm font-medium text-gray-300">
                 Save 2 months
               </span>
             </div>
@@ -127,10 +127,10 @@ export function PriceCard({
         <ul className="space-y-4">
           {features.map((feature, index) => (
             <li key={index} className="flex items-start gap-3">
-              <Check className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+              <Check className="h-5 w-5 text-gray-400 flex-shrink-0 mt-0.5" />
               <span className={`text-base leading-relaxed ${
-                String(feature).startsWith('Everything in') 
-                  ? 'font-medium !text-white' 
+                String(feature).startsWith('Everything in')
+                  ? 'font-medium !text-white'
                   : '!text-gray-400'
               }`}>
                 {feature}
@@ -141,11 +141,11 @@ export function PriceCard({
       </CardContent>
       
       <CardFooter className="flex flex-col pt-8">
-        <Button 
+        <Button
           className={`w-full py-4 text-base font-medium transition-all duration-200 ${
-            featured 
-              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl' 
-              : dataplan === 'enterprise' 
+            featured
+              ? 'bg-white text-black hover:bg-gray-200 shadow-lg hover:shadow-xl'
+              : dataplan === 'enterprise'
                 ? 'border-2 border-gray-100 bg-transparent hover:bg-gray-800 text-gray-100'
                 : 'bg-gray-800 text-gray-100 hover:bg-gray-700'
           }`}

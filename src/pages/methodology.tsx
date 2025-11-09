@@ -82,15 +82,15 @@ export default function MethodologyPage() {
                     </div>
 
                     <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-black mb-5 sm:mb-6 lg:mb-8 text-center lg:text-left">
-                      How We Monitor the Intelligence{'\u00A0'}Landscape
+                      What we monitor and{'\u00A0'}how
                     </h1>
 
                     <div className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
                       <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
-                        100+ sources. Automatic trend clustering. Real-time{'\u00A0'}monitoring.
+                        100+ sources. Human analysts. Real-time{'\u00A0'}clustering.
                       </p>
                       <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
-                        See exactly what we track and how we turn raw coverage into organized intelligence that powers your watchlists, <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, and{'\u00A0'}<em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>.
+                        From Bloomberg to Reddit. See what we track and how it powers your watchlists, <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, and{'\u00A0'}<em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>.
                       </p>
                     </div>
 
@@ -126,14 +126,14 @@ export default function MethodologyPage() {
           <div className="space-y-12 sm:space-y-16 lg:space-y-20">
             <div className="py-8 sm:py-10 lg:py-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight !text-white mb-6 sm:mb-8 lg:mb-10">
-                100+ Sources Monitored 24/7
+                Mainstream media we monitor
               </h2>
               <div className="text-base sm:text-lg lg:text-xl text-white/70 space-y-4">
-                <p>From Bloomberg to crypto-native media, we're monitoring the complete information landscape. Every trend we surface, every watchlist alert, every <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em> output is backed by this coverage.</p>
+                <p>Bloomberg, Financial Times, Reuters, Wall Street Journal. The full spectrum of mainstream coverage. Every watchlist alert and <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em> output pulls from these sources.</p>
                 <div className="mt-6 sm:mt-8 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-10">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
                     <div>
-                      <h3 className="font-semibold text-base sm:text-lg text-white mb-3 sm:mb-4 flex items-center">
+                      <h3 className="font-semibold text-base sm:text-lg !text-white mb-3 sm:mb-4 flex items-center">
                         <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white/40" />
                         North America
                       </h3>
@@ -144,7 +144,7 @@ export default function MethodologyPage() {
                       </ul>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-base sm:text-lg text-white mb-3 sm:mb-4 flex items-center">
+                      <h3 className="font-semibold text-base sm:text-lg !text-white mb-3 sm:mb-4 flex items-center">
                         <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white/40" />
                         Europe
                       </h3>
@@ -155,7 +155,7 @@ export default function MethodologyPage() {
                       </ul>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-base sm:text-lg text-white mb-3 sm:mb-4 flex items-center">
+                      <h3 className="font-semibold text-base sm:text-lg !text-white mb-3 sm:mb-4 flex items-center">
                         <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white/40" />
                         Latin America
                       </h3>
@@ -170,14 +170,14 @@ export default function MethodologyPage() {
               </div>
             </div>
 
-            <Separator />
+            <Separator className="bg-white/10" />
 
             <div className="py-8 sm:py-10 lg:py-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight !text-white mb-6 sm:mb-8 lg:mb-10">
-                Social Media and Crypto-Native Coverage
+                Where the conversation actually happens
               </h2>
               <div className="text-base sm:text-lg lg:text-xl text-white/70 space-y-4">
-                <p>Beyond Bloomberg and the Financial Times, we're tracking where conversations actually happen. Reddit discussions, X threads, GitHub activity, YouTube analysis. This is where trends start before they hit mainstream coverage.</p>
+                <p>Reddit threads, X conversations, GitHub commits, YouTube analysis. Trends start here days before Bloomberg covers them. We track both.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-6">
                   {[
                     { name: "Reddit", logo: "/logos/social/reddit.svg", desc: "Key subreddits where community sentiment shifts first.", invertLogo: false },
@@ -197,13 +197,13 @@ export default function MethodologyPage() {
                 <div className="pt-4 sm:pt-6">
                   <div className="p-6 sm:p-8 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl">
                     <h4 className="font-semibold text-base sm:text-lg !text-white mb-2">Crypto-Native Media</h4>
-                    <p className="text-sm sm:text-base text-white/50">Cointelegraph, CoinDesk, Bitcoin Magazine, The Block, BeInCrypto, Blockworks, Decrypt, and more. These outlets often break stories days before mainstream media picks them up.</p>
+                    <p className="text-sm sm:text-base text-white/50">CoinDesk, Bitcoin Magazine, The Block, BeInCrypto, Blockworks, Decrypt. They break stories days before mainstream picks them up.</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <Separator />
+            <Separator className="bg-white/10" />
 
             {/* Grid Layout for Process Sections */}
             <div className="py-8 sm:py-10 lg:py-12">
@@ -211,10 +211,10 @@ export default function MethodologyPage() {
                 {/* Data Collection Process */}
                 <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 overflow-hidden">
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold !text-white mb-4 sm:mb-6">
-                    We Track Everything
+                    Everything gets captured
                   </h3>
                   <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-6">
-                    Every Bitcoin mention across 100+ sources gets captured. Dedicated articles, social posts, passing references. This comprehensive monitoring is what powers your watchlists and feeds the trend clustering you see in your <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>.
+                    Every mention across 100+ sources. Dedicated coverage, social posts, passing references. This is what powers your watchlist alerts and the trend clustering in your <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>.
                   </p>
                   <div className="rounded-lg overflow-hidden border border-white/10 mt-4" style={{ height: '200px', filter: 'invert(1)' }}>
                     <FlowingPattern />
@@ -224,10 +224,10 @@ export default function MethodologyPage() {
                 {/* Human Review and Analysis */}
                 <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 overflow-hidden">
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold !text-white mb-4 sm:mb-6">
-                    Expert Analysts, Not Just Algorithms
+                    Human analysts, not just algorithms
                   </h3>
                   <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-6">
-                    Our team reviews content for context and sentiment. Is Bitcoin the story or just mentioned in passing? What's the actual tone beyond keywords? This human analysis is what makes your sentiment tracking and <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em> outputs accurate.
+                    Our team reviews for context and sentiment. Is Bitcoin the story or a passing mention? What's the tone beyond keywords? This is why your <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em> outputs are accurate.
                   </p>
                   <div className="rounded-lg overflow-hidden border border-white/10 mt-4" style={{ height: '200px', filter: 'invert(1)' }}>
                     <DelicateAsciiDots />
@@ -237,10 +237,10 @@ export default function MethodologyPage() {
                 {/* Data Integrity and Accessibility */}
                 <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 overflow-hidden">
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold !text-white mb-4 sm:mb-6">
-                    Only Public Sources
+                    Only public sources
                   </h3>
                   <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-6">
-                    We only track publicly available content. No invasive scraping, no paywalled breaches. This keeps the data clean and the methodology transparent. What you see in your watchlists and <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> comes from legitimate, verifiable sources.
+                    We track publicly available content only. No paywalled breaches. What you see in your watchlists and <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> comes from legitimate, verifiable sources.
                   </p>
                   <div className="rounded-lg overflow-hidden border border-white/10 mt-4" style={{ height: '200px', filter: 'invert(1)' }}>
                     <Metamorphosis />
@@ -250,10 +250,10 @@ export default function MethodologyPage() {
                 {/* Implications and Uses */}
                 <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 overflow-hidden">
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold !text-white mb-4 sm:mb-6">
-                    From Monitoring to Deliverables
+                    From monitoring to deliverables
                   </h3>
                   <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-6">
-                    This comprehensive monitoring powers your entire workflow. Create watchlists for what matters. Organize everything into <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> by project or stakeholder. Then generate professional deliverables with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>. All backed by verified, analyzed coverage.
+                    This monitoring powers your workflow. Create watchlists for what matters. Organize in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> by project. Generate deliverables with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>. All backed by verified coverage.
                   </p>
                   <div className="rounded-lg overflow-hidden border border-white/10 mt-4" style={{ height: '200px', filter: 'invert(1)' }}>
                     <FlowingPattern />
@@ -262,15 +262,15 @@ export default function MethodologyPage() {
               </div>
             </div>
 
-            <Separator />
+            <Separator className="bg-white/10" />
 
             {/* Labeling Criteria - Full Width */}
             <div className="py-8 sm:py-10 lg:py-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight !text-white mb-6 sm:mb-8 lg:mb-10">
-                How We Label Sentiment
+                How we label sentiment
               </h2>
               <div className="text-base sm:text-lg lg:text-xl text-white/70 space-y-4">
-                <p>We categorize content based on tone, context, and language. Not just keywords, actual meaning. This is why the sentiment data you see in your watchlists and <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> is reliable.</p>
+                <p>We categorize by tone, context, and language. Not keywords—actual meaning. This is why the sentiment in your watchlists is reliable.</p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 pt-6">
                   <div className="flex items-start space-x-3 sm:space-x-4">
                     <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-white/40 mt-1 flex-shrink-0" />
@@ -297,7 +297,7 @@ export default function MethodologyPage() {
               </div>
             </div>
 
-            <Separator />
+            <Separator className="bg-white/10" />
 
             <div className="py-12 sm:py-16 lg:py-24">
               <div className="relative bg-black border border-white/20 rounded-2xl sm:rounded-3xl px-6 sm:px-12 lg:px-16 xl:px-24 py-12 sm:py-16 lg:py-24 xl:py-32">

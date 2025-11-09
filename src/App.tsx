@@ -112,8 +112,8 @@ const App = () => {
               <Route path="/social-preview" element={<SocialPreviewPage />} />
               <Route path="/bitcoin-fear-greed-index" element={<FearGreedIndexPage />} />
               <Route path="/bitcoin-market-sentiment" element={<BitcoinMarketSentimentIndexPage />} />
-              <Route path="/bitcoin-market-sentiment/:year/:month" element={<BitcoinMarketSentimentPage />} />
               <Route path="/bitcoin-market-sentiment/:year/:month/:day" element={<BitcoinDailySentimentPage />} />
+              <Route path="/bitcoin-market-sentiment/:year/:month" element={<BitcoinMarketSentimentPage />} />
               <Route path="/bitcoin-media-research" element={<BitcoinMediaResearchPage />} />
               <Route path="/crypto-conferences" element={<CryptoConferencesPage />} />
               <Route

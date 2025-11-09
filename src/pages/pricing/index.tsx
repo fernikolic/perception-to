@@ -29,7 +29,7 @@ export default function PricingPage() {
               </div>
 
               {/* Content - Right Side (50%) */}
-              <div className="w-full lg:w-1/2 pl-6 sm:pl-8 lg:pl-2 pr-6 sm:pr-8 lg:pr-56 py-8 sm:py-12 lg:py-16 flex flex-col justify-center" style={{ background: '#F0EEE6' }}>
+              <div className="w-full lg:w-1/2 pl-6 sm:pl-8 lg:pl-16 pr-6 sm:pr-8 lg:pr-16 py-8 sm:py-12 lg:py-16 flex flex-col justify-center" style={{ background: '#F0EEE6' }}>
                 <div className="w-full max-w-2xl">
                   <div className="mb-4 sm:mb-6 lg:mb-8 text-center lg:text-left">
                     <div className="group relative inline-flex items-center rounded-full px-5 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base font-semibold leading-6"

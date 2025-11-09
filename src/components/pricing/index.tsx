@@ -1,27 +1,36 @@
 import { PriceList } from './price-list';
+import FlowingRibbons from '@/components/FlowingRibbons';
 
 export function Pricing() {
   return (
     <section id="pricing" className="pt-32 pb-40 sm:pt-40 sm:pb-48 !bg-black">
       <div className="mx-auto max-w-7xl px-8 lg:px-12">
-        <div className="mx-auto max-w-5xl text-center">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] mb-10 sm:mb-12 !text-white">
-            We monitor everything.
-            <br />
-            <span className="bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent font-bold">
+        {/* Header Section - Side by Side Layout */}
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-24 sm:mb-32">
+
+          {/* FlowingRibbons Animation - Left Side */}
+          <div className="w-full lg:w-1/2 h-64 sm:h-80 md:h-96 lg:h-[500px]">
+            <FlowingRibbons />
+          </div>
+
+          {/* Text Content - Right Side */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight leading-[1.05] mb-10 sm:mb-12 !text-white">
+              We monitor everything.
+              <br />
               You execute what matters.
-            </span>
-          </h2>
-          <p className="text-xl sm:text-2xl lg:text-3xl leading-relaxed !text-white/80 max-w-3xl mx-auto mb-8 font-light">
-            From regulatory windows to narrative shifts to competitive moves - transformed into clear, executable opportunities. Daily.
-          </p>
+            </h2>
+            <p className="text-xl sm:text-2xl lg:text-3xl leading-relaxed !text-white/80 mb-8 font-light">
+              From regulatory windows to narrative shifts to competitive moves - transformed into clear, executable opportunities. Daily.
+            </p>
+          </div>
         </div>
 
         {/* Beta Pricing Lock-In Notice */}
         <div className="mx-auto mt-20 sm:mt-24 max-w-3xl">
-          <div className="rounded-2xl p-8 sm:p-10 border-2 border-green-500/40 bg-green-500/5 backdrop-blur-sm text-center hover:border-green-500/60 transition-all duration-300">
+          <div className="rounded-2xl p-8 sm:p-10 border-2 border-gray-400/40 bg-gray-400/5 backdrop-blur-sm text-center hover:border-gray-400/60 transition-all duration-300">
             <div className="flex items-center justify-center mb-4">
-              <span className="inline-flex items-center rounded-full bg-green-500/10 px-5 py-2 text-base sm:text-lg font-bold !text-white">
+              <span className="inline-flex items-center rounded-full bg-gray-400/10 px-5 py-2 text-base sm:text-lg font-bold !text-white">
                 🔒 Beta Pricing Lock-In
               </span>
             </div>

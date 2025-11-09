@@ -32,10 +32,10 @@ export function TweetCard({ author }: TweetCardProps) {
   const isTuurTweet = author.name === "Tuur Demeester";
 
   return (
-    <div className="rounded-xl bg-card p-6 h-full">
+    <div className="rounded-2xl bg-white p-6 h-full shadow-lg hover:shadow-2xl transition-all duration-300 border border-black/5">
       <blockquote
         className="twitter-tweet"
-        data-theme="dark"
+        data-theme="light"
         data-width="100%"
         data-conversation={isTuurTweet ? "none" : undefined}
       >

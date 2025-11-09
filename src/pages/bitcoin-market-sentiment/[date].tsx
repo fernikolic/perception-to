@@ -45,35 +45,48 @@ interface DailySentimentAnalysis {
 // Utility function to validate URL parameters and construct date
 const validateAndConstructDate = (year: string, month: string, day: string) => {
   // Validate year (4 digits)
-  if (!/^\d{4}$/.test(year)) return null;
-  
+  if (!year || !/^\d{4}$/.test(year)) {
+    return null;
+  }
+
   // Validate month (full month name)
   const monthNames = [
     'january', 'february', 'march', 'april', 'may', 'june',
     'july', 'august', 'september', 'october', 'november', 'december'
   ];
-  if (!monthNames.includes(month.toLowerCase())) return null;
-  
+  const normalizedMonth = month?.toLowerCase();
+  if (!normalizedMonth || !monthNames.includes(normalizedMonth)) {
+    return null;
+  }
+
   // Validate day (1-31)
-  if (!/^\d{1,2}$/.test(day)) return null;
-  const dayNum = parseInt(day);
-  if (dayNum < 1 || dayNum > 31) return null;
-  
+  if (!day || !/^\d{1,2}$/.test(day)) {
+    return null;
+  }
+  const dayNum = parseInt(day, 10);
+  if (dayNum < 1 || dayNum > 31) {
+    return null;
+  }
+
   // Construct date string
-  const monthIndex = monthNames.indexOf(month.toLowerCase()) + 1;
-  const dateStr = `${year}-${monthIndex.toString().padStart(2, '0')}-${day.padStart(2, '0')}`;
-  
-  // Validate the constructed date
-  const date = new Date(dateStr);
-  if (isNaN(date.getTime())) return null;
-  
+  const monthIndex = monthNames.indexOf(normalizedMonth) + 1;
+  const dayStr = dayNum.toString().padStart(2, '0');
+  const monthStr = monthIndex.toString().padStart(2, '0');
+  const dateStr = `${year}-${monthStr}-${dayStr}`;
+
+  // Validate the constructed date - use local time to avoid timezone issues
+  const date = new Date(parseInt(year, 10), monthIndex - 1, dayNum);
+  if (isNaN(date.getTime())) {
+    return null;
+  }
+
   // Check if the date components match (handles invalid dates like Feb 31)
-  if (date.getFullYear() !== parseInt(year) || 
-      date.getMonth() !== monthIndex - 1 || 
+  if (date.getFullYear() !== parseInt(year, 10) ||
+      date.getMonth() !== monthIndex - 1 ||
       date.getDate() !== dayNum) {
     return null;
   }
-  
+
   return dateStr;
 };
 
@@ -291,8 +304,8 @@ export default function BitcoinDailySentimentPage() {
   const [sentimentData, setSentimentData] = useState<DailySentimentAnalysis | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [navigationDates, setNavigationDates] = useState<{ 
-    prevDate: string; 
+  const [navigationDates, setNavigationDates] = useState<{
+    prevDate: string;
     nextDate: string | null;
     prevUrl: string;
     nextUrl: string | null;
@@ -303,7 +316,7 @@ export default function BitcoinDailySentimentPage() {
     const loadData = async () => {
       if (year && month && day) {
         const constructedDate = validateAndConstructDate(year, month, day);
-        
+
         if (constructedDate) {
           setIsValid(true);
           setActualDate(constructedDate);
@@ -487,16 +500,9 @@ export default function BitcoinDailySentimentPage() {
         </SEO>
       )}
       
-      <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white overflow-hidden">
-        {/* Animated Background */}
-        <div className="fixed inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-white dark:from-blue-900/20 dark:via-purple-900/20 dark:to-black"></div>
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 dark:bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-500/5 dark:bg-green-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
-          </div>
-        </div>
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900/30 text-slate-900 dark:text-white overflow-hidden">
+        {/* Minimal Background */}
+        <div className="fixed inset-0 bg-slate-50 dark:bg-slate-900/30"></div>
 
         {/* Hero Section */}
         <div className="relative z-10">
@@ -508,22 +514,22 @@ export default function BitcoinDailySentimentPage() {
 
             {/* Badge */}
             <div className="flex justify-center mb-12">
-              <div className="inline-flex items-center bg-white/80 dark:bg-white/10 backdrop-blur-xl rounded-full px-6 py-3 border border-slate-200/50 dark:border-white/20">
-                <span className="text-slate-700 dark:text-white/80 text-sm font-medium tracking-wide">Daily Sentiment Analysis</span>
+              <div className="inline-flex items-center bg-white dark:bg-slate-800/50 rounded-full px-6 py-3 border border-slate-300 dark:border-slate-700/30">
+                <span className="text-slate-600 dark:text-slate-300 text-sm font-medium tracking-wide">Daily Sentiment Analysis</span>
               </div>
             </div>
 
             {/* Main heading and description */}
             <div className="text-center">
-              <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 dark:from-white dark:via-blue-100 dark:to-purple-100 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-6xl font-bold mb-6 text-slate-900 dark:text-white leading-tight">
                 Bitcoin Market Sentiment
               </h1>
-              <div className="flex items-center justify-center gap-3 text-2xl text-slate-700 dark:text-white/80 mb-8">
+              <div className="flex items-center justify-center gap-3 text-2xl text-slate-600 dark:text-slate-300 mb-8">
                 <Calendar className="w-7 h-7" />
                 <span className="font-semibold">{formattedDate}</span>
               </div>
-              <p className="text-xl text-slate-600 dark:text-white/70 max-w-4xl mx-auto leading-relaxed font-light">
-                Comprehensive analysis of Bitcoin market psychology and sentiment for {formattedDate}. 
+              <p className="text-xl text-slate-600 dark:text-slate-400 max-w-4xl mx-auto leading-relaxed">
+                Comprehensive analysis of Bitcoin market psychology and sentiment for {formattedDate}.
                 Real-time data tracking hourly changes in investor behavior and market dynamics.
               </p>
             </div>
@@ -540,79 +546,79 @@ export default function BitcoinDailySentimentPage() {
                 <div className="flex items-center gap-6">
                   <button
                     onClick={() => navigate(navigationDates.prevUrl)}
-                    className="p-4 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 border border-white/20 hover:shadow-xl"
+                    className="p-4 rounded-full bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all duration-300 border border-slate-300 dark:border-slate-700 hover:shadow-lg"
                   >
-                    <ChevronLeft className="w-6 h-6 text-white" />
+                    <ChevronLeft className="w-6 h-6 text-slate-900 dark:text-white" />
                   </button>
                 </div>
-                
+
                 <div className="text-center">
-                  <div className="inline-flex items-center bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl p-6 border border-blue-500/30 backdrop-blur-xl mb-4">
+                  <div className="inline-flex items-center bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-300 dark:border-slate-700 mb-4">
                     <div className="text-center">
-                      <div className="text-5xl font-bold text-white mb-2">{sentimentData.sentiment}</div>
+                      <div className="text-5xl font-bold text-slate-900 dark:text-white mb-2">{sentimentData.sentiment}</div>
                       <div className="text-2xl font-semibold mb-1" style={{ color: sentimentData.sentimentColor }}>
                         {sentimentData.sentimentLabel}
                       </div>
-                      <div className="text-white/80">Fear & Greed Index</div>
+                      <div className="text-slate-600 dark:text-slate-400">Fear & Greed Index</div>
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-6">
                   {navigationDates.nextUrl && (
                     <button
                       onClick={() => navigate(navigationDates.nextUrl!)}
-                      className="p-4 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 border border-white/20 hover:shadow-xl"
+                      className="p-4 rounded-full bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all duration-300 border border-slate-300 dark:border-slate-700 hover:shadow-lg"
                     >
-                      <ChevronRight className="w-6 h-6 text-white" />
+                      <ChevronRight className="w-6 h-6 text-slate-900 dark:text-white" />
                     </button>
                   )}
                 </div>
               </div>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                <div className="bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-2xl p-8 border border-green-500/30 backdrop-blur-xl hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-500">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-300 dark:border-slate-700 hover:shadow-lg transition-all duration-300">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-green-500/30 rounded-xl flex items-center justify-center">
-                      <TrendingUp className="w-6 h-6 text-green-600 dark:text-green-300" />
+                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center">
+                      <TrendingUp className="w-6 h-6 text-green-600 dark:text-green-400" />
                     </div>
-                    <span className="text-green-700 dark:text-green-300 font-semibold">Positive</span>
+                    <span className="text-slate-700 dark:text-slate-300 font-semibold">Positive</span>
                   </div>
                   <div className="text-4xl font-bold text-slate-900 dark:text-white mb-2">{sentimentData.sentimentBreakdown.positive}%</div>
-                  <p className="text-slate-600 dark:text-white/60">Positive sentiment</p>
+                  <p className="text-slate-600 dark:text-slate-400">Positive sentiment</p>
                 </div>
 
-                <div className="bg-gradient-to-br from-gray-500/20 to-gray-600/20 rounded-2xl p-8 border border-gray-500/30 backdrop-blur-xl hover:shadow-2xl hover:shadow-gray-500/20 transition-all duration-500">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-300 dark:border-slate-700 hover:shadow-lg transition-all duration-300">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gray-500/30 rounded-xl flex items-center justify-center">
-                      <BarChart3 className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+                    <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-xl flex items-center justify-center">
+                      <BarChart3 className="w-6 h-6 text-yellow-600 dark:text-yellow-400" />
                     </div>
-                    <span className="text-gray-700 dark:text-gray-300 font-semibold">Neutral</span>
+                    <span className="text-slate-700 dark:text-slate-300 font-semibold">Neutral</span>
                   </div>
                   <div className="text-4xl font-bold text-slate-900 dark:text-white mb-2">{sentimentData.sentimentBreakdown.neutral}%</div>
-                  <p className="text-slate-600 dark:text-white/60">Neutral sentiment</p>
+                  <p className="text-slate-600 dark:text-slate-400">Neutral sentiment</p>
                 </div>
 
-                <div className="bg-gradient-to-br from-red-500/20 to-red-600/20 rounded-2xl p-8 border border-red-500/30 backdrop-blur-xl hover:shadow-2xl hover:shadow-red-500/20 transition-all duration-500">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-300 dark:border-slate-700 hover:shadow-lg transition-all duration-300">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-red-500/30 rounded-xl flex items-center justify-center">
-                      <BarChart3 className="w-6 h-6 text-red-600 dark:text-red-300" />
+                    <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center">
+                      <BarChart3 className="w-6 h-6 text-red-600 dark:text-red-400" />
                     </div>
-                    <span className="text-red-700 dark:text-red-300 font-semibold">Negative</span>
+                    <span className="text-slate-700 dark:text-slate-300 font-semibold">Negative</span>
                   </div>
                   <div className="text-4xl font-bold text-slate-900 dark:text-white mb-2">{sentimentData.sentimentBreakdown.negative}%</div>
-                  <p className="text-slate-600 dark:text-white/60">Negative sentiment</p>
+                  <p className="text-slate-600 dark:text-slate-400">Negative sentiment</p>
                 </div>
 
-                <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-2xl p-8 border border-blue-500/30 backdrop-blur-xl hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-300 dark:border-slate-700 hover:shadow-lg transition-all duration-300">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-blue-500/30 rounded-xl flex items-center justify-center">
-                      <BarChart3 className="w-6 h-6 text-blue-600 dark:text-blue-300" />
+                    <div className="w-12 h-12 bg-slate-200 dark:bg-slate-700 rounded-xl flex items-center justify-center">
+                      <BarChart3 className="w-6 h-6 text-slate-600 dark:text-slate-300" />
                     </div>
-                    <span className="text-blue-700 dark:text-blue-300 font-semibold">Social Mentions</span>
+                    <span className="text-slate-700 dark:text-slate-300 font-semibold">Social Mentions</span>
                   </div>
                   <div className="text-4xl font-bold text-slate-900 dark:text-white mb-2">{sentimentData.keyMetrics.socialMediaMentions.toLocaleString()}</div>
-                  <p className="text-slate-600 dark:text-white/60">Total mentions</p>
+                  <p className="text-slate-600 dark:text-slate-400">Total mentions</p>
                 </div>
               </div>
             </section>
@@ -620,20 +626,18 @@ export default function BitcoinDailySentimentPage() {
             {/* Sentiment Charts */}
             <section>
               <div className="text-center mb-16">
-                <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
+                <h3 className="text-4xl font-bold mb-6 text-slate-900 dark:text-white">
                   Hourly Sentiment Trends
                 </h3>
-                <p className="text-xl text-slate-600 dark:text-white/60 max-w-3xl mx-auto">
+                <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
                   Track how sentiment evolved throughout {formattedDate}
                 </p>
               </div>
               
               <div className="grid lg:grid-cols-2 gap-10 mb-16">
-                {/* Apple-inspired Area Chart */}
+                {/* Area Chart */}
                 <div className="group relative">
-                  {/* Card with subtle shadow and premium backdrop */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/20 dark:from-white/5 dark:to-white/2 rounded-3xl blur-xl"></div>
-                  <div className="relative bg-white/90 dark:bg-black/40 backdrop-blur-2xl rounded-3xl p-8 border border-white/20 dark:border-white/10 shadow-2xl shadow-black/5 dark:shadow-black/20 hover:shadow-3xl transition-all duration-700">
+                  <div className="relative bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-300 dark:border-slate-700 shadow-lg hover:shadow-xl transition-all duration-300">
                     
                     {/* Header with Apple typography */}
                     <div className="mb-8">
@@ -795,11 +799,9 @@ export default function BitcoinDailySentimentPage() {
                   </div>
                 </div>
 
-                {/* Apple-inspired Donut Chart */}
+                {/* Donut Chart */}
                 <div className="group relative">
-                  {/* Card with subtle shadow and premium backdrop */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/20 dark:from-white/5 dark:to-white/2 rounded-3xl blur-xl"></div>
-                  <div className="relative bg-white/90 dark:bg-black/40 backdrop-blur-2xl rounded-3xl p-8 border border-white/20 dark:border-white/10 shadow-2xl shadow-black/5 dark:shadow-black/20 hover:shadow-3xl transition-all duration-700">
+                  <div className="relative bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-300 dark:border-slate-700 shadow-lg hover:shadow-xl transition-all duration-300">
                     
                     {/* Header */}
                     <div className="mb-8">
@@ -905,22 +907,22 @@ export default function BitcoinDailySentimentPage() {
             {/* Key Events */}
             <section>
               <div className="text-center mb-16">
-                <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
+                <h3 className="text-4xl font-bold mb-6 text-slate-900 dark:text-white">
                   Key Insights for {formattedDate}
                 </h3>
-                <p className="text-xl text-slate-600 dark:text-white/60 max-w-3xl mx-auto">
+                <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
                   Important events and trends that shaped market sentiment on this day
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
                 {sentimentData.keyEvents.map((event: string, index: number) => (
-                  <div key={index} className="group bg-gradient-to-br from-white/90 to-slate-100 dark:from-black/40 dark:to-slate-900/60 rounded-2xl p-8 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-500 backdrop-blur-xl hover:shadow-2xl">
+                  <div key={index} className="group bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-300 dark:border-slate-700 hover:shadow-lg transition-all duration-300">
                     <div className="flex items-start gap-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-slate-300/30 to-slate-500/30 dark:from-slate-700/30 dark:to-slate-900/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                        <span className="text-lg font-bold text-blue-700 dark:text-white">{index + 1}</span>
+                      <div className="w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span className="text-lg font-bold text-slate-700 dark:text-slate-300">{index + 1}</span>
                       </div>
-                      <p className="text-slate-700 dark:text-white/80 leading-relaxed text-lg">{event}</p>
+                      <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">{event}</p>
                     </div>
                   </div>
                 ))}
@@ -951,21 +953,21 @@ export default function BitcoinDailySentimentPage() {
 
             {/* Call to Action */}
             <section className="text-center">
-              <div className="bg-gradient-to-br from-white/90 to-slate-100 dark:from-black/40 dark:to-slate-900/60 rounded-3xl p-16 border border-slate-200/50 dark:border-white/20 backdrop-blur-xl shadow-2xl">
-                <h3 className="text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-white/80 bg-clip-text text-transparent">
+              <div className="bg-slate-900 dark:bg-slate-800 rounded-3xl p-16 border border-slate-700 shadow-xl">
+                <h3 className="text-5xl font-bold mb-6 text-white">
                   Get Real-Time Bitcoin Sentiment
                 </h3>
-                <p className="text-xl text-slate-700 dark:text-white/80 mb-12 max-w-2xl mx-auto">
+                <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
                   Track live market sentiment and get instant alerts when sentiment shifts
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6 justify-center">
                   <Link to="/bitcoin-fear-greed-index">
-                    <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-4 rounded-full font-medium shadow-2xl shadow-blue-500/25">
+                    <Button size="lg" className="bg-white hover:bg-slate-100 text-slate-900 px-10 py-4 rounded-full font-medium shadow-lg">
                       View Live Fear & Greed Index
                     </Button>
                   </Link>
                   <Link to="/book-a-call">
-                    <Button size="lg" variant="outline" className="border-slate-300 dark:border-white/30 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 px-10 py-4 rounded-full font-medium backdrop-blur-xl">
+                    <Button size="lg" variant="outline" className="border-slate-600 text-white hover:bg-slate-800 px-10 py-4 rounded-full font-medium">
                       Book a Demo
                     </Button>
                   </Link>

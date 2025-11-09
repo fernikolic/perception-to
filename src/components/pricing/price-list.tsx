@@ -76,7 +76,7 @@ export function PriceList() {
     <div className="flex flex-col">
       {/* Monthly/Annual Toggle */}
       <div className="flex justify-center mb-20">
-        <div className="flex items-center space-x-2 bg-gray-800 rounded-2xl p-2 ring-2 ring-gray-600 shadow-lg">
+        <div className="flex items-center space-x-2 bg-gray-800 rounded-2xl p-2 ring-2 ring-gray-400 shadow-lg">
           <Toggle
             pressed={!isAnnual}
             onPressedChange={() => setIsAnnual(false)}
@@ -98,7 +98,7 @@ export function PriceList() {
             }`}
           >
             Annual
-            <span className="absolute -top-3 -right-3 bg-green-500 text-white text-sm px-3 py-1 rounded-full font-bold shadow-lg">
+            <span className="absolute -top-3 -right-3 bg-gray-400 text-black text-sm px-3 py-1 rounded-full font-bold shadow-lg">
               Save 17%
             </span>
           </Toggle>
@@ -113,7 +113,7 @@ export function PriceList() {
 
       <div className="mt-20 text-center">
         <p className="text-base sm:text-lg !text-gray-400 font-light">
-          Need 5+ users? <a href="https://perception.to/book-a-call" className="text-blue-400 hover:underline font-semibold">Contact sales</a> for volume pricing.
+          Need 5+ users? <a href="https://perception.to/book-a-call" className="text-gray-300 hover:underline font-semibold">Contact sales</a> for volume pricing.
         </p>
       </div>
     </div>

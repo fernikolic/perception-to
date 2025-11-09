@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import AsciiBinaryFlow from '@/components/AsciiBinaryFlow';
 
 export function Hero() {
   const imageRef = useRef<HTMLDivElement>(null);
@@ -38,21 +39,18 @@ export function Hero() {
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 
       <div className="mx-auto max-w-[1800px] px-6 sm:px-8 py-8 sm:py-12 lg:py-16 lg:px-12">
-        {/* Hero Card with Background Image */}
+        {/* Hero Card with Side-by-Side Layout */}
         <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <img
-              src="/images/hero_image.avif?v=2"
-              alt="Background"
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <div className="flex flex-col lg:flex-row min-h-[600px]">
+            {/* ASCII Binary Flow - Left Side (50%) */}
+            <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-[600px]">
+              <AsciiBinaryFlow />
+            </div>
 
-          {/* Content */}
-          <div className="relative z-10 px-6 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16">
-            <div className="mx-auto max-w-6xl text-center">
-              <div ref={badgeRef} className="mb-4 sm:mb-6 lg:mb-8">
+            {/* Content - Right Side (50%) */}
+            <div className="w-full lg:w-1/2 pl-6 sm:pl-8 lg:pl-2 pr-6 sm:pr-8 lg:pr-32 py-8 sm:py-12 lg:py-16 flex flex-col justify-center" style={{ background: '#F0EEE6' }}>
+              <div className="w-full max-w-2xl">
+                <div ref={badgeRef} className="mb-4 sm:mb-6 lg:mb-8 text-center lg:text-left">
                 <a
                   href="https://x.com/BTCPerception/status/1877387322724909419"
                   target="_blank"
@@ -87,32 +85,32 @@ export function Hero() {
                 </a>
               </div>
 
-              <h1 ref={titleRef} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[0.95] text-black max-w-4xl mx-auto px-2 mb-5 sm:mb-6 lg:mb-8">
-                Bitcoin intelligence that{'\u00A0'}drives{'\u00A0'}decisions
+              <h1 ref={titleRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-black mb-5 sm:mb-6 lg:mb-8 text-center lg:text-left">
+                Intelligence Workspace for Bitcoin, Stablecoins & Tokenized{'\u00A0'}Finance
               </h1>
 
-              <div ref={subtitleRef} className="max-w-3xl mx-auto px-2 mb-6 sm:mb-8 lg:mb-10">
-                <p className="text-lg sm:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-black/70 font-semibold mb-3">
-                  8 hours of manual research, delivered in 5{'\u00A0'}minutes.
+              <div ref={subtitleRef} className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
+                <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
+                  Track what matters, organize it in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, and turn it into deliverables with one{'\u00A0'}click.
                 </p>
-                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl leading-relaxed text-black/60 font-light">
-                  100+ sources filtered into actionable opportunities across Bitcoin, stablecoins, and{'\u00A0'}tokenized{'\u00A0'}finance.
+                <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
+                  Set up watchlists for the trends and companies you care about. Organize everything into <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> by project or stakeholder. Then choose a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em> to instantly generate professional deliverables, all backed by 100+{'\u00A0'}sources.
                 </p>
               </div>
 
-              <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-2">
+              <div ref={ctaRef} className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-6">
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
+                  className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
                   asChild
                 >
                   <a href="https://app.perception.to/auth/sign-up">
-                    Start here
+                    Start Building Your Intelligence →
                   </a>
                 </Button>
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
+                  className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
                   onClick={() => {
                     const isMobile = window.innerWidth < 768;
                     const width = isMobile ? Math.min(window.innerWidth - 40, 360) : 640;
@@ -142,19 +140,10 @@ export function Hero() {
                     popup?.document.close();
                   }}
                 >
-                  → See it in action
+                  → Watch demo
                 </Button>
               </div>
-            </div>
-
-            {/* Platform Image */}
-            <div ref={imageRef} className="-mt-4 sm:-mt-2 lg:mt-0 relative max-w-7xl mx-auto will-change-transform">
-              <img
-                src="/images/platform_interface.png"
-                alt="Platform interface"
-                className="w-full h-auto object-contain"
-                loading="lazy"
-              />
+              </div>
             </div>
           </div>
         </div>

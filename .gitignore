@@ -4,3 +4,14 @@ node_modules
 !.env.example
 dist
 .DS_Store
+
+# Development logs
+*.log
+dev.log
+
+# Build artifacts
+*.tsbuildinfo
+
+# Ghost CMS (deprecated)
+.ghost-cli
+.ghostpid

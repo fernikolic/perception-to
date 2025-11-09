@@ -1,48 +1,56 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
-import { Globe, Zap, GitBranch, TrendingUp, Target, X } from 'lucide-react';
+import { useRef, useEffect } from 'react';
+import { Globe, Zap, GitBranch, TrendingUp } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import MoireMandalaPattern from '@/components/MoireMandalaPattern';
+import DelicateAsciiDots from '@/components/DelicateAsciiDots';
+import SlidingEaseVerticalBars from '@/components/SlidingEaseVerticalBars';
+import AsciiBlob from '@/components/AsciiBlob';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const valuePropItems = [
   {
-    title: "See the <em style='font-style: italic; font-family: Georgia, serif;'>full picture</em><br/>in <em style='font-style: italic; font-family: Georgia, serif;'>minutes, not hours</em>",
-    description: "Connect global signals across regions and spot opportunities weeks before your competitors.",
+    title: "See What's <em style='font-style: italic; font-family: Georgia, serif;'>Emerging</em><br/>Before It Breaks <em style='font-style: italic; font-family: Georgia, serif;'>Mainstream</em>",
+    description: "We automatically cluster trends and show you what's heating up. MiCA compliance is up 340% this week. Bitcoin treasury strategy is shifting from social media to Fortune 500 boardrooms. You'll spot these opportunities before your competitors even know they exist.",
     image: "/images/Value Props/Cross-Regional Opportunity Mapping.png",
     Icon: Globe,
     gradient: "from-blue-500/20 to-cyan-500/20",
     iconColor: "text-blue-400",
-    delay: 0
+    delay: 0,
+    AsciiComponent: MoireMandalaPattern
   },
   {
-    title: "Act on <em style='font-style: italic; font-family: Georgia, serif;'>intelligence</em>,<br/>not <em style='font-style: italic; font-family: Georgia, serif;'>information</em>",
-    description: "Skip generic dashboards. Get actionable opportunities your competitors are missing.",
+    title: "Monitor What <em style='font-style: italic; font-family: Georgia, serif;'>Matters</em>,<br/>Organize How You <em style='font-style: italic; font-family: Georgia, serif;'>Work</em>",
+    description: "Create watchlists for the competitors, sectors, or people you care about. Then organize everything into <em style='font-style: italic; font-family: Georgia, serif;'>Spaces</em>: board prep in one workspace, competitive intel in another, content pipeline in a third. It's all there when you need it.",
     image: "/images/Value Props/Signal Intelligence Over Noise.png",
     Icon: Zap,
     gradient: "from-yellow-500/20 to-orange-500/20",
     iconColor: "text-yellow-400",
-    delay: 0.1
+    delay: 0.1,
+    AsciiComponent: DelicateAsciiDots
   },
   {
-    title: "<em style='font-style: italic; font-family: Georgia, serif;'>Custom</em> intelligence<br/>for <em style='font-style: italic; font-family: Georgia, serif;'>YOUR specific game</em>",
-    description: "Track what matters to you. Custom intelligence for your competitors, regions, and targets.",
+    title: "From <em style='font-style: italic; font-family: Georgia, serif;'>Intelligence</em><br/>to <em style='font-style: italic; font-family: Georgia, serif;'>Deliverables</em> in One Click",
+    description: "Your <em style='font-style: italic; font-family: Georgia, serif;'>Space</em> has all the intel. Now pick a <em style='font-style: italic; font-family: Georgia, serif;'>Recipe</em>: Board Update, Interview Prep, PR Pitch Intelligence, Sector Deep Dive, whatever you need. Click once and get a professional deliverable with full citations. No more starting from scratch every single time.",
     image: "/images/Value Props/Custom Entity Intelligence.png",
     Icon: GitBranch,
     gradient: "from-purple-500/20 to-pink-500/20",
     iconColor: "text-purple-400",
-    delay: 0.2
+    delay: 0.2,
+    AsciiComponent: SlidingEaseVerticalBars
   },
   {
-    title: "Replace <em style='font-style: italic; font-family: Georgia, serif;'>guesswork</em><br/>with <em style='font-style: italic; font-family: Georgia, serif;'>pattern recognition</em>",
-    description: "Pattern recognition across thousands of signals. We alert you to opportunities, not data.",
+    title: "Know Your <em style='font-style: italic; font-family: Georgia, serif;'>Position</em><br/>vs. <em style='font-style: italic; font-family: Georgia, serif;'>Competitors</em>",
+    description: "See exactly how you stack up: coverage volume, sentiment, share of voice. When the board asks \"How are we doing?\" you'll have real data. Use the Competitive Benchmarking <em style='font-style: italic; font-family: Georgia, serif;'>Recipe</em> to turn it into a report they can actually use.",
     image: "/images/Value Props/Trend Intelligence.png",
     Icon: TrendingUp,
     gradient: "from-green-500/20 to-emerald-500/20",
     iconColor: "text-green-400",
-    delay: 0.3
+    delay: 0.3,
+    AsciiComponent: AsciiBlob
   }
 ];
 
@@ -50,49 +58,40 @@ export function ValueProps() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [selectedTitle, setSelectedTitle] = useState<string>('');
 
-  // Add CSS to ensure white text
+  // Add CSS to ensure black text on cream background
   useEffect(() => {
     const style = document.createElement('style');
     style.textContent = `
       .value-prop-title {
-        color: #ffffff !important;
+        color: #000000 !important;
         font-weight: 500 !important;
       }
       .value-props-main-title {
-        color: #ffffff !important;
+        color: #000000 !important;
       }
     `;
     document.head.appendChild(style);
-    
+
     return () => {
       document.head.removeChild(style);
     };
   }, []);
 
   useEffect(() => {
-    const section = sectionRef.current;
     const title = titleRef.current;
     const cards = cardsRef.current;
 
-    if (!section || !title || !cards) return;
+    if (!title || !cards) return;
 
-    // Initial states - More dramatic
+    // Initial states
     gsap.set(title, {
       opacity: 0,
       y: 50,
       scale: 0.9
     });
 
-    gsap.set(cards.children, {
-      opacity: 0,
-      y: 100,
-      scale: 0.95
-    });
-
-    // Title animation - Bold entrance
+    // Title animation
     gsap.to(title, {
       opacity: 1,
       y: 0,
@@ -106,19 +105,28 @@ export function ValueProps() {
       }
     });
 
-    // Individual card animations - Each animates on scroll
-    Array.from(cards.children).forEach((card, index) => {
+    // Animate cards staggered on scroll
+    const cardElements = Array.from(cards.children) as HTMLElement[];
+
+    cardElements.forEach((card, index) => {
+      gsap.set(card, {
+        opacity: 0,
+        y: 50,
+        scale: 0.95
+      });
+
       gsap.to(card, {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 1,
+        duration: 0.8,
         ease: "power3.out",
         scrollTrigger: {
           trigger: card,
-          start: "top 75%",
+          start: "top 85%",
           toggleActions: "play none none reverse"
-        }
+        },
+        delay: index * 0.1
       });
     });
 
@@ -130,124 +138,66 @@ export function ValueProps() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden py-12 sm:py-20 lg:py-32 bg-black"
+      className="relative overflow-hidden py-12 sm:py-20 lg:py-32"
+      style={{ background: '#F0EEE6' }}
     >
       <div className="relative">
         {/* Header - More dramatic */}
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 mb-16 sm:mb-24 lg:mb-32 text-center">
           <h2
             ref={titleRef}
-            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[0.95] value-props-main-title"
-            style={{ color: '#ffffff', fontWeight: '700' }}
+            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight leading-[0.95] value-props-main-title"
+            style={{ color: '#000000', fontWeight: '500' }}
           >
-            How smart teams win
+            From Monitoring to Deliverables
           </h2>
         </div>
 
         {/* Value Props - 2x2 Grid Layout */}
         <div
           ref={cardsRef}
-          className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12"
+          className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-            {valuePropItems.map((item, index) => (
+          {valuePropItems.map((item) => {
+            const AsciiComponent = item.AsciiComponent;
+            return (
               <div
                 key={item.title}
-                className="group relative min-h-[500px] lg:min-h-[600px] flex flex-col overflow-hidden rounded-2xl"
+                className="group overflow-hidden rounded-2xl shadow-2xl border border-black/10 flex flex-col"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(20,20,20,1) 0%, rgba(10,10,10,1) 100%)'
+                  background: '#FFFFFF',
+                  minHeight: '500px'
                 }}
               >
-                {/* Bold gradient overlay */}
-                <div
-                  className={`
-                    absolute inset-0 opacity-20 group-hover:opacity-30
-                    transition-opacity duration-700 ease-out
-                    bg-gradient-to-br ${item.gradient}
-                  `}
-                />
+                {/* ASCII Art - Top Half */}
+                <div className="w-full h-64 lg:h-72 relative overflow-hidden">
+                  {AsciiComponent && <AsciiComponent />}
+                </div>
 
-                {/* Dramatic lighting effect */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
-                  style={{
-                    background: `radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 50%)`
-                  }}
-                />
-
-                {/* Content */}
-                <div className="relative z-10 flex flex-col h-full p-8 lg:p-10 items-center text-center">
-                  {/* Text Content */}
-                  <div className="space-y-6 mb-8">
+                {/* Content - Bottom Half */}
+                <div className="p-8 lg:p-10 flex flex-col justify-center flex-grow"
+                     style={{ background: '#FFFFFF' }}>
+                  <div className="space-y-4">
                     <h3
-                      className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight value-prop-title"
+                      className="text-xl sm:text-2xl lg:text-3xl font-medium leading-tight tracking-tight value-prop-title"
                       style={{
-                        color: '#ffffff',
-                        fontWeight: '700'
+                        color: '#000000',
+                        fontWeight: '500'
                       }}
                       dangerouslySetInnerHTML={{ __html: item.title }}
                     />
-                    <p className="text-base sm:text-lg lg:text-xl text-white/70 font-light leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Image */}
-                  <div className="flex-1 min-h-[250px] w-full flex items-center justify-center">
-                    <div
-                      className="relative h-full w-full overflow-hidden rounded-xl border border-white/[0.15] group-hover:border-white/[0.3] transition-all duration-700 shadow-2xl cursor-pointer transform group-hover:scale-[1.02]"
-                      onClick={() => {
-                        setSelectedImage(item.image);
-                        setSelectedTitle(item.title);
-                      }}
-                      style={{
-                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-                      }}
-                    >
-                      {/* Gradient overlay on image */}
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-700 mix-blend-overlay z-10`}
-                      />
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-contain"
-                        loading="lazy"
-                      />
-                    </div>
+                    <p
+                      className="text-sm sm:text-base lg:text-lg text-black/70 font-light leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: item.description }}
+                    />
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Image Modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div className="relative max-w-7xl max-h-full">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedImage(null);
-              }}
-              className="absolute -top-4 -right-4 z-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-all duration-300"
-            >
-              <X className="w-8 h-8 text-white" />
-            </button>
-            <img
-              src={selectedImage}
-              alt={selectedTitle}
-              className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            />
-          </div>
-        </div>
-      )}
     </section>
   );
 }
