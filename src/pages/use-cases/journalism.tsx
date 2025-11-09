@@ -21,14 +21,14 @@ export function JournalismPage() {
           <div className="mx-auto max-w-[1800px] px-6 sm:px-8 py-8 sm:py-12 lg:py-16 lg:px-12">
             {/* Hero Card with Side-by-Side Layout */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <div className="flex flex-col lg:flex-row min-h-[600px]">
-                {/* Kaleidoscope Variation 3 - Left Side (50%) */}
-                <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-[600px]">
+              <div className="flex flex-col-reverse lg:flex-row min-h-[200px] lg:min-h-[600px]">
+                {/* Kaleidoscope Variation 3 - Left Side on Desktop, Hidden on Mobile (50%) */}
+                <div className="w-full lg:w-1/2 relative min-h-[200px] lg:min-h-[600px] hidden lg:block">
                   <KaleidoscopeVariation3 />
                 </div>
 
-                {/* Content - Right Side (50%) */}
-                <div className="w-full lg:w-1/2 pl-6 sm:pl-8 lg:pl-2 pr-6 sm:pr-8 lg:pr-56 py-8 sm:py-12 lg:py-16 flex flex-col justify-center" style={{ background: '#F0EEE6' }}>
+                {/* Content - Right Side on Desktop, Top on Mobile (50%) */}
+                <div className="w-full lg:w-1/2 px-6 sm:px-8 lg:pl-2 lg:pr-56 py-8 sm:py-12 lg:py-16 flex flex-col justify-center" style={{ background: '#F0EEE6' }}>
                   <div className="w-full max-w-2xl">
                     <div className="mb-4 sm:mb-6 lg:mb-8 text-center lg:text-left">
                       <a href="/use-cases" className="flex items-center text-sm text-black/70 hover:text-black mb-4">

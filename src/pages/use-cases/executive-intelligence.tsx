@@ -21,13 +21,13 @@ export function ExecutiveIntelligencePage() {
           <div className="mx-auto max-w-[1800px] px-6 sm:px-8 py-8 sm:py-12 lg:py-16 lg:px-12">
             {/* Hero Card with Side-by-Side Layout */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <div className="flex flex-col lg:flex-row min-h-[600px]">
-                {/* Bouncing Point Cloud - Left Side (50%) */}
-                <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-[600px]">
+              <div className="flex flex-col-reverse lg:flex-row min-h-[200px] lg:min-h-[600px]">
+                {/* Bouncing Point Cloud - Left Side on Desktop, Hidden on Mobile (50%) */}
+                <div className="w-full lg:w-1/2 relative min-h-[200px] lg:min-h-[600px] hidden lg:block">
                   <BouncingPointCloud />
                 </div>
 
-                {/* Content - Right Side (50%) */}
+                {/* Content - Right Side on Desktop, Top on Mobile (50%) */}
                 <div className="w-full lg:w-1/2 px-6 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16 flex flex-col justify-center" style={{ background: '#F0EEE6' }}>
                   <div className="mx-auto max-w-2xl">
                     <div className="mb-4 sm:mb-6 lg:mb-8 text-center lg:text-left">

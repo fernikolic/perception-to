@@ -100,17 +100,17 @@ export function ProblemSolution() {
 
   return (
     <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center" style={{ background: '#000000' }}>
-      <div className="mx-auto px-8 lg:px-12">
-        <div className="mx-auto" style={{ maxWidth: '600px', width: '600px', height: '600px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div className="space-y-12 text-center">
+      <div className="mx-auto px-6 sm:px-8 lg:px-12 w-full">
+        <div className="mx-auto w-full max-w-[600px] min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] flex items-center justify-center py-12 sm:py-16 lg:py-20">
+          <div className="space-y-8 sm:space-y-10 lg:space-y-12 text-center">
             {/* Problem */}
-            <div ref={problemRef} className="text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight leading-tight text-white"></div>
+            <div ref={problemRef} className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium tracking-tight leading-tight text-white px-4"></div>
 
             {/* Divider */}
-            <div className="h-px w-12 bg-white/20 mx-auto" aria-hidden="true" />
+            <div className="h-px w-8 sm:w-10 lg:w-12 bg-white/20 mx-auto" aria-hidden="true" />
 
             {/* Solution */}
-            <div ref={solutionRef} className="text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight leading-tight text-white"></div>
+            <div ref={solutionRef} className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium tracking-tight leading-tight text-white px-4"></div>
           </div>
         </div>
       </div>
