@@ -146,13 +146,47 @@ export function Navbar() {
       const elementAtNavbar = document.elementFromPoint(window.innerWidth / 2, navbarHeight);
 
       if (elementAtNavbar) {
-        const bgColor = window.getComputedStyle(elementAtNavbar).backgroundColor;
+        // First check for explicit dark section markers
         const parent = elementAtNavbar.closest('[data-dark-section="true"]') ||
                       elementAtNavbar.closest('.bg-black') ||
                       elementAtNavbar.closest('.bg-gray-900') ||
                       elementAtNavbar.closest('.dark\\:bg-black');
 
-        setIsOverDarkSection(!!parent);
+        if (parent) {
+          setIsOverDarkSection(true);
+          return;
+        }
+
+        // Check the actual background color of the element and its parents
+        let currentElement: HTMLElement | null = elementAtNavbar as HTMLElement;
+        let isDark = false;
+
+        while (currentElement && currentElement !== document.body) {
+          const bgColor = window.getComputedStyle(currentElement).backgroundColor;
+
+          // Parse RGB values
+          const rgbMatch = bgColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+          if (rgbMatch) {
+            const r = parseInt(rgbMatch[1]);
+            const g = parseInt(rgbMatch[2]);
+            const b = parseInt(rgbMatch[3]);
+
+            // Calculate luminance (perceived brightness)
+            // Using the formula: 0.299*R + 0.587*G + 0.114*B
+            const luminance = (0.299 * r + 0.587 * g + 0.114 * b);
+
+            // If luminance is less than 128 (out of 255), it's dark
+            // Only set if the background is not transparent
+            if (bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') {
+              isDark = luminance < 128;
+              break;
+            }
+          }
+
+          currentElement = currentElement.parentElement;
+        }
+
+        setIsOverDarkSection(isDark);
       }
     };
 
