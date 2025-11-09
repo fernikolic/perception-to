@@ -9,11 +9,11 @@ export const faqData = [
   },
   {
     question: "How do Watchlists, Spaces, and Recipes work?",
-    answer: "Watchlists monitor the trends, companies, sectors, or people you care about automatically. Spaces organize your intelligence by project or stakeholder (board prep in one Space, competitive intel in another). Recipes let you generate professional deliverables with one click: Board Updates, Interview Prep, PR Pitch Intelligence, Sector Deep Dives, and more. All with full source citations."
+    answer: "Watchlists monitor trends automatically, while you customize which companies, sectors, or people to track. Spaces organize your intelligence by project or stakeholder (board prep in one Space, competitive intel in another). Recipes let you generate professional deliverables with one click: Board Updates, Interview Prep, PR Pitch Intelligence, Sector Deep Dives, and more. All with full source citations."
   },
   {
     question: "What sources does the platform track?",
-    answer: "We monitor 100+ sources across Bitcoin, stablecoins, and tokenized finance. This includes Bloomberg, Financial Times, Reuters, crypto-native media like CoinDesk and The Block, social platforms, regulatory announcements, and more. Every trend we cluster, every watchlist alert, every Recipe output is backed by comprehensive source coverage."
+    answer: "We monitor 100+ sources across Bitcoin, stablecoins, and tokenized finance. For a complete breakdown of our sources and methodology, visit our <a href='/methodology' class='text-bitcoin hover:underline'>methodology page</a>."
   },
   {
     question: "What can I create with Recipes?",
@@ -21,7 +21,7 @@ export const faqData = [
   },
   {
     question: "How much does the platform cost?",
-    answer: "Perception costs $49 and $99/month with a 7-day free trial. A credit card is required to start. Cancel anytime directly from your dashboard. Please check the pricing page for more information about the different tiers. Enterprise pricing available for teams needing API access or custom integrations."
+    answer: "Perception costs $49 and $99/month with a 7-day free trial. No credit card required to start. Cancel anytime directly from your dashboard. Please check the pricing page for more information about the different tiers. Enterprise pricing available for teams needing API access or custom integrations."
   },
   {
     question: "What's included in the 7-day free trial?",
@@ -29,7 +29,7 @@ export const faqData = [
   },
   {
     question: "How is this different from news aggregators or ChatGPT?",
-    answer: "News aggregators just show you articles. ChatGPT requires you to manually input context and doesn't cite sources. Perception monitors everything automatically through watchlists, organizes it in Spaces, and generates professional deliverables with Recipes. All with full source citations. It's a complete intelligence workspace, not a search tool."
+    answer: "News aggregators just show you articles. ChatGPT and similar tools mostly scrape the top 20 organic Google search results for generic information, while Perception specializes deep in the Bitcoin, stablecoin, and tokenized finance industry with 100+ curated sources. We monitor everything automatically through watchlists, organize it in Spaces, and generate professional deliverables with Recipes. All with full source citations. It's a complete intelligence workspace, not a search tool."
   },
   {
     question: "Can I customize what I track?",
@@ -37,7 +37,7 @@ export const faqData = [
   },
   {
     question: "What if I need strategic advisory beyond the platform?",
-    answer: "For companies needing hands-on strategic execution, we offer boutique advisory services starting at $15,000/month. This includes the platform plus a dedicated team (Ex-Blockstream, Adidas, Ogilvy, Universal Music) to execute on opportunities. Limited to 5 clients globally. Contact us to discuss."
+    answer: "For companies needing hands-on strategic execution, we offer boutique advisory services starting at $15,000/month. This includes the platform plus a dedicated team to execute on opportunities. Limited to 5 clients globally. <a href='/book-a-call' class='text-bitcoin hover:underline'>Contact us</a> to discuss."
   },
   {
     question: "Can I provide feedback or request features?",
