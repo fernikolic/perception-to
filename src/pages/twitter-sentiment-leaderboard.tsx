@@ -558,7 +558,7 @@ export default function TwitterSentimentLeaderboard() {
     <>
       <Helmet>
         <title>Bitcoin Twitter Sentiment Leaderboard | Bitcoin Perception</title>
-        <meta name="description" content="Discover all Bitcoin Twitter accounts with real tweets - based on real-time sentiment analysis from 100+ sources." />
+        <meta name="description" content="Discover all Bitcoin Twitter accounts with real tweets - based on real-time sentiment analysis from 250+ sources." />
         <meta name="keywords" content="Bitcoin, Twitter, X, sentiment analysis, leaderboard, crypto, social media, tweets" />
         <meta property="og:title" content="Bitcoin Twitter Sentiment Leaderboard with Real Tweets" />
         <meta property="og:description" content="Real-time ranking of all Bitcoin Twitter accounts with actual tweets and sentiment analysis" />
@@ -575,7 +575,7 @@ export default function TwitterSentimentLeaderboard() {
             {/* Header */}
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Bitcoin Influence Index</h1>
-              <p className="text-sm text-gray-600">Ranked by positive sentiment from 100+ sources</p>
+              <p className="text-sm text-gray-600">Ranked by positive sentiment from 250+ sources</p>
             </div>
 
             <div className="mb-8">

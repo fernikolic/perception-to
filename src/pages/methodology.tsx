@@ -87,7 +87,7 @@ export default function MethodologyPage() {
 
                     <div className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
                       <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
-                        100+ sources. Human analysts. Real-time{'\u00A0'}clustering.
+                        250+ sources. Human analysts. Real-time{'\u00A0'}clustering.
                       </p>
                       <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
                         From Bloomberg to Reddit. See what we track and how it powers your watchlists, <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, and{'\u00A0'}<em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>.
@@ -214,7 +214,7 @@ export default function MethodologyPage() {
                     Everything gets captured
                   </h3>
                   <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-6">
-                    Every mention across 100+ sources. Dedicated coverage, social posts, passing references. This is what powers your watchlist alerts and the trend clustering in your <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>.
+                    Every mention across 250+ sources. Dedicated coverage, social posts, passing references. This is what powers your watchlist alerts and the trend clustering in your <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>.
                   </p>
                   <div className="rounded-lg overflow-hidden border border-white/10 mt-4" style={{ height: '200px', filter: 'invert(1)' }}>
                     <FlowingPattern />

@@ -64,7 +64,7 @@ export default function FearGreedIndexPage() {
 
                     <div className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
                       <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
-                        Market sentiment from 100+{'\u00A0'}sources.
+                        Market sentiment from 250+{'\u00A0'}sources.
                       </p>
                       <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
                         Social media, news coverage, volatility. Updated every 90{'\u00A0'}seconds.
@@ -127,7 +127,7 @@ export default function FearGreedIndexPage() {
                   <div className="text-left">
                     <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-slate-600 dark:text-slate-400 mb-6 sm:mb-8 font-light">
                       A single score from 0 (extreme fear) to 100 (extreme greed) that captures market sentiment.
-                      We aggregate social media, news headlines, volatility, and market momentum from 100+ sources.
+                      We aggregate social media, news headlines, volatility, and market momentum from 250+ sources.
                     </p>
                     <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-slate-600 dark:text-slate-400 font-light">
                       Track market psychology, not just price. See what the crowd is feeling before it shows up in{'\u00A0'}charts.
@@ -144,7 +144,7 @@ export default function FearGreedIndexPage() {
                             </svg>
                           </div>
                           <div className="text-left">
-                            <h3 className="font-semibold text-slate-900 dark:text-white">100+ Premium Sources</h3>
+                            <h3 className="font-semibold text-slate-900 dark:text-white">250+ Premium Sources</h3>
                             <p className="text-sm text-slate-600 dark:text-slate-400">Institutional reports, social media, news sentiment</p>
                           </div>
                         </div>
@@ -191,7 +191,7 @@ export default function FearGreedIndexPage() {
 
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 tracking-tight text-slate-900 dark:text-white px-2">How it's calculated</h3>
                 <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-400 font-light max-w-4xl mx-auto px-2">
-                  We track sentiment across 100+ sources, weighted by credibility and velocity. Not just price data—actual market psychology.
+                  We track sentiment across 250+ sources, weighted by credibility and velocity. Not just price data—actual market psychology.
                 </p>
               </div>
 
@@ -447,7 +447,7 @@ export default function FearGreedIndexPage() {
                     </a>
                   </h4>
                   <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 sm:mb-6">
-                    Weekly research analyzing Bitcoin media coverage and narrative trends from 100+ news sources.
+                    Weekly research analyzing Bitcoin media coverage and narrative trends from 250+ news sources.
                   </p>
                   <a href="/bitcoin-media-research" className="text-orange-500 hover:text-orange-600 font-medium">
                     Subscribe to Research →

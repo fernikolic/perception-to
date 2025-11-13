@@ -13,7 +13,7 @@ export const faqData = [
   },
   {
     question: "What sources does the platform track?",
-    answer: "We monitor 100+ sources across Bitcoin, stablecoins, and tokenized finance. For a complete breakdown of our sources and methodology, visit our <a href='/methodology' class='text-bitcoin hover:underline'>methodology page</a>."
+    answer: "We monitor 250+ sources across Bitcoin, stablecoins, and tokenized finance. For a complete breakdown of our sources and methodology, visit our <a href='/methodology' class='text-bitcoin hover:underline'>methodology page</a>."
   },
   {
     question: "What can I create with Recipes?",
@@ -29,7 +29,7 @@ export const faqData = [
   },
   {
     question: "How is this different from news aggregators or ChatGPT?",
-    answer: "News aggregators just show you articles. ChatGPT and similar tools mostly scrape the top 20 organic Google search results for generic information, while Perception specializes deep in the Bitcoin, stablecoin, and tokenized finance industry with 100+ curated sources. We monitor everything automatically through watchlists, organize it in Spaces, and generate professional deliverables with Recipes. All with full source citations. It's a complete intelligence workspace, not a search tool."
+    answer: "News aggregators just show you articles. ChatGPT and similar tools mostly scrape the top 20 organic Google search results for generic information, while Perception specializes deep in the Bitcoin, stablecoin, and tokenized finance industry with 250+ curated sources. We monitor everything automatically through watchlists, organize it in Spaces, and generate professional deliverables with Recipes. All with full source citations. It's a complete intelligence workspace, not a search tool."
   },
   {
     question: "Can I customize what I track?",

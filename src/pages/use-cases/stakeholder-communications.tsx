@@ -121,7 +121,7 @@ export function StakeholderCommunicationsPage() {
                 {[
                   {
                     title: "Set Up Watchlists Once",
-                    description: "Track your company across 100+ sources. We monitor everything automatically."
+                    description: "Track your company across 250+ sources. We monitor everything automatically."
                   },
                   {
                     title: "Organize in a Space",

@@ -87,7 +87,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 text-lg leading-8 text-white/60">
-              Every morning, your rivals spend 3 hours connecting dots across 100+ sources. You spend 10 minutes acting on opportunities we've already identified.
+              Every morning, your rivals spend 3 hours connecting dots across 250+ sources. You spend 10 minutes acting on opportunities we've already identified.
             </p>
 
             <p className="mt-4 text-xl font-semibold text-white">

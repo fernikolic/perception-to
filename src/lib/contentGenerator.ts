@@ -332,7 +332,7 @@ function generateTechnicalContent(keyword: KeywordData): string {
 
 export function generateMetaDescription(keyword: KeywordData): string {
   const templates = {
-    informational: `Comprehensive ${keyword.fullKeyword} analysis with real-time data from 100+ sources. Professional insights for traders, analysts, and investors.`,
+    informational: `Comprehensive ${keyword.fullKeyword} analysis with real-time data from 250+ sources. Professional insights for traders, analysts, and investors.`,
     navigational: `Access ${keyword.fullKeyword} dashboards and tools. Real-time monitoring with professional-grade analytics and customizable interfaces.`,
     transactional: `${keyword.fullKeyword} API for developers. Reliable real-time data, comprehensive documentation, and enterprise-grade infrastructure.`,
     commercial: `Professional ${keyword.fullKeyword} solutions for institutions. Trusted by hedge funds and trading firms worldwide.`

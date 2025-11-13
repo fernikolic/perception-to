@@ -34,7 +34,7 @@ export function CompaniesLanding() {
       description: 'Spot what is trending across the Bitcoin industry with early signals from media, social platforms, and communities.',
       imageUrl: 'https://images.unsplash.com/photo-1642790551116-18e4f8f6c637?auto=format&fit=crop&q=80&w=800',
       benefits: [
-        'Live updates from 100+ sources',
+        'Live updates from 250+ sources',
         'Multi-language coverage',
         'High-signal data curation',
       ],

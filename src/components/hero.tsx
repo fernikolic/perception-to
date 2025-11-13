@@ -86,15 +86,15 @@ export function Hero() {
               </div>
 
               <h1 ref={titleRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-black mb-5 sm:mb-6 lg:mb-8 text-center lg:text-left">
-                Intelligence Workspace for Bitcoin, Stablecoins & Tokenized{'\u00A0'}Finance
+                High-Signal Intelligence for Emerging{'\u00A0'}Finance
               </h1>
 
               <div ref={subtitleRef} className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
                 <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
-                  Track what matters, organize it in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, and turn it into deliverables with one{'\u00A0'}click.
+                  Reclaim 15+ hours per week. Skip the algorithmic feeds. Skip the garbage data. Skip manually piecing together every{'\u00A0'}update.
                 </p>
                 <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
-                  Set up watchlists for the trends and companies you care about. Organize everything into <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> by project or stakeholder. Then choose a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em> to instantly generate professional deliverables, all backed by 100+{'\u00A0'}sources.
+                  Monitor 250+ high-signal sources. Organize in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>. Generate board updates, PR pitches, interview prep, and sector deep dives with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>—all backed by real mentions and full{'\u00A0'}citations.
                 </p>
               </div>
 
