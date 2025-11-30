@@ -1,5 +1,5 @@
 // Auto-generated conference data
-// Last updated: 2025-11-23T02:01:42.018Z
+// Last updated: 2025-11-30T02:00:38.729Z
 // Source: Perplexity API (Sonar with real-time web search)
 // DO NOT EDIT MANUALLY - This file is automatically updated weekly
 
@@ -17,7 +17,7 @@ export const allConferences: Conference[] = [
   {
     "date": "2026-04-27",
     "name": "Bitcoin 2026",
-    "location": "Las Vegas, United States",
+    "location": "Las Vegas, Nevada, USA",
     "type": "Bitcoin",
     "duration": "Apr 27-29",
     "monthYear": "April 2026",
