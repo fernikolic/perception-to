@@ -86,15 +86,15 @@ export function Hero() {
               </div>
 
               <h1 ref={titleRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-black mb-5 sm:mb-6 lg:mb-8 text-center lg:text-left">
-                High-Signal Intelligence for Emerging{'\u00A0'}Finance
+                Your Emerging Finance Intelligence{'\u00A0'}Team
               </h1>
 
               <div ref={subtitleRef} className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
                 <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
-                  Reclaim 15+ hours per week. Skip the algorithmic feeds. Skip the garbage data. Skip manually piecing together every{'\u00A0'}update.
+                  Know everything. Act on{'\u00A0'}it. $99/month.
                 </p>
                 <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
-                  Monitor 250+ high-signal sources. Organize in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>. Generate board updates, PR pitches, interview prep, and sector deep dives with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>—all backed by real mentions and full{'\u00A0'}citations.
+                  We monitor 250+ sources so you don't have to. Ask for a board update, PR pitch, podcast prep, or sector deep dive—get it in minutes, fully{'\u00A0'}cited.
                 </p>
               </div>
 
@@ -142,6 +142,145 @@ export function Hero() {
                 >
                   → Watch demo
                 </Button>
+              </div>
+
+              {/* As Featured In section */}
+              <div className="mt-10 sm:mt-12 lg:mt-14">
+                <p className="text-xs sm:text-sm font-medium tracking-wider text-black/50 mb-4 sm:mb-6 text-center lg:text-left uppercase">
+                  As featured in
+                </p>
+                <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-5 items-center justify-items-center gap-x-3 sm:gap-x-4 lg:gap-x-6 gap-y-3 sm:gap-y-4 lg:gap-y-5">
+                  <a
+                    href="https://cointelegraph.com/news/bitcoins-change-in-media-perception-from-0-to-100000-dollars"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-10 sm:h-12 lg:h-14 w-full items-center justify-center transition-all duration-300 hover:opacity-80"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-8 sm:max-h-10 lg:max-h-12 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 brightness-0"
+                      src="/logos/Cointelegraph_Logo-removebg-preview.png"
+                      alt="Cointelegraph"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://web.archive.org/web/20240904132826/https://www.forbes.com/sites/digital-assets/2024/09/04/bbc-bitcoin-coverage-raises-concern-over-its-journalism-and-trust/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-10 sm:h-12 lg:h-14 w-full items-center justify-center transition-all duration-300 hover:opacity-80"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-8 sm:max-h-10 lg:max-h-12 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 brightness-0"
+                      src="/logos/Forbes-logo-white.png"
+                      alt="Forbes"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://bitcoinmagazine.com/culture/left-leaning-outlets-amplify-their-anti-bitcoin-bias-following-trumps-endorsement-"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-10 sm:h-12 lg:h-14 w-full items-center justify-center transition-all duration-300 hover:opacity-80"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-8 sm:max-h-10 lg:max-h-12 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 brightness-0"
+                      src="/logos/BTC_Mag_Logo-removebg-preview.png"
+                      alt="Bitcoin Magazine"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://www.binance.com/en/square/post/17159960284914"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-10 sm:h-12 lg:h-14 w-full items-center justify-center transition-all duration-300 hover:opacity-80"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-8 sm:max-h-10 lg:max-h-12 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 brightness-0"
+                      src="/logos/binance_square_logo-removebg-preview.png"
+                      alt="Binance"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://youtu.be/UfJbn7nnPVw?t=5165"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-10 sm:h-12 lg:h-14 w-full items-center justify-center transition-all duration-300 hover:opacity-80"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-8 sm:max-h-10 lg:max-h-12 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-md"
+                      src="/logos/petermccormack-logo.png"
+                      alt="The Peter McCormack Show"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://youtu.be/AUf8gcPymyQ?si=_oAW-kZuS_MxiAT6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-10 sm:h-12 lg:h-14 w-full items-center justify-center transition-all duration-300 hover:opacity-80"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-8 sm:max-h-10 lg:max-h-12 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-md"
+                      src="/logos/roxomtv-logo.png"
+                      alt="RoxomTV"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/watch?v=v-WFH0wctuM"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-10 sm:h-12 lg:h-14 w-full items-center justify-center transition-all duration-300 hover:opacity-80"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-8 sm:max-h-10 lg:max-h-12 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-md"
+                      src="/logos/stephanlivera-logo.png"
+                      alt="Stephan Livera Podcast"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://youtu.be/7mU5bi6Ho_I?si=pVOo_s-p01b7coX6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-10 sm:h-12 lg:h-14 w-full items-center justify-center transition-all duration-300 hover:opacity-80"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-8 sm:max-h-10 lg:max-h-12 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-md"
+                      src="/logos/bitcoinformillennials-logo.png"
+                      alt="Bitcoin for Millennials"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://youtu.be/VDAl51v7BXU?t=139"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-10 sm:h-12 lg:h-14 w-full items-center justify-center transition-all duration-300 hover:opacity-80"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-8 sm:max-h-10 lg:max-h-12 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-md"
+                      src="/logos/whatismoney-logo.png"
+                      alt="What is Money Show"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://youtu.be/ybbAQdoxcTk?t=50"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-10 sm:h-12 lg:h-14 w-full items-center justify-center transition-all duration-300 hover:opacity-80"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-8 sm:max-h-10 lg:max-h-12 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-md"
+                      src="/logos/simplybitcoin-logo.png"
+                      alt="Simply Bitcoin"
+                      loading="lazy"
+                    />
+                  </a>
+                </div>
               </div>
               </div>
             </div>

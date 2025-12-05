@@ -6,7 +6,6 @@ import { Navbar } from '@/components/navbar';
 import { Hero } from '@/components/hero';
 import { ProblemSolution } from '@/components/problem-solution';
 import { ProblemCards } from '@/components/problem-cards';
-import { AsSeenOn } from '@/components/as-seen-on';
 import { Features } from '@/components/features';
 import { ValueProps } from '@/components/value-props';
 import { Integrations } from '@/components/integrations';
@@ -61,7 +60,6 @@ function HomePage() {
   return (
     <main>
       <Hero />
-      <AsSeenOn />
       <ProblemSolution />
       <ProblemCards />
       <ValueProps />

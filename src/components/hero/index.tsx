@@ -120,15 +120,15 @@ export function Hero() {
                 <p className="text-sm font-medium tracking-wider text-white/60 mb-8">
                   As featured in
                 </p>
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 items-center justify-items-center gap-x-6 sm:gap-x-8 lg:gap-x-12 gap-y-6 sm:gap-y-8 lg:gap-y-10 max-w-4xl mx-auto">
+                <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-5 items-center justify-items-center gap-x-4 sm:gap-x-6 lg:gap-x-8 gap-y-4 sm:gap-y-6 lg:gap-y-8 max-w-5xl mx-auto">
                   <a
                     href="https://cointelegraph.com/news/bitcoins-change-in-media-perception-from-0-to-100000-dollars"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex h-16 sm:h-20 lg:h-24 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                    className="group relative flex h-14 sm:h-16 lg:h-20 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
                   >
                     <img
-                      className="h-auto w-auto max-h-12 sm:max-h-16 lg:max-h-20 max-w-[80%] object-contain transition-all duration-300 group-hover:scale-105"
+                      className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-16 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105"
                       src="/logos/Cointelegraph_Logo-removebg-preview.png"
                       alt="Cointelegraph"
                       loading="lazy"
@@ -138,10 +138,10 @@ export function Hero() {
                     href="https://web.archive.org/web/20240904132826/https://www.forbes.com/sites/digital-assets/2024/09/04/bbc-bitcoin-coverage-raises-concern-over-its-journalism-and-trust/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex h-16 sm:h-20 lg:h-24 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                    className="group relative flex h-14 sm:h-16 lg:h-20 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
                   >
                     <img
-                      className="h-auto w-auto max-h-12 sm:max-h-16 lg:max-h-20 max-w-[80%] object-contain transition-all duration-300 group-hover:scale-105"
+                      className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-16 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105"
                       src="/logos/Forbes-logo-white.png"
                       alt="Forbes"
                       loading="lazy"
@@ -151,10 +151,10 @@ export function Hero() {
                     href="https://bitcoinmagazine.com/culture/left-leaning-outlets-amplify-their-anti-bitcoin-bias-following-trumps-endorsement-"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex h-16 sm:h-20 lg:h-24 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                    className="group relative flex h-14 sm:h-16 lg:h-20 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
                   >
                     <img
-                      className="h-auto w-auto max-h-12 sm:max-h-16 lg:max-h-20 max-w-[80%] object-contain transition-all duration-300 group-hover:scale-105"
+                      className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-16 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105"
                       src="/logos/BTC_Mag_Logo-removebg-preview.png"
                       alt="Bitcoin Magazine"
                       loading="lazy"
@@ -164,12 +164,77 @@ export function Hero() {
                     href="https://www.binance.com/en/square/post/17159960284914"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex h-16 sm:h-20 lg:h-24 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                    className="group relative flex h-14 sm:h-16 lg:h-20 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
                   >
                     <img
-                      className="h-auto w-auto max-h-12 sm:max-h-16 lg:max-h-20 max-w-[80%] object-contain transition-all duration-300 group-hover:scale-105"
+                      className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-16 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105"
                       src="/logos/binance_square_logo-removebg-preview.png"
                       alt="Binance"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://youtu.be/UfJbn7nnPVw?t=5165"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-14 sm:h-16 lg:h-20 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-16 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-lg"
+                      src="/logos/petermccormack-logo.png"
+                      alt="The Peter McCormack Show"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://youtu.be/AUf8gcPymyQ?si=_oAW-kZuS_MxiAT6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-14 sm:h-16 lg:h-20 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-16 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-lg"
+                      src="/logos/roxomtv-logo.png"
+                      alt="RoxomTV"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/watch?v=v-WFH0wctuM"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-14 sm:h-16 lg:h-20 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-16 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-lg"
+                      src="/logos/stephanlivera-logo.png"
+                      alt="Stephan Livera Podcast"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/watch?v=7mU5bi6Ho_I"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-14 sm:h-16 lg:h-20 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-16 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-lg"
+                      src="/logos/bitcoinformillennials-logo.png"
+                      alt="Bitcoin for Millennials"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://youtu.be/VDAl51v7BXU?si=m3KmnypOJnUyH2H3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-14 sm:h-16 lg:h-20 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-16 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-lg"
+                      src="/logos/whatismoney-logo.png"
+                      alt="What is Money Show"
                       loading="lazy"
                     />
                   </a>
