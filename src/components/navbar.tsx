@@ -87,7 +87,7 @@ const useCases: {
     animation: KaleidoscopeVariation3
   },
   {
-    title: "PR Agency Intelligence",
+    title: "PR Intelligence",
     href: "/use-cases/pr-agency",
     description: "Reporter targeting & client tracking",
     animation: WavyYinYangNoDots

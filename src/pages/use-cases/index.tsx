@@ -27,7 +27,7 @@ export function UseCasesLanding() {
       stats: "Full source citations"
     },
     {
-      title: "PR Agency Intelligence",
+      title: "PR Intelligence",
       description: "Track client coverage, monitor competitors, generate pitch intelligence for reporters",
       icon: Target,
       href: "/use-cases/pr-agency",
