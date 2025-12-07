@@ -86,7 +86,7 @@ export function Hero() {
               </div>
 
               <h1 ref={titleRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-black mb-5 sm:mb-6 lg:mb-8 text-center lg:text-left">
-                Your Emerging Finance Intelligence{'\u00A0'}Team
+                The Intelligence Layer for New{'\u00A0'}Finance
               </h1>
 
               <div ref={subtitleRef} className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
