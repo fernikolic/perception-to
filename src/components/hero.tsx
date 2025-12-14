@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import AsciiBinaryFlow from '@/components/AsciiBinaryFlow';
+import { DemoModal, useDemoModal } from '@/components/demo-modal';
 
 export function Hero() {
   const imageRef = useRef<HTMLDivElement>(null);
@@ -9,6 +10,7 @@ export function Hero() {
   const subtitleRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
+  const { isOpen: isDemoOpen, openDemo, closeDemo } = useDemoModal();
 
   // Entrance animations
   useEffect(() => {
@@ -94,7 +96,7 @@ export function Hero() {
                   Know everything. Act on{'\u00A0'}it. $99/month.
                 </p>
                 <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
-                  We monitor 250+ sources so you don't have to. Ask for a board update, PR pitch, podcast prep, or sector deep dive—get it in minutes, fully{'\u00A0'}cited.
+                  We monitor 650+ sources so you don't have to. Ask for a board update, PR pitch, podcast prep, or sector deep dive—get it in minutes, fully{'\u00A0'}cited.
                 </p>
               </div>
 
@@ -111,34 +113,7 @@ export function Hero() {
                 <Button
                   size="lg"
                   className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
-                  onClick={() => {
-                    const isMobile = window.innerWidth < 768;
-                    const width = isMobile ? Math.min(window.innerWidth - 40, 360) : 640;
-                    const height = isMobile ? Math.min(window.innerHeight - 100, 240) : 400;
-
-                    const popup = window.open('', 'demo', `width=${width},height=${height},scrollbars=no,resizable=yes`);
-                    popup?.document.write(`
-                      <!DOCTYPE html>
-                      <html>
-                        <head>
-                          <title>Demo Video</title>
-                          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                          <style>
-                            body { margin: 0; padding: 0; background: black; }
-                            iframe { width: 100%; height: 100vh; border: none; }
-                          </style>
-                        </head>
-                        <body>
-                          <iframe
-                            src="https://www.youtube.com/embed/Au3vd597SHw?autoplay=1&mute=1"
-                            allow="autoplay; encrypted-media"
-                            allowfullscreen>
-                          </iframe>
-                        </body>
-                      </html>
-                    `);
-                    popup?.document.close();
-                  }}
+                  onClick={openDemo}
                 >
                   → Watch demo
                 </Button>
@@ -287,6 +262,9 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Demo Modal */}
+      <DemoModal isOpen={isDemoOpen} onClose={closeDemo} />
     </div>
   );
 }
