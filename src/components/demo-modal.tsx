@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -7,6 +7,73 @@ import {
 } from '@/components/ui/dialog';
 import { Logo } from '@/components/ui/logo';
 import { Play, Clock, ChevronRight, Compass, Users, LayoutDashboard, Signal, Lightbulb, FileSearch, TrendingUp, Eye, FolderOpen, FileText } from 'lucide-react';
+
+// Declare YouTube API types
+declare global {
+  interface Window {
+    YT: {
+      Player: new (
+        elementId: string | HTMLElement,
+        config: {
+          videoId: string;
+          playerVars?: Record<string, number | string>;
+          events?: {
+            onReady?: (event: { target: YTPlayer }) => void;
+            onStateChange?: (event: { data: number }) => void;
+          };
+        }
+      ) => YTPlayer;
+      PlayerState: {
+        PLAYING: number;
+        PAUSED: number;
+        ENDED: number;
+      };
+    };
+    onYouTubeIframeAPIReady?: () => void;
+  }
+}
+
+interface YTPlayer {
+  playVideo: () => void;
+  pauseVideo: () => void;
+  seekTo: (seconds: number, allowSeekAhead: boolean) => void;
+  mute: () => void;
+  unMute: () => void;
+  destroy: () => void;
+}
+
+// Load YouTube IFrame API
+const loadYouTubeAPI = (): Promise<void> => {
+  return new Promise((resolve) => {
+    if (window.YT && window.YT.Player) {
+      resolve();
+      return;
+    }
+
+    const existingScript = document.getElementById('youtube-iframe-api');
+    if (existingScript) {
+      // Script already loading, wait for it
+      const checkYT = setInterval(() => {
+        if (window.YT && window.YT.Player) {
+          clearInterval(checkYT);
+          resolve();
+        }
+      }, 100);
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id = 'youtube-iframe-api';
+    script.src = 'https://www.youtube.com/iframe_api';
+    script.async = true;
+
+    window.onYouTubeIframeAPIReady = () => {
+      resolve();
+    };
+
+    document.body.appendChild(script);
+  });
+};
 
 const DEMO_CONFIG = {
   videoId: 'OTedJvx3i3g',
@@ -104,48 +171,118 @@ interface DemoModalProps {
 export function DemoModal({ isOpen, onClose }: DemoModalProps) {
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [initialTimestamp, setInitialTimestamp] = useState(0);
+  const playerRef = useRef<YTPlayer | null>(null);
+  const playerContainerRef = useRef<HTMLDivElement>(null);
 
-  const handleSectionClick = (sectionId: string, timestamp: number) => {
+  // Initialize YouTube player when video starts playing
+  useEffect(() => {
+    if (!isPlaying) return;
+
+    let player: YTPlayer | null = null;
+    let mounted = true;
+
+    const initPlayer = async () => {
+      await loadYouTubeAPI();
+
+      // Wait for the container to be available after render
+      const waitForContainer = (): Promise<HTMLDivElement> => {
+        return new Promise((resolve) => {
+          const check = () => {
+            if (playerContainerRef.current && mounted) {
+              resolve(playerContainerRef.current);
+            } else if (mounted) {
+              requestAnimationFrame(check);
+            }
+          };
+          check();
+        });
+      };
+
+      const container = await waitForContainer();
+      if (!mounted) return;
+
+      // Clear any existing content
+      container.innerHTML = '';
+
+      // Create a div for the player
+      const playerDiv = document.createElement('div');
+      playerDiv.id = 'yt-player-' + Date.now();
+      container.appendChild(playerDiv);
+
+      player = new window.YT.Player(playerDiv, {
+        videoId: DEMO_CONFIG.videoId,
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          start: initialTimestamp,
+          rel: 0,
+          modestbranding: 1,
+          playsinline: 1,
+        },
+        events: {
+          onReady: (event) => {
+            if (mounted) {
+              event.target.playVideo();
+              playerRef.current = event.target;
+            }
+          },
+        },
+      });
+    };
+
+    initPlayer();
+
+    return () => {
+      mounted = false;
+      if (player) {
+        try {
+          player.destroy();
+        } catch (e) {
+          // Player might already be destroyed
+        }
+      }
+      playerRef.current = null;
+    };
+  }, [isPlaying, initialTimestamp]);
+
+  const handleSectionClick = useCallback((sectionId: string, timestamp: number) => {
     setSelectedSection(sectionId);
-    setIsPlaying(true);
-  };
+    if (isPlaying && playerRef.current) {
+      // Already playing, just seek to the new timestamp
+      playerRef.current.seekTo(timestamp, true);
+    } else {
+      // Not playing yet, set initial timestamp and start playing
+      setInitialTimestamp(timestamp);
+      setIsPlaying(true);
+    }
+  }, [isPlaying]);
 
   const handleWatchFull = () => {
     setSelectedSection(null);
+    setInitialTimestamp(0);
     setIsPlaying(true);
   };
 
   const handleBack = () => {
     setIsPlaying(false);
     setSelectedSection(null);
+    setInitialTimestamp(0);
   };
 
   const handleClose = () => {
     setIsPlaying(false);
     setSelectedSection(null);
+    setInitialTimestamp(0);
     onClose();
   };
-
-  const getTimestamp = () => {
-    if (!selectedSection) return 0;
-    const section = DEMO_CONFIG.sections.find(s => s.id === selectedSection);
-    return section?.timestamp || 0;
-  };
-
-  const timestamp = getTimestamp();
-
-  // YouTube embed URL - no autoplay to avoid browser blocking
-  const videoUrl = `https://www.youtube.com/embed/${DEMO_CONFIG.videoId}?start=${timestamp}&rel=0&modestbranding=1`;
-
-  // Key includes timestamp to force iframe reload when section changes
-  const videoKey = `video-${timestamp}`;
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent
-        className={`p-0 border-0 gap-0 ${
+        className={`p-0 border-0 gap-0 overflow-hidden block ${
           isPlaying
-            ? 'sm:max-w-6xl bg-black'
+            ? 'sm:max-w-[90vw] lg:max-w-[80vw] xl:max-w-6xl bg-black'
             : 'sm:max-w-5xl bg-[#F0EEE6]'
         }`}
       >
@@ -239,9 +376,9 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
           </div>
         ) : (
           // Video Player View
-          <div className="flex flex-col w-full">
+          <>
             {/* Video Container - proper 16:9 aspect ratio */}
-            <div className="relative w-full bg-black" style={{ aspectRatio: '16/9' }}>
+            <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
               {/* Back Button */}
               <button
                 onClick={handleBack}
@@ -251,14 +388,10 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                 Back
               </button>
 
-              <iframe
-                key={videoKey}
-                src={videoUrl}
-                className="w-full h-full"
-                style={{ border: 'none' }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                title="Perception Platform Demo"
+              {/* YouTube Player Container */}
+              <div
+                ref={playerContainerRef}
+                className="absolute top-0 left-0 w-full h-full [&>div]:w-full [&>div]:h-full [&_iframe]:w-full [&_iframe]:h-full"
               />
             </div>
 
@@ -284,7 +417,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                 })}
               </div>
             </div>
-          </div>
+          </>
         )}
       </DialogContent>
     </Dialog>

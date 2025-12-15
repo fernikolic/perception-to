@@ -131,8 +131,8 @@ export function ProblemCards() {
           >
             <iframe
               className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/Au3vd597SHw?autoplay=0&mute=0&playsinline=1&enablejsapi=1"
-              title="Bitcoin Perception Demo"
+              src="https://www.youtube.com/embed/OTedJvx3i3g?autoplay=0&mute=0&playsinline=1&enablejsapi=1"
+              title="Perception Platform Demo"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               loading="lazy"
