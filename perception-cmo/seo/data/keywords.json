@@ -1,0 +1,235 @@
+{
+  "tier1_high_intent": {
+    "description": "High intent keywords targeting PR/comms professionals - Priority",
+    "keywords": [
+      {
+        "keyword": "crypto media monitoring",
+        "intent": "transactional",
+        "difficulty": "medium",
+        "targetPage": "/",
+        "currentRank": null,
+        "notes": "Primary target keyword"
+      },
+      {
+        "keyword": "bitcoin media intelligence",
+        "intent": "transactional",
+        "difficulty": "low",
+        "targetPage": "/",
+        "currentRank": null,
+        "notes": "Less competition, good opportunity"
+      },
+      {
+        "keyword": "crypto PR tools",
+        "intent": "transactional",
+        "difficulty": "medium",
+        "targetPage": "/use-cases/pr-teams",
+        "currentRank": null,
+        "notes": "Target with use-case page"
+      },
+      {
+        "keyword": "bitcoin coverage tracking",
+        "intent": "transactional",
+        "difficulty": "low",
+        "targetPage": "/features",
+        "currentRank": null,
+        "notes": "Open opportunity"
+      },
+      {
+        "keyword": "crypto narrative monitoring",
+        "intent": "transactional",
+        "difficulty": "low",
+        "targetPage": "/",
+        "currentRank": null,
+        "notes": "Unique differentiator"
+      },
+      {
+        "keyword": "bitcoin media tracking tool",
+        "intent": "transactional",
+        "difficulty": "low",
+        "targetPage": "/features",
+        "currentRank": null,
+        "notes": "Long-tail variant"
+      },
+      {
+        "keyword": "crypto communications intelligence",
+        "intent": "informational",
+        "difficulty": "low",
+        "targetPage": "/use-cases/pr-teams",
+        "currentRank": null,
+        "notes": "Professional focus"
+      }
+    ]
+  },
+  "tier2_research": {
+    "description": "Keywords targeting research professionals",
+    "keywords": [
+      {
+        "keyword": "crypto sentiment analysis tool",
+        "intent": "transactional",
+        "difficulty": "high",
+        "targetPage": "/features",
+        "currentRank": null,
+        "notes": "Santiment, LunarCrush dominate"
+      },
+      {
+        "keyword": "bitcoin narrative tracking",
+        "intent": "informational",
+        "difficulty": "medium",
+        "targetPage": "/",
+        "currentRank": null,
+        "notes": "Differentiation angle"
+      },
+      {
+        "keyword": "crypto intelligence platform",
+        "intent": "transactional",
+        "difficulty": "medium",
+        "targetPage": "/",
+        "currentRank": null,
+        "notes": "Multiple competitors"
+      },
+      {
+        "keyword": "bitcoin media sentiment",
+        "intent": "informational",
+        "difficulty": "medium",
+        "targetPage": "/features",
+        "currentRank": null,
+        "notes": "Educational content opportunity"
+      },
+      {
+        "keyword": "crypto research platform",
+        "intent": "transactional",
+        "difficulty": "high",
+        "targetPage": "/use-cases/research-analysts",
+        "currentRank": null,
+        "notes": "Messari dominates"
+      },
+      {
+        "keyword": "bitcoin news intelligence",
+        "intent": "informational",
+        "difficulty": "low",
+        "targetPage": "/",
+        "currentRank": null,
+        "notes": "Good opportunity"
+      }
+    ]
+  },
+  "tier3_longtail": {
+    "description": "Long-tail keywords for content marketing",
+    "keywords": [
+      {
+        "keyword": "bitcoin news aggregator",
+        "intent": "transactional",
+        "difficulty": "medium",
+        "targetPage": "/",
+        "currentRank": null,
+        "notes": "Many generic tools"
+      },
+      {
+        "keyword": "crypto media tracker",
+        "intent": "transactional",
+        "difficulty": "low",
+        "targetPage": "/",
+        "currentRank": null,
+        "notes": "Open opportunity"
+      },
+      {
+        "keyword": "how to track bitcoin narratives",
+        "intent": "informational",
+        "difficulty": "low",
+        "targetPage": "/blog/track-bitcoin-narratives",
+        "currentRank": null,
+        "notes": "Blog content target"
+      },
+      {
+        "keyword": "crypto media analysis",
+        "intent": "informational",
+        "difficulty": "low",
+        "targetPage": "/features",
+        "currentRank": null,
+        "notes": "Educational angle"
+      },
+      {
+        "keyword": "bitcoin coverage analysis tool",
+        "intent": "transactional",
+        "difficulty": "low",
+        "targetPage": "/features",
+        "currentRank": null,
+        "notes": "Specific feature focus"
+      }
+    ]
+  },
+  "tier4_comparison": {
+    "description": "High-intent comparison keywords",
+    "keywords": [
+      {
+        "keyword": "perception vs lunarcrush",
+        "intent": "transactional",
+        "difficulty": "low",
+        "targetPage": "/compare/perception-vs-lunarcrush",
+        "currentRank": null,
+        "notes": "Must create page"
+      },
+      {
+        "keyword": "perception vs santiment",
+        "intent": "transactional",
+        "difficulty": "low",
+        "targetPage": "/compare/perception-vs-santiment",
+        "currentRank": null,
+        "notes": "Must create page"
+      },
+      {
+        "keyword": "lunarcrush alternative",
+        "intent": "transactional",
+        "difficulty": "medium",
+        "targetPage": "/compare/perception-vs-lunarcrush",
+        "currentRank": null,
+        "notes": "Capture competitor traffic"
+      },
+      {
+        "keyword": "santiment alternative",
+        "intent": "transactional",
+        "difficulty": "medium",
+        "targetPage": "/compare/perception-vs-santiment",
+        "currentRank": null,
+        "notes": "Capture competitor traffic"
+      },
+      {
+        "keyword": "best crypto media monitoring tools 2025",
+        "intent": "informational",
+        "difficulty": "medium",
+        "targetPage": "/compare/best-crypto-media-monitoring-tools",
+        "currentRank": null,
+        "notes": "Listicle format"
+      }
+    ]
+  },
+  "branded": {
+    "description": "Branded search terms",
+    "keywords": [
+      {
+        "keyword": "perception.to",
+        "intent": "navigational",
+        "difficulty": "low",
+        "targetPage": "/",
+        "currentRank": 1,
+        "notes": "Currently ranking"
+      },
+      {
+        "keyword": "perception crypto",
+        "intent": "navigational",
+        "difficulty": "low",
+        "targetPage": "/",
+        "currentRank": null,
+        "notes": "Brand building"
+      },
+      {
+        "keyword": "perception intelligence",
+        "intent": "navigational",
+        "difficulty": "low",
+        "targetPage": "/",
+        "currentRank": null,
+        "notes": "Brand building"
+      }
+    ]
+  }
+}

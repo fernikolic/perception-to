@@ -1,0 +1,188 @@
+{
+  "primary_competitors": [
+    {
+      "name": "LunarCrush",
+      "domain": "lunarcrush.com",
+      "positioning": "Real-Time Social & Market Intelligence Powered by AI",
+      "focus": "Social media analytics for crypto",
+      "strengths": [
+        "Strong social media tracking",
+        "Trading signals",
+        "API access",
+        "Free tier available"
+      ],
+      "weaknesses": [
+        "No legacy media coverage",
+        "No crypto publication monitoring",
+        "Trading focus (not PR/comms)",
+        "Limited citation/source attribution"
+      ],
+      "target_audience": "Traders, investors",
+      "pricing": "Free tier + paid plans",
+      "seo_keywords": [
+        "crypto sentiment analysis",
+        "social media crypto tracking",
+        "cryptocurrency social metrics",
+        "crypto social intelligence"
+      ],
+      "differentiation_angle": "Media intelligence vs social-only focus"
+    },
+    {
+      "name": "Santiment",
+      "domain": "santiment.net",
+      "positioning": "Crypto Research, Data, Tools - Explore Behavioral Analytics",
+      "focus": "On-chain + social behavioral analytics",
+      "strengths": [
+        "On-chain data analytics",
+        "Developer activity monitoring",
+        "Behavioral analysis",
+        "API access"
+      ],
+      "weaknesses": [
+        "No legacy media coverage",
+        "Trading-focused",
+        "Complex for non-technical users",
+        "No PR/comms workflows"
+      ],
+      "target_audience": "Traders, quant analysts",
+      "pricing": "Free + paid tiers",
+      "seo_keywords": [
+        "crypto sentiment analysis tool",
+        "on-chain analytics",
+        "crypto behavioral analytics",
+        "bitcoin social sentiment"
+      ],
+      "differentiation_angle": "Media coverage vs on-chain data"
+    },
+    {
+      "name": "Glassnode",
+      "domain": "glassnode.com",
+      "positioning": "Digital Asset Market Intelligence",
+      "focus": "On-chain metrics and market indicators",
+      "strengths": [
+        "Comprehensive on-chain data",
+        "Institutional-grade",
+        "Research reports",
+        "Strong brand recognition"
+      ],
+      "weaknesses": [
+        "No media monitoring",
+        "No narrative tracking",
+        "Expensive for individuals",
+        "Trading/investment focus only"
+      ],
+      "target_audience": "Institutions, professional traders",
+      "pricing": "Premium pricing",
+      "seo_keywords": [
+        "bitcoin on-chain analysis",
+        "crypto market intelligence",
+        "blockchain analytics",
+        "institutional crypto data"
+      ],
+      "differentiation_angle": "Media layer vs chain layer"
+    }
+  ],
+  "secondary_competitors": [
+    {
+      "name": "The TIE",
+      "domain": "thetie.io",
+      "positioning": "Digital Asset Data for Institutions",
+      "focus": "Alternative data for institutions",
+      "strengths": [
+        "Institutional focus",
+        "News sentiment scoring",
+        "Data quality"
+      ],
+      "weaknesses": [
+        "Enterprise pricing",
+        "Not self-serve",
+        "Limited accessibility"
+      ],
+      "target_audience": "Institutions only",
+      "pricing": "Enterprise",
+      "differentiation_angle": "Accessible pricing, self-serve platform"
+    },
+    {
+      "name": "Messari",
+      "domain": "messari.io",
+      "positioning": "Crypto Research & Data Platform",
+      "focus": "Protocol research and token metrics",
+      "strengths": [
+        "Protocol research depth",
+        "Governance tracking",
+        "Strong brand in research"
+      ],
+      "weaknesses": [
+        "Not real-time media monitoring",
+        "Static research vs live intelligence",
+        "Different use case"
+      ],
+      "target_audience": "Researchers, analysts",
+      "pricing": "Free + Pro tier",
+      "differentiation_angle": "Real-time media intelligence vs static research"
+    },
+    {
+      "name": "Arkham",
+      "domain": "arkham.com",
+      "positioning": "Crypto Intelligence Platform",
+      "focus": "Wallet and whale tracking",
+      "strengths": [
+        "Wallet attribution",
+        "Whale watching",
+        "Investigation tools"
+      ],
+      "weaknesses": [
+        "No media coverage",
+        "On-chain focus only",
+        "Different use case"
+      ],
+      "target_audience": "Researchers, investigators",
+      "pricing": "Free + paid",
+      "differentiation_angle": "Completely different focus"
+    }
+  ],
+  "indirect_competitors": [
+    {
+      "name": "Meltwater",
+      "domain": "meltwater.com",
+      "type": "Traditional media monitoring",
+      "weakness": "Not crypto-native, misses crypto publications"
+    },
+    {
+      "name": "Cision",
+      "domain": "cision.com",
+      "type": "Traditional PR platform",
+      "weakness": "Not crypto-native, expensive, complex"
+    },
+    {
+      "name": "CoinDesk Markets",
+      "domain": "coindesk.com",
+      "type": "Crypto news outlet",
+      "weakness": "Single source, not aggregation"
+    },
+    {
+      "name": "CryptoQuant",
+      "domain": "cryptoquant.com",
+      "type": "On-chain analytics",
+      "weakness": "On-chain focus, not media"
+    }
+  ],
+  "comparison_matrix": {
+    "capabilities": [
+      "Legacy Media Monitoring",
+      "Crypto Media Monitoring",
+      "Social Media Tracking",
+      "On-Chain Data",
+      "PR/Comms Workflows",
+      "Citation-backed Reports",
+      "Journalist Tracking",
+      "Narrative Analysis",
+      "Trading Signals",
+      "API Access"
+    ],
+    "perception": [true, true, true, false, true, true, true, true, false, "Coming"],
+    "lunarcrush": [false, false, true, false, false, false, false, "Limited", true, true],
+    "santiment": [false, false, true, true, false, false, false, "Limited", true, true],
+    "glassnode": [false, false, false, true, false, false, false, false, true, true]
+  }
+}
