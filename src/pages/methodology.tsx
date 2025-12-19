@@ -40,6 +40,52 @@ const latinAmericanOutlets = [
   "Crónica", "El Nacional", "El Debate"
 ];
 
+// Regulatory & Institutional Sources
+const usRegulators = [
+  "SEC (Securities and Exchange Commission)",
+  "CFTC (Commodity Futures Trading Commission)",
+  "Federal Reserve Board",
+  "OCC (Office of the Comptroller of the Currency)",
+  "FDIC (Federal Deposit Insurance Corporation)",
+  "FINRA (Financial Industry Regulatory Authority)",
+  "NFA (National Futures Association)",
+  "FinCEN (Financial Crimes Enforcement Network)"
+];
+
+const europeanRegulators = [
+  "ECB (European Central Bank)",
+  "ESMA (European Securities and Markets Authority)",
+  "EBA (European Banking Authority)",
+  "FCA (Financial Conduct Authority)",
+  "Bank of England",
+  "BaFin (German Financial Regulator)",
+  "European Commission"
+];
+
+const asiaPacificRegulators = [
+  "HKMA (Hong Kong Monetary Authority)",
+  "SFC (Securities and Futures Commission Hong Kong)",
+  "MAS (Monetary Authority of Singapore)",
+  "FSA Japan (Financial Services Agency)",
+  "RBA (Reserve Bank of Australia)",
+  "ASIC (Australian Securities and Investments Commission)"
+];
+
+const middleEastRegulators = [
+  "DFSA (Dubai Financial Services Authority)",
+  "VARA (Virtual Assets Regulatory Authority Dubai)",
+  "ADGM (Abu Dhabi Global Market)",
+  "Central Bank of UAE"
+];
+
+const internationalBodies = [
+  "BIS (Bank for International Settlements)",
+  "FSB (Financial Stability Board)",
+  "IMF (International Monetary Fund)",
+  "FATF (Financial Action Task Force)",
+  "IOSCO (International Organization of Securities Commissions)"
+];
+
 export default function MethodologyPage() {
   return (
     <div className="min-h-screen flex flex-col bg-black font-sans">
@@ -87,7 +133,7 @@ export default function MethodologyPage() {
 
                     <div className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
                       <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
-                        250+ sources. Human analysts. Real-time{'\u00A0'}clustering.
+                        650+ sources. Human analysts. Real-time{'\u00A0'}clustering.
                       </p>
                       <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
                         From Bloomberg to Reddit. See what we track and how it powers your watchlists, <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, and{'\u00A0'}<em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>.
@@ -205,6 +251,77 @@ export default function MethodologyPage() {
 
             <Separator className="bg-white/10" />
 
+            {/* Regulatory & Institutional Sources */}
+            <div className="py-8 sm:py-10 lg:py-12">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight !text-white mb-6 sm:mb-8 lg:mb-10">
+                Regulatory & institutional sources
+              </h2>
+              <div className="text-base sm:text-lg lg:text-xl text-white/70 space-y-4">
+                <p>Central banks, financial regulators, and international bodies. Policy signals that move markets before they hit headlines. We monitor press releases, speeches, enforcement actions, and consultation papers.</p>
+                <div className="mt-6 sm:mt-8 bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+                    <div>
+                      <h3 className="font-semibold text-base sm:text-lg !text-white mb-3 sm:mb-4 flex items-center">
+                        <ShieldCheck className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white/40" />
+                        US Regulators
+                      </h3>
+                      <ul className="space-y-2 sm:space-y-2.5 text-sm sm:text-base text-white/50">
+                        {usRegulators.map((regulator) => (
+                          <li key={regulator}>{regulator}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-base sm:text-lg !text-white mb-3 sm:mb-4 flex items-center">
+                        <ShieldCheck className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white/40" />
+                        European Regulators
+                      </h3>
+                      <ul className="space-y-2 sm:space-y-2.5 text-sm sm:text-base text-white/50">
+                        {europeanRegulators.map((regulator) => (
+                          <li key={regulator}>{regulator}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-base sm:text-lg !text-white mb-3 sm:mb-4 flex items-center">
+                        <ShieldCheck className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white/40" />
+                        Asia-Pacific Regulators
+                      </h3>
+                      <ul className="space-y-2 sm:space-y-2.5 text-sm sm:text-base text-white/50">
+                        {asiaPacificRegulators.map((regulator) => (
+                          <li key={regulator}>{regulator}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-base sm:text-lg !text-white mb-3 sm:mb-4 flex items-center">
+                        <ShieldCheck className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white/40" />
+                        Middle East Regulators
+                      </h3>
+                      <ul className="space-y-2 sm:space-y-2.5 text-sm sm:text-base text-white/50">
+                        {middleEastRegulators.map((regulator) => (
+                          <li key={regulator}>{regulator}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-base sm:text-lg !text-white mb-3 sm:mb-4 flex items-center">
+                        <Globe className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white/40" />
+                        International Bodies
+                      </h3>
+                      <ul className="space-y-2 sm:space-y-2.5 text-sm sm:text-base text-white/50">
+                        {internationalBodies.map((body) => (
+                          <li key={body}>{body}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <Separator className="bg-white/10" />
+
             {/* Grid Layout for Process Sections */}
             <div className="py-8 sm:py-10 lg:py-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
@@ -214,7 +331,7 @@ export default function MethodologyPage() {
                     Everything gets captured
                   </h3>
                   <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-6">
-                    Every mention across 250+ sources. Dedicated coverage, social posts, passing references. This is what powers your watchlist alerts and the trend clustering in your <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>.
+                    Every mention across 650+ sources. Dedicated coverage, social posts, passing references. This is what powers your watchlist alerts and the trend clustering in your <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>.
                   </p>
                   <div className="rounded-lg overflow-hidden border border-white/10 mt-4" style={{ height: '200px', filter: 'invert(1)' }}>
                     <FlowingPattern />

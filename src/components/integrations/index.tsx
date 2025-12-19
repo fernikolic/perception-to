@@ -195,7 +195,7 @@ export function Integrations() {
           <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] !text-white">
             Intelligence Across{' '}
             <span className="bg-gradient-to-r from-orange-500 to-orange-800 inline-block text-transparent bg-clip-text font-bold">
-              250+ Sources
+              650+ Sources
             </span>
           </h2>
           <p className="mt-8 sm:mt-10 text-xl sm:text-2xl lg:text-3xl leading-relaxed !text-white/80 font-light">

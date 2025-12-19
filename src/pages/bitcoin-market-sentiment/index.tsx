@@ -389,7 +389,7 @@ export default function BitcoinMarketSentimentIndexPage() {
                         Monthly sentiment trends and market{'\u00A0'}psychology.
                       </p>
                       <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
-                        Historical data from 250+ sources. Track how sentiment evolves{'\u00A0'}month-to-month.
+                        Historical data from 650+ sources. Track how sentiment evolves{'\u00A0'}month-to-month.
                       </p>
                     </div>
 
@@ -896,7 +896,7 @@ export default function BitcoinMarketSentimentIndexPage() {
                     </Link>
                   </h4>
                   <p className="text-slate-600 dark:text-slate-400 mb-6">
-                    Weekly research newsletter analyzing Bitcoin media coverage, sentiment trends, and narrative shifts across 250+ sources.
+                    Weekly research newsletter analyzing Bitcoin media coverage, sentiment trends, and narrative shifts across 650+ sources.
                   </p>
                   <Link to="/bitcoin-media-research" className="text-orange-500 hover:text-orange-600 font-medium">
                     Subscribe to Research →

@@ -69,7 +69,7 @@ const methodologyContent = {
   sentiment: `Our sentiment analysis methodology combines natural language processing, machine learning, and behavioral finance principles. We analyze text from social media, news articles, forum posts, and institutional reports to gauge market sentiment.
 
 The process involves:
-1. **Data Collection**: Gathering content from 200+ verified sources
+1. **Data Collection**: Gathering content from 650+ verified sources
 2. **Text Processing**: Advanced NLP algorithms extract sentiment signals
 3. **Scoring**: Proprietary algorithms convert raw sentiment to actionable scores
 4. **Validation**: Machine learning models validate and refine outputs
@@ -332,7 +332,7 @@ function generateTechnicalContent(keyword: KeywordData): string {
 
 export function generateMetaDescription(keyword: KeywordData): string {
   const templates = {
-    informational: `Comprehensive ${keyword.fullKeyword} analysis with real-time data from 250+ sources. Professional insights for traders, analysts, and investors.`,
+    informational: `Comprehensive ${keyword.fullKeyword} analysis with real-time data from 650+ sources. Professional insights for traders, analysts, and investors.`,
     navigational: `Access ${keyword.fullKeyword} dashboards and tools. Real-time monitoring with professional-grade analytics and customizable interfaces.`,
     transactional: `${keyword.fullKeyword} API for developers. Reliable real-time data, comprehensive documentation, and enterprise-grade infrastructure.`,
     commercial: `Professional ${keyword.fullKeyword} solutions for institutions. Trusted by hedge funds and trading firms worldwide.`

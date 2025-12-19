@@ -21,7 +21,7 @@ export function UseCasesLanding() {
     },
     {
       title: "Data-Backed Journalism",
-      description: "Back your stories with real sentiment data and trend analysis from 250+ sources",
+      description: "Back your stories with real sentiment data and trend analysis from 650+ sources",
       icon: TrendingUp,
       href: "/use-cases/journalism",
       stats: "Full source citations"

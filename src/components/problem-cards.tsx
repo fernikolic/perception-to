@@ -98,13 +98,13 @@ export function ProblemCards() {
         {/* Header Section - Side by Side Layout */}
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-24 sm:mb-32">
 
-          {/* ASCII Animation - Left Side */}
-          <div className="w-full lg:w-1/2 h-64 sm:h-80 md:h-96 lg:h-[500px]">
+          {/* ASCII Animation - Left Side (30%) */}
+          <div className="w-full lg:w-[30%] h-64 sm:h-80 md:h-96 lg:h-[500px]">
             <AsciiDiagonalPetals />
           </div>
 
-          {/* Text Content - Right Side */}
-          <div className="w-full lg:w-1/2 text-center lg:text-left">
+          {/* Text Content - Right Side (70%) */}
+          <div className="w-full lg:w-[70%] text-center lg:text-left">
             <h2
               ref={titleRef}
               className="problem-section-title text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight mb-10 sm:mb-12 leading-[1.05]"

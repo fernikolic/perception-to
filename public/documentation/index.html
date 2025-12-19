@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation - Perception</title>
+  <meta name="description" content="User documentation for Perception Bitcoin Market Intelligence Platform">
+
+  <!-- Favicon - uses same logo as main site -->
+  <link rel="icon" type="image/png" href="/logos/perception-logo-dark.png">
+
+  <!-- Inter Font (matches main site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Docsify Theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.min.css">
+
+  <!-- Custom Styles - Matches Perception.to design -->
+  <style>
+    :root {
+      /* Brand colors matching main site */
+      --theme-color: #0a0a0a;
+
+      /* Sidebar - Light clean style */
+      --sidebar-background: #fafafa;
+      --sidebar-nav-link-color: #52525b;
+      --sidebar-nav-link-color--active: #0a0a0a;
+      --sidebar-nav-link-color--hover: #0a0a0a;
+      --sidebar-nav-strong-color: #0a0a0a;
+      --sidebar-border-width: 0;
+      --sidebar-width: 280px;
+      --sidebar-nav-link-font-weight: 500;
+
+      /* Content - Light theme */
+      --base-background-color: #ffffff;
+      --base-color: #3f3f46;
+      --base-font-size: 16px;
+      --base-line-height: 1.6;
+      --heading-color: #09090b;
+      --link-color: #0a0a0a;
+      --link-color--hover: #52525b;
+
+      /* Code */
+      --code-inline-background: #f4f4f5;
+      --code-inline-color: #18181b;
+      --code-block-background: #fafafa;
+      --code-font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+      /* Table */
+      --table-head-background: #fafafa;
+      --table-row-odd-background: #fafafa;
+      --table-cell-border-color: #e4e4e7;
+
+      /* Blockquote */
+      --blockquote-border-color: #e4e4e7;
+      --blockquote-background: #fafafa;
+      --blockquote-color: #52525b;
+
+      /* Notice/Alert boxes */
+      --notice-tip-border-color: #22c55e;
+      --notice-important-border-color: #0a0a0a;
+
+      /* Docsify specific */
+      --search-result-heading-color: #0a0a0a;
+      --search-result-keyword-background: #fef3c7;
+    }
+
+    /* Base typography - Inter font */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Sidebar styling */
+    .sidebar {
+      border-right: 1px solid #e4e4e7;
+      padding-top: 0;
+    }
+
+    .sidebar-nav {
+      padding: 1rem 0;
+    }
+
+    .sidebar-nav > ul > li {
+      margin: 0.25rem 0;
+    }
+
+    .sidebar-nav > ul > li > a {
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #a1a1aa;
+      padding: 0.5rem 1.5rem;
+      display: block;
+    }
+
+    .sidebar-nav > ul > li > a:hover {
+      color: #52525b;
+    }
+
+    .sidebar-nav > ul > li > ul {
+      padding-left: 0;
+    }
+
+    .sidebar-nav > ul > li > ul a {
+      font-weight: 500;
+      font-size: 0.875rem;
+      text-transform: none;
+      letter-spacing: -0.01em;
+      color: #52525b;
+      padding: 0.375rem 1.5rem;
+      display: block;
+      border-left: 2px solid transparent;
+      transition: all 0.15s ease;
+    }
+
+    .sidebar-nav > ul > li > ul a:hover {
+      color: #0a0a0a;
+      background: #f4f4f5;
+    }
+
+    .sidebar-nav > ul > li > ul a.active {
+      color: #0a0a0a;
+      border-left-color: #0a0a0a;
+      background: #f4f4f5;
+      font-weight: 600;
+    }
+
+    /* App name / Logo */
+    .app-name-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid #e4e4e7;
+      text-decoration: none !important;
+    }
+
+    .app-name-link img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .app-name-link span {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #0a0a0a;
+      letter-spacing: -0.02em;
+    }
+
+    /* Content area */
+    .content {
+      padding-top: 0;
+    }
+
+    .markdown-section {
+      max-width: 800px;
+      padding: 3rem 4rem;
+      margin: 0 auto;
+    }
+
+    /* Headings */
+    .markdown-section h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #09090b;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .markdown-section h1 + blockquote {
+      margin-top: 0;
+      margin-bottom: 2rem;
+      padding: 0;
+      border: none;
+      background: none;
+    }
+
+    .markdown-section h1 + blockquote p {
+      color: #71717a;
+      font-size: 1.125rem;
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .markdown-section h2 {
+      font-size: 1.375rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #18181b;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e4e4e7;
+    }
+
+    .markdown-section h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #27272a;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .markdown-section h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #3f3f46;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Paragraphs */
+    .markdown-section p {
+      color: #3f3f46;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    /* Links */
+    .markdown-section a {
+      color: #0a0a0a;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.15s ease;
+    }
+
+    .markdown-section a:hover {
+      color: #52525b;
+    }
+
+    /* Lists */
+    .markdown-section ul,
+    .markdown-section ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .markdown-section li {
+      color: #3f3f46;
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+
+    /* Blockquotes (not subtitle) */
+    .markdown-section blockquote {
+      border-left: 3px solid #e4e4e7;
+      background: #fafafa;
+      border-radius: 0 0.5rem 0.5rem 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .markdown-section blockquote p {
+      margin: 0;
+      color: #52525b;
+      font-style: italic;
+    }
+
+    /* Tables - Modern design */
+    .markdown-section table {
+      width: auto !important;
+      max-width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e4e4e7;
+      margin: 1.5rem 0;
+      font-size: 0.875rem;
+      display: inline-table;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .markdown-section table th,
+    .markdown-section table td {
+      white-space: nowrap;
+    }
+
+    .markdown-section table th {
+      background: linear-gradient(180deg, #fafafa 0%, #f4f4f5 100%);
+      font-weight: 600;
+      text-align: left;
+      color: #18181b;
+      padding: 0.875rem 1.25rem;
+      border-bottom: 1px solid #e4e4e7;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .markdown-section table td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #f4f4f5;
+      color: #3f3f46;
+      transition: background-color 0.15s ease;
+    }
+
+    .markdown-section table td strong {
+      color: #18181b;
+      font-weight: 600;
+    }
+
+    .markdown-section table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .markdown-section table tr:hover td {
+      background-color: #fafafa;
+    }
+
+    .markdown-section table tr:nth-child(even) td {
+      background: rgba(250, 250, 250, 0.5);
+    }
+
+    .markdown-section table tr:nth-child(even):hover td {
+      background: #f4f4f5;
+    }
+
+    /* Code */
+    .markdown-section code {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.875em;
+      background: #f4f4f5;
+      color: #18181b;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+    }
+
+    .markdown-section pre {
+      background: #fafafa;
+      border: 1px solid #e4e4e7;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    .markdown-section pre code {
+      background: none;
+      padding: 0;
+      font-size: 0.8125rem;
+      line-height: 1.4;
+    }
+
+    /* ASCII Art styling - special treatment for decorative code blocks */
+    .markdown-section pre:has(code:not([class*="language-"])) {
+      background: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
+      border: 1px solid #e4e4e7;
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+
+    .markdown-section pre:has(code:not([class*="language-"])) code {
+      font-size: 0.75rem;
+      line-height: 1.3;
+      color: #3f3f46;
+      letter-spacing: 0.05em;
+    }
+
+    /* Centered logo for welcome page */
+    .markdown-section > div[align="center"] {
+      margin-bottom: 1rem;
+    }
+
+    .markdown-section > div[align="center"] img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Footer styling */
+    .docs-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e4e4e7;
+      text-align: center;
+    }
+
+    .docs-footer img {
+      width: 24px;
+      height: 24px;
+      opacity: 0.5;
+      margin-bottom: 0.5rem;
+    }
+
+    .docs-footer p {
+      font-size: 0.75rem;
+      color: #a1a1aa;
+      margin: 0;
+    }
+
+    /* Visual note callouts for screenshots/videos */
+    .visual-note {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 2px dashed #f59e0b;
+      border-radius: 0.5rem;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .visual-note strong {
+      display: block;
+      color: #92400e;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .visual-note p {
+      color: #78350f;
+      font-size: 0.875rem;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    /* Screenshot note variant */
+    .visual-note.screenshot {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-color: #3b82f6;
+    }
+
+    .visual-note.screenshot strong {
+      color: #1e40af;
+    }
+
+    .visual-note.screenshot p {
+      color: #1e3a8a;
+    }
+
+    /* Video note variant */
+    .visual-note.video {
+      background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+      border-color: #8b5cf6;
+    }
+
+    .visual-note.video strong {
+      color: #5b21b6;
+    }
+
+    .visual-note.video p {
+      color: #4c1d95;
+    }
+
+    /* Animated ASCII header */
+    .ascii-header {
+      background: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
+      border: 1px solid #e4e4e7;
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .ascii-header pre {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 10px;
+      line-height: 1.1;
+      color: #52525b;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      user-select: none;
+      background: none;
+      border: none;
+    }
+
+    /* Horizontal rules */
+    .markdown-section hr {
+      border: none;
+      border-top: 1px solid #e4e4e7;
+      margin: 2rem 0;
+    }
+
+    /* Strong/Bold */
+    .markdown-section strong {
+      font-weight: 600;
+      color: #18181b;
+    }
+
+    /* Search */
+    .search {
+      margin: 1rem 1rem 1.5rem;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 0.625rem 1rem;
+      border: 1px solid #e4e4e7;
+      border-radius: 0.5rem;
+      background: #ffffff;
+      color: #18181b;
+      font-size: 0.875rem;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+
+    .search input:focus {
+      outline: none;
+      border-color: #a1a1aa;
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .search input::placeholder {
+      color: #a1a1aa;
+    }
+
+    .search .matching-post {
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 0.375rem;
+      margin: 0.25rem 0;
+      padding: 0.75rem;
+    }
+
+    .search .matching-post:hover {
+      background: #fafafa;
+    }
+
+    /* Pagination */
+    .docsify-pagination-container {
+      border-top: 1px solid #e4e4e7;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+    }
+
+    .pagination-item-title {
+      font-weight: 600;
+      color: #0a0a0a;
+    }
+
+    .pagination-item-label {
+      color: #71717a;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Back to main site link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      color: #52525b;
+      font-size: 0.875rem;
+      text-decoration: none;
+      padding: 0.5rem 1.5rem;
+      margin-bottom: 0.5rem;
+      transition: color 0.15s ease;
+    }
+
+    .back-link:hover {
+      color: #0a0a0a;
+    }
+
+    .back-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .markdown-section {
+        padding: 1.5rem;
+      }
+
+      .markdown-section h1 {
+        font-size: 1.75rem;
+      }
+
+      .markdown-section h2 {
+        font-size: 1.25rem;
+      }
+
+      .sidebar {
+        background: #ffffff;
+      }
+    }
+
+    /* Print styles */
+    @media print {
+      .sidebar,
+      .search {
+        display: none;
+      }
+
+      .content {
+        margin-left: 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Override fetch and XHR BEFORE any other scripts load -->
+  <script>
+    // Define sidebar content
+    window.SIDEBAR_MD = `* [Welcome](index.md)
+
+* **Getting Started**
+  * [What is Perception](getting-started/what-is-perception.md)
+  * [Quick Start Guide](getting-started/quick-start.md)
+  * [Key Concepts](getting-started/key-concepts.md)
+
+* **Features**
+  * [Intelligence Feed](features/intelligence-feed.md)
+  * [Search & Tracking](features/tracking.md)
+  * [Trends Analysis](features/trends.md)
+  * [Spaces](features/spaces.md)
+  * [Alerts & Notifications](features/alerts.md)
+  * [Weekly Reports](features/reports.md)
+  * [Quick Briefs](features/briefs.md)
+
+* **Guides by Role**
+  * [For Research Analysts](guides/for-analysts.md)
+  * [For PR & Communications](guides/for-pr-teams.md)
+  * [For Business Development](guides/for-bizdev.md)
+  * [For Investors & VCs](guides/for-investors.md)
+  * [For Executives](guides/for-executives.md)
+
+* **Data Coverage**
+  * [Sources Overview](data-coverage/sources-overview.md)
+  * [Update Frequency](data-coverage/update-frequency.md)
+  * [Data Categories](data-coverage/data-categories.md)
+
+* **Integrations**
+  * [Email Integration](integrations/email-alerts.md)
+  * [Data Exports](integrations/exports.md)
+
+* **Help**
+  * [FAQ](faq.md)
+  * [Glossary](glossary.md)
+`;
+
+    // Override fetch and XHR to debug and fix markdown loading
+    (function() {
+      const originalFetch = window.fetch;
+      window.fetch = function(url, options) {
+        const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : String(url));
+
+        // Log all .md requests for debugging
+        if (urlStr && urlStr.includes('.md')) {
+          console.log('Fetch request for:', urlStr);
+        }
+
+        if (urlStr && urlStr.includes('_sidebar.md')) {
+          console.log('Intercepted sidebar fetch:', urlStr);
+          return Promise.resolve(new Response(window.SIDEBAR_MD, {
+            status: 200,
+            headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+          }));
+        }
+        return originalFetch.apply(this, arguments);
+      };
+
+      // Also override XMLHttpRequest
+      const originalXHROpen = XMLHttpRequest.prototype.open;
+      const originalXHRSend = XMLHttpRequest.prototype.send;
+
+      XMLHttpRequest.prototype.open = function(method, url) {
+        this._url = url;
+        this._method = method;
+        return originalXHROpen.apply(this, arguments);
+      };
+
+      XMLHttpRequest.prototype.send = function() {
+        const self = this;
+
+        // Log all .md requests for debugging
+        if (this._url && this._url.includes('.md')) {
+          console.log('XHR request for:', this._url);
+        }
+
+        // Intercept sidebar requests
+        if (this._url && this._url.includes('_sidebar.md')) {
+          console.log('Intercepted sidebar XHR:', this._url);
+          setTimeout(function() {
+            Object.defineProperty(self, 'responseText', { value: window.SIDEBAR_MD, writable: false });
+            Object.defineProperty(self, 'response', { value: window.SIDEBAR_MD, writable: false });
+            Object.defineProperty(self, 'status', { value: 200, writable: false });
+            Object.defineProperty(self, 'readyState', { value: 4, writable: false });
+            if (self.onreadystatechange) self.onreadystatechange();
+            if (self.onload) self.onload();
+          }, 0);
+          return;
+        }
+        return originalXHRSend.apply(this, arguments);
+      };
+    })();
+  </script>
+
+  <!-- Back to main site link in sidebar -->
+  <nav class="app-nav">
+    <a href="/" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      Back to Perception
+    </a>
+  </nav>
+
+  <div id="app">Loading...</div>
+
+  <!-- Inline sidebar to avoid loading issues -->
+  <div data-sidebar style="display:none">
+
+* [Welcome](index.md)
+
+* **Getting Started**
+  * [What is Perception](getting-started/what-is-perception.md)
+  * [Quick Start Guide](getting-started/quick-start.md)
+  * [Key Concepts](getting-started/key-concepts.md)
+
+* **Features**
+  * [Intelligence Feed](features/intelligence-feed.md)
+  * [Search & Tracking](features/tracking.md)
+  * [Trends Analysis](features/trends.md)
+  * [Alerts & Notifications](features/alerts.md)
+  * [Weekly Reports](features/reports.md)
+  * [Quick Briefs](features/briefs.md)
+
+* **Guides by Role**
+  * [For Research Analysts](guides/for-analysts.md)
+  * [For PR & Communications](guides/for-pr-teams.md)
+  * [For Business Development](guides/for-bizdev.md)
+  * [For Investors & VCs](guides/for-investors.md)
+  * [For Executives](guides/for-executives.md)
+
+* **Data Coverage**
+  * [Sources Overview](data-coverage/sources-overview.md)
+  * [Update Frequency](data-coverage/update-frequency.md)
+  * [Data Categories](data-coverage/data-categories.md)
+
+* **Integrations**
+  * [Email Integration](integrations/email-alerts.md)
+  * [Data Exports](integrations/exports.md)
+
+* **Help**
+  * [FAQ](faq.md)
+  * [Glossary](glossary.md)
+
+  </div>
+
+  <script>
+    window.$docsify = {
+      el: '#app',
+      name: '<img src="/logos/perception-logo-light.png" alt="Perception"><span>Perception Docs</span>',
+      nameLink: '/documentation/',
+      repo: false,
+      basePath: '/documentation/',
+      homepage: 'index.md',
+      loadSidebar: '_sidebar.md',
+      hideSidebar: false,
+      subMaxLevel: 3,
+      auto2top: true,
+      pagination: {
+        previousText: 'Previous',
+        nextText: 'Next',
+        crossChapter: true,
+        crossChapterText: true
+      },
+      formatUpdated: '{MM}/{DD}/{YYYY}',
+      notFoundPage: true,
+      topMargin: 0
+    };
+
+    // Docsify plugins
+    window.$docsify.plugins = [
+      // Sidebar injection plugin - renders sidebar from our variable using safe DOM methods
+      function(hook, vm) {
+        hook.mounted(function() {
+          const sidebarEl = document.querySelector('.sidebar-nav');
+          if (sidebarEl && window.SIDEBAR_MD) {
+            // Clear existing content
+            while (sidebarEl.firstChild) {
+              sidebarEl.removeChild(sidebarEl.firstChild);
+            }
+
+            const ul = document.createElement('ul');
+            const lines = window.SIDEBAR_MD.split('\n');
+
+            lines.forEach(function(line) {
+              // Section headers (bold text)
+              const sectionMatch = line.match(/^\* \*\*(.+)\*\*$/);
+              if (sectionMatch) {
+                const li = document.createElement('li');
+                li.className = 'section-title';
+                const p = document.createElement('p');
+                p.textContent = sectionMatch[1];
+                li.appendChild(p);
+                ul.appendChild(li);
+                return;
+              }
+
+              // Links with indentation (sub-items)
+              const subItemMatch = line.match(/^\s+\* \[(.+)\]\((.+)\)$/);
+              if (subItemMatch) {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.textContent = subItemMatch[1];
+                a.href = '#/' + subItemMatch[2];
+                li.appendChild(a);
+                ul.appendChild(li);
+                return;
+              }
+
+              // Top-level links
+              const topItemMatch = line.match(/^\* \[(.+)\]\((.+)\)$/);
+              if (topItemMatch) {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.textContent = topItemMatch[1];
+                a.href = '#/' + topItemMatch[2];
+                li.appendChild(a);
+                ul.appendChild(li);
+              }
+            });
+
+            sidebarEl.appendChild(ul);
+            console.log('Sidebar injected via plugin');
+          }
+        });
+      },
+      // Content validation plugin - warn if HTML received instead of markdown
+      function(hook, vm) {
+        hook.beforeEach(function(content) {
+          if (content.trim().startsWith('<') && (content.includes('<script') || content.includes('<meta') || content.includes('<!DOCTYPE'))) {
+            console.error('Docsify received HTML instead of markdown:', content.substring(0, 200));
+            return '# Error Loading Content\n\nThe server returned HTML instead of markdown. Please check the network requests.';
+          }
+          return content;
+        });
+      },
+      // Footer plugin - adds Perception branding to each page
+      function(hook, vm) {
+        hook.afterEach(function(html, next) {
+          const footer = `
+            <div class="docs-footer">
+              <img src="/logos/perception-logo-light.png" alt="Perception">
+              <p>Perception - Intelligence for the Bitcoin ecosystem</p>
+            </div>
+          `;
+          next(html + footer);
+        });
+      },
+    ];
+  </script>
+
+  <!-- Docsify -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+
+  <!-- Force cache bypass -->
+  <script>
+    // Clear any stale data
+    if (window.localStorage) {
+      Object.keys(localStorage).forEach(key => {
+        if (key.startsWith('docsify') || key.includes('sidebar') || key.includes('SEARCH')) {
+          localStorage.removeItem(key);
+        }
+      });
+    }
+  </script>
+
+  <!-- Plugins (search disabled for debugging) -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
+
+  <!-- Syntax highlighting -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+</body>
+</html>

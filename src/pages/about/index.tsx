@@ -137,7 +137,7 @@ export function AboutPage() {
                   Stop starting from scratch every time you need to create a deliverable. Your board wants competitive intel? It's already organized in a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Space</em>. Generate it with a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em>.
                 </p>
                 <p>
-                  We monitor 250+ sources automatically. You set up watchlists for what matters. Everything gets organized into <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> by project or stakeholder. Then you generate professional deliverables with one click.
+                  We monitor 650+ sources automatically. You set up watchlists for what matters. Everything gets organized into <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> by project or stakeholder. Then you generate professional deliverables with one click.
                 </p>
                 <p>
                   Our goal is simple: turn weeks of monitoring into ready-to-send outputs. Board updates, pitch intelligence, sector deep dives. All with full citations.
@@ -147,7 +147,7 @@ export function AboutPage() {
             <div className="relative mt-8 md:mt-0">
               <div className="aspect-square rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-100 p-8 sm:p-12 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-5xl sm:text-6xl lg:text-7xl font-thin text-indigo-600 mb-3 sm:mb-4">250+</div>
+                  <div className="text-5xl sm:text-6xl lg:text-7xl font-thin text-indigo-600 mb-3 sm:mb-4">650+</div>
                   <div className="text-lg sm:text-xl lg:text-2xl font-light text-gray-700">sources monitored</div>
                 </div>
               </div>

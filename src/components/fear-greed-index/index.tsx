@@ -311,7 +311,7 @@ export function FearGreedIndex() {
             </div>
           </div>
           <p className="text-xl text-slate-600 dark:text-white/80 font-light mb-2">Analyzing Market Sentiment</p>
-          <p className="text-sm text-slate-500 dark:text-white/60">Processing real-time data from 250+ sources...</p>
+          <p className="text-sm text-slate-500 dark:text-white/60">Processing real-time data from 650+ sources...</p>
         </div>
       </div>
     );

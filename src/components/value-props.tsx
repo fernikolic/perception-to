@@ -59,7 +59,7 @@ export function ValueProps() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
-  // Add CSS to ensure black text on cream background
+  // Add CSS to ensure black text on cream background + shimmer animation
   useEffect(() => {
     const style = document.createElement('style');
     style.textContent = `
@@ -69,6 +69,14 @@ export function ValueProps() {
       }
       .value-props-main-title {
         color: #000000 !important;
+      }
+      @keyframes shimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+      @keyframes draw-underline {
+        0% { transform: scaleX(0); }
+        100% { transform: scaleX(1); }
       }
     `;
     document.head.appendChild(style);
@@ -149,7 +157,18 @@ export function ValueProps() {
             className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight leading-[0.95] value-props-main-title"
             style={{ color: '#000000', fontWeight: '500' }}
           >
-            From Monitoring to Deliverables
+            From Simply Monitoring To{' '}
+            <span className="relative inline-block">
+              Actual Deliverables
+              <span
+                className="absolute -bottom-2 left-0 w-full h-[3px] bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 rounded-full animate-pulse"
+                style={{
+                  background: 'linear-gradient(90deg, #fb923c, #f97316, #ea580c, #f97316, #fb923c)',
+                  backgroundSize: '200% 100%',
+                  animation: 'shimmer 2s ease-in-out infinite'
+                }}
+              />
+            </span>
           </h2>
         </div>
 

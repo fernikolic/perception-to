@@ -93,7 +93,7 @@ export function Hero() {
 
               <div ref={subtitleRef} className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
                 <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
-                  Know everything. Act on{'\u00A0'}it. $99/month.
+                  Track sectors. Spot trends. Never scramble for{'\u00A0'}intel.
                 </p>
                 <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
                   We monitor 650+ sources so you don't have to. Ask for a board update, PR pitch, podcast prep, or sector deep dive—get it in minutes, fully{'\u00A0'}cited.

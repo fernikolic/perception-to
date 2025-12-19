@@ -10,7 +10,7 @@ export function CompaniesLanding() {
   const benefits = [
     {
       title: 'Track Real-Time Trends',
-      description: 'Stay informed with live updates from 200+ top sources across 15 countries and 8 languages.',
+      description: 'Stay informed with live updates from 650+ top sources across 15 countries and 8 languages.',
       Icon: TrendingUp,
       gradient: 'from-blue-500/20 via-slate-600/20 to-zinc-700/30 hover:from-blue-500/30 hover:to-zinc-700/40',
     },
@@ -34,7 +34,7 @@ export function CompaniesLanding() {
       description: 'Spot what is trending across the Bitcoin industry with early signals from media, social platforms, and communities.',
       imageUrl: 'https://images.unsplash.com/photo-1642790551116-18e4f8f6c637?auto=format&fit=crop&q=80&w=800',
       benefits: [
-        'Live updates from 250+ sources',
+        'Live updates from 650+ sources',
         'Multi-language coverage',
         'High-signal data curation',
       ],
@@ -65,7 +65,7 @@ export function CompaniesLanding() {
   ];
 
   const metrics = [
-    { value: "200+", label: "Data Sources", gradient: 'from-blue-400/30 to-zinc-700/30 hover:from-blue-400/40' },
+    { value: "650+", label: "Data Sources", gradient: 'from-blue-400/30 to-zinc-700/30 hover:from-blue-400/40' },
     { value: "15", label: "Countries", gradient: 'from-slate-400/30 to-blue-700/30 hover:from-slate-400/40' },
     { value: "8", label: "Languages", gradient: 'from-blue-400/30 to-slate-700/30 hover:from-blue-400/40' },
     { value: "24/7", label: "Real-time Updates", gradient: 'from-slate-400/30 to-blue-700/30 hover:from-slate-400/40' },

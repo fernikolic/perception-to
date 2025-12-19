@@ -121,7 +121,7 @@ export function ExecutiveIntelligencePage() {
                 {[
                   {
                     title: "Set Up Watchlists Once",
-                    description: "Track your company and top 3 competitors. We monitor 250+ sources automatically."
+                    description: "Track your company and top 3 competitors. We monitor 650+ sources automatically."
                   },
                   {
                     title: "Organize in a Space",

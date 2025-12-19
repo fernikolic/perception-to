@@ -8,7 +8,7 @@ export function JournalismPage() {
     <>
       <SEO
         title="Data-Backed Journalism - Perception | Intelligence Workspace"
-        description="Back your stories with real sentiment data and trend analysis from 250+ sources. Track with watchlists, organize in Spaces, cite with confidence."
+        description="Back your stories with real sentiment data and trend analysis from 650+ sources. Track with watchlists, organize in Spaces, cite with confidence."
         url="https://perception.to/use-cases/journalism"
         keywords={['data journalism tools', 'Bitcoin journalism intelligence', 'crypto journalism data', 'media sentiment analysis', 'journalism research platform']}
       />
@@ -58,7 +58,7 @@ export function JournalismPage() {
 
                     <div className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
                       <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
-                        Back your stories with real data from 250+{'\u00A0'}sources.
+                        Back your stories with real data from 650+{'\u00A0'}sources.
                       </p>
                       <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
                         Track trends with watchlists. Organize research in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>. Cite sentiment data and coverage volume with full source{'\u00A0'}attribution.
@@ -100,7 +100,7 @@ export function JournalismPage() {
                 <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">The Challenge</span>
               </div>
               <p className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 leading-relaxed">
-                You're covering Bitcoin adoption or a controversy. Editors want data. You don't have time to manually track coverage across 250+ sources. Generic social media sentiment doesn't cut it for serious reporting.
+                You're covering Bitcoin adoption or a controversy. Editors want data. You don't have time to manually track coverage across 650+ sources. Generic social media sentiment doesn't cut it for serious reporting.
               </p>
             </div>
           </div>
@@ -121,7 +121,7 @@ export function JournalismPage() {
                 {[
                   {
                     title: "Track Trends Automatically",
-                    description: "Set up watchlists for topics, companies, or people. We monitor 250+ sources. You get the data."
+                    description: "Set up watchlists for topics, companies, or people. We monitor 650+ sources. You get the data."
                   },
                   {
                     title: "Organize Your Research",

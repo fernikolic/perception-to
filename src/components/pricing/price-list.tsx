@@ -12,11 +12,11 @@ const tiers = [
     perUser: false,
     features: [
       'Save 10+ hours per week of manual research',
-      'Track emerging narratives across 250+ sources in real time (Reddit, Bloomberg, X, GitHub, and more)',
+      'Track emerging narratives across 650+ sources in real time (Reddit, Bloomberg, X, GitHub, and more)',
       'Monitor up to 3 saved topics with real-time alerts',
       'Real-time blind-spot & sentiment notifications',
       'Instant setup. No sales calls.',
-      'Trusted by 250+ independent creators',
+      'Trusted by 350+ independent creators',
     ],
     cta: 'Start 7-Day Free Trial',
     ctaLink: 'https://buy.stripe.com/aFa3cvaVw9IBbbCfvW63K05',

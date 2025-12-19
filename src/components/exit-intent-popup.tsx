@@ -320,7 +320,7 @@ export function ExitIntentPopup() {
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3 2V10M6 2V10M9 2V10" stroke="#6B7280" strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
-              <span className="text-xs text-gray-600">250+ sources analyzed</span>
+              <span className="text-xs text-gray-600">650+ sources analyzed</span>
             </div>
           </div>
         </div>

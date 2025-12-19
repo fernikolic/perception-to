@@ -220,7 +220,7 @@ export function PRAgencyPage() {
               <div className="space-y-4 mb-8">
                 {[
                   "Create a \"Bitcoin Mining Sustainability\" watchlist",
-                  "We track coverage across 250+ sources automatically",
+                  "We track coverage across 650+ sources automatically",
                   "See which reporters are covering it (with sentiment data)",
                   "Generate Pitch Intelligence Recipe for top reporters",
                   "Get angles based on what's actually trending this week"
