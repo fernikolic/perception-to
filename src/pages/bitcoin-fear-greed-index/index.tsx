@@ -4,6 +4,100 @@ import SEO from '@/components/SEO';
 import { useState, useEffect } from 'react';
 import VortexParticleSystemExact from '@/components/VortexParticleSystemExact';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+
+// FAQ data for schema and rendering
+const faqs = [
+  {
+    question: 'What is the Bitcoin Fear & Greed Index?',
+    answer: 'The Bitcoin Fear & Greed Index is a market sentiment indicator that measures investor emotions on a scale from 0 (extreme fear) to 100 (extreme greed). It aggregates data from 650+ sources including social media, news coverage, volatility, and market momentum to provide a real-time snapshot of market psychology.'
+  },
+  {
+    question: 'How is the Fear & Greed Index calculated?',
+    answer: 'Our index analyzes multiple data sources: social media sentiment from Twitter, Reddit, and Telegram; news coverage from 650+ media outlets including Bloomberg, Reuters, and crypto-native publications; market volatility; trading volume; and momentum indicators. Each source is weighted by credibility and processed using natural language processing and machine learning algorithms.'
+  },
+  {
+    question: 'How often is the Bitcoin Fear & Greed Index updated?',
+    answer: 'Unlike other fear and greed indices that update once daily, the Perception Fear & Greed Index updates every 90 seconds. This real-time tracking allows you to catch sentiment shifts as they happen, not hours after the fact.'
+  },
+  {
+    question: 'What does extreme fear (0-25) indicate?',
+    answer: 'Extreme fear typically indicates that investors are very worried, which can be a buying opportunity. When fear is extreme, it often means the market has oversold and prices may be undervalued. Historical data shows that extreme fear periods have often preceded market recoveries.'
+  },
+  {
+    question: 'What does extreme greed (75-100) indicate?',
+    answer: 'Extreme greed suggests the market may be due for a correction. When greed is extreme, investors are overly optimistic and prices may be overvalued. This is often when smart money starts taking profits, as euphoria can precede market tops.'
+  },
+  {
+    question: 'Should I buy when there is extreme fear?',
+    answer: 'While extreme fear has historically presented buying opportunities, the Fear & Greed Index should not be used as the sole basis for investment decisions. It is one of many tools to understand market sentiment. Always conduct your own research and consider consulting with a financial advisor.'
+  },
+  {
+    question: 'How is Perception different from Alternative.me Fear & Greed Index?',
+    answer: 'Perception tracks 650+ media sources compared to Alternative.me\'s 5-6 indicators. We update every 90 seconds versus daily updates. Our AI analyzes actual news content and narratives, not just counts and volumes. Perception shows you WHY sentiment is changing, not just that it changed.'
+  },
+  {
+    question: 'Can I get alerts when sentiment changes?',
+    answer: 'Yes! Perception offers real-time alerts via Slack, email, and webhooks. You can set custom thresholds to be notified when the index crosses into extreme fear or extreme greed territory, or when sentiment velocity indicates a rapid shift is occurring.'
+  },
+  {
+    question: 'Is there an API for the Fear & Greed Index?',
+    answer: 'Yes, Perception offers a full REST API for accessing Fear & Greed Index data. You can integrate real-time sentiment scores into your trading systems, dashboards, or applications. API access is available on Professional and Enterprise plans.'
+  },
+  {
+    question: 'What is sentiment velocity?',
+    answer: 'Sentiment velocity measures how quickly market sentiment is changing. A high positive velocity means sentiment is rapidly becoming more bullish, while high negative velocity indicates rapidly increasing fear. Velocity can be a leading indicator, showing momentum shifts before they fully manifest in the index score.'
+  }
+];
+
+// Score interpretation data
+const scoreRanges = [
+  {
+    range: '0–24',
+    label: 'Extreme Fear',
+    color: 'bg-red-600',
+    textColor: 'text-red-600',
+    description: 'The market is in panic mode. Investors are extremely worried and selling aggressively. Historically, these periods have often been good buying opportunities for long-term investors.',
+    signals: ['Potential market bottom', 'High volatility likely', 'Consider dollar-cost averaging'],
+    historical: 'Bitcoin has recovered an average of 47% within 90 days of extreme fear readings.'
+  },
+  {
+    range: '25–44',
+    label: 'Fear',
+    color: 'bg-orange-500',
+    textColor: 'text-orange-500',
+    description: 'Investors are cautious and worried. Negative news dominates headlines. The market may still decline, but fear is not at extreme levels.',
+    signals: ['Below-average sentiment', 'News sentiment negative', 'Watch for capitulation'],
+    historical: 'Fear periods typically last 2-4 weeks before transitioning to neutral or extreme fear.'
+  },
+  {
+    range: '45–55',
+    label: 'Neutral',
+    color: 'bg-yellow-500',
+    textColor: 'text-yellow-500',
+    description: 'Market sentiment is balanced. Neither fear nor greed dominates. Often occurs during consolidation phases or when the market is waiting for a catalyst.',
+    signals: ['Trend continuation likely', 'Watch for breakout direction', 'Moderate volatility'],
+    historical: 'Neutral readings often precede significant moves in either direction within 2-3 weeks.'
+  },
+  {
+    range: '56–74',
+    label: 'Greed',
+    color: 'bg-lime-500',
+    textColor: 'text-lime-500',
+    description: 'Investors are becoming optimistic. Positive news flow and rising prices attract more buyers. The trend is bullish but watch for signs of overheating.',
+    signals: ['Bullish momentum', 'FOMO increasing', 'Consider taking some profits'],
+    historical: 'Greed periods can extend for weeks or months during bull markets.'
+  },
+  {
+    range: '75–100',
+    label: 'Extreme Greed',
+    color: 'bg-green-600',
+    textColor: 'text-green-600',
+    description: 'Maximum optimism and euphoria. Everyone is buying, prices are surging, and caution is thrown to the wind. Historically, these periods have preceded corrections.',
+    signals: ['Potential market top', 'High risk of correction', 'Smart money selling'],
+    historical: 'Extreme greed readings have preceded an average 23% drawdown within 60 days.'
+  }
+];
 
 export default function FearGreedIndexPage() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -12,15 +106,33 @@ export default function FearGreedIndexPage() {
     setIsLoaded(true);
   }, []);
 
+  // Generate FAQ schema
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
+      }
+    }))
+  };
+
   return (
     <>
       <SEO
         title="Bitcoin Fear & Greed Index - Real-Time Market Sentiment Analysis"
-        description="Track Bitcoin market sentiment with our real-time Fear & Greed Index. Get instant alerts, API access, and detailed analysis of market psychology from 0 (extreme fear) to 100 (extreme greed)."
-        keywords={["Bitcoin Fear & Greed Index", "market sentiment", "crypto sentiment analysis", "Bitcoin price prediction", "market psychology", "trading signals"]}
+        description="Track Bitcoin market sentiment with our real-time Fear & Greed Index. Updated every 90 seconds from 650+ sources. Get instant alerts, API access, and detailed analysis of market psychology."
+        keywords={["Bitcoin Fear & Greed Index", "crypto fear and greed index", "bitcoin sentiment", "market sentiment analysis", "bitcoin fear greed today", "crypto market psychology"]}
         url="https://perception.to/bitcoin-fear-greed-index"
         image="/images/bitcoin.png"
-      />
+      >
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </SEO>
       
       <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white">
         {/* Hero Section */}
@@ -80,15 +192,6 @@ export default function FearGreedIndexPage() {
                         <a href="https://app.perception.to/auth/sign-up">
                           Start free trial
                         </a>
-                      </Button>
-                      <Button
-                        size="lg"
-                        className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
-                        onClick={() => {
-                          document.querySelector('.relative.z-10')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                      >
-                        Learn more
                       </Button>
                     </div>
                   </div>
@@ -400,6 +503,144 @@ export default function FearGreedIndexPage() {
               </div>
             </section>
 
+            {/* Detailed Score Guide */}
+            <section>
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center gap-2 bg-slate-100 dark:bg-slate-900/50 border border-slate-300 dark:border-slate-800/50 rounded-full px-6 py-2 text-sm text-slate-700 dark:text-slate-300 mb-8">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  <span className="font-medium">Complete Score Guide</span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 tracking-tight text-slate-900 dark:text-white px-2">
+                  What Each Score Means
+                </h3>
+                <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-400 font-light max-w-3xl mx-auto px-2">
+                  Understanding the index helps you interpret market sentiment and make informed decisions
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                {scoreRanges.map((range) => (
+                  <div
+                    key={range.range}
+                    className="bg-slate-50 dark:bg-slate-900/30 border border-slate-300 dark:border-slate-700/30 rounded-2xl p-6 sm:p-8"
+                  >
+                    <div className="flex flex-col lg:flex-row lg:items-start gap-6">
+                      {/* Score Badge */}
+                      <div className="flex-shrink-0">
+                        <div className={`${range.color} text-white rounded-xl px-4 py-2 inline-flex items-center gap-2`}>
+                          <span className="font-bold text-lg">{range.range}</span>
+                          <span className="text-sm opacity-90">|</span>
+                          <span className="font-medium">{range.label}</span>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex-grow">
+                        <p className="text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
+                          {range.description}
+                        </p>
+
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          {/* Signals */}
+                          <div>
+                            <h5 className="text-sm font-semibold text-slate-900 dark:text-white mb-2">Key Signals</h5>
+                            <ul className="space-y-1">
+                              {range.signals.map((signal, idx) => (
+                                <li key={idx} className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                                  <div className={`w-1.5 h-1.5 ${range.color} rounded-full`}></div>
+                                  {signal}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          {/* Historical */}
+                          <div className="bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4">
+                            <h5 className="text-sm font-semibold text-slate-900 dark:text-white mb-2">Historical Context</h5>
+                            <p className="text-sm text-slate-600 dark:text-slate-400">
+                              {range.historical}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section>
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center gap-2 bg-slate-100 dark:bg-slate-900/50 border border-slate-300 dark:border-slate-800/50 rounded-full px-6 py-2 text-sm text-slate-700 dark:text-slate-300 mb-8">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="font-medium">Frequently Asked Questions</span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 tracking-tight text-slate-900 dark:text-white px-2">
+                  Bitcoin Fear & Greed Index FAQ
+                </h3>
+                <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-400 font-light max-w-3xl mx-auto px-2">
+                  Common questions about the index and how to use it
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className="bg-slate-50 dark:bg-slate-900/30 border border-slate-300 dark:border-slate-700/30 rounded-xl p-6"
+                  >
+                    <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">
+                      {faq.question}
+                    </h4>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="py-8">
+              <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-12 text-center">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                  Get Real-Time Sentiment Alerts
+                </h3>
+                <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
+                  Never miss a sentiment shift. Get alerts when the index enters extreme fear or greed,
+                  track sentiment velocity, and access our full API.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    size="lg"
+                    className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-6 text-lg"
+                    asChild
+                  >
+                    <a href="https://app.perception.to/auth/sign-up">
+                      Start Free Trial
+                    </a>
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-slate-600 text-white hover:bg-slate-800 px-8 py-6 text-lg"
+                    asChild
+                  >
+                    <Link to="/api">
+                      View API Docs
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </section>
+
             {/* Related Resources */}
             <section className="py-16">
               <div className="text-center mb-12 sm:mb-16">
@@ -411,47 +652,78 @@ export default function FearGreedIndexPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
                 <div className="bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-300 dark:border-slate-700/30 hover:shadow-lg transition-all">
                   <h4 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white mb-3 sm:mb-4">
-                    <a href="/bitcoin-market-sentiment" className="hover:text-orange-500 transition-colors">
+                    <Link to="/bitcoin-market-sentiment" className="hover:text-orange-500 transition-colors">
                       Bitcoin Market Sentiment
-                    </a>
+                    </Link>
                   </h4>
                   <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 sm:mb-6">
                     Monthly and daily sentiment analysis tracking Bitcoin market psychology and investor emotions over time.
                   </p>
-                  <a href="/bitcoin-market-sentiment" className="text-orange-500 hover:text-orange-600 font-medium">
+                  <Link to="/bitcoin-market-sentiment" className="text-orange-500 hover:text-orange-600 font-medium">
                     View Sentiment Analysis →
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-300 dark:border-slate-700/30 hover:shadow-lg transition-all">
                   <h4 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white mb-3 sm:mb-4">
-                    <a href="/crypto-conferences" className="hover:text-orange-500 transition-colors">
+                    <Link to="/learn/what-is-crypto-sentiment-analysis" className="hover:text-orange-500 transition-colors">
+                      What is Sentiment Analysis?
+                    </Link>
+                  </h4>
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 sm:mb-6">
+                    Learn how crypto sentiment analysis works, how it's measured, and how to use it in your trading strategy.
+                  </p>
+                  <Link to="/learn/what-is-crypto-sentiment-analysis" className="text-orange-500 hover:text-orange-600 font-medium">
+                    Read the Guide →
+                  </Link>
+                </div>
+
+                <div className="bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-300 dark:border-slate-700/30 hover:shadow-lg transition-all">
+                  <h4 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white mb-3 sm:mb-4">
+                    <Link to="/compare/best-crypto-sentiment-tools" className="hover:text-orange-500 transition-colors">
+                      Best Sentiment Tools Compared
+                    </Link>
+                  </h4>
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 sm:mb-6">
+                    Compare Perception, LunarCrush, Santiment, and other leading crypto sentiment analysis platforms.
+                  </p>
+                  <Link to="/compare/best-crypto-sentiment-tools" className="text-orange-500 hover:text-orange-600 font-medium">
+                    Compare Tools →
+                  </Link>
+                </div>
+              </div>
+
+              {/* Additional Resources Row */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                <div className="bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-300 dark:border-slate-700/30 hover:shadow-lg transition-all">
+                  <h4 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white mb-3 sm:mb-4">
+                    <Link to="/crypto-conferences" className="hover:text-orange-500 transition-colors">
                       Crypto Conferences 2025-2026
-                    </a>
+                    </Link>
                   </h4>
                   <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 sm:mb-6">
                     Stay connected with the crypto community at Bitcoin, blockchain, and Web3 conferences worldwide.
                   </p>
-                  <a href="/crypto-conferences" className="text-orange-500 hover:text-orange-600 font-medium">
+                  <Link to="/crypto-conferences" className="text-orange-500 hover:text-orange-600 font-medium">
                     View Conference Calendar →
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-300 dark:border-slate-700/30 hover:shadow-lg transition-all">
                   <h4 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white mb-3 sm:mb-4">
-                    <a href="/bitcoin-media-research" className="hover:text-orange-500 transition-colors">
-                      Bitcoin Media Research
-                    </a>
+                    <Link to="/alternatives/alternative-me-alternative" className="hover:text-orange-500 transition-colors">
+                      Perception vs Alternative.me
+                    </Link>
                   </h4>
                   <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 sm:mb-6">
-                    Weekly research analyzing Bitcoin media coverage and narrative trends from 650+ news sources.
+                    Compare our Fear & Greed Index with Alternative.me. See why 650+ sources beats 5 indicators.
                   </p>
-                  <a href="/bitcoin-media-research" className="text-orange-500 hover:text-orange-600 font-medium">
-                    Subscribe to Research →
-                  </a>
+                  <Link to="/alternatives/alternative-me-alternative" className="text-orange-500 hover:text-orange-600 font-medium">
+                    See Comparison →
+                  </Link>
                 </div>
               </div>
             </section>

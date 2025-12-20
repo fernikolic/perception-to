@@ -55,6 +55,12 @@ import CryptoConferencesPage from '@/pages/crypto-conferences';
 import ConferencePage from '@/pages/crypto-conferences/[conference]';
 import TwitterSentimentLeaderboard from '@/pages/twitter-sentiment-leaderboard-apple';
 import NotFoundPage from '@/pages/404';
+import LunarCrushAlternativePage from '@/pages/alternatives/lunarcrush-alternative';
+import SantimentAlternativePage from '@/pages/alternatives/santiment-alternative';
+import AlternativeMeAlternativePage from '@/pages/alternatives/alternative-me-alternative';
+import BestCryptoSentimentToolsPage from '@/pages/compare/best-crypto-sentiment-tools';
+import LearnIndexPage from '@/pages/learn/index';
+import WhatIsCryptoSentimentAnalysisPage from '@/pages/learn/what-is-crypto-sentiment-analysis';
 
 function HomePage() {
   return (
@@ -120,6 +126,18 @@ const App = () => {
               />
               <Route path="/bitcoin-bad-takes/*" element={<BitcoinBadTakes />} />
               <Route path="/bitcoin-social-media-sentiment-leaderboard" element={<TwitterSentimentLeaderboard />} />
+
+              {/* Alternative Pages */}
+              <Route path="/alternatives/lunarcrush-alternative" element={<LunarCrushAlternativePage />} />
+              <Route path="/alternatives/santiment-alternative" element={<SantimentAlternativePage />} />
+              <Route path="/alternatives/alternative-me-alternative" element={<AlternativeMeAlternativePage />} />
+
+              {/* Comparison Pages */}
+              <Route path="/compare/best-crypto-sentiment-tools" element={<BestCryptoSentimentToolsPage />} />
+
+              {/* Learn / Educational Pages */}
+              <Route path="/learn" element={<LearnIndexPage />} />
+              <Route path="/learn/what-is-crypto-sentiment-analysis" element={<WhatIsCryptoSentimentAnalysisPage />} />
 
               {/* Programmatic SEO Routes */}
               <Route path="/sentiment/:slug" element={<ProgrammaticRouter />} />
