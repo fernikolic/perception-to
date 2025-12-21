@@ -53,6 +53,7 @@ import { BitcoinMediaResearchPage } from '@/pages/bitcoin-media-research';
 import BitcoinBadTakes from '@/pages/bitcoin-bad-takes';
 import CryptoConferencesPage from '@/pages/crypto-conferences';
 import ConferencePage from '@/pages/crypto-conferences/[conference]';
+import TrackedConferencePage from '@/pages/crypto-conferences/tracked/[slug]';
 import TwitterSentimentLeaderboard from '@/pages/twitter-sentiment-leaderboard-apple';
 import NotFoundPage from '@/pages/404';
 import LunarCrushAlternativePage from '@/pages/alternatives/lunarcrush-alternative';
@@ -61,6 +62,13 @@ import AlternativeMeAlternativePage from '@/pages/alternatives/alternative-me-al
 import BestCryptoSentimentToolsPage from '@/pages/compare/best-crypto-sentiment-tools';
 import LearnIndexPage from '@/pages/learn/index';
 import WhatIsCryptoSentimentAnalysisPage from '@/pages/learn/what-is-crypto-sentiment-analysis';
+import HowToReadFearGreedIndexPage from '@/pages/learn/how-to-read-fear-greed-index';
+import BitcoinMarketPsychologyPage from '@/pages/learn/bitcoin-market-psychology';
+import CryptoNarrativeTradingPage from '@/pages/learn/crypto-narrative-trading';
+import UnderstandingBitcoinDominancePage from '@/pages/learn/understanding-bitcoin-dominance';
+import CryptoSocialSentimentPage from '@/pages/learn/crypto-social-sentiment';
+import PerceptionVsGlassnodePage from '@/pages/compare/perception-vs-glassnode';
+import BestCryptoNewsAggregatorsPage from '@/pages/compare/best-crypto-news-aggregators';
 
 function HomePage() {
   return (
@@ -121,6 +129,10 @@ const App = () => {
               <Route path="/bitcoin-media-research" element={<BitcoinMediaResearchPage />} />
               <Route path="/crypto-conferences" element={<CryptoConferencesPage />} />
               <Route
+                path="/crypto-conferences/:slug"
+                element={<TrackedConferencePage />}
+              />
+              <Route
                 path="/crypto-conferences/:year/:slug"
                 element={<ConferencePage />}
               />
@@ -134,10 +146,17 @@ const App = () => {
 
               {/* Comparison Pages */}
               <Route path="/compare/best-crypto-sentiment-tools" element={<BestCryptoSentimentToolsPage />} />
+              <Route path="/compare/perception-vs-glassnode" element={<PerceptionVsGlassnodePage />} />
+              <Route path="/compare/best-crypto-news-aggregators" element={<BestCryptoNewsAggregatorsPage />} />
 
               {/* Learn / Educational Pages */}
               <Route path="/learn" element={<LearnIndexPage />} />
               <Route path="/learn/what-is-crypto-sentiment-analysis" element={<WhatIsCryptoSentimentAnalysisPage />} />
+              <Route path="/learn/how-to-read-fear-greed-index" element={<HowToReadFearGreedIndexPage />} />
+              <Route path="/learn/bitcoin-market-psychology" element={<BitcoinMarketPsychologyPage />} />
+              <Route path="/learn/crypto-narrative-trading" element={<CryptoNarrativeTradingPage />} />
+              <Route path="/learn/understanding-bitcoin-dominance" element={<UnderstandingBitcoinDominancePage />} />
+              <Route path="/learn/crypto-social-sentiment" element={<CryptoSocialSentimentPage />} />
 
               {/* Programmatic SEO Routes */}
               <Route path="/sentiment/:slug" element={<ProgrammaticRouter />} />
