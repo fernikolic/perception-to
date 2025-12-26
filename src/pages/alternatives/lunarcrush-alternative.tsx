@@ -1,69 +1,65 @@
 import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
-import { Check, ArrowRight, Zap, BarChart3, Globe, MessageSquare, TrendingUp, Plus, Newspaper } from 'lucide-react';
+import { Check, ArrowRight, Zap, BarChart3, Globe, Newspaper, Mic, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import AsciiBlob from '@/components/AsciiBlob';
 
 const whatPerceptionAdds = [
   {
-    category: 'What LunarCrush Does Well',
-    items: ['Social media metrics', 'Galaxy Score', 'Influencer tracking', 'Social volume data'],
-    color: 'slate'
+    category: 'What LunarCrush Offers',
+    items: ['Social media metrics', 'Galaxy Score', 'Influencer tracking', 'Crypto coin-specific data'],
+    isPerception: false
   },
   {
-    category: 'What Perception Adds',
-    items: ['650+ news & media sources', 'Narrative tracking across media', 'Institutional report monitoring', 'Mainstream media coverage'],
-    color: 'orange'
+    category: 'What Perception Offers',
+    items: ['Social + 650+ media sources', 'Regulatory intelligence', 'Conference & podcast transcripts', 'Mainstream news coverage'],
+    isPerception: true
   }
 ];
 
 const uniqueCapabilities = [
   {
     icon: Newspaper,
-    title: 'Media Intelligence Layer',
-    description: 'LunarCrush tracks social. Perception tracks media. Monitor how Bloomberg, Reuters, WSJ, and 650+ outlets cover crypto. See narratives form in news before they trend on Twitter.'
+    title: 'Social + Media Combined',
+    description: 'LunarCrush tracks social only. Perception tracks social AND 650+ media sources - Bloomberg, Reuters, WSJ, CoinDesk, and more.'
+  },
+  {
+    icon: FileText,
+    title: 'Regulatory Intelligence',
+    description: 'Track regulatory developments, policy announcements, and government actions. Understand the regulatory landscape shaping the industry.'
+  },
+  {
+    icon: Mic,
+    title: 'Conferences & Podcasts',
+    description: 'Access transcripts from conference keynotes, panel discussions, and podcast episodes. Capture insights from industry leaders and experts.'
   },
   {
     icon: Globe,
-    title: 'Mainstream + Crypto Coverage',
-    description: 'Track both crypto-native publications (CoinDesk, The Block) and mainstream financial media. Understand when Bitcoin stories cross into mainstream consciousness.'
-  },
-  {
-    icon: Zap,
-    title: 'Narrative Detection',
-    description: 'Our AI identifies emerging narratives across all media. See what stories are gaining traction, which outlets are covering them, and how sentiment is shifting.'
-  },
-  {
-    icon: BarChart3,
-    title: 'Institutional Signals',
-    description: 'Track institutional research reports, regulatory filings, and professional analyst coverage. See what smart money is reading.'
+    title: 'Mainstream Coverage',
+    description: 'Know when crypto stories break into mainstream financial media. Track coverage across both crypto-native and traditional outlets.'
   },
 ];
 
 const faqs = [
   {
-    question: 'Should I use Perception instead of LunarCrush?',
-    answer: 'They serve different purposes. LunarCrush excels at social media metrics and the Galaxy Score. Perception specializes in media intelligence - tracking 650+ news sources, narrative detection, and mainstream coverage. Many teams use both: LunarCrush for social signals, Perception for media intelligence.'
+    question: 'How is Perception different from LunarCrush?',
+    answer: 'LunarCrush focuses on social media metrics for individual cryptocurrencies. Perception covers social AND 650+ media sources, providing broader industry intelligence rather than coin-specific trading signals.'
   },
   {
-    question: 'What does Perception track that LunarCrush doesn\'t?',
-    answer: 'Perception monitors 650+ media sources including Bloomberg, Reuters, WSJ, Financial Times, CoinDesk, The Block, institutional research reports, and regulatory filings. We specialize in narrative tracking across media - understanding how stories develop and spread through news outlets, not just social media.'
+    question: 'Does Perception track social media like LunarCrush?',
+    answer: 'Yes, Perception tracks social media AND goes further with 650+ media sources, regulatory intel, conference transcripts, and podcast episodes. You get social sentiment plus insights LunarCrush can\'t provide.'
   },
   {
-    question: 'Can I use both Perception and LunarCrush together?',
-    answer: 'Absolutely - this is what many professional teams do. Use LunarCrush for social sentiment and influencer tracking. Add Perception for media monitoring and narrative intelligence. The combination gives you complete market coverage.'
+    question: 'Which tool is better for trading?',
+    answer: 'LunarCrush is designed for traders tracking individual coin metrics. Perception is built for knowledge workers and researchers who need industry-wide intelligence and media coverage context.'
   },
   {
-    question: 'How is the sentiment calculated differently?',
-    answer: 'LunarCrush focuses on social engagement metrics. Perception analyzes media content - the actual articles, reports, and coverage. Our AI reads and understands the narrative context, not just counts and volumes.'
-  },
-  {
-    question: 'Do I get anything I can\'t get elsewhere?',
-    answer: 'Yes. No other tool monitors 650+ crypto and financial media sources with AI-powered narrative tracking. If you want to know how the media is covering crypto - from Bloomberg to CoinDesk - Perception is the only comprehensive solution.'
+    question: 'Can I use both tools together?',
+    answer: 'Yes. Use LunarCrush for coin-specific social metrics and Galaxy Score. Add Perception for regulatory intel, conference insights, podcast transcripts, and mainstream media coverage that LunarCrush doesn\'t offer.'
   },
 ];
 
 export default function LunarCrushAlternativePage() {
-  // Generate FAQ schema
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -80,8 +76,8 @@ export default function LunarCrushAlternativePage() {
   return (
     <>
       <SEO
-        title="LunarCrush Alternative - Perception | Better Crypto Sentiment Analysis"
-        description="Looking for a LunarCrush alternative? Perception offers 650+ data sources, real-time media monitoring, and AI-powered narrative tracking. Start your free trial."
+        title="LunarCrush Alternative - Perception | Social + Media Intelligence"
+        description="Looking for a LunarCrush alternative? Perception offers social tracking PLUS 650+ media sources, regulatory intel, conference keynotes, and podcast transcripts."
         keywords={['LunarCrush alternative', 'LunarCrush competitor', 'crypto sentiment tool', 'Galaxy Score alternative', 'social sentiment analysis']}
         url="https://perception.to/alternatives/lunarcrush-alternative"
       >
@@ -91,52 +87,86 @@ export default function LunarCrushAlternativePage() {
       </SEO>
 
       <div className="min-h-screen bg-[#F0EEE6]">
-        {/* Hero Section */}
-        <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-orange-500/20 text-orange-600 rounded-full px-4 py-2 text-sm font-medium mb-8">
-              <Plus className="w-4 h-4" />
-              LunarCrush Alternative
+        {/* Hero Section - Split Layout */}
+        <section className="pt-32 pb-24 px-6 sm:px-16 lg:px-32">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row items-center gap-16">
+              {/* Left - ASCII Art Visual */}
+              <div className="w-full lg:w-1/2 flex justify-center">
+                <div className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden">
+                  <AsciiBlob />
+                  {/* Overlay with comparison info */}
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="bg-black/80 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-sm text-white/60">Social Only</div>
+                          <div className="text-lg font-bold text-white">LunarCrush</div>
+                        </div>
+                        <div className="text-2xl text-white/40">→</div>
+                        <div className="text-right">
+                          <div className="text-sm text-orange-400/80">Social + Media</div>
+                          <div className="text-lg font-bold text-orange-400">Perception</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right - Content */}
+              <div className="w-full lg:w-1/2">
+                <div className="inline-flex items-center gap-2 bg-black/5 rounded-full px-4 py-2 text-sm font-medium mb-6">
+                  <span className="w-2 h-2 bg-orange-400 rounded-full"></span>
+                  LunarCrush Alternative
+                </div>
+
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-black mb-6">
+                  Social +{' '}
+                  <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Media</em>{' '}
+                  Combined
+                </h1>
+
+                <p className="text-lg sm:text-xl text-black/70 font-light leading-relaxed mb-8">
+                  LunarCrush tracks social only. Perception tracks social plus 650+ media sources, regulatory intel, conference keynotes, and podcast transcripts.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button
+                    size="lg"
+                    className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-base font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
+                    asChild
+                  >
+                    <a href="https://app.perception.to/auth/sign-up">
+                      Start free trial
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </a>
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-white/80 text-black hover:bg-white rounded-2xl px-8 py-6 text-base font-semibold border-2 border-black/20 hover:border-black/30 transition-all duration-300"
+                    asChild
+                  >
+                    <Link to="/bitcoin-market-sentiment">
+                      See Dashboard
+                    </Link>
+                  </Button>
+                </div>
+              </div>
             </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6 tracking-tight">
-              Already Using LunarCrush?<br />
-              <span className="text-orange-500">Add Media Intelligence</span>
-            </h1>
-
-            <p className="text-xl text-black/60 max-w-3xl mx-auto mb-10">
-              LunarCrush tracks social. Perception tracks media. Get the complete picture
-              by adding 650+ news sources, narrative detection, and mainstream coverage.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-black text-white hover:bg-black/90 px-8 py-6 text-lg rounded-full" asChild>
-                <a href="https://app.perception.to/auth/sign-up">
-                  Try Free for 14 Days
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" className="px-8 py-6 text-lg rounded-full border-black/20 hover:border-black/30" asChild>
-                <Link to="/bitcoin-market-sentiment">
-                  See Media Dashboard
-                </Link>
-              </Button>
-            </div>
-
-            <p className="text-sm text-black/50 mt-4">
-              No credit card required. Works alongside your existing tools.
-            </p>
           </div>
         </section>
 
-        {/* What Each Tool Does */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
+        {/* What Each Tool Does - Black */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32 bg-black">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-white mb-4">
-              Different Tools, Different Data
+            <h2 className="text-4xl font-medium text-white text-center mb-4">
+              Social Only vs{' '}
+              <em className="text-white" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Social + Media</em>
             </h2>
-            <p className="text-center text-white/60 mb-12 max-w-2xl mx-auto">
-              LunarCrush and Perception aren't competitors - they're complements
+            <p className="text-center text-white/60 mb-16 max-w-2xl mx-auto">
+              Perception includes everything LunarCrush tracks, plus 650+ media sources
             </p>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -144,20 +174,20 @@ export default function LunarCrushAlternativePage() {
                 <div
                   key={section.category}
                   className={`rounded-2xl p-8 ${
-                    section.color === 'orange'
+                    section.isPerception
                       ? 'bg-white/10 border-2 border-orange-400/30'
                       : 'bg-white/5 border border-white/10'
                   }`}
                 >
                   <h3 className={`text-xl font-semibold mb-6 ${
-                    section.color === 'orange' ? 'text-orange-400' : 'text-white'
+                    section.isPerception ? 'text-orange-400' : 'text-white'
                   }`}>
                     {section.category}
                   </h3>
                   <ul className="space-y-3">
                     {section.items.map((item) => (
                       <li key={item} className="flex items-center gap-3">
-                        <Check className={`w-5 h-5 ${section.color === 'orange' ? 'text-orange-400' : 'text-gray-400'}`} />
+                        <Check className={`w-5 h-5 ${section.isPerception ? 'text-orange-400' : 'text-white/40'}`} />
                         <span className="text-white/80">{item}</span>
                       </li>
                     ))}
@@ -165,38 +195,33 @@ export default function LunarCrushAlternativePage() {
                 </div>
               ))}
             </div>
-
-            <div className="mt-8 text-center">
-              <p className="text-white/60 text-lg">
-                <span className="font-semibold text-white">Best approach:</span> Use LunarCrush for social signals + Perception for media intelligence
-              </p>
-            </div>
           </div>
         </section>
 
-        {/* Unique Capabilities Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        {/* Unique Capabilities - Black */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32 bg-black">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-black mb-4">
-              What Only Perception Offers
+            <h2 className="text-4xl font-medium text-white text-center mb-4">
+              Why Choose{' '}
+              <em className="text-white" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Perception</em>
             </h2>
-            <p className="text-center text-black/60 mb-16 max-w-2xl mx-auto">
-              Capabilities you won't find in social-focused tools
+            <p className="text-center text-white/60 mb-16 max-w-2xl mx-auto">
+              Social plus regulatory intel, conferences, and podcasts
             </p>
 
             <div className="grid md:grid-cols-2 gap-8">
               {uniqueCapabilities.map((capability) => (
                 <div
                   key={capability.title}
-                  className="bg-black rounded-2xl p-8 border border-white/10"
+                  className="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 hover:bg-white/10"
                 >
-                  <div className="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6">
                     <capability.icon className="w-6 h-6 text-orange-400" />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-3">
                     {capability.title}
                   </h3>
-                  <p className="text-white/70">
+                  <p className="text-white/60">
                     {capability.description}
                   </p>
                 </div>
@@ -205,53 +230,49 @@ export default function LunarCrushAlternativePage() {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black text-white">
+        {/* Stats Section - Cream */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              The Media Layer for Crypto
+            <h2 className="text-4xl font-medium text-black mb-4">
+              Complete{' '}
+              <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Coverage</em>
             </h2>
-            <p className="text-white/60 mb-12 text-lg">
-              Complete your market intelligence stack
+            <p className="text-black/60 mb-16 text-lg">
+              Social + mainstream media in one platform
             </p>
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <div>
-                <div className="text-4xl font-bold text-orange-400 mb-2">650+</div>
+              <div className="bg-black rounded-2xl p-8">
+                <div className="text-5xl font-bold text-orange-400 mb-2">650+</div>
                 <div className="text-white/60">Media Sources</div>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-orange-400 mb-2">90s</div>
-                <div className="text-white/60">Update Speed</div>
+              <div className="bg-black rounded-2xl p-8">
+                <div className="text-5xl font-bold text-orange-400 mb-2">90s</div>
+                <div className="text-white/60">Real-Time Updates</div>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-orange-400 mb-2">24/7</div>
-                <div className="text-white/60">Narrative Tracking</div>
+              <div className="bg-black rounded-2xl p-8">
+                <div className="text-5xl font-bold text-orange-400 mb-2">All</div>
+                <div className="text-white/60">Social + News</div>
               </div>
             </div>
-            <Button size="lg" className="bg-white text-black hover:bg-white/90 px-8 py-6 text-lg rounded-full" asChild>
-              <a href="https://app.perception.to/auth/sign-up">
-                Add Perception to Your Stack
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
-            </Button>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        {/* FAQ Section - Black */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32 bg-black">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-black mb-4">
-              Frequently Asked Questions
+            <h2 className="text-4xl font-medium text-white text-center mb-4">
+              Frequently Asked{' '}
+              <em className="text-white" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Questions</em>
             </h2>
-            <p className="text-center text-black/60 mb-12">
-              Common questions about switching from LunarCrush to Perception
+            <p className="text-center text-white/60 mb-16">
+              Common questions about Perception vs LunarCrush
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {faqs.map((faq) => (
                 <div
                   key={faq.question}
-                  className="bg-black rounded-xl p-6 border border-white/10"
+                  className="bg-white/5 rounded-2xl p-6 border border-white/10"
                 >
                   <h3 className="text-lg font-semibold text-white mb-3">
                     {faq.question}
@@ -265,27 +286,63 @@ export default function LunarCrushAlternativePage() {
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-              Complete Your Market Intelligence
+        {/* Final CTA - Cream */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl sm:text-5xl font-medium text-black mb-6">
+              Get the{' '}
+              <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>complete</em>{' '}
+              picture
             </h2>
-            <p className="text-xl mb-10 text-white/60">
-              Add the media layer to your crypto research. 14 days free.
+            <p className="text-xl text-black/60 mb-10">
+              Social + media intelligence. 7-day free trial.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-black hover:bg-white/90 px-8 py-6 text-lg rounded-full" asChild>
+              <Button
+                size="lg"
+                className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-lg font-semibold shadow-2xl transition-all duration-300 hover:scale-105"
+                asChild
+              >
                 <a href="https://app.perception.to/auth/sign-up">
-                  Try Perception Free
+                  Start free trial
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full" asChild>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-white/80 text-black hover:bg-white rounded-2xl px-8 py-6 text-lg font-semibold border-2 border-black/20 hover:border-black/30 transition-all duration-300"
+                asChild
+              >
                 <Link to="/pricing">
                   View Pricing
                 </Link>
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Links - Cream */}
+        <section className="py-16 px-6 sm:px-16 lg:px-32">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-semibold text-black text-center mb-8">
+              More Comparisons
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <Link
+                to="/alternatives/santiment-alternative"
+                className="bg-white rounded-2xl p-6 border border-black/10 hover:border-black/30 transition-all duration-300 hover:shadow-lg group"
+              >
+                <h3 className="font-semibold text-black mb-2 group-hover:text-orange-500 transition-colors">Perception vs Santiment</h3>
+                <p className="text-sm text-black/60">Industry intelligence vs trading signals</p>
+              </Link>
+              <Link
+                to="/alternatives/alternative-me-alternative"
+                className="bg-white rounded-2xl p-6 border border-black/10 hover:border-black/30 transition-all duration-300 hover:shadow-lg group"
+              >
+                <h3 className="font-semibold text-black mb-2 group-hover:text-orange-500 transition-colors">Perception vs Alternative.me</h3>
+                <p className="text-sm text-black/60">Real-time vs daily Fear & Greed updates</p>
+              </Link>
             </div>
           </div>
         </section>

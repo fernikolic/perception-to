@@ -1,73 +1,57 @@
 import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
-import { Check, ArrowRight, BarChart3, Globe, Newspaper, Brain, Plus, Zap, TrendingUp, Clock } from 'lucide-react';
+import { Check, ArrowRight, Newspaper, Clock, Globe, Eye, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import AsciiDiagonalPetals from '@/components/AsciiDiagonalPetals';
 
-const whatPerceptionAdds = [
-  {
-    category: 'What Alternative.me Offers',
-    items: ['Basic Fear & Greed Index', 'Daily updates', '5-6 data sources', 'Simple visualization'],
-    color: 'slate'
-  },
-  {
-    category: 'What Perception Adds',
-    items: ['650+ media & news sources', '90-second updates', 'AI narrative tracking', 'Mainstream media coverage'],
-    color: 'green'
-  }
+const comparisonPoints = [
+  { label: 'Data Sources', alternative: '5-6 indicators', perception: '650+ sources' },
+  { label: 'Update Speed', alternative: 'Every 4 hours', perception: 'Every 90 seconds' },
+  { label: 'Source Transparency', alternative: 'Limited', perception: 'Full transparency' },
+  { label: 'Media Coverage', alternative: 'None', perception: 'Comprehensive' },
+  { label: 'Historical Data', alternative: 'Basic chart', perception: 'Full analytics' },
+  { label: 'API Access', alternative: 'Limited', perception: 'Full REST API' },
 ];
 
 const uniqueCapabilities = [
   {
-    icon: Newspaper,
-    title: 'Media-Powered Sentiment',
-    description: 'Alternative.me uses volatility, volume, and social trends. Perception reads 650+ actual news articles and media sources. Understand the narrative behind the number.'
+    icon: Eye,
+    title: 'Full Transparency',
+    description: 'See exactly where sentiment data comes from. Every source is visible. No black box algorithms hiding behind a single number.'
   },
   {
     icon: Clock,
     title: '90-Second Updates',
-    description: 'Alternative.me updates once daily. Perception updates every 90 seconds. In fast-moving markets, daily data is already old.'
+    description: 'Alternative.me updates every 4 hours. Perception updates every 90 seconds. In fast-moving markets, hours-old data is already stale.'
   },
   {
-    icon: Brain,
-    title: 'AI Narrative Detection',
-    description: 'Our AI identifies emerging stories across all media. See what narratives are driving sentiment - not just that sentiment changed, but why.'
+    icon: Newspaper,
+    title: '650+ Media Sources',
+    description: 'Real news coverage from Bloomberg, Reuters, CoinDesk, and hundreds more. Understand the actual media landscape, not just derived metrics.'
   },
   {
     icon: Globe,
-    title: 'Mainstream + Crypto Coverage',
-    description: 'Track when crypto stories hit Bloomberg, Reuters, WSJ. Know when Bitcoin is making mainstream news before it affects the index.'
+    title: 'Mainstream + Crypto',
+    description: 'Track when crypto stories break into mainstream media. Know what Bloomberg and WSJ are saying, not just crypto Twitter.'
   },
-];
-
-const comparisonPoints = [
-  { label: 'Data Sources', alternative: '5-6 indicators', perception: '650+ sources' },
-  { label: 'Update Speed', alternative: 'Daily', perception: 'Every 90 seconds' },
-  { label: 'Media Coverage', alternative: 'None', perception: 'Comprehensive' },
-  { label: 'Narrative Tracking', alternative: 'None', perception: 'AI-powered' },
-  { label: 'Historical Data', alternative: 'Basic chart', perception: 'Full analytics' },
-  { label: 'API Access', alternative: 'Limited', perception: 'Full REST API' },
 ];
 
 const faqs = [
   {
     question: 'Should I use Perception instead of Alternative.me?',
-    answer: 'They serve different purposes. Alternative.me provides a quick, free Fear & Greed Index for casual reference. Perception offers deep media intelligence for professional research and trading. If you need to understand WHY sentiment is changing, add Perception.'
+    answer: 'They serve different purposes. Alternative.me provides a quick, free Fear & Greed Index for casual reference. Perception offers real-time updates, 650+ sources, and full transparency into where sentiment data comes from.'
   },
   {
     question: 'What makes Perception\'s Fear & Greed Index different?',
-    answer: 'Our index is powered by 650+ media sources, not just 5-6 indicators. We analyze actual news content and media coverage to understand narrative context. Plus, we update every 90 seconds vs daily.'
+    answer: 'Three things: transparency (you see every source), speed (90-second updates vs every 4 hours), and depth (650+ media sources vs 5-6 indicators). You understand what\'s driving sentiment, not just the number.'
   },
   {
     question: 'Is Perception free like Alternative.me?',
-    answer: 'Perception offers a 14-day free trial with full access. Our paid plans include features far beyond a simple index: narrative tracking, media monitoring, API access, and alerts. Alternative.me is free for basic index viewing.'
+    answer: 'Perception offers a 7-day free trial with full access. Our paid plans include real-time updates, 650+ sources, API access, and full source transparency. Alternative.me is free but updates every 4 hours.'
   },
   {
-    question: 'Can I use both Alternative.me and Perception?',
-    answer: 'Absolutely. Many users check Alternative.me for a quick daily reference and use Perception for deeper analysis. Perception shows you the media context behind sentiment changes that a simple index can\'t capture.'
-  },
-  {
-    question: 'Why are the sentiment scores sometimes different?',
-    answer: 'Different methodologies. Alternative.me uses volatility, volume, social media, dominance, and trends. Perception analyzes 650+ media sources with AI to understand narrative context. We\'re measuring related but distinct signals.'
+    question: 'Why does update speed matter?',
+    answer: 'Markets move fast. When major news breaks, sentiment shifts within minutes. A 4-hour update can miss critical movements. 90-second updates show you what\'s happening now.'
   },
 ];
 
@@ -88,9 +72,9 @@ export default function AlternativeMeAlternativePage() {
   return (
     <>
       <SEO
-        title="Alternative.me Alternative - Perception | Advanced Fear & Greed Analysis"
-        description="Go beyond the basic Fear & Greed Index. Perception offers 650+ media sources, 90-second updates, and AI narrative tracking. See what's really driving crypto sentiment."
-        keywords={['Alternative.me alternative', 'Fear and Greed Index alternative', 'crypto sentiment analysis', 'bitcoin fear greed', 'advanced sentiment tool']}
+        title="Alternative.me Alternative - Perception | Real-Time Fear & Greed"
+        description="Go beyond 4-hour updates. Perception offers 90-second updates, 650+ media sources, and full source transparency. See what's really driving crypto sentiment."
+        keywords={['Alternative.me alternative', 'Fear and Greed Index alternative', 'crypto sentiment analysis', 'bitcoin fear greed', 'real-time sentiment']}
         url="https://perception.to/alternatives/alternative-me-alternative"
       >
         <script type="application/ld+json">
@@ -99,52 +83,84 @@ export default function AlternativeMeAlternativePage() {
       </SEO>
 
       <div className="min-h-screen bg-[#F0EEE6]">
-        {/* Hero Section */}
-        <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-orange-500/20 text-orange-600 rounded-full px-4 py-2 text-sm font-medium mb-8">
-              <Plus className="w-4 h-4" />
-              Alternative.me Alternative
+        {/* Hero Section - Split Layout */}
+        <section className="pt-32 pb-24 px-6 sm:px-16 lg:px-32">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row items-center gap-16">
+              {/* Left - ASCII Art Visual */}
+              <div className="w-full lg:w-1/2 flex justify-center">
+                <div className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden">
+                  <AsciiDiagonalPetals />
+                  {/* Overlay with comparison info */}
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="bg-black/80 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-2xl font-bold text-white">650+</div>
+                          <div className="text-white/60 text-sm">vs 5-6 sources</div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-2xl font-bold text-orange-400">90s</div>
+                          <div className="text-white/60 text-sm">vs 4-hour updates</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right - Content */}
+              <div className="w-full lg:w-1/2">
+                <div className="inline-flex items-center gap-2 bg-black/5 rounded-full px-4 py-2 text-sm font-medium mb-6">
+                  <span className="w-2 h-2 bg-orange-400 rounded-full"></span>
+                  Alternative.me Alternative
+                </div>
+
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-black mb-6">
+                  Real-Time{' '}
+                  <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Transparency</em>
+                </h1>
+
+                <p className="text-lg sm:text-xl text-black/70 font-light leading-relaxed mb-8">
+                  4-hour updates miss the action. Get 90-second updates, 650+ media sources, and full transparency into where sentiment comes from.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button
+                    size="lg"
+                    className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-base font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
+                    asChild
+                  >
+                    <a href="https://app.perception.to/auth/sign-up">
+                      Start free trial
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </a>
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-white/80 text-black hover:bg-white rounded-2xl px-8 py-6 text-base font-semibold border-2 border-black/20 hover:border-black/30 transition-all duration-300"
+                    asChild
+                  >
+                    <Link to="/bitcoin-fear-greed-index">
+                      See our Fear & Greed
+                    </Link>
+                  </Button>
+                </div>
+              </div>
             </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6 tracking-tight">
-              Like the Fear & Greed Index?<br />
-              <span className="text-orange-500">Go Deeper</span>
-            </h1>
-
-            <p className="text-xl text-black/60 max-w-3xl mx-auto mb-10">
-              Alternative.me shows you a number. Perception shows you why.
-              650+ media sources, 90-second updates, and AI narrative tracking.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-black hover:bg-black/90 text-white px-8 py-6 text-lg rounded-full" asChild>
-                <a href="https://app.perception.to/auth/sign-up">
-                  Try Free for 14 Days
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" className="px-8 py-6 text-lg rounded-full border-black/20 hover:border-black/30" asChild>
-                <Link to="/bitcoin-fear-greed-index">
-                  See Our Fear & Greed Index
-                </Link>
-              </Button>
-            </div>
-
-            <p className="text-sm text-black/50 mt-4">
-              No credit card required. Get the full picture.
-            </p>
           </div>
         </section>
 
-        {/* Quick Comparison */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-white mb-4">
-              Basic Index vs. Full Intelligence
+        {/* Quick Comparison - Black */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32 bg-black">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-4xl font-medium text-white text-center mb-4">
+              Feature{' '}
+              <em className="text-white" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Comparison</em>
             </h2>
-            <p className="text-center text-white/60 mb-12 max-w-2xl mx-auto">
-              Alternative.me is a starting point. Perception is the complete picture.
+            <p className="text-center text-white/60 mb-16 max-w-2xl mx-auto">
+              4-hour updates vs real-time intelligence
             </p>
 
             <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
@@ -157,16 +173,19 @@ export default function AlternativeMeAlternativePage() {
               {comparisonPoints.map((point, index) => (
                 <div
                   key={point.label}
-                  className={`grid grid-cols-3 p-4 ${index % 2 === 0 ? 'bg-white/5' : 'bg-transparent'}`}
+                  className={`grid grid-cols-3 p-4 items-center ${index % 2 === 0 ? 'bg-white/5' : 'bg-transparent'}`}
                 >
                   <div className="font-medium text-white">
                     {point.label}
                   </div>
-                  <div className="text-center text-sm text-white/50">
-                    {point.alternative}
+                  <div className="text-center flex items-center justify-center gap-2">
+                    <X className="w-4 h-4 text-white/30" />
+                    <span className="text-sm text-white/50">
+                      {point.alternative}
+                    </span>
                   </div>
                   <div className="text-center flex items-center justify-center gap-2">
-                    <Check className="w-4 h-4 text-orange-400" />
+                    <Check className="w-4 h-4 text-emerald-400" />
                     <span className="text-sm text-orange-400 font-medium">
                       {point.perception}
                     </span>
@@ -177,62 +196,24 @@ export default function AlternativeMeAlternativePage() {
           </div>
         </section>
 
-        {/* What Each Offers */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0EEE6]">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-black mb-4">
-              Free Index vs. Full Intelligence
-            </h2>
-            <p className="text-center text-black/60 mb-12 max-w-2xl mx-auto">
-              Alternative.me is great for a quick check. Perception is for serious research.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {whatPerceptionAdds.map((section) => (
-                <div
-                  key={section.category}
-                  className={`rounded-2xl p-8 ${
-                    section.color === 'green'
-                      ? 'bg-orange-500/10 border-2 border-orange-500/30'
-                      : 'bg-white/50 border border-black/10'
-                  }`}
-                >
-                  <h3 className={`text-xl font-semibold mb-6 ${
-                    section.color === 'green' ? 'text-orange-600' : 'text-black'
-                  }`}>
-                    {section.category}
-                  </h3>
-                  <ul className="space-y-3">
-                    {section.items.map((item) => (
-                      <li key={item} className="flex items-center gap-3">
-                        <Check className={`w-5 h-5 ${section.color === 'green' ? 'text-orange-500' : 'text-black/40'}`} />
-                        <span className="text-black/70">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Unique Capabilities Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+        {/* Unique Capabilities - Black */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32 bg-black">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-white mb-4">
-              What Only Perception Offers
+            <h2 className="text-4xl font-medium text-white text-center mb-4">
+              Why Choose{' '}
+              <em className="text-white" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Perception</em>
             </h2>
             <p className="text-center text-white/60 mb-16 max-w-2xl mx-auto">
-              Go beyond a simple number
+              Real-time updates with full source transparency
             </p>
 
             <div className="grid md:grid-cols-2 gap-8">
               {uniqueCapabilities.map((capability) => (
                 <div
                   key={capability.title}
-                  className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300"
+                  className="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 hover:bg-white/10"
                 >
-                  <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6">
                     <capability.icon className="w-6 h-6 text-orange-400" />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-3">
@@ -247,58 +228,54 @@ export default function AlternativeMeAlternativePage() {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0EEE6]">
+        {/* Stats Section - Cream */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4 text-black">
-              The Complete Sentiment Picture
+            <h2 className="text-4xl font-medium text-black mb-4">
+              Real-Time{' '}
+              <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Intelligence</em>
             </h2>
-            <p className="text-black/60 mb-12 text-lg">
-              Understand what's really driving market sentiment
+            <p className="text-black/60 mb-16 text-lg">
+              Speed, depth, and transparency
             </p>
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <div>
-                <div className="text-4xl font-bold text-orange-500 mb-2">650+</div>
-                <div className="text-black/60">Media Sources</div>
+              <div className="bg-black rounded-2xl p-8">
+                <div className="text-5xl font-bold text-orange-400 mb-2">650+</div>
+                <div className="text-white/60">Media Sources</div>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-orange-500 mb-2">90s</div>
-                <div className="text-black/60">vs Daily Updates</div>
+              <div className="bg-black rounded-2xl p-8">
+                <div className="text-5xl font-bold text-orange-400 mb-2">90s</div>
+                <div className="text-white/60">Update Speed</div>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-orange-500 mb-2">AI</div>
-                <div className="text-black/60">Narrative Detection</div>
+              <div className="bg-black rounded-2xl p-8">
+                <div className="text-5xl font-bold text-orange-400 mb-2">100%</div>
+                <div className="text-white/60">Transparent</div>
               </div>
             </div>
-            <Button size="lg" className="bg-black hover:bg-black/90 text-white px-8 py-6 text-lg rounded-full" asChild>
-              <a href="https://app.perception.to/auth/sign-up">
-                Get the Full Picture
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
-            </Button>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+        {/* FAQ Section - Black */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32 bg-black">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-white mb-4">
-              Frequently Asked Questions
+            <h2 className="text-4xl font-medium text-white text-center mb-4">
+              Frequently Asked{' '}
+              <em className="text-white" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Questions</em>
             </h2>
-            <p className="text-center text-white/60 mb-12">
+            <p className="text-center text-white/60 mb-16">
               Common questions about Perception vs Alternative.me
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {faqs.map((faq) => (
                 <div
                   key={faq.question}
-                  className="bg-white/5 border border-white/10 rounded-xl p-6"
+                  className="bg-white/5 rounded-2xl p-6 border border-white/10"
                 >
                   <h3 className="text-lg font-semibold text-white mb-3">
                     {faq.question}
                   </h3>
-                  <p className="text-white/60">
+                  <p className="text-white/70">
                     {faq.answer}
                   </p>
                 </div>
@@ -307,27 +284,62 @@ export default function AlternativeMeAlternativePage() {
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#F0EEE6]">
+        {/* Final CTA - Cream */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-black">
-              Ready to Go Beyond the Index?
+            <h2 className="text-4xl sm:text-5xl font-medium text-black mb-6">
+              Real-time{' '}
+              <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>transparency</em>
             </h2>
-            <p className="text-xl mb-10 text-black/60">
-              Understand what's driving crypto sentiment. 14 days free.
+            <p className="text-xl text-black/60 mb-10">
+              650+ sources. 90-second updates. 7-day free trial.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-black text-white hover:bg-black/90 px-8 py-6 text-lg rounded-full" asChild>
+              <Button
+                size="lg"
+                className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-lg font-semibold shadow-2xl transition-all duration-300 hover:scale-105"
+                asChild
+              >
                 <a href="https://app.perception.to/auth/sign-up">
-                  Try Perception Free
+                  Start free trial
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="border-black/20 hover:border-black/30 px-8 py-6 text-lg rounded-full" asChild>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-white/80 text-black hover:bg-white rounded-2xl px-8 py-6 text-lg font-semibold border-2 border-black/20 hover:border-black/30 transition-all duration-300"
+                asChild
+              >
                 <Link to="/pricing">
                   View Pricing
                 </Link>
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Links - Cream */}
+        <section className="py-16 px-6 sm:px-16 lg:px-32">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-semibold text-black text-center mb-8">
+              More Comparisons
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <Link
+                to="/alternatives/lunarcrush-alternative"
+                className="bg-white rounded-2xl p-6 border border-black/10 hover:border-black/30 transition-all duration-300 hover:shadow-lg group"
+              >
+                <h3 className="font-semibold text-black mb-2 group-hover:text-orange-500 transition-colors">Perception vs LunarCrush</h3>
+                <p className="text-sm text-black/60">Social + media vs social only</p>
+              </Link>
+              <Link
+                to="/alternatives/santiment-alternative"
+                className="bg-white rounded-2xl p-6 border border-black/10 hover:border-black/30 transition-all duration-300 hover:shadow-lg group"
+              >
+                <h3 className="font-semibold text-black mb-2 group-hover:text-orange-500 transition-colors">Perception vs Santiment</h3>
+                <p className="text-sm text-black/60">Industry intelligence vs trading signals</p>
+              </Link>
             </div>
           </div>
         </section>

@@ -48,7 +48,7 @@ export function ValuePropSection({ title, subtitle, benefits }: ValuePropSection
                 asChild
               >
                 <a href="https://app.perception.to/auth/sign-up">
-                  Start here
+                  Start free trial
                 </a>
               </Button>
             </div>

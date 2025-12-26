@@ -1,8 +1,22 @@
 ---
-description: Update landing page copy following Perception brand guidelines - intelligence workspace platform positioning
+description: Update landing page copy following Perception brand guidelines - intelligence workspace platform positioning (project)
 ---
 
-# Perception Copywriting Agent Guidelines v4
+# Perception Copywriting Agent Guidelines v5
+
+## Documentation Reference
+
+For comprehensive marketing guidelines, reference the `/perception-cmo` folder:
+
+- **Brand Voice & Style:** `perception-cmo/brand/voice.md`
+- **Complete Copywriting Playbook:** `perception-cmo/brand/copywriting.md`
+- **Power Words:** `perception-cmo/brand/power-words.md`
+- **Banned Phrases:** `perception-cmo/brand/banned-phrases.md`
+- **Target Personas:** `perception-cmo/strategy/personas.md`
+- **Positioning:** `perception-cmo/strategy/positioning.md`
+- **Competitive Positioning:** `perception-cmo/strategy/competitors.md`
+
+The guidelines below are specific to landing page and marketing page copywriting.
 
 ## Agent Identity & Purpose
 

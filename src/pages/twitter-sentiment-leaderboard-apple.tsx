@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRightIcon, Lock, X, Check } from 'lucide-react';
-import { Logo } from '@/components/ui/logo';
+import { ArrowRight, X, Download } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { getTwitterProfileImageUrl, getTwitterHandleInitials } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import html2canvas from 'html2canvas';
 
 interface Tweet {
   content: string;
@@ -16,269 +18,186 @@ interface Tweet {
 interface TwitterAccount {
   name: string;
   handle: string;
-  sentimentScore: number; // 0-100 where 100 is most positive
+  sentimentScore: number;
   totalMentions: number;
   positivePercentage: number;
   negativePercentage: number;
   neutralPercentage: number;
   lastUpdate: string;
   tweets: Tweet[];
-  weightedScore: number; // Single weighted score for ranking
-  profileImageUrl?: string; // Twitter profile image URL
-  rankChange?: number; // Rank change from 24h ago (positive = moved up)
-}
-
-interface FeedData {
-  Content: string;
-  Title: string;
-  Sentiment: string;
-  Outlet: string;
-  Date: string;
-  URL: string;
-  Category?: string;
-}
-
-interface FeedResponse {
-  data: FeedData[];
-  pagination?: {
-    page: number;
-    pageSize: number;
-    total: number;
-  };
+  weightedScore: number;
+  profileImageUrl?: string;
+  rankChange?: number;
 }
 
 const API_BASE = 'https://btcpapifunction-45998414364.us-central1.run.app/btcpapifunction';
 const USER_ID = 'perception';
 
-function formatPrettyDate(dateStr: string): string {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  });
+// Share individual ranking
+function shareRanking(account: TwitterAccount, rank: number, filter: 'bulls' | 'bears') {
+  const emoji = filter === 'bulls' ? '🟢' : '🔴';
+  const label = filter === 'bulls' ? 'BULLISH' : 'BEARISH';
+  const url = 'https://perception.to/bitcoin-social-media-sentiment-leaderboard';
+
+  const text = `${emoji} @${account.handle} is #${rank} most ${label} on Bitcoin right now
+
+Sentiment Score: ${account.sentimentScore.toFixed(0)}/100
+Based on ${account.totalMentions} recent posts
+
+See the full leaderboard:`;
+
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+  window.open(twitterUrl, '_blank', 'width=550,height=420');
 }
 
-function AppleCard({ account, rank, expanded, onToggle, filter }: {
+// Top 3 Podium Card
+function PodiumCard({ account, rank, filter, forDownload = false, avatarDataUrl }: {
   account: TwitterAccount;
   rank: number;
-  expanded: boolean;
-  onToggle: () => void;
-  filter: 'positive' | 'negative';
+  filter: 'bulls' | 'bears';
+  forDownload?: boolean;
+  avatarDataUrl?: string;
 }) {
-  const isTopThree = rank <= 3;
-  const isTopRank = rank === 1;
+  const isBulls = filter === 'bulls';
+  const sizes = {
+    1: { card: 'order-2', height: forDownload ? 'h-56' : 'h-48 sm:h-64', avatar: forDownload ? 'w-16 h-16' : 'w-14 h-14 sm:w-20 sm:h-20', rank: forDownload ? 'text-5xl' : 'text-4xl sm:text-6xl', name: forDownload ? 'text-base' : 'text-sm sm:text-lg' },
+    2: { card: 'order-1', height: forDownload ? 'h-48' : 'h-40 sm:h-52', avatar: forDownload ? 'w-14 h-14' : 'w-12 h-12 sm:w-16 sm:h-16', rank: forDownload ? 'text-4xl' : 'text-3xl sm:text-5xl', name: forDownload ? 'text-sm' : 'text-xs sm:text-base' },
+    3: { card: 'order-3', height: forDownload ? 'h-40' : 'h-36 sm:h-44', avatar: forDownload ? 'w-12 h-12' : 'w-10 h-10 sm:w-14 sm:h-14', rank: forDownload ? 'text-3xl' : 'text-2xl sm:text-4xl', name: forDownload ? 'text-sm' : 'text-xs sm:text-base' },
+  };
+  const size = sizes[rank as keyof typeof sizes];
+
+  const cardContent = (
+    <div
+      className={`
+        relative rounded-xl sm:rounded-2xl p-4 sm:p-6 pb-6 flex flex-col items-center justify-end cursor-pointer
+        transition-all duration-300 ${forDownload ? '' : 'hover:scale-105'}
+        ${size.height}
+        ${isBulls ? 'bg-emerald-500' : 'bg-red-500'}
+      `}
+      onClick={forDownload ? undefined : () => shareRanking(account, rank, filter)}
+    >
+      {/* Rank Badge */}
+      <div className={`absolute top-3 left-1/2 -translate-x-1/2 ${size.rank} font-bold text-white/20`}>
+        {rank}
+      </div>
+
+      {/* Avatar */}
+      {forDownload ? (
+        avatarDataUrl ? (
+          <img
+            src={avatarDataUrl}
+            alt={account.handle}
+            className={`${size.avatar} rounded-full border-2 border-white/30 mb-3 object-cover`}
+          />
+        ) : (
+          <div className={`${size.avatar} rounded-full bg-white/20 border-2 border-white/30 flex items-center justify-center mb-3`}>
+            <span className="text-white font-bold text-lg">
+              {getTwitterHandleInitials(account.handle)}
+            </span>
+          </div>
+        )
+      ) : (
+        <Avatar className={`${size.avatar} border-2 sm:border-4 border-white/20 mb-2 sm:mb-3`}>
+          <AvatarImage
+            src={getTwitterProfileImageUrl(account.handle, 'bigger')}
+            alt={account.handle}
+          />
+          <AvatarFallback className="bg-white/20 text-white font-bold text-xs sm:text-base">
+            {getTwitterHandleInitials(account.handle)}
+          </AvatarFallback>
+        </Avatar>
+      )}
+
+      {/* Handle */}
+      <p className={`${size.name} font-bold text-white text-center w-full px-2`} style={{ wordBreak: 'break-all' }}>
+        @{account.handle}
+      </p>
+
+      {/* Score + Posts */}
+      <div className={`mt-2 flex items-center gap-2 ${forDownload ? 'text-sm' : 'text-xs sm:text-sm'}`}>
+        <span className="text-white font-semibold">{account.sentimentScore.toFixed(0)}/100</span>
+        <span className="text-white/60">{account.totalMentions} posts</span>
+      </div>
+
+      {/* Share hint - hidden on mobile and in download */}
+      {!forDownload && (
+        <div className="absolute bottom-2 right-2 text-white/40 text-xs hidden sm:block">
+          tap to share
+        </div>
+      )}
+    </div>
+  );
+
+  if (forDownload) {
+    return <div className={`flex-1 min-w-0 ${size.card}`}>{cardContent}</div>;
+  }
 
   return (
     <motion.div
-      layout
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.5,
-        delay: rank * 0.05,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }}
-      className="group relative mb-2"
+      transition={{ delay: rank * 0.1, duration: 0.5 }}
+      className={`flex-1 min-w-0 ${size.card}`}
     >
-      <div
-        className={`
-          relative rounded-lg overflow-hidden transition-all duration-200 cursor-pointer
-          ${isTopThree && filter === 'positive'
-            ? 'bg-gradient-to-br from-emerald-900 to-gray-800 border border-emerald-800/50 shadow-lg hover:shadow-xl'
-            : isTopThree && filter === 'negative'
-            ? 'bg-gradient-to-br from-red-900 to-gray-800 border border-red-800/50 shadow-lg hover:shadow-xl'
-            : 'bg-white border border-gray-200 hover:shadow-sm'}
-        `}
-        onClick={onToggle}
-      >
-        <div className="relative p-2.5">
-          {/* Top Section - Rank and Profile */}
-          <div className="flex items-center gap-2.5">
-            {/* Rank Number with Change Indicator */}
-            <div className="flex-shrink-0 w-12 flex items-center gap-1">
-              <div className={`text-base font-bold ${
-                isTopThree ? 'text-white' : 'text-gray-700'
-              }`}>{rank}</div>
-              {account.rankChange !== undefined && account.rankChange !== 0 && (
-                <div className={`text-[10px] font-bold ${
-                  account.rankChange > 0
-                    ? (isTopThree ? 'text-emerald-300' : 'text-emerald-600')
-                    : (isTopThree ? 'text-red-300' : 'text-red-600')
-                }`}>
-                  {account.rankChange > 0 ? '↑' : '↓'}{Math.abs(account.rankChange)}
-                </div>
-              )}
-            </div>
-
-            {/* Profile Picture */}
-            <Avatar className="flex-shrink-0 w-9 h-9">
-              <AvatarImage
-                src={getTwitterProfileImageUrl(account.handle, 'bigger')}
-                alt={`${account.name} profile`}
-                className="object-cover"
-                loading="lazy"
-              />
-              <AvatarFallback className="bg-gray-200 text-gray-700 text-sm font-medium">
-                {getTwitterHandleInitials(account.handle)}
-              </AvatarFallback>
-            </Avatar>
-
-            {/* Account Info */}
-            <div className="flex-1 min-w-0 flex items-center">
-              <p className={`text-sm font-semibold truncate ${
-                isTopThree ? 'text-white' : 'text-gray-900'
-              }`}>@{account.handle}</p>
-            </div>
-
-            {/* Sentiment Score */}
-            <div className="flex-shrink-0 text-right">
-              <div className={`text-xl font-bold ${
-                isTopThree ? 'text-white' : 'text-gray-900'
-              }`}>
-                {account.sentimentScore.toFixed(0)}
-                <span className={`text-xs font-normal ${
-                  isTopThree ? 'text-white/60' : 'text-gray-500'
-                }`}>/100</span>
-              </div>
-            </div>
-
-            {/* Expand Icon */}
-            <div className="flex-shrink-0">
-              <ChevronRightIcon className={`w-4 h-4 transition-transform duration-200 ${
-                isTopThree ? 'text-white/40' : 'text-gray-400'
-              } ${expanded ? 'rotate-90' : ''}`} />
-            </div>
-          </div>
-
-          {/* Stats Row */}
-          <div className={`grid grid-cols-3 gap-2 mt-2 pt-2 ${
-            isTopThree ? 'border-t border-white/10' : 'border-t border-gray-100'
-          }`}>
-            <div className="text-center">
-              <p className={`text-[10px] uppercase tracking-wide ${
-                isTopThree ? 'text-white/60' : 'text-gray-500'
-              }`}>Positive</p>
-              <p className={`text-xs font-semibold ${
-                isTopThree ? 'text-white' : 'text-gray-900'
-              }`}>{account.positivePercentage.toFixed(0)}%</p>
-            </div>
-            <div className="text-center">
-              <p className={`text-[10px] uppercase tracking-wide ${
-                isTopThree ? 'text-white/60' : 'text-gray-500'
-              }`}>Negative</p>
-              <p className={`text-xs font-semibold ${
-                isTopThree ? 'text-white' : 'text-gray-900'
-              }`}>{account.negativePercentage.toFixed(0)}%</p>
-            </div>
-            <div className="text-center">
-              <p className={`text-[10px] uppercase tracking-wide ${
-                isTopThree ? 'text-white/60' : 'text-gray-500'
-              }`}>Posts</p>
-              <p className={`text-xs font-semibold ${
-                isTopThree ? 'text-white' : 'text-gray-900'
-              }`}>{account.totalMentions}</p>
-            </div>
-          </div>
-
-          {/* Expanded Tweet Section */}
-          <AnimatePresence>
-            {expanded && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className={`border-t mt-8 pt-8 ${isTopThree ? 'border-white/10' : 'border-gray-100'}`}
-              >
-                <div className="space-y-4">
-                  <p className={`text-sm font-semibold uppercase tracking-wider mb-6 ${
-                    isTopThree ? 'text-white/60' : 'text-gray-500'
-                  }`}>
-                    Recent Posts
-                  </p>
-                  {account.tweets.slice(0, 3).map((tweet, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className={`p-5 rounded-2xl ${
-                        isTopThree ? 'bg-white/5 border border-white/10' : 'bg-gray-50'
-                      }`}
-                    >
-                      <div className="flex items-start justify-between mb-3">
-                        <span className={`
-                          text-xs font-semibold px-3 py-1 rounded-lg uppercase tracking-wider
-                          ${tweet.sentiment === 'Positive'
-                            ? (isTopThree ? 'bg-white/20 text-white' : 'bg-gray-700 text-white')
-                            : tweet.sentiment === 'Negative'
-                            ? (isTopThree ? 'bg-white/10 text-white/80' : 'bg-gray-500 text-white')
-                            : (isTopThree ? 'bg-white/5 text-white/60' : 'bg-gray-200 text-gray-700')}
-                        `}>
-                          {tweet.sentiment}
-                        </span>
-                        <span className={`text-xs ${isTopThree ? 'text-white/40' : 'text-gray-500'}`}>
-                          {formatPrettyDate(tweet.date)}
-                        </span>
-                      </div>
-                      <p className={`text-sm leading-relaxed line-clamp-2 ${
-                        isTopThree ? 'text-white/80' : 'text-gray-700'
-                      }`}>
-                        {tweet.content}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
+      {cardContent}
     </motion.div>
   );
 }
 
-function SkeletonCard({ rank, filter }: { rank: number; filter?: 'positive' | 'negative' }) {
+// Leaderboard Row
+function LeaderboardRow({ account, rank, filter }: {
+  account: TwitterAccount;
+  rank: number;
+  filter: 'bulls' | 'bears';
+}) {
+  const isBulls = filter === 'bulls';
+
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3, delay: rank * 0.05 }}
-      className="mb-2 rounded-lg border bg-white border-gray-200 p-2.5"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: rank * 0.03, duration: 0.3 }}
+      className="group"
     >
-      <div className="animate-pulse">
-        {/* Top row */}
-        <div className="flex items-center gap-2.5">
-          {/* Rank placeholder */}
-          <div className="w-7 h-5 bg-gray-200 rounded" />
-
-          {/* Avatar */}
-          <div className="w-9 h-9 bg-gray-200 rounded-full flex-shrink-0" />
-
-          {/* Name/Handle */}
-          <div className="flex-1 min-w-0">
-            <div className="h-4 w-32 bg-gray-200 rounded mb-1" />
-            <div className="h-3 w-24 bg-gray-200 rounded" />
-          </div>
-
-          {/* Score */}
-          <div className="flex-shrink-0 text-right">
-            <div className="h-6 w-12 bg-gray-200 rounded" />
-          </div>
-
-          {/* Arrow */}
-          <div className="w-4 h-4 bg-gray-200 rounded flex-shrink-0" />
+      <div
+        className="flex items-center gap-2 sm:gap-4 p-3 sm:p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-200 cursor-pointer"
+        onClick={() => shareRanking(account, rank, filter)}
+      >
+        {/* Rank */}
+        <div className="w-6 sm:w-8 text-center flex-shrink-0">
+          <span className="text-base sm:text-lg font-bold text-white/60">{rank}</span>
         </div>
 
-        {/* Stats row */}
-        <div className="grid grid-cols-3 gap-2 mt-2 pt-2 border-t border-gray-100">
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className="text-center">
-              <div className="h-2.5 w-12 bg-gray-200 rounded mx-auto mb-1" />
-              <div className="h-3 w-8 bg-gray-200 rounded mx-auto" />
-            </div>
-          ))}
+        {/* Avatar */}
+        <Avatar className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
+          <AvatarImage
+            src={getTwitterProfileImageUrl(account.handle, 'bigger')}
+            alt={account.handle}
+          />
+          <AvatarFallback className="bg-white/10 text-white text-xs sm:text-sm">
+            {getTwitterHandleInitials(account.handle)}
+          </AvatarFallback>
+        </Avatar>
+
+        {/* Info */}
+        <div className="flex-1 min-w-0">
+          <p className="text-white font-semibold truncate text-sm sm:text-base">@{account.handle}</p>
+          <p className="text-white/50 text-xs sm:text-sm">{account.totalMentions} posts</p>
+        </div>
+
+        {/* Score */}
+        <div className="text-right flex-shrink-0">
+          <div className={`text-lg sm:text-xl font-bold ${isBulls ? 'text-emerald-400' : 'text-red-400'}`}>
+            {account.sentimentScore.toFixed(0)}
+          </div>
+          <div className="text-white/40 text-xs">/100</div>
+        </div>
+
+        {/* Share indicator - hidden on mobile */}
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block">
+          <svg className="w-5 h-5 text-white/40" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
         </div>
       </div>
     </motion.div>
@@ -289,55 +208,49 @@ function SignupPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 relative">
+    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+      <div className="bg-[#F0EEE6] rounded-2xl p-8 max-w-md w-full relative">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+          className="absolute top-4 right-4 text-black/40 hover:text-black/60"
         >
           <X className="w-5 h-5" />
         </button>
 
         <div className="text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center border border-gray-200">
-              <Logo />
-            </div>
-            <span className="text-xl font-semibold text-gray-900">Perception</span>
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-2">
-            Start Free Trial → See Everything
+          <h3 className="text-2xl font-bold text-black mb-2">
+            Unlock Full History
           </h3>
 
-          <p className="text-gray-600 mb-6">
-            Access extended historical data <em>way beyond 7 days & 30 days</em> with a Perception account
+          <p className="text-black/60 mb-6">
+            Access 7-day and 30-day sentiment data with a Perception account
           </p>
 
-          <div className="space-y-3 mb-6">
-            <div className="flex items-center text-sm text-gray-600">
-              <div className="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
-              Extended sentiment analysis history
+          <div className="space-y-3 mb-6 text-left">
+            <div className="flex items-center text-sm text-black/70">
+              <div className="w-2 h-2 bg-black rounded-full mr-3"></div>
+              Extended historical analysis
             </div>
-            <div className="flex items-center text-sm text-gray-600">
-              <div className="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
-              Advanced filtering and insights
-            </div>
-            <div className="flex items-center text-sm text-gray-600">
-              <div className="w-2 h-2 bg-gray-800 rounded-full mr-3"></div>
+            <div className="flex items-center text-sm text-black/70">
+              <div className="w-2 h-2 bg-black rounded-full mr-3"></div>
               API access for developers
+            </div>
+            <div className="flex items-center text-sm text-black/70">
+              <div className="w-2 h-2 bg-black rounded-full mr-3"></div>
+              650+ media sources
             </div>
           </div>
 
           <div className="space-y-3">
-            <button
-              className="w-full bg-gradient-to-r from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 text-white py-4 px-6 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            <Button
+              className="w-full bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-base font-semibold"
               onClick={() => window.open('https://app.perception.to/auth/sign-up', '_blank')}
             >
-              Sign Up for Perception
-            </button>
+              Start Free Trial
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
             <button
-              className="w-full border-2 border-gray-200 text-gray-700 py-4 px-6 rounded-full font-semibold hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 hover:scale-105"
+              className="w-full text-black/60 hover:text-black py-2 text-sm"
               onClick={onClose}
             >
               Continue with 24 hours
@@ -353,45 +266,80 @@ export default function AppleTwitterSentimentLeaderboard() {
   const [loading, setLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
-  const [filter, setFilter] = useState<'positive' | 'negative'>('positive');
-  const [timePeriod, setTimePeriod] = useState<'24h' | 'weekly' | 'monthly'>('24h');
-  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [filter, setFilter] = useState<'bulls' | 'bears'>('bulls');
   const [showSignupPopup, setShowSignupPopup] = useState(false);
   const [positiveAccounts, setPositiveAccounts] = useState<TwitterAccount[]>([]);
   const [negativeAccounts, setNegativeAccounts] = useState<TwitterAccount[]>([]);
-  const [copied, setCopied] = useState(false);
+  const podiumRef = useRef<HTMLDivElement>(null);
 
-  // Reset expanded card when filter changes
+  const [avatarDataUrls, setAvatarDataUrls] = useState<Record<string, string>>({});
+
+  // Pre-load avatar images as data URLs for download
   useEffect(() => {
-    setExpandedCard(null);
-  }, [filter]);
+    const loadAvatars = async () => {
+      const accounts = filter === 'bulls' ? positiveAccounts : negativeAccounts;
+      const top3Accounts = accounts.slice(0, 3);
+
+      const newDataUrls: Record<string, string> = {};
+
+      for (const account of top3Accounts) {
+        try {
+          const imageUrl = getTwitterProfileImageUrl(account.handle, 'bigger');
+          // Use a CORS proxy to fetch the image
+          const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(imageUrl)}`;
+          const response = await fetch(proxyUrl);
+          const blob = await response.blob();
+          const dataUrl = await new Promise<string>((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result as string);
+            reader.readAsDataURL(blob);
+          });
+          newDataUrls[account.handle] = dataUrl;
+        } catch (err) {
+          console.log(`Failed to load avatar for ${account.handle}`);
+        }
+      }
+
+      setAvatarDataUrls(newDataUrls);
+    };
+
+    if (positiveAccounts.length > 0 || negativeAccounts.length > 0) {
+      loadAvatars();
+    }
+  }, [filter, positiveAccounts, negativeAccounts]);
+
+  const downloadPodiumImage = async () => {
+    if (!podiumRef.current) return;
+
+    try {
+      const canvas = await html2canvas(podiumRef.current, {
+        backgroundColor: '#000000',
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+      });
+
+      const link = document.createElement('a');
+      link.download = `bitcoin-${filter}-leaderboard-${new Date().toISOString().slice(0, 10)}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    } catch (err) {
+      console.error('Failed to generate image:', err);
+    }
+  };
 
   useEffect(() => {
     async function fetchSentimentData() {
       try {
         setLoading(true);
-        setLoadingProgress('Fetching data...');
+        setLoadingProgress('Loading leaderboard...');
 
         const endDate = new Date().toISOString().slice(0, 10);
-        let daysBack: number;
+        const startDate = new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 
-        switch (timePeriod) {
-          case '24h': daysBack = 1; break;
-          case 'weekly': daysBack = 7; break;
-          case 'monthly': daysBack = 30; break;
-          default: daysBack = 7;
-        }
-
-        const startDate = new Date(Date.now() - daysBack * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
-
-        // Comprehensive fetching strategy to get ALL available data
-        const maxPagesToFetch = timePeriod === '24h' ? 50 : timePeriod === 'weekly' ? 70 : 100; // Fetch many more pages
-
-        // Fetch first batch in parallel for faster initial load
-        const initialBatchSize = Math.min(20, maxPagesToFetch); // Fetch many more pages initially
-        setLoadingProgress(`Fetching ${initialBatchSize} pages in parallel...`);
-
+        const initialBatchSize = 20;
         const fetchPromises = [];
+
         for (let page = 1; page <= initialBatchSize; page++) {
           const params = new URLSearchParams({
             userId: USER_ID,
@@ -403,10 +351,7 @@ export default function AppleTwitterSentimentLeaderboard() {
 
           fetchPromises.push(
             fetch(`${API_BASE}/feed?${params}`)
-              .then(response => {
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                return response.json();
-              })
+              .then(response => response.json())
               .then(data => ({ page, data }))
           );
         }
@@ -414,7 +359,6 @@ export default function AppleTwitterSentimentLeaderboard() {
         const results = await Promise.all(fetchPromises);
         let allData: any[] = [];
 
-        // Process results in order
         results
           .sort((a, b) => a.page - b.page)
           .forEach(result => {
@@ -422,11 +366,6 @@ export default function AppleTwitterSentimentLeaderboard() {
               allData = [...allData, ...result.data.data];
             }
           });
-
-        setLoadingProgress(`Processing ${allData.length} entries...`);
-
-        console.log(`Fetched ${allData.length} entries from ${initialBatchSize} pages (${timePeriod} period)`);
-        const data = allData;
 
         const twitterData = new Map<string, {
           totalMentions: number;
@@ -439,14 +378,14 @@ export default function AppleTwitterSentimentLeaderboard() {
           tweets: Tweet[];
         }>();
 
-        data.forEach(item => {
+        allData.forEach(item => {
           if (item.Outlet === 'X' || item.Outlet === 'Twitter') {
             let handle = '';
             let name = '';
 
             if (item.URL && (item.URL.includes('twitter.com/') || item.URL.includes('x.com/'))) {
               const urlParts = item.URL.split('/');
-              const handleIndex = urlParts.findIndex(part => part === 'twitter.com' || part === 'x.com') + 1;
+              const handleIndex = urlParts.findIndex((part: string) => part === 'twitter.com' || part === 'x.com') + 1;
               if (urlParts[handleIndex] && !urlParts[handleIndex].includes('status')) {
                 handle = urlParts[handleIndex].split('?')[0];
                 name = handle;
@@ -499,151 +438,49 @@ export default function AppleTwitterSentimentLeaderboard() {
           }
         });
 
-        // Calculate minimum posts based on time period - very low threshold to get more accounts
-        const minPosts = timePeriod === '24h' ? 1 : 2; // Just 1 post minimum for 24h to maximize accounts
-
-        // Calculate weighted score based on unified sentiment score (0-100) and volume
-        const calculateWeightedScore = (sentimentScore: number, totalPosts: number, positivePosts: number, negativePosts: number) => {
-          // Volume weight: logarithmic scale
-          const volumeWeight = Math.log10(totalPosts + 1) / Math.log10(20); // Normalized to ~1 for 20 posts
-
-          // For very negative scores (0-30), prioritize volume of negative posts heavily
-          if (sentimentScore <= 30) {
-            const negativeImpact = Math.log10(negativePosts + 1) / Math.log10(50);
-            // High negative volume should rank higher in "most negative"
-            return (1 - sentimentScore / 100) * 0.4 + negativeImpact * 0.6;
-          }
-
-          // For very positive scores (70-100), balance sentiment and total volume
-          else if (sentimentScore >= 70) {
-            return (sentimentScore / 100) * 0.6 + volumeWeight * 0.4;
-          }
-
-          // For neutral scores (30-70), use total volume primarily
-          else {
-            return volumeWeight * 0.8 + (sentimentScore / 100) * 0.2;
-          }
-        };
-
-        // First, create ALL accounts data without filtering by sentiment
         const allAccountsRaw: TwitterAccount[] = Array.from(twitterData.entries())
-          .filter(([_, data]) => data.totalMentions >= minPosts) // Minimum post threshold
+          .filter(([_, data]) => data.totalMentions >= 1)
           .map(([key, data]) => {
             const positivePercentage = (data.positiveMentions / data.totalMentions) * 100;
             const neutralPercentage = (data.neutralMentions / data.totalMentions) * 100;
             const negativePercentage = (data.negativeMentions / data.totalMentions) * 100;
-
-            // Calculate unified sentiment score: 0 = most negative, 100 = most positive
-            // Formula: (positive% - negative% + 100) / 2
             const unifiedSentimentScore = Number(((positivePercentage - negativePercentage + 100) / 2).toFixed(2));
-
-            const weightedScore = calculateWeightedScore(
-              unifiedSentimentScore,
-              data.totalMentions,
-              data.positiveMentions,
-              data.negativeMentions
-            );
 
             return {
               name: data.realName || data.realHandle,
               handle: data.realHandle,
-              sentimentScore: unifiedSentimentScore, // 0-100 unified score
+              sentimentScore: unifiedSentimentScore,
               totalMentions: data.totalMentions,
               positivePercentage,
               neutralPercentage,
               negativePercentage,
               lastUpdate: data.lastUpdate,
               tweets: data.tweets.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-              weightedScore: weightedScore,
+              weightedScore: 0,
               profileImageUrl: getTwitterProfileImageUrl(data.realHandle, 'bigger')
             };
           });
 
-        // Filter and sort accounts by sentiment - NO OVERLAP
-        // Positive: Only accounts with sentiment > 50 (actually bullish)
         const sortedByPositive = [...allAccountsRaw]
           .filter(account => account.sentimentScore > 50)
           .sort((a, b) => {
             const aVolumeTier = Math.floor(a.totalMentions / 10);
             const bVolumeTier = Math.floor(b.totalMentions / 10);
             if (aVolumeTier !== bVolumeTier) return bVolumeTier - aVolumeTier;
-            return b.sentimentScore - a.sentimentScore; // Higher score first
+            return b.sentimentScore - a.sentimentScore;
           });
 
-        // Negative: Only accounts with sentiment < 50 (actually bearish)
         const sortedByNegative = [...allAccountsRaw]
           .filter(account => account.sentimentScore < 50)
           .sort((a, b) => {
             const aVolumeTier = Math.floor(a.totalMentions / 10);
             const bVolumeTier = Math.floor(b.totalMentions / 10);
             if (aVolumeTier !== bVolumeTier) return bVolumeTier - aVolumeTier;
-            return a.sentimentScore - b.sentimentScore; // Lower score first
+            return a.sentimentScore - b.sentimentScore;
           });
 
-        console.log('Total accounts fetched:', allAccountsRaw.length);
-        console.log('Positive accounts (score > 50):', sortedByPositive.length);
-        console.log('Negative accounts (score < 50):', sortedByNegative.length);
-        console.log('Top 5 positive:', sortedByPositive.slice(0, 5).map(a => ({ handle: a.handle, score: a.sentimentScore })));
-        console.log('Top 5 negative:', sortedByNegative.slice(0, 5).map(a => ({ handle: a.handle, score: a.sentimentScore })));
-
-        // Calculate rank changes for both positive and negative lists
-        const now = Date.now();
-
-        // Helper function to add rank changes to a list
-        const addRankChanges = (accountsList: TwitterAccount[], filterType: 'positive' | 'negative') => {
-          const storageKey = `leaderboard_${filterType}_${timePeriod}`;
-          const previousDataStr = localStorage.getItem(storageKey);
-
-          let accountsWithRankChange = accountsList;
-
-          if (previousDataStr) {
-            try {
-              const previousData = JSON.parse(previousDataStr);
-              const previousTimestamp = previousData.timestamp || 0;
-              const hoursSinceLastUpdate = (now - previousTimestamp) / (1000 * 60 * 60);
-
-              // Only use previous data if it's between 20-28 hours old (roughly 24h with some buffer)
-              if (hoursSinceLastUpdate >= 20 && hoursSinceLastUpdate <= 28) {
-                const previousRankings = previousData.rankings || {};
-
-                accountsWithRankChange = accountsList.map((account, currentIndex) => {
-                  const currentRank = currentIndex + 1;
-                  const previousRank = previousRankings[account.handle];
-
-                  if (previousRank) {
-                    // Positive rankChange means moved UP (lower rank number = better)
-                    const rankChange = previousRank - currentRank;
-                    return { ...account, rankChange };
-                  }
-
-                  return account; // New entry, no rank change
-                });
-              }
-            } catch (e) {
-              console.error('Error parsing previous rankings:', e);
-            }
-          }
-
-          // Store current rankings for next comparison (24h from now)
-          const currentRankings: Record<string, number> = {};
-          accountsList.forEach((account, index) => {
-            currentRankings[account.handle] = index + 1;
-          });
-
-          localStorage.setItem(storageKey, JSON.stringify({
-            timestamp: now,
-            rankings: currentRankings
-          }));
-
-          return accountsWithRankChange;
-        };
-
-        // Add rank changes to both lists
-        const positiveWithRankChanges = addRankChanges(sortedByPositive, 'positive');
-        const negativeWithRankChanges = addRankChanges(sortedByNegative, 'negative');
-
-        setPositiveAccounts(positiveWithRankChanges);
-        setNegativeAccounts(negativeWithRankChanges);
+        setPositiveAccounts(sortedByPositive);
+        setNegativeAccounts(sortedByNegative);
         setError(null);
       } catch (err) {
         console.error('Error fetching sentiment data:', err);
@@ -655,221 +492,272 @@ export default function AppleTwitterSentimentLeaderboard() {
     }
 
     fetchSentimentData();
-  }, [timePeriod]); // Only refetch when time period changes, not filter
+  }, []);
 
-  // Get the current accounts based on filter and show top 20
-  const allAccountsData = filter === 'positive' ? positiveAccounts : negativeAccounts;
-  const displayedAccounts = allAccountsData.slice(0, 20);
-
-  // Share functionality - Posts to X (Twitter)
-  const handleShare = () => {
-    const url = 'https://perception.to/bitcoin-social-media-sentiment-leaderboard';
-    const text = `Bitcoin Influence Index: Real-time sentiment ranking of Bitcoin's most influential voices on X 📊\n\nDiscover who's shaping the Bitcoin conversation right now:`;
-
-    // Create Twitter intent URL
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-
-    // Open in new window
-    window.open(twitterUrl, '_blank', 'width=550,height=420');
-
-    // Show feedback
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const accounts = filter === 'bulls' ? positiveAccounts : negativeAccounts;
+  const top3 = accounts.slice(0, 3);
+  const rest = accounts.slice(3, 20);
 
   return (
     <>
       <Helmet>
-        <title>Sentiment Leaderboard | Bitcoin Perception</title>
-        <meta name="description" content="Real-time Bitcoin Twitter sentiment analysis with an elegant, Apple-inspired interface." />
+        <title>Bitcoin Bulls vs Bears - Who's Bullish? Who's Bearish? | Perception</title>
+        <meta name="description" content="Real-time leaderboard of who's most bullish and bearish on Bitcoin. See which influencers are pumping or dumping sentiment right now." />
+        <meta property="og:title" content="Bitcoin Bulls vs Bears Leaderboard" />
+        <meta property="og:description" content="Who's the most bullish on Bitcoin right now? Who's the most bearish? Find out in real-time." />
+        <meta property="og:image" content="https://perception-og-image.fernandonikolic.workers.dev" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://perception-og-image.fernandonikolic.workers.dev" />
+        <meta name="twitter:title" content="Bitcoin Bulls vs Bears Leaderboard" />
+        <meta name="twitter:description" content="Who's the most bullish on Bitcoin right now? Who's the most bearish? Find out in real-time." />
       </Helmet>
 
-      <div className="min-h-screen bg-white pt-16">
-        {/* Header */}
-        <div className="border-b border-gray-200 mt-8">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Who's bullish? Who's bearish?</h1>
-            <p className="text-sm text-gray-600 mb-4">Real-time sentiment ranking of Bitcoin's most influential voices on X</p>
-          </div>
-        </div>
+      <div className="min-h-screen bg-black">
+        {/* Hero Section */}
+        <section className="pt-32 pb-16 px-6 sm:px-16 lg:px-32 bg-[#F0EEE6]">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-black/5 rounded-full px-4 py-2 text-sm font-medium mb-6">
+              <span className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></span>
+              Live • Last 24 Hours
+            </div>
 
-        {/* Filter Pills */}
-        <div className="sticky top-16 z-40 bg-white/90 backdrop-blur-xl border-b border-gray-200">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3">
-            <div className="flex items-center justify-center gap-8">
-              {/* Share Button */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-black mb-6">
+              Who's{' '}
+              <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>bullish</em>?{' '}
+              Who's{' '}
+              <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>bearish</em>?
+            </h1>
+
+            <p className="text-lg sm:text-xl text-black/70 font-light leading-relaxed mb-8 max-w-2xl mx-auto">
+              Real-time sentiment ranking of Bitcoin's most influential voices.
+            </p>
+
+            {/* Filter Toggle */}
+            <div className="inline-flex items-center bg-black rounded-full p-1.5">
               <button
-                onClick={handleShare}
+                onClick={() => setFilter('bulls')}
                 className={`
-                  inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-bold
-                  transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl
-                  ${copied
-                    ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white'
-                    : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700'}
+                  px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold transition-all duration-300
+                  ${filter === 'bulls'
+                    ? 'bg-emerald-500 text-white'
+                    : 'text-white/60 hover:text-white'}
                 `}
               >
-                {copied ? (
-                  <>
-                    <Check className="w-4 h-4" />
-                    Shared!
-                  </>
-                ) : (
-                  <>
-                    <span>Post on</span>
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
-                  </>
-                )}
+                BULLS
               </button>
+              <button
+                onClick={() => setFilter('bears')}
+                className={`
+                  px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold transition-all duration-300
+                  ${filter === 'bears'
+                    ? 'bg-red-500 text-white'
+                    : 'text-white/60 hover:text-white'}
+                `}
+              >
+                BEARS
+              </button>
+            </div>
 
-              {/* Sentiment Toggle */}
-              <div className="relative bg-gradient-to-r from-gray-100 to-gray-50 rounded-full p-1.5 shadow-inner">
-                <div className={`
-                  absolute top-1.5 h-[calc(100%-12px)] rounded-full shadow-lg transition-all duration-300
-                  ${filter === 'positive'
-                    ? 'left-1.5 w-28 bg-gradient-to-r from-emerald-500 to-emerald-400'
-                    : 'left-[118px] w-28 bg-gradient-to-r from-red-500 to-red-400'}
-                `} />
-                <button
-                  onClick={() => setFilter('positive')}
-                  className={`
-                    relative px-7 py-2.5 rounded-full text-sm font-bold transition-all duration-300
-                    ${filter === 'positive' ? 'text-white' : 'text-gray-600 hover:text-gray-900'}
-                  `}
-                >
-                  Positive
-                </button>
-                <button
-                  onClick={() => setFilter('negative')}
-                  className={`
-                    relative px-7 py-2.5 rounded-full text-sm font-bold transition-all duration-300
-                    ${filter === 'negative' ? 'text-white' : 'text-gray-600 hover:text-gray-900'}
-                  `}
-                >
-                  Negative
-                </button>
-              </div>
-
-              {/* Time Period Pills */}
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => setTimePeriod('24h')}
-                  disabled={loading}
-                  className={`
-                    px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 hover:scale-105
-                    ${timePeriod === '24h'
-                      ? 'bg-gradient-to-r from-gray-900 to-gray-800 text-white shadow-lg hover:shadow-xl'
-                      : 'bg-white text-gray-700 hover:bg-gray-50 border-2 border-gray-200 hover:border-gray-300'}
-                    ${loading ? 'opacity-50 cursor-not-allowed' : ''}
-                  `}
-                >
-                  24 Hours
-                </button>
-                <button
-                  onClick={() => setShowSignupPopup(true)}
-                  disabled={loading}
-                  className={`
-                    relative px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 hover:scale-105
-                    bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 hover:from-gray-200 hover:to-gray-100 border-2 border-gray-200
-                    ${loading ? 'opacity-50 cursor-not-allowed' : ''}
-                  `}
-                >
-                  <Lock className="w-3 h-3 inline mr-1.5" />
-                  7 Days
-                </button>
-                <button
-                  onClick={() => setShowSignupPopup(true)}
-                  disabled={loading}
-                  className={`
-                    relative px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 hover:scale-105
-                    bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 hover:from-gray-200 hover:to-gray-100 border-2 border-gray-200
-                    ${loading ? 'opacity-50 cursor-not-allowed' : ''}
-                  `}
-                >
-                  <Lock className="w-3 h-3 inline mr-1.5" />
-                  30 Days
-                </button>
+            {/* How it works - hover tooltip */}
+            <div className="relative group mt-3">
+              <button className="text-sm text-black/40 hover:text-black/60 underline decoration-dotted underline-offset-4 transition-colors">
+                How are rankings calculated?
+              </button>
+              <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-72 sm:w-80 bg-black text-white text-sm rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-xl">
+                <p className="text-white/90">
+                  We rank by <span className="font-semibold">influence first</span> (post volume), then by sentiment score. This surfaces the most active voices, not just extreme opinions from low-activity accounts.
+                </p>
+                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-black"></div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Main Content */}
-        <div className="container mx-auto px-6 py-8">
-          <div className="max-w-3xl mx-auto">
+            {/* Time period buttons */}
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-6">
+              <span className="px-4 py-2 rounded-full text-sm font-bold bg-black text-white">
+                24 Hours
+              </span>
+              <button
+                onClick={() => setShowSignupPopup(true)}
+                className="px-4 py-2 rounded-full text-sm font-medium bg-black/5 text-black/50 hover:bg-black/10"
+              >
+                7 Days (Pro)
+              </button>
+              <button
+                onClick={() => setShowSignupPopup(true)}
+                className="px-4 py-2 rounded-full text-sm font-medium bg-black/5 text-black/50 hover:bg-black/10"
+              >
+                30 Days (Pro)
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Leaderboard Section */}
+        <section className="py-16 px-6 sm:px-16 lg:px-32">
+          <div className="max-w-4xl mx-auto">
             {loading ? (
-              <div className="space-y-6">
-                {loadingProgress && (
-                  <div className="text-center py-8">
-                    <p className="text-gray-600 text-lg font-light">{loadingProgress}</p>
-                  </div>
-                )}
-                {[...Array(15)].map((_, index) => (
-                  <SkeletonCard key={index} rank={index + 1} filter={filter} />
-                ))}
+              <div className="text-center py-20">
+                <div className="inline-block w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin mb-4"></div>
+                <p className="text-white/60">{loadingProgress}</p>
               </div>
             ) : error ? (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-center py-20"
-              >
-                <p className="text-gray-500 text-lg mb-6">{error}</p>
-                <button
+              <div className="text-center py-20">
+                <p className="text-white/60 mb-4">{error}</p>
+                <Button
                   onClick={() => window.location.reload()}
-                  className="px-10 py-4 bg-gradient-to-r from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 text-white rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="bg-white text-black hover:bg-white/90 rounded-2xl"
                 >
-                  Retry
-                </button>
-              </motion.div>
-            ) : displayedAccounts.length > 0 ? (
-              <>
-                <div className="space-y-6">
-                  {displayedAccounts.map((account, index) => (
-                    <AppleCard
-                      key={account.handle}
-                      account={account}
-                      rank={index + 1}
-                      expanded={expandedCard === account.handle}
-                      onToggle={() => setExpandedCard(
-                        expandedCard === account.handle ? null : account.handle
-                      )}
-                      filter={filter}
-                    />
-                  ))}
-                </div>
-
-                {/* Results Info */}
-                <div className="mt-8 text-center space-y-2">
-                  <p className="text-sm text-gray-500">
-                    Showing top {displayedAccounts.length} of {allAccountsData.length} {filter} accounts
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Want full access to all data and advanced analytics?{' '}
-                    <a
-                      href="https://perception.to"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-900 hover:text-gray-700 font-medium underline decoration-1 underline-offset-2 transition-colors duration-200"
-                    >
-                      Subscribe to Perception
-                    </a>{' '}
-                    from $45/month
-                  </p>
-                </div>
-              </>
+                  Try Again
+                </Button>
+              </div>
             ) : (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-center py-20"
-              >
-                <p className="text-gray-500">No data available for this period</p>
-              </motion.div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={filter}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* Top 3 Podium */}
+                  {top3.length >= 3 && (
+                    <div className="mb-8 sm:mb-12">
+                      {/* Header with download button */}
+                      <div className="flex items-center justify-between mb-6 sm:mb-8">
+                        <h2 className="text-white/40 text-xs sm:text-sm uppercase tracking-wider">
+                          Top 3 Most {filter === 'bulls' ? 'Bullish' : 'Bearish'}
+                        </h2>
+                        <button
+                          onClick={downloadPodiumImage}
+                          className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white text-sm font-medium transition-all"
+                        >
+                          <Download className="w-4 h-4" />
+                          Download
+                        </button>
+                      </div>
+
+                      {/* Visible interactive podium */}
+                      <div className="flex items-end gap-2 sm:gap-4 justify-center px-2">
+                        {top3.map((account, index) => (
+                          <PodiumCard
+                            key={account.handle}
+                            account={account}
+                            rank={index + 1}
+                            filter={filter}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Hidden downloadable version (positioned off-screen) */}
+                      <div
+                        ref={podiumRef}
+                        className="absolute -left-[9999px] bg-black rounded-2xl p-8"
+                        style={{ width: '800px' }}
+                      >
+                        {/* Card header */}
+                        <div className="text-center mb-8">
+                          <div className="text-sm text-white/40 uppercase tracking-wider mb-2">
+                            {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                          </div>
+                          <h2 className="text-3xl font-bold text-white">
+                            Top 3 Most {filter === 'bulls' ? 'Bullish' : 'Bearish'} on Bitcoin
+                          </h2>
+                        </div>
+
+                        {/* Podium for download */}
+                        <div className="flex items-end gap-4 justify-center px-4">
+                          {top3.map((account, index) => (
+                            <PodiumCard
+                              key={`dl-${account.handle}`}
+                              account={account}
+                              rank={index + 1}
+                              filter={filter}
+                              forDownload={true}
+                              avatarDataUrl={avatarDataUrls[account.handle]}
+                            />
+                          ))}
+                        </div>
+
+                        {/* Card footer - branding */}
+                        <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
+                          <div className="text-white/40 text-sm">
+                            perception.to/bitcoin-social-media-sentiment-leaderboard
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-white/60 text-sm font-medium">Perception</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Rest of Leaderboard */}
+                  {rest.length > 0 && (
+                    <div className="space-y-2">
+                      <h2 className="text-white/40 text-sm uppercase tracking-wider mb-4">
+                        Rankings 4-{rest.length + 3}
+                      </h2>
+                      {rest.map((account, index) => (
+                        <LeaderboardRow
+                          key={account.handle}
+                          account={account}
+                          rank={index + 4}
+                          filter={filter}
+                        />
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Results count */}
+                  <div className="mt-12 text-center">
+                    <p className="text-white/40 text-sm">
+                      Showing top {Math.min(20, accounts.length)} of {accounts.length} {filter === 'bulls' ? 'bullish' : 'bearish'} accounts
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             )}
           </div>
-        </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 px-6 sm:px-16 lg:px-32 bg-[#F0EEE6]">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl font-medium text-black mb-4">
+              Want{' '}
+              <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>deeper</em>{' '}
+              insights?
+            </h2>
+            <p className="text-black/60 mb-8">
+              650+ sources. Real-time updates. Full sentiment analysis.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-base font-semibold"
+                asChild
+              >
+                <a href="https://app.perception.to/auth/sign-up">
+                  Start Free Trial
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-white/80 text-black hover:bg-white rounded-2xl px-8 py-6 text-base font-semibold border-2 border-black/20"
+                asChild
+              >
+                <Link to="/bitcoin-fear-greed-index">
+                  See Fear & Greed Index
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
 
         <SignupPopup isOpen={showSignupPopup} onClose={() => setShowSignupPopup(false)} />
       </div>

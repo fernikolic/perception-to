@@ -41,7 +41,7 @@ export function UseCasesLanding() {
         title="Use Cases - Perception | Intelligence Workspace Applications"
         description="See how professionals use Perception's Intelligence Workspace. Track with watchlists, organize in Spaces, generate deliverables with Recipes. Executive intel, stakeholder comms, journalism, PR."
         url="https://perception.to/use-cases"
-        keywords={['Bitcoin intelligence workspace', 'executive intelligence platform', 'stakeholder communications tool', 'PR intelligence platform', 'crypto journalism tools']}
+        keywords={['Bitcoin intelligence workspace', 'executive intelligence workspace', 'stakeholder communications tool', 'PR intelligence workspace', 'crypto journalism tools']}
       />
       <div className="min-h-screen bg-[#F0EEE6]">
         {/* Hero Section */}

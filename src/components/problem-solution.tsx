@@ -10,7 +10,7 @@ export function ProblemSolution() {
   const problemRef = useRef<HTMLDivElement>(null);
   const solutionRef = useRef<HTMLDivElement>(null);
 
-  const problemText = "You're managing 30+ tabs, manually tracking competitors, and rebuilding the same decks every quarter. Spend hours pulling trends together just to create one update. Every single deliverable? You start from scratch.";
+  const problemText = "You're managing 30+ tabs, manually tracking competitors, rebuilding the same decks every quarter. Hours pulling trends together. Every deliverable? Start from scratch.";
   const solutionText = "Perception monitors everything for you through watchlists, keeps it organized in Spaces, and lets you generate any deliverable with Recipes. Turn weeks of monitoring into ready-to-send outputs.";
 
   useEffect(() => {

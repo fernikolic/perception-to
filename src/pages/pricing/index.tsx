@@ -11,7 +11,7 @@ export default function PricingPage() {
         title="Pricing - Perception | Intelligence Workspace Plans"
         description="Track with watchlists, organize in Spaces, generate with Recipes. $49 and $99/month. 7-day free trial. Lock in beta pricing forever."
         url="https://perception.to/pricing"
-        keywords={['intelligence workspace pricing', 'Bitcoin intelligence platform cost', 'market intelligence subscription', 'crypto intelligence pricing', 'intelligence platform plans']}
+        keywords={['intelligence workspace pricing', 'Bitcoin intelligence workspace cost', 'market intelligence subscription', 'crypto intelligence pricing', 'intelligence workspace plans']}
       />
     <div className="min-h-screen bg-background pt-16">
       {/* Hero Section */}
@@ -71,7 +71,7 @@ export default function PricingPage() {
                         document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' });
                       }}
                     >
-                      View pricing
+                      See plans
                     </Button>
                     <Button
                       size="lg"

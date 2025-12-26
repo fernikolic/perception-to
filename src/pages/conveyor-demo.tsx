@@ -109,7 +109,7 @@ export function ConveyorDemo() {
             </a>
           </Button>
           <p className="mt-4 text-slate-400 text-sm">
-            No credit card required • 14-day free trial
+            No credit card required • 7-day free trial
           </p>
         </div>
       </div>

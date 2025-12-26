@@ -96,7 +96,7 @@ export function Hero() {
                   Track sectors. Spot trends. Never scramble for{'\u00A0'}intel.
                 </p>
                 <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
-                  We monitor 650+ sources so you don't have to. Ask for a board update, PR pitch, podcast prep, or sector deep dive—get it in minutes, fully{'\u00A0'}cited.
+                  We monitor 650+ sources across Bitcoin, stablecoins, and tokenized finance. Ask for a board update, PR pitch, interview prep, or sector deep dive—get it in minutes, fully{'\u00A0'}cited.
                 </p>
               </div>
 
@@ -107,7 +107,7 @@ export function Hero() {
                   asChild
                 >
                   <a href="https://app.perception.to/auth/sign-up">
-                    Get Started Free →
+                    Start free trial
                   </a>
                 </Button>
                 <Button

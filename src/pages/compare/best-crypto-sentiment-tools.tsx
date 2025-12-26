@@ -1,7 +1,8 @@
 import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
-import { Check, X, ArrowRight, Star, Zap, Globe, BarChart3, MessageSquare, TrendingUp, Clock, DollarSign } from 'lucide-react';
+import { Check, X, ArrowRight, Star, Zap, Globe, BarChart3, MessageSquare, TrendingUp, DollarSign } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import AsciiBlob from '@/components/AsciiBlob';
 
 interface Tool {
   name: string;
@@ -29,10 +30,10 @@ const tools: Tool[] = [
   {
     name: 'Perception',
     logo: '/images/logo.png',
-    description: 'AI-powered media intelligence platform tracking 650+ news sources for crypto sentiment, narrative detection, and market psychology analysis.',
+    description: 'AI-powered media intelligence workspace tracking 650+ news sources for crypto sentiment, narrative detection, and market psychology analysis.',
     bestFor: 'Media monitoring, narrative tracking, PR teams',
     pricing: 'From $49/mo',
-    pricingNote: '14-day free trial',
+    pricingNote: '7-day free trial',
     rating: 4.9,
     features: {
       socialSentiment: true,
@@ -230,27 +231,27 @@ const faqs = [
 
 const FeatureIcon = ({ available }: { available: boolean }) => (
   available ? (
-    <Check className="w-5 h-5 text-green-500" />
+    <Check className="w-5 h-5 text-emerald-500" />
   ) : (
-    <X className="w-5 h-5 text-slate-300 dark:text-slate-600" />
+    <X className="w-5 h-5 text-white/30" />
   )
 );
 
-const StarRating = ({ rating }: { rating: number }) => (
+const StarRating = ({ rating, variant = 'light' }: { rating: number; variant?: 'light' | 'dark' }) => (
   <div className="flex items-center gap-1">
     {[1, 2, 3, 4, 5].map((star) => (
       <Star
         key={star}
         className={`w-4 h-4 ${
           star <= rating
-            ? 'text-yellow-400 fill-yellow-400'
+            ? 'text-orange-400 fill-orange-400'
             : star <= rating + 0.5
-            ? 'text-yellow-400 fill-yellow-400/50'
-            : 'text-slate-300'
+            ? 'text-orange-400 fill-orange-400/50'
+            : variant === 'dark' ? 'text-white/20' : 'text-black/20'
         }`}
       />
     ))}
-    <span className="ml-1 text-sm text-slate-600 dark:text-slate-400">{rating}</span>
+    <span className={`ml-1 text-sm ${variant === 'dark' ? 'text-white/60' : 'text-black/60'}`}>{rating}</span>
   </div>
 );
 
@@ -309,62 +310,116 @@ export default function BestCryptoSentimentToolsPage() {
         </script>
       </SEO>
 
-      <div className="min-h-screen bg-[#F0EEE6] dark:bg-black">
-        {/* Hero Section */}
-        <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full px-4 py-2 text-sm font-medium mb-6">
-                <BarChart3 className="w-4 h-4" />
-                Updated December 2025
+      <div className="min-h-screen bg-[#F0EEE6]">
+        {/* Hero Section - Split Layout */}
+        <section className="pt-32 pb-24 px-6 sm:px-16 lg:px-32">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row items-center gap-16">
+              {/* Left - ASCII Art Visual */}
+              <div className="w-full lg:w-1/2 flex justify-center">
+                <div className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden">
+                  <AsciiBlob />
+                  {/* Overlay with comparison info */}
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="bg-black/80 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="text-2xl font-bold text-white">6</div>
+                          <div className="text-white/60 text-sm">Tools Compared</div>
+                        </div>
+                        <div className="flex gap-2">
+                          <BarChart3 className="w-4 h-4 text-orange-400" />
+                          <Globe className="w-4 h-4 text-orange-400" />
+                          <Zap className="w-4 h-4 text-orange-400" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
-                Best Crypto Sentiment Tools<br />
-                <span className="text-orange-500">Compared for 2025</span>
-              </h1>
+              {/* Right - Content */}
+              <div className="w-full lg:w-1/2">
+                <div className="inline-flex items-center gap-2 bg-black/5 rounded-full px-4 py-2 text-sm font-medium mb-6">
+                  <span className="w-2 h-2 bg-orange-400 rounded-full"></span>
+                  Updated December 2025
+                </div>
 
-              <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-                We analyzed 6 leading crypto sentiment platforms. Here's how they compare
-                on features, pricing, and which one is right for your needs.
-              </p>
-            </div>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-black mb-6">
+                  Best{' '}
+                  <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Sentiment</em>{' '}
+                  Tools for 2025
+                </h1>
 
-            {/* Quick Summary */}
-            <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 mb-16">
-              <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Quick Picks</h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
-                  <div className="text-sm text-slate-500 mb-1">Best Overall</div>
-                  <div className="font-semibold text-slate-900 dark:text-white">Perception</div>
-                  <div className="text-xs text-orange-500">650+ media sources</div>
-                </div>
-                <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
-                  <div className="text-sm text-slate-500 mb-1">Best for Social</div>
-                  <div className="font-semibold text-slate-900 dark:text-white">LunarCrush</div>
-                  <div className="text-xs text-slate-500">Galaxy Score</div>
-                </div>
-                <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
-                  <div className="text-sm text-slate-500 mb-1">Best for On-Chain</div>
-                  <div className="font-semibold text-slate-900 dark:text-white">Santiment</div>
-                  <div className="text-xs text-slate-500">Blockchain data</div>
-                </div>
-                <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
-                  <div className="text-sm text-slate-500 mb-1">Best Free Option</div>
-                  <div className="font-semibold text-slate-900 dark:text-white">Alternative.me</div>
-                  <div className="text-xs text-slate-500">Basic F&G Index</div>
+                <p className="text-lg sm:text-xl text-black/70 font-light leading-relaxed mb-8">
+                  We analyzed the leading crypto sentiment platforms. Here's how they compare on features, pricing, and which one fits your workflow.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button
+                    size="lg"
+                    className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-base font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
+                    asChild
+                  >
+                    <a href="https://app.perception.to/auth/sign-up">
+                      Start free trial
+                    </a>
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-white/80 text-black hover:bg-white rounded-2xl px-8 py-6 text-base font-semibold border-2 border-black/20 hover:border-black/30 transition-all duration-300"
+                    asChild
+                  >
+                    <a href="#comparison">
+                      See comparison
+                    </a>
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Comparison Table */}
-        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-black">
+        {/* Quick Picks */}
+        <section className="py-16 px-6 sm:px-16 lg:px-32">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-white mb-12">
-              Feature Comparison
+            <h2 className="text-2xl font-semibold text-black mb-8 text-center">Quick Picks</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-black rounded-2xl p-6 text-white">
+                <div className="text-sm text-white/60 mb-2">Best Overall</div>
+                <div className="font-semibold text-xl mb-1">Perception</div>
+                <div className="text-sm text-orange-400">650+ media sources</div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-black/10">
+                <div className="text-sm text-black/60 mb-2">Best for Social</div>
+                <div className="font-semibold text-xl text-black mb-1">LunarCrush</div>
+                <div className="text-sm text-black/50">Galaxy Score</div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-black/10">
+                <div className="text-sm text-black/60 mb-2">Best for On-Chain</div>
+                <div className="font-semibold text-xl text-black mb-1">Santiment</div>
+                <div className="text-sm text-black/50">Blockchain data</div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-black/10">
+                <div className="text-sm text-black/60 mb-2">Best Free Option</div>
+                <div className="font-semibold text-xl text-black mb-1">Alternative.me</div>
+                <div className="text-sm text-black/50">Basic F&G Index</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Comparison Table - Black Section */}
+        <section id="comparison" className="py-24 px-6 sm:px-16 lg:px-32 bg-black">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl font-medium text-white text-center mb-4">
+              Feature{' '}
+              <em className="text-white" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Comparison</em>
             </h2>
+            <p className="text-center text-white/60 mb-16 max-w-2xl mx-auto">
+              Side-by-side comparison of what each tool offers
+            </p>
 
             <div className="overflow-x-auto">
               <table className="w-full min-w-[800px]">
@@ -413,14 +468,15 @@ export default function BestCryptoSentimentToolsPage() {
           </div>
         </section>
 
-        {/* Detailed Reviews */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        {/* Detailed Reviews - Cream Section */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4">
-              Detailed Tool Reviews
+            <h2 className="text-4xl font-medium text-black text-center mb-4">
+              Detailed{' '}
+              <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Reviews</em>
             </h2>
-            <p className="text-center text-slate-600 dark:text-slate-400 mb-16 max-w-2xl mx-auto">
-              In-depth look at each platform's strengths and weaknesses
+            <p className="text-center text-black/60 mb-16 max-w-2xl mx-auto">
+              In-depth look at each tool's strengths and weaknesses
             </p>
 
             <div className="space-y-8">
@@ -428,67 +484,67 @@ export default function BestCryptoSentimentToolsPage() {
                 <div
                   key={tool.name}
                   id={tool.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}
-                  className={`rounded-2xl p-6 sm:p-8 border ${
+                  className={`rounded-2xl p-8 ${
                     tool.isPerception
-                      ? 'bg-orange-50 dark:bg-orange-900/10 border-orange-200 dark:border-orange-800'
-                      : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700'
+                      ? 'bg-black text-white'
+                      : 'bg-white border border-black/10'
                   }`}
                 >
-                  <div className="flex flex-col lg:flex-row gap-6">
+                  <div className="flex flex-col lg:flex-row gap-8">
                     {/* Left Column */}
                     <div className="flex-grow">
                       <div className="flex items-start justify-between mb-4">
                         <div>
                           <div className="flex items-center gap-3 mb-2">
-                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                            <h3 className={`text-2xl font-semibold ${tool.isPerception ? 'text-white' : 'text-black'}`}>
                               {index + 1}. {tool.name}
                             </h3>
                             {tool.isPerception && (
                               <span className="text-xs bg-orange-500 text-white px-2 py-1 rounded-full">Editor's Choice</span>
                             )}
                           </div>
-                          <StarRating rating={tool.rating} />
+                          <StarRating rating={tool.rating} variant={tool.isPerception ? 'dark' : 'light'} />
                         </div>
                       </div>
 
-                      <p className="text-slate-600 dark:text-slate-400 mb-4">
+                      <p className={`mb-6 ${tool.isPerception ? 'text-white/70' : 'text-black/70'}`}>
                         {tool.description}
                       </p>
 
                       <div className="flex flex-wrap gap-4 mb-6">
                         <div className="flex items-center gap-2 text-sm">
-                          <TrendingUp className="w-4 h-4 text-slate-500" />
-                          <span className="text-slate-600 dark:text-slate-400">Best for: {tool.bestFor}</span>
+                          <TrendingUp className={`w-4 h-4 ${tool.isPerception ? 'text-white/60' : 'text-black/40'}`} />
+                          <span className={tool.isPerception ? 'text-white/70' : 'text-black/70'}>Best for: {tool.bestFor}</span>
                         </div>
                         <div className="flex items-center gap-2 text-sm">
-                          <DollarSign className="w-4 h-4 text-slate-500" />
-                          <span className="text-slate-600 dark:text-slate-400">{tool.pricing}</span>
-                          <span className="text-xs text-slate-500">({tool.pricingNote})</span>
+                          <DollarSign className={`w-4 h-4 ${tool.isPerception ? 'text-white/60' : 'text-black/40'}`} />
+                          <span className={tool.isPerception ? 'text-white/70' : 'text-black/70'}>{tool.pricing}</span>
+                          <span className={`text-xs ${tool.isPerception ? 'text-white/50' : 'text-black/50'}`}>({tool.pricingNote})</span>
                         </div>
                       </div>
 
                       <div className="grid sm:grid-cols-2 gap-6">
                         <div>
-                          <h4 className="font-semibold text-green-600 dark:text-green-400 mb-3 flex items-center gap-2">
+                          <h4 className={`font-semibold mb-3 flex items-center gap-2 ${tool.isPerception ? 'text-emerald-400' : 'text-emerald-600'}`}>
                             <Check className="w-4 h-4" /> Pros
                           </h4>
                           <ul className="space-y-2">
                             {tool.pros.map((pro) => (
-                              <li key={pro} className="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
-                                <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                              <li key={pro} className={`text-sm flex items-start gap-2 ${tool.isPerception ? 'text-white/70' : 'text-black/70'}`}>
+                                <Check className={`w-4 h-4 flex-shrink-0 mt-0.5 ${tool.isPerception ? 'text-emerald-400' : 'text-emerald-500'}`} />
                                 {pro}
                               </li>
                             ))}
                           </ul>
                         </div>
                         <div>
-                          <h4 className="font-semibold text-slate-500 mb-3 flex items-center gap-2">
+                          <h4 className={`font-semibold mb-3 flex items-center gap-2 ${tool.isPerception ? 'text-white/60' : 'text-black/50'}`}>
                             <X className="w-4 h-4" /> Cons
                           </h4>
                           <ul className="space-y-2">
                             {tool.cons.map((con) => (
-                              <li key={con} className="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
-                                <X className="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5" />
+                              <li key={con} className={`text-sm flex items-start gap-2 ${tool.isPerception ? 'text-white/60' : 'text-black/60'}`}>
+                                <X className={`w-4 h-4 flex-shrink-0 mt-0.5 ${tool.isPerception ? 'text-white/40' : 'text-black/30'}`} />
                                 {con}
                               </li>
                             ))}
@@ -499,14 +555,14 @@ export default function BestCryptoSentimentToolsPage() {
 
                     {/* Right Column - CTA */}
                     <div className="lg:w-64 flex-shrink-0">
-                      <div className="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 text-center">
-                        <div className="text-2xl font-bold text-slate-900 dark:text-white mb-1">{tool.pricing}</div>
-                        <div className="text-sm text-slate-500 mb-4">{tool.pricingNote}</div>
+                      <div className={`rounded-xl p-6 text-center ${tool.isPerception ? 'bg-white/10' : 'bg-black/5'}`}>
+                        <div className={`text-2xl font-bold mb-1 ${tool.isPerception ? 'text-white' : 'text-black'}`}>{tool.pricing}</div>
+                        <div className={`text-sm mb-4 ${tool.isPerception ? 'text-white/60' : 'text-black/60'}`}>{tool.pricingNote}</div>
                         <Button
-                          className={`w-full ${
+                          className={`w-full rounded-xl ${
                             tool.isPerception
-                              ? 'bg-orange-500 hover:bg-orange-600 text-white'
-                              : 'bg-slate-800 hover:bg-slate-700 text-white dark:bg-slate-600'
+                              ? 'bg-white text-black hover:bg-white/90'
+                              : 'bg-black text-white hover:bg-black/90'
                           }`}
                           asChild
                         >
@@ -524,58 +580,59 @@ export default function BestCryptoSentimentToolsPage() {
           </div>
         </section>
 
-        {/* How to Choose Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
+        {/* How to Choose - Black Section */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32 bg-black">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-white mb-4">
-              How to Choose the Right Tool
+            <h2 className="text-4xl font-medium text-white text-center mb-4">
+              How to{' '}
+              <em className="text-white" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Choose</em>
             </h2>
-            <p className="text-center text-white/60 mb-12">
+            <p className="text-center text-white/60 mb-16">
               The best tool depends on your use case
             </p>
 
             <div className="space-y-6">
-              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                <h3 className="font-semibold text-white mb-2 flex items-center gap-2">
-                  <MessageSquare className="w-5 h-5 text-orange-400" />
+              <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
+                <h3 className="font-semibold text-white text-lg mb-3 flex items-center gap-3">
+                  <MessageSquare className="w-6 h-6 text-orange-400" />
                   For Social Media Traders
                 </h3>
-                <p className="text-white/70 mb-3">
-                  If you trade based on Twitter trends and Reddit sentiment, <strong>LunarCrush</strong> is your best bet.
+                <p className="text-white/70">
+                  If you trade based on Twitter trends and Reddit sentiment, <strong className="text-white">LunarCrush</strong> is your best bet.
                   Their Galaxy Score and social volume metrics are industry-leading.
                 </p>
               </div>
 
-              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                <h3 className="font-semibold text-white mb-2 flex items-center gap-2">
-                  <Globe className="w-5 h-5 text-orange-400" />
+              <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
+                <h3 className="font-semibold text-white text-lg mb-3 flex items-center gap-3">
+                  <Globe className="w-6 h-6 text-orange-400" />
                   For News & Narrative Tracking
                 </h3>
-                <p className="text-white/70 mb-3">
+                <p className="text-white/70">
                   If you need to know what Bloomberg, Reuters, and crypto publications are reporting,
-                  <strong> Perception</strong> is the only tool monitoring 650+ media sources with AI-powered narrative detection.
+                  <strong className="text-white"> Perception</strong> is the only tool monitoring 650+ media sources with AI-powered narrative detection.
                 </p>
               </div>
 
-              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                <h3 className="font-semibold text-white mb-2 flex items-center gap-2">
-                  <BarChart3 className="w-5 h-5 text-orange-400" />
+              <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
+                <h3 className="font-semibold text-white text-lg mb-3 flex items-center gap-3">
+                  <BarChart3 className="w-6 h-6 text-orange-400" />
                   For On-Chain Analysis
                 </h3>
-                <p className="text-white/70 mb-3">
-                  If blockchain data matters to your strategy, <strong>Santiment</strong> combines on-chain metrics
+                <p className="text-white/70">
+                  If blockchain data matters to your strategy, <strong className="text-white">Santiment</strong> combines on-chain metrics
                   with social data for a comprehensive view of market activity.
                 </p>
               </div>
 
-              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                <h3 className="font-semibold text-white mb-2 flex items-center gap-2">
-                  <Zap className="w-5 h-5 text-orange-400" />
+              <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
+                <h3 className="font-semibold text-white text-lg mb-3 flex items-center gap-3">
+                  <Zap className="w-6 h-6 text-orange-400" />
                   For Complete Market Coverage
                 </h3>
                 <p className="text-white/70">
-                  Many professional teams use multiple tools: <strong>LunarCrush</strong> for social +
-                  <strong> Perception</strong> for media + <strong>Santiment</strong> for on-chain.
+                  Many professional teams use multiple tools: <strong className="text-white">LunarCrush</strong> for social +
+                  <strong className="text-white"> Perception</strong> for media + <strong className="text-white">Santiment</strong> for on-chain.
                   This gives you the complete picture of market sentiment.
                 </p>
               </div>
@@ -583,26 +640,27 @@ export default function BestCryptoSentimentToolsPage() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        {/* FAQ Section - Cream */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4">
-              Frequently Asked Questions
+            <h2 className="text-4xl font-medium text-black text-center mb-4">
+              Frequently Asked{' '}
+              <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Questions</em>
             </h2>
-            <p className="text-center text-slate-600 dark:text-slate-400 mb-12">
+            <p className="text-center text-black/60 mb-16">
               Common questions about crypto sentiment tools
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {faqs.map((faq) => (
                 <div
                   key={faq.question}
-                  className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700"
+                  className="bg-white rounded-2xl p-6 border border-black/10"
                 >
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">
+                  <h3 className="text-lg font-semibold text-black mb-3">
                     {faq.question}
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-400">
+                  <p className="text-black/70">
                     {faq.answer}
                   </p>
                 </div>
@@ -611,23 +669,33 @@ export default function BestCryptoSentimentToolsPage() {
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-              Ready to Add Media Intelligence?
+        {/* Final CTA - Black */}
+        <section className="py-24 px-6 sm:px-16 lg:px-32 bg-black">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl sm:text-5xl font-medium text-white mb-6">
+              Ready to add{' '}
+              <em className="text-white" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>media intelligence</em>?
             </h2>
-            <p className="text-xl mb-10 text-white/60">
-              Try Perception free for 14 days. No credit card required.
+            <p className="text-xl text-white/60 mb-10">
+              Try Perception free for 7 days. No credit card required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-black hover:bg-white/90 px-8 py-6 text-lg rounded-full" asChild>
+              <Button
+                size="lg"
+                className="bg-white text-black hover:bg-white/90 rounded-2xl px-8 py-6 text-lg font-semibold shadow-2xl transition-all duration-300 hover:scale-105"
+                asChild
+              >
                 <a href="https://app.perception.to/auth/sign-up">
-                  Start Free Trial
+                  Start free trial
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full" asChild>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-transparent border-white text-white hover:bg-white/10 rounded-2xl px-8 py-6 text-lg font-semibold transition-all duration-300"
+                asChild
+              >
                 <Link to="/bitcoin-fear-greed-index">
                   See Live Dashboard
                 </Link>
@@ -636,33 +704,33 @@ export default function BestCryptoSentimentToolsPage() {
           </div>
         </section>
 
-        {/* Related Links */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
+        {/* Related Links - Cream */}
+        <section className="py-16 px-6 sm:px-16 lg:px-32">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-center text-slate-900 dark:text-white mb-8">
+            <h2 className="text-2xl font-semibold text-black text-center mb-8">
               Related Comparisons
             </h2>
             <div className="grid sm:grid-cols-3 gap-6">
               <Link
                 to="/alternatives/lunarcrush-alternative"
-                className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700 hover:border-orange-300 transition-colors"
+                className="bg-white rounded-2xl p-6 border border-black/10 hover:border-black/30 transition-all duration-300 hover:shadow-lg group"
               >
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Perception vs LunarCrush</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">Detailed comparison of social vs media intelligence</p>
+                <h3 className="font-semibold text-black mb-2 group-hover:text-orange-500 transition-colors">Perception vs LunarCrush</h3>
+                <p className="text-sm text-black/60">Detailed comparison of social vs media intelligence</p>
               </Link>
               <Link
                 to="/alternatives/santiment-alternative"
-                className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700 hover:border-orange-300 transition-colors"
+                className="bg-white rounded-2xl p-6 border border-black/10 hover:border-black/30 transition-all duration-300 hover:shadow-lg group"
               >
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Perception vs Santiment</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">Media coverage vs on-chain data focus</p>
+                <h3 className="font-semibold text-black mb-2 group-hover:text-orange-500 transition-colors">Perception vs Santiment</h3>
+                <p className="text-sm text-black/60">Media coverage vs on-chain data focus</p>
               </Link>
               <Link
                 to="/alternatives/alternative-me-alternative"
-                className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700 hover:border-orange-300 transition-colors"
+                className="bg-white rounded-2xl p-6 border border-black/10 hover:border-black/30 transition-all duration-300 hover:shadow-lg group"
               >
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Perception vs Alternative.me</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">Free vs professional Fear & Greed tools</p>
+                <h3 className="font-semibold text-black mb-2 group-hover:text-orange-500 transition-colors">Perception vs Alternative.me</h3>
+                <p className="text-sm text-black/60">Free vs professional Fear & Greed tools</p>
               </Link>
             </div>
           </div>

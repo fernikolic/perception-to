@@ -43,7 +43,7 @@ export function AboutPage() {
         title="About - Perception | Intelligence Workspace for Bitcoin & Stablecoins"
         description="Intelligence Workspace for Bitcoin, stablecoins, and tokenized finance. Track with watchlists, organize in Spaces, generate deliverables with Recipes. Meet our team."
         url="https://perception.to/about"
-        keywords={['about Perception', 'Bitcoin intelligence workspace', 'stablecoin intelligence', 'market intelligence platform', 'crypto intelligence team']}
+        keywords={['about Perception', 'Bitcoin intelligence workspace', 'stablecoin intelligence', 'market intelligence workspace', 'crypto intelligence team']}
       />
     <div className="min-h-screen bg-[#F0EEE6]">
       {/* Hero Section */}
@@ -102,7 +102,7 @@ export function AboutPage() {
                       asChild
                     >
                       <a href="https://app.perception.to/auth/sign-up">
-                        Start here
+                        Start free trial
                       </a>
                     </Button>
                     <Button
@@ -112,7 +112,7 @@ export function AboutPage() {
                         document.getElementById('mission-section')?.scrollIntoView({ behavior: 'smooth' });
                       }}
                     >
-                      Learn more
+                      See the workspace
                     </Button>
                   </div>
                 </div>
@@ -263,7 +263,7 @@ export function AboutPage() {
               href="https://app.perception.to/auth/sign-up"
               className="inline-flex items-center justify-center px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl font-semibold text-white bg-black rounded-full hover:bg-black/90 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-3xl focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
             >
-              Start here
+              Start free trial
             </a>
           </div>
         </div>

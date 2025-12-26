@@ -454,7 +454,7 @@ export default function BitcoinDailySentimentPage() {
       "name": "Perception",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://perception.to/logos/Perception-logo-social-og.png"
+        "url": "https://perception-og-image.fernandonikolic.workers.dev"
       }
     },
     "image": "https://perception.to/images/bitcoin.png",

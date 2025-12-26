@@ -624,7 +624,7 @@ export default function FearGreedIndexPage() {
                     asChild
                   >
                     <a href="https://app.perception.to/auth/sign-up">
-                      Start Free Trial
+                      Start free trial
                     </a>
                   </Button>
                   <Button

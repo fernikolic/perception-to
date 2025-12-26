@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const valuePropItems = [
   {
-    title: "See What's <em style='font-style: italic; font-family: Georgia, serif;'>Emerging</em><br/>Before It Breaks <em style='font-style: italic; font-family: Georgia, serif;'>Mainstream</em>",
+    title: "Spot Trends <em style='font-style: italic; font-family: Georgia, serif;'>Early</em>",
     description: "We automatically cluster trends and show you what's heating up. MiCA compliance is up 340% this week. Bitcoin treasury strategy is shifting from social media to Fortune 500 boardrooms. You'll spot these opportunities before your competitors even know they exist.",
     image: "/images/Value Props/Cross-Regional Opportunity Mapping.png",
     Icon: Globe,
@@ -23,7 +23,7 @@ const valuePropItems = [
     AsciiComponent: MoireMandalaPattern
   },
   {
-    title: "Monitor What <em style='font-style: italic; font-family: Georgia, serif;'>Matters</em>,<br/>Organize How You <em style='font-style: italic; font-family: Georgia, serif;'>Work</em>",
+    title: "Organize Your <em style='font-style: italic; font-family: Georgia, serif;'>Intel</em>",
     description: "Create watchlists for the competitors, sectors, or people you care about. Then organize everything into <em style='font-style: italic; font-family: Georgia, serif;'>Spaces</em>: board prep in one workspace, competitive intel in another, content pipeline in a third. It's all there when you need it.",
     image: "/images/Value Props/Signal Intelligence Over Noise.png",
     Icon: Zap,
@@ -33,7 +33,7 @@ const valuePropItems = [
     AsciiComponent: DelicateAsciiDots
   },
   {
-    title: "From <em style='font-style: italic; font-family: Georgia, serif;'>Intelligence</em><br/>to <em style='font-style: italic; font-family: Georgia, serif;'>Deliverables</em> in One Click",
+    title: "Generate Any <em style='font-style: italic; font-family: Georgia, serif;'>Deliverable</em>",
     description: "Your <em style='font-style: italic; font-family: Georgia, serif;'>Space</em> has all the intel. Now pick a <em style='font-style: italic; font-family: Georgia, serif;'>Recipe</em>: Board Update, Interview Prep, PR Pitch Intelligence, Sector Deep Dive, whatever you need. Click once and get a professional deliverable with full citations. No more starting from scratch every single time.",
     image: "/images/Value Props/Custom Entity Intelligence.png",
     Icon: GitBranch,
@@ -43,7 +43,7 @@ const valuePropItems = [
     AsciiComponent: SlidingEaseVerticalBars
   },
   {
-    title: "Know Your <em style='font-style: italic; font-family: Georgia, serif;'>Position</em><br/>vs. <em style='font-style: italic; font-family: Georgia, serif;'>Competitors</em>",
+    title: "Benchmark vs. <em style='font-style: italic; font-family: Georgia, serif;'>Competitors</em>",
     description: "See exactly how you stack up: coverage volume, sentiment, share of voice. When the board asks \"How are we doing?\" you'll have real data. Use the Competitive Benchmarking <em style='font-style: italic; font-family: Georgia, serif;'>Recipe</em> to turn it into a report they can actually use.",
     image: "/images/Value Props/Trend Intelligence.png",
     Icon: TrendingUp,
@@ -157,9 +157,9 @@ export function ValueProps() {
             className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight leading-[0.95] value-props-main-title"
             style={{ color: '#000000', fontWeight: '500' }}
           >
-            From Simply Monitoring To{' '}
+            From Monitoring to{' '}
             <span className="relative inline-block">
-              Actual Deliverables
+              Deliverables
               <span
                 className="absolute -bottom-2 left-0 w-full h-[3px] bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 rounded-full animate-pulse"
                 style={{

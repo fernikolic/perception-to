@@ -34,7 +34,6 @@ import PricingPage from '@/pages/pricing';
 import BookACallPage from '@/pages/book-a-call';
 import { DocsPage } from '@/pages/docs';
 import { ApiPage } from '@/pages/api';
-import { RoadmapPage } from '@/pages/roadmap';
 import { PrivacyPage } from '@/pages/legal/privacy';
 import { TermsPage } from '@/pages/legal/terms';
 import TestimonialsPage from '@/pages/testimonials';
@@ -55,7 +54,9 @@ import CryptoConferencesPage from '@/pages/crypto-conferences';
 import ConferencePage from '@/pages/crypto-conferences/[conference]';
 import TrackedConferencePage from '@/pages/crypto-conferences/tracked/[slug]';
 import TwitterSentimentLeaderboard from '@/pages/twitter-sentiment-leaderboard-apple';
+import LeaderboardOGImage from '@/pages/og/leaderboard';
 import NotFoundPage from '@/pages/404';
+import AlternativesIndexPage from '@/pages/alternatives/index';
 import LunarCrushAlternativePage from '@/pages/alternatives/lunarcrush-alternative';
 import SantimentAlternativePage from '@/pages/alternatives/santiment-alternative';
 import AlternativeMeAlternativePage from '@/pages/alternatives/alternative-me-alternative';
@@ -116,7 +117,6 @@ const App = () => {
               <Route path="/slack-integration" element={<SlackIntegrationPage />} />
               <Route path="/docs" element={<DocsPage />} />
               <Route path="/api" element={<ApiPage />} />
-              <Route path="/roadmap" element={<RoadmapPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
@@ -138,8 +138,10 @@ const App = () => {
               />
               <Route path="/bitcoin-bad-takes/*" element={<BitcoinBadTakes />} />
               <Route path="/bitcoin-social-media-sentiment-leaderboard" element={<TwitterSentimentLeaderboard />} />
+              <Route path="/og/leaderboard" element={<LeaderboardOGImage />} />
 
               {/* Alternative Pages */}
+              <Route path="/alternatives" element={<AlternativesIndexPage />} />
               <Route path="/alternatives/lunarcrush-alternative" element={<LunarCrushAlternativePage />} />
               <Route path="/alternatives/santiment-alternative" element={<SantimentAlternativePage />} />
               <Route path="/alternatives/alternative-me-alternative" element={<AlternativeMeAlternativePage />} />
