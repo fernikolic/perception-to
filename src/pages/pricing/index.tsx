@@ -113,6 +113,47 @@ export default function PricingPage() {
             <PriceList />
           </div>
 
+          {/* Compare Tools Section */}
+          <div className="mt-16 sm:mt-24 lg:mt-32">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-4 sm:mb-6">
+                How Does Perception Compare?
+              </h2>
+              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8">
+                See how Perception stacks up against other crypto sentiment tools in the market.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  variant="outline"
+                  className="rounded-full px-6 py-5 text-sm sm:text-base"
+                  asChild
+                >
+                  <a href="/compare/best-crypto-sentiment-tools">
+                    Compare All Tools
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="rounded-full px-6 py-5 text-sm sm:text-base"
+                  asChild
+                >
+                  <a href="/compare/perception-vs-glassnode">
+                    Perception vs Glassnode
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="rounded-full px-6 py-5 text-sm sm:text-base"
+                  asChild
+                >
+                  <a href="/alternatives/lunarcrush-alternative">
+                    LunarCrush Alternative
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+
           <div className="mt-16 sm:mt-24 lg:mt-32">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-center mb-12 sm:mb-16 px-2">
               Frequently Asked Questions

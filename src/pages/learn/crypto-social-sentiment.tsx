@@ -75,6 +75,7 @@ export default function CryptoSocialSentimentPage() {
       relatedArticles={[
         { slug: 'what-is-crypto-sentiment-analysis', title: 'What is Crypto Sentiment Analysis?', description: 'Complete guide to understanding market sentiment.' },
         { slug: 'bitcoin-market-psychology', title: 'Bitcoin Market Psychology', description: 'Understand FOMO, FUD, and market cycles.' },
+        { slug: 'crypto-narrative-trading', title: 'Crypto Narrative Trading', description: 'Identify and trade emerging market narratives.' },
       ]}
       additionalSchema={[faqSchema]}
     >

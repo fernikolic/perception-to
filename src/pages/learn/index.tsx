@@ -92,17 +92,9 @@ export default function LearnIndexPage() {
         url="https://perception.to/learn"
       />
 
-      <div className="min-h-screen bg-background relative">
-        {/* Background gradients - matching landing pages */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.15),rgba(59,130,246,0)_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(249,115,22,0.12),rgba(249,115,22,0)_50%)]" />
-          <div className="absolute bottom-0 left-0 right-0 h-[500px] bg-gradient-to-t from-background to-transparent" />
-        </div>
-
+      <div className="min-h-screen bg-[#F0EEE6]">
         {/* Hero Section with Background Image */}
-        <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28 border-b border-slate-200 dark:border-slate-800">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.06),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.03),transparent_50%)]" />
+        <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28 border-b border-black/10">
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             {/* Hero Card with Background Image */}
@@ -139,7 +131,7 @@ export default function LearnIndexPage() {
                   <div className="flex items-center justify-center px-2">
                     <Button
                       size="lg"
-                      className="w-full sm:w-auto bg-black text-white hover:bg-gray-900 transition-all duration-300 font-semibold px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
+                      className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl shadow-2xl hover:shadow-3xl hover:scale-105 rounded-full"
                       asChild
                     >
                       <a href="#featured-guides">
@@ -159,48 +151,48 @@ export default function LearnIndexPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="mx-auto max-w-4xl text-center mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-black">
                 Featured Guides
               </h2>
-              <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-relaxed text-muted-foreground">
+              <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-relaxed text-black/60">
                 Start with our most comprehensive resources for understanding market sentiment
               </p>
             </div>
 
-            {/* Featured Cards - Gradient Style */}
+            {/* Featured Cards */}
             <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
               {featuredArticles.map((article) => (
                 <Link
                   key={article.slug}
                   to={`/learn/${article.slug}`}
-                  className={`group relative rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br ${article.gradient} hover:shadow-lg hover:shadow-white/5 border border-white/10`}
+                  className="group relative rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-white/50 hover:bg-white border border-black/10"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
-                      <article.icon className="w-6 h-6 text-white" />
+                    <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center">
+                      <article.icon className="w-6 h-6 text-orange-500" />
                     </div>
                     <div>
-                      <span className="text-xs font-medium text-orange-500 dark:text-orange-400 uppercase tracking-wide">
+                      <span className="text-xs font-medium text-orange-600 uppercase tracking-wide">
                         {article.category}
                       </span>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
+                      <div className="flex items-center gap-2 text-sm text-black/50 mt-1">
                         <Clock className="w-3 h-3" />
                         {article.readTime}
                       </div>
                     </div>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/80 group-hover:from-orange-500 group-hover:to-orange-600 transition-all">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 text-black group-hover:text-orange-600 transition-all">
                     {article.title}
                   </h3>
 
-                  <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">
+                  <p className="text-sm sm:text-base text-black/60 mb-6 sm:mb-8">
                     {article.description}
                   </p>
 
                   <Button
                     size="lg"
-                    className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl hover:scale-105 w-full text-sm sm:text-base py-5 sm:py-6 rounded-xl"
+                    className="bg-black text-white hover:bg-black/90 transition-all shadow-lg hover:shadow-xl hover:scale-105 w-full text-sm sm:text-base py-5 sm:py-6 rounded-full"
                   >
                     Read Guide
                     <ArrowRight className="ml-2 w-4 h-4" />
@@ -212,14 +204,14 @@ export default function LearnIndexPage() {
         </section>
 
         {/* All Guides Section */}
-        <section className="py-16 sm:py-20 lg:py-28">
+        <section className="py-16 sm:py-20 lg:py-28 bg-black">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="mx-auto max-w-4xl text-center mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-white">
                 All Guides
               </h2>
-              <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-relaxed text-muted-foreground">
+              <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-relaxed text-white/60">
                 Explore our complete library of sentiment analysis resources
               </p>
             </div>
@@ -230,31 +222,31 @@ export default function LearnIndexPage() {
                 <Link
                   key={article.slug}
                   to={`/learn/${article.slug}`}
-                  className={`group relative rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br ${article.gradient} hover:shadow-lg hover:shadow-white/5 border border-white/10`}
+                  className="group relative rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-white/5 hover:bg-white/10 border border-white/10"
                 >
-                  <div className="text-muted-foreground/50 mb-3 sm:mb-4">
+                  <div className="text-white/40 mb-3 sm:mb-4">
                     <article.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
 
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xs font-medium text-orange-500 dark:text-orange-400 uppercase tracking-wide">
+                    <span className="text-xs font-medium text-orange-400 uppercase tracking-wide">
                       {article.category}
                     </span>
-                    <span className="text-xs text-muted-foreground flex items-center gap-1">
+                    <span className="text-xs text-white/50 flex items-center gap-1">
                       <Clock className="w-3 h-3" />
                       {article.readTime}
                     </span>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/80 group-hover:from-orange-500 group-hover:to-orange-600 transition-all">
+                  <h3 className="text-lg sm:text-xl font-bold mb-2 text-white group-hover:text-orange-400 transition-all">
                     {article.title}
                   </h3>
 
-                  <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                  <p className="text-sm text-white/60 mb-4 line-clamp-2">
                     {article.description}
                   </p>
 
-                  <span className="inline-flex items-center text-orange-600 dark:text-orange-500 font-medium text-sm group-hover:gap-2 transition-all">
+                  <span className="inline-flex items-center text-orange-400 font-medium text-sm group-hover:gap-2 transition-all">
                     Read Guide <ArrowRight className="w-4 h-4 ml-1" />
                   </span>
                 </Link>
@@ -264,25 +256,19 @@ export default function LearnIndexPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 sm:py-20 lg:py-28 relative group">
-          {/* Hover gradient effect */}
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(121,40,202,0.15),rgba(121,40,202,0)_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(249,115,22,0.15),rgba(249,115,22,0)_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-          </div>
-
+        <section className="py-16 sm:py-20 lg:py-28 bg-[#F0EEE6]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-4xl text-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4 sm:mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4 sm:mb-6 text-black">
                 Ready to Put Knowledge into Practice?
               </h2>
-              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-black/60 mb-8 sm:mb-10 max-w-2xl mx-auto">
                 Start tracking real-time crypto sentiment with our AI-powered platform.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl hover:scale-105 px-8 sm:px-10 py-6 sm:py-7 text-base sm:text-lg font-semibold rounded-2xl"
+                  className="bg-black text-white hover:bg-black/90 transition-all shadow-lg hover:shadow-xl hover:scale-105 px-8 sm:px-10 py-6 sm:py-7 text-base sm:text-lg font-semibold rounded-full"
                   asChild
                 >
                   <a href="https://app.perception.to/auth/sign-up">
@@ -293,7 +279,7 @@ export default function LearnIndexPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="px-8 sm:px-10 py-6 sm:py-7 text-base sm:text-lg rounded-2xl border-white/20 hover:border-white/40"
+                  className="px-8 sm:px-10 py-6 sm:py-7 text-base sm:text-lg rounded-full border-black/20 hover:border-black/30"
                   asChild
                 >
                   <Link to="/bitcoin-fear-greed-index">
@@ -306,13 +292,13 @@ export default function LearnIndexPage() {
         </section>
 
         {/* Related Resources */}
-        <section className="py-16 sm:py-20 lg:py-28">
+        <section className="py-16 sm:py-20 lg:py-28 bg-black">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-4xl text-center mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-white">
                 Explore More Resources
               </h2>
-              <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-relaxed text-muted-foreground">
+              <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-relaxed text-white/60">
                 Put your knowledge into practice with our live tools
               </p>
             </div>
@@ -320,45 +306,45 @@ export default function LearnIndexPage() {
             <div className="mx-auto grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
               <Link
                 to="/bitcoin-fear-greed-index"
-                className="group relative rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-blue-500/20 via-slate-600/20 to-zinc-700/30 hover:from-blue-500/30 hover:to-zinc-700/40 hover:shadow-lg hover:shadow-white/5 border border-white/10 text-center"
+                className="group relative rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-white/5 hover:bg-white/10 border border-white/10 text-center"
               >
-                <div className="mx-auto w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
-                  <BarChart3 className="w-7 h-7 text-white" />
+                <div className="mx-auto w-14 h-14 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-4">
+                  <BarChart3 className="w-7 h-7 text-orange-400" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/80 group-hover:from-orange-500 group-hover:to-orange-600 transition-all">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white group-hover:text-orange-400 transition-all">
                   Fear & Greed Index
                 </h3>
-                <p className="text-sm sm:text-base text-muted-foreground">
+                <p className="text-sm sm:text-base text-white/60">
                   Live sentiment tracking updated every 90 seconds
                 </p>
               </Link>
 
               <Link
                 to="/bitcoin-market-sentiment"
-                className="group relative rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-slate-500/30 via-blue-600/20 to-neutral-700/30 hover:from-slate-500/40 hover:to-blue-600/30 hover:shadow-lg hover:shadow-white/5 border border-white/10 text-center"
+                className="group relative rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-white/5 hover:bg-white/10 border border-white/10 text-center"
               >
-                <div className="mx-auto w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
-                  <TrendingUp className="w-7 h-7 text-white" />
+                <div className="mx-auto w-14 h-14 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-4">
+                  <TrendingUp className="w-7 h-7 text-orange-400" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/80 group-hover:from-orange-500 group-hover:to-orange-600 transition-all">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white group-hover:text-orange-400 transition-all">
                   Market Sentiment
                 </h3>
-                <p className="text-sm sm:text-base text-muted-foreground">
+                <p className="text-sm sm:text-base text-white/60">
                   Daily analysis reports and insights
                 </p>
               </Link>
 
               <Link
                 to="/compare/best-crypto-sentiment-tools"
-                className="group relative rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-blue-400/20 via-zinc-600/20 to-slate-700/30 hover:from-blue-400/30 hover:to-slate-700/40 hover:shadow-lg hover:shadow-white/5 border border-white/10 text-center"
+                className="group relative rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-white/5 hover:bg-white/10 border border-white/10 text-center"
               >
-                <div className="mx-auto w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
-                  <Newspaper className="w-7 h-7 text-white" />
+                <div className="mx-auto w-14 h-14 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-4">
+                  <Newspaper className="w-7 h-7 text-orange-400" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/80 group-hover:from-orange-500 group-hover:to-orange-600 transition-all">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white group-hover:text-orange-400 transition-all">
                   Tool Comparison
                 </h3>
-                <p className="text-sm sm:text-base text-muted-foreground">
+                <p className="text-sm sm:text-base text-white/60">
                   Best sentiment analysis tools compared
                 </p>
               </Link>

@@ -38,7 +38,7 @@ const announcements: Announcement[] = [
 
 export function AnnouncementsPage() {
   return (
-    <div className="min-h-screen bg-background pt-20">
+    <div className="min-h-screen bg-[#F0EEE6] pt-20">
       {/* Hero Section (image card with overlay) */}
       <section className="relative overflow-hidden py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">

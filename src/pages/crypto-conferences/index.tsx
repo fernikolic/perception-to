@@ -226,7 +226,7 @@ export function CryptoConferencesPage() {
         </script>
       </Helmet>
 
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-[#F0EEE6]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Hero Section with Card Design */}
           <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28">
@@ -345,13 +345,13 @@ export function CryptoConferencesPage() {
           </section>
 
           {/* Featured Upcoming Events - Apple Style */}
-          <section className="py-12 sm:py-16 lg:py-20 bg-white">
+          <section className="py-12 sm:py-16 lg:py-20">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
               <div className="text-center mb-12 sm:mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-4 sm:mb-6 px-2">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-4 sm:mb-6 px-2">
                   Upcoming events
                 </h2>
-                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-600 font-light px-2">
+                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-black/60 font-light px-2">
                   Next major conferences and events
                 </p>
               </div>
@@ -361,26 +361,26 @@ export function CryptoConferencesPage() {
                   <Link
                     key={index}
                     to={generateConferenceUrl(conference)}
-                    className="group rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200 overflow-hidden block"
+                    className="group rounded-2xl bg-black border border-white/10 hover:bg-black/90 transition-all duration-200 overflow-hidden block"
                   >
                     <div className="p-6 space-y-4">
                       <div className="flex justify-between items-start">
-                        <span className="inline-block px-3 py-1 text-sm font-medium bg-blue-100 text-blue-700 rounded-full">
+                        <span className="inline-block px-3 py-1 text-sm font-medium bg-orange-500/20 text-orange-400 rounded-full">
                           {conference.type}
                         </span>
-                        <span className="text-sm font-medium text-gray-900">
+                        <span className="text-sm font-medium text-white">
                           {conference.dateDisplay}
                         </span>
                       </div>
-                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                      <h3 className="font-semibold text-white group-hover:text-orange-400 transition-colors">
                         {conference.name}
                       </h3>
-                      <div className="flex items-center gap-2 text-gray-600">
-                        <MapPinIcon className="h-4 w-4 text-gray-400" />
+                      <div className="flex items-center gap-2 text-white/70">
+                        <MapPinIcon className="h-4 w-4 text-white/50" />
                         {conference.location}
                       </div>
-                      <div className="flex items-center gap-2 text-gray-600">
-                        <CalendarIcon className="h-4 w-4 text-gray-400" />
+                      <div className="flex items-center gap-2 text-white/70">
+                        <CalendarIcon className="h-4 w-4 text-white/50" />
                         {conference.duration}
                       </div>
                     </div>
@@ -391,27 +391,27 @@ export function CryptoConferencesPage() {
           </section>
 
           {/* Main Conference Listing - Apple Style */}
-          <section className="py-12 sm:py-16 lg:py-20 bg-gray-50/30">
+          <section className="py-12 sm:py-16 lg:py-20 bg-black">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
               <div className="text-center mb-12 sm:mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-4 sm:mb-6 px-2">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white mb-4 sm:mb-6 px-2">
                   All conferences
                 </h2>
-                <p className="text-base sm:text-lg lg:text-xl text-gray-600 font-light max-w-3xl mx-auto px-2">
+                <p className="text-base sm:text-lg lg:text-xl text-white/60 font-light max-w-3xl mx-auto px-2">
                   Browse the complete directory of Bitcoin and blockchain events worldwide.
                 </p>
               </div>
 
               <Tabs defaultValue="grid" className="space-y-8">
                 <div className="flex justify-center">
-                  <TabsList className="bg-gray-100 p-1 rounded-2xl border-0">
-                    <TabsTrigger value="grid" className="rounded-xl px-6 py-2 text-sm font-medium">
+                  <TabsList className="bg-white/10 p-1 rounded-2xl border-0">
+                    <TabsTrigger value="grid" className="rounded-xl px-6 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-black text-white">
                       Grid
                     </TabsTrigger>
-                    <TabsTrigger value="timeline" className="rounded-xl px-6 py-2 text-sm font-medium">
+                    <TabsTrigger value="timeline" className="rounded-xl px-6 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-black text-white">
                       Timeline
                     </TabsTrigger>
-                    <TabsTrigger value="monthly" className="rounded-xl px-6 py-2 text-sm font-medium">
+                    <TabsTrigger value="monthly" className="rounded-xl px-6 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-black text-white">
                       Monthly
                     </TabsTrigger>
                   </TabsList>
@@ -423,32 +423,27 @@ export function CryptoConferencesPage() {
                       <Link
                         key={index}
                         to={generateConferenceUrl(conference)}
-                        className="group rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200 overflow-hidden block"
+                        className="group rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-200 overflow-hidden block"
                       >
                         <div className="p-5 space-y-3">
                           <div className="flex justify-between items-start">
-                            <span className="inline-block px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded">
+                            <span className="inline-block px-2 py-1 text-xs font-medium bg-orange-500/20 text-orange-400 rounded">
                               {conference.type}
                             </span>
-                            <span className="text-sm font-medium text-gray-900">
+                            <span className="text-sm font-medium text-white">
                               {conference.dateDisplay}
                             </span>
                           </div>
-                          <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                          <h4 className="font-semibold text-white group-hover:text-orange-400 transition-colors">
                             {conference.name}
                           </h4>
-                          <div className="space-y-2 text-sm text-gray-600">
+                          <div className="space-y-2 text-sm text-white/70">
                             <div className="flex items-center gap-2">
-                              <MapPinIcon className="h-4 w-4 text-gray-400" />
+                              <MapPinIcon className="h-4 w-4 text-white/50" />
                               {conference.location}
                             </div>
                             <div className="flex items-center gap-2">
-                              <span className="inline-block px-2 py-0.5 text-xs bg-gray-100 text-gray-700 rounded">
-                                {conference.type}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <CalendarIcon className="h-4 w-4 text-gray-400" />
+                              <CalendarIcon className="h-4 w-4 text-white/50" />
                               {conference.duration}
                             </div>
                           </div>
@@ -464,31 +459,31 @@ export function CryptoConferencesPage() {
                     <Link
                       key={index}
                       to={generateConferenceUrl(conference)}
-                      className="group relative rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all duration-200 overflow-hidden block"
+                      className="group relative rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-200 overflow-hidden block"
                     >
                       <div className="p-5">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                           <div className="flex-1">
                             <div className="flex items-start gap-3 mb-2">
-                              <div className="text-sm font-medium text-gray-900 min-w-[80px]">
+                              <div className="text-sm font-medium text-white min-w-[80px]">
                                 {conference.dateDisplay}
                               </div>
                               <div className="flex-1">
-                                <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
+                                <h4 className="font-semibold text-white group-hover:text-orange-400 transition-colors mb-1">
                                   {conference.name}
                                 </h4>
-                                <p className="text-sm text-gray-600 flex items-center gap-1">
-                                  <MapPinIcon className="h-3 w-3 text-gray-400" />
+                                <p className="text-sm text-white/70 flex items-center gap-1">
+                                  <MapPinIcon className="h-3 w-3 text-white/50" />
                                   {conference.location}
                                 </p>
                               </div>
                             </div>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded whitespace-nowrap">
+                            <span className="inline-block px-2 py-1 text-xs bg-orange-500/20 text-orange-400 rounded whitespace-nowrap">
                               {conference.type}
                             </span>
-                            <ChevronRightIcon className="h-4 w-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
+                            <ChevronRightIcon className="h-4 w-4 text-white/50 group-hover:text-orange-400 transition-colors" />
                           </div>
                         </div>
                       </div>
@@ -507,12 +502,12 @@ export function CryptoConferencesPage() {
                       <div className="text-center">
                         <Link
                           to={generateMonthUrl(month)}
-                          className="inline-block group hover:text-blue-600 transition-colors"
+                          className="inline-block group hover:text-orange-400 transition-colors"
                         >
-                          <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                          <h3 className="text-2xl font-semibold text-white mb-2 group-hover:text-orange-400 transition-colors">
                             {month}
                           </h3>
-                          <div className="w-12 h-0.5 bg-gray-300 group-hover:bg-blue-600 transition-colors mx-auto"></div>
+                          <div className="w-12 h-0.5 bg-white/30 group-hover:bg-orange-400 transition-colors mx-auto"></div>
                         </Link>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -520,27 +515,27 @@ export function CryptoConferencesPage() {
                           <Link
                             key={index}
                             to={generateConferenceUrl(conference)}
-                            className="group rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-200 overflow-hidden block"
+                            className="group rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-200 overflow-hidden block"
                           >
                             <div className="p-5 space-y-3">
                               <div className="flex justify-between items-start">
-                                <span className="inline-block px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded">
+                                <span className="inline-block px-2 py-1 text-xs font-medium bg-orange-500/20 text-orange-400 rounded">
                                   {conference.type}
                                 </span>
-                                <span className="text-sm font-medium text-gray-900">
+                                <span className="text-sm font-medium text-white">
                                   {conference.dateDisplay}
                                 </span>
                               </div>
-                              <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                              <h4 className="font-semibold text-white group-hover:text-orange-400 transition-colors">
                                 {conference.name}
                               </h4>
-                              <div className="text-sm text-gray-600 space-y-1">
+                              <div className="text-sm text-white/70 space-y-1">
                                 <div className="flex items-center gap-2">
-                                  <MapPinIcon className="h-3 w-3 text-gray-400" />
+                                  <MapPinIcon className="h-3 w-3 text-white/50" />
                                   {conference.location}
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <CalendarIcon className="h-3 w-3 text-gray-400" />
+                                  <CalendarIcon className="h-3 w-3 text-white/50" />
                                   {conference.duration}
                                 </div>
                               </div>
@@ -557,91 +552,91 @@ export function CryptoConferencesPage() {
           </section>
 
           {/* Conference Types Guide - Apple Style */}
-          <section className="py-12 sm:py-16 lg:py-20 bg-white">
+          <section className="py-12 sm:py-16 lg:py-20">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
               <div className="text-center mb-12 sm:mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-4 sm:mb-6 px-2">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-4 sm:mb-6 px-2">
                   Event categories
                 </h2>
-                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-600 font-light px-2">
+                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-black/60 font-light px-2">
                   Understanding different types of crypto events
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                <div className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div className="rounded-2xl sm:rounded-3xl bg-black p-6 sm:p-8 border border-white/10">
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
                       <span className="text-xl sm:text-2xl">₿</span>
                     </div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Bitcoin events</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-white">Bitcoin events</h3>
                   </div>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                     Pure Bitcoin conferences focusing on the original cryptocurrency, featuring technical discussions,
                     adoption strategies, and Lightning Network developments.
                   </p>
                 </div>
 
-                <div className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div className="rounded-2xl sm:rounded-3xl bg-black p-6 sm:p-8 border border-white/10">
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
                       <span className="text-xl sm:text-2xl">🔗</span>
                     </div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Blockchain technology</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-white">Blockchain technology</h3>
                   </div>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                     Technical conferences exploring blockchain infrastructure, consensus mechanisms,
                     scalability solutions, and enterprise blockchain applications.
                   </p>
                 </div>
 
-                <div className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div className="rounded-2xl sm:rounded-3xl bg-black p-6 sm:p-8 border border-white/10">
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
                       <span className="text-xl sm:text-2xl">🏛️</span>
                     </div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Institutional events</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-white">Institutional events</h3>
                   </div>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                     High-level conferences for institutional investors, asset managers, and traditional
                     finance professionals entering the digital asset space.
                   </p>
                 </div>
 
-                <div className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div className="rounded-2xl sm:rounded-3xl bg-black p-6 sm:p-8 border border-white/10">
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
                       <span className="text-xl sm:text-2xl">🎓</span>
                     </div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Academic conferences</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-white">Academic conferences</h3>
                   </div>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                     University-hosted events featuring peer-reviewed research, academic papers,
                     and scholarly discussions on cryptography and blockchain technology.
                   </p>
                 </div>
 
-                <div className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div className="rounded-2xl sm:rounded-3xl bg-black p-6 sm:p-8 border border-white/10">
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
                       <span className="text-xl sm:text-2xl">⚖️</span>
                     </div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Policy & regulation</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-white">Policy & regulation</h3>
                   </div>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                     Government and regulatory-focused events discussing compliance, policy development,
                     and the intersection of crypto with traditional legal frameworks.
                   </p>
                 </div>
 
-                <div className="rounded-2xl sm:rounded-3xl bg-white p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div className="rounded-2xl sm:rounded-3xl bg-black p-6 sm:p-8 border border-white/10">
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0">
                       <span className="text-xl sm:text-2xl">🌐</span>
                     </div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Global summits</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-white">Global summits</h3>
                   </div>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                     Large-scale international conferences bringing together diverse stakeholders
                     from across the cryptocurrency and blockchain ecosystem.
                   </p>
@@ -651,37 +646,37 @@ export function CryptoConferencesPage() {
           </section>
 
           {/* Geographic Distribution - Apple Style */}
-          <section className="py-12 sm:py-16 lg:py-20 bg-gray-50/30">
+          <section className="py-12 sm:py-16 lg:py-20 bg-black">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
               <div className="text-center mb-12 sm:mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-4 sm:mb-6 px-2">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white mb-4 sm:mb-6 px-2">
                   Global event distribution
                 </h2>
-                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-600 font-light px-2">
+                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-white/60 font-light px-2">
                   Conferences happening worldwide
                 </p>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-                <div className="text-center p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
-                  <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-1 sm:mb-2">🇺🇸</div>
-                  <div className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-0.5 sm:mb-1">North America</div>
-                  <div className="text-xs sm:text-sm text-gray-600">Major hubs in USA & Canada</div>
+                <div className="text-center p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-white mb-1 sm:mb-2">🇺🇸</div>
+                  <div className="text-base sm:text-lg lg:text-xl font-semibold text-white mb-0.5 sm:mb-1">North America</div>
+                  <div className="text-xs sm:text-sm text-white/60">Major hubs in USA & Canada</div>
                 </div>
-                <div className="text-center p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
-                  <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-1 sm:mb-2">🇪🇺</div>
-                  <div className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-0.5 sm:mb-1">Europe</div>
-                  <div className="text-xs sm:text-sm text-gray-600">Leading crypto innovation regions</div>
+                <div className="text-center p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-white mb-1 sm:mb-2">🇪🇺</div>
+                  <div className="text-base sm:text-lg lg:text-xl font-semibold text-white mb-0.5 sm:mb-1">Europe</div>
+                  <div className="text-xs sm:text-sm text-white/60">Leading crypto innovation regions</div>
                 </div>
-                <div className="text-center p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
-                  <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-1 sm:mb-2">🌏</div>
-                  <div className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-0.5 sm:mb-1">Asia Pacific</div>
-                  <div className="text-xs sm:text-sm text-gray-600">Fast-growing crypto markets</div>
+                <div className="text-center p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-white mb-1 sm:mb-2">🌏</div>
+                  <div className="text-base sm:text-lg lg:text-xl font-semibold text-white mb-0.5 sm:mb-1">Asia Pacific</div>
+                  <div className="text-xs sm:text-sm text-white/60">Fast-growing crypto markets</div>
                 </div>
-                <div className="text-center p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white hover:shadow-lg transition-all duration-300">
-                  <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-1 sm:mb-2">🌍</div>
-                  <div className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-0.5 sm:mb-1">Global</div>
-                  <div className="text-xs sm:text-sm text-gray-600">Worldwide adoption events</div>
+                <div className="text-center p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-white mb-1 sm:mb-2">🌍</div>
+                  <div className="text-base sm:text-lg lg:text-xl font-semibold text-white mb-0.5 sm:mb-1">Global</div>
+                  <div className="text-xs sm:text-sm text-white/60">Worldwide adoption events</div>
                 </div>
               </div>
             </div>
@@ -691,23 +686,23 @@ export function CryptoConferencesPage() {
           <section className="py-12 sm:py-16 lg:py-20">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
               <div className="text-center mb-12 sm:mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-900 mb-4 sm:mb-6 px-2">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-4 sm:mb-6 px-2">
                   Related resources
                 </h2>
-                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-600 font-light max-w-3xl mx-auto px-2">
+                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-black/60 font-light max-w-3xl mx-auto px-2">
                   Enhance your conference experience with market intelligence
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
               <Link
                 to="/bitcoin-market-sentiment"
-                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer group block"
+                className="bg-black rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/10 hover:bg-black/90 transition-all duration-300 cursor-pointer group block"
               >
                 <div className="mb-4 sm:mb-6">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-3 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-white mb-2 sm:mb-3 group-hover:text-orange-400 transition-colors">
                     Bitcoin market sentiment
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                     Track Bitcoin sentiment trends and market perception analysis to time your conference attendance with market cycles.
                   </p>
                 </div>
@@ -715,13 +710,13 @@ export function CryptoConferencesPage() {
 
               <Link
                 to="/bitcoin-fear-greed-index"
-                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer group block"
+                className="bg-black rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/10 hover:bg-black/90 transition-all duration-300 cursor-pointer group block"
               >
                 <div className="mb-4 sm:mb-6">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-3 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-white mb-2 sm:mb-3 group-hover:text-orange-400 transition-colors">
                     Fear & greed index
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                     Monitor crypto market emotions to understand the sentiment context during conference events.
                   </p>
                 </div>
@@ -729,13 +724,13 @@ export function CryptoConferencesPage() {
 
               <Link
                 to="/bitcoin-media-research"
-                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-gray-50 transition-all duration-300 cursor-pointer group block"
+                className="bg-black rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/10 hover:bg-black/90 transition-all duration-300 cursor-pointer group block"
               >
                 <div className="mb-4 sm:mb-6">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-3 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-white mb-2 sm:mb-3 group-hover:text-orange-400 transition-colors">
                     Bitcoin media research
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                     Stay updated on Bitcoin and crypto media coverage, including conference highlights and industry news.
                   </p>
                 </div>

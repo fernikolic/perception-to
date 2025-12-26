@@ -31,7 +31,8 @@ const footerSections: FooterSection[] = [
       { label: 'Bitcoin Fear & Greed Index', href: '/bitcoin-fear-greed-index' },
       { label: 'Bitcoin Market Sentiment', href: '/bitcoin-market-sentiment' },
       { label: 'Bitcoin Influence Index', href: '/bitcoin-social-media-sentiment-leaderboard' },
-      { label: 'Bad Bitcoin Takes', href: '/bitcoin-bad-takes' },
+      { label: 'Learn Hub', href: '/learn' },
+      { label: 'Compare Tools', href: '/compare/best-crypto-sentiment-tools' },
     ],
   },
   {

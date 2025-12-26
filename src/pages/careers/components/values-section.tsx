@@ -33,26 +33,24 @@ const values: Value[] = [
 
 export function ValuesSection() {
   return (
-    <section className="py-24 sm:py-32">
+    <section className="py-24 sm:py-32 bg-[#F0EEE6]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Values</h2>
-          <p className="mt-6 text-lg leading-8 text-muted-foreground">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-black">Our Values</h2>
+          <p className="mt-6 text-lg leading-8 text-black/60">
             These core principles guide everything we do and help us create an environment
             where great work happens.
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-lg gap-8 sm:max-w-none sm:grid-cols-2 lg:grid-cols-4">
           {values.map((value) => (
-            <Card key={value.title} className="group relative overflow-hidden">
-              <CardContent className="p-6">
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 ring-1 ring-primary/20">
-                  <value.icon className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold">{value.title}</h3>
-                <p className="text-muted-foreground">{value.description}</p>
-              </CardContent>
-            </Card>
+            <div key={value.title} className="group relative overflow-hidden bg-white/50 border border-black/10 rounded-2xl p-6 hover:bg-white transition-all duration-300">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-orange-500/20 ring-1 ring-orange-500/30">
+                <value.icon className="h-6 w-6 text-orange-600" />
+              </div>
+              <h3 className="mb-2 text-xl font-semibold text-black">{value.title}</h3>
+              <p className="text-black/60">{value.description}</p>
+            </div>
           ))}
         </div>
       </div>

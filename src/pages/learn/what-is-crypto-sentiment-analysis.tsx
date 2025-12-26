@@ -42,6 +42,7 @@ export default function WhatIsCryptoSentimentAnalysisPage() {
       relatedArticles={[
         { slug: 'how-to-read-fear-greed-index', title: 'How to Read the Fear & Greed Index', description: 'Learn to interpret each score range and use it in your trading.' },
         { slug: 'bitcoin-market-psychology', title: 'Bitcoin Market Psychology', description: 'Understand FOMO, FUD, and market cycles.' },
+        { slug: 'crypto-narrative-trading', title: 'Crypto Narrative Trading', description: 'Identify and trade emerging market narratives.' },
       ]}
     >
       {/* Section 1: What is Sentiment */}

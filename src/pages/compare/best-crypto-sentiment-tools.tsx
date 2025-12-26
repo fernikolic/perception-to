@@ -309,7 +309,7 @@ export default function BestCryptoSentimentToolsPage() {
         </script>
       </SEO>
 
-      <div className="min-h-screen bg-white dark:bg-black">
+      <div className="min-h-screen bg-[#F0EEE6] dark:bg-black">
         {/* Hero Section */}
         <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -360,40 +360,40 @@ export default function BestCryptoSentimentToolsPage() {
         </section>
 
         {/* Comparison Table */}
-        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
+        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-black">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-12">
+            <h2 className="text-3xl font-bold text-center text-white mb-12">
               Feature Comparison
             </h2>
 
             <div className="overflow-x-auto">
               <table className="w-full min-w-[800px]">
                 <thead>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <th className="text-left py-4 px-4 font-semibold text-slate-900 dark:text-white">Tool</th>
-                    <th className="text-center py-4 px-3 font-semibold text-slate-900 dark:text-white">Social</th>
-                    <th className="text-center py-4 px-3 font-semibold text-slate-900 dark:text-white">Media</th>
-                    <th className="text-center py-4 px-3 font-semibold text-slate-900 dark:text-white">Alerts</th>
-                    <th className="text-center py-4 px-3 font-semibold text-slate-900 dark:text-white">API</th>
-                    <th className="text-center py-4 px-3 font-semibold text-slate-900 dark:text-white">Narratives</th>
-                    <th className="text-center py-4 px-3 font-semibold text-slate-900 dark:text-white">On-Chain</th>
-                    <th className="text-left py-4 px-4 font-semibold text-slate-900 dark:text-white">Pricing</th>
+                  <tr className="border-b border-white/20">
+                    <th className="text-left py-4 px-4 font-semibold text-white">Tool</th>
+                    <th className="text-center py-4 px-3 font-semibold text-white">Social</th>
+                    <th className="text-center py-4 px-3 font-semibold text-white">Media</th>
+                    <th className="text-center py-4 px-3 font-semibold text-white">Alerts</th>
+                    <th className="text-center py-4 px-3 font-semibold text-white">API</th>
+                    <th className="text-center py-4 px-3 font-semibold text-white">Narratives</th>
+                    <th className="text-center py-4 px-3 font-semibold text-white">On-Chain</th>
+                    <th className="text-left py-4 px-4 font-semibold text-white">Pricing</th>
                   </tr>
                 </thead>
                 <tbody>
                   {tools.map((tool) => (
                     <tr
                       key={tool.name}
-                      className={`border-b border-slate-200 dark:border-slate-700 ${
-                        tool.isPerception ? 'bg-orange-50 dark:bg-orange-900/10' : ''
+                      className={`border-b border-white/10 ${
+                        tool.isPerception ? 'bg-white/5' : ''
                       }`}
                     >
                       <td className="py-4 px-4">
                         <div className="flex items-center gap-3">
-                          <div className="font-semibold text-slate-900 dark:text-white">
+                          <div className="font-semibold text-white">
                             {tool.name}
                             {tool.isPerception && (
-                              <span className="ml-2 text-xs bg-orange-500 text-white px-2 py-0.5 rounded">Our Pick</span>
+                              <span className="ml-2 text-xs bg-orange-500 text-white px-2 py-0.5 rounded-full">Our Pick</span>
                             )}
                           </div>
                         </div>
@@ -404,7 +404,7 @@ export default function BestCryptoSentimentToolsPage() {
                       <td className="text-center py-4 px-3"><FeatureIcon available={tool.features.api} /></td>
                       <td className="text-center py-4 px-3"><FeatureIcon available={tool.features.narrativeTracking} /></td>
                       <td className="text-center py-4 px-3"><FeatureIcon available={tool.features.onChainData} /></td>
-                      <td className="py-4 px-4 text-slate-600 dark:text-slate-400">{tool.pricing}</td>
+                      <td className="py-4 px-4 text-white/60">{tool.pricing}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -525,55 +525,55 @@ export default function BestCryptoSentimentToolsPage() {
         </section>
 
         {/* How to Choose Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-center text-white mb-4">
               How to Choose the Right Tool
             </h2>
-            <p className="text-center text-slate-600 dark:text-slate-400 mb-12">
+            <p className="text-center text-white/60 mb-12">
               The best tool depends on your use case
             </p>
 
             <div className="space-y-6">
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                  <MessageSquare className="w-5 h-5 text-blue-500" />
+              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+                <h3 className="font-semibold text-white mb-2 flex items-center gap-2">
+                  <MessageSquare className="w-5 h-5 text-orange-400" />
                   For Social Media Traders
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-3">
+                <p className="text-white/70 mb-3">
                   If you trade based on Twitter trends and Reddit sentiment, <strong>LunarCrush</strong> is your best bet.
                   Their Galaxy Score and social volume metrics are industry-leading.
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                  <Globe className="w-5 h-5 text-orange-500" />
+              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+                <h3 className="font-semibold text-white mb-2 flex items-center gap-2">
+                  <Globe className="w-5 h-5 text-orange-400" />
                   For News & Narrative Tracking
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-3">
+                <p className="text-white/70 mb-3">
                   If you need to know what Bloomberg, Reuters, and crypto publications are reporting,
                   <strong> Perception</strong> is the only tool monitoring 650+ media sources with AI-powered narrative detection.
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                  <BarChart3 className="w-5 h-5 text-purple-500" />
+              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+                <h3 className="font-semibold text-white mb-2 flex items-center gap-2">
+                  <BarChart3 className="w-5 h-5 text-orange-400" />
                   For On-Chain Analysis
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-3">
+                <p className="text-white/70 mb-3">
                   If blockchain data matters to your strategy, <strong>Santiment</strong> combines on-chain metrics
                   with social data for a comprehensive view of market activity.
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                  <Zap className="w-5 h-5 text-green-500" />
+              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+                <h3 className="font-semibold text-white mb-2 flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-orange-400" />
                   For Complete Market Coverage
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400">
+                <p className="text-white/70">
                   Many professional teams use multiple tools: <strong>LunarCrush</strong> for social +
                   <strong> Perception</strong> for media + <strong>Santiment</strong> for on-chain.
                   This gives you the complete picture of market sentiment.
@@ -612,22 +612,22 @@ export default function BestCryptoSentimentToolsPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 to-slate-800">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Ready to Add Media Intelligence?
             </h2>
-            <p className="text-xl mb-10 text-slate-300">
+            <p className="text-xl mb-10 text-white/60">
               Try Perception free for 14 days. No credit card required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-orange-500 hover:bg-orange-600 px-8 py-6 text-lg" asChild>
+              <Button size="lg" className="bg-white text-black hover:bg-white/90 px-8 py-6 text-lg rounded-full" asChild>
                 <a href="https://app.perception.to/auth/sign-up">
                   Start Free Trial
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="border-slate-600 text-white hover:bg-slate-700 px-8 py-6 text-lg" asChild>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full" asChild>
                 <Link to="/bitcoin-fear-greed-index">
                   See Live Dashboard
                 </Link>

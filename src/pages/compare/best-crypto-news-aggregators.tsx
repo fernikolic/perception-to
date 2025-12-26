@@ -228,33 +228,27 @@ export default function BestCryptoNewsAggregatorsPage() {
         </script>
       </SEO>
 
-      <div className="min-h-screen bg-background relative">
-        {/* Background gradients */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.15),rgba(59,130,246,0)_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(249,115,22,0.12),rgba(249,115,22,0)_50%)]" />
-        </div>
-
+      <div className="min-h-screen bg-[#F0EEE6]">
         {/* Hero Section */}
-        <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28 border-b border-slate-200 dark:border-slate-800">
+        <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28 border-b border-black/10">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-4xl text-center">
               {/* Breadcrumb */}
               <nav className="mb-6">
-                <Link to="/compare/best-crypto-sentiment-tools" className="text-sm text-orange-600 hover:text-orange-700 dark:text-orange-500">
+                <Link to="/compare/best-crypto-sentiment-tools" className="text-sm text-orange-600 hover:text-orange-700">
                   ← Back to Tool Comparisons
                 </Link>
               </nav>
 
-              <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full px-4 py-2 text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 bg-orange-500/20 text-orange-600 rounded-full px-4 py-2 text-sm font-medium mb-6">
                 <Newspaper className="w-4 h-4" />
                 Updated December 2025
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-foreground mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-6">
                 Best Crypto News Aggregators & Sources
               </h1>
-              <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl lg:text-2xl text-black/60 mb-8 max-w-3xl mx-auto">
                 Compare the top platforms for crypto news, from simple aggregators to
                 AI-powered sentiment analysis tools.
               </p>
@@ -263,74 +257,74 @@ export default function BestCryptoNewsAggregatorsPage() {
         </section>
 
         {/* Quick Comparison */}
-        <section className="py-12 sm:py-16 lg:py-20">
+        <section className="py-12 sm:py-16 lg:py-20 bg-black">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4 text-white">
               Quick Comparison
             </h2>
-            <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+            <p className="text-white/60 text-center mb-12 max-w-2xl mx-auto">
               Here's how the top crypto news platforms stack up
             </p>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto bg-white/5 border border-white/10 rounded-2xl">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <th className="text-left py-4 px-4 font-semibold">Platform</th>
-                    <th className="text-left py-4 px-4 font-semibold">Best For</th>
-                    <th className="text-center py-4 px-4 font-semibold">Sources</th>
-                    <th className="text-center py-4 px-4 font-semibold">Sentiment</th>
-                    <th className="text-center py-4 px-4 font-semibold">Alerts</th>
-                    <th className="text-center py-4 px-4 font-semibold">Pricing</th>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left py-4 px-4 font-semibold text-white">Platform</th>
+                    <th className="text-left py-4 px-4 font-semibold text-white">Best For</th>
+                    <th className="text-center py-4 px-4 font-semibold text-white">Sources</th>
+                    <th className="text-center py-4 px-4 font-semibold text-white">Sentiment</th>
+                    <th className="text-center py-4 px-4 font-semibold text-white">Alerts</th>
+                    <th className="text-center py-4 px-4 font-semibold text-white">Pricing</th>
                   </tr>
                 </thead>
-                <tbody className="text-muted-foreground">
-                  <tr className="border-b border-slate-200 dark:border-slate-700 bg-orange-500/5">
-                    <td className="py-4 px-4 font-semibold text-foreground">Perception</td>
+                <tbody className="text-white/60">
+                  <tr className="border-b border-white/10 bg-orange-500/10">
+                    <td className="py-4 px-4 font-semibold text-orange-400">Perception</td>
                     <td className="py-4 px-4">Sentiment trading</td>
                     <td className="py-4 px-4 text-center">650+</td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-orange-400 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-orange-400 mx-auto" /></td>
                     <td className="py-4 px-4 text-center">Free / $49+</td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-semibold text-foreground">CryptoPanic</td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-semibold text-white">CryptoPanic</td>
                     <td className="py-4 px-4">Quick scanning</td>
                     <td className="py-4 px-4 text-center">100+</td>
-                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-red-400 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-white/30 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-orange-400 mx-auto" /></td>
                     <td className="py-4 px-4 text-center">Free / $8+</td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-semibold text-foreground">CoinDesk</td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-semibold text-white">CoinDesk</td>
                     <td className="py-4 px-4">Deep journalism</td>
                     <td className="py-4 px-4 text-center">Original</td>
-                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-red-400 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-white/30 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-orange-400 mx-auto" /></td>
                     <td className="py-4 px-4 text-center">Free</td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-semibold text-foreground">The Block</td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-semibold text-white">The Block</td>
                     <td className="py-4 px-4">Research/Data</td>
                     <td className="py-4 px-4 text-center">Original</td>
-                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-red-400 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-white/30 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-orange-400 mx-auto" /></td>
                     <td className="py-4 px-4 text-center">Free / $199+</td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-semibold text-foreground">Cointelegraph</td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-semibold text-white">Cointelegraph</td>
                     <td className="py-4 px-4">High volume</td>
                     <td className="py-4 px-4 text-center">Original</td>
-                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-red-400 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-white/30 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-orange-400 mx-auto" /></td>
                     <td className="py-4 px-4 text-center">Free</td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-semibold text-foreground">Decrypt</td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-semibold text-white">Decrypt</td>
                     <td className="py-4 px-4">Beginners</td>
                     <td className="py-4 px-4 text-center">Original</td>
-                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-red-400 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-white/30 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-orange-400 mx-auto" /></td>
                     <td className="py-4 px-4 text-center">Free</td>
                   </tr>
                 </tbody>
@@ -340,12 +334,12 @@ export default function BestCryptoNewsAggregatorsPage() {
         </section>
 
         {/* Detailed Reviews */}
-        <section className="py-12 sm:py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#F0EEE6]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 text-black">
               Detailed Reviews
             </h2>
-            <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+            <p className="text-black/60 text-center mb-12 max-w-2xl mx-auto">
               In-depth look at each platform's strengths and weaknesses
             </p>
 
@@ -353,16 +347,16 @@ export default function BestCryptoNewsAggregatorsPage() {
               {aggregators.map((agg, index) => (
                 <div
                   key={agg.name}
-                  className={`rounded-xl sm:rounded-2xl p-6 sm:p-8 bg-gradient-to-br ${
+                  className={`rounded-2xl p-6 sm:p-8 ${
                     index === 0
-                      ? 'from-orange-500/15 via-slate-600/10 to-zinc-700/15 border-orange-500/30'
-                      : 'from-slate-500/10 via-blue-600/5 to-neutral-700/10'
-                  } border border-white/10`}
+                      ? 'bg-orange-500/10 border-2 border-orange-500/30'
+                      : 'bg-white/50 border border-black/10'
+                  }`}
                 >
                   <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-4">
-                        <h3 className="text-xl sm:text-2xl font-bold text-foreground">{agg.name}</h3>
+                        <h3 className="text-xl sm:text-2xl font-bold text-black">{agg.name}</h3>
                         {index === 0 && (
                           <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-medium">
                             Editor's Choice
@@ -373,48 +367,48 @@ export default function BestCryptoNewsAggregatorsPage() {
                             <Star
                               key={i}
                               className={`w-4 h-4 ${
-                                i < agg.rating ? 'text-yellow-500 fill-yellow-500' : 'text-slate-300'
+                                i < agg.rating ? 'text-orange-500 fill-orange-500' : 'text-black/20'
                               }`}
                             />
                           ))}
                         </div>
                       </div>
 
-                      <p className="text-muted-foreground mb-4">{agg.description}</p>
+                      <p className="text-black/60 mb-4">{agg.description}</p>
 
                       <div className="grid sm:grid-cols-2 gap-4 mb-4">
                         <div className="flex items-center gap-2 text-sm">
-                          <Globe className="w-4 h-4 text-muted-foreground" />
-                          <span className="text-muted-foreground">Sources: {agg.sources}</span>
+                          <Globe className="w-4 h-4 text-black/40" />
+                          <span className="text-black/60">Sources: {agg.sources}</span>
                         </div>
                         <div className="flex items-center gap-2 text-sm">
-                          <DollarSign className="w-4 h-4 text-muted-foreground" />
-                          <span className="text-muted-foreground">{agg.pricing}</span>
+                          <DollarSign className="w-4 h-4 text-black/40" />
+                          <span className="text-black/60">{agg.pricing}</span>
                         </div>
                       </div>
 
                       <p className="text-sm mb-4">
-                        <strong className="text-foreground">Best for:</strong>{' '}
-                        <span className="text-muted-foreground">{agg.bestFor}</span>
+                        <strong className="text-black">Best for:</strong>{' '}
+                        <span className="text-black/60">{agg.bestFor}</span>
                       </p>
                     </div>
 
                     <div className="lg:w-80 space-y-4">
                       <div>
-                        <h4 className="font-semibold text-sm text-green-600 dark:text-green-400 mb-2 flex items-center gap-1">
+                        <h4 className="font-semibold text-sm text-orange-600 mb-2 flex items-center gap-1">
                           <Check className="w-4 h-4" /> Strengths
                         </h4>
-                        <ul className="text-sm text-muted-foreground space-y-1">
+                        <ul className="text-sm text-black/60 space-y-1">
                           {agg.features.slice(0, 4).map((f, i) => (
                             <li key={i}>• {f}</li>
                           ))}
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-sm text-red-600 dark:text-red-400 mb-2 flex items-center gap-1">
+                        <h4 className="font-semibold text-sm text-black/50 mb-2 flex items-center gap-1">
                           <X className="w-4 h-4" /> Limitations
                         </h4>
-                        <ul className="text-sm text-muted-foreground space-y-1">
+                        <ul className="text-sm text-black/60 space-y-1">
                           {agg.limitations.map((l, i) => (
                             <li key={i}>• {l}</li>
                           ))}
@@ -423,15 +417,15 @@ export default function BestCryptoNewsAggregatorsPage() {
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-4">
+                  <div className="mt-6 pt-6 border-t border-black/10 flex flex-col sm:flex-row gap-4">
                     {index === 0 ? (
-                      <Button className="bg-orange-500 hover:bg-orange-600 text-white" asChild>
+                      <Button className="bg-black hover:bg-black/90 text-white rounded-full" asChild>
                         <a href="https://app.perception.to/auth/sign-up">
                           Try Free <ArrowRight className="ml-2 w-4 h-4" />
                         </a>
                       </Button>
                     ) : (
-                      <Button variant="outline" asChild>
+                      <Button variant="outline" className="rounded-full border-black/20 hover:border-black/30" asChild>
                         <a href={agg.website} target="_blank" rel="noopener noreferrer">
                           Visit {agg.name} <ArrowRight className="ml-2 w-4 h-4" />
                         </a>
@@ -445,89 +439,89 @@ export default function BestCryptoNewsAggregatorsPage() {
         </section>
 
         {/* Types of Users */}
-        <section className="py-12 sm:py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
+        <section className="py-12 sm:py-16 lg:py-20 bg-black">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 text-white">
               Which Platform is Right for You?
             </h2>
-            <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+            <p className="text-white/60 text-center mb-12 max-w-2xl mx-auto">
               Different platforms serve different needs
             </p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="rounded-xl sm:rounded-2xl p-6 bg-gradient-to-br from-orange-500/15 via-slate-600/10 to-zinc-700/15 border border-white/10">
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
-                  <BarChart3 className="w-6 h-6 text-white" />
+              <div className="rounded-2xl p-6 bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-4">
+                  <BarChart3 className="w-6 h-6 text-orange-400" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Active Traders</h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <h3 className="text-lg font-bold mb-2 text-white">Active Traders</h3>
+                <p className="text-sm text-white/60 mb-4">
                   Need real-time sentiment data and alerts for market-moving news.
                 </p>
-                <p className="text-sm font-medium text-orange-500">Recommended: Perception</p>
+                <p className="text-sm font-medium text-orange-400">Recommended: Perception</p>
               </div>
 
-              <div className="rounded-xl sm:rounded-2xl p-6 bg-gradient-to-br from-blue-500/15 via-slate-600/10 to-zinc-700/15 border border-white/10">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
-                  <Clock className="w-6 h-6 text-white" />
+              <div className="rounded-2xl p-6 bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="w-12 h-12 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center mb-4">
+                  <Clock className="w-6 h-6 text-white/70" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Casual Investors</h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <h3 className="text-lg font-bold mb-2 text-white">Casual Investors</h3>
+                <p className="text-sm text-white/60 mb-4">
                   Want to stay informed without spending hours reading news.
                 </p>
-                <p className="text-sm font-medium text-blue-500">Recommended: CryptoPanic</p>
+                <p className="text-sm font-medium text-white/70">Recommended: CryptoPanic</p>
               </div>
 
-              <div className="rounded-xl sm:rounded-2xl p-6 bg-gradient-to-br from-purple-500/15 via-slate-600/10 to-zinc-700/15 border border-white/10">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
-                  <Filter className="w-6 h-6 text-white" />
+              <div className="rounded-2xl p-6 bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="w-12 h-12 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center mb-4">
+                  <Filter className="w-6 h-6 text-white/70" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Researchers</h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <h3 className="text-lg font-bold mb-2 text-white">Researchers</h3>
+                <p className="text-sm text-white/60 mb-4">
                   Need deep analysis, data, and institutional-grade research.
                 </p>
-                <p className="text-sm font-medium text-purple-500">Recommended: The Block</p>
+                <p className="text-sm font-medium text-white/70">Recommended: The Block</p>
               </div>
 
-              <div className="rounded-xl sm:rounded-2xl p-6 bg-gradient-to-br from-green-500/15 via-slate-600/10 to-zinc-700/15 border border-white/10">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
-                  <Newspaper className="w-6 h-6 text-white" />
+              <div className="rounded-2xl p-6 bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-4">
+                  <Newspaper className="w-6 h-6 text-orange-400" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Journalists</h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <h3 className="text-lg font-bold mb-2 text-white">Journalists</h3>
+                <p className="text-sm text-white/60 mb-4">
                   Need comprehensive coverage and narrative tracking for stories.
                 </p>
-                <p className="text-sm font-medium text-green-500">Recommended: Perception + CoinDesk</p>
+                <p className="text-sm font-medium text-orange-400">Recommended: Perception + CoinDesk</p>
               </div>
 
-              <div className="rounded-xl sm:rounded-2xl p-6 bg-gradient-to-br from-yellow-500/15 via-slate-600/10 to-zinc-700/15 border border-white/10">
-                <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
-                  <Zap className="w-6 h-6 text-white" />
+              <div className="rounded-2xl p-6 bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="w-12 h-12 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center mb-4">
+                  <Zap className="w-6 h-6 text-white/70" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Beginners</h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <h3 className="text-lg font-bold mb-2 text-white">Beginners</h3>
+                <p className="text-sm text-white/60 mb-4">
                   New to crypto and need accessible, educational content.
                 </p>
-                <p className="text-sm font-medium text-yellow-600">Recommended: Decrypt</p>
+                <p className="text-sm font-medium text-white/70">Recommended: Decrypt</p>
               </div>
 
-              <div className="rounded-xl sm:rounded-2xl p-6 bg-gradient-to-br from-slate-500/15 via-slate-600/10 to-zinc-700/15 border border-white/10">
-                <div className="w-12 h-12 bg-gradient-to-br from-slate-500 to-slate-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
-                  <Bell className="w-6 h-6 text-white" />
+              <div className="rounded-2xl p-6 bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="w-12 h-12 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center mb-4">
+                  <Bell className="w-6 h-6 text-white/70" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Maximizers</h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <h3 className="text-lg font-bold mb-2 text-white">Maximizers</h3>
+                <p className="text-sm text-white/60 mb-4">
                   Want to consume as much news as possible from multiple sources.
                 </p>
-                <p className="text-sm font-medium text-slate-400">Recommended: Cointelegraph + others</p>
+                <p className="text-sm font-medium text-white/70">Recommended: Cointelegraph + others</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="py-12 sm:py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#F0EEE6]">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 text-black">
               Frequently Asked Questions
             </h2>
 
@@ -556,10 +550,10 @@ export default function BestCryptoNewsAggregatorsPage() {
               ].map((faq, i) => (
                 <div
                   key={i}
-                  className="rounded-xl sm:rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-slate-500/10 via-blue-600/5 to-neutral-700/10 border border-white/10"
+                  className="rounded-2xl p-5 sm:p-6 bg-white/50 border border-black/10"
                 >
-                  <h3 className="font-bold mb-2 text-foreground">{faq.q}</h3>
-                  <p className="text-muted-foreground text-sm">{faq.a}</p>
+                  <h3 className="font-bold mb-2 text-black">{faq.q}</h3>
+                  <p className="text-black/60 text-sm">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -567,19 +561,19 @@ export default function BestCryptoNewsAggregatorsPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-12 sm:py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
+        <section className="py-12 sm:py-16 lg:py-20 bg-black">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white">
               Go Beyond News Aggregation
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-white/60 mb-8 max-w-2xl mx-auto">
               See how AI-powered sentiment analysis can give you an edge that simple
               news reading can't provide.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-6 text-lg rounded-xl"
+                className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full"
                 asChild
               >
                 <a href="https://app.perception.to/auth/sign-up">
@@ -590,7 +584,7 @@ export default function BestCryptoNewsAggregatorsPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="px-8 py-6 text-lg rounded-xl"
+                className="px-8 py-6 text-lg rounded-full border-white/20 text-white hover:bg-white/10"
                 asChild
               >
                 <Link to="/bitcoin-fear-greed-index">
@@ -602,30 +596,30 @@ export default function BestCryptoNewsAggregatorsPage() {
         </section>
 
         {/* Related Links */}
-        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800">
+        <section className="py-12 sm:py-16 bg-[#F0EEE6]">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-xl font-bold text-center mb-8">Related Resources</h2>
+            <h2 className="text-xl font-bold text-center mb-8 text-black">Related Resources</h2>
             <div className="grid sm:grid-cols-3 gap-4">
               <Link
                 to="/compare/best-crypto-sentiment-tools"
-                className="rounded-xl p-4 bg-gradient-to-br from-slate-500/10 to-zinc-700/10 border border-white/10 hover:border-orange-500/30 transition-colors text-center"
+                className="rounded-xl p-4 bg-white/50 border border-black/10 hover:border-orange-500/30 transition-colors text-center"
               >
-                <p className="font-semibold text-foreground">Sentiment Tools</p>
-                <p className="text-sm text-muted-foreground">Compare analysis platforms</p>
+                <p className="font-semibold text-black">Sentiment Tools</p>
+                <p className="text-sm text-black/60">Compare analysis platforms</p>
               </Link>
               <Link
                 to="/learn/what-is-crypto-sentiment-analysis"
-                className="rounded-xl p-4 bg-gradient-to-br from-slate-500/10 to-zinc-700/10 border border-white/10 hover:border-orange-500/30 transition-colors text-center"
+                className="rounded-xl p-4 bg-white/50 border border-black/10 hover:border-orange-500/30 transition-colors text-center"
               >
-                <p className="font-semibold text-foreground">Sentiment Guide</p>
-                <p className="text-sm text-muted-foreground">Learn the fundamentals</p>
+                <p className="font-semibold text-black">Sentiment Guide</p>
+                <p className="text-sm text-black/60">Learn the fundamentals</p>
               </Link>
               <Link
                 to="/bitcoin-media-research"
-                className="rounded-xl p-4 bg-gradient-to-br from-slate-500/10 to-zinc-700/10 border border-white/10 hover:border-orange-500/30 transition-colors text-center"
+                className="rounded-xl p-4 bg-white/50 border border-black/10 hover:border-orange-500/30 transition-colors text-center"
               >
-                <p className="font-semibold text-foreground">Media Research</p>
-                <p className="text-sm text-muted-foreground">Explore media coverage</p>
+                <p className="font-semibold text-black">Media Research</p>
+                <p className="text-sm text-black/60">Explore media coverage</p>
               </Link>
             </div>
           </div>

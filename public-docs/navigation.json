@@ -1,0 +1,132 @@
+{
+  "navigation": [
+    {
+      "title": "Welcome",
+      "path": "/index.md"
+    },
+    {
+      "title": "Getting Started",
+      "items": [
+        {
+          "title": "What is Perception",
+          "path": "/getting-started/what-is-perception.md"
+        },
+        {
+          "title": "Quick Start Guide",
+          "path": "/getting-started/quick-start.md"
+        },
+        {
+          "title": "Key Concepts",
+          "path": "/getting-started/key-concepts.md"
+        }
+      ]
+    },
+    {
+      "title": "Features",
+      "items": [
+        {
+          "title": "Intelligence Feed",
+          "path": "/features/intelligence-feed.md"
+        },
+        {
+          "title": "Search & Tracking",
+          "path": "/features/tracking.md"
+        },
+        {
+          "title": "Trends Analysis",
+          "path": "/features/trends.md"
+        },
+        {
+          "title": "Spaces",
+          "path": "/features/spaces.md"
+        },
+        {
+          "title": "Alerts & Notifications",
+          "path": "/features/alerts.md"
+        },
+        {
+          "title": "Weekly Reports",
+          "path": "/features/reports.md"
+        },
+        {
+          "title": "Quick Briefs",
+          "path": "/features/briefs.md"
+        }
+      ]
+    },
+    {
+      "title": "Guides by Role",
+      "items": [
+        {
+          "title": "For Research Analysts",
+          "path": "/guides/for-analysts.md"
+        },
+        {
+          "title": "For PR & Communications",
+          "path": "/guides/for-pr-teams.md"
+        },
+        {
+          "title": "For Business Development",
+          "path": "/guides/for-bizdev.md"
+        },
+        {
+          "title": "For Investors & VCs",
+          "path": "/guides/for-investors.md"
+        },
+        {
+          "title": "For Executives",
+          "path": "/guides/for-executives.md"
+        }
+      ]
+    },
+    {
+      "title": "Data Coverage",
+      "items": [
+        {
+          "title": "Sources Overview",
+          "path": "/data-coverage/sources-overview.md"
+        },
+        {
+          "title": "Update Frequency",
+          "path": "/data-coverage/update-frequency.md"
+        },
+        {
+          "title": "Data Categories",
+          "path": "/data-coverage/data-categories.md"
+        }
+      ]
+    },
+    {
+      "title": "Integrations",
+      "items": [
+        {
+          "title": "Email Integration",
+          "path": "/integrations/email-alerts.md"
+        },
+        {
+          "title": "Data Exports",
+          "path": "/integrations/exports.md"
+        }
+      ]
+    },
+    {
+      "title": "Help",
+      "items": [
+        {
+          "title": "FAQ",
+          "path": "/faq.md"
+        },
+        {
+          "title": "Glossary",
+          "path": "/glossary.md"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "title": "Perception Documentation",
+    "description": "User documentation for Perception Bitcoin Market Intelligence Platform",
+    "version": "1.0.0",
+    "lastUpdated": "2025-12-04"
+  }
+}

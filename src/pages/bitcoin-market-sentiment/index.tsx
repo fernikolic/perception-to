@@ -903,6 +903,54 @@ export default function BitcoinMarketSentimentIndexPage() {
                   </Link>
                 </div>
               </div>
+
+              {/* Learn Hub Section */}
+              <div className="text-center mb-12">
+                <h3 className="text-3xl font-bold mb-4 text-slate-900 dark:text-white">
+                  Learn About Sentiment Analysis
+                </h3>
+                <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">
+                  Master the fundamentals of crypto sentiment with our educational guides
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <Link to="/learn/what-is-crypto-sentiment-analysis" className="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-6 border border-slate-300 dark:border-slate-700/30 hover:shadow-lg hover:border-orange-300 transition-all group">
+                  <h4 className="font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-orange-500 transition-colors">
+                    What is Crypto Sentiment?
+                  </h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                    Complete beginner's guide to understanding market sentiment.
+                  </p>
+                </Link>
+
+                <Link to="/learn/bitcoin-market-psychology" className="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-6 border border-slate-300 dark:border-slate-700/30 hover:shadow-lg hover:border-orange-300 transition-all group">
+                  <h4 className="font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-orange-500 transition-colors">
+                    Market Psychology
+                  </h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                    Understand FOMO, FUD, and emotional market cycles.
+                  </p>
+                </Link>
+
+                <Link to="/learn/how-to-read-fear-greed-index" className="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-6 border border-slate-300 dark:border-slate-700/30 hover:shadow-lg hover:border-orange-300 transition-all group">
+                  <h4 className="font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-orange-500 transition-colors">
+                    Reading Fear & Greed
+                  </h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                    How to interpret and use sentiment scores in trading.
+                  </p>
+                </Link>
+
+                <Link to="/learn/crypto-narrative-trading" className="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-6 border border-slate-300 dark:border-slate-700/30 hover:shadow-lg hover:border-orange-300 transition-all group">
+                  <h4 className="font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-orange-500 transition-colors">
+                    Narrative Trading
+                  </h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                    Identify and trade emerging market narratives.
+                  </p>
+                </Link>
+              </div>
             </section>
 
             {/* Call to Action */}

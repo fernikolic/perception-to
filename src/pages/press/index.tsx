@@ -80,7 +80,7 @@ const mediaKit = [
 
 export function PressPage() {
   return (
-    <div className="min-h-screen bg-white pt-16">
+    <div className="min-h-screen bg-[#F0EEE6] pt-16">
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95">
         {/* Base Gradient */}
@@ -108,8 +108,8 @@ export function PressPage() {
                     >
                       <span className="relative flex items-center gap-2">
                         <span className="relative flex h-1.5 w-1.5">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-40"></span>
-                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-gray-400"></span>
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-40"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-orange-400"></span>
                         </span>
                         <span className="relative font-bold text-black">PRESS</span>
                       </span>
@@ -133,7 +133,7 @@ export function PressPage() {
                   <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-6">
                     <Button
                       size="lg"
-                      className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
+                      className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-full"
                       asChild
                     >
                       <a href="mailto:press@perception.to">
@@ -142,7 +142,7 @@ export function PressPage() {
                     </Button>
                     <Button
                       size="lg"
-                      className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
+                      className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-full"
                       onClick={() => {
                         document.getElementById('latest-news')?.scrollIntoView({ behavior: 'smooth' });
                       }}
@@ -158,13 +158,13 @@ export function PressPage() {
       </div>
 
       {/* Press Releases */}
-      <section id="latest-news" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <section id="latest-news" className="py-12 sm:py-16 lg:py-20 bg-black">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-4 sm:mb-6 px-2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white mb-4 sm:mb-6 px-2">
               Latest News
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl font-light text-gray-600 px-2">
+            <p className="text-base sm:text-lg lg:text-xl font-light text-white/60 px-2">
               Recent coverage and announcements
             </p>
           </div>
@@ -176,7 +176,7 @@ export function PressPage() {
                 href={release.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-white rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group"
+                className="block bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300 group"
               >
                 <div className="flex flex-col md:flex-row h-full">
                   {release.image && (
@@ -192,23 +192,23 @@ export function PressPage() {
                     <div>
                       <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                         {release.tags.map((tag) => (
-                          <span key={tag} className="px-2 sm:px-3 py-1 bg-orange-50 text-orange-600 text-xs font-semibold rounded-md border border-orange-100">
+                          <span key={tag} className="px-2 sm:px-3 py-1 bg-orange-500/20 text-orange-400 text-xs font-semibold rounded-md border border-orange-500/30">
                             {tag}
                           </span>
                         ))}
                       </div>
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 leading-snug mb-2 sm:mb-3 group-hover:text-orange-600 transition-colors">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white leading-snug mb-2 sm:mb-3 group-hover:text-orange-400 transition-colors">
                         {release.title}
                       </h3>
-                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-3 sm:mb-4">
+                      <p className="text-sm sm:text-base text-white/60 leading-relaxed mb-3 sm:mb-4">
                         {release.description}
                       </p>
                     </div>
-                    <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-100">
-                      <div className="text-xs sm:text-sm text-gray-500 font-medium">
+                    <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-white/10">
+                      <div className="text-xs sm:text-sm text-white/50 font-medium">
                         {release.date}
                       </div>
-                      <div className="text-orange-600 text-xs sm:text-sm font-semibold inline-flex items-center gap-1 sm:gap-2">
+                      <div className="text-orange-400 text-xs sm:text-sm font-semibold inline-flex items-center gap-1 sm:gap-2">
                         Read article
                         <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" />
                       </div>
@@ -222,13 +222,13 @@ export function PressPage() {
       </section>
 
       {/* Media Kit */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-[#F0EEE6]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-4 sm:mb-6 px-2">
               Media Resources
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl font-light text-gray-600 px-2">
+            <p className="text-base sm:text-lg lg:text-xl font-light text-black/60 px-2">
               Everything you need to cover Perception
             </p>
           </div>
@@ -237,14 +237,14 @@ export function PressPage() {
             {mediaKit.map((item) => (
               <div
                 key={item.title}
-                className={`relative bg-gray-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 transition-all duration-300 ${
+                className={`relative bg-white/50 border border-black/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 transition-all duration-300 ${
                   item.disabled
                     ? 'opacity-60 cursor-not-allowed'
-                    : 'hover:bg-gray-100 cursor-pointer'
+                    : 'hover:bg-white cursor-pointer'
                 }`}
               >
                 {item.badge && (
-                  <span className="absolute top-4 sm:top-6 right-4 sm:right-6 px-2 sm:px-3 py-1 bg-gray-200 text-gray-700 text-xs font-medium rounded-full">
+                  <span className="absolute top-4 sm:top-6 right-4 sm:right-6 px-2 sm:px-3 py-1 bg-orange-500/20 text-orange-600 text-xs font-medium rounded-full">
                     {item.badge}
                   </span>
                 )}
@@ -256,19 +256,19 @@ export function PressPage() {
                   <h3 className="text-xl sm:text-2xl font-light text-black mb-2 sm:mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-base sm:text-lg font-light text-gray-600 leading-relaxed">
+                  <p className="text-base sm:text-lg font-light text-black/60 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
 
                 {item.disabled ? (
-                  <div className="text-sm font-medium text-gray-400">
+                  <div className="text-sm font-medium text-black/40">
                     Access
                   </div>
                 ) : (
                   <a
                     href={item.link}
-                    className="text-black text-sm font-medium hover:text-gray-600 transition-colors group inline-flex items-center gap-2"
+                    className="text-black text-sm font-medium hover:text-orange-600 transition-colors group inline-flex items-center gap-2"
                   >
                     Access
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

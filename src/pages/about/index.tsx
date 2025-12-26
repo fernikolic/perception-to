@@ -45,7 +45,7 @@ export function AboutPage() {
         url="https://perception.to/about"
         keywords={['about Perception', 'Bitcoin intelligence workspace', 'stablecoin intelligence', 'market intelligence platform', 'crypto intelligence team']}
       />
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#F0EEE6]">
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-16">
         {/* Base Gradient */}
@@ -73,8 +73,8 @@ export function AboutPage() {
                     >
                       <span className="relative flex items-center gap-2">
                         <span className="relative flex h-1.5 w-1.5">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-40"></span>
-                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-400"></span>
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-40"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-orange-400"></span>
                         </span>
                         <span className="relative font-bold text-black">ABOUT US</span>
                       </span>
@@ -123,16 +123,16 @@ export function AboutPage() {
       </div>
 
       {/* Mission Section - Apple Style */}
-      <section id="mission-section" className="py-12 sm:py-16 lg:py-24 bg-gray-50">
+      <section id="mission-section" className="py-12 sm:py-16 lg:py-24 bg-black">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-4 sm:mb-6 px-2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white mb-4 sm:mb-6 px-2">
               Our Mission
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             <div className="space-y-6 sm:space-y-8">
-              <div className="space-y-4 sm:space-y-6 text-base sm:text-lg lg:text-xl leading-relaxed text-gray-700 font-light">
+              <div className="space-y-4 sm:space-y-6 text-base sm:text-lg lg:text-xl leading-relaxed text-white/70 font-light">
                 <p>
                   Stop starting from scratch every time you need to create a deliverable. Your board wants competitive intel? It's already organized in a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Space</em>. Generate it with a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em>.
                 </p>
@@ -145,10 +145,10 @@ export function AboutPage() {
               </div>
             </div>
             <div className="relative mt-8 md:mt-0">
-              <div className="aspect-square rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-100 p-8 sm:p-12 flex items-center justify-center">
+              <div className="aspect-square rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10 p-8 sm:p-12 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-5xl sm:text-6xl lg:text-7xl font-thin text-indigo-600 mb-3 sm:mb-4">650+</div>
-                  <div className="text-lg sm:text-xl lg:text-2xl font-light text-gray-700">sources monitored</div>
+                  <div className="text-5xl sm:text-6xl lg:text-7xl font-thin text-orange-400 mb-3 sm:mb-4">650+</div>
+                  <div className="text-lg sm:text-xl lg:text-2xl font-light text-white/70">sources monitored</div>
                 </div>
               </div>
             </div>
@@ -157,19 +157,19 @@ export function AboutPage() {
       </section>
 
       {/* Team Section - Apple Style */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-white">
+      <section className="py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-4 sm:mb-6 px-2">
               Meet Our Founder
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl font-light text-gray-600 max-w-3xl mx-auto px-2">
+            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl font-light text-black/60 max-w-3xl mx-auto px-2">
               15 years in marketing and communications at leading tech and Bitcoin companies.
             </p>
           </div>
 
           <div className="max-w-2xl mx-auto">
-            <div className="bg-white rounded-2xl sm:rounded-3xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-black rounded-2xl sm:rounded-3xl border border-white/10 overflow-hidden">
               <div className="p-6 sm:p-10 lg:p-12 text-center">
                 <div className="relative inline-block mb-6 sm:mb-8">
                   <img
@@ -179,30 +179,30 @@ export function AboutPage() {
                   />
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-light text-black mb-2">
+                <h3 className="text-2xl sm:text-3xl font-light text-white mb-2">
                   {teamMembers[0].name}
                 </h3>
-                <p className="text-base sm:text-lg font-light text-gray-500 mb-4 sm:mb-6">
+                <p className="text-base sm:text-lg font-light text-white/60 mb-4 sm:mb-6">
                   {teamMembers[0].role}
                 </p>
-                <p className="text-base sm:text-lg font-light text-gray-700 leading-relaxed mb-6 sm:mb-8 max-w-lg mx-auto">
+                <p className="text-base sm:text-lg font-light text-white/70 leading-relaxed mb-6 sm:mb-8 max-w-lg mx-auto">
                   {teamMembers[0].bio}
                 </p>
-                
+
                 <div className="flex justify-center gap-4">
-                  <a 
-                    href={teamMembers[0].social.twitter} 
-                    target="_blank" 
+                  <a
+                    href={teamMembers[0].social.twitter}
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors duration-200"
+                    className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 text-white"
                   >
                     <XIcon />
                   </a>
-                  <a 
-                    href={teamMembers[0].social.linkedin} 
-                    target="_blank" 
+                  <a
+                    href={teamMembers[0].social.linkedin}
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors duration-200"
+                    className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 text-white"
                   >
                     <Linkedin className="w-5 h-5" />
                   </a>
@@ -214,13 +214,13 @@ export function AboutPage() {
       </section>
 
       {/* Timeline Section - Apple Style */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-gray-50">
+      <section className="py-12 sm:py-16 lg:py-24 bg-black">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-4 sm:mb-6 px-2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white mb-4 sm:mb-6 px-2">
               Our Journey
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl font-light text-gray-600 max-w-4xl mx-auto px-2">
+            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl font-light text-white/60 max-w-4xl mx-auto px-2">
               From founding to beta launch, building the Intelligence Workspace professionals actually need.
             </p>
           </div>
@@ -229,15 +229,15 @@ export function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
               {milestones.map((milestone, index) => (
                 <div key={milestone.year} className="relative">
-                  <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                  <div className="bg-white/5 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/10 hover:bg-white/10 transition-colors duration-300">
                     <div className="text-center">
-                      <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-black text-white mb-4 sm:mb-6">
+                      <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-orange-500 text-white mb-4 sm:mb-6">
                         <span className="text-xl sm:text-2xl font-light">{milestone.year}</span>
                       </div>
-                      <h3 className="text-xl sm:text-2xl font-light text-black mb-3 sm:mb-4">
+                      <h3 className="text-xl sm:text-2xl font-light text-white mb-3 sm:mb-4">
                         {milestone.title}
                       </h3>
-                      <p className="text-base sm:text-lg font-light text-gray-700 leading-relaxed">
+                      <p className="text-base sm:text-lg font-light text-white/70 leading-relaxed">
                         {milestone.description}
                       </p>
                     </div>
@@ -250,18 +250,18 @@ export function AboutPage() {
       </section>
 
       {/* Call to Action - Apple Style */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-white">
+      <section className="py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-6 sm:mb-8 px-2">
               Ready to stop starting from scratch?
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl font-light text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto px-2">
+            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl font-light text-black/60 mb-8 sm:mb-12 max-w-3xl mx-auto px-2">
               Set up watchlists, organize in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, generate with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>. 7-day free trial.
             </p>
             <a
               href="https://app.perception.to/auth/sign-up"
-              className="inline-flex items-center justify-center px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl font-semibold text-white bg-black rounded-2xl hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-3xl focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+              className="inline-flex items-center justify-center px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl font-semibold text-white bg-black rounded-full hover:bg-black/90 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-3xl focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
             >
               Start here
             </a>

@@ -43,7 +43,7 @@ export function UseCasesLanding() {
         url="https://perception.to/use-cases"
         keywords={['Bitcoin intelligence workspace', 'executive intelligence platform', 'stakeholder communications tool', 'PR intelligence platform', 'crypto journalism tools']}
       />
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-[#F0EEE6]">
         {/* Hero Section */}
         <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-16">
           {/* Base Gradient */}
@@ -71,8 +71,8 @@ export function UseCasesLanding() {
                       >
                         <span className="relative flex items-center gap-2">
                           <span className="relative flex h-1.5 w-1.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-40"></span>
-                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-purple-400"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-40"></span>
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-orange-400"></span>
                           </span>
                           <span className="relative font-bold text-black">USE CASES</span>
                         </span>
@@ -119,35 +119,35 @@ export function UseCasesLanding() {
         </div>
 
         {/* Use Cases Grid */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+        <section className="py-12 sm:py-16 lg:py-20 bg-black">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
               {useCases.map((useCase, index) => (
                 <a
                   key={index}
                   href={useCase.href}
-                  className="group relative bg-white border border-gray-200 rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:border-gray-900 hover:shadow-xl transition-all duration-300"
+                  className="group relative bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300"
                 >
                   <div className="flex flex-col h-full">
                     <div className="mb-4 sm:mb-6">
-                      <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gray-100 border border-gray-200">
-                        <useCase.icon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-900" />
+                      <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-orange-500/20 border border-orange-500/30">
+                        <useCase.icon className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
                       </div>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3">
                       {useCase.title}
                     </h3>
 
-                    <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 flex-grow">
+                    <p className="text-sm sm:text-base text-white/70 mb-4 sm:mb-6 flex-grow">
                       {useCase.description}
                     </p>
 
-                    <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-200">
-                      <span className="text-xs sm:text-sm font-semibold text-gray-900">
+                    <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-white/10">
+                      <span className="text-xs sm:text-sm font-semibold text-white">
                         {useCase.stats}
                       </span>
-                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white/50 group-hover:text-orange-400 group-hover:translate-x-1 transition-all" />
                     </div>
                   </div>
                 </a>
@@ -157,18 +157,18 @@ export function UseCasesLanding() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative py-12 sm:py-16 lg:py-20 bg-white">
+        <section className="relative py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-black mb-4 sm:mb-6 px-2">
                 Ready to try the Intelligence Workspace?
               </h2>
-              <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 sm:mb-10 px-2">
+              <p className="text-base sm:text-lg lg:text-xl text-black/60 mb-8 sm:mb-10 px-2">
                 7-day free trial. Set up watchlists, organize in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, generate with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>.
               </p>
               <Button
                 size="lg"
-                className="bg-black text-white hover:bg-gray-900 px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl font-semibold rounded-2xl shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300"
+                className="bg-black text-white hover:bg-black/90 px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl font-semibold rounded-full shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300"
                 asChild
               >
                 <a href="https://app.perception.to/auth/sign-up">

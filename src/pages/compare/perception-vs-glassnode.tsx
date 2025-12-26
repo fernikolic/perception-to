@@ -87,32 +87,27 @@ export default function PerceptionVsGlassnodePage() {
         </script>
       </SEO>
 
-      <div className="min-h-screen bg-background relative">
-        {/* Background gradients */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.15),rgba(59,130,246,0)_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(249,115,22,0.12),rgba(249,115,22,0)_50%)]" />
-        </div>
+      <div className="min-h-screen bg-[#F0EEE6] relative">
 
         {/* Hero Section */}
-        <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28 border-b border-slate-200 dark:border-slate-800">
+        <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28 border-b border-black/10">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-4xl text-center">
               {/* Breadcrumb */}
               <nav className="mb-6">
-                <Link to="/compare/best-crypto-sentiment-tools" className="text-sm text-orange-600 hover:text-orange-700 dark:text-orange-500">
+                <Link to="/compare/best-crypto-sentiment-tools" className="text-sm text-orange-600 hover:text-orange-700">
                   ← Back to Tool Comparisons
                 </Link>
               </nav>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-foreground mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-black mb-6">
                 Perception vs Glassnode
               </h1>
-              <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl lg:text-2xl text-black/60 mb-8 max-w-3xl mx-auto">
                 <strong>Media sentiment</strong> vs <strong>on-chain analytics</strong>—two different
                 approaches to understanding crypto markets. Which one is right for you?
               </p>
-              <p className="text-base text-muted-foreground mb-8">
+              <p className="text-base text-black/50 mb-8">
                 Last updated: December 2025
               </p>
             </div>
@@ -120,55 +115,55 @@ export default function PerceptionVsGlassnodePage() {
         </section>
 
         {/* Quick Verdict */}
-        <section className="py-12 sm:py-16 lg:py-20">
+        <section className="py-12 sm:py-16 lg:py-20 bg-black">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-12">
               {/* Perception Card */}
-              <div className="group relative rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-orange-500/20 via-slate-600/15 to-zinc-700/20 hover:from-orange-500/25 border border-white/10 hover:shadow-lg hover:shadow-white/5">
+              <div className="group relative rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-white/5 border border-white/10 hover:bg-white/10">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
-                    <Newspaper className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center">
+                    <Newspaper className="w-6 h-6 text-orange-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-foreground">Perception</h3>
-                    <p className="text-sm text-muted-foreground">Media Sentiment Platform</p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white">Perception</h3>
+                    <p className="text-sm text-white/60">Media Sentiment Platform</p>
                   </div>
                 </div>
-                <p className="text-muted-foreground mb-4">
-                  Best for: <strong>Narrative tracking, news-driven trading, sentiment analysis</strong>
+                <p className="text-white/70 mb-4">
+                  Best for: <strong className="text-white">Narrative tracking, news-driven trading, sentiment analysis</strong>
                 </p>
-                <ul className="space-y-2 text-sm text-muted-foreground mb-6">
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500" /> 650+ media sources monitored</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500" /> Real-time Fear & Greed Index</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500" /> AI-powered narrative detection</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500" /> Starting at $49/month</li>
+                <ul className="space-y-2 text-sm text-white/60 mb-6">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-400" /> 650+ media sources monitored</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-400" /> Real-time Fear & Greed Index</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-400" /> AI-powered narrative detection</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-400" /> Starting at $49/month</li>
                 </ul>
-                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white" asChild>
+                <Button className="w-full bg-white text-black hover:bg-white/90 rounded-full" asChild>
                   <a href="https://app.perception.to/auth/sign-up">Try Perception Free <ArrowRight className="ml-2 w-4 h-4" /></a>
                 </Button>
               </div>
 
               {/* Glassnode Card */}
-              <div className="group relative rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-blue-500/20 via-slate-600/15 to-zinc-700/20 hover:from-blue-500/25 border border-white/10 hover:shadow-lg hover:shadow-white/5">
+              <div className="group relative rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 bg-white/5 border border-white/10 hover:bg-white/10">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
-                    <Database className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/30 rounded-xl flex items-center justify-center">
+                    <Database className="w-6 h-6 text-blue-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-foreground">Glassnode</h3>
-                    <p className="text-sm text-muted-foreground">On-Chain Analytics Platform</p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white">Glassnode</h3>
+                    <p className="text-sm text-white/60">On-Chain Analytics Platform</p>
                   </div>
                 </div>
-                <p className="text-muted-foreground mb-4">
-                  Best for: <strong>On-chain analysis, holder behavior, network metrics</strong>
+                <p className="text-white/70 mb-4">
+                  Best for: <strong className="text-white">On-chain analysis, holder behavior, network metrics</strong>
                 </p>
-                <ul className="space-y-2 text-sm text-muted-foreground mb-6">
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500" /> Comprehensive on-chain metrics</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500" /> Exchange flow tracking</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500" /> Long-term holder analysis</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500" /> Starting at $39/month</li>
+                <ul className="space-y-2 text-sm text-white/60 mb-6">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-blue-400" /> Comprehensive on-chain metrics</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-blue-400" /> Exchange flow tracking</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-blue-400" /> Long-term holder analysis</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-blue-400" /> Starting at $39/month</li>
                 </ul>
-                <Button variant="outline" className="w-full" asChild>
+                <Button variant="outline" className="w-full border-white/20 hover:border-white/30 text-white rounded-full" asChild>
                   <a href="https://glassnode.com" target="_blank" rel="noopener noreferrer">Visit Glassnode <ArrowRight className="ml-2 w-4 h-4" /></a>
                 </Button>
               </div>
@@ -177,12 +172,12 @@ export default function PerceptionVsGlassnodePage() {
         </section>
 
         {/* Key Differences */}
-        <section className="py-12 sm:py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#F0EEE6]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 text-black">
               Key Differences Explained
             </h2>
-            <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
+            <p className="text-lg text-black/60 text-center mb-12 max-w-3xl mx-auto">
               These tools answer fundamentally different questions about the market
             </p>
 
@@ -190,29 +185,29 @@ export default function PerceptionVsGlassnodePage() {
               <div className="space-y-6">
                 <h3 className="text-xl font-bold text-orange-500">Perception: "What is the market thinking?"</h3>
                 <div className="space-y-4">
-                  <div className="rounded-xl p-5 bg-gradient-to-br from-orange-500/10 via-slate-600/5 to-zinc-700/10 border border-white/10">
-                    <h4 className="font-semibold mb-2 flex items-center gap-2">
+                  <div className="rounded-xl p-5 bg-white/50 border border-black/10">
+                    <h4 className="font-semibold mb-2 flex items-center gap-2 text-black">
                       <MessageSquare className="w-5 h-5 text-orange-500" /> Sentiment Analysis
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-black/60">
                       Analyzes media coverage to determine if narratives are bullish, bearish, or neutral.
                       Tracks how sentiment changes over time.
                     </p>
                   </div>
-                  <div className="rounded-xl p-5 bg-gradient-to-br from-orange-500/10 via-slate-600/5 to-zinc-700/10 border border-white/10">
-                    <h4 className="font-semibold mb-2 flex items-center gap-2">
+                  <div className="rounded-xl p-5 bg-white/50 border border-black/10">
+                    <h4 className="font-semibold mb-2 flex items-center gap-2 text-black">
                       <Zap className="w-5 h-5 text-orange-500" /> Real-Time Updates
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-black/60">
                       Fear & Greed Index updates every 90 seconds. Catch sentiment shifts as they happen,
                       before they fully impact price.
                     </p>
                   </div>
-                  <div className="rounded-xl p-5 bg-gradient-to-br from-orange-500/10 via-slate-600/5 to-zinc-700/10 border border-white/10">
-                    <h4 className="font-semibold mb-2 flex items-center gap-2">
+                  <div className="rounded-xl p-5 bg-white/50 border border-black/10">
+                    <h4 className="font-semibold mb-2 flex items-center gap-2 text-black">
                       <TrendingUp className="w-5 h-5 text-orange-500" /> Narrative Tracking
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-black/60">
                       Identifies emerging themes and stories in the media. Know what topics are gaining
                       attention before they go mainstream.
                     </p>
@@ -223,29 +218,29 @@ export default function PerceptionVsGlassnodePage() {
               <div className="space-y-6">
                 <h3 className="text-xl font-bold text-blue-500">Glassnode: "What is the market doing?"</h3>
                 <div className="space-y-4">
-                  <div className="rounded-xl p-5 bg-gradient-to-br from-blue-500/10 via-slate-600/5 to-zinc-700/10 border border-white/10">
-                    <h4 className="font-semibold mb-2 flex items-center gap-2">
+                  <div className="rounded-xl p-5 bg-white/50 border border-black/10">
+                    <h4 className="font-semibold mb-2 flex items-center gap-2 text-black">
                       <Database className="w-5 h-5 text-blue-500" /> On-Chain Metrics
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-black/60">
                       Analyzes blockchain data to see actual holder behavior—accumulation, distribution,
                       exchange deposits/withdrawals.
                     </p>
                   </div>
-                  <div className="rounded-xl p-5 bg-gradient-to-br from-blue-500/10 via-slate-600/5 to-zinc-700/10 border border-white/10">
-                    <h4 className="font-semibold mb-2 flex items-center gap-2">
+                  <div className="rounded-xl p-5 bg-white/50 border border-black/10">
+                    <h4 className="font-semibold mb-2 flex items-center gap-2 text-black">
                       <BarChart3 className="w-5 h-5 text-blue-500" /> Holder Analysis
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-black/60">
                       Segments holders by age of coins (HODLers vs traders), wallet size (whales vs retail),
                       and behavior patterns.
                     </p>
                   </div>
-                  <div className="rounded-xl p-5 bg-gradient-to-br from-blue-500/10 via-slate-600/5 to-zinc-700/10 border border-white/10">
-                    <h4 className="font-semibold mb-2 flex items-center gap-2">
+                  <div className="rounded-xl p-5 bg-white/50 border border-black/10">
+                    <h4 className="font-semibold mb-2 flex items-center gap-2 text-black">
                       <Target className="w-5 h-5 text-blue-500" /> Network Health
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-black/60">
                       Tracks network activity, hash rate, active addresses, and transaction volume.
                       Understand the fundamental usage of the network.
                     </p>
@@ -257,76 +252,76 @@ export default function PerceptionVsGlassnodePage() {
         </section>
 
         {/* Feature Comparison Table */}
-        <section className="py-12 sm:py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
+        <section className="py-12 sm:py-16 lg:py-20 bg-black">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 text-white">
               Feature Comparison
             </h2>
 
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <th className="text-left py-4 px-4 font-semibold">Feature</th>
-                    <th className="text-center py-4 px-4 font-semibold text-orange-500">Perception</th>
-                    <th className="text-center py-4 px-4 font-semibold text-blue-500">Glassnode</th>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left py-4 px-4 font-semibold text-white">Feature</th>
+                    <th className="text-center py-4 px-4 font-semibold text-orange-400">Perception</th>
+                    <th className="text-center py-4 px-4 font-semibold text-blue-400">Glassnode</th>
                   </tr>
                 </thead>
-                <tbody className="text-muted-foreground">
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-medium">Primary Focus</td>
+                <tbody className="text-white/60">
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-medium text-white">Primary Focus</td>
                     <td className="py-4 px-4 text-center">Media Sentiment</td>
                     <td className="py-4 px-4 text-center">On-Chain Data</td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-medium">Data Sources</td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-medium text-white">Data Sources</td>
                     <td className="py-4 px-4 text-center">650+ news outlets</td>
                     <td className="py-4 px-4 text-center">Blockchain data</td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-medium">Fear & Greed Index</td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-red-400 mx-auto" /></td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-medium text-white">Fear & Greed Index</td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-orange-400 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-white/30 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-medium">On-Chain Metrics</td>
-                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-red-400 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-medium text-white">On-Chain Metrics</td>
+                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-white/30 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-blue-400 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-medium">Exchange Flows</td>
-                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-red-400 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-medium text-white">Exchange Flows</td>
+                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-white/30 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-blue-400 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-medium">Narrative Tracking</td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-red-400 mx-auto" /></td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-medium text-white">Narrative Tracking</td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-orange-400 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-white/30 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-medium">Whale Tracking</td>
-                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-red-400 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-medium text-white">Whale Tracking</td>
+                    <td className="py-4 px-4 text-center"><X className="w-5 h-5 text-white/30 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-blue-400 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-medium">Update Frequency</td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-medium text-white">Update Frequency</td>
                     <td className="py-4 px-4 text-center">Every 90 seconds</td>
                     <td className="py-4 px-4 text-center">Hourly/Daily</td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-medium">Free Tier</td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-medium text-white">Free Tier</td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-orange-400 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-blue-400 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-medium">Starting Price</td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-medium text-white">Starting Price</td>
                     <td className="py-4 px-4 text-center">$49/month</td>
                     <td className="py-4 px-4 text-center">$39/month</td>
                   </tr>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <td className="py-4 px-4 font-medium">API Access</td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
-                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-green-500 mx-auto" /></td>
+                  <tr className="border-b border-white/10">
+                    <td className="py-4 px-4 font-medium text-white">API Access</td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-orange-400 mx-auto" /></td>
+                    <td className="py-4 px-4 text-center"><Check className="w-5 h-5 text-blue-400 mx-auto" /></td>
                   </tr>
                 </tbody>
               </table>
@@ -335,75 +330,75 @@ export default function PerceptionVsGlassnodePage() {
         </section>
 
         {/* When to Use Which */}
-        <section className="py-12 sm:py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#F0EEE6]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 text-black">
               When to Use Which Tool
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="rounded-xl sm:rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-orange-500/15 via-slate-600/10 to-zinc-700/15 border border-white/10">
-                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <div className="rounded-xl sm:rounded-2xl p-6 sm:p-8 bg-white/50 border border-black/10">
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-black">
                   <Clock className="w-5 h-5 text-orange-500" />
                   Choose Perception When...
                 </h3>
-                <ul className="space-y-3 text-muted-foreground">
+                <ul className="space-y-3 text-black/60">
                   <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <Check className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
                     <span>You trade based on news and market narratives</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <Check className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
                     <span>You want real-time sentiment data for day trading</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <Check className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
                     <span>You need to track media coverage for PR/communications</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <Check className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
                     <span>You want contrarian signals based on sentiment extremes</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <Check className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
                     <span>You're a content creator or journalist covering crypto</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="rounded-xl sm:rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-blue-500/15 via-slate-600/10 to-zinc-700/15 border border-white/10">
-                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <div className="rounded-xl sm:rounded-2xl p-6 sm:p-8 bg-white/50 border border-black/10">
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-black">
                   <Database className="w-5 h-5 text-blue-500" />
                   Choose Glassnode When...
                 </h3>
-                <ul className="space-y-3 text-muted-foreground">
+                <ul className="space-y-3 text-black/60">
                   <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <Check className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
                     <span>You want to understand what large holders are doing</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <Check className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
                     <span>You make longer-term investment decisions (weeks/months)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <Check className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
                     <span>You need exchange flow data for position sizing</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <Check className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
                     <span>You analyze Bitcoin's fundamental network health</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <Check className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
                     <span>You want to identify accumulation/distribution phases</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div className="mt-12 rounded-xl sm:rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-purple-500/15 via-slate-600/10 to-zinc-700/15 border border-white/10 text-center">
-              <h3 className="text-xl font-bold mb-4">Best Approach: Use Both Together</h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+            <div className="mt-12 rounded-xl sm:rounded-2xl p-6 sm:p-8 bg-black text-center">
+              <h3 className="text-xl font-bold mb-4 text-white">Best Approach: Use Both Together</h3>
+              <p className="text-white/60 max-w-2xl mx-auto">
                 Many professional traders combine sentiment analysis (Perception) with on-chain data (Glassnode)
                 for a complete market picture. Glassnode tells you what smart money is doing. Perception tells
                 you what the market is thinking. Together, they provide powerful confirmation signals.
@@ -413,9 +408,9 @@ export default function PerceptionVsGlassnodePage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-12 sm:py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
+        <section className="py-12 sm:py-16 lg:py-20 bg-black">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 text-white">
               Frequently Asked Questions
             </h2>
 
@@ -440,10 +435,10 @@ export default function PerceptionVsGlassnodePage() {
               ].map((faq, i) => (
                 <div
                   key={i}
-                  className="rounded-xl sm:rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-slate-500/10 via-blue-600/5 to-neutral-700/10 border border-white/10"
+                  className="rounded-xl sm:rounded-2xl p-5 sm:p-6 bg-white/5 border border-white/10"
                 >
-                  <h3 className="font-bold mb-2 text-foreground">{faq.q}</h3>
-                  <p className="text-muted-foreground text-sm">{faq.a}</p>
+                  <h3 className="font-bold mb-2 text-white">{faq.q}</h3>
+                  <p className="text-white/60 text-sm">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -451,19 +446,19 @@ export default function PerceptionVsGlassnodePage() {
         </section>
 
         {/* CTA */}
-        <section className="py-12 sm:py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#F0EEE6]">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-black">
               Try Perception Free
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-black/60 mb-8 max-w-2xl mx-auto">
               Start tracking crypto market sentiment today. See how media narratives
               impact prices in real-time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-6 text-lg rounded-xl"
+                className="bg-black hover:bg-black/90 text-white px-8 py-6 text-lg rounded-full"
                 asChild
               >
                 <a href="https://app.perception.to/auth/sign-up">
@@ -474,7 +469,7 @@ export default function PerceptionVsGlassnodePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="px-8 py-6 text-lg rounded-xl"
+                className="px-8 py-6 text-lg rounded-full border-black/20 hover:border-black/30"
                 asChild
               >
                 <Link to="/bitcoin-fear-greed-index">
@@ -486,30 +481,30 @@ export default function PerceptionVsGlassnodePage() {
         </section>
 
         {/* Related Links */}
-        <section className="py-12 sm:py-16 border-t border-slate-200 dark:border-slate-800">
+        <section className="py-12 sm:py-16 bg-black">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-xl font-bold text-center mb-8">Related Comparisons</h2>
+            <h2 className="text-xl font-bold text-center mb-8 text-white">Related Comparisons</h2>
             <div className="grid sm:grid-cols-3 gap-4">
               <Link
                 to="/compare/best-crypto-sentiment-tools"
-                className="rounded-xl p-4 bg-gradient-to-br from-slate-500/10 to-zinc-700/10 border border-white/10 hover:border-orange-500/30 transition-colors text-center"
+                className="rounded-xl p-4 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-center"
               >
-                <p className="font-semibold text-foreground">All Sentiment Tools</p>
-                <p className="text-sm text-muted-foreground">Complete comparison guide</p>
+                <p className="font-semibold text-white">All Sentiment Tools</p>
+                <p className="text-sm text-white/60">Complete comparison guide</p>
               </Link>
               <Link
                 to="/alternatives/lunarcrush-alternative"
-                className="rounded-xl p-4 bg-gradient-to-br from-slate-500/10 to-zinc-700/10 border border-white/10 hover:border-orange-500/30 transition-colors text-center"
+                className="rounded-xl p-4 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-center"
               >
-                <p className="font-semibold text-foreground">LunarCrush Alternative</p>
-                <p className="text-sm text-muted-foreground">Social sentiment comparison</p>
+                <p className="font-semibold text-white">LunarCrush Alternative</p>
+                <p className="text-sm text-white/60">Social sentiment comparison</p>
               </Link>
               <Link
                 to="/alternatives/santiment-alternative"
-                className="rounded-xl p-4 bg-gradient-to-br from-slate-500/10 to-zinc-700/10 border border-white/10 hover:border-orange-500/30 transition-colors text-center"
+                className="rounded-xl p-4 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-center"
               >
-                <p className="font-semibold text-foreground">Santiment Alternative</p>
-                <p className="text-sm text-muted-foreground">Multi-source comparison</p>
+                <p className="font-semibold text-white">Santiment Alternative</p>
+                <p className="text-sm text-white/60">Multi-source comparison</p>
               </Link>
             </div>
           </div>

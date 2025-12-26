@@ -107,7 +107,7 @@ export function Hero() {
                   asChild
                 >
                   <a href="https://app.perception.to/auth/sign-up">
-                    Start Building Your Intelligence →
+                    Get Started Free →
                   </a>
                 </Button>
                 <Button
@@ -115,7 +115,7 @@ export function Hero() {
                   className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
                   onClick={openDemo}
                 >
-                  → Watch demo
+                  Take the Tour
                 </Button>
               </div>
 

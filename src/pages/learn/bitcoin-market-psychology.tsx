@@ -42,6 +42,7 @@ export default function BitcoinMarketPsychologyPage() {
       relatedArticles={[
         { slug: 'how-to-read-fear-greed-index', title: 'How to Read the Fear & Greed Index', description: 'Practical guide to interpreting sentiment scores.' },
         { slug: 'crypto-narrative-trading', title: 'Crypto Narrative Trading', description: 'Identify and trade emerging market narratives.' },
+        { slug: 'what-is-crypto-sentiment-analysis', title: 'What is Crypto Sentiment Analysis?', description: 'Complete guide to understanding market sentiment.' },
       ]}
     >
       {/* Section 1: Why Psychology Matters */}

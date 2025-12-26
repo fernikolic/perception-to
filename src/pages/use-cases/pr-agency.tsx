@@ -12,7 +12,7 @@ export function PRAgencyPage() {
         url="https://perception.to/use-cases/pr-agency"
         keywords={['PR agency intelligence platform', 'reporter targeting tools', 'PR client monitoring', 'pitch intelligence', 'PR analytics workspace']}
       />
-      <div className="min-h-screen bg-white dark:bg-black">
+      <div className="min-h-screen bg-[#F0EEE6]">
         {/* Hero Section */}
         <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-16">
           {/* Base Gradient */}
@@ -45,8 +45,8 @@ export function PRAgencyPage() {
                       >
                         <span className="relative flex items-center gap-2">
                           <span className="relative flex h-1.5 w-1.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-40"></span>
-                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-slate-400"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-40"></span>
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-orange-400"></span>
                           </span>
                           <span className="relative font-bold text-black">USE CASE</span>
                         </span>
@@ -70,7 +70,7 @@ export function PRAgencyPage() {
                     <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-6">
                       <Button
                         size="lg"
-                        className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
+                        className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-full"
                         asChild
                       >
                         <a href="https://app.perception.to/auth/sign-up">
@@ -79,7 +79,7 @@ export function PRAgencyPage() {
                       </Button>
                       <Button
                         size="lg"
-                        className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
+                        className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-full"
                         onClick={() => {
                           document.getElementById('solution-section')?.scrollIntoView({ behavior: 'smooth' });
                         }}
@@ -95,13 +95,13 @@ export function PRAgencyPage() {
         </div>
 
         {/* The Challenge */}
-        <section className="py-24 sm:py-32 border-b border-gray-200">
+        <section className="py-24 sm:py-32 border-b border-white/10 bg-black">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl">
               <div className="mb-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">The Challenge</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-white/50">The Challenge</span>
               </div>
-              <p className="text-xl sm:text-2xl md:text-3xl font-light text-gray-900 leading-relaxed">
+              <p className="text-xl sm:text-2xl md:text-3xl font-light text-white leading-relaxed">
                 Client A wants coverage tracking. Client B needs competitive intel. Client C wants pitch angles. You're rebuilding decks from scratch for each one. Hours of manual research. ROI reports that say "here are your clips."
               </p>
             </div>
@@ -109,37 +109,37 @@ export function PRAgencyPage() {
         </section>
 
         {/* The Solution - Three Pillars */}
-        <section id="solution-section" className="py-24 sm:py-32 bg-gray-50 border-b border-gray-200">
+        <section id="solution-section" className="py-24 sm:py-32 bg-[#F0EEE6]">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-5xl">
               <div className="mb-16">
-                <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4 block">The Solution</span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                <span className="text-xs font-semibold uppercase tracking-wider text-black/50 mb-4 block">The Solution</span>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6">
                   One workspace. All clients. All deliverables.
                 </h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Track All Clients */}
-                <div className="border border-gray-200 rounded-2xl p-8 bg-white">
+                <div className="border border-black/10 rounded-2xl p-8 bg-white/50">
                   <div className="mb-6">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 mb-4">
-                      <BarChart3 className="w-6 h-6 text-gray-900" />
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-orange-500/20 border border-orange-500/30 mb-4">
+                      <BarChart3 className="w-6 h-6 text-orange-600" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    <h3 className="text-xl font-semibold text-black mb-2">
                       Track All Clients
                     </h3>
                   </div>
                   <ul className="space-y-3">
-                    <li className="flex gap-2 text-sm text-gray-600">
+                    <li className="flex gap-2 text-sm text-black/60">
                       <Check className="w-5 h-5 text-black flex-shrink-0" />
                       <span>Create a Space per client</span>
                     </li>
-                    <li className="flex gap-2 text-sm text-gray-600">
+                    <li className="flex gap-2 text-sm text-black/60">
                       <Check className="w-5 h-5 text-black flex-shrink-0" />
                       <span>Monitor coverage automatically</span>
                     </li>
-                    <li className="flex gap-2 text-sm text-gray-600">
+                    <li className="flex gap-2 text-sm text-black/60">
                       <Check className="w-5 h-5 text-black flex-shrink-0" />
                       <span>Track vs. competitors</span>
                     </li>
@@ -147,25 +147,25 @@ export function PRAgencyPage() {
                 </div>
 
                 {/* Generate Pitch Intelligence */}
-                <div className="border border-gray-200 rounded-2xl p-8 bg-white">
+                <div className="border border-black/10 rounded-2xl p-8 bg-white/50">
                   <div className="mb-6">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 mb-4">
-                      <Zap className="w-6 h-6 text-gray-900" />
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-orange-500/20 border border-orange-500/30 mb-4">
+                      <Zap className="w-6 h-6 text-orange-600" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    <h3 className="text-xl font-semibold text-black mb-2">
                       Generate Pitch Intelligence
                     </h3>
                   </div>
                   <ul className="space-y-3">
-                    <li className="flex gap-2 text-sm text-gray-600">
+                    <li className="flex gap-2 text-sm text-black/60">
                       <Check className="w-5 h-5 text-black flex-shrink-0" />
                       <span>What reporters are covering</span>
                     </li>
-                    <li className="flex gap-2 text-sm text-gray-600">
+                    <li className="flex gap-2 text-sm text-black/60">
                       <Check className="w-5 h-5 text-black flex-shrink-0" />
                       <span>What trends are heating up</span>
                     </li>
-                    <li className="flex gap-2 text-sm text-gray-600">
+                    <li className="flex gap-2 text-sm text-black/60">
                       <Check className="w-5 h-5 text-black flex-shrink-0" />
                       <span>Where your client fits</span>
                     </li>
@@ -207,12 +207,12 @@ export function PRAgencyPage() {
         </section>
 
         {/* Example in Action */}
-        <section className="py-24 sm:py-32 border-b border-gray-200">
+        <section className="py-24 sm:py-32 border-b border-white/10 bg-black">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl">
               <div className="mb-8">
-                <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4 block">Example</span>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 mb-6">
+                <span className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-4 block">Example</span>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-6">
                   Client wants coverage on sustainability. You need pitch angles.
                 </h2>
               </div>
@@ -225,14 +225,14 @@ export function PRAgencyPage() {
                   "Generate Pitch Intelligence Recipe for top reporters",
                   "Get angles based on what's actually trending this week"
                 ].map((item, index) => (
-                  <div key={index} className="flex gap-3 text-gray-600">
-                    <Check className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
+                  <div key={index} className="flex gap-3 text-white/70">
+                    <Check className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
 
-              <p className="text-xl font-light text-gray-900 text-center py-8 border-t border-b border-gray-200">
+              <p className="text-xl font-light text-white text-center py-8 border-t border-b border-white/10">
                 Same workspace. Every client. Every deliverable.
               </p>
             </div>
@@ -240,31 +240,31 @@ export function PRAgencyPage() {
         </section>
 
         {/* Impact */}
-        <section className="py-24 sm:py-32 bg-gray-50 border-b border-gray-200">
+        <section className="py-24 sm:py-32 bg-[#F0EEE6]">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                 <div>
-                  <div className="text-5xl font-semibold text-gray-900 mb-2">
+                  <div className="text-5xl font-semibold text-black mb-2">
                     One workspace
                   </div>
-                  <div className="text-gray-600">
+                  <div className="text-black/60">
                     All clients
                   </div>
                 </div>
                 <div>
-                  <div className="text-5xl font-semibold text-gray-900 mb-2">
+                  <div className="text-5xl font-semibold text-black mb-2">
                     Real data
                   </div>
-                  <div className="text-gray-600">
+                  <div className="text-black/60">
                     Not "here are your clips"
                   </div>
                 </div>
                 <div>
-                  <div className="text-5xl font-semibold text-gray-900 mb-2">
+                  <div className="text-5xl font-semibold text-black mb-2">
                     One click
                   </div>
-                  <div className="text-gray-600">
+                  <div className="text-black/60">
                     Generated deliverables
                   </div>
                 </div>
@@ -274,19 +274,19 @@ export function PRAgencyPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-24 sm:py-32">
+        <section className="py-24 sm:py-32 bg-black">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
                 Ready to manage all clients in one workspace?
               </h2>
-              <p className="text-lg text-gray-600 mb-10">
+              <p className="text-lg text-white/60 mb-10">
                 Track coverage in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, generate deliverables with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>, show ROI with data. 7-day free trial.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-black text-white hover:bg-gray-900 px-8"
+                  className="bg-white text-black hover:bg-white/90 px-8 rounded-full"
                   asChild
                 >
                   <a href="https://app.perception.to/auth/sign-up" className="flex items-center gap-2">
@@ -297,7 +297,7 @@ export function PRAgencyPage() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-gray-300 px-8"
+                  className="border-white/20 hover:border-white/30 text-white px-8 rounded-full"
                   asChild
                 >
                   <a href="/book-a-call">Book a demo</a>

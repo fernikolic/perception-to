@@ -98,76 +98,76 @@ export default function AlternativeMeAlternativePage() {
         </script>
       </SEO>
 
-      <div className="min-h-screen bg-white dark:bg-black">
+      <div className="min-h-screen bg-[#F0EEE6]">
         {/* Hero Section */}
         <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full px-4 py-2 text-sm font-medium mb-8">
+            <div className="inline-flex items-center gap-2 bg-orange-500/20 text-orange-600 rounded-full px-4 py-2 text-sm font-medium mb-8">
               <Plus className="w-4 h-4" />
               Alternative.me Alternative
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6 tracking-tight">
               Like the Fear & Greed Index?<br />
-              <span className="text-green-500">Go Deeper</span>
+              <span className="text-orange-500">Go Deeper</span>
             </h1>
 
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-10">
+            <p className="text-xl text-black/60 max-w-3xl mx-auto mb-10">
               Alternative.me shows you a number. Perception shows you why.
               650+ media sources, 90-second updates, and AI narrative tracking.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-green-500 hover:bg-green-600 text-white px-8 py-6 text-lg" asChild>
+              <Button size="lg" className="bg-black hover:bg-black/90 text-white px-8 py-6 text-lg rounded-full" asChild>
                 <a href="https://app.perception.to/auth/sign-up">
                   Try Free for 14 Days
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="px-8 py-6 text-lg" asChild>
+              <Button size="lg" variant="outline" className="px-8 py-6 text-lg rounded-full border-black/20 hover:border-black/30" asChild>
                 <Link to="/bitcoin-fear-greed-index">
                   See Our Fear & Greed Index
                 </Link>
               </Button>
             </div>
 
-            <p className="text-sm text-slate-500 mt-4">
+            <p className="text-sm text-black/50 mt-4">
               No credit card required. Get the full picture.
             </p>
           </div>
         </section>
 
         {/* Quick Comparison */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-center text-white mb-4">
               Basic Index vs. Full Intelligence
             </h2>
-            <p className="text-center text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto">
+            <p className="text-center text-white/60 mb-12 max-w-2xl mx-auto">
               Alternative.me is a starting point. Perception is the complete picture.
             </p>
 
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden">
-              <div className="grid grid-cols-3 bg-slate-100 dark:bg-slate-700 p-4 font-semibold text-slate-900 dark:text-white">
+            <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+              <div className="grid grid-cols-3 bg-white/10 p-4 font-semibold text-white">
                 <div>Feature</div>
                 <div className="text-center">Alternative.me</div>
-                <div className="text-center text-green-600">Perception</div>
+                <div className="text-center text-orange-400">Perception</div>
               </div>
 
               {comparisonPoints.map((point, index) => (
                 <div
                   key={point.label}
-                  className={`grid grid-cols-3 p-4 ${index % 2 === 0 ? 'bg-white dark:bg-slate-800' : 'bg-slate-50 dark:bg-slate-800/50'}`}
+                  className={`grid grid-cols-3 p-4 ${index % 2 === 0 ? 'bg-white/5' : 'bg-transparent'}`}
                 >
-                  <div className="font-medium text-slate-900 dark:text-white">
+                  <div className="font-medium text-white">
                     {point.label}
                   </div>
-                  <div className="text-center text-sm text-slate-500 dark:text-slate-400">
+                  <div className="text-center text-sm text-white/50">
                     {point.alternative}
                   </div>
                   <div className="text-center flex items-center justify-center gap-2">
-                    <Check className="w-4 h-4 text-green-500" />
-                    <span className="text-sm text-green-700 dark:text-green-400 font-medium">
+                    <Check className="w-4 h-4 text-orange-400" />
+                    <span className="text-sm text-orange-400 font-medium">
                       {point.perception}
                     </span>
                   </div>
@@ -178,12 +178,12 @@ export default function AlternativeMeAlternativePage() {
         </section>
 
         {/* What Each Offers */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0EEE6]">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-center text-black mb-4">
               Free Index vs. Full Intelligence
             </h2>
-            <p className="text-center text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto">
+            <p className="text-center text-black/60 mb-12 max-w-2xl mx-auto">
               Alternative.me is great for a quick check. Perception is for serious research.
             </p>
 
@@ -193,20 +193,20 @@ export default function AlternativeMeAlternativePage() {
                   key={section.category}
                   className={`rounded-2xl p-8 ${
                     section.color === 'green'
-                      ? 'bg-green-50 dark:bg-green-900/20 border-2 border-green-200 dark:border-green-800'
-                      : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700'
+                      ? 'bg-orange-500/10 border-2 border-orange-500/30'
+                      : 'bg-white/50 border border-black/10'
                   }`}
                 >
                   <h3 className={`text-xl font-semibold mb-6 ${
-                    section.color === 'green' ? 'text-green-700 dark:text-green-300' : 'text-slate-900 dark:text-white'
+                    section.color === 'green' ? 'text-orange-600' : 'text-black'
                   }`}>
                     {section.category}
                   </h3>
                   <ul className="space-y-3">
                     {section.items.map((item) => (
                       <li key={item} className="flex items-center gap-3">
-                        <Check className={`w-5 h-5 ${section.color === 'green' ? 'text-green-500' : 'text-slate-400'}`} />
-                        <span className="text-slate-700 dark:text-slate-300">{item}</span>
+                        <Check className={`w-5 h-5 ${section.color === 'green' ? 'text-orange-500' : 'text-black/40'}`} />
+                        <span className="text-black/70">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -217,12 +217,12 @@ export default function AlternativeMeAlternativePage() {
         </section>
 
         {/* Unique Capabilities Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-center text-white mb-4">
               What Only Perception Offers
             </h2>
-            <p className="text-center text-slate-600 dark:text-slate-400 mb-16 max-w-2xl mx-auto">
+            <p className="text-center text-white/60 mb-16 max-w-2xl mx-auto">
               Go beyond a simple number
             </p>
 
@@ -230,15 +230,15 @@ export default function AlternativeMeAlternativePage() {
               {uniqueCapabilities.map((capability) => (
                 <div
                   key={capability.title}
-                  className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700"
+                  className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mb-6">
-                    <capability.icon className="w-6 h-6 text-green-600" />
+                  <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-6">
+                    <capability.icon className="w-6 h-6 text-orange-400" />
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3">
+                  <h3 className="text-xl font-semibold text-white mb-3">
                     {capability.title}
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-400">
+                  <p className="text-white/60">
                     {capability.description}
                   </p>
                 </div>
@@ -248,29 +248,29 @@ export default function AlternativeMeAlternativePage() {
         </section>
 
         {/* Stats Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F0EEE6]">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl font-bold mb-4 text-black">
               The Complete Sentiment Picture
             </h2>
-            <p className="text-slate-400 mb-12 text-lg">
+            <p className="text-black/60 mb-12 text-lg">
               Understand what's really driving market sentiment
             </p>
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <div>
-                <div className="text-4xl font-bold text-green-400 mb-2">650+</div>
-                <div className="text-slate-400">Media Sources</div>
+                <div className="text-4xl font-bold text-orange-500 mb-2">650+</div>
+                <div className="text-black/60">Media Sources</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-green-400 mb-2">90s</div>
-                <div className="text-slate-400">vs Daily Updates</div>
+                <div className="text-4xl font-bold text-orange-500 mb-2">90s</div>
+                <div className="text-black/60">vs Daily Updates</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-green-400 mb-2">AI</div>
-                <div className="text-slate-400">Narrative Detection</div>
+                <div className="text-4xl font-bold text-orange-500 mb-2">AI</div>
+                <div className="text-black/60">Narrative Detection</div>
               </div>
             </div>
-            <Button size="lg" className="bg-green-500 hover:bg-green-600 px-8 py-6 text-lg" asChild>
+            <Button size="lg" className="bg-black hover:bg-black/90 text-white px-8 py-6 text-lg rounded-full" asChild>
               <a href="https://app.perception.to/auth/sign-up">
                 Get the Full Picture
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -280,12 +280,12 @@ export default function AlternativeMeAlternativePage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-center text-white mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-center text-slate-600 dark:text-slate-400 mb-12">
+            <p className="text-center text-white/60 mb-12">
               Common questions about Perception vs Alternative.me
             </p>
 
@@ -293,12 +293,12 @@ export default function AlternativeMeAlternativePage() {
               {faqs.map((faq) => (
                 <div
                   key={faq.question}
-                  className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700"
+                  className="bg-white/5 border border-white/10 rounded-xl p-6"
                 >
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">
+                  <h3 className="text-lg font-semibold text-white mb-3">
                     {faq.question}
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-400">
+                  <p className="text-white/60">
                     {faq.answer}
                   </p>
                 </div>
@@ -308,22 +308,22 @@ export default function AlternativeMeAlternativePage() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-500 to-green-600">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#F0EEE6]">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-black">
               Ready to Go Beyond the Index?
             </h2>
-            <p className="text-xl mb-10 text-green-100">
+            <p className="text-xl mb-10 text-black/60">
               Understand what's driving crypto sentiment. 14 days free.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-green-600 hover:bg-green-50 px-8 py-6 text-lg" asChild>
+              <Button size="lg" className="bg-black text-white hover:bg-black/90 px-8 py-6 text-lg rounded-full" asChild>
                 <a href="https://app.perception.to/auth/sign-up">
                   Try Perception Free
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg" asChild>
+              <Button size="lg" variant="outline" className="border-black/20 hover:border-black/30 px-8 py-6 text-lg rounded-full" asChild>
                 <Link to="/pricing">
                   View Pricing
                 </Link>
