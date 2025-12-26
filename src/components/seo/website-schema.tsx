@@ -11,7 +11,7 @@ export function WebsiteSchema() {
       "name": "Perception",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://perception.to/logos/Perception-logo-social-og.png",
+        "url": "https://perception-og-image.fernandonikolic.workers.dev",
         "width": 1200,
         "height": 630
       }

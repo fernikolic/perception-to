@@ -18,7 +18,7 @@ interface ProductSchemaProps {
 export function ProductSchema({
   name,
   description,
-  image = 'https://perception.to/logos/Perception-logo-social-og.png',
+  image = 'https://perception-og-image.fernandonikolic.workers.dev',
   brand = 'Perception',
   offers = [],
   aggregateRating

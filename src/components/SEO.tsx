@@ -21,7 +21,7 @@ interface SEOProps {
 export default function SEO({
   title = 'Perception - Bitcoin Trend Analysis & Market Sentiment',
   description = 'Track Bitcoin trends. Decode market sentiment. Uncover narratives. All in one place.',
-  image = '/logos/Perception-logo-social-og.png',
+  image = 'https://perception-og-image.fernandonikolic.workers.dev',
   url = 'https://perception.to/learn',
   type = 'website',
   article,

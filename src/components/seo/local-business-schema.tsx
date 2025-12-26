@@ -16,7 +16,7 @@ export function LocalBusinessSchema() {
       "latitude": "",
       "longitude": ""
     },
-    "image": "https://perception.to/logos/Perception-logo-social-og.png",
+    "image": "https://perception-og-image.fernandonikolic.workers.dev",
     "priceRange": "$$$",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",

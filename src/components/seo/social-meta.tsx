@@ -9,7 +9,7 @@ const DEFAULT_METADATA = {
   title: 'Perception',
   description: 'Track Bitcoin trends. Decode market sentiment. Uncover narratives. All in one place.',
   type: 'website' as const,
-  image: 'https://perception.to/logos/Perception-logo-social-og.png'
+  image: 'https://perception-og-image.fernandonikolic.workers.dev'
 };
 
 const PAGE_METADATA: Record<string, any> = {
@@ -17,133 +17,133 @@ const PAGE_METADATA: Record<string, any> = {
     title: 'Perception - Bitcoin Trend Analysis & Market Sentiment',
     description: 'Track Bitcoin trends. Decode market sentiment. Uncover narratives. All in one place.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/methodology': {
     title: 'Methodology - Perception', 
     description: 'Learn how our AI analyzes Bitcoin sentiment across social media, news, and market indicators',
     type: 'article',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/journalist': {
     title: 'For Journalists - Perception',
     description: 'Access real-time Bitcoin sentiment data and insights for your reporting',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/investor': {
     title: 'For Investors - Perception',
     description: 'Make informed Bitcoin investment decisions with AI-powered sentiment analysis',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/researcher': {
     title: 'For Researchers - Perception',
     description: 'Academic-grade Bitcoin sentiment data and analysis tools for research',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/about': {
     title: 'About Us - Perception',
     description: 'Learn about our mission to democratize Bitcoin sentiment analysis through AI',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/pricing': {
     title: 'Pricing - Perception',
     description: 'Choose the right Bitcoin sentiment analysis plan for your needs',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/docs': {
     title: 'Documentation - Perception',
     description: 'Complete guide to using Perception APIs and tools',
     type: 'article',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/api': {
     title: 'API Reference - Perception',
     description: 'Comprehensive API documentation for Bitcoin sentiment data',
     type: 'article',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/learn': {
     title: 'Learn - Perception',
     description: 'Educational resources about Bitcoin sentiment analysis and market psychology',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/bitcoin-media-research': {
     title: 'Bitcoin Media Research - Perception',
     description: 'Unlock insights into Bitcoin media trends and bias. Weekly intelligence on narrative shifts, sentiment analysis, and market implications.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/bitcoin-fear-greed-index': {
     title: 'Bitcoin Fear & Greed Index - Perception',
     description: 'Real-time Bitcoin Fear & Greed Index with historical data and sentiment analysis. Track market psychology and make informed decisions.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/bitcoin-market-sentiment': {
     title: 'Bitcoin Market Sentiment Analysis - Perception',
     description: 'Comprehensive Bitcoin market sentiment analysis with real-time data, historical trends, and actionable insights.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/use-cases': {
     title: 'Use Cases - Perception',
     description: 'Discover how investors, journalists, and researchers use Bitcoin sentiment analysis for better decision-making.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/testimonials': {
     title: 'Testimonials - Perception',
     description: 'See what our users say about Perception\'s Bitcoin sentiment analysis platform and data quality.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/roadmap': {
     title: 'Product Roadmap - Perception',
     description: 'See what\'s coming next for Perception\'s Bitcoin sentiment analysis platform and upcoming features.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/press': {
     title: 'Press & Media - Perception',
     description: 'Latest news, press releases, and media coverage of Perception\'s Bitcoin sentiment analysis platform.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/glossary': {
     title: 'Bitcoin Sentiment Glossary - Perception',
     description: 'Comprehensive glossary of Bitcoin sentiment analysis terms, market psychology concepts, and technical definitions.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/book-a-call': {
     title: 'Book a Call - Perception',
     description: 'Schedule a personalized demo of Perception\'s Bitcoin sentiment analysis platform with our team.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/slack-integration': {
     title: 'Slack Integration - Perception',
     description: 'Get Bitcoin sentiment alerts directly in Slack. Real-time notifications and market intelligence for your team.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/bitcoin-bad-takes': {
     title: 'Bitcoin Bad Takes - Perception',
     description: 'Track and analyze the worst Bitcoin takes on social media. Community-driven collection of FUD, misinformation, and bad predictions.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/search': {
     title: 'Search - Perception',
     description: 'Search Bitcoin sentiment analysis, market intelligence, and cryptocurrency insights on Perception.',
     type: 'website',
-    image: 'https://perception.to/logos/Perception-logo-social-og.png'
+    image: 'https://perception-og-image.fernandonikolic.workers.dev'
   }
 };
 

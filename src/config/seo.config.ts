@@ -4,7 +4,7 @@ export const SEO_CONFIG = {
     url: 'https://perception.to',
     description: 'Track Bitcoin trends. Decode market sentiment. Uncover narratives. All in one place.',
     logo: 'https://perception.to/logos/Perception-logo-social-og.png',
-    defaultImage: 'https://perception.to/logos/Perception-logo-social-og.png',
+    defaultImage: 'https://perception-og-image.fernandonikolic.workers.dev',
     twitter: '@perception',
     twitterCreator: '@perception',
     locale: 'en_US',

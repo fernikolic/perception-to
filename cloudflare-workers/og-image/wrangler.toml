@@ -1,0 +1,7 @@
+name = "perception-og-image"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+API_BASE = "https://btcpapifunction-45998414364.us-central1.run.app/btcpapifunction"

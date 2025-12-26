@@ -5,7 +5,7 @@ export function OrganizationSchema() {
     "name": "Perception",
     "alternateName": "Bitcoin Perception",
     "url": "https://perception.to",
-    "logo": "https://perception.to/logos/Perception-logo-social-og.png",
+    "logo": "https://perception-og-image.fernandonikolic.workers.dev",
     "sameAs": [
       "https://twitter.com/perception",
       "https://linkedin.com/company/perception",

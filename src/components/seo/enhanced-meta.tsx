@@ -22,7 +22,7 @@ export function EnhancedMeta({
   description,
   keywords = [],
   canonicalUrl,
-  ogImage = 'https://perception.to/logos/Perception-logo-social-og.png',
+  ogImage = 'https://perception-og-image.fernandonikolic.workers.dev',
   ogType = 'website',
   twitterCard = 'summary_large_image',
   jsonLd,
