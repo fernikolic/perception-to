@@ -138,57 +138,71 @@ export function Navbar() {
   const [isOverDarkSection, setIsOverDarkSection] = useState(false);
 
   useEffect(() => {
+    // Helper function to check if an element at a point has dark background
+    const isDarkAtPoint = (x: number, y: number): boolean | null => {
+      const element = document.elementFromPoint(x, y);
+      if (!element) return null;
+
+      // First check for explicit dark section markers
+      const parent = element.closest('[data-dark-section="true"]') ||
+                    element.closest('.bg-black') ||
+                    element.closest('.bg-gray-900') ||
+                    element.closest('.dark\\:bg-black');
+
+      if (parent) return true;
+
+      // Check the actual background color of the element and its parents
+      let currentElement: HTMLElement | null = element as HTMLElement;
+
+      while (currentElement && currentElement !== document.body) {
+        const bgColor = window.getComputedStyle(currentElement).backgroundColor;
+
+        // Parse RGB values
+        const rgbMatch = bgColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (rgbMatch) {
+          const r = parseInt(rgbMatch[1]);
+          const g = parseInt(rgbMatch[2]);
+          const b = parseInt(rgbMatch[3]);
+
+          // Calculate luminance (perceived brightness)
+          const luminance = (0.299 * r + 0.587 * g + 0.114 * b);
+
+          // Only consider if background is not transparent
+          if (bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') {
+            return luminance < 128;
+          }
+        }
+
+        currentElement = currentElement.parentElement;
+      }
+
+      return false;
+    };
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
 
-      // Check if navbar is over a dark section
-      const navbarHeight = 100; // approximate navbar height including padding
-      const elementAtNavbar = document.elementFromPoint(window.innerWidth / 2, navbarHeight);
+      // Sample multiple points across the navbar height
+      // Header: pt-6 (24px) + nav h-16 (64px) = ~88px total
+      // Sample at top (30px), middle (50px), and bottom (70px) of the visible header
+      const samplePoints = [30, 50, 70];
+      const centerX = window.innerWidth / 2;
 
-      if (elementAtNavbar) {
-        // First check for explicit dark section markers
-        const parent = elementAtNavbar.closest('[data-dark-section="true"]') ||
-                      elementAtNavbar.closest('.bg-black') ||
-                      elementAtNavbar.closest('.bg-gray-900') ||
-                      elementAtNavbar.closest('.dark\\:bg-black');
+      let darkCount = 0;
+      let totalSamples = 0;
 
-        if (parent) {
-          setIsOverDarkSection(true);
-          return;
+      for (const y of samplePoints) {
+        const isDark = isDarkAtPoint(centerX, y);
+        if (isDark !== null) {
+          totalSamples++;
+          if (isDark) darkCount++;
         }
-
-        // Check the actual background color of the element and its parents
-        let currentElement: HTMLElement | null = elementAtNavbar as HTMLElement;
-        let isDark = false;
-
-        while (currentElement && currentElement !== document.body) {
-          const bgColor = window.getComputedStyle(currentElement).backgroundColor;
-
-          // Parse RGB values
-          const rgbMatch = bgColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
-          if (rgbMatch) {
-            const r = parseInt(rgbMatch[1]);
-            const g = parseInt(rgbMatch[2]);
-            const b = parseInt(rgbMatch[3]);
-
-            // Calculate luminance (perceived brightness)
-            // Using the formula: 0.299*R + 0.587*G + 0.114*B
-            const luminance = (0.299 * r + 0.587 * g + 0.114 * b);
-
-            // If luminance is less than 128 (out of 255), it's dark
-            // Only set if the background is not transparent
-            if (bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') {
-              isDark = luminance < 128;
-              console.log(`Navbar detection - BG: ${bgColor}, Luminance: ${luminance.toFixed(2)}, isDark: ${isDark}`);
-              break;
-            }
-          }
-
-          currentElement = currentElement.parentElement;
-        }
-
-        setIsOverDarkSection(isDark);
       }
+
+      // Only switch to dark mode when ALL sample points are over dark background
+      // This ensures the entire header is covered before switching colors
+      const allDark = totalSamples > 0 && darkCount === totalSamples;
+      setIsOverDarkSection(allDark);
     };
 
     handleScroll(); // Check on mount

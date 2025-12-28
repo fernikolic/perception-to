@@ -205,23 +205,34 @@ export function CryptoConferencesPage() {
         <meta name="twitter:title" content="Crypto Conferences 2025-2026 Calendar" />
         <meta name="twitter:description" content="Complete directory of Bitcoin and blockchain conferences worldwide" />
 
-        {/* Structured Data */}
+        {/* Structured Data - ItemList for directory pages */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "EventSeries",
+            "@type": "ItemList",
             "name": "Crypto Conferences 2025-2026",
             "description": "Global directory of cryptocurrency, Bitcoin, and blockchain conferences",
-            "organizer": {
-              "@type": "Organization",
-              "name": "Bitcoin Perception",
-              "url": "https://perception.to"
-            },
-            "location": {
-              "@type": "Place",
-              "name": "Global",
-              "address": "Worldwide"
-            }
+            "numberOfItems": conferences.length,
+            "itemListElement": conferences.slice(0, 10).map((conf, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "item": {
+                "@type": "Event",
+                "name": conf.name,
+                "startDate": conf.date,
+                "location": {
+                  "@type": "Place",
+                  "name": conf.location,
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": conf.location
+                  }
+                },
+                "eventStatus": "https://schema.org/EventScheduled",
+                "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                "url": `https://perception.to${generateConferenceUrl(conf)}`
+              }
+            }))
           })}
         </script>
       </Helmet>

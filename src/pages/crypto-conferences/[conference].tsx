@@ -160,6 +160,34 @@ export function ConferencePage() {
         <meta property="og:title" content={`${conference.name} ${year} | Crypto Conferences`} />
         <meta property="og:description" content={`${conference.name} - ${conference.location} on ${conference.dateDisplay}. A comprehensive guide to this ${conference.type.toLowerCase()} conference.`} />
         <link rel="canonical" href={`https://perception.to${generateConferenceUrl(conference)}`} />
+
+        {/* Event Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Event",
+            "name": conference.name,
+            "description": `${conference.name} is a ${conference.type.toLowerCase()} conference taking place in ${conference.location}.`,
+            "startDate": conference.date,
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": {
+              "@type": "Place",
+              "name": conference.location,
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": conference.location
+              }
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": conference.name,
+              "url": `https://perception.to${generateConferenceUrl(conference)}`
+            },
+            "url": `https://perception.to${generateConferenceUrl(conference)}`,
+            "image": "https://perception.to/logos/Perception-logo-social-og.png"
+          })}
+        </script>
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900">
