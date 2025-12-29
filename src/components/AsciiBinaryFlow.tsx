@@ -49,8 +49,8 @@ const AsciiBinaryFlow: React.FC = () => {
             const blockX = Math.floor(width / 2 - blockSize / 2);
             const blockY = Math.floor(height / 2 - blockSize / 2);
 
-            // Time-based flow with slower motion (reduced to 2/3 speed)
-            const t = time * 0.005;
+            // Time-based flow with slower motion
+            const t = time * 0.003;
 
             // Draw water flow around and through the structure
             for (let y = 0; y < height; y++) {
@@ -67,7 +67,7 @@ const AsciiBinaryFlow: React.FC = () => {
                         );
 
                         // Erosion from edge inward (slower)
-                        const erosion = time * 0.0067;
+                        const erosion = time * 0.004;
                         if (innerDist > erosion) {
                             grid[y][x] = '1';
                         } else {
@@ -83,7 +83,7 @@ const AsciiBinaryFlow: React.FC = () => {
 
                         // Create fluid pattern resembling water - smoother transitions
                         const wave = Math.sin(dist * 0.2 - t + angle * 1.5);
-                        const flow = Math.sin(x * 0.08 + y * 0.04 + t * 0.4);
+                        const flow = Math.sin(x * 0.08 + y * 0.04 + t * 0.2);
 
                         // Use a threshold that creates less flickering
                         if (flow + wave > 0.4) {
@@ -142,7 +142,7 @@ const AsciiBinaryFlow: React.FC = () => {
     return (
         <div style={{
             margin: 0,
-            background: '#F0EEE6',
+            background: '#000000',
             overflow: 'hidden',
             fontFamily: 'monospace',
             display: 'flex',
@@ -165,7 +165,7 @@ const AsciiBinaryFlow: React.FC = () => {
                     style={{
                         lineHeight: '0.85',
                         letterSpacing: '0.05em',
-                        color: 'rgba(0,0,0,0.85)',
+                        color: 'rgba(255,255,255,0.9)',
                         userSelect: 'none',
                         width: '100%',
                         height: '100%',

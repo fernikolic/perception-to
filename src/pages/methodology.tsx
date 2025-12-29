@@ -2,9 +2,10 @@ import { Navbar } from "@/components/navbar";
 import { Separator } from "@/components/ui/separator";
 import { Newspaper, Globe, Database, Tags, CheckCircle, XCircle, MinusCircle, ShieldCheck, Lightbulb, GitBranch, Users, Radio, Mic, FileText, Search, MessageSquare, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Metamorphosis from "@/components/Metamorphosis";
+import AsciiBinaryFlow from "@/components/AsciiBinaryFlow";
 import FlowingPattern from "@/components/FlowingPattern";
 import DelicateAsciiDots from "@/components/DelicateAsciiDots";
+import Metamorphosis from "@/components/Metamorphosis";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // =============================================================================
@@ -632,17 +633,25 @@ export default function MethodologyPage() {
           <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 
           <div className="mx-auto max-w-[1800px] px-6 sm:px-8 py-8 sm:py-12 lg:py-16 lg:px-12">
-            {/* Hero Card with Side-by-Side Layout */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <div className="flex flex-col lg:flex-row min-h-[600px]">
-                {/* Metamorphosis - Left Side (50%) */}
-                <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-[600px]">
-                  <Metamorphosis />
+            {/* Hero Cards - Side by Side */}
+            <div className="relative">
+              <div className="flex flex-col-reverse lg:flex-row gap-6 lg:gap-8 min-h-[200px] lg:min-h-[600px]">
+                {/* ASCII Art - Left Card (Desktop only) */}
+                <div className="w-full lg:w-1/2 relative min-h-[300px] lg:min-h-[600px] hidden lg:block">
+                  <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl" style={{ background: '#000000' }}>
+                    <AsciiBinaryFlow />
+                    {/* Overlay text */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight text-white text-center px-8 leading-tight">
+                        What We Monitor<br />and How
+                      </h1>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Content - Right Side (50%) */}
-                <div className="w-full lg:w-1/2 px-6 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16 flex flex-col justify-center" style={{ background: '#F0EEE6' }}>
-                  <div className="mx-auto max-w-2xl">
+                {/* Content - Right Card */}
+                <div className="w-full lg:w-1/2 px-6 sm:px-8 lg:pl-8 lg:pr-12 py-8 sm:py-12 lg:py-16 flex flex-col justify-center rounded-3xl shadow-2xl" style={{ background: '#F0EEE6' }}>
+                  <div className="w-full max-w-2xl">
                     <div className="mb-4 sm:mb-6 lg:mb-8 text-center lg:text-left">
                       <div className="group relative inline-flex items-center rounded-full px-5 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base font-semibold leading-6"
                         style={{
@@ -662,14 +671,10 @@ export default function MethodologyPage() {
                       </div>
                     </div>
 
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-black mb-5 sm:mb-6 lg:mb-8 text-center lg:text-left">
-                      What we monitor and{'\u00A0'}how
-                    </h1>
-
                     <div className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
-                      <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight leading-tight text-black mb-4">
                         Curated sources. Organized intelligence. Real-time{'\u00A0'}clustering.
-                      </p>
+                      </h2>
                       <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
                         See what we track and how it powers your watchlists, <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, and{'\u00A0'}<em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>.
                       </p>

@@ -37,7 +37,7 @@ const footerSections: FooterSection[] = [
   {
     title: 'Developer',
     links: [
-      { label: 'Documentation', href: '/docs', comingSoon: true },
+      { label: 'Documentation', href: '/documentation' },
       { label: 'API Reference', href: '/api', comingSoon: true },
     ],
   },
