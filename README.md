@@ -1,99 +1,56 @@
 # Bitcoin Perception Intelligence Platform
 
-A modern Bitcoin narrative intelligence platform built with React, Payload CMS, and Cloudflare infrastructure.
+A comprehensive Bitcoin narrative intelligence platform built with React, Cloudflare infrastructure, and Ghost CMS.
 
-## 🚀 Live Site
+## Live Site
 
 - **Production**: https://perception.to
-- **Learn Articles**: https://perception.to/learn (59 articles)
-- **Glossary**: https://perception.to/glossary (10 entries)
+- **Newsletter/Research**: https://perception.to/bitcoin-media-research
+- **Sentiment Index**: https://perception.to/bitcoin-market-sentiment
+- **Conference Tracker**: https://perception.to/crypto-conferences
 
-## 📋 Architecture Overview
+## Architecture Overview
 
-- **Frontend**: React + Vite (deployed to Cloudflare Pages)
-- **Backend API**: Cloudflare Workers (serving MongoDB data)
-- **Content Management**: Payload CMS v1 (local admin interface)
-- **Database**: MongoDB Atlas
-- **Deployment**: Cloudflare Pages + Workers
-
-## 🎯 Adding New Content
-
-### 📚 Adding Learn Articles
-
-1. **Start the Content Management System**:
-   ```bash
-   cd payload-v1
-   npm start
-   ```
-
-2. **Access Admin Panel**:
-   - Open http://localhost:3000/admin
-   - Login with your admin credentials
-
-3. **Create New Article**:
-   - Navigate to "Learn" collection
-   - Click "Create New"
-   - Fill out the form:
-     - **Title**: Article headline
-     - **Slug**: URL-friendly version (auto-generated)
-     - **Excerpt**: Brief description for listings
-     - **Content**: Full article content (rich text editor)
-     - **Category**: Article category (optional)
-     - **Tags**: Comma-separated tags (optional)
-     - **Read Time**: Estimated minutes (optional)
-     - **Difficulty**: beginner/intermediate/advanced
-     - **Featured**: Check to highlight on homepage
-     - **Published**: Check to make live
-     - **Published At**: Publication date
-
-4. **Save & Publish**:
-   - Click "Save" 
-   - Content automatically syncs to MongoDB
-   - New article appears on live site within minutes
-
-### 📖 Adding Glossary Entries
-
-1. **Start the Content Management System**:
-   ```bash
-   cd payload-v1
-   npm start
-   ```
-
-2. **Access Admin Panel**:
-   - Open http://localhost:3000/admin
-
-3. **Create New Entry**:
-   - Navigate to "Glossary" collection
-   - Click "Create New"
-   - Fill out the form:
-     - **Title**: Term name
-     - **Slug**: URL-friendly version (auto-generated)
-     - **Description**: Clear definition/explanation
-     - **Category**: bitcoin/stablecoins/regulation/macro
-     - **Published**: Check to make live
-
-4. **Save & Publish**:
-   - Click "Save"
-   - Entry automatically syncs to MongoDB
-   - New glossary entry appears on live site within minutes
-
-## 🔄 Content Workflow
-
-```mermaid
-graph LR
-    A[Local Payload CMS] --> B[MongoDB Atlas]
-    B --> C[Cloudflare Workers API]
-    C --> D[Live Website]
-    
-    E[Admin creates content] --> A
-    F[Content auto-syncs] --> B
-    G[API serves content] --> C
-    H[Users see updates] --> D
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              perception.to                                   │
+│                          (Cloudflare Pages)                                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  Frontend (React + Vite)  │  Functions (Workers)  │  Content (Ghost CMS)   │
+│  - TypeScript             │  - SEO Middleware     │  - Newsletter Posts    │
+│  - Tailwind CSS           │  - OG Image Gen       │  - Research Articles   │
+│  - React Router           │  - Bot Detection      │  - Build-time Fetch    │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+              ┌───────────────────────┼───────────────────────┐
+              │                       │                       │
+              ▼                       ▼                       ▼
+       Ghost CMS API          Firebase/GCP APIs        MongoDB Atlas
+       (Content)              (Sentiment, Trends)      (Learn, Glossary)
 ```
 
-## 🛠 Development Setup
+## Technology Stack
 
-### Initial Setup
+| Layer | Technology |
+|-------|------------|
+| Frontend | React 18, TypeScript, Vite, Tailwind CSS |
+| Hosting | Cloudflare Pages |
+| Functions | Cloudflare Workers (Edge Functions) |
+| CMS | Ghost Pro (Newsletter & Research) |
+| Database | MongoDB Atlas (Learn/Glossary), Firestore (App Data) |
+| APIs | Firebase Functions, Google Cloud Run |
+| Auth | Firebase Authentication |
+
+## Quick Start
+
+### Prerequisites
+
+- Node.js 20+
+- npm or yarn
+- Ghost Content API Key (for full builds)
+
+### Installation
+
 ```bash
 # Clone repository
 git clone https://github.com/fernikolic/perception-to.git
@@ -102,131 +59,148 @@ cd bitcoin-perception
 # Install dependencies
 npm install
 
-# Install Payload CMS dependencies
-cd payload-v1
-npm install
-cd ..
+# Start development server
+npm run dev
 ```
 
-### Running Locally
-```bash
-# Start frontend (React dev server)
-npm run dev
+### Environment Variables
 
-# In separate terminal - start Payload CMS admin
-cd payload-v1
-npm start
-# Access admin at http://localhost:3000/admin
+Create `.env.local`:
+```env
+# Ghost CMS (required for full builds)
+GHOST_API_URL=https://bitcoin-perception.ghost.io
+GHOST_CONTENT_API_KEY=your_content_api_key
 ```
 
 ### Building & Deploying
+
 ```bash
-# Build the project
+# Full production build
 npm run build
 
 # Deploy to Cloudflare Pages
 npx wrangler pages deploy dist --project-name=perception-to
-
-# Commit changes
-git add .
-git commit -m "Add new content"
-git push origin main
 ```
 
-## 🗂 Project Structure
+## Project Structure
 
 ```
 bitcoin-perception/
-├── src/                    # React frontend
+├── src/                          # React frontend
 │   ├── pages/
-│   │   ├── learn/         # Learn articles pages
-│   │   └── glossary/      # Glossary pages
-│   └── lib/
-│       └── payloadClient.ts  # API client
-├── functions/             # Cloudflare Workers
-│   └── api/
-│       ├── learn.js      # Learn articles API
-│       └── glossary.js   # Glossary API
-├── payload-v1/           # Payload CMS
-│   ├── src/
-│   │   ├── collections/  # Content schemas
-│   │   └── server.js     # CMS server
-│   └── payload.config.js # CMS configuration
-└── dist/                 # Built frontend files
+│   │   ├── bitcoin-media-research/  # Newsletter & Research pages
+│   │   ├── bitcoin-market-sentiment/  # Sentiment pages
+│   │   ├── crypto-conferences/  # Conference tracker
+│   │   └── learn/               # Educational content
+│   ├── components/              # Reusable components
+│   ├── lib/
+│   │   └── ghost.ts             # Ghost CMS client
+│   └── data/
+│       └── ghost-posts.json     # Cached Ghost content
+├── functions/                   # Cloudflare Workers
+│   ├── _middleware.js           # SEO middleware
+│   ├── seo-config.js            # Page SEO configs
+│   └── api/                     # API endpoints
+├── scripts/                     # Build scripts
+│   ├── fetch-ghost-posts.js     # Ghost content fetcher
+│   └── generate-*.js            # Sitemap generators
+├── docs/                        # Documentation
+│   ├── infrastructure/          # Infrastructure docs
+│   ├── api/                     # API documentation
+│   └── ...                      # Feature documentation
+└── public/                      # Static assets
 ```
 
-## 📊 Content Management Features
+## Key Features
 
-### Learn Articles
-- **Rich Text Editor**: Full WYSIWYG content creation
-- **Categories**: Organize by topic
-- **Tags**: Multi-tag support for filtering
-- **Featured Articles**: Highlight important content
-- **Reading Time**: Auto-calculated estimates
-- **Difficulty Levels**: Beginner to advanced
-- **Search**: Full-text search across titles and content
-- **SEO-Friendly URLs**: Auto-generated slugs
+### Newsletter & Research Hub (`/bitcoin-media-research`)
 
-### Glossary Entries
-- **Clean Definitions**: Focused term explanations
-- **Categories**: Bitcoin, Stablecoins, Regulation, Macro
-- **Search**: Find terms quickly
-- **Cross-Linking**: Reference between entries
-- **SEO-Optimized**: Individual pages for each term
+- Ghost CMS powered content
+- Newsletter signup integration
+- Research reports and opinion articles
+- Build-time content fetching
 
-## 🔧 Current API Setup
+### Market Sentiment (`/bitcoin-market-sentiment`)
 
-**Note**: Currently using fallback data in Cloudflare Workers due to MongoDB Data API configuration. This provides:
+- Daily/monthly sentiment tracking
+- Historical data visualization
+- Fear & Greed Index
 
-- ✅ **Immediate functionality** with real content
-- ✅ **Full feature parity** (search, filtering, pagination)
-- ✅ **Fast performance** via edge computing
+### Conference Tracker (`/crypto-conferences`)
 
-### Upgrading to Live MongoDB (Future)
+- Bitcoin/crypto conference directory
+- Real-time updates via Firestore
+- Automatic sitemap generation
 
-To connect directly to live MongoDB:
+### SEO Infrastructure
 
-1. **Enable MongoDB Data API** in Atlas dashboard
-2. **Update API endpoints** in `functions/api/` files
-3. **Replace fallback data** with direct queries
-4. **Redeploy** to Cloudflare Pages
+- Cloudflare Workers middleware for bot detection
+- Dynamic meta tag injection
+- Structured data (JSON-LD)
+- Dynamic OG image generation
 
-## 🚨 Important Notes
+## NPM Scripts
 
-### Content Updates
-- **Local Changes Only**: Content must be added through local Payload CMS
-- **Auto-Sync**: Changes automatically sync to MongoDB Atlas
-- **Live Updates**: New content appears on site within minutes
-- **No Direct Database Editing**: Always use Payload CMS interface
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Full production build |
+| `npm run ghost:fetch` | Fetch Ghost CMS content |
+| `npm run sitemap:all` | Generate all sitemaps |
+| `npm run social:generate` | Generate social image config |
 
-### Publishing Workflow
-1. Create content locally via Payload CMS admin
-2. Content syncs to MongoDB Atlas
-3. Cloudflare Workers serve content via API
-4. Live site updates automatically
+## Documentation
 
-### Backup & Recovery
-- **Database**: MongoDB Atlas handles backups
-- **Code**: GitHub repository with full history
-- **Content**: Export via Payload CMS admin interface
+- **[Infrastructure Overview](docs/infrastructure/INFRASTRUCTURE-OVERVIEW.md)** - Complete infrastructure docs
+- **[API Reference](docs/api/README.md)** - Backend API documentation
+- **[Project Overview](docs/development/PROJECT-OVERVIEW.md)** - Development guide
 
-## 📞 Support
+## Ghost CMS Integration
 
-For technical issues:
-1. Check Payload CMS logs in terminal
-2. Verify MongoDB connection
-3. Test API endpoints locally
-4. Check Cloudflare Workers logs
+Content is fetched from Ghost at build time:
 
-## 🔮 Roadmap
+1. **Fetch**: `npm run ghost:fetch` pulls posts from Ghost API
+2. **Cache**: Posts saved to `src/data/ghost-posts.json`
+3. **Build**: React components read from cached JSON
+4. **Deploy**: Static content served from Cloudflare edge
 
-- [ ] Connect to live MongoDB Data API
-- [ ] Add content preview functionality
-- [ ] Implement content scheduling
-- [ ] Add multimedia support (images, videos)
-- [ ] Enhanced search with filters
-- [ ] Content analytics and insights
+### Content Types
+
+| Type | Tag | URL |
+|------|-----|-----|
+| All Posts | - | `/bitcoin-media-research` |
+| Reports | `reports` | `/bitcoin-media-research/reports` |
+| Opinion | `opinion` | `/bitcoin-media-research/opinion` |
+
+## Cloudflare Configuration
+
+### Pages Settings
+
+- **Production Branch**: `main`
+- **Build Command**: `npm run build`
+- **Build Output**: `dist`
+- **Node.js Version**: 20
+
+### Environment Variables
+
+Set in Cloudflare Dashboard > Pages > Settings > Environment Variables:
+
+| Variable | Environment |
+|----------|-------------|
+| `GHOST_CONTENT_API_KEY` | Production & Preview |
+
+## Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+Proprietary - All rights reserved.
 
 ---
 
-**Your Bitcoin perception intelligence platform is ready for content creation!** 🚀 
+Built with care for the Bitcoin community.
