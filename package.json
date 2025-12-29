@@ -14,11 +14,13 @@
     "social:audit": "node scripts/social-image-helper.cjs",
     "sitemap:conferences": "node scripts/generate-conference-sitemap.cjs",
     "sitemap:sentiment": "node scripts/generate-sentiment-sitemap.cjs",
-    "sitemap:all": "npm run sitemap:conferences && npm run sitemap:sentiment",
+    "sitemap:all": "npm run sitemap:conferences && npm run sitemap:sentiment && npm run sitemap:research",
+    "sitemap:research": "node scripts/generate-research-sitemap.js",
+    "ghost:fetch": "node scripts/fetch-ghost-posts.js",
     "conferences:fetch": "node scripts/fetch-conferences.js",
     "conferences:save": "node scripts/save-to-firestore.js",
     "conferences:update": "npm run conferences:fetch && npm run sitemap:conferences && npm run conferences:save",
-    "prebuild": "npm run social:generate && npm run sitemap:all"
+    "prebuild": "npm run ghost:fetch && npm run social:generate && npm run sitemap:all"
   },
   "dependencies": {
     "@babel/helpers": "~7.26.10",
@@ -54,6 +56,7 @@
     "@radix-ui/react-toggle": "^1.1.0",
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
+    "@tailwindcss/typography": "0.5.19",
     "@vercel/og": "0.6.8",
     "axios": "^1.12.2",
     "braces": "~3.0.3",
@@ -62,6 +65,7 @@
     "cmdk": "^1.0.0",
     "cookie": "~0.7.0",
     "date-fns": "^3.6.0",
+    "dompurify": "^3.2.3",
     "embla-carousel-react": "^8.3.0",
     "firebase": "11.1.0",
     "framer-motion": "^11.15.0",
