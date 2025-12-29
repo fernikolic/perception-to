@@ -66,9 +66,8 @@ const mediaKit = [
   {
     title: 'Brand Assets',
     description: 'Logo, screenshots, and brand materials.',
-    link: '#',
-    disabled: true,
-    badge: 'Coming Soon',
+    link: '/brand',
+    disabled: false,
   },
   {
     title: 'Media Contact',

@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { Toaster } from 'sonner';
 import { ThemeProvider } from '@/components/theme-provider';
 import { SocialMeta } from '@/components/seo/social-meta';
 import { Navbar } from '@/components/navbar';
@@ -30,6 +31,7 @@ import { AboutPage } from '@/pages/about';
 // import { CareersPage } from '@/pages/careers';
 import { PressPage } from '@/pages/press';
 import { AnnouncementsPage } from '@/pages/announcements';
+import { BrandPage } from '@/pages/brand';
 import PricingPage from '@/pages/pricing';
 import BookACallPage from '@/pages/book-a-call';
 import { DocsPage } from '@/pages/documentation';
@@ -115,6 +117,7 @@ const App = () => {
               <Route path="/about" element={<AboutPage />} />
               {/* <Route path="/careers" element={<CareersPage />} /> */}
               <Route path="/press" element={<PressPage />} />
+              <Route path="/brand" element={<BrandPage />} />
               <Route path="/announcements" element={<AnnouncementsPage />} />
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/book-a-call" element={<BookACallPage />} />
@@ -191,6 +194,7 @@ const App = () => {
           <Footer />
           <FloatingNav />
           <ExitIntentPopup />
+          <Toaster position="bottom-center" />
         </div>
       </ThemeProvider>
     </HelmetProvider>
