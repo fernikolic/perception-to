@@ -34,7 +34,7 @@ const KaleidoscopeVariation3 = () => {
       time += 0.005;
 
       // Clear the main canvas
-      ctx.fillStyle = '#F0EEE6';
+      ctx.fillStyle = '#000000';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Clear the segment canvas
@@ -74,7 +74,7 @@ const KaleidoscopeVariation3 = () => {
             // Map to opacity, incorporating edge fade
             const opacity = Math.abs(value) * 0.8 * edgeFade;
 
-            segmentCtx.fillStyle = `rgba(0, 0, 0, ${opacity})`;
+            segmentCtx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
             segmentCtx.fillRect(x, y, resolution, resolution);
           }
         }
@@ -115,7 +115,7 @@ const KaleidoscopeVariation3 = () => {
   return (
     <div style={{
       margin: 0,
-      background: '#F0EEE6',
+      background: '#000000',
       overflow: 'hidden',
       display: 'flex',
       alignItems: 'center',
@@ -131,7 +131,7 @@ const KaleidoscopeVariation3 = () => {
         alignItems: 'center',
         justifyContent: 'center'
       }}>
-        <canvas ref={canvasRef} style={{ backgroundColor: '#F0EEE6', borderRadius: '8px' }} />
+        <canvas ref={canvasRef} style={{ backgroundColor: '#000000', borderRadius: '8px' }} />
       </div>
     </div>
   );

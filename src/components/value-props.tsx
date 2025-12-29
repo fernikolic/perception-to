@@ -154,7 +154,7 @@ export function ValueProps() {
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 mb-16 sm:mb-24 lg:mb-32 text-center">
           <h2
             ref={titleRef}
-            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight leading-[0.95] value-props-main-title"
+            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight leading-[0.95] value-props-main-title"
             style={{ color: '#000000', fontWeight: '500' }}
           >
             From Monitoring to{' '}
@@ -184,8 +184,7 @@ export function ValueProps() {
                 key={item.title}
                 className="group overflow-hidden rounded-2xl shadow-2xl border border-black/10 flex flex-col"
                 style={{
-                  background: '#FFFFFF',
-                  minHeight: '500px'
+                  background: '#FFFFFF'
                 }}
               >
                 {/* ASCII Art - Top Half */}

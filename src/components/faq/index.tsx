@@ -7,7 +7,7 @@ export function Faq() {
     <>
       <FAQSchema items={faqData} />
       <section className="border-t py-32 sm:py-40 lg:py-48">
-        <div className="mx-auto max-w-7xl px-8 lg:px-12">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-4xl text-center mb-20 sm:mb-24">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
               Frequently asked questions

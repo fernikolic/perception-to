@@ -15,8 +15,8 @@ export function FaqList() {
           value={`item-${index}`}
           className="border-b border-black/10"
         >
-          <AccordionTrigger className="text-left hover:no-underline px-6 text-black">{faq.question}</AccordionTrigger>
-          <AccordionContent className="whitespace-pre-line px-6 text-black/70">{faq.answer}</AccordionContent>
+          <AccordionTrigger className="text-left hover:no-underline px-4 sm:px-6 text-black text-sm sm:text-base">{faq.question}</AccordionTrigger>
+          <AccordionContent className="whitespace-pre-line px-4 sm:px-6 text-black/70 text-sm sm:text-base">{faq.answer}</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>

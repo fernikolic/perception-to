@@ -32,10 +32,8 @@ const resources: {
 }[] = [
   {
     title: "Documentation",
-    href: "#",
-    description: "Platform integration guides",
-    disabled: true,
-    badge: "Coming Soon"
+    href: "/documentation",
+    description: "Platform integration guides"
   },
   {
     title: "API Reference",
@@ -179,34 +177,43 @@ export function Navbar() {
       return false;
     };
 
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      if (ticking) return;
 
-      // Sample multiple points across the navbar height
-      // Header: pt-6 (24px) + nav h-16 (64px) = ~88px total
-      // Sample at top (30px), middle (50px), and bottom (70px) of the visible header
-      const samplePoints = [30, 50, 70];
-      const centerX = window.innerWidth / 2;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 0);
 
-      let darkCount = 0;
-      let totalSamples = 0;
+        // Sample multiple points across the navbar height
+        // Header: pt-6 (24px) + nav h-16 (64px) = ~88px total
+        // Sample at top (30px), middle (50px), and bottom (70px) of the visible header
+        const samplePoints = [30, 50, 70];
+        const centerX = window.innerWidth / 2;
 
-      for (const y of samplePoints) {
-        const isDark = isDarkAtPoint(centerX, y);
-        if (isDark !== null) {
-          totalSamples++;
-          if (isDark) darkCount++;
+        let darkCount = 0;
+        let totalSamples = 0;
+
+        for (const y of samplePoints) {
+          const isDark = isDarkAtPoint(centerX, y);
+          if (isDark !== null) {
+            totalSamples++;
+            if (isDark) darkCount++;
+          }
         }
-      }
 
-      // Only switch to dark mode when ALL sample points are over dark background
-      // This ensures the entire header is covered before switching colors
-      const allDark = totalSamples > 0 && darkCount === totalSamples;
-      setIsOverDarkSection(allDark);
+        // Only switch to dark mode when ALL sample points are over dark background
+        // This ensures the entire header is covered before switching colors
+        const allDark = totalSamples > 0 && darkCount === totalSamples;
+        setIsOverDarkSection(allDark);
+
+        ticking = false;
+      });
     };
 
     handleScroll(); // Check on mount
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -240,6 +247,78 @@ export function Navbar() {
         <div className="hidden md:flex md:flex-1 md:justify-center">
           <NavigationMenu className="w-full">
             <NavigationMenuList className="space-x-1">
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className={cn(
+                  "bg-transparent font-medium text-sm hover:text-primary transition-colors",
+                  isOverDarkSection ? "text-white" : "text-black dark:text-white"
+                )}>
+                  Use Cases
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="p-4 bg-background rounded-lg border shadow-lg min-w-[500px] max-w-[700px]">
+                    <ul className="space-y-3">
+                      {useCases.map((item) => {
+                        const AnimationComponent = item.animation;
+                        return (
+                          <li key={item.title}>
+                            <NavigationMenuLink asChild>
+                              <a
+                                href={item.href}
+                                className={cn(
+                                  "block rounded-md transition-colors overflow-hidden",
+                                  item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/5 hover:text-foreground",
+                                  item.className
+                                )}
+                                onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                              >
+                                <div className="flex items-center gap-3">
+                                  {/* ASCII Animation Preview */}
+                                  {AnimationComponent && (
+                                    <div className="w-20 h-20 flex-shrink-0 rounded-md overflow-hidden relative bg-[#F0EEE6]">
+                                      <div className="absolute inset-0 flex items-center justify-center">
+                                        <div className="w-[200%] h-[200%] scale-[0.35] origin-center">
+                                          <AnimationComponent />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  )}
+                                  {/* Text Content */}
+                                  <div className="flex-1 py-3 pr-3">
+                                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                                      <span className={cn("text-sm font-medium", item.className)}>
+                                        {item.title}
+                                      </span>
+                                      {item.badge && (
+                                        <Badge variant="secondary" className="text-xs">
+                                          {item.badge}
+                                        </Badge>
+                                      )}
+                                    </div>
+                                    <div
+                                      className="text-sm text-muted-foreground"
+                                      style={{
+                                        whiteSpace: 'normal',
+                                        wordWrap: 'break-word',
+                                        overflowWrap: 'break-word',
+                                        maxWidth: '100%',
+                                        width: '100%',
+                                        lineHeight: '1.4'
+                                      }}
+                                    >
+                                      {item.description}
+                                    </div>
+                                  </div>
+                                </div>
+                              </a>
+                            </NavigationMenuLink>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={cn(
                   "bg-transparent font-medium text-sm hover:text-primary transition-colors",
@@ -385,78 +464,6 @@ export function Navbar() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className={cn(
-                  "bg-transparent font-medium text-sm hover:text-primary transition-colors",
-                  isOverDarkSection ? "text-white" : "text-black dark:text-white"
-                )}>
-                  Use Cases
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="p-4 bg-background rounded-lg border shadow-lg min-w-[500px] max-w-[700px]">
-                    <ul className="space-y-3">
-                      {useCases.map((item) => {
-                        const AnimationComponent = item.animation;
-                        return (
-                          <li key={item.title}>
-                            <NavigationMenuLink asChild>
-                              <a
-                                href={item.href}
-                                className={cn(
-                                  "block rounded-md transition-colors overflow-hidden",
-                                  item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/5 hover:text-foreground",
-                                  item.className
-                                )}
-                                onClick={item.disabled ? (e) => e.preventDefault() : undefined}
-                              >
-                                <div className="flex items-center gap-3">
-                                  {/* ASCII Animation Preview */}
-                                  {AnimationComponent && (
-                                    <div className="w-20 h-20 flex-shrink-0 rounded-md overflow-hidden relative bg-[#F0EEE6]">
-                                      <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="w-[200%] h-[200%] scale-[0.35] origin-center">
-                                          <AnimationComponent />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  )}
-                                  {/* Text Content */}
-                                  <div className="flex-1 py-3 pr-3">
-                                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                                      <span className={cn("text-sm font-medium", item.className)}>
-                                        {item.title}
-                                      </span>
-                                      {item.badge && (
-                                        <Badge variant="secondary" className="text-xs">
-                                          {item.badge}
-                                        </Badge>
-                                      )}
-                                    </div>
-                                    <div
-                                      className="text-sm text-muted-foreground"
-                                      style={{
-                                        whiteSpace: 'normal',
-                                        wordWrap: 'break-word',
-                                        overflowWrap: 'break-word',
-                                        maxWidth: '100%',
-                                        width: '100%',
-                                        lineHeight: '1.4'
-                                      }}
-                                    >
-                                      {item.description}
-                                    </div>
-                                  </div>
-                                </div>
-                              </a>
-                            </NavigationMenuLink>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
                 <a href="/pricing" className={cn(
                   "text-sm font-medium hover:text-primary transition-colors px-4 py-2",
                   isOverDarkSection ? "text-white" : "text-black dark:text-white"
@@ -510,6 +517,45 @@ export function Navbar() {
       >
         <div className="flex flex-col h-full overflow-y-auto">
           <div className="px-4 py-6 space-y-6">
+            {/* Use Cases Section */}
+            <div>
+              <button
+                className="flex w-full items-center justify-between text-lg font-medium"
+                onClick={() => toggleSection('usecases')}
+              >
+                Use Cases
+                {expandedSection === 'usecases' ? (
+                  <ChevronUp className="h-5 w-5" />
+                ) : (
+                  <ChevronDown className="h-5 w-5" />
+                )}
+              </button>
+              {expandedSection === 'usecases' && (
+                <div className="mt-4 space-y-4 pl-4">
+                  {useCases.map((item) => (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      className={cn(
+                        "block text-muted-foreground hover:text-foreground transition-colors",
+                        item.disabled && "opacity-50 cursor-not-allowed"
+                      )}
+                      onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{item.title}</span>
+                        {item.badge && (
+                          <Badge variant="secondary" className="text-xs">
+                            {item.badge}
+                          </Badge>
+                        )}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {/* Resources Section */}
             <div>
               <button
@@ -565,45 +611,6 @@ export function Navbar() {
               {expandedSection === 'company' && (
                 <div className="mt-4 space-y-4 pl-4">
                   {company.map((item) => (
-                    <a
-                      key={item.title}
-                      href={item.href}
-                      className={cn(
-                        "block text-muted-foreground hover:text-foreground transition-colors",
-                        item.disabled && "opacity-50 cursor-not-allowed"
-                      )}
-                      onClick={item.disabled ? (e) => e.preventDefault() : undefined}
-                    >
-                      <div className="flex items-center gap-2">
-                        <span>{item.title}</span>
-                        {item.badge && (
-                          <Badge variant="secondary" className="text-xs">
-                            {item.badge}
-                          </Badge>
-                        )}
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Use Cases Section */}
-            <div>
-              <button
-                className="flex w-full items-center justify-between text-lg font-medium"
-                onClick={() => toggleSection('usecases')}
-              >
-                Use Cases
-                {expandedSection === 'usecases' ? (
-                  <ChevronUp className="h-5 w-5" />
-                ) : (
-                  <ChevronDown className="h-5 w-5" />
-                )}
-              </button>
-              {expandedSection === 'usecases' && (
-                <div className="mt-4 space-y-4 pl-4">
-                  {useCases.map((item) => (
                     <a
                       key={item.title}
                       href={item.href}

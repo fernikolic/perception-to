@@ -106,9 +106,9 @@ export function PriceCard({
       </div>
       
       <CardContent className="flex-grow pt-0">
-        <div className="mb-10">
+        <div className="mb-8 sm:mb-10">
           <div className="flex items-baseline gap-2">
-            <span className="text-5xl font-semibold tracking-tight !text-white">{currentPrice}</span>
+            <span className="text-4xl sm:text-5xl font-semibold tracking-tight !text-white">{currentPrice}</span>
             {dataplan !== 'enterprise' && (
               <span className="text-lg !text-gray-400 font-light">
                 {isAnnual ? '/year' : perUser ? ' per user / month' : '/month'}

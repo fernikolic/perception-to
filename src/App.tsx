@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from '@/components/theme-provider';
 import { SocialMeta } from '@/components/seo/social-meta';
@@ -32,7 +32,7 @@ import { PressPage } from '@/pages/press';
 import { AnnouncementsPage } from '@/pages/announcements';
 import PricingPage from '@/pages/pricing';
 import BookACallPage from '@/pages/book-a-call';
-import { DocsPage } from '@/pages/docs';
+import { DocsPage } from '@/pages/documentation';
 import { ApiPage } from '@/pages/api';
 import { PrivacyPage } from '@/pages/legal/privacy';
 import { TermsPage } from '@/pages/legal/terms';
@@ -70,6 +70,10 @@ import UnderstandingBitcoinDominancePage from '@/pages/learn/understanding-bitco
 import CryptoSocialSentimentPage from '@/pages/learn/crypto-social-sentiment';
 import PerceptionVsGlassnodePage from '@/pages/compare/perception-vs-glassnode';
 import BestCryptoNewsAggregatorsPage from '@/pages/compare/best-crypto-news-aggregators';
+import ResearchSlugRedirect from '@/pages/research/slug-redirect';
+import BMRReportsPage from '@/pages/bitcoin-media-research/reports';
+import BMROpinionPage from '@/pages/bitcoin-media-research/opinion';
+import BMRPostPage from '@/pages/bitcoin-media-research/[slug]';
 
 function HomePage() {
   return (
@@ -115,7 +119,7 @@ const App = () => {
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/book-a-call" element={<BookACallPage />} />
               <Route path="/slack-integration" element={<SlackIntegrationPage />} />
-              <Route path="/docs" element={<DocsPage />} />
+              <Route path="/documentation" element={<DocsPage />} />
               <Route path="/api" element={<ApiPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
@@ -127,6 +131,9 @@ const App = () => {
               <Route path="/bitcoin-market-sentiment/:year/:month/:day" element={<BitcoinDailySentimentPage />} />
               <Route path="/bitcoin-market-sentiment/:year/:month" element={<BitcoinMarketSentimentPage />} />
               <Route path="/bitcoin-media-research" element={<BitcoinMediaResearchPage />} />
+              <Route path="/bitcoin-media-research/reports" element={<BMRReportsPage />} />
+              <Route path="/bitcoin-media-research/opinion" element={<BMROpinionPage />} />
+              <Route path="/bitcoin-media-research/:slug" element={<BMRPostPage />} />
               <Route path="/crypto-conferences" element={<CryptoConferencesPage />} />
               <Route
                 path="/crypto-conferences/:slug"
@@ -159,6 +166,12 @@ const App = () => {
               <Route path="/learn/crypto-narrative-trading" element={<CryptoNarrativeTradingPage />} />
               <Route path="/learn/understanding-bitcoin-dominance" element={<UnderstandingBitcoinDominancePage />} />
               <Route path="/learn/crypto-social-sentiment" element={<CryptoSocialSentimentPage />} />
+
+              {/* Research Redirects - /research/* -> /bitcoin-media-research/* */}
+              <Route path="/research" element={<Navigate to="/bitcoin-media-research" replace />} />
+              <Route path="/research/reports" element={<Navigate to="/bitcoin-media-research/reports" replace />} />
+              <Route path="/research/opinion" element={<Navigate to="/bitcoin-media-research/opinion" replace />} />
+              <Route path="/research/:slug" element={<ResearchSlugRedirect />} />
 
               {/* Programmatic SEO Routes */}
               <Route path="/sentiment/:slug" element={<ProgrammaticRouter />} />

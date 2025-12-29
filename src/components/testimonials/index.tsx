@@ -85,7 +85,7 @@ export function Testimonials() {
         backgroundSize: '40px 40px'
       }} />
 
-      <div className="mx-auto max-w-7xl px-8 lg:px-12 relative">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 relative">
         <div className="mx-auto max-w-4xl text-center mb-20 sm:mb-24">
           <h2
             ref={titleRef}

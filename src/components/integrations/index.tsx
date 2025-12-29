@@ -190,7 +190,7 @@ export function Integrations() {
       {/* Gradient Background */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,rgba(255,255,255,0.05),transparent)]" />
 
-      <div className="mx-auto max-w-7xl px-8 lg:px-12">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-5xl text-center mb-20 sm:mb-24">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] !text-white">
             Intelligence Across{' '}
@@ -232,7 +232,7 @@ export function Integrations() {
                   {[...row, ...row, ...row, ...row].map((integration, index) => (
                     <div
                       key={`${integration.name}-${index}`}
-                      className="w-[300px] flex-shrink-0"
+                      className="w-[200px] sm:w-[250px] md:w-[300px] flex-shrink-0"
                     >
                       <IntegrationCard {...integration} />
                     </div>

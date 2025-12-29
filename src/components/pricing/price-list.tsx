@@ -75,12 +75,12 @@ export function PriceList() {
   return (
     <div className="flex flex-col">
       {/* Monthly/Annual Toggle */}
-      <div className="flex justify-center mb-20">
-        <div className="flex items-center space-x-2 bg-gray-800 rounded-2xl p-2 ring-2 ring-gray-400 shadow-lg">
+      <div className="flex justify-center mb-12 sm:mb-20">
+        <div className="flex items-center space-x-1 sm:space-x-2 bg-gray-800 rounded-xl sm:rounded-2xl p-1.5 sm:p-2 ring-2 ring-gray-400 shadow-lg">
           <Toggle
             pressed={!isAnnual}
             onPressedChange={() => setIsAnnual(false)}
-            className={`px-8 py-4 rounded-xl transition-all duration-300 text-base sm:text-lg font-bold ${
+            className={`px-4 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl transition-all duration-300 text-sm sm:text-lg font-bold ${
               !isAnnual
                 ? 'bg-white text-black shadow-lg scale-105'
                 : 'text-white hover:bg-gray-700'
@@ -91,14 +91,14 @@ export function PriceList() {
           <Toggle
             pressed={isAnnual}
             onPressedChange={() => setIsAnnual(true)}
-            className={`px-8 py-4 rounded-xl transition-all duration-300 text-base sm:text-lg font-bold relative ${
+            className={`px-4 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl transition-all duration-300 text-sm sm:text-lg font-bold relative ${
               isAnnual
                 ? 'bg-white text-black shadow-lg scale-105'
                 : 'text-white hover:bg-gray-700'
             }`}
           >
             Annual
-            <span className="absolute -top-3 -right-3 bg-gray-400 text-black text-sm px-3 py-1 rounded-full font-bold shadow-lg">
+            <span className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-gray-400 text-black text-xs sm:text-sm px-2 sm:px-3 py-0.5 sm:py-1 rounded-full font-bold shadow-lg">
               Save 17%
             </span>
           </Toggle>

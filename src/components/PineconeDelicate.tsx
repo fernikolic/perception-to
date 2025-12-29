@@ -27,7 +27,7 @@ const PineconeDelicate = () => {
 
     const scene = new THREE.Scene();
     sceneRef.current = scene;
-    scene.background = new THREE.Color('#F0EEE6');
+    scene.background = new THREE.Color('#000000');
 
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
     cameraRef.current = camera;
@@ -287,7 +287,7 @@ const PineconeDelicate = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 flex justify-center items-center bg-[#F0EEE6]">
+    <div className="absolute inset-0 flex justify-center items-center bg-[#000000]">
       <div
         ref={containerRef}
         className="w-[550px] h-[550px]"

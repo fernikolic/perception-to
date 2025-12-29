@@ -1,12 +1,11 @@
 import { Button } from '@/components/ui/button';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import AsciiBinaryFlow from '@/components/AsciiBinaryFlow';
+import DelicateAsciiDots from '@/components/DelicateAsciiDots';
 import { DemoModal, useDemoModal } from '@/components/demo-modal';
 
 export function Hero() {
   const imageRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
@@ -17,15 +16,14 @@ export function Hero() {
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
     // Set initial states
-    gsap.set([badgeRef.current, titleRef.current, subtitleRef.current, ctaRef.current, imageRef.current], {
+    gsap.set([badgeRef.current, subtitleRef.current, ctaRef.current, imageRef.current], {
       opacity: 0,
       y: 30
     });
 
     // Animate in sequence
     tl.to(badgeRef.current, { opacity: 1, y: 0, duration: 0.8 })
-      .to(titleRef.current, { opacity: 1, y: 0, duration: 1, scale: 1 }, '-=0.4')
-      .to(subtitleRef.current, { opacity: 1, y: 0, duration: 0.8 }, '-=0.6')
+      .to(subtitleRef.current, { opacity: 1, y: 0, duration: 0.8 }, '-=0.4')
       .to(ctaRef.current, { opacity: 1, y: 0, duration: 0.8 }, '-=0.6')
       .to(imageRef.current, { opacity: 1, y: 0, duration: 1 }, '-=0.4');
 
@@ -42,15 +40,23 @@ export function Hero() {
 
       <div className="mx-auto max-w-[1800px] px-6 sm:px-8 py-8 sm:py-12 lg:py-16 lg:px-12">
         {/* Hero Card with Side-by-Side Layout */}
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <div className="flex flex-col-reverse lg:flex-row min-h-[200px] lg:min-h-[600px]">
+        <div className="relative">
+          <div className="flex flex-col-reverse lg:flex-row gap-6 lg:gap-8 min-h-[200px] lg:min-h-[600px]">
             {/* ASCII Binary Flow - Left Side on Desktop, Bottom on Mobile (50%) */}
-            <div className="w-full lg:w-1/2 relative min-h-[200px] lg:min-h-[600px] hidden lg:block">
-              <AsciiBinaryFlow />
+            <div className="w-full lg:w-1/2 relative min-h-[300px] lg:min-h-[600px] hidden lg:block">
+              <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl" style={{ background: '#000000' }}>
+                <DelicateAsciiDots />
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight text-white text-center px-8 leading-tight">
+                    The Intelligence Layer<br />for New Finance
+                  </h1>
+                </div>
+              </div>
             </div>
 
             {/* Content - Right Side on Desktop, Top on Mobile (50%) */}
-            <div className="w-full lg:w-1/2 px-6 sm:px-8 lg:pl-2 lg:pr-32 py-8 sm:py-12 lg:py-16 flex flex-col justify-center" style={{ background: '#F0EEE6' }}>
+            <div className="w-full lg:w-1/2 px-6 sm:px-8 lg:pl-8 lg:pr-12 py-8 sm:py-12 lg:py-16 flex flex-col justify-center rounded-3xl shadow-2xl" style={{ background: '#F0EEE6' }}>
               <div className="w-full max-w-2xl">
                 <div ref={badgeRef} className="mb-4 sm:mb-6 lg:mb-8 text-center lg:text-left">
                 <a
@@ -87,14 +93,10 @@ export function Hero() {
                 </a>
               </div>
 
-              <h1 ref={titleRef} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight text-black mb-5 sm:mb-6 lg:mb-8 text-center lg:text-left">
-                The Intelligence Layer for New{'\u00A0'}Finance
-              </h1>
-
               <div ref={subtitleRef} className="mb-6 sm:mb-8 lg:mb-10 text-center lg:text-left">
-                <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-black/70 font-semibold mb-3">
-                  Track sectors. Spot trends. Never scramble for{'\u00A0'}intel.
-                </p>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight leading-tight text-black mb-4">
+                  Track sectors. Spot trends.<br />Never scramble for{'\u00A0'}intel.
+                </h2>
                 <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
                   We monitor 650+ sources across Bitcoin, stablecoins, and tokenized finance. Ask for a board update, PR pitch, interview prep, or sector deep dive—get it in minutes, fully{'\u00A0'}cited.
                 </p>

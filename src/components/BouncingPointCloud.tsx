@@ -17,7 +17,7 @@ const BouncingPointCloud = () => {
     const height = canvas.height;
 
     // Setup
-    ctx.fillStyle = '#F0EEE6'; // cream background
+    ctx.fillStyle = '#000000'; // black background
     ctx.fillRect(0, 0, width, height);
 
     // Leader following its intuition
@@ -92,7 +92,7 @@ const BouncingPointCloud = () => {
 
       // Only update animation when enough time has passed
       if (deltaTime >= frameInterval) {
-        ctx.fillStyle = '#F0EEE6';
+        ctx.fillStyle = '#000000';
         ctx.fillRect(0, 0, width, height);
 
         time += 0.0005; // Set to 10% of original speed
@@ -237,7 +237,7 @@ const BouncingPointCloud = () => {
           }
 
           // Draw point
-          ctx.fillStyle = `rgba(51, 51, 51, ${alpha})`;
+          ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
           ctx.beginPath();
           ctx.arc(point.x, point.y, point.size, 0, Math.PI * 2);
           ctx.fill();
@@ -270,7 +270,7 @@ const BouncingPointCloud = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 flex justify-center items-center bg-[#F0EEE6]">
+    <div className="absolute inset-0 flex justify-center items-center bg-[#000000]">
       <canvas
         ref={canvasRef}
         width={550}

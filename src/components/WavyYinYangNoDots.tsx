@@ -23,13 +23,13 @@ const WavyYinYangNoDots = () => {
     let time = 0;
 
     const draw = () => {
-      ctx.fillStyle = '#F0EEE6';
+      ctx.fillStyle = '#000000';
       ctx.fillRect(0, 0, width, height);
 
       // Draw wavy concentric lines - present in each moment of transformation
       for (let r = 5; r < maxRadius; r += 3) {
         ctx.beginPath();
-        ctx.strokeStyle = '#000';
+        ctx.strokeStyle = '#fff';
         ctx.lineWidth = 0.6;
 
         for (let angle = 0; angle < Math.PI * 2; angle += 0.02) {
@@ -44,10 +44,10 @@ const WavyYinYangNoDots = () => {
             (Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - (centerY - maxRadius/4), 2)) > maxRadius/4);
 
           if (isYin) {
-            ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+            ctx.strokeStyle = 'rgba(255,255,255,0.3)';
             ctx.lineTo(x, y);
           } else {
-            ctx.strokeStyle = '#000';
+            ctx.strokeStyle = '#fff';
             ctx.lineTo(x, y);
           }
         }
@@ -76,7 +76,7 @@ const WavyYinYangNoDots = () => {
     <div style={{
       width: '550px',
       height: '550px',
-      backgroundColor: '#F0EEE6',
+      backgroundColor: '#000000',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center'

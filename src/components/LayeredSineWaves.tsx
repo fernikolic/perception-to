@@ -27,7 +27,7 @@ const LayeredSineWaves = () => {
       if (!ctx || !canvas) return;
 
       ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = '#F0EEE6';
+      ctx.fillStyle = '#000000';
       ctx.fillRect(0, 0, width, height);
 
       time += 0.01;
@@ -45,8 +45,8 @@ const LayeredSineWaves = () => {
         const opacity = Math.min(0.9, Math.max(0.1, baseOpacity + timeEffect));
 
         ctx.beginPath();
-        // Use grayscale instead of red
-        ctx.strokeStyle = `rgba(50, 50, 50, ${opacity})`;
+        // Use white for visibility on black background
+        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
         ctx.lineWidth = 0.6;
 
         // Generate points along the wave
@@ -82,8 +82,8 @@ const LayeredSineWaves = () => {
           ctx.beginPath();
 
           const opacity = 0.1 + 0.2 * Math.sin(i * 0.05 + time);
-          // Use grayscale instead of red
-          ctx.strokeStyle = `rgba(50, 50, 50, ${opacity})`;
+          // Use white for visibility on black background
+          ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
           ctx.lineWidth = 0.3;
 
           // Vary the line height
@@ -110,7 +110,7 @@ const LayeredSineWaves = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 flex justify-center items-center bg-[#F0EEE6]">
+    <div className="absolute inset-0 flex justify-center items-center bg-[#000000]">
       <canvas
         ref={canvasRef}
         width={550}
