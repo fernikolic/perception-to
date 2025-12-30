@@ -20,7 +20,8 @@
     "conferences:fetch": "node scripts/fetch-conferences.js",
     "conferences:save": "node scripts/save-to-firestore.js",
     "conferences:update": "npm run conferences:fetch && npm run sitemap:conferences && npm run conferences:save",
-    "prebuild": "npm run ghost:fetch && npm run social:generate && npm run sitemap:all"
+    "research:og": "node scripts/generate-research-og-data.js",
+    "prebuild": "npm run ghost:fetch && npm run social:generate && npm run sitemap:all && npm run research:og"
   },
   "dependencies": {
     "@babel/helpers": "~7.26.10",

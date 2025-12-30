@@ -57,7 +57,7 @@
     @apply border-border;
   }
   html {
-    scroll-behavior: smooth;
+    /* Removed scroll-behavior: smooth - causes jank with scroll listeners */
   }
   body {
     @apply bg-background text-foreground antialiased;
@@ -230,4 +230,15 @@
 
 .animation-delay-4000 {
   animation-delay: 4s;
+}
+
+/* Problem-Solution word animation */
+.ps-word {
+  display: inline-block;
+  margin-right: 0.3em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.ps-word-active {
+  color: rgba(255, 255, 255, 1);
 }

@@ -6,6 +6,18 @@
  */
 
 import { PAGE_SEO, SOCIAL_IMAGES, DEFAULT_IMAGE, DEFAULT_SEO } from './seo-config.js';
+import { RESEARCH_OG_DATA, DEFAULT_RESEARCH_IMAGE } from './research-og-data.js';
+
+// Escape HTML entities to prevent breaking meta tags
+function escapeHtml(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
 
 // Check if request is from a search engine or social crawler
 function isBot(userAgent) {
@@ -89,6 +101,56 @@ function getSeoConfig(path) {
     }
   }
 
+  // Handle research post pages: /research/[slug] and /bitcoin-media-research/[slug]
+  const researchMatch = path.match(/^\/(research|bitcoin-media-research)\/([^/]+)$/);
+  if (researchMatch) {
+    const [, section, slug] = researchMatch;
+    const postData = RESEARCH_OG_DATA[slug];
+
+    if (postData) {
+      return {
+        title: `${postData.title} | Perception Research`,
+        description: postData.description,
+        keywords: postData.tags?.join(', ') || 'bitcoin research, crypto analysis',
+        canonical: `https://perception.to/${section}/${slug}`,
+        image: postData.image || DEFAULT_RESEARCH_IMAGE,
+        isArticle: true,
+        article: {
+          publishedTime: postData.publishedAt,
+          modifiedTime: postData.updatedAt,
+          author: postData.author,
+          tags: postData.tags
+        },
+        schema: {
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: postData.title,
+          description: postData.description,
+          image: postData.image || DEFAULT_RESEARCH_IMAGE,
+          datePublished: postData.publishedAt,
+          dateModified: postData.updatedAt,
+          author: {
+            '@type': 'Person',
+            name: postData.author
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'Perception',
+            url: 'https://perception.to',
+            logo: {
+              '@type': 'ImageObject',
+              url: 'https://perception.to/logos/perception-logo-dark.png'
+            }
+          },
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://perception.to/${section}/${slug}`
+          }
+        }
+      };
+    }
+  }
+
   // Return default for unconfigured pages
   return {
     ...DEFAULT_SEO,
@@ -99,31 +161,60 @@ function getSeoConfig(path) {
 // Inject SEO meta tags into HTML
 function injectSeoTags(html, path) {
   const seo = getSeoConfig(path);
-  const socialImage = SOCIAL_IMAGES[path] || DEFAULT_IMAGE;
+  // Use SEO-specific image if available, then check SOCIAL_IMAGES, then fallback
+  const socialImage = seo.image || SOCIAL_IMAGES[path] || DEFAULT_IMAGE;
+
+  // Escape values for safe HTML insertion
+  const safeTitle = escapeHtml(seo.title);
+  const safeDescription = escapeHtml(seo.description);
+  const safeKeywords = escapeHtml(seo.keywords || '');
+
+  // Build article-specific meta tags if this is an article
+  let articleMeta = '';
+  if (seo.isArticle && seo.article) {
+    if (seo.article.publishedTime) {
+      articleMeta += `\n    <meta property="article:published_time" content="${seo.article.publishedTime}">`;
+    }
+    if (seo.article.modifiedTime) {
+      articleMeta += `\n    <meta property="article:modified_time" content="${seo.article.modifiedTime}">`;
+    }
+    if (seo.article.author) {
+      articleMeta += `\n    <meta property="article:author" content="${escapeHtml(seo.article.author)}">`;
+    }
+    if (seo.article.tags && seo.article.tags.length > 0) {
+      seo.article.tags.forEach(tag => {
+        articleMeta += `\n    <meta property="article:tag" content="${escapeHtml(tag)}">`;
+      });
+    }
+  }
+
+  const ogType = seo.isArticle ? 'article' : 'website';
 
   // Build the replacement meta block
   const metaBlock = `
     <!-- SEO Meta Tags - Injected by Cloudflare Middleware -->
-    <title>${seo.title}</title>
-    <meta name="title" content="${seo.title}">
-    <meta name="description" content="${seo.description}">
-    <meta name="keywords" content="${seo.keywords || ''}">
+    <title>${safeTitle}</title>
+    <meta name="title" content="${safeTitle}">
+    <meta name="description" content="${safeDescription}">
+    <meta name="keywords" content="${safeKeywords}">
     <link rel="canonical" href="${seo.canonical}" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="${ogType}">
     <meta property="og:url" content="${seo.canonical}">
-    <meta property="og:title" content="${seo.title}">
-    <meta property="og:description" content="${seo.description}">
+    <meta property="og:title" content="${safeTitle}">
+    <meta property="og:description" content="${safeDescription}">
     <meta property="og:image" content="${socialImage}">
     <meta property="og:image:secure_url" content="${socialImage}">
-    <meta property="og:site_name" content="Perception">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Perception">${articleMeta}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="${seo.canonical}">
-    <meta name="twitter:title" content="${seo.title}">
-    <meta name="twitter:description" content="${seo.description}">
+    <meta name="twitter:title" content="${safeTitle}">
+    <meta name="twitter:description" content="${safeDescription}">
     <meta name="twitter:image" content="${socialImage}">
 
     <!-- Structured Data -->
@@ -137,6 +228,7 @@ function injectSeoTags(html, path) {
   html = html.replace(/<meta name="keywords"[^>]*>/gi, '');
   html = html.replace(/<link rel="canonical"[^>]*>/gi, '');
   html = html.replace(/<meta property="og:[^"]*"[^>]*>/gi, '');
+  html = html.replace(/<meta property="article:[^"]*"[^>]*>/gi, '');
   html = html.replace(/<meta property="twitter:[^"]*"[^>]*>/gi, '');
   html = html.replace(/<meta name="twitter:[^"]*"[^>]*>/gi, '');
 

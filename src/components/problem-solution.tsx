@@ -27,8 +27,7 @@ export function ProblemSolution() {
     const problemWords = problemText.split(' ');
     problemWords.forEach((word) => {
       const wordSpan = document.createElement('span');
-      wordSpan.style.display = 'inline-block';
-      wordSpan.style.marginRight = '0.3em';
+      wordSpan.className = 'ps-word';
       wordSpan.textContent = word;
       problemContainer.appendChild(wordSpan);
     });
@@ -37,8 +36,7 @@ export function ProblemSolution() {
     const solutionWords = solutionText.split(' ');
     solutionWords.forEach((word) => {
       const wordSpan = document.createElement('span');
-      wordSpan.style.display = 'inline-block';
-      wordSpan.style.marginRight = '0.3em';
+      wordSpan.className = 'ps-word';
       wordSpan.textContent = word;
       solutionContainer.appendChild(wordSpan);
     });
@@ -49,13 +47,11 @@ export function ProblemSolution() {
       ...Array.from(solutionContainer.children)
     ] as HTMLElement[];
 
-    // Initially set all words to greyed out
-    allWords.forEach(word => {
-      word.style.color = 'rgba(255, 255, 255, 0.3)';
-    });
+    // Cache values that don't change during scroll
+    let ticking = false;
+    let lastHighlightedIndex = -1;
 
-    // Use native scroll listener for smooth animation with CSS sticky
-    const handleScroll = () => {
+    const updateWords = () => {
       const rect = wrapper.getBoundingClientRect();
       const wrapperHeight = wrapper.offsetHeight;
       const viewportHeight = window.innerHeight;
@@ -65,20 +61,39 @@ export function ProblemSolution() {
       const scrolled = -rect.top;
       const progress = Math.max(0, Math.min(1, scrolled / scrollableDistance));
 
-      // Animate words based on progress
+      // Calculate which word should be highlighted
       const totalWords = allWords.length;
-      allWords.forEach((word, index) => {
-        const wordProgress = index / totalWords;
-        if (progress > wordProgress) {
-          word.style.color = 'rgba(255, 255, 255, 1)';
-        } else {
-          word.style.color = 'rgba(255, 255, 255, 0.3)';
-        }
-      });
+      const targetIndex = Math.floor(progress * totalWords);
+
+      // Only update DOM if the highlighted index changed
+      if (targetIndex !== lastHighlightedIndex) {
+        // Batch all class changes together
+        allWords.forEach((word, index) => {
+          const shouldHighlight = index < targetIndex;
+          const isHighlighted = word.classList.contains('ps-word-active');
+
+          if (shouldHighlight && !isHighlighted) {
+            word.classList.add('ps-word-active');
+          } else if (!shouldHighlight && isHighlighted) {
+            word.classList.remove('ps-word-active');
+          }
+        });
+        lastHighlightedIndex = targetIndex;
+      }
+
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      // Use requestAnimationFrame to batch DOM reads/writes
+      if (!ticking) {
+        requestAnimationFrame(updateWords);
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial call
+    updateWords(); // Initial call
 
     // Cleanup
     return () => {
