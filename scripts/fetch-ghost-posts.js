@@ -16,7 +16,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const GHOST_API_URL = process.env.GHOST_API_URL || 'https://bitcoin-perception.ghost.io';
+const GHOST_API_URL = process.env.GHOST_API_URL || 'https://cms.perception.to';
 const GHOST_CONTENT_API_KEY = process.env.GHOST_CONTENT_API_KEY;
 
 // Note: Don't use 'fields' parameter when you need html content

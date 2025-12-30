@@ -142,12 +142,10 @@
       <div class="control-group">
         <label>Pattern Style</label>
         <select id="pattern">
-          <option value="waves">Waves (Braille dots)</option>
-          <option value="binary">Binary Flow</option>
-          <option value="diagonal">Diagonal Petals</option>
-          <option value="constellation">Constellation</option>
-          <option value="matrix">Matrix Rain</option>
-          <option value="ripple">Ripple Circles</option>
+          <option value="waves">Braille Waves</option>
+          <option value="diagonal">Slash Petals</option>
+          <option value="blocks">Block Density</option>
+          <option value="water">Water Flow</option>
           <option value="noise">Perlin Noise</option>
           <option value="grid">Grid Distortion</option>
         </select>
@@ -180,15 +178,12 @@
     const canvas = document.getElementById('preview');
     const ctx = canvas.getContext('2d');
 
-    // Character sets for different patterns
+    // Character sets for different patterns (matching site ASCII art)
     const CHARS = {
       braille: '⠁⠂⠄⠈⠐⠠⡀⢀⠃⠅⠘⠨⠊⠋⠌⠍⠎⠏',
-      binary: '01~',
-      diagonal: '/\\|─',
-      dots: '·∘○◦●◯',
+      diagonal: '/\\|',
       blocks: '░▒▓█',
-      stars: '✦✧★☆·',
-      matrix: 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ01234',
+      water: '~≈≋⋿⊰⊱◟◝',
       lines: '─│┌┐└┘├┤┬┴┼'
     };
 
@@ -218,70 +213,25 @@
           }
           break;
 
-        case 'binary':
-          patternState.flowLines = [];
-          for (let i = 0; i < 8; i++) {
-            patternState.flowLines.push({
-              y: Math.random(),
-              speed: 0.3 + Math.random() * 0.7,
-              offset: Math.random() * 100
-            });
-          }
+        case 'diagonal':
+          // Slash Petals - based on AsciiDiagonalPetals.tsx
+          patternState.wave1 = { freq: 0.08 + Math.random() * 0.04, phase: Math.random() * Math.PI * 2 };
+          patternState.wave2 = { freq: 0.06 + Math.random() * 0.04, phase: Math.random() * Math.PI * 2 };
+          patternState.time = Math.random() * 10;
+          break;
+
+        case 'blocks':
+          // Block Density - based on AsciiBlob.tsx
+          patternState.density = 30 + Math.random() * 20;
+          patternState.phase = Math.random() * Math.PI * 2;
           patternState.seed = Math.random() * 1000;
           break;
 
-        case 'diagonal':
-          patternState.wave1 = { freq: 0.05 + Math.random() * 0.05, phase: Math.random() * Math.PI * 2 };
-          patternState.wave2 = { freq: 0.03 + Math.random() * 0.04, phase: Math.random() * Math.PI * 2 };
-          break;
-
-        case 'constellation':
-          patternState.stars = [];
-          const numStars = 80 + Math.floor(Math.random() * 60);
-          for (let i = 0; i < numStars; i++) {
-            patternState.stars.push({
-              x: Math.random(),
-              y: Math.random(),
-              size: 0.3 + Math.random() * 0.7,
-              brightness: 0.3 + Math.random() * 0.7
-            });
-          }
-          patternState.connections = [];
-          patternState.stars.forEach((star, i) => {
-            patternState.stars.forEach((other, j) => {
-              if (i < j) {
-                const dist = Math.sqrt(Math.pow(star.x - other.x, 2) + Math.pow(star.y - other.y, 2));
-                if (dist < 0.15 && Math.random() > 0.5) {
-                  patternState.connections.push([i, j, dist]);
-                }
-              }
-            });
-          });
-          break;
-
-        case 'matrix':
-          patternState.columns = [];
-          const numCols = 60 + Math.floor(Math.random() * 40);
-          for (let i = 0; i < numCols; i++) {
-            patternState.columns.push({
-              x: Math.random(),
-              length: 5 + Math.floor(Math.random() * 15),
-              offset: Math.random() * 100,
-              speed: 0.5 + Math.random() * 1.5
-            });
-          }
-          break;
-
-        case 'ripple':
-          patternState.centers = [];
-          const numCenters = 2 + Math.floor(Math.random() * 3);
-          for (let i = 0; i < numCenters; i++) {
-            patternState.centers.push({
-              x: 0.2 + Math.random() * 0.6,
-              y: 0.2 + Math.random() * 0.6,
-              phase: Math.random() * Math.PI * 2
-            });
-          }
+        case 'water':
+          // Water Flow - based on WaterAscii.tsx
+          patternState.frame = Math.random() * 100;
+          patternState.centerX = 0.4 + Math.random() * 0.2;
+          patternState.centerY = 0.4 + Math.random() * 0.2;
           break;
 
         case 'noise':
@@ -333,20 +283,14 @@
         case 'waves':
           generateWaves(gridWidth, gridHeight, cellSize);
           break;
-        case 'binary':
-          generateBinary(gridWidth, gridHeight, cellSize);
-          break;
         case 'diagonal':
           generateDiagonal(gridWidth, gridHeight, cellSize);
           break;
-        case 'constellation':
-          generateConstellation(width, height);
+        case 'blocks':
+          generateBlocks(gridWidth, gridHeight, cellSize);
           break;
-        case 'matrix':
-          generateMatrix(gridWidth, gridHeight, cellSize);
-          break;
-        case 'ripple':
-          generateRipple(gridWidth, gridHeight, cellSize);
+        case 'water':
+          generateWater(gridWidth, gridHeight, cellSize);
           break;
         case 'noise':
           generateNoise(gridWidth, gridHeight, cellSize);
@@ -385,127 +329,114 @@
       }
     }
 
-    function generateBinary(gridWidth, gridHeight, cellSize) {
-      const chars = CHARS.binary;
-      for (let y = 0; y < gridHeight; y++) {
-        for (let x = 0; x < gridWidth; x++) {
-          const normX = x / gridWidth;
-          const normY = y / gridHeight;
-
-          let inFlow = false;
-          let flowIntensity = 0;
-
-          patternState.flowLines.forEach(line => {
-            const dist = Math.abs(normY - line.y);
-            if (dist < 0.08) {
-              inFlow = true;
-              flowIntensity = Math.max(flowIntensity, 1 - dist / 0.08);
-            }
-          });
-
-          const n = noise(x * 0.1, y * 0.1, patternState.seed);
-
-          if (inFlow || n > 0.6) {
-            const charIndex = Math.floor(n * chars.length) % chars.length;
-            const opacity = inFlow ? 0.4 + flowIntensity * 0.5 : 0.2 + n * 0.3;
-            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-            ctx.fillText(chars[charIndex], x * cellSize + cellSize / 2, y * cellSize + cellSize / 2);
-          }
-        }
-      }
-    }
-
+    // Slash Petals - based on AsciiDiagonalPetals.tsx
     function generateDiagonal(gridWidth, gridHeight, cellSize) {
       const chars = CHARS.diagonal;
+      const time = patternState.time;
+
       for (let y = 0; y < gridHeight; y++) {
         for (let x = 0; x < gridWidth; x++) {
-          const wave1 = Math.sin(x * patternState.wave1.freq + patternState.wave1.phase);
-          const wave2 = Math.sin(y * patternState.wave2.freq + patternState.wave2.phase);
-          const combined = wave1 * 0.6 + wave2 * 0.4;
+          // Two forces in harmony - from the site component
+          const wave1 = Math.sin((x + y) / 4 + time);
+          const wave2 = Math.cos((x - y) / 4 - time * 0.7);
 
-          const centerX = gridWidth / 2, centerY = gridHeight / 2;
-          const dist = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
-          const maxDist = Math.sqrt(centerX * centerX + centerY * centerY);
-          const fade = 1 - (dist / maxDist) * 0.5;
+          // Boundary calculation for fade effect
+          const boundaryX = Math.abs(x - gridWidth / 2) / (gridWidth / 2);
+          const boundaryY = Math.abs(y - gridHeight / 2) / (gridHeight / 2);
+          const boundary = Math.max(boundaryX, boundaryY);
 
-          if (Math.abs(combined) > 0.2) {
-            const charIndex = Math.floor((combined + 1) / 2 * chars.length) % chars.length;
-            const opacity = (0.3 + Math.abs(combined) * 0.5) * fade;
-            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-            ctx.fillText(chars[charIndex], x * cellSize + cellSize / 2, y * cellSize + cellSize / 2);
+          if (boundary < 0.85) {
+            const combined = wave1 * 0.6 + wave2 * 0.4;
+            const fade = 1 - (boundary / 0.85);
+            const value = combined * fade;
+
+            // Character selection based on value thresholds
+            let char = ' ';
+            if (value > 0.3) char = chars[0];      // /
+            else if (value < -0.3) char = chars[1]; // \
+            else if (Math.abs(value) < 0.1) char = chars[2]; // |
+
+            if (char !== ' ') {
+              const opacity = 0.3 + Math.abs(value) * 0.5;
+              ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+              ctx.fillText(char, x * cellSize + cellSize / 2, y * cellSize + cellSize / 2);
+            }
           }
         }
       }
     }
 
-    function generateConstellation(width, height) {
-      // Draw connections
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
-      ctx.lineWidth = 1;
-      patternState.connections.forEach(([i, j, dist]) => {
-        const s1 = patternState.stars[i];
-        const s2 = patternState.stars[j];
-        ctx.beginPath();
-        ctx.moveTo(s1.x * width, s1.y * height);
-        ctx.lineTo(s2.x * width, s2.y * height);
-        ctx.stroke();
-      });
+    // Block Density - based on AsciiBlob.tsx
+    function generateBlocks(gridWidth, gridHeight, cellSize) {
+      const chars = CHARS.blocks;
+      const density = patternState.density;
+      const phase = patternState.phase;
+      const seed = patternState.seed;
 
-      // Draw stars
-      const chars = CHARS.stars;
-      ctx.font = '16px monospace';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
+      const centerX = gridWidth / 2;
+      const centerY = gridHeight / 2;
 
-      patternState.stars.forEach(star => {
-        const charIndex = Math.floor(star.size * (chars.length - 1));
-        const opacity = 0.3 + star.brightness * 0.6;
-        ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-        ctx.fillText(chars[charIndex], star.x * width, star.y * height);
-      });
-    }
+      for (let y = 0; y < gridHeight; y++) {
+        for (let x = 0; x < gridWidth; x++) {
+          // Distance from center (normalized)
+          const dx = (x - centerX) / centerX;
+          const dy = (y - centerY) / centerY;
+          const distFromCenter = Math.sqrt(dx * dx + dy * dy);
 
-    function generateMatrix(gridWidth, gridHeight, cellSize) {
-      const chars = CHARS.matrix;
+          // Pattern calculation similar to AsciiBlob
+          let noiseValue = Math.sin(distFromCenter * 3 + phase);
+          noiseValue += Math.cos(x * 0.1 - y * 0.1 + phase * 0.4) * 0.3;
+          noiseValue = (noiseValue + 1) / 2; // Normalize to 0-1
 
-      patternState.columns.forEach(col => {
-        const colX = Math.floor(col.x * gridWidth);
-        const startY = Math.floor(col.offset) % gridHeight;
+          // Apply density adjustment
+          noiseValue = noiseValue * (density / 100);
 
-        for (let i = 0; i < col.length; i++) {
-          const y = (startY + i) % gridHeight;
-          const charIndex = Math.floor(noise(colX, y, col.offset) * chars.length);
-          const fadePos = i / col.length;
-          const opacity = 0.2 + (1 - fadePos) * 0.7;
+          // Add some noise variation
+          const n = noise(x * 0.15, y * 0.15, seed);
+          noiseValue = noiseValue * 0.7 + n * 0.3;
 
-          ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-          ctx.fillText(chars[charIndex], colX * cellSize + cellSize / 2, y * cellSize + cellSize / 2);
+          if (noiseValue > 0.15) {
+            const charIndex = Math.floor(noiseValue * chars.length);
+            const char = chars[Math.min(Math.max(0, charIndex), chars.length - 1)];
+            const opacity = 0.25 + noiseValue * 0.6;
+            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+            ctx.fillText(char, x * cellSize + cellSize / 2, y * cellSize + cellSize / 2);
+          }
         }
-      });
+      }
     }
 
-    function generateRipple(gridWidth, gridHeight, cellSize) {
-      const chars = CHARS.dots;
+    // Water Flow - based on WaterAscii.tsx
+    function generateWater(gridWidth, gridHeight, cellSize) {
+      const chars = CHARS.water;
+      const frame = patternState.frame;
+      const centerX = patternState.centerX;
+      const centerY = patternState.centerY;
 
       for (let y = 0; y < gridHeight; y++) {
         for (let x = 0; x < gridWidth; x++) {
           const normX = x / gridWidth;
           const normY = y / gridHeight;
 
-          let totalRipple = 0;
-          patternState.centers.forEach(center => {
-            const dist = Math.sqrt(Math.pow(normX - center.x, 2) + Math.pow(normY - center.y, 2));
-            const ripple = Math.sin(dist * 30 + center.phase) * Math.exp(-dist * 2);
-            totalRipple += ripple;
-          });
+          // Distance from center
+          const dx = normX - centerX;
+          const dy = normY - centerY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
 
-          const normalized = (totalRipple + 1) / 2;
-          if (Math.abs(totalRipple) > 0.1) {
-            const charIndex = Math.floor(normalized * (chars.length - 1));
-            const opacity = 0.2 + Math.abs(totalRipple) * 0.6;
-            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-            ctx.fillText(chars[charIndex], x * cellSize + cellSize / 2, y * cellSize + cellSize / 2);
-          }
+          // Wave pattern - similar to WaterAscii
+          const wave = Math.sin(x / 3 + y / 5 + frame / 4 + dist * 10) +
+                      Math.cos(x / 4 - y / 3 - frame / 5) +
+                      Math.sin(frame / 8 + normX * Math.PI * 2);
+
+          // Character selection based on wave value
+          const charValue = (wave + 2) * (chars.length / 4) + dist * 5;
+          const charIndex = Math.floor(Math.abs(charValue)) % chars.length;
+
+          // Opacity based on distance and wave
+          const opacity = Math.max(0.2, Math.min(0.75, 1 - dist + Math.sin(wave) / 3));
+
+          ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+          ctx.fillText(chars[charIndex], x * cellSize + cellSize / 2, y * cellSize + cellSize / 2);
         }
       }
     }

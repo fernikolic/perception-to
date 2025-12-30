@@ -107,7 +107,7 @@ export function BitcoinMediaResearchPage() {
           formScript.async = true;
           formScript.setAttribute('data-button-color', '#000000');
           formScript.setAttribute('data-button-text-color', '#FFFFFF');
-          formScript.setAttribute('data-site', 'https://bitcoin-perception.ghost.io/');
+          formScript.setAttribute('data-site', 'https://cms.perception.to/');
           formScript.setAttribute('data-locale', 'en');
 
           // Add error handling for the script

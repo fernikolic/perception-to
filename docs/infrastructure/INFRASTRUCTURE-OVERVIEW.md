@@ -101,11 +101,26 @@ Generates dynamic Open Graph images for social sharing.
 
 ## 3. Ghost CMS Integration
 
-### Configuration
+### Current Configuration (Ghost Pro)
 
 - **Ghost URL**: https://bitcoin-perception.ghost.io
 - **API Type**: Content API (read-only)
 - **Integration**: Build-time static generation
+- **Status**: Active (migration to self-hosted planned)
+
+### Planned Migration: Self-Hosted Ghost
+
+A self-hosted Ghost deployment on GCP is planned to reduce costs:
+
+| Current (Ghost Pro) | Planned (Self-Hosted) |
+|---------------------|----------------------|
+| $552/year (>1k members) | ~$84/year |
+| Managed hosting | GCP e2-micro (free tier) |
+| Mailgun included | Mailgun Flex (~$7/mo) |
+
+**See:** [Ghost Self-Hosted Architecture](./GHOST-SELF-HOSTED-ARCHITECTURE.md)
+
+**Setup Scripts:** `scripts/ghost-selfhost/`
 
 ### Ghost Content API
 
@@ -322,3 +337,6 @@ npx wrangler pages deployment tail --project-name=perception-to
 - [Ghost Cards Styling](../../src/styles/ghost-cards.css)
 - [SEO Configuration](../../functions/seo-config.js)
 - [Deployment Guide](../deployment/production-readiness.md)
+- [Ghost Self-Hosted Architecture](./GHOST-SELF-HOSTED-ARCHITECTURE.md)
+- [Ghost CMS Integration (Current)](./GHOST-CMS-INTEGRATION.md)
+- [Email Design System](../email/EMAIL_DESIGN_SYSTEM.md)

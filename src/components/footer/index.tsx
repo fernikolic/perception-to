@@ -40,7 +40,7 @@ export function Footer() {
         script.async = true;
         script.setAttribute('data-button-color', '#000000');
         script.setAttribute('data-button-text-color', '#FFFFFF');
-        script.setAttribute('data-site', 'https://bitcoinperception.com/');
+        script.setAttribute('data-site', 'https://cms.perception.to/');
         script.setAttribute('data-locale', 'en');
         
         // Add error handling for the script
