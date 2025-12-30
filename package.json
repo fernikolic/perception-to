@@ -121,6 +121,7 @@
   },
   "overrides": {
     "mdast-util-to-hast": ">=13.2.1",
-    "@modelcontextprotocol/sdk": ">=1.24.0"
+    "@modelcontextprotocol/sdk": ">=1.24.0",
+    "qs": ">=6.14.1"
   }
 }
