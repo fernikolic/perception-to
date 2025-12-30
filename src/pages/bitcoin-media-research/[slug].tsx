@@ -3,10 +3,11 @@ import { useMemo, useEffect } from 'react';
 import SEO from '@/components/SEO';
 import '@/styles/ghost-cards.css';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, ArrowRight, Clock, Calendar, User, Tag } from 'lucide-react';
+import { ArrowLeft, ArrowRight, User, Tag } from 'lucide-react';
 import ghostData from '@/data/ghost-posts.json';
 import { GhostPost, formatReadingTime, formatPostDate, getPostBySlug, getExcerpt } from '@/lib/ghost';
 import DOMPurify from 'dompurify';
+import { ArticleTableOfContents, extractHeadings, useHeadingIds } from '@/components/ArticleTableOfContents';
 
 const allPosts = ghostData.posts as GhostPost[];
 
@@ -57,12 +58,19 @@ export default function BMRPostPage() {
     return <Navigate to="/bitcoin-media-research" replace />;
   }
 
+  // Extract headings for ToC
+  const headings = useMemo(() => extractHeadings(post.html), [post.html]);
+
   // Content is sanitized with DOMPurify before rendering
   const sanitizedContent = useMemo(() => sanitizeHtml(post.html), [post.html]);
+
   const sanitizedCaption = useMemo(
     () => post.feature_image_caption ? sanitizeHtml(post.feature_image_caption) : '',
     [post.feature_image_caption]
   );
+
+  // Add IDs to headings in DOM after render for ToC navigation
+  useHeadingIds(headings, 'article');
 
   useEffect(() => {
     if (sanitizedContent.includes('twitter-tweet')) {
@@ -115,10 +123,12 @@ export default function BMRPostPage() {
             <div className="max-w-4xl mx-auto">
               <Link
                 to="/bitcoin-media-research"
-                className="inline-flex items-center gap-2 text-black/60 hover:text-black transition-colors mb-8"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-black/50 hover:text-black transition-all duration-300 mb-10"
               >
-                <ArrowLeft className="w-4 h-4" />
-                Back to Research
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-black/5 group-hover:bg-black group-hover:text-white transition-all duration-300">
+                  <ArrowLeft className="w-4 h-4" />
+                </span>
+                <span className="group-hover:translate-x-0.5 transition-transform duration-300">Research</span>
               </Link>
 
               {post.tags && post.tags.length > 0 && (
@@ -140,29 +150,30 @@ export default function BMRPostPage() {
                 {post.title}
               </h1>
 
-              <div className="flex flex-wrap items-center gap-4 text-sm text-black/60 mb-8">
+              <div className="flex items-center gap-4 mb-10">
                 {post.primary_author && (
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3">
                     {post.primary_author.profile_image ? (
                       <img
                         src={post.primary_author.profile_image}
                         alt={post.primary_author.name}
-                        className="w-8 h-8 rounded-full object-cover"
+                        className="w-11 h-11 rounded-full object-cover ring-2 ring-black/5"
                       />
                     ) : (
-                      <User className="w-4 h-4" />
+                      <div className="w-11 h-11 rounded-full bg-black/10 flex items-center justify-center">
+                        <User className="w-5 h-5 text-black/40" />
+                      </div>
                     )}
-                    <span className="font-medium text-black">{post.primary_author.name}</span>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-black text-sm">{post.primary_author.name}</span>
+                      <div className="flex items-center gap-2 text-xs text-black/50">
+                        <span>{formatPostDate(post.published_at)}</span>
+                        <span className="w-1 h-1 rounded-full bg-black/30" />
+                        <span>{formatReadingTime(post.reading_time)}</span>
+                      </div>
+                    </div>
                   </div>
                 )}
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  <span>{formatPostDate(post.published_at)}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
-                  <span>{formatReadingTime(post.reading_time)}</span>
-                </div>
               </div>
 
               {post.feature_image && (
@@ -183,49 +194,56 @@ export default function BMRPostPage() {
             </div>
           </header>
 
-          <div className="px-6 sm:px-16 lg:px-32 pb-16">
-            <div className="max-w-3xl mx-auto">
-              <div
-                className="prose prose-lg prose-stone max-w-none
-                  prose-headings:font-medium prose-headings:tracking-tight
-                  prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
-                  prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-                  prose-p:text-black/80 prose-p:leading-relaxed
-                  prose-a:text-orange-600 prose-a:no-underline hover:prose-a:underline
-                  prose-strong:text-black prose-strong:font-semibold
-                  prose-blockquote:border-l-orange-400 prose-blockquote:bg-black/5 prose-blockquote:rounded-r-lg prose-blockquote:py-2 prose-blockquote:px-4
-                  prose-img:rounded-xl prose-img:shadow-md
-                  prose-code:bg-black/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-                  prose-pre:bg-black prose-pre:text-white prose-pre:rounded-xl
-                  prose-ul:list-disc prose-ol:list-decimal
-                  prose-li:text-black/80"
-                dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-              />
-            </div>
-          </div>
+          {/* Article Content with ToC */}
+          <div className="bg-white border-y border-black/5">
+            <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+              <div className="flex gap-16">
+                {/* Table of Contents - Left Sidebar */}
+                <ArticleTableOfContents headings={headings} />
 
-          {post.primary_author?.bio && (
-            <div className="px-6 sm:px-16 lg:px-32 pb-16">
-              <div className="max-w-3xl mx-auto">
-                <div className="bg-black rounded-2xl p-8">
-                  <div className="flex items-start gap-4">
-                    {post.primary_author.profile_image && (
-                      <img
-                        src={post.primary_author.profile_image}
-                        alt={post.primary_author.name}
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
-                    )}
-                    <div>
-                      <div className="text-xs text-white/50 uppercase tracking-wide mb-1">Written by</div>
-                      <div className="text-lg font-semibold text-white mb-2">{post.primary_author.name}</div>
-                      <p className="text-white/70 text-sm">{post.primary_author.bio}</p>
+                {/* Main Content */}
+                <div className="flex-1 min-w-0 max-w-3xl">
+                  <article
+                    className="prose prose-lg prose-stone max-w-none font-reading
+                      prose-headings:font-sans prose-headings:font-semibold prose-headings:tracking-tight prose-headings:scroll-mt-28
+                      prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+                      prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+                      prose-p:text-black/80 prose-p:leading-[1.8] prose-p:text-[1.0625rem]
+                      prose-a:text-orange-600 prose-a:no-underline hover:prose-a:underline
+                      prose-strong:text-black prose-strong:font-semibold
+                      prose-blockquote:border-l-orange-400 prose-blockquote:bg-orange-50/50 prose-blockquote:rounded-r-lg prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:font-sans prose-blockquote:italic
+                      prose-img:rounded-xl prose-img:shadow-md
+                      prose-code:bg-black/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono
+                      prose-pre:bg-black prose-pre:text-white prose-pre:rounded-xl
+                      prose-ul:list-disc prose-ol:list-decimal
+                      prose-li:text-black/80 prose-li:leading-[1.8]"
+                  >
+                    <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
+                  </article>
+
+                  {/* Author Bio - inside content area */}
+                  {post.primary_author?.bio && (
+                    <div className="mt-16 pt-12 border-t border-black/10">
+                      <div className="flex items-start gap-4">
+                        {post.primary_author.profile_image && (
+                          <img
+                            src={post.primary_author.profile_image}
+                            alt={post.primary_author.name}
+                            className="w-14 h-14 rounded-full object-cover ring-2 ring-black/5"
+                          />
+                        )}
+                        <div>
+                          <div className="text-xs text-black/40 uppercase tracking-wide mb-1">Written by</div>
+                          <div className="text-base font-semibold text-black mb-1">{post.primary_author.name}</div>
+                          <p className="text-black/60 text-sm leading-relaxed">{post.primary_author.bio}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
-          )}
+          </div>
 
           <nav className="px-6 sm:px-16 lg:px-32 pb-16">
             <div className="max-w-3xl mx-auto">
