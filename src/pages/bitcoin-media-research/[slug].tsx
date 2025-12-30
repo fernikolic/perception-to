@@ -3,7 +3,7 @@ import { useMemo, useEffect } from 'react';
 import SEO from '@/components/SEO';
 import '@/styles/ghost-cards.css';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, ArrowRight, User, Tag } from 'lucide-react';
+import { ArrowLeft, ArrowRight, User } from 'lucide-react';
 import ghostData from '@/data/ghost-posts.json';
 import { GhostPost, formatReadingTime, formatPostDate, getPostBySlug, getExcerpt } from '@/lib/ghost';
 import DOMPurify from 'dompurify';
@@ -132,14 +132,13 @@ export default function BMRPostPage() {
               </Link>
 
               {post.tags && post.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-3 mb-8">
                   {post.tags.map(tag => (
                     <Link
                       key={tag.id}
                       to={`/bitcoin-media-research/${tag.slug === 'reports' ? 'reports' : tag.slug === 'opinion' ? 'opinion' : ''}`}
-                      className="inline-flex items-center gap-1 text-xs font-medium text-orange-600 bg-orange-50 hover:bg-orange-100 px-3 py-1 rounded-full transition-colors"
+                      className="text-[11px] font-semibold uppercase tracking-widest text-black/60 hover:text-black bg-transparent border border-black/15 hover:border-black/40 px-4 py-2 rounded-full transition-all duration-300"
                     >
-                      <Tag className="w-3 h-3" />
                       {tag.name}
                     </Link>
                   ))}
@@ -245,7 +244,7 @@ export default function BMRPostPage() {
             </div>
           </div>
 
-          <nav className="px-6 sm:px-16 lg:px-32 pb-16">
+          <nav className="bg-white px-6 sm:px-16 lg:px-32 py-16 border-b border-black/5">
             <div className="max-w-3xl mx-auto">
               <div className="grid grid-cols-2 gap-4">
                 {prevPost ? (

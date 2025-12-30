@@ -147,7 +147,7 @@ export function ArticleTableOfContents({ headings }: ArticleTableOfContentsProps
       <div className="sticky top-32">
         <div className="flex items-center gap-2 text-xs font-semibold text-black/40 uppercase tracking-wider mb-4">
           <List className="w-3.5 h-3.5" />
-          In this article
+          In this edition
         </div>
         <nav className="space-y-1">
           {headings.map((heading) => (
