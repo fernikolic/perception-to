@@ -449,14 +449,4 @@ blockquote.twitter-tweet a {
   color: #f97316;
 }
 
-/* ===== Dark mode adjustments ===== */
-@media (prefers-color-scheme: dark) {
-  .kg-callout-text {
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  .kg-callout-card-grey {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-}
+/* Dark mode adjustments removed - site uses light theme only */
