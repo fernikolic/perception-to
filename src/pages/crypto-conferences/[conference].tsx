@@ -167,25 +167,54 @@ export function ConferencePage() {
             "@context": "https://schema.org",
             "@type": "Event",
             "name": conference.name,
-            "description": `${conference.name} is a ${conference.type.toLowerCase()} conference taking place in ${conference.location}.`,
+            "description": `${conference.name} is a ${conference.type.toLowerCase()} conference taking place in ${conference.location}. This event brings together industry leaders, developers, investors, and enthusiasts to discuss the latest trends and developments in the cryptocurrency and blockchain space.`,
             "startDate": conference.date,
+            "endDate": (() => {
+              // Parse duration to get end date (e.g., "Jan 14-16" -> calculate end date)
+              const durationMatch = conference.duration.match(/(\w+)\s+(\d+)(?:-(\d+))?/);
+              if (durationMatch && durationMatch[3]) {
+                const startDate = new Date(conference.date);
+                const dayDiff = parseInt(durationMatch[3]) - parseInt(durationMatch[2]);
+                const endDate = new Date(startDate);
+                endDate.setDate(endDate.getDate() + dayDiff);
+                return endDate.toISOString().split('T')[0];
+              }
+              return conference.date; // Single day event
+            })(),
             "eventStatus": "https://schema.org/EventScheduled",
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventAttendanceMode": conference.location.toLowerCase() === 'virtual'
+              ? "https://schema.org/OnlineEventAttendanceMode"
+              : "https://schema.org/OfflineEventAttendanceMode",
             "location": {
               "@type": "Place",
-              "name": conference.location,
+              "name": conference.location.split(',')[0].trim(),
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": conference.location
+                "addressLocality": conference.location.split(',')[0].trim(),
+                "addressRegion": conference.location.split(',').length > 1 ? conference.location.split(',').slice(1, -1).join(',').trim() : undefined,
+                "addressCountry": conference.location.split(',').pop()?.trim()
               }
             },
             "organizer": {
               "@type": "Organization",
-              "name": conference.name,
+              "name": conference.name.replace(/\s*\d{4}$/, ''),
               "url": `https://perception.to${generateConferenceUrl(conference)}`
             },
+            "performer": {
+              "@type": "Organization",
+              "name": conference.name.replace(/\s*\d{4}$/, '')
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": `https://perception.to${generateConferenceUrl(conference)}`,
+              "availability": "https://schema.org/InStock",
+              "validFrom": new Date().toISOString().split('T')[0]
+            },
             "url": `https://perception.to${generateConferenceUrl(conference)}`,
-            "image": "https://perception.to/logos/Perception-logo-social-og.png"
+            "image": [
+              "https://perception.to/logos/Perception-logo-social-og.png",
+              "https://perception.to/images/hero_image.avif"
+            ]
           })}
         </script>
       </Helmet>

@@ -72,8 +72,20 @@ function generateEventSchema(conference: TrackedConference) {
       name: conference.name,
       url: conference.website
     },
+    performer: {
+      '@type': 'Organization',
+      name: conference.name
+    },
+    offers: {
+      '@type': 'Offer',
+      url: conference.website,
+      availability: 'https://schema.org/InStock'
+    },
     url: conference.website,
-    image: '/logos/Perception-logo-social-og.png'
+    image: [
+      'https://perception.to/logos/Perception-logo-social-og.png',
+      'https://perception.to/images/hero_image.avif'
+    ]
   };
 }
 

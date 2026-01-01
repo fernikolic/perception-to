@@ -213,26 +213,58 @@ export function CryptoConferencesPage() {
             "name": "Crypto Conferences 2025-2026",
             "description": "Global directory of cryptocurrency, Bitcoin, and blockchain conferences",
             "numberOfItems": conferences.length,
-            "itemListElement": conferences.slice(0, 10).map((conf, index) => ({
-              "@type": "ListItem",
-              "position": index + 1,
-              "item": {
-                "@type": "Event",
-                "name": conf.name,
-                "startDate": conf.date,
-                "location": {
-                  "@type": "Place",
-                  "name": conf.location,
-                  "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": conf.location
-                  }
-                },
-                "eventStatus": "https://schema.org/EventScheduled",
-                "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-                "url": `https://perception.to${generateConferenceUrl(conf)}`
+            "itemListElement": conferences.slice(0, 10).map((conf, index) => {
+              // Parse duration to get end date
+              const durationMatch = conf.duration.match(/(\w+)\s+(\d+)(?:-(\d+))?/);
+              let endDate = conf.date;
+              if (durationMatch && durationMatch[3]) {
+                const startDate = new Date(conf.date);
+                const dayDiff = parseInt(durationMatch[3]) - parseInt(durationMatch[2]);
+                const end = new Date(startDate);
+                end.setDate(end.getDate() + dayDiff);
+                endDate = end.toISOString().split('T')[0];
               }
-            }))
+
+              return {
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                  "@type": "Event",
+                  "name": conf.name,
+                  "description": `${conf.name} is a ${conf.type.toLowerCase()} conference taking place in ${conf.location}.`,
+                  "startDate": conf.date,
+                  "endDate": endDate,
+                  "location": {
+                    "@type": "Place",
+                    "name": conf.location.split(',')[0].trim(),
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressLocality": conf.location.split(',')[0].trim(),
+                      "addressCountry": conf.location.split(',').pop()?.trim()
+                    }
+                  },
+                  "eventStatus": "https://schema.org/EventScheduled",
+                  "eventAttendanceMode": conf.location.toLowerCase() === 'virtual'
+                    ? "https://schema.org/OnlineEventAttendanceMode"
+                    : "https://schema.org/OfflineEventAttendanceMode",
+                  "organizer": {
+                    "@type": "Organization",
+                    "name": conf.name.replace(/\s*\d{4}$/, '')
+                  },
+                  "performer": {
+                    "@type": "Organization",
+                    "name": conf.name.replace(/\s*\d{4}$/, '')
+                  },
+                  "offers": {
+                    "@type": "Offer",
+                    "url": `https://perception.to${generateConferenceUrl(conf)}`,
+                    "availability": "https://schema.org/InStock"
+                  },
+                  "image": "https://perception.to/logos/Perception-logo-social-og.png",
+                  "url": `https://perception.to${generateConferenceUrl(conf)}`
+                }
+              };
+            })
           })}
         </script>
       </Helmet>

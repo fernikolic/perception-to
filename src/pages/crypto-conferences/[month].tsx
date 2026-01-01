@@ -179,6 +179,69 @@ export function MonthlyConferencePage() {
         <meta property="og:title" content={`${monthDisplay} ${year} Crypto Conferences | Event Calendar`} />
         <meta property="og:description" content={`Complete list of cryptocurrency and blockchain conferences in ${monthDisplay} ${year}. Find ${monthlyConferences.length} events including Bitcoin, blockchain, and digital asset conferences.`} />
         <link rel="canonical" href={`https://perception.to/crypto-conferences/${year}/${month}`} />
+
+        {/* Event Structured Data for Monthly Listing */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": `Crypto Conferences ${monthDisplay} ${year}`,
+            "description": `Complete list of cryptocurrency and blockchain conferences in ${monthDisplay} ${year}`,
+            "numberOfItems": monthlyConferences.length,
+            "itemListElement": monthlyConferences.map((conf, index) => {
+              // Parse duration to get end date
+              const durationMatch = conf.duration.match(/(\w+)\s+(\d+)(?:-(\d+))?/);
+              let endDate = conf.date;
+              if (durationMatch && durationMatch[3]) {
+                const startDate = new Date(conf.date);
+                const dayDiff = parseInt(durationMatch[3]) - parseInt(durationMatch[2]);
+                const end = new Date(startDate);
+                end.setDate(end.getDate() + dayDiff);
+                endDate = end.toISOString().split('T')[0];
+              }
+
+              return {
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                  "@type": "Event",
+                  "name": conf.name,
+                  "description": `${conf.name} is a ${conf.type.toLowerCase()} conference taking place in ${conf.location}.`,
+                  "startDate": conf.date,
+                  "endDate": endDate,
+                  "location": {
+                    "@type": "Place",
+                    "name": conf.location.split(',')[0].trim(),
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressLocality": conf.location.split(',')[0].trim(),
+                      "addressCountry": conf.location.split(',').pop()?.trim()
+                    }
+                  },
+                  "eventStatus": "https://schema.org/EventScheduled",
+                  "eventAttendanceMode": conf.location.toLowerCase() === 'virtual'
+                    ? "https://schema.org/OnlineEventAttendanceMode"
+                    : "https://schema.org/OfflineEventAttendanceMode",
+                  "organizer": {
+                    "@type": "Organization",
+                    "name": conf.name.replace(/\s*\d{4}$/, '')
+                  },
+                  "performer": {
+                    "@type": "Organization",
+                    "name": conf.name.replace(/\s*\d{4}$/, '')
+                  },
+                  "offers": {
+                    "@type": "Offer",
+                    "url": `https://perception.to${generateConferenceUrl(conf)}`,
+                    "availability": "https://schema.org/InStock"
+                  },
+                  "image": "https://perception.to/logos/Perception-logo-social-og.png",
+                  "url": `https://perception.to${generateConferenceUrl(conf)}`
+                }
+              };
+            })
+          })}
+        </script>
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900">
