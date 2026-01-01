@@ -26,13 +26,18 @@ const teamMembers = [
 const milestones = [
   {
     year: '2024',
-    title: 'Company Founded',
-    description: 'Started with a vision to stop professionals from rebuilding deliverables from scratch every single time.',
+    title: 'The Newsletter',
+    description: 'Fernando Nikolic started gathering data and launched a newsletter that quickly grew to thousands of subscribers.',
   },
   {
     year: '2025',
     title: 'Beta Launch',
     description: 'Launched the Intelligence Workspace with Watchlists, Spaces, and Recipes. Early users are turning weeks of monitoring into ready-to-send outputs.',
+  },
+  {
+    year: '2026',
+    title: 'Full Platform Launch',
+    description: 'Coming out of beta with the complete Intelligence Workspace for Bitcoin, stablecoins, and tokenized finance.',
   },
 ];
 
