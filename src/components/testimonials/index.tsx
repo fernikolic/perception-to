@@ -91,9 +91,7 @@ export function Testimonials() {
             ref={titleRef}
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight leading-[1.2] pb-4 overflow-visible"
           >
-            Backed by those
-            <br />
-            defining what's next
+            Trusted by the industry
           </h2>
         </div>
         <div
@@ -120,7 +118,7 @@ export function Testimonials() {
             asChild
           >
             <Link to="/testimonials">
-              View All Testimonials
+              View all testimonials
             </Link>
           </Button>
         </div>

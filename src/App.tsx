@@ -6,7 +6,6 @@ import { SocialMeta } from '@/components/seo/social-meta';
 import { Navbar } from '@/components/navbar';
 import { Hero } from '@/components/hero';
 import { ProblemSolution } from '@/components/problem-solution';
-import { ProblemCards } from '@/components/problem-cards';
 import { Features } from '@/components/features';
 import { ValueProps } from '@/components/value-props';
 import { Integrations } from '@/components/integrations';
@@ -82,7 +81,6 @@ function HomePage() {
     <main>
       <Hero />
       <ProblemSolution />
-      <ProblemCards />
       <ValueProps />
       <Features />
       <Integrations />

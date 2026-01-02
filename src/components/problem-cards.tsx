@@ -118,7 +118,7 @@ export function ProblemCards() {
               ref={subtitleRef}
               className="text-xl sm:text-2xl lg:text-3xl text-blue-100/80 leading-relaxed font-light"
             >
-              Professionals spend over 3 hours a day monitoring sources and pulling together updates. The board wants competitive intel? You start over. Executive needs interview prep? Start over. PR team needs pitch ideas? Start over.
+              3+ hours a day monitoring sources. Then the board wants competitive intel—start over. CEO has a podcast tomorrow—start over. PR needs journalist targets—start over.
             </p>
           </div>
         </div>

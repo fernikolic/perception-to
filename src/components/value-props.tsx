@@ -13,8 +13,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const valuePropItems = [
   {
-    title: "Spot Trends <em style='font-style: italic; font-family: Georgia, serif;'>Early</em>",
-    description: "We automatically cluster trends and show you what's heating up. MiCA compliance is up 340% this week. Bitcoin treasury strategy is shifting from social media to Fortune 500 boardrooms. You'll spot these opportunities before your competitors even know they exist.",
+    title: "See what's heating up <em style='font-style: italic; font-family: Georgia, serif;'>first</em>",
+    description: "Trends cluster automatically. MiCA compliance up 340% this week. Bitcoin treasury strategy shifting from social media to Fortune 500 boardrooms. Spot opportunities before competitors know they exist.",
     image: "/images/Value Props/Cross-Regional Opportunity Mapping.png",
     Icon: Globe,
     gradient: "from-blue-500/20 to-cyan-500/20",
@@ -23,8 +23,8 @@ const valuePropItems = [
     AsciiComponent: MoireMandalaPattern
   },
   {
-    title: "Organize Your <em style='font-style: italic; font-family: Georgia, serif;'>Intel</em>",
-    description: "Create watchlists for the competitors, sectors, or people you care about. Then organize everything into <em style='font-style: italic; font-family: Georgia, serif;'>Spaces</em>: board prep in one workspace, competitive intel in another, content pipeline in a third. It's all there when you need it.",
+    title: "One workspace for everything that <em style='font-style: italic; font-family: Georgia, serif;'>matters</em>",
+    description: "Create watchlists for competitors, sectors, or people. Organize into <em style='font-style: italic; font-family: Georgia, serif;'>Spaces</em>: board prep in one, competitive intel in another, content pipeline in a third. Everything where you need it.",
     image: "/images/Value Props/Signal Intelligence Over Noise.png",
     Icon: Zap,
     gradient: "from-yellow-500/20 to-orange-500/20",
@@ -33,8 +33,8 @@ const valuePropItems = [
     AsciiComponent: DelicateAsciiDots
   },
   {
-    title: "Generate Any <em style='font-style: italic; font-family: Georgia, serif;'>Deliverable</em>",
-    description: "Your <em style='font-style: italic; font-family: Georgia, serif;'>Space</em> has all the intel. Now pick a <em style='font-style: italic; font-family: Georgia, serif;'>Recipe</em>: Board Update, Interview Prep, PR Pitch Intelligence, Sector Deep Dive, whatever you need. Click once and get a professional deliverable with full citations. No more starting from scratch every single time.",
+    title: "Click once. Get it <em style='font-style: italic; font-family: Georgia, serif;'>done</em>.",
+    description: "Your <em style='font-style: italic; font-family: Georgia, serif;'>Space</em> has the intel. Pick a <em style='font-style: italic; font-family: Georgia, serif;'>Recipe</em>: Board Update, Interview Prep, PR Pitch, Sector Deep Dive. Full citations included. No more starting from scratch.",
     image: "/images/Value Props/Custom Entity Intelligence.png",
     Icon: GitBranch,
     gradient: "from-purple-500/20 to-pink-500/20",
@@ -43,8 +43,8 @@ const valuePropItems = [
     AsciiComponent: SlidingEaseVerticalBars
   },
   {
-    title: "Benchmark vs. <em style='font-style: italic; font-family: Georgia, serif;'>Competitors</em>",
-    description: "See exactly how you stack up: coverage volume, sentiment, share of voice. When the board asks \"How are we doing?\" you'll have real data. Use the Competitive Benchmarking <em style='font-style: italic; font-family: Georgia, serif;'>Recipe</em> to turn it into a report they can actually use.",
+    title: "Know exactly where you <em style='font-style: italic; font-family: Georgia, serif;'>stand</em>",
+    description: "Coverage volume. Sentiment. Share of voice. When the board asks \"How are we doing?\"—you'll have real data, not guesses.",
     image: "/images/Value Props/Trend Intelligence.png",
     Icon: TrendingUp,
     gradient: "from-green-500/20 to-emerald-500/20",
@@ -157,9 +157,9 @@ export function ValueProps() {
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight leading-[0.95] value-props-main-title"
             style={{ color: '#000000', fontWeight: '500' }}
           >
-            From Monitoring to{' '}
+            From monitoring to{' '}
             <span className="relative inline-block">
-              Deliverables
+              deliverables
               <span
                 className="absolute -bottom-2 left-0 w-full h-[3px] bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 rounded-full animate-pulse"
                 style={{

@@ -15,13 +15,11 @@ export function Pricing() {
 
           {/* Text Content - Right Side */}
           <div className="w-full lg:w-1/2 text-center lg:text-left">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight leading-[1.05] mb-10 sm:mb-12 !text-white">
-              We monitor everything.
-              <br />
-              You execute what matters.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.15] mb-8 sm:mb-10 !text-white">
+              Your Organization's Collective<br />Market Intelligence
             </h2>
-            <p className="text-xl sm:text-2xl lg:text-3xl leading-relaxed !text-white/80 mb-8 font-light">
-              From regulatory windows to narrative shifts to competitive moves - transformed into clear, executable opportunities. Daily.
+            <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed !text-white/60 font-light">
+              Single source of truth. Unifying product, sales, and{'\u00A0'}marketing.
             </p>
           </div>
         </div>
@@ -35,10 +33,10 @@ export function Pricing() {
               </span>
             </div>
             <p className="text-lg sm:text-xl font-semibold !text-white mb-3">
-              Lock in these beta prices now and keep them forever
+              Lock in these prices now. Keep them forever.
             </p>
             <p className="text-base sm:text-lg !text-white/70 font-light">
-              We guarantee your pricing will never increase, even after we exit beta and raise prices for new customers
+              Your pricing will never increase—even after beta ends and prices go up for new users.
             </p>
           </div>
         </div>
