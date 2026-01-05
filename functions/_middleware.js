@@ -209,6 +209,177 @@ function getSeoConfig(path) {
   };
 }
 
+// Generate SSR content for sentiment pages (visible to crawlers)
+function generateSentimentPageContent(path) {
+  // Only generate for sentiment pages
+  if (!path.startsWith('/bitcoin-market-sentiment/')) {
+    return '';
+  }
+
+  const monthNames = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+  const monthPattern = monthNames.join('|');
+
+  // Check for daily page
+  const dailyMatch = path.match(new RegExp(`/bitcoin-market-sentiment/(\\d{4})/(${monthPattern})/(\\d{1,2})$`, 'i'));
+  if (dailyMatch) {
+    const [, year, month, day] = dailyMatch;
+    const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1).toLowerCase();
+    const displayDate = `${capitalizedMonth} ${day}, ${year}`;
+    const monthIndex = monthNames.indexOf(month.toLowerCase());
+    const isoDate = `${year}-${String(monthIndex + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+    return `
+    <article id="ssr-content" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px; font-family: system-ui, -apple-system, sans-serif;">
+      <header style="text-align: center; margin-bottom: 40px;">
+        <nav style="margin-bottom: 20px;">
+          <a href="/bitcoin-market-sentiment" style="color: #3b82f6; text-decoration: none;">Bitcoin Market Sentiment</a>
+          <span style="margin: 0 8px; color: #64748b;">›</span>
+          <a href="/bitcoin-market-sentiment/${year}/${month.toLowerCase()}" style="color: #3b82f6; text-decoration: none;">${capitalizedMonth} ${year}</a>
+          <span style="margin: 0 8px; color: #64748b;">›</span>
+          <span style="color: #64748b;">${displayDate}</span>
+        </nav>
+        <h1 style="font-size: 2.5rem; font-weight: 700; color: #0f172a; margin-bottom: 16px;">Bitcoin Market Sentiment - ${displayDate}</h1>
+        <p style="font-size: 1.25rem; color: #64748b; max-width: 800px; margin: 0 auto;">
+          Daily Bitcoin sentiment analysis tracking fear & greed index, social media trends, and market psychology for ${displayDate}.
+        </p>
+        <time datetime="${isoDate}" style="display: block; margin-top: 16px; color: #94a3b8; font-size: 0.875rem;">Published: ${displayDate}</time>
+      </header>
+
+      <main>
+        <section style="background: #f8fafc; border-radius: 16px; padding: 32px; margin-bottom: 32px;">
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Daily Sentiment Overview</h2>
+          <p style="color: #475569; line-height: 1.75;">
+            This page provides comprehensive Bitcoin market sentiment analysis for ${displayDate}.
+            Our sentiment data is aggregated from over 650 sources including social media platforms,
+            news outlets, and financial publications to give you a complete picture of market psychology.
+          </p>
+          <p style="color: #475569; line-height: 1.75; margin-top: 16px;">
+            The Bitcoin Fear & Greed Index measures investor sentiment on a scale of 0-100, where 0 represents
+            extreme fear and 100 represents extreme greed. This daily analysis helps traders and investors
+            understand market conditions and make informed decisions.
+          </p>
+        </section>
+
+        <section style="margin-bottom: 32px;">
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">What We Track</h2>
+          <ul style="color: #475569; line-height: 2; padding-left: 24px;">
+            <li><strong>Fear & Greed Index:</strong> Real-time sentiment score from 0-100</li>
+            <li><strong>Social Media Sentiment:</strong> Analysis of Twitter, Reddit, and other platforms</li>
+            <li><strong>News Sentiment:</strong> Coverage from major crypto and financial publications</li>
+            <li><strong>Market Psychology:</strong> Investor behavior patterns and trends</li>
+            <li><strong>Hourly Progression:</strong> How sentiment evolved throughout ${displayDate}</li>
+          </ul>
+        </section>
+
+        <section style="margin-bottom: 32px;">
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Related Analysis</h2>
+          <p style="color: #475569; line-height: 1.75;">
+            Explore more Bitcoin sentiment data:
+          </p>
+          <ul style="color: #475569; line-height: 2; padding-left: 24px;">
+            <li><a href="/bitcoin-market-sentiment/${year}/${month.toLowerCase()}" style="color: #3b82f6;">${capitalizedMonth} ${year} Monthly Overview</a></li>
+            <li><a href="/bitcoin-fear-greed-index" style="color: #3b82f6;">Live Bitcoin Fear & Greed Index</a></li>
+            <li><a href="/bitcoin-market-sentiment" style="color: #3b82f6;">Historical Sentiment Archive</a></li>
+            <li><a href="/bitcoin-media-research" style="color: #3b82f6;">Bitcoin Media Research</a></li>
+          </ul>
+        </section>
+      </main>
+
+      <footer style="text-align: center; padding-top: 32px; border-top: 1px solid #e2e8f0; color: #94a3b8; font-size: 0.875rem;">
+        <p>Data provided by <a href="https://perception.to" style="color: #3b82f6;">Perception</a> - Intelligence Workspace for Bitcoin & Crypto</p>
+        <p style="margin-top: 8px;">Updated daily from 650+ sources</p>
+      </footer>
+    </article>
+    <script>
+      // Hide SSR content once React app loads
+      if (document.getElementById('root')) {
+        var observer = new MutationObserver(function(mutations) {
+          var root = document.getElementById('root');
+          if (root && root.children.length > 0) {
+            var ssrContent = document.getElementById('ssr-content');
+            if (ssrContent) ssrContent.style.display = 'none';
+            observer.disconnect();
+          }
+        });
+        observer.observe(document.getElementById('root'), { childList: true });
+      }
+    </script>`;
+  }
+
+  // Check for monthly page
+  const monthlyMatch = path.match(new RegExp(`/bitcoin-market-sentiment/(\\d{4})/(${monthPattern})$`, 'i'));
+  if (monthlyMatch) {
+    const [, year, month] = monthlyMatch;
+    const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1).toLowerCase();
+    const displayDate = `${capitalizedMonth} ${year}`;
+
+    return `
+    <article id="ssr-content" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px; font-family: system-ui, -apple-system, sans-serif;">
+      <header style="text-align: center; margin-bottom: 40px;">
+        <nav style="margin-bottom: 20px;">
+          <a href="/bitcoin-market-sentiment" style="color: #3b82f6; text-decoration: none;">Bitcoin Market Sentiment</a>
+          <span style="margin: 0 8px; color: #64748b;">›</span>
+          <span style="color: #64748b;">${displayDate}</span>
+        </nav>
+        <h1 style="font-size: 2.5rem; font-weight: 700; color: #0f172a; margin-bottom: 16px;">Bitcoin Market Sentiment - ${displayDate}</h1>
+        <p style="font-size: 1.25rem; color: #64748b; max-width: 800px; margin: 0 auto;">
+          Monthly Bitcoin sentiment analysis with daily breakdowns, fear & greed trends, and comprehensive market psychology data for ${displayDate}.
+        </p>
+      </header>
+
+      <main>
+        <section style="background: #f8fafc; border-radius: 16px; padding: 32px; margin-bottom: 32px;">
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Monthly Overview</h2>
+          <p style="color: #475569; line-height: 1.75;">
+            This page provides comprehensive Bitcoin market sentiment analysis for ${displayDate}.
+            Track daily sentiment progression, identify fear and greed patterns, and understand
+            how market psychology evolved throughout the month.
+          </p>
+        </section>
+
+        <section style="margin-bottom: 32px;">
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Monthly Metrics</h2>
+          <ul style="color: #475569; line-height: 2; padding-left: 24px;">
+            <li><strong>Average Sentiment Score:</strong> Monthly fear & greed average</li>
+            <li><strong>Fear Days:</strong> Days with sentiment below 30</li>
+            <li><strong>Greed Days:</strong> Days with sentiment above 70</li>
+            <li><strong>Neutral Days:</strong> Days with balanced sentiment</li>
+            <li><strong>Daily Breakdown:</strong> Click any day to see detailed analysis</li>
+          </ul>
+        </section>
+
+        <section style="margin-bottom: 32px;">
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Related Analysis</h2>
+          <ul style="color: #475569; line-height: 2; padding-left: 24px;">
+            <li><a href="/bitcoin-fear-greed-index" style="color: #3b82f6;">Live Bitcoin Fear & Greed Index</a></li>
+            <li><a href="/bitcoin-market-sentiment" style="color: #3b82f6;">All Monthly Reports</a></li>
+            <li><a href="/bitcoin-media-research" style="color: #3b82f6;">Bitcoin Media Research</a></li>
+          </ul>
+        </section>
+      </main>
+
+      <footer style="text-align: center; padding-top: 32px; border-top: 1px solid #e2e8f0; color: #94a3b8; font-size: 0.875rem;">
+        <p>Data provided by <a href="https://perception.to" style="color: #3b82f6;">Perception</a> - Intelligence Workspace for Bitcoin & Crypto</p>
+      </footer>
+    </article>
+    <script>
+      if (document.getElementById('root')) {
+        var observer = new MutationObserver(function(mutations) {
+          var root = document.getElementById('root');
+          if (root && root.children.length > 0) {
+            var ssrContent = document.getElementById('ssr-content');
+            if (ssrContent) ssrContent.style.display = 'none';
+            observer.disconnect();
+          }
+        });
+        observer.observe(document.getElementById('root'), { childList: true });
+      }
+    </script>`;
+  }
+
+  return '';
+}
+
 // Inject SEO meta tags into HTML
 function injectSeoTags(html, path) {
   const seo = getSeoConfig(path);
@@ -285,6 +456,13 @@ function injectSeoTags(html, path) {
 
   // Inject new meta block after <head>
   html = html.replace(/<head>/i, `<head>${metaBlock}`);
+
+  // Inject SSR content for crawlers (sentiment pages)
+  const ssrContent = generateSentimentPageContent(path);
+  if (ssrContent) {
+    // Insert SSR content right after the opening body tag, before the React root
+    html = html.replace(/<body>/i, `<body>${ssrContent}`);
+  }
 
   return html;
 }
