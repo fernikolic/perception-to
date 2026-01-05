@@ -467,15 +467,95 @@ function injectSeoTags(html, path) {
   return html;
 }
 
+// Check if a path is a valid route (returns false for known 404 patterns)
+function isValidRoute(path) {
+  // Non-existent sections - return 404
+  if (path.startsWith('/glossary')) return false;
+  if (path.startsWith('/learn/category')) return false;
+
+  // Valid learn paths (explicit list)
+  const validLearnPaths = [
+    '/learn',
+    '/learn/what-is-crypto-sentiment-analysis',
+    '/learn/how-to-read-fear-greed-index',
+    '/learn/bitcoin-market-psychology',
+    '/learn/crypto-narrative-trading',
+    '/learn/understanding-bitcoin-dominance',
+    '/learn/crypto-social-sentiment'
+  ];
+  if (path.startsWith('/learn/') && !validLearnPaths.includes(path)) {
+    return false;
+  }
+
+  // Year-only sentiment URLs are invalid (need /year/month)
+  if (/^\/bitcoin-market-sentiment\/\d{4}$/.test(path)) {
+    return false;
+  }
+
+  // Year-only conference URLs are invalid
+  if (/^\/crypto-conferences\/\d{4}$/.test(path)) {
+    return false;
+  }
+
+  return true;
+}
+
+// Generate 404 page HTML
+function generate404Html(path) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Perception</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="The page you're looking for doesn't exist.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #f8fafc; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .container { text-align: center; padding: 40px 20px; max-width: 600px; }
+    h1 { font-size: 6rem; font-weight: 700; color: #0f172a; margin-bottom: 16px; }
+    h2 { font-size: 1.5rem; font-weight: 600; color: #475569; margin-bottom: 24px; }
+    p { color: #64748b; margin-bottom: 32px; line-height: 1.6; }
+    .links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    a { display: inline-block; padding: 12px 24px; background: #0f172a; color: white; text-decoration: none; border-radius: 8px; font-weight: 500; transition: background 0.2s; }
+    a:hover { background: #1e293b; }
+    a.secondary { background: transparent; color: #0f172a; border: 1px solid #e2e8f0; }
+    a.secondary:hover { background: #f1f5f9; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>404</h1>
+    <h2>Page Not Found</h2>
+    <p>The page <code>${path}</code> doesn't exist. It may have been moved or removed.</p>
+    <div class="links">
+      <a href="/">Go to Homepage</a>
+      <a href="/bitcoin-market-sentiment" class="secondary">Market Sentiment</a>
+      <a href="/bitcoin-fear-greed-index" class="secondary">Fear & Greed Index</a>
+    </div>
+  </div>
+</body>
+</html>`;
+}
+
 export async function onRequest(context) {
   const url = new URL(context.request.url);
+  const monthNames = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+  const monthPattern = monthNames.join('|');
 
-  // Redirect sentiment URLs with uppercase months to lowercase (canonical URL enforcement)
+  // ===== REDIRECTS FOR MALFORMED URLS =====
+
+  // Redirect malformed sentiment URLs like /bitcoin-market-sentiment/july-2025 to /bitcoin-market-sentiment/2025/july
   if (url.pathname.startsWith('/bitcoin-market-sentiment/')) {
-    const monthNames = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-    const monthPattern = monthNames.join('|');
+    const malformedMatch = url.pathname.match(new RegExp(`^/bitcoin-market-sentiment/(${monthPattern})-(\\d{4})$`, 'i'));
+    if (malformedMatch) {
+      const [, month, year] = malformedMatch;
+      const canonicalPath = `/bitcoin-market-sentiment/${year}/${month.toLowerCase()}`;
+      return Response.redirect(new URL(canonicalPath, url).toString(), 301);
+    }
 
-    // Check for daily URLs with any case month
+    // Check for daily URLs with any case month - normalize to lowercase
     const dailyMatch = url.pathname.match(new RegExp(`^/bitcoin-market-sentiment/(\\d{4})/(${monthPattern})/(\\d{1,2})$`, 'i'));
     if (dailyMatch) {
       const [, year, month, day] = dailyMatch;
@@ -486,7 +566,7 @@ export async function onRequest(context) {
       }
     }
 
-    // Check for monthly URLs with any case month
+    // Check for monthly URLs with any case month - normalize to lowercase
     const monthlyMatch = url.pathname.match(new RegExp(`^/bitcoin-market-sentiment/(\\d{4})/(${monthPattern})$`, 'i'));
     if (monthlyMatch) {
       const [, year, month] = monthlyMatch;
@@ -514,6 +594,19 @@ export async function onRequest(context) {
     if (url.pathname === '/search' && params.get('q') === '{search_term_string}') {
       return Response.redirect(new URL('/search', url).toString(), 301);
     }
+  }
+
+  // ===== 404 HANDLING FOR NON-EXISTENT PAGES =====
+
+  // Check if this is a known invalid route - return proper 404
+  if (!isValidRoute(url.pathname)) {
+    return new Response(generate404Html(url.pathname), {
+      status: 404,
+      headers: {
+        'Content-Type': 'text/html;charset=UTF-8',
+        'X-Robots-Tag': 'noindex'
+      }
+    });
   }
 
   // Get the response
