@@ -59,22 +59,73 @@ function getSeoConfig(path) {
 
   // Handle dynamic routes
   if (path.startsWith('/bitcoin-market-sentiment/')) {
-    // Extract date from path like /bitcoin-market-sentiment/2025/12/15
-    const match = path.match(/\/bitcoin-market-sentiment\/(\d{4})\/(\d{2})(?:\/(\d{2}))?/);
-    if (match) {
-      const [, year, month, day] = match;
-      const dateStr = day ? `${year}-${month}-${day}` : `${year}-${month}`;
+    // Match URLs like /bitcoin-market-sentiment/2025/july/20 (daily) or /bitcoin-market-sentiment/2025/july (monthly)
+    const monthNames = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    const monthPattern = monthNames.join('|');
+
+    // Try daily pattern first: /year/month/day
+    const dailyMatch = path.match(new RegExp(`/bitcoin-market-sentiment/(\\d{4})/(${monthPattern})/(\\d{1,2})$`, 'i'));
+    if (dailyMatch) {
+      const [, year, month, day] = dailyMatch;
+      const normalizedMonth = month.toLowerCase();
+      const capitalizedMonth = normalizedMonth.charAt(0).toUpperCase() + normalizedMonth.slice(1);
+      const displayDate = `${capitalizedMonth} ${day}, ${year}`;
+      // Canonical should always use lowercase month
+      const canonicalPath = `/bitcoin-market-sentiment/${year}/${normalizedMonth}/${day}`;
+
       return {
-        title: `Bitcoin Market Sentiment ${dateStr} | Perception`,
-        description: `Bitcoin market sentiment analysis for ${dateStr}. Track investor psychology, fear & greed index, and market narratives.`,
-        keywords: `bitcoin sentiment ${dateStr}, bitcoin market analysis ${dateStr}`,
-        canonical: `https://perception.to${path}`,
+        title: `Bitcoin Market Sentiment ${displayDate} - Daily Analysis | Perception`,
+        description: `Detailed Bitcoin market sentiment analysis for ${displayDate}. Track fear & greed index, social media trends, and institutional sentiment.`,
+        keywords: `bitcoin market sentiment ${displayDate}, bitcoin fear greed index ${displayDate}, crypto sentiment analysis`,
+        canonical: `https://perception.to${canonicalPath}`,
+        schema: {
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: `Bitcoin Market Sentiment ${displayDate}`,
+          description: `Bitcoin market sentiment data for ${displayDate}`,
+          datePublished: `${year}-${String(monthNames.indexOf(normalizedMonth) + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`,
+          author: {
+            '@type': 'Organization',
+            name: 'Perception',
+            url: 'https://perception.to'
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'Perception',
+            logo: {
+              '@type': 'ImageObject',
+              url: 'https://perception.to/logos/perception-logo-dark.png'
+            }
+          },
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://perception.to${canonicalPath}`
+          }
+        }
+      };
+    }
+
+    // Try monthly pattern: /year/month
+    const monthlyMatch = path.match(new RegExp(`/bitcoin-market-sentiment/(\\d{4})/(${monthPattern})$`, 'i'));
+    if (monthlyMatch) {
+      const [, year, month] = monthlyMatch;
+      const normalizedMonth = month.toLowerCase();
+      const capitalizedMonth = normalizedMonth.charAt(0).toUpperCase() + normalizedMonth.slice(1);
+      const displayDate = `${capitalizedMonth} ${year}`;
+      // Canonical should always use lowercase month
+      const canonicalPath = `/bitcoin-market-sentiment/${year}/${normalizedMonth}`;
+
+      return {
+        title: `Bitcoin Market Sentiment ${displayDate} - Monthly Analysis | Perception`,
+        description: `Comprehensive Bitcoin market sentiment analysis for ${displayDate}. Track fear & greed index, social media trends, and institutional sentiment.`,
+        keywords: `bitcoin market sentiment ${displayDate}, bitcoin fear greed index ${displayDate}, crypto sentiment analysis`,
+        canonical: `https://perception.to${canonicalPath}`,
         schema: {
           '@context': 'https://schema.org',
           '@type': 'Dataset',
-          name: `Bitcoin Market Sentiment ${dateStr}`,
-          description: `Bitcoin market sentiment data for ${dateStr}`,
-          temporalCoverage: dateStr
+          name: `Bitcoin Market Sentiment ${displayDate}`,
+          description: `Bitcoin market sentiment data for ${displayDate}`,
+          temporalCoverage: `${year}-${String(monthNames.indexOf(normalizedMonth) + 1).padStart(2, '0')}`
         }
       };
     }
@@ -240,6 +291,34 @@ function injectSeoTags(html, path) {
 
 export async function onRequest(context) {
   const url = new URL(context.request.url);
+
+  // Redirect sentiment URLs with uppercase months to lowercase (canonical URL enforcement)
+  if (url.pathname.startsWith('/bitcoin-market-sentiment/')) {
+    const monthNames = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    const monthPattern = monthNames.join('|');
+
+    // Check for daily URLs with any case month
+    const dailyMatch = url.pathname.match(new RegExp(`^/bitcoin-market-sentiment/(\\d{4})/(${monthPattern})/(\\d{1,2})$`, 'i'));
+    if (dailyMatch) {
+      const [, year, month, day] = dailyMatch;
+      const normalizedMonth = month.toLowerCase();
+      if (month !== normalizedMonth) {
+        const canonicalPath = `/bitcoin-market-sentiment/${year}/${normalizedMonth}/${day}`;
+        return Response.redirect(new URL(canonicalPath, url).toString(), 301);
+      }
+    }
+
+    // Check for monthly URLs with any case month
+    const monthlyMatch = url.pathname.match(new RegExp(`^/bitcoin-market-sentiment/(\\d{4})/(${monthPattern})$`, 'i'));
+    if (monthlyMatch) {
+      const [, year, month] = monthlyMatch;
+      const normalizedMonth = month.toLowerCase();
+      if (month !== normalizedMonth) {
+        const canonicalPath = `/bitcoin-market-sentiment/${year}/${normalizedMonth}`;
+        return Response.redirect(new URL(canonicalPath, url).toString(), 301);
+      }
+    }
+  }
 
   // Handle canonical URL redirects (strip query parameters)
   if (url.search) {
