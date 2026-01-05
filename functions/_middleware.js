@@ -7,6 +7,7 @@
 
 import { PAGE_SEO, SOCIAL_IMAGES, DEFAULT_IMAGE, DEFAULT_SEO } from './seo-config.js';
 import { RESEARCH_OG_DATA, DEFAULT_RESEARCH_IMAGE } from './research-og-data.js';
+import sentimentCache from './sentiment-cache.json' assert { type: 'json' };
 
 // Escape HTML entities to prevent breaking meta tags
 function escapeHtml(str) {
@@ -210,6 +211,7 @@ function getSeoConfig(path) {
 }
 
 // Generate SSR content for sentiment pages (visible to crawlers)
+// Uses real cached data from sentiment-cache.json
 function generateSentimentPageContent(path) {
   // Only generate for sentiment pages
   if (!path.startsWith('/bitcoin-market-sentiment/')) {
@@ -228,6 +230,42 @@ function generateSentimentPageContent(path) {
     const monthIndex = monthNames.indexOf(month.toLowerCase());
     const isoDate = `${year}-${String(monthIndex + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 
+    // Get real data from cache
+    const dayData = sentimentCache.daily?.[isoDate];
+    const hasData = dayData && dayData.score !== undefined;
+
+    // Build data-driven content
+    const score = hasData ? Math.round(dayData.score) : null;
+    const category = hasData ? dayData.category : null;
+    const totalSources = hasData ? dayData.total : null;
+    const positive = hasData ? dayData.positive : null;
+    const negative = hasData ? dayData.negative : null;
+
+    // Generate sentiment-specific description
+    let sentimentDescription = '';
+    if (hasData) {
+      if (score <= 25) {
+        sentimentDescription = `Markets showed <strong>extreme fear</strong> with a score of ${score}/100. Investors were highly cautious, with ${negative} negative signals out of ${totalSources} sources analyzed.`;
+      } else if (score <= 45) {
+        sentimentDescription = `Markets displayed <strong>fear</strong> with a score of ${score}/100. Cautious sentiment prevailed across ${totalSources} analyzed sources.`;
+      } else if (score <= 55) {
+        sentimentDescription = `Markets remained <strong>neutral</strong> with a balanced score of ${score}/100. Mixed signals were observed across ${totalSources} sources.`;
+      } else if (score <= 75) {
+        sentimentDescription = `Markets showed <strong>greed</strong> with an optimistic score of ${score}/100. Bullish sentiment dominated with ${positive} positive signals from ${totalSources} sources.`;
+      } else {
+        sentimentDescription = `Markets displayed <strong>extreme greed</strong> with a score of ${score}/100. Strong bullish sentiment was detected across ${totalSources} sources with ${positive} positive signals.`;
+      }
+    }
+
+    // Score display section
+    const scoreSection = hasData ? `
+        <section style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 16px; padding: 32px; margin-bottom: 32px; color: white; text-align: center;">
+          <h2 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 16px; opacity: 0.9;">Fear & Greed Index</h2>
+          <div style="font-size: 4rem; font-weight: 700; margin-bottom: 8px;">${score}</div>
+          <div style="font-size: 1.5rem; font-weight: 600; color: ${score <= 45 ? '#f87171' : score >= 55 ? '#4ade80' : '#fbbf24'};">${category}</div>
+          <p style="margin-top: 16px; opacity: 0.8; font-size: 0.875rem;">Based on analysis of ${totalSources.toLocaleString()} sources</p>
+        </section>` : '';
+
     return `
     <article id="ssr-content" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px; font-family: system-ui, -apple-system, sans-serif;">
       <header style="text-align: center; margin-bottom: 40px;">
@@ -238,44 +276,48 @@ function generateSentimentPageContent(path) {
           <span style="margin: 0 8px; color: #64748b;">›</span>
           <span style="color: #64748b;">${displayDate}</span>
         </nav>
-        <h1 style="font-size: 2.5rem; font-weight: 700; color: #0f172a; margin-bottom: 16px;">Bitcoin Market Sentiment - ${displayDate}</h1>
+        <h1 style="font-size: 2.5rem; font-weight: 700; color: #0f172a; margin-bottom: 16px;">Bitcoin Market Sentiment - ${displayDate}${hasData ? `: ${category} (${score}/100)` : ''}</h1>
         <p style="font-size: 1.25rem; color: #64748b; max-width: 800px; margin: 0 auto;">
-          Daily Bitcoin sentiment analysis tracking fear & greed index, social media trends, and market psychology for ${displayDate}.
+          ${hasData ? `Bitcoin Fear & Greed Index was <strong>${score}</strong> (${category}) on ${displayDate}, based on ${totalSources.toLocaleString()} sources.` : `Daily Bitcoin sentiment analysis for ${displayDate}.`}
         </p>
         <time datetime="${isoDate}" style="display: block; margin-top: 16px; color: #94a3b8; font-size: 0.875rem;">Published: ${displayDate}</time>
       </header>
 
       <main>
+        ${scoreSection}
+
         <section style="background: #f8fafc; border-radius: 16px; padding: 32px; margin-bottom: 32px;">
-          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Daily Sentiment Overview</h2>
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Daily Sentiment Analysis</h2>
           <p style="color: #475569; line-height: 1.75;">
-            This page provides comprehensive Bitcoin market sentiment analysis for ${displayDate}.
-            Our sentiment data is aggregated from over 650 sources including social media platforms,
-            news outlets, and financial publications to give you a complete picture of market psychology.
+            ${hasData ? sentimentDescription : `This page provides Bitcoin market sentiment analysis for ${displayDate}.`}
           </p>
           <p style="color: #475569; line-height: 1.75; margin-top: 16px;">
             The Bitcoin Fear & Greed Index measures investor sentiment on a scale of 0-100, where 0 represents
-            extreme fear and 100 represents extreme greed. This daily analysis helps traders and investors
-            understand market conditions and make informed decisions.
+            extreme fear and 100 represents extreme greed. ${hasData ? `On ${displayDate}, the market sentiment was classified as <strong>${category}</strong>.` : ''}
           </p>
         </section>
 
+        ${hasData ? `
         <section style="margin-bottom: 32px;">
-          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">What We Track</h2>
-          <ul style="color: #475569; line-height: 2; padding-left: 24px;">
-            <li><strong>Fear & Greed Index:</strong> Real-time sentiment score from 0-100</li>
-            <li><strong>Social Media Sentiment:</strong> Analysis of Twitter, Reddit, and other platforms</li>
-            <li><strong>News Sentiment:</strong> Coverage from major crypto and financial publications</li>
-            <li><strong>Market Psychology:</strong> Investor behavior patterns and trends</li>
-            <li><strong>Hourly Progression:</strong> How sentiment evolved throughout ${displayDate}</li>
-          </ul>
-        </section>
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Source Breakdown</h2>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+            <div style="background: #dcfce7; padding: 20px; border-radius: 12px; text-align: center;">
+              <div style="font-size: 2rem; font-weight: 700; color: #16a34a;">${positive}</div>
+              <div style="color: #15803d; font-size: 0.875rem;">Positive Signals</div>
+            </div>
+            <div style="background: #fef3c7; padding: 20px; border-radius: 12px; text-align: center;">
+              <div style="font-size: 2rem; font-weight: 700; color: #ca8a04;">${dayData.neutral}</div>
+              <div style="color: #a16207; font-size: 0.875rem;">Neutral Signals</div>
+            </div>
+            <div style="background: #fee2e2; padding: 20px; border-radius: 12px; text-align: center;">
+              <div style="font-size: 2rem; font-weight: 700; color: #dc2626;">${negative}</div>
+              <div style="color: #b91c1c; font-size: 0.875rem;">Negative Signals</div>
+            </div>
+          </div>
+        </section>` : ''}
 
         <section style="margin-bottom: 32px;">
           <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Related Analysis</h2>
-          <p style="color: #475569; line-height: 1.75;">
-            Explore more Bitcoin sentiment data:
-          </p>
           <ul style="color: #475569; line-height: 2; padding-left: 24px;">
             <li><a href="/bitcoin-market-sentiment/${year}/${month.toLowerCase()}" style="color: #3b82f6;">${capitalizedMonth} ${year} Monthly Overview</a></li>
             <li><a href="/bitcoin-fear-greed-index" style="color: #3b82f6;">Live Bitcoin Fear & Greed Index</a></li>
@@ -312,6 +354,28 @@ function generateSentimentPageContent(path) {
     const [, year, month] = monthlyMatch;
     const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1).toLowerCase();
     const displayDate = `${capitalizedMonth} ${year}`;
+    const monthIndex = monthNames.indexOf(month.toLowerCase());
+    const monthKey = `${year}-${String(monthIndex + 1).padStart(2, '0')}`;
+
+    // Get real monthly data from cache
+    const monthData = sentimentCache.monthly?.[monthKey];
+    const hasData = monthData && monthData.avgScore !== undefined;
+
+    const avgScore = hasData ? monthData.avgScore : null;
+    const category = hasData ? monthData.category : null;
+    const totalSources = hasData ? monthData.totalSources : null;
+    const fearDays = hasData ? monthData.fearDays : null;
+    const greedDays = hasData ? monthData.greedDays : null;
+    const neutralDays = hasData ? monthData.neutralDays : null;
+    const totalDays = hasData ? monthData.days : null;
+
+    const scoreSection = hasData ? `
+        <section style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 16px; padding: 32px; margin-bottom: 32px; color: white; text-align: center;">
+          <h2 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 16px; opacity: 0.9;">Monthly Average</h2>
+          <div style="font-size: 4rem; font-weight: 700; margin-bottom: 8px;">${avgScore}</div>
+          <div style="font-size: 1.5rem; font-weight: 600; color: ${avgScore <= 45 ? '#f87171' : avgScore >= 55 ? '#4ade80' : '#fbbf24'};">${category}</div>
+          <p style="margin-top: 16px; opacity: 0.8; font-size: 0.875rem;">Based on ${totalDays} days of data from ${totalSources.toLocaleString()} total sources</p>
+        </section>` : '';
 
     return `
     <article id="ssr-content" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px; font-family: system-ui, -apple-system, sans-serif;">
@@ -321,31 +385,46 @@ function generateSentimentPageContent(path) {
           <span style="margin: 0 8px; color: #64748b;">›</span>
           <span style="color: #64748b;">${displayDate}</span>
         </nav>
-        <h1 style="font-size: 2.5rem; font-weight: 700; color: #0f172a; margin-bottom: 16px;">Bitcoin Market Sentiment - ${displayDate}</h1>
+        <h1 style="font-size: 2.5rem; font-weight: 700; color: #0f172a; margin-bottom: 16px;">Bitcoin Market Sentiment - ${displayDate}${hasData ? `: ${category} (Avg: ${avgScore}/100)` : ''}</h1>
         <p style="font-size: 1.25rem; color: #64748b; max-width: 800px; margin: 0 auto;">
-          Monthly Bitcoin sentiment analysis with daily breakdowns, fear & greed trends, and comprehensive market psychology data for ${displayDate}.
+          ${hasData ? `Bitcoin averaged a Fear & Greed score of <strong>${avgScore}</strong> (${category}) in ${displayDate}, with ${fearDays} fear days, ${greedDays} greed days, and ${neutralDays} neutral days.` : `Monthly Bitcoin sentiment analysis for ${displayDate}.`}
         </p>
       </header>
 
       <main>
-        <section style="background: #f8fafc; border-radius: 16px; padding: 32px; margin-bottom: 32px;">
-          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Monthly Overview</h2>
-          <p style="color: #475569; line-height: 1.75;">
-            This page provides comprehensive Bitcoin market sentiment analysis for ${displayDate}.
-            Track daily sentiment progression, identify fear and greed patterns, and understand
-            how market psychology evolved throughout the month.
-          </p>
-        </section>
+        ${scoreSection}
 
+        ${hasData ? `
         <section style="margin-bottom: 32px;">
-          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Monthly Metrics</h2>
-          <ul style="color: #475569; line-height: 2; padding-left: 24px;">
-            <li><strong>Average Sentiment Score:</strong> Monthly fear & greed average</li>
-            <li><strong>Fear Days:</strong> Days with sentiment below 30</li>
-            <li><strong>Greed Days:</strong> Days with sentiment above 70</li>
-            <li><strong>Neutral Days:</strong> Days with balanced sentiment</li>
-            <li><strong>Daily Breakdown:</strong> Click any day to see detailed analysis</li>
-          </ul>
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Monthly Breakdown</h2>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+            <div style="background: #fee2e2; padding: 20px; border-radius: 12px; text-align: center;">
+              <div style="font-size: 2rem; font-weight: 700; color: #dc2626;">${fearDays}</div>
+              <div style="color: #b91c1c; font-size: 0.875rem;">Fear Days</div>
+              <div style="color: #64748b; font-size: 0.75rem; margin-top: 4px;">Score below 30</div>
+            </div>
+            <div style="background: #fef3c7; padding: 20px; border-radius: 12px; text-align: center;">
+              <div style="font-size: 2rem; font-weight: 700; color: #ca8a04;">${neutralDays}</div>
+              <div style="color: #a16207; font-size: 0.875rem;">Neutral Days</div>
+              <div style="color: #64748b; font-size: 0.75rem; margin-top: 4px;">Score 30-70</div>
+            </div>
+            <div style="background: #dcfce7; padding: 20px; border-radius: 12px; text-align: center;">
+              <div style="font-size: 2rem; font-weight: 700; color: #16a34a;">${greedDays}</div>
+              <div style="color: #15803d; font-size: 0.875rem;">Greed Days</div>
+              <div style="color: #64748b; font-size: 0.75rem; margin-top: 4px;">Score above 70</div>
+            </div>
+          </div>
+        </section>` : ''}
+
+        <section style="background: #f8fafc; border-radius: 16px; padding: 32px; margin-bottom: 32px;">
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 16px;">Monthly Analysis</h2>
+          <p style="color: #475569; line-height: 1.75;">
+            ${hasData ? `In ${displayDate}, Bitcoin market sentiment averaged <strong>${avgScore}/100</strong>, classified as <strong>${category}</strong>. The month saw ${fearDays} days of fear (score below 30), ${neutralDays} neutral days, and ${greedDays} days of greed (score above 70).` : `This page provides Bitcoin market sentiment analysis for ${displayDate}.`}
+          </p>
+          <p style="color: #475569; line-height: 1.75; margin-top: 16px;">
+            Click on any day in the calendar to see detailed sentiment analysis including source breakdown,
+            hourly progression, and key market events.
+          </p>
         </section>
 
         <section style="margin-bottom: 32px;">
