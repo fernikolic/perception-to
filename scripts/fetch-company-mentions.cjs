@@ -50,7 +50,17 @@ const companies = [
   { slug: 'trump-media', name: 'Trump Media', keyword: 'Trump Media Bitcoin' },
   { slug: 'strive', name: 'Strive', keyword: 'Strive Bitcoin' },
   { slug: 'bullish', name: 'Bullish', keyword: 'Bullish exchange' },
-  { slug: 'exodus', name: 'Exodus', keyword: 'Exodus wallet' }
+  { slug: 'exodus', name: 'Exodus', keyword: 'Exodus wallet' },
+  // Hardware Wallets & Security
+  { slug: 'ledger', name: 'Ledger', keyword: 'Ledger wallet' },
+  { slug: 'trezor', name: 'Trezor', keyword: 'Trezor wallet' },
+  { slug: 'coldcard', name: 'Coldcard', keyword: 'Coldcard' },
+  { slug: 'foundation-devices', name: 'Foundation Devices', keyword: 'Passport wallet' },
+  { slug: 'bitbox', name: 'BitBox', keyword: 'BitBox wallet' },
+  { slug: 'casa', name: 'Casa', keyword: 'Casa Bitcoin' },
+  // Additional Exchanges
+  { slug: 'kraken', name: 'Kraken', keyword: 'Kraken' },
+  { slug: 'gemini', name: 'Gemini', keyword: 'Gemini exchange' }
 ];
 
 // Map sentiment string to category

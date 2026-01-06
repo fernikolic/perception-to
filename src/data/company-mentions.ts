@@ -1,5 +1,5 @@
 // Auto-generated company mentions data from Perception hybridFeed API
-// Generated: 2026-01-06T02:10:28.691Z
+// Generated: 2026-01-06T02:18:35.264Z
 // Run: node scripts/fetch-company-mentions.cjs
 
 export interface CompanyMention {
@@ -93,7 +93,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "The Daily Upside",
       "title": "Burned Bitcoin Investors Enter New Year with Less Swagger",
       "url": "https://www.thedailyupside.com/investments/cryptocurrency/investors-trim-their-new-years-resolutions-for-bitcoin-after-its-bumpy-year/",
-      "timestamp": "4 hours ago",
+      "timestamp": "5 hours ago",
       "sentiment": "negative",
       "imageUrl": null
     },
@@ -203,7 +203,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Blockspace",
       "title": "Riot swaps CFO, raises executive salaries, overhauls incentive plan",
       "url": "https://blockspace.media/insight/riot-swaps-cfo-raises-executive-salaries-overhauls-incentive-plan/",
-      "timestamp": "19 hours ago",
+      "timestamp": "20 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -237,7 +237,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Cointelegraph",
       "title": "Japan’s finance minister backs exchanges as gateway for digital assets",
       "url": "https://cointelegraph.com/news/japan-crypto-securities-framework-exchange-led-access-2026",
-      "timestamp": "22 hours ago",
+      "timestamp": "23 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -373,7 +373,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Watcher Guru",
       "title": "US Government May Seize Venezuela’s Bitcoin & crypto Reserves",
       "url": "https://watcher.guru/news/us-government-may-seize-venezuelas-bitcoin-crypto-reserves",
-      "timestamp": "12 hours ago",
+      "timestamp": "13 hours ago",
       "sentiment": "negative",
       "imageUrl": null
     },
@@ -509,7 +509,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Swan Bitcoin",
       "title": "The Gambling Funnel That Creates Bitcoiners",
       "url": "https://www.youtube.com/shorts/4-V-Makm-f8",
-      "timestamp": "21 hours ago",
+      "timestamp": "22 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -577,7 +577,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "The Daily Upside",
       "title": "Burned Bitcoin Investors Enter New Year with Less Swagger",
       "url": "https://www.thedailyupside.com/investments/cryptocurrency/investors-trim-their-new-years-resolutions-for-bitcoin-after-its-bumpy-year/",
-      "timestamp": "4 hours ago",
+      "timestamp": "5 hours ago",
       "sentiment": "negative",
       "imageUrl": null
     }
@@ -603,7 +603,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Blockspace",
       "title": "Bitcoin mining stocks end 2025 strong despite December slump: JPMorgan",
       "url": "https://blockspace.media/insight/bitcoin-mining-stocks-end-2025-strong-despite-december-slump-jpmorgan/",
-      "timestamp": "18 hours ago",
+      "timestamp": "19 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -611,7 +611,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "CoinDesk",
       "title": "Bitcoin miners continue to face dwindling profits despite lower competition, JPMorgan says",
       "url": "https://www.coindesk.com/markets/2026/01/05/bitcoin-network-hashrate-fell-for-second-consecutive-month-in-december-jpmorgan",
-      "timestamp": "18 hours ago",
+      "timestamp": "19 hours ago",
       "sentiment": "negative",
       "imageUrl": null
     }
@@ -621,7 +621,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "The Daily Upside",
       "title": "Burned Bitcoin Investors Enter New Year with Less Swagger",
       "url": "https://www.thedailyupside.com/investments/cryptocurrency/investors-trim-their-new-years-resolutions-for-bitcoin-after-its-bumpy-year/",
-      "timestamp": "4 hours ago",
+      "timestamp": "5 hours ago",
       "sentiment": "negative",
       "imageUrl": null
     }
@@ -757,7 +757,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Business Insider",
       "title": "With another record high, stock investors are showing yet again they're willing to overlook geopolitical turmoil",
       "url": "https://www.businessinsider.com/us-venezuela-impact-stock-market-maduro-attack-raid-reaction-2026-1",
-      "timestamp": "13 hours ago",
+      "timestamp": "14 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     }
@@ -897,7 +897,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Cointelegraph",
       "title": "US crypto stocks soar double-digits as major tokens rally",
       "url": "https://cointelegraph.com/news/crypto-stocks-soar-double-digits-major-tokens-rally",
-      "timestamp": "8 hours ago",
+      "timestamp": "9 hours ago",
       "sentiment": "positive",
       "imageUrl": null
     },
@@ -913,7 +913,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Blockspace",
       "title": "Bitcoin mining stocks end 2025 strong despite December slump: JPMorgan",
       "url": "https://blockspace.media/insight/bitcoin-mining-stocks-end-2025-strong-despite-december-slump-jpmorgan/",
-      "timestamp": "18 hours ago",
+      "timestamp": "19 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -921,7 +921,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "CoinDesk",
       "title": "Bitcoin miners continue to face dwindling profits despite lower competition, JPMorgan says",
       "url": "https://www.coindesk.com/markets/2026/01/05/bitcoin-network-hashrate-fell-for-second-consecutive-month-in-december-jpmorgan",
-      "timestamp": "18 hours ago",
+      "timestamp": "19 hours ago",
       "sentiment": "negative",
       "imageUrl": null
     }
@@ -965,7 +965,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "CoinDesk",
       "title": "U.S. national debt reaches new high of $38.5 trillion",
       "url": "https://www.coindesk.com/markets/2026/01/06/u-s-national-debt-reaches-new-high-of-usd38-5-trillion",
-      "timestamp": "1 hours ago",
+      "timestamp": "2 hours ago",
       "sentiment": "positive",
       "imageUrl": null
     },
@@ -989,7 +989,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Forbes",
       "title": "$2 Trillion Bitcoin Suddenly Back In Play As Surprise Market ‘Paradigm Shift’ Lifts Price Toward $100,000",
       "url": "https://www.forbes.com/sites/digital-assets/2026/01/05/2-trillion-bitcoin-suddenly-back-in-play-as-surprise-market-paradigm-shift-lifts-price-toward-100000/",
-      "timestamp": "7 hours ago",
+      "timestamp": "8 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     }
@@ -1071,6 +1071,123 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "sentiment": "negative",
       "imageUrl": null
     }
+  ],
+  "ledger": [],
+  "trezor": [
+    {
+      "source": "Reddit",
+      "title": "Looking at Trezor wallets, but dont understand what to do if it breaks, becomes obsolete or I lose it",
+      "url": "https://www.reddit.com/r/BitcoinBeginners/comments/1q0pgdp/looking_at_trezor_wallets_but_dont_understand/",
+      "timestamp": "5 days ago",
+      "sentiment": "neutral",
+      "imageUrl": "https://capture.stacker.news/items/1336196"
+    }
+  ],
+  "coldcard": [
+    {
+      "source": "X",
+      "title": "@SGBarbour",
+      "url": "https://twitter.com/SGBarbour/status/2008315027254571456",
+      "timestamp": "3 hours ago",
+      "sentiment": "positive",
+      "imageUrl": null
+    },
+    {
+      "source": "Reddit",
+      "title": "I exported a wallet generated by ColdCard to BlueWallet using the wrong option and now ColdCard can't sign transactions generated by BlueWallet",
+      "url": "https://www.reddit.com/r/BitcoinBeginners/comments/1q0eool/i_exported_a_wallet_generated_by_coldcard_to/",
+      "timestamp": "5 days ago",
+      "sentiment": "negative",
+      "imageUrl": "https://capture.stacker.news/items/1336196"
+    },
+    {
+      "source": "X",
+      "title": "@Excellion",
+      "url": "https://twitter.com/Excellion/status/2006516040466051583",
+      "timestamp": "5 days ago",
+      "sentiment": "positive",
+      "imageUrl": null
+    }
+  ],
+  "foundation-devices": [],
+  "bitbox": [],
+  "casa": [
+    {
+      "source": "CryptoNews",
+      "title": "Bitcoin Price Prediction: Dev Activity Spikes for the First Time in Years – Big Blockchain Upgrade Coming?",
+      "url": "https://cryptonews.com/news/bitcoin-price-prediction-dev-activity-spikes-for-the-first-time-in-years-big-blockchain-upgrade-coming/",
+      "timestamp": "18 hours ago",
+      "sentiment": "positive",
+      "imageUrl": null
+    }
+  ],
+  "kraken": [
+    {
+      "source": "Cointelegraph",
+      "title": "‘Mixed year for IPOs’ as crypto pulls down US IPO performance",
+      "url": "https://cointelegraph.com/news/mixed-year-ipos-crypto-pulls-down-2025-ipo-performance",
+      "timestamp": "4 hours ago",
+      "sentiment": "negative",
+      "imageUrl": null
+    },
+    {
+      "source": "Anthony Pompliano",
+      "title": "Professor Predicts MASSIVE 70% Stock Crash | Dave Collum",
+      "url": "https://www.youtube.com/watch?v=OVxCqVkzhtA",
+      "timestamp": "13 hours ago",
+      "sentiment": "neutral",
+      "imageUrl": null
+    },
+    {
+      "source": "Yahoo Finance",
+      "title": "David Beckham-Backed Health Sciences Company Kills Bitcoin Treasury Plan",
+      "url": "https://finance.yahoo.com/news/david-beckham-backed-health-sciences-141233911.html",
+      "timestamp": "20 hours ago",
+      "sentiment": "negative",
+      "imageUrl": null
+    },
+    {
+      "source": "CryptoSlate",
+      "title": "European crypto trading volume is soaring, but a hidden “venue gap” is silently killing your execution price",
+      "url": "https://cryptoslate.com/mica-euro-stablecoins-doubled-did-btc-eth-liquidity-in-europe-follow/",
+      "timestamp": "2 days ago",
+      "sentiment": "neutral",
+      "imageUrl": "https://cryptoslate.com/wp-content/uploads/2026/01/euro-stablecoin-mica.jpg"
+    }
+  ],
+  "gemini": [
+    {
+      "source": "Cointelegraph",
+      "title": "‘Mixed year for IPOs’ as crypto pulls down US IPO performance",
+      "url": "https://cointelegraph.com/news/mixed-year-ipos-crypto-pulls-down-2025-ipo-performance",
+      "timestamp": "4 hours ago",
+      "sentiment": "negative",
+      "imageUrl": null
+    },
+    {
+      "source": "Cointelegraph",
+      "title": "US crypto stocks soar double-digits as major tokens rally",
+      "url": "https://cointelegraph.com/news/crypto-stocks-soar-double-digits-major-tokens-rally",
+      "timestamp": "9 hours ago",
+      "sentiment": "positive",
+      "imageUrl": null
+    },
+    {
+      "source": "Yahoo Finance",
+      "title": "Ethereum Price Soars Above $3200 as Jeff Bezos Announces Space Travel Payment — Can It Rocket Higher?",
+      "url": "https://finance.yahoo.com/news/ethereum-price-soars-above-3200-142016126.html",
+      "timestamp": "20 hours ago",
+      "sentiment": "neutral",
+      "imageUrl": null
+    },
+    {
+      "source": "Seeking Alpha",
+      "title": "Wall Street Breakfast Podcast: Venezuela Shift Lifts Energy Shares",
+      "url": "https://seekingalpha.com/article/4857142-wall-street-breakfast-podcast-venezuela-shift-lifts-energy-shares",
+      "timestamp": "22 hours ago",
+      "sentiment": "neutral",
+      "imageUrl": null
+    }
   ]
 };
 
@@ -1110,7 +1227,15 @@ export const companyMentionCounts: Record<string, number> = {
   "trump-media": 18,
   "strive": 17,
   "bullish": 19,
-  "exodus": 1
+  "exodus": 1,
+  "ledger": 0,
+  "trezor": 1,
+  "coldcard": 3,
+  "foundation-devices": 0,
+  "bitbox": 0,
+  "casa": 1,
+  "kraken": 21,
+  "gemini": 4
 };
 
 export const getCompanyMentions = (slug: string): CompanyMention[] => {
