@@ -60,7 +60,11 @@ const companies = [
   { slug: 'casa', name: 'Casa', keyword: 'Casa Bitcoin' },
   // Additional Exchanges
   { slug: 'kraken', name: 'Kraken', keyword: 'Kraken' },
-  { slug: 'gemini', name: 'Gemini', keyword: 'Gemini exchange' }
+  { slug: 'gemini', name: 'Gemini', keyword: 'Gemini exchange' },
+  // Software Wallets
+  { slug: 'wasabi-wallet', name: 'Wasabi Wallet', keyword: 'Wasabi Wallet' },
+  { slug: 'sparrow-wallet', name: 'Sparrow Wallet', keyword: 'Sparrow Wallet' },
+  { slug: 'bluewallet', name: 'BlueWallet', keyword: 'BlueWallet' }
 ];
 
 // Map sentiment string to category

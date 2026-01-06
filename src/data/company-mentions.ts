@@ -1,5 +1,5 @@
 // Auto-generated company mentions data from Perception hybridFeed API
-// Generated: 2026-01-06T02:18:35.264Z
+// Generated: 2026-01-06T02:26:22.403Z
 // Run: node scripts/fetch-company-mentions.cjs
 
 export interface CompanyMention {
@@ -59,7 +59,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Blockspace",
       "title": "Bitcoin mining stock prices diverge sharply in 2025 as AI pivots drive gains",
       "url": "https://blockspace.media/insight/bitcoin-mining-stock-prices-diverge-sharply-in-2025-as-ai-pivots-drive-gains/",
-      "timestamp": "18 hours ago",
+      "timestamp": "19 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -101,7 +101,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Cointelegraph",
       "title": "Bitcoin outlook bullish as whales, sharks buy retail sell-off: Santiment",
       "url": "https://cointelegraph.com/news/whale-accumulation-retail-profit-taking-signal-bullish-bitcoin-momentum-santiment",
-      "timestamp": "5 hours ago",
+      "timestamp": "6 hours ago",
       "sentiment": "positive",
       "imageUrl": null
     },
@@ -119,7 +119,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Yahoo Finance",
       "title": "How India Revamped Its Crypto Industry in 2025: 49 Exchanges Registered, $3.1M in Fines Issued, Here's What's Next",
       "url": "https://finance.yahoo.com/news/india-revamped-crypto-industry-2025-074445673.html",
-      "timestamp": "1 hours ago",
+      "timestamp": "2 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -135,7 +135,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "The Block",
       "title": "Spot bitcoin ETFs report $697 million in net inflows, largest daily total since October",
       "url": "https://www.theblock.co/post/384421/spot-bitcoin-etfs-700-million-inflows?utm_source=rss&utm_medium=rss",
-      "timestamp": "3 hours ago",
+      "timestamp": "4 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -153,7 +153,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "BitMEX",
       "title": "How to Trade Stocks with Crypto: The Ultimate Step by Step Guide",
       "url": "https://blog.bitmex.com/how-to-trade-stocks-with-crypto/",
-      "timestamp": "4 hours ago",
+      "timestamp": "5 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -169,7 +169,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "CNBC",
       "title": "Stock futures are little changed after Dow rises to record on U.S.’ capture of Venezuela leader: Live updates",
       "url": "https://www.cnbc.com/2026/01/05/stock-market-today-live-updates.html",
-      "timestamp": "11 hours ago",
+      "timestamp": "12 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -221,7 +221,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Yahoo Finance",
       "title": "Japan’s Finance Minister Says 2026 Is the 'First Year of Digitalization' — Stocks, Crypto, and Digital Assets in Focus",
       "url": "https://finance.yahoo.com/news/japan-finance-minister-says-2026-150215221.html",
-      "timestamp": "19 hours ago",
+      "timestamp": "20 hours ago",
       "sentiment": "positive",
       "imageUrl": null
     },
@@ -229,7 +229,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Cointelegraph",
       "title": "Strategy kickstarts 2026 with $116M Bitcoin buy as Q4 paper loss hits $17B",
       "url": "https://cointelegraph.com/news/strategy-2026-116m-bitcoin-buy-17b-loss-q4",
-      "timestamp": "20 hours ago",
+      "timestamp": "21 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -347,7 +347,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Cointelegraph",
       "title": "Bitcoin outlook bullish as whales, sharks buy retail sell-off: Santiment",
       "url": "https://cointelegraph.com/news/whale-accumulation-retail-profit-taking-signal-bullish-bitcoin-momentum-santiment",
-      "timestamp": "5 hours ago",
+      "timestamp": "6 hours ago",
       "sentiment": "positive",
       "imageUrl": null
     }
@@ -365,7 +365,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "BitMEX",
       "title": "How to Trade Stocks with Crypto: The Ultimate Step by Step Guide",
       "url": "https://blog.bitmex.com/how-to-trade-stocks-with-crypto/",
-      "timestamp": "4 hours ago",
+      "timestamp": "5 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -415,7 +415,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Cointelegraph",
       "title": "Bitcoin outlook bullish as whales, sharks buy retail sell-off: Santiment",
       "url": "https://cointelegraph.com/news/whale-accumulation-retail-profit-taking-signal-bullish-bitcoin-momentum-santiment",
-      "timestamp": "5 hours ago",
+      "timestamp": "6 hours ago",
       "sentiment": "positive",
       "imageUrl": null
     }
@@ -475,7 +475,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Benzinga",
       "title": "Eric Trump Touts 'Disciplined Accumulation, Relentless Execution' As American Bitcoin Buys More BTC: 'Best Is Yet To Come'",
       "url": "https://www.benzinga.com/crypto/cryptocurrency/26/01/49713738/eric-trump-touts-disciplined-accumulation-relentless-execution-as-american-bitcoin-buys-mor?utm_source=benzinga_taxonomy&utm_medium=rss_feed_free&utm_content=taxonomy_rss&utm_campaign=channel",
-      "timestamp": "5 hours ago",
+      "timestamp": "6 hours ago",
       "sentiment": "positive",
       "imageUrl": null
     },
@@ -553,7 +553,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Yahoo Finance",
       "title": "How India Revamped Its Crypto Industry in 2025: 49 Exchanges Registered, $3.1M in Fines Issued, Here's What's Next",
       "url": "https://finance.yahoo.com/news/india-revamped-crypto-industry-2025-074445673.html",
-      "timestamp": "1 hours ago",
+      "timestamp": "2 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -569,7 +569,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "X",
       "title": "@mikebelshe",
       "url": "https://twitter.com/mikebelshe/status/2008302270614827177",
-      "timestamp": "3 hours ago",
+      "timestamp": "4 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -595,7 +595,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Blockspace",
       "title": "Bitcoin mining stock prices diverge sharply in 2025 as AI pivots drive gains",
       "url": "https://blockspace.media/insight/bitcoin-mining-stock-prices-diverge-sharply-in-2025-as-ai-pivots-drive-gains/",
-      "timestamp": "18 hours ago",
+      "timestamp": "19 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -631,7 +631,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Benzinga",
       "title": "Eric Trump Touts 'Disciplined Accumulation, Relentless Execution' As American Bitcoin Buys More BTC: 'Best Is Yet To Come'",
       "url": "https://www.benzinga.com/crypto/cryptocurrency/26/01/49713738/eric-trump-touts-disciplined-accumulation-relentless-execution-as-american-bitcoin-buys-mor?utm_source=benzinga_taxonomy&utm_medium=rss_feed_free&utm_content=taxonomy_rss&utm_campaign=channel",
-      "timestamp": "5 hours ago",
+      "timestamp": "6 hours ago",
       "sentiment": "positive",
       "imageUrl": null
     },
@@ -689,7 +689,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Blockspace",
       "title": "Bitcoin mining stock prices diverge sharply in 2025 as AI pivots drive gains",
       "url": "https://blockspace.media/insight/bitcoin-mining-stock-prices-diverge-sharply-in-2025-as-ai-pivots-drive-gains/",
-      "timestamp": "18 hours ago",
+      "timestamp": "19 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     }
@@ -837,7 +837,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Blockspace",
       "title": "Bitcoin mining stock prices diverge sharply in 2025 as AI pivots drive gains",
       "url": "https://blockspace.media/insight/bitcoin-mining-stock-prices-diverge-sharply-in-2025-as-ai-pivots-drive-gains/",
-      "timestamp": "18 hours ago",
+      "timestamp": "19 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -863,7 +863,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Blockspace",
       "title": "Bitcoin mining stock prices diverge sharply in 2025 as AI pivots drive gains",
       "url": "https://blockspace.media/insight/bitcoin-mining-stock-prices-diverge-sharply-in-2025-as-ai-pivots-drive-gains/",
-      "timestamp": "18 hours ago",
+      "timestamp": "19 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -905,7 +905,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Blockspace",
       "title": "Bitcoin mining stock prices diverge sharply in 2025 as AI pivots drive gains",
       "url": "https://blockspace.media/insight/bitcoin-mining-stock-prices-diverge-sharply-in-2025-as-ai-pivots-drive-gains/",
-      "timestamp": "18 hours ago",
+      "timestamp": "19 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
     },
@@ -939,7 +939,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "X",
       "title": "@SimplyBitcoin",
       "url": "https://twitter.com/SimplyBitcoin/status/2008227759357825433",
-      "timestamp": "8 hours ago",
+      "timestamp": "9 hours ago",
       "sentiment": "positive",
       "imageUrl": null
     },
@@ -1067,7 +1067,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Yahoo Finance",
       "title": "David Beckham-Backed Health Sciences Company Kills Bitcoin Treasury Plan",
       "url": "https://finance.yahoo.com/news/david-beckham-backed-health-sciences-141233911.html",
-      "timestamp": "20 hours ago",
+      "timestamp": "21 hours ago",
       "sentiment": "negative",
       "imageUrl": null
     }
@@ -1116,7 +1116,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "CryptoNews",
       "title": "Bitcoin Price Prediction: Dev Activity Spikes for the First Time in Years – Big Blockchain Upgrade Coming?",
       "url": "https://cryptonews.com/news/bitcoin-price-prediction-dev-activity-spikes-for-the-first-time-in-years-big-blockchain-upgrade-coming/",
-      "timestamp": "18 hours ago",
+      "timestamp": "19 hours ago",
       "sentiment": "positive",
       "imageUrl": null
     }
@@ -1142,7 +1142,7 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Yahoo Finance",
       "title": "David Beckham-Backed Health Sciences Company Kills Bitcoin Treasury Plan",
       "url": "https://finance.yahoo.com/news/david-beckham-backed-health-sciences-141233911.html",
-      "timestamp": "20 hours ago",
+      "timestamp": "21 hours ago",
       "sentiment": "negative",
       "imageUrl": null
     },
@@ -1184,9 +1184,55 @@ export const companyMentions: Record<string, CompanyMention[]> = {
       "source": "Seeking Alpha",
       "title": "Wall Street Breakfast Podcast: Venezuela Shift Lifts Energy Shares",
       "url": "https://seekingalpha.com/article/4857142-wall-street-breakfast-podcast-venezuela-shift-lifts-energy-shares",
-      "timestamp": "22 hours ago",
+      "timestamp": "23 hours ago",
       "sentiment": "neutral",
       "imageUrl": null
+    }
+  ],
+  "wasabi-wallet": [
+    {
+      "source": "Bitcoin Magazine",
+      "title": "Async Payjoin, the HTTPS of Bitcoin Privacy ",
+      "url": "https://bitcoinmagazine.com/business/async-payjoin-the-https-of-bitcoin-privacy",
+      "timestamp": "6 days ago",
+      "sentiment": "positive",
+      "imageUrl": "https://bitcoinmagazine.com/wp-content/uploads/2025/12/tn.jpg"
+    }
+  ],
+  "sparrow-wallet": [
+    {
+      "source": "Bitcoin Magazine",
+      "title": "Async Payjoin, the HTTPS of Bitcoin Privacy ",
+      "url": "https://bitcoinmagazine.com/business/async-payjoin-the-https-of-bitcoin-privacy",
+      "timestamp": "6 days ago",
+      "sentiment": "positive",
+      "imageUrl": "https://bitcoinmagazine.com/wp-content/uploads/2025/12/tn.jpg"
+    }
+  ],
+  "bluewallet": [
+    {
+      "source": "Reddit",
+      "title": "Why is it safer to store Bitcoin in Bluewallet than in Mooze?",
+      "url": "https://www.reddit.com/r/Bitcoin/comments/1q35c7y/why_is_it_safer_to_store_bitcoin_in_bluewallet/",
+      "timestamp": "2 days ago",
+      "sentiment": "neutral",
+      "imageUrl": "https://capture.stacker.news/items/1336196"
+    },
+    {
+      "source": "Reddit",
+      "title": "Forgot password (Blue Wallet)",
+      "url": "https://www.reddit.com/r/Bitcoin/comments/1q0uffs/forgot_password_blue_wallet/",
+      "timestamp": "4 days ago",
+      "sentiment": "negative",
+      "imageUrl": "https://capture.stacker.news/items/1336196"
+    },
+    {
+      "source": "Reddit",
+      "title": "I exported a wallet generated by ColdCard to BlueWallet using the wrong option and now ColdCard can't sign transactions generated by BlueWallet",
+      "url": "https://www.reddit.com/r/BitcoinBeginners/comments/1q0eool/i_exported_a_wallet_generated_by_coldcard_to/",
+      "timestamp": "5 days ago",
+      "sentiment": "negative",
+      "imageUrl": "https://capture.stacker.news/items/1336196"
     }
   ]
 };
@@ -1235,7 +1281,10 @@ export const companyMentionCounts: Record<string, number> = {
   "bitbox": 0,
   "casa": 1,
   "kraken": 21,
-  "gemini": 4
+  "gemini": 4,
+  "wasabi-wallet": 1,
+  "sparrow-wallet": 1,
+  "bluewallet": 3
 };
 
 export const getCompanyMentions = (slug: string): CompanyMention[] => {
