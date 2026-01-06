@@ -46,7 +46,7 @@ const footerSections: FooterSection[] = [
     links: [
       { label: 'About', href: '/about' },
       { label: 'Press', href: '/press' },
-      { label: 'Advisory', href: '/advisory', comingSoon: true },
+      { label: 'Advisory', href: '/advisory' },
     ],
   },
   {

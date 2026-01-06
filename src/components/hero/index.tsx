@@ -161,15 +161,15 @@ export function Hero() {
                     />
                   </a>
                   <a
-                    href="https://www.binance.com/en/square/post/17159960284914"
+                    href="https://www.coindesk.com/markets/2026/01/05/asia-morning-briefing-data-shows-legacy-media-took-a-more-balanced-view-of-bitcoin-in-2025"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group relative flex h-14 sm:h-16 lg:h-20 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
                   >
                     <img
                       className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-16 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105"
-                      src="/logos/binance_square_logo-removebg-preview.png"
-                      alt="Binance"
+                      src="/logos/coindesk-logo-white.png"
+                      alt="CoinDesk"
                       loading="lazy"
                     />
                   </a>
@@ -235,6 +235,19 @@ export function Hero() {
                       className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-16 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-lg"
                       src="/logos/whatismoney-logo.png"
                       alt="What is Money Show"
+                      loading="lazy"
+                    />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/@SimplyBitcoin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex h-14 sm:h-16 lg:h-20 w-full items-center justify-center transition-all duration-300 hover:opacity-100"
+                  >
+                    <img
+                      className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-16 max-w-[90%] object-contain transition-all duration-300 group-hover:scale-105 rounded-lg"
+                      src="/logos/simplybitcoin-logo.png"
+                      alt="Simply Bitcoin"
                       loading="lazy"
                     />
                   </a>

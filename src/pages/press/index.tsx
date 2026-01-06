@@ -15,6 +15,14 @@ interface PressRelease {
 
 const pressReleases: PressRelease[] = [
   {
+    date: 'January 5, 2026',
+    title: 'Data Shows Legacy Media Took a More Balanced View of Bitcoin in 2025',
+    description: 'According to analysis from crypto intelligence platform Perception, traditional media coverage of Bitcoin shifted significantly in 2025, with neutral reporting outweighing negative stories as environmental concerns gave way to more balanced overall sentiment.',
+    link: 'https://www.coindesk.com/markets/2026/01/05/asia-morning-briefing-data-shows-legacy-media-took-a-more-balanced-view-of-bitcoin-in-2025',
+    tags: ['CoinDesk'],
+    image: '/logos/coindesk-logo.png',
+  },
+  {
     date: 'August 4, 2025',
     title: 'Blockstream VP Fernando Nikolic Leaves To Launch Perception, A Bitcoin Market Intelligence Platform',
     description: 'After four years at Blockstream, Fernando Nikolic steps down to start Perception, a platform aimed at addressing fragmented information in the Bitcoin and digital asset space.',

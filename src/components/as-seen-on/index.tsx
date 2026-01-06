@@ -2,6 +2,11 @@ import { cn } from "@/lib/utils";
 
 const publications = [
   {
+    name: "CoinDesk",
+    logo: "/logos/coindesk-logo-white.png",
+    url: "https://www.coindesk.com/markets/2026/01/05/asia-morning-briefing-data-shows-legacy-media-took-a-more-balanced-view-of-bitcoin-in-2025",
+  },
+  {
     name: "Cointelegraph",
     logo: "/logos/Cointelegraph_Logo-removebg-preview.png",
     url: "https://cointelegraph.com/news/bitcoins-change-in-media-perception-from-0-to-100000-dollars",
@@ -15,11 +20,6 @@ const publications = [
     name: "Bitcoin Magazine",
     logo: "/logos/BTC_Mag_Logo-removebg-preview.png",
     url: "https://bitcoinmagazine.com/culture/left-leaning-outlets-amplify-their-anti-bitcoin-bias-following-trumps-endorsement-",
-  },
-  {
-    name: "Binance",
-    logo: "/logos/binance_square_logo-removebg-preview.png",
-    url: "https://www.binance.com/en/square/post/17159960284914",
   },
 ];
 

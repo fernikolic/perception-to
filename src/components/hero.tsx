@@ -235,15 +235,15 @@ export function Hero() {
             />
           </a>
           <a
-            href="https://www.binance.com/en/square/post/17159960284914"
+            href="https://www.coindesk.com/markets/2026/01/05/asia-morning-briefing-data-shows-legacy-media-took-a-more-balanced-view-of-bitcoin-in-2025"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative flex h-12 sm:h-14 lg:h-16 w-full items-center justify-center transition-all duration-300 hover:opacity-70"
           >
             <img
               className="h-auto w-auto max-h-10 sm:max-h-12 lg:max-h-14 max-w-[95%] object-contain transition-all duration-300 group-hover:scale-105 brightness-0"
-              src="/logos/binance_square_logo-removebg-preview.png"
-              alt="Binance"
+              src="/logos/coindesk-logo-white.png"
+              alt="CoinDesk"
               loading="lazy"
             />
           </a>

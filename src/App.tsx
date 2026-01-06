@@ -75,6 +75,9 @@ import ResearchSlugRedirect from '@/pages/research/slug-redirect';
 import BMRReportsPage from '@/pages/bitcoin-media-research/reports';
 import BMROpinionPage from '@/pages/bitcoin-media-research/opinion';
 import BMRPostPage from '@/pages/bitcoin-media-research/[slug]';
+import AdvisoryPage from '@/pages/advisory';
+import BitcoinCompaniesPage from '@/pages/bitcoin-companies';
+import BitcoinCompanyPage from '@/pages/bitcoin-companies/[slug]';
 
 function HomePage() {
   return (
@@ -107,6 +110,7 @@ const App = () => {
               <Route path="/journalist" element={<JournalistLanding />} />
               <Route path="/investor" element={<InvestorLanding />} />
               <Route path="/researcher" element={<CompaniesLanding />} />
+              <Route path="/advisory" element={<AdvisoryPage />} />
               <Route path="/use-cases" element={<UseCasesLanding />} />
               <Route path="/use-cases/executive-intelligence" element={<ExecutiveIntelligencePage />} />
               <Route path="/use-cases/stakeholder-communications" element={<StakeholderCommunicationsPage />} />
@@ -145,6 +149,10 @@ const App = () => {
                 element={<ConferencePage />}
               />
               <Route path="/bitcoin-bad-takes/*" element={<BitcoinBadTakes />} />
+
+              {/* Bitcoin Companies */}
+              <Route path="/bitcoin-companies" element={<BitcoinCompaniesPage />} />
+              <Route path="/bitcoin-companies/:slug" element={<BitcoinCompanyPage />} />
               <Route path="/bitcoin-social-media-sentiment-leaderboard" element={<TwitterSentimentLeaderboard />} />
               <Route path="/og/leaderboard" element={<LeaderboardOGImage />} />
 
