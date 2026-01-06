@@ -11,6 +11,7 @@ const HYBRID_FEED_API = 'https://us-central1-perception-app-3db34.cloudfunctions
 
 // Companies to fetch mentions for
 const companies = [
+  // Original companies
   { slug: 'strategy', name: 'Strategy (MicroStrategy)', keyword: 'MicroStrategy' },
   { slug: 'marathon-digital', name: 'Marathon Digital', keyword: 'Marathon Digital' },
   { slug: 'coinbase', name: 'Coinbase', keyword: 'Coinbase' },
@@ -25,7 +26,31 @@ const companies = [
   { slug: 'bitcoin-magazine', name: 'Bitcoin Magazine', keyword: 'Bitcoin Magazine' },
   { slug: 'grayscale', name: 'Grayscale', keyword: 'Grayscale' },
   { slug: 'michael-saylor', name: 'Michael Saylor', keyword: 'Michael Saylor' },
-  { slug: 'swan-bitcoin', name: 'Swan Bitcoin', keyword: 'Swan Bitcoin' }
+  { slug: 'swan-bitcoin', name: 'Swan Bitcoin', keyword: 'Swan Bitcoin' },
+  // Tier 1: Major Treasury & Mining Companies
+  { slug: 'twenty-one-capital', name: 'Twenty One Capital', keyword: 'Twenty One Capital' },
+  { slug: 'hut-8', name: 'Hut 8', keyword: 'Hut 8' },
+  { slug: 'cleanspark', name: 'CleanSpark', keyword: 'CleanSpark' },
+  { slug: 'gamestop', name: 'GameStop', keyword: 'GameStop Bitcoin' },
+  { slug: 'galaxy-digital', name: 'Galaxy Digital', keyword: 'Galaxy Digital' },
+  { slug: 'core-scientific', name: 'Core Scientific', keyword: 'Core Scientific' },
+  { slug: 'semler-scientific', name: 'Semler Scientific', keyword: 'Semler Scientific' },
+  { slug: 'fold', name: 'Fold', keyword: 'Fold Bitcoin' },
+  // Tier 2: Infrastructure & Private Companies
+  { slug: 'blockstream', name: 'Blockstream', keyword: 'Blockstream' },
+  { slug: 'lightning-labs', name: 'Lightning Labs', keyword: 'Lightning Labs' },
+  { slug: 'river', name: 'River', keyword: 'River Bitcoin' },
+  { slug: 'unchained', name: 'Unchained', keyword: 'Unchained Bitcoin' },
+  // Tier 3: Notable Miners
+  { slug: 'bitdeer', name: 'Bitdeer', keyword: 'Bitdeer' },
+  { slug: 'bitfarms', name: 'Bitfarms', keyword: 'Bitfarms' },
+  { slug: 'cipher-mining', name: 'Cipher Mining', keyword: 'Cipher Mining' },
+  { slug: 'hive-digital', name: 'HIVE Digital', keyword: 'HIVE Digital' },
+  // Tier 4: Other Noteworthy Companies
+  { slug: 'trump-media', name: 'Trump Media', keyword: 'Trump Media Bitcoin' },
+  { slug: 'strive', name: 'Strive', keyword: 'Strive Bitcoin' },
+  { slug: 'bullish', name: 'Bullish', keyword: 'Bullish exchange' },
+  { slug: 'exodus', name: 'Exodus', keyword: 'Exodus wallet' }
 ];
 
 // Map sentiment string to category
