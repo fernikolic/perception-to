@@ -108,6 +108,117 @@ export function JournalismPage() {
           </div>
         </section>
 
+        {/* Featured In Publications */}
+        <section className="py-24 sm:py-32 bg-black relative overflow-hidden">
+          {/* Background gradient effects */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.03),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(255,255,255,0.02),transparent_50%)]" />
+
+          <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
+            <div className="text-center mb-16 sm:mb-20">
+              <span className="inline-flex items-center rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white/60 ring-1 ring-white/10 mb-6">
+                As seen in
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                Perception data in the press
+              </h2>
+              <p className="text-lg sm:text-xl text-white/50 max-w-2xl mx-auto">
+                Leading crypto publications cite our data to back their reporting
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+              {/* CoinDesk Card */}
+              <a
+                href="https://www.coindesk.com/markets/2026/01/05/asia-morning-briefing-data-shows-legacy-media-took-a-more-balanced-view-of-bitcoin-in-2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] rounded-3xl p-8 sm:p-10 border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-white/5"
+              >
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="relative">
+                  {/* Logo */}
+                  <div className="mb-8">
+                    <img
+                      src="/logos/coindesk-logo-white.png"
+                      alt="CoinDesk"
+                      className="h-7 sm:h-8 w-auto brightness-0 invert"
+                    />
+                  </div>
+
+                  {/* Quote highlight */}
+                  <div className="mb-6">
+                    <div className="text-5xl sm:text-6xl font-serif text-white/20 leading-none mb-2">"</div>
+                    <p className="text-lg sm:text-xl text-white/80 font-light leading-relaxed -mt-6 pl-2">
+                      According to research by crypto intelligence platform Perception, mainstream media coverage of Bitcoin shifted toward neutrality in 2025.
+                    </p>
+                  </div>
+
+                  {/* Article title */}
+                  <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4 group-hover:text-white transition-colors leading-tight">
+                    Data shows legacy media took a more balanced view of bitcoin in 2025
+                  </h3>
+
+                  {/* Meta */}
+                  <div className="flex items-center justify-between pt-6 border-t border-white/10">
+                    <span className="text-sm text-white/40">January 2026</span>
+                    <span className="flex items-center gap-2 text-sm font-medium text-white/60 group-hover:text-white transition-colors">
+                      Read article
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </div>
+              </a>
+
+              {/* Cointelegraph Card */}
+              <a
+                href="https://cointelegraph.com/news/bitcoins-change-in-media-perception-from-0-to-100000-dollars"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] rounded-3xl p-8 sm:p-10 border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-white/5"
+              >
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-500/10 to-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="relative">
+                  {/* Logo */}
+                  <div className="mb-8 h-7 sm:h-8 flex items-center">
+                    <img
+                      src="/logos/Cointelegraph Logo.png"
+                      alt="Cointelegraph"
+                      className="h-auto w-48 sm:w-56 object-contain object-left"
+                    />
+                  </div>
+
+                  {/* Quote highlight */}
+                  <div className="mb-6">
+                    <div className="text-5xl sm:text-6xl font-serif text-white/20 leading-none mb-2">"</div>
+                    <p className="text-lg sm:text-xl text-white/80 font-light leading-relaxed -mt-6 pl-2">
+                      The article examines mainstream media's changing attitudes toward Bitcoin as it reaches the $100,000 milestone.
+                    </p>
+                  </div>
+
+                  {/* Article title */}
+                  <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4 group-hover:text-white transition-colors leading-tight">
+                    Bitcoin at $100K: How the media's perception has shifted since 2009
+                  </h3>
+
+                  {/* Meta */}
+                  <div className="flex items-center justify-between pt-6 border-t border-white/10">
+                    <span className="text-sm text-white/40">December 2024</span>
+                    <span className="flex items-center gap-2 text-sm font-medium text-white/60 group-hover:text-white transition-colors">
+                      Read article
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* The Solution */}
         <section id="solution-section" className="py-24 sm:py-32 bg-[#F0EEE6]">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">

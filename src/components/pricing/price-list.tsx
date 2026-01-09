@@ -18,8 +18,8 @@ const tiers = [
       'Instant setup. No sales calls.',
     ],
     cta: 'Start 7-day free trial',
-    ctaLink: 'https://buy.stripe.com/aFa3cvaVw9IBbbCfvW63K05',
-    annualCtaLink: 'https://buy.stripe.com/aFa3cvaVw9IBbbCfvW63K05', // TODO: Replace with actual annual link
+    ctaLink: 'https://app.perception.to/auth/sign-up',
+    annualCtaLink: 'https://app.perception.to/auth/sign-up',
     dataplan: 'pro',
   },
   {
@@ -42,8 +42,8 @@ const tiers = [
     ],
     featured: true,
     cta: 'Start 7-day free trial',
-    ctaLink: 'https://buy.stripe.com/8wMdTW7tLew03m0fZ2',
-    annualCtaLink: 'https://buy.stripe.com/8wMdTW7tLew03m0fZ2', // TODO: Replace with actual annual link
+    ctaLink: 'https://app.perception.to/auth/sign-up',
+    annualCtaLink: 'https://app.perception.to/auth/sign-up',
     dataplan: 'premium',
   },
   {

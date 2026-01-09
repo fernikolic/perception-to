@@ -1,0 +1,9 @@
+<svg viewBox="0 0 220 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ctGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F7931A"/>
+      <stop offset="100%" style="stop-color:#FFCC00"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="21" fill="url(#ctGradient)" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="19" font-weight="900" letter-spacing="1">COINTELEGRAPH</text>
+</svg>

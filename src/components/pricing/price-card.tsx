@@ -9,15 +9,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { ReactNode } from 'react';
-
-// Add a type declaration for the analytics property on the window object
-declare global {
-  interface Window {
-    analytics?: {
-      track: (event: string, properties?: any) => void;
-    };
-  }
-}
+import { trackTrialStart, trackCtaClick } from '@/lib/analytics';
 
 interface PriceCardProps {
   name: string;
@@ -58,30 +50,15 @@ export function PriceCard({
   
   const handleButtonClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    
-    // Track the click event based on the plan
-    if (dataplan === 'pro') {
-      // Fire analytics event
-      if (typeof window !== 'undefined' && window.analytics) {
-        window.analytics.track('click_pricing_pro_trial');
-      }
-      // You can also use GA or other analytics providers here
-      console.log('Pro plan click tracked');
-    } else if (dataplan === 'premium') {
-      // Fire analytics event
-      if (typeof window !== 'undefined' && window.analytics) {
-        window.analytics.track('click_pricing_premium_trial');
-      }
-      console.log('Premium plan click tracked');
+
+    // Track the conversion event based on the plan
+    if (dataplan === 'pro' || dataplan === 'premium') {
+      trackTrialStart(dataplan);
     } else if (dataplan === 'enterprise') {
-      // Fire analytics event
-      if (typeof window !== 'undefined' && window.analytics) {
-        window.analytics.track('click_pricing_enterprise_inquiry');
-      }
-      console.log('Enterprise plan click tracked');
+      trackCtaClick('enterprise_inquiry', currentLink);
     }
-    
-    // Redirect to the Stripe checkout URL after tracking
+
+    // Redirect after tracking
     window.location.href = currentLink;
   };
   
