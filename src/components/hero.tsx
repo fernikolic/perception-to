@@ -92,7 +92,7 @@ export function Hero() {
 
               <div ref={subtitleRef} className="mb-8 sm:mb-10 text-center sm:text-left">
                 <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-black/70 font-light">
-                  Ditch the manual work. Monitor 650+ sources across Bitcoin, stablecoins, and tokenized finance. Turn them into fully cited outputs: board updates, interview prep, investor briefs, and{'\u00A0'}more.
+                  Monitor your company and competitors across 650+ sources in Bitcoin, stablecoins, and tokenized finance. Get fully cited board updates, interview prep, investor briefs, and{'\u00A0'}more.
                 </p>
               </div>
 
