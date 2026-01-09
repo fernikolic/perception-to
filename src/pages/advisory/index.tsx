@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Check, X, Calendar, MessageSquare, FileText, BarChart3 } from 'lucide-react';
+import { ArrowRight, Check, X, Calendar, MessageSquare, FileText, BarChart3, Monitor } from 'lucide-react';
 import SEO from '@/components/SEO';
 
 // Animation variants
@@ -76,16 +76,25 @@ function HeroSection() {
         </motion.div>
 
         <motion.h1
-          className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 leading-[1.1] tracking-tight mb-12"
+          className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 leading-[1.1] tracking-tight mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
         >
-          Narrative intelligence from{' '}
+          Brand positioning based on{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">
-            Blockstream's former VP of Marketing & Communications.
+            data, not gut feel.
           </span>
         </motion.h1>
+
+        <motion.p
+          className="text-stone-400 text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+        >
+          Strategic advisory from Blockstream's former VP of Marketing & Communications. 650+ sources tracked in real-time. Narrative intelligence that helps you position before your competitors see the opportunity.
+        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -118,11 +127,11 @@ function HeroSection() {
 // Problem Section
 function ProblemSection() {
   const problems = [
-    "You spend hours scanning Twitter, Telegram, and newsletters. You still miss things",
-    "Competitors are moving on opportunities you didn't even know existed",
-    "Regulatory windows open and close before you can position for them",
-    "Your team is overwhelmed with information but lacks actionable insight",
-    "You're reacting to the market instead of shaping it"
+    "You don't know which narratives are gaining traction until it's too late",
+    "Competitors are positioning around opportunities you haven't identified",
+    "Your brand blends in when it should stand out",
+    "You're reacting to conversations instead of shaping them",
+    "Every positioning decision feels like an educated guess"
   ];
 
   return (
@@ -142,7 +151,7 @@ function ProblemSection() {
             className="font-serif text-3xl sm:text-4xl md:text-5xl text-stone-100 leading-tight mb-12"
             variants={staggerItem}
           >
-            You can't keep up with everything happening in crypto.
+            You're making positioning decisions without complete information.
           </motion.h2>
 
           <motion.ul className="space-y-4" variants={staggerContainer}>
@@ -169,22 +178,27 @@ function DeliverablesSection() {
     {
       icon: Calendar,
       title: "Monthly Strategy Session",
-      description: "90-minute deep dive on narrative positioning, competitive landscape, and strategic priorities. Recorded for your team."
+      description: "90 minutes. Your positioning, your competitive landscape, your next moves. Recorded for your team."
     },
     {
       icon: FileText,
       title: "Weekly Briefings",
-      description: "What's shifting in your market. What it means for you. What to do about it. Delivered to your inbox every Monday."
+      description: "Which narratives are rising. Which are fading. Where the gaps are. What to do about it. Every Monday."
     },
     {
       icon: BarChart3,
       title: "Quarterly Narrative Audit",
-      description: "Comprehensive analysis of your positioning vs. market reality. Where you're winning, where you're vulnerable, and what to fix."
+      description: "A comprehensive analysis of how you're positioned versus market reality. Where you're winning. Where you're exposed."
     },
     {
       icon: MessageSquare,
       title: "Direct Access",
-      description: "Slack or Signal for time-sensitive questions. When narratives shift overnight, you'll have someone to call."
+      description: "Slack or Signal. When a narrative shifts overnight or an opportunity emerges, you'll have someone to call."
+    },
+    {
+      icon: Monitor,
+      title: "Perception Platform",
+      description: "Full access to the intelligence platform tracking 650+ sources in real-time. See what I see. ($199/month value, included.)"
     }
   ];
 
@@ -200,12 +214,12 @@ function DeliverablesSection() {
           <motion.div variants={staggerItem} className="text-center mb-16">
             <SectionLabel>What You Get</SectionLabel>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-stone-100 leading-tight">
-              Intelligence. Interpretation. Action.
+              Intelligence. Interpretation. Positioning.
             </h2>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
             variants={staggerContainer}
           >
             {deliverables.map((item, index) => (
@@ -255,15 +269,15 @@ function BioSection() {
 
           <motion.div variants={staggerContainer} className="space-y-6">
             <motion.p className="text-lg text-stone-300 leading-relaxed" variants={staggerItem}>
-              <strong className="text-stone-100">4+ years as VP of Marketing & Communications at Blockstream</strong>, one of the most recognized Bitcoin infrastructure companies in the world. Before that, I was at Universal Music in Norway when torrents upended the industry.
+              <strong className="text-stone-100">4+ years as VP of Marketing & Communications at Blockstream</strong>, one of the most recognized Bitcoin infrastructure companies in the world.
             </motion.p>
 
             <motion.p className="text-lg text-stone-400 leading-relaxed" variants={staggerItem}>
-              I've seen how narratives shape markets. How regulatory shifts create (or destroy) opportunities. How the right positioning at the right moment can define a company for years.
+              Before that, I watched the music industry collapse from inside Universal Music during the torrents era. I've seen what happens when companies misread narratives. I've also seen what happens when they get it right.
             </motion.p>
 
             <motion.p className="text-lg text-stone-400 leading-relaxed" variants={staggerItem}>
-              Now I run <strong className="text-stone-300">Perception</strong>, a narrative intelligence platform tracking Bitcoin, stablecoins and tokenized finance across 650+ sources. The advisory service puts my interpretation and strategic thinking on top of that data.
+              Now I run <strong className="text-stone-300">Perception</strong>, a narrative intelligence platform tracking Bitcoin, stablecoins, and tokenized finance across 650+ sources. The advisory service puts my interpretation and strategic thinking on top of that data.
             </motion.p>
 
             <motion.blockquote
@@ -286,8 +300,9 @@ function PricingSection() {
   const included = [
     "Monthly 90-minute strategy session",
     "Weekly narrative briefings",
-    "Quarterly narrative audit",
+    "Quarterly positioning audit",
     "Direct Slack/Signal access",
+    "Full Perception platform access",
     "All supporting research and documentation"
   ];
 
@@ -309,14 +324,14 @@ function PricingSection() {
             className="font-serif text-3xl sm:text-4xl md:text-5xl text-stone-100 leading-tight mb-4"
             variants={staggerItem}
           >
-            This isn't for everyone.
+            Five clients. That's the cap.
           </motion.h2>
 
           <motion.p
             className="text-stone-400 text-lg mb-12 max-w-xl mx-auto"
             variants={staggerItem}
           >
-            I cap advisory at 3 clients at a time. Quality over scale. If we work together, you get my full attention.
+            I don't scale. I go deep. If we work together, you get my full attention and the complete intelligence infrastructure behind Perception.
           </motion.p>
 
           <motion.div
@@ -327,14 +342,13 @@ function PricingSection() {
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-amber-500/5 to-orange-500/5" />
 
             <div className="relative">
-              <div className="mb-8">
-                <span className="text-stone-400 text-xl">starting at</span>
-                <span className="font-serif text-5xl sm:text-6xl text-stone-100 ml-2">$4,000</span>
-                <span className="text-stone-400 text-xl ml-2">/month</span>
+              <div className="mb-4">
+                <span className="font-serif text-5xl sm:text-6xl text-stone-100">$30,000</span>
+                <span className="text-stone-400 text-xl ml-2">for six months</span>
               </div>
 
-              <p className="text-stone-500 mb-8">
-                6-month minimum commitment · Invoiced monthly in advance
+              <p className="text-orange-400 font-medium mb-8">
+                2 slots available
               </p>
 
               <ul className="grid sm:grid-cols-2 gap-3 text-left mb-10">
@@ -359,39 +373,38 @@ function PricingSection() {
 function BestForSection() {
   const audiences = [
     {
-      title: "Crypto Companies",
+      title: "Need to position a new product or company",
       items: [
-        "Entering new markets or jurisdictions",
-        "Navigating regulatory uncertainty",
-        "Pre-launch narrative positioning",
-        "Competitive differentiation"
+        "Launching into a crowded market",
+        "Entering new jurisdictions",
+        "Building a brand from scratch",
+        "Differentiating against entrenched players"
       ]
     },
     {
-      title: "TradFi Entering Crypto",
+      title: "Are entering crypto from traditional finance",
       items: [
-        "Building credibility with crypto natives",
-        "Avoiding cultural landmines",
-        "Understanding what's actually happening",
-        "Moving fast without breaking things"
+        "Need credibility with crypto natives",
+        "Want to avoid cultural landmines",
+        "Must move fast without missteps",
+        "Require strategic context, not just tactics"
       ]
     },
     {
-      title: "Projects Pre-Launch",
+      title: "Are repositioning or pivoting",
       items: [
-        "Narrative architecture from day one",
-        "Market timing analysis",
-        "Positioning against competitors",
-        "Media and messaging strategy"
-      ]
-    },
-    {
-      title: "Companies in Transition",
-      items: [
-        "Pivoting product or market focus",
         "Responding to regulatory shifts",
         "Countering negative narratives",
-        "Rebuilding after setbacks"
+        "Rebuilding after setbacks",
+        "Pivoting product or market focus"
+      ]
+    },
+    {
+      title: "Want to build a personal brand alongside their company",
+      items: [
+        "Founders who want to be the face of their thesis",
+        "Executives building thought leadership",
+        "Teams where personal and company brands must align"
       ]
     }
   ];
@@ -408,7 +421,7 @@ function BestForSection() {
           <motion.div variants={staggerItem} className="text-center mb-16">
             <SectionLabel>Best For</SectionLabel>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-stone-100 leading-tight">
-              Who this works for
+              This works for founders who:
             </h2>
           </motion.div>
 
@@ -443,11 +456,11 @@ function BestForSection() {
 // Not For Section
 function NotForSection() {
   const notFor = [
-    "You're looking for someone to \"run your Twitter\"",
-    "You want tactical execution without strategic thinking",
-    "You need a full-service PR agency",
-    "Budget is the primary decision factor",
-    "You want someone to validate decisions you've already made"
+    "You want someone to run your social media",
+    "You need tactical execution, not strategic thinking",
+    "You're looking for a full-service PR agency",
+    "Price is the primary decision factor",
+    "You want validation, not honest assessment"
   ];
 
   return (
@@ -460,15 +473,11 @@ function NotForSection() {
           variants={staggerContainer}
         >
           <motion.h2
-            className="font-serif text-3xl sm:text-4xl text-stone-100 leading-tight mb-4"
+            className="font-serif text-3xl sm:text-4xl text-stone-100 leading-tight mb-8"
             variants={staggerItem}
           >
-            Not a fit if...
+            Not a fit if:
           </motion.h2>
-
-          <motion.p className="text-stone-400 text-lg mb-8" variants={staggerItem}>
-            I'm selective about who I work with. This probably isn't right for you if:
-          </motion.p>
 
           <motion.ul className="space-y-3 mb-8" variants={staggerContainer}>
             {notFor.map((item, index) => (
@@ -484,7 +493,7 @@ function NotForSection() {
           </motion.ul>
 
           <motion.p className="text-stone-500" variants={staggerItem}>
-            No hard feelings. There are great agencies and contractors who do those things. I'm just not one of them.
+            No hard feelings. There are agencies that do those things well. I'm not one of them.
           </motion.p>
         </motion.div>
       </div>
@@ -511,14 +520,21 @@ function FinalCTASection() {
             className="font-serif text-4xl sm:text-5xl md:text-6xl text-stone-100 leading-tight mb-6"
             variants={staggerItem}
           >
-            Ready to talk?
+            One conversation. No pitch.
           </motion.h2>
 
           <motion.p
-            className="text-stone-400 text-lg sm:text-xl mb-12 max-w-xl mx-auto"
+            className="text-stone-400 text-lg sm:text-xl mb-6 max-w-xl mx-auto"
             variants={staggerItem}
           >
-            Book a 25-minute discovery call. No pitch, no pressure. Just a conversation to see if there's a fit.
+            25 minutes. I'll ask about your positioning challenges. You'll ask about how I work. We'll both know quickly if there's a fit.
+          </motion.p>
+
+          <motion.p
+            className="text-orange-400 font-medium text-lg mb-12 max-w-xl mx-auto"
+            variants={staggerItem}
+          >
+            2 spots left. When they're gone, they're gone.
           </motion.p>
 
           <motion.div variants={staggerItem}>
@@ -608,10 +624,10 @@ export function AdvisoryPage() {
   return (
     <>
       <SEO
-        title="Perception Advisory | Strategic Narrative Intelligence for Crypto"
-        description="Strategic advisory for crypto companies from the former VP of Marketing at Blockstream. Narrative intelligence that gives you an unfair advantage."
+        title="Perception Advisory | Brand Positioning Based on Data"
+        description="Strategic advisory for crypto founders. 650+ sources tracked in real-time. Positioning strategy based on narrative intelligence, not guesswork."
         url="https://perception.to/advisory"
-        keywords={['crypto advisory', 'Bitcoin strategy', 'narrative intelligence', 'crypto marketing', 'Blockstream', 'crypto consulting']}
+        keywords={['crypto advisory', 'Bitcoin strategy', 'narrative intelligence', 'crypto marketing', 'Blockstream', 'crypto consulting', 'brand positioning']}
         image="/og/advisory.png"
       />
 
