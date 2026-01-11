@@ -1,5 +1,5 @@
 // Auto-generated conference data
-// Last updated: 2026-01-04T02:09:06.683Z
+// Last updated: 2026-01-11T02:09:06.115Z
 // Source: Perplexity API (Sonar with real-time web search)
 // DO NOT EDIT MANUALLY - This file is automatically updated weekly
 
@@ -15,136 +15,19 @@ export interface Conference {
 
 export const allConferences: Conference[] = [
   {
-    "date": "2026-01-07",
-    "name": "BUIDL Europe 2026",
-    "location": "Lisboa, Portugal",
-    "type": "Blockchain",
-    "duration": "Jan 07",
-    "monthYear": "January 2026",
-    "dateDisplay": "Jan 7, 2026"
-  },
-  {
-    "date": "2026-01-08",
-    "name": "TOKYO DIGICONX 2026",
-    "location": "Koto City, Japan",
-    "type": "Blockchain",
-    "duration": "Jan 08",
-    "monthYear": "January 2026",
-    "dateDisplay": "Jan 8, 2026"
-  },
-  {
-    "date": "2026-01-28",
-    "name": "Wallstreetbets Live",
-    "location": "Undisclosed, USA",
-    "type": "Crypto",
-    "duration": "Jan 28-30",
-    "monthYear": "January 2026",
-    "dateDisplay": "Jan 28, 2026"
-  },
-  {
-    "date": "2026-02-02",
-    "name": "DTECH Grid",
-    "location": "San Diego, CA, USA",
-    "type": "Bitcoin",
-    "duration": "Feb 02-05",
-    "monthYear": "February 2026",
-    "dateDisplay": "Feb 2, 2026"
-  },
-  {
-    "date": "2026-02-05",
-    "name": "Digital Assets Forum 2026",
-    "location": "Undisclosed, USA",
-    "type": "Institutional",
-    "duration": "Feb 05-06",
-    "monthYear": "February 2026",
-    "dateDisplay": "Feb 5, 2026"
-  },
-  {
     "date": "2026-02-09",
-    "name": "Bitcoin Investor Week",
-    "location": "New York City, NY, USA",
+    "name": "Bitcoin Investor Week 2026",
+    "location": "New York City, USA",
     "type": "Bitcoin",
     "duration": "Feb 09-13",
     "monthYear": "February 2026",
     "dateDisplay": "Feb 9, 2026"
   },
   {
-    "date": "2026-02-10",
-    "name": "Consensus Hong Kong",
-    "location": "Hong Kong, China",
-    "type": "Blockchain",
-    "duration": "Feb 10-12",
-    "monthYear": "February 2026",
-    "dateDisplay": "Feb 10, 2026"
-  },
-  {
-    "date": "2026-02-10",
-    "name": "ERCOT Summit",
-    "location": "Austin, TX, USA",
-    "type": "Bitcoin",
-    "duration": "Feb 10-12",
-    "monthYear": "February 2026",
-    "dateDisplay": "Feb 10, 2026"
-  },
-  {
-    "date": "2026-02-15",
-    "name": "The Bitcoin Summit",
-    "location": "Addis Ababa, Ethiopia",
-    "type": "Bitcoin",
-    "duration": "Feb 15-17",
-    "monthYear": "February 2026",
-    "dateDisplay": "Feb 15, 2026"
-  },
-  {
-    "date": "2026-02-17",
-    "name": "ETHDenver Innovation Festival",
-    "location": "Denver, CO, USA",
-    "type": "Blockchain",
-    "duration": "Feb 17-21",
-    "monthYear": "February 2026",
-    "dateDisplay": "Feb 17, 2026"
-  },
-  {
-    "date": "2026-02-18",
-    "name": "NAPE Summit",
-    "location": "Houston, TX, USA",
-    "type": "Bitcoin",
-    "duration": "Feb 18-20",
-    "monthYear": "February 2026",
-    "dateDisplay": "Feb 18, 2026"
-  },
-  {
-    "date": "2026-02-27",
-    "name": "Heatpunk Summit",
-    "location": "Denver, CO, USA",
-    "type": "Bitcoin",
-    "duration": "Feb 27-28",
-    "monthYear": "February 2026",
-    "dateDisplay": "Feb 27, 2026"
-  },
-  {
-    "date": "2026-03-01",
-    "name": "Ski Summit",
-    "location": "Teton Village, WY, USA",
-    "type": "Bitcoin",
-    "duration": "Mar 01-05",
-    "monthYear": "March 2026",
-    "dateDisplay": "Mar 1, 2026"
-  },
-  {
-    "date": "2026-03-10",
-    "name": "Bitcoin Amsterdam",
-    "location": "Amsterdam, Netherlands",
-    "type": "Bitcoin",
-    "duration": "Mar 10-12",
-    "monthYear": "March 2026",
-    "dateDisplay": "Mar 10, 2026"
-  },
-  {
     "date": "2026-03-17",
-    "name": "DC Blockchain Summit",
-    "location": "Washington DC, USA",
-    "type": "Institutional",
+    "name": "DC Blockchain Summit 2026",
+    "location": "Washington, DC, USA",
+    "type": "Blockchain",
     "duration": "Mar 17-18",
     "monthYear": "March 2026",
     "dateDisplay": "Mar 17, 2026"
@@ -152,7 +35,7 @@ export const allConferences: Conference[] = [
   {
     "date": "2026-03-24",
     "name": "Digital Asset Summit 2026 NYC",
-    "location": "New York City, NY, USA",
+    "location": "New York City, USA",
     "type": "Institutional",
     "duration": "Mar 24-26",
     "monthYear": "March 2026",
@@ -160,8 +43,8 @@ export const allConferences: Conference[] = [
   },
   {
     "date": "2026-03-26",
-    "name": "CheatCode",
-    "location": "Bedford, UK",
+    "name": "CheatCode Bitcoin Conference 2026",
+    "location": "Bedford, United Kingdom",
     "type": "Bitcoin",
     "duration": "Mar 26-29",
     "monthYear": "March 2026",
@@ -169,17 +52,17 @@ export const allConferences: Conference[] = [
   },
   {
     "date": "2026-03-30",
-    "name": "Ethereum Community Conference (EthCC)",
+    "name": "Ethereum Community Conference (EthCC) 2026",
     "location": "Cannes, France",
-    "type": "Blockchain",
+    "type": "Web3",
     "duration": "Mar 30-Apr 02",
     "monthYear": "March 2026",
     "dateDisplay": "Mar 30, 2026"
   },
   {
     "date": "2026-04-09",
-    "name": "BitBlockBoom",
-    "location": "Ft. Worth, TX, USA",
+    "name": "BitBlockBoom 2026",
+    "location": "Fort Worth, USA",
     "type": "Bitcoin",
     "duration": "Apr 09-12",
     "monthYear": "April 2026",
@@ -187,7 +70,7 @@ export const allConferences: Conference[] = [
   },
   {
     "date": "2026-04-14",
-    "name": "Blockchain Forum",
+    "name": "Blockchain Forum Moscow 2026",
     "location": "Moscow, Russia",
     "type": "Blockchain",
     "duration": "Apr 14-15",
@@ -196,7 +79,7 @@ export const allConferences: Conference[] = [
   },
   {
     "date": "2026-04-15",
-    "name": "Paris Blockchain Week",
+    "name": "Paris Blockchain Week 2026",
     "location": "Paris, France",
     "type": "Blockchain",
     "duration": "Apr 15-16",
@@ -204,8 +87,17 @@ export const allConferences: Conference[] = [
     "dateDisplay": "Apr 15, 2026"
   },
   {
+    "date": "2026-04-17",
+    "name": "Bitcoin Africa Conference 2026",
+    "location": "Ouagadougou, Burkina Faso",
+    "type": "Bitcoin",
+    "duration": "Apr 17-19",
+    "monthYear": "April 2026",
+    "dateDisplay": "Apr 17, 2026"
+  },
+  {
     "date": "2026-04-23",
-    "name": "Swiss Bitcoin Conference",
+    "name": "Swiss Bitcoin Conference 2026",
     "location": "Kreuzlingen, Switzerland",
     "type": "Bitcoin",
     "duration": "Apr 23-26",
@@ -215,7 +107,7 @@ export const allConferences: Conference[] = [
   {
     "date": "2026-04-27",
     "name": "Bitcoin 2026",
-    "location": "Las Vegas, NV, USA",
+    "location": "Las Vegas, USA",
     "type": "Bitcoin",
     "duration": "Apr 27-29",
     "monthYear": "April 2026",
@@ -223,35 +115,26 @@ export const allConferences: Conference[] = [
   },
   {
     "date": "2026-04-29",
-    "name": "TOKEN2049 Dubai",
-    "location": "Dubai, UAE",
-    "type": "Blockchain",
+    "name": "TOKEN2049 Dubai 2026",
+    "location": "Dubai, United Arab Emirates",
+    "type": "Web3",
     "duration": "Apr 29-30",
     "monthYear": "April 2026",
     "dateDisplay": "Apr 29, 2026"
   },
   {
     "date": "2026-05-05",
-    "name": "Consensus Miami",
-    "location": "Miami, FL, USA",
-    "type": "Blockchain",
+    "name": "Consensus 2026 Miami",
+    "location": "Miami, USA",
+    "type": "Web3",
     "duration": "May 05-07",
     "monthYear": "May 2026",
     "dateDisplay": "May 5, 2026"
   },
   {
-    "date": "2026-05-12",
-    "name": "DTECH Data Centers & AI",
-    "location": "Scottsdale, AZ, USA",
-    "type": "Bitcoin",
-    "duration": "May 12-14",
-    "monthYear": "May 2026",
-    "dateDisplay": "May 12, 2026"
-  },
-  {
     "date": "2026-05-13",
     "name": "Digital Assets Summit 2026 London",
-    "location": "London, UK",
+    "location": "London, United Kingdom",
     "type": "Institutional",
     "duration": "May 13-14",
     "monthYear": "May 2026",
@@ -259,8 +142,8 @@ export const allConferences: Conference[] = [
   },
   {
     "date": "2026-05-13",
-    "name": "Digital Assets Week",
-    "location": "New York City, NY, USA",
+    "name": "Digital Assets Week New York 2026",
+    "location": "New York City, USA",
     "type": "Institutional",
     "duration": "May 13-14",
     "monthYear": "May 2026",
@@ -268,25 +151,16 @@ export const allConferences: Conference[] = [
   },
   {
     "date": "2026-05-18",
-    "name": "AIM Summit",
-    "location": "London, UK",
-    "type": "Blockchain",
+    "name": "AIM Summit Digital Assets London 2026",
+    "location": "London, United Kingdom",
+    "type": "Institutional",
     "duration": "May 18-19",
     "monthYear": "May 2026",
     "dateDisplay": "May 18, 2026"
   },
   {
-    "date": "2026-05-21",
-    "name": "TEMS",
-    "location": "Austin, TX, USA",
-    "type": "Bitcoin",
-    "duration": "May 21-22",
-    "monthYear": "May 2026",
-    "dateDisplay": "May 21, 2026"
-  },
-  {
     "date": "2026-05-28",
-    "name": "Crypto Valley Conference",
+    "name": "Crypto Valley Conference 2026",
     "location": "Zug, Switzerland",
     "type": "Blockchain",
     "duration": "May 28-29",
@@ -295,34 +169,25 @@ export const allConferences: Conference[] = [
   },
   {
     "date": "2026-06-01",
-    "name": "Oslo Freedom Forum",
+    "name": "Oslo Freedom Forum 2026 (Bitcoin & Financial Freedom Track)",
     "location": "Oslo, Norway",
-    "type": "Blockchain",
+    "type": "Bitcoin",
     "duration": "Jun 01-03",
     "monthYear": "June 2026",
     "dateDisplay": "Jun 1, 2026"
   },
   {
     "date": "2026-06-08",
-    "name": "ETHConf",
-    "location": "New York, NY, USA",
-    "type": "Blockchain",
+    "name": "ETHConf New York 2026",
+    "location": "New York City, USA",
+    "type": "Web3",
     "duration": "Jun 08-10",
     "monthYear": "June 2026",
     "dateDisplay": "Jun 8, 2026"
   },
   {
     "date": "2026-06-11",
-    "name": "Mining Roundtable",
-    "location": "Prague, Czech Republic",
-    "type": "Bitcoin",
-    "duration": "Jun 11",
-    "monthYear": "June 2026",
-    "dateDisplay": "Jun 11, 2026"
-  },
-  {
-    "date": "2026-06-11",
-    "name": "BTC Prague",
+    "name": "BTC Prague 2026",
     "location": "Prague, Czech Republic",
     "type": "Bitcoin",
     "duration": "Jun 11-13",
@@ -330,17 +195,8 @@ export const allConferences: Conference[] = [
     "dateDisplay": "Jun 11, 2026"
   },
   {
-    "date": "2026-06-15",
-    "name": "Bitcoin Policy Institute",
-    "location": "Washington DC, USA",
-    "type": "Bitcoin",
-    "duration": "Jun 15-17",
-    "monthYear": "June 2026",
-    "dateDisplay": "Jun 15, 2026"
-  },
-  {
     "date": "2026-06-25",
-    "name": "Bitcoin Rodeo",
+    "name": "Bitcoin Rodeo 2026",
     "location": "Calgary, Canada",
     "type": "Bitcoin",
     "duration": "Jun 25-26",
@@ -349,7 +205,7 @@ export const allConferences: Conference[] = [
   },
   {
     "date": "2026-07-06",
-    "name": "Canadian Bitcoin Consortium",
+    "name": "Canadian Bitcoin Consortium Conference 2026",
     "location": "Calgary, Canada",
     "type": "Bitcoin",
     "duration": "Jul 06-10",
@@ -358,7 +214,7 @@ export const allConferences: Conference[] = [
   },
   {
     "date": "2026-07-09",
-    "name": "Mallorca Blockchain Days",
+    "name": "Mallorca Blockchain Days 2026",
     "location": "Mallorca, Spain",
     "type": "Blockchain",
     "duration": "Jul 09-12",
@@ -367,17 +223,17 @@ export const allConferences: Conference[] = [
   },
   {
     "date": "2026-07-21",
-    "name": "Blockchain Futurist Conference",
+    "name": "Blockchain Futurist Conference 2026",
     "location": "Toronto, Canada",
-    "type": "Blockchain",
+    "type": "Web3",
     "duration": "Jul 21-22",
     "monthYear": "July 2026",
     "dateDisplay": "Jul 21, 2026"
   },
   {
     "date": "2026-07-21",
-    "name": "Mining Disrupt Miami",
-    "location": "Miami, FL, USA",
+    "name": "Mining Disrupt 2026",
+    "location": "Miami, USA",
     "type": "Bitcoin",
     "duration": "Jul 21-23",
     "monthYear": "July 2026",
@@ -385,7 +241,7 @@ export const allConferences: Conference[] = [
   },
   {
     "date": "2026-08-27",
-    "name": "Bitcoin Asia",
+    "name": "Bitcoin Asia 2026",
     "location": "Hong Kong, China",
     "type": "Bitcoin",
     "duration": "Aug 27-28",
@@ -393,58 +249,166 @@ export const allConferences: Conference[] = [
     "dateDisplay": "Aug 27, 2026"
   },
   {
-    "date": "2026-09-01",
-    "name": "Bitcoin Helsinki + Mining",
+    "date": "2026-09-07",
+    "name": "Korea Blockchain Week 2026",
+    "location": "Seoul, South Korea",
+    "type": "Web3",
+    "duration": "Sep 07-13",
+    "monthYear": "September 2026",
+    "dateDisplay": "Sep 7, 2026"
+  },
+  {
+    "date": "2026-09-10",
+    "name": "Bitcoin Helsinki + Mining Summit 2026",
     "location": "Helsinki, Finland",
     "type": "Bitcoin",
-    "duration": "Sep 01-03",
+    "duration": "Sep 10-12",
     "monthYear": "September 2026",
-    "dateDisplay": "Sep 1, 2026"
+    "dateDisplay": "Sep 10, 2026"
   },
   {
-    "date": "2026-09-15",
-    "name": "Korea Blockchain Week",
-    "location": "Seoul, South Korea",
-    "type": "Blockchain",
-    "duration": "Sep 15-18",
+    "date": "2026-09-16",
+    "name": "TOKEN2049 Singapore 2026",
+    "location": "Singapore, Singapore",
+    "type": "Web3",
+    "duration": "Sep 16-17",
     "monthYear": "September 2026",
-    "dateDisplay": "Sep 15, 2026"
+    "dateDisplay": "Sep 16, 2026"
   },
   {
-    "date": "2026-10-01",
-    "name": "Solana Breakpoint",
+    "date": "2026-10-08",
+    "name": "Bitcoin Amsterdam 2026",
     "location": "Amsterdam, Netherlands",
-    "type": "Blockchain",
-    "duration": "Oct 01-03",
+    "type": "Bitcoin",
+    "duration": "Oct 08-10",
     "monthYear": "October 2026",
-    "dateDisplay": "Oct 1, 2026"
+    "dateDisplay": "Oct 8, 2026"
   },
   {
-    "date": "2026-10-15",
-    "name": "Permissionless",
-    "location": "New York, NY, USA",
-    "type": "Blockchain",
-    "duration": "Oct 15-17",
+    "date": "2026-10-14",
+    "name": "TOKEN2049 London 2026",
+    "location": "London, United Kingdom",
+    "type": "Web3",
+    "duration": "Oct 14-15",
     "monthYear": "October 2026",
-    "dateDisplay": "Oct 15, 2026"
+    "dateDisplay": "Oct 14, 2026"
+  },
+  {
+    "date": "2026-10-16",
+    "name": "Africa Bitcoin Conference 2026",
+    "location": "Accra, Ghana",
+    "type": "Bitcoin",
+    "duration": "Oct 16-18",
+    "monthYear": "October 2026",
+    "dateDisplay": "Oct 16, 2026"
+  },
+  {
+    "date": "2026-10-25",
+    "name": "Money20/20 USA 2026 (Crypto & Web3 Track)",
+    "location": "Las Vegas, USA",
+    "type": "Institutional",
+    "duration": "Oct 25-28",
+    "monthYear": "October 2026",
+    "dateDisplay": "Oct 25, 2026"
+  },
+  {
+    "date": "2026-10-26",
+    "name": "Permissionless III 2026",
+    "location": "Austin, USA",
+    "type": "DeFi",
+    "duration": "Oct 26-28",
+    "monthYear": "October 2026",
+    "dateDisplay": "Oct 26, 2026"
+  },
+  {
+    "date": "2026-10-30",
+    "name": "Solana Breakpoint 2026",
+    "location": "Lisbon, Portugal",
+    "type": "Web3",
+    "duration": "Oct 30-Nov 02",
+    "monthYear": "October 2026",
+    "dateDisplay": "Oct 30, 2026"
+  },
+  {
+    "date": "2026-11-02",
+    "name": "Web Summit 2026 (Crypto & Web3 Track)",
+    "location": "Lisbon, Portugal",
+    "type": "Web3",
+    "duration": "Nov 02-05",
+    "monthYear": "November 2026",
+    "dateDisplay": "Nov 2, 2026"
   },
   {
     "date": "2026-11-03",
-    "name": "Devcon",
+    "name": "Devcon 8 Mumbai 2026",
     "location": "Mumbai, India",
-    "type": "Blockchain",
+    "type": "Web3",
     "duration": "Nov 03-06",
     "monthYear": "November 2026",
     "dateDisplay": "Nov 3, 2026"
   },
   {
+    "date": "2026-11-10",
+    "name": "TOKEN2049 Dubai MENA 2026",
+    "location": "Dubai, United Arab Emirates",
+    "type": "Web3",
+    "duration": "Nov 10-11",
+    "monthYear": "November 2026",
+    "dateDisplay": "Nov 10, 2026"
+  },
+  {
+    "date": "2026-11-16",
+    "name": "Money20/20 Asia 2026 (Digital Assets Track)",
+    "location": "Singapore, Singapore",
+    "type": "Institutional",
+    "duration": "Nov 16-18",
+    "monthYear": "November 2026",
+    "dateDisplay": "Nov 16, 2026"
+  },
+  {
     "date": "2026-12-01",
-    "name": "Blockchain Life Forum",
-    "location": "Dubai, UAE",
-    "type": "Blockchain",
+    "name": "Blockchain Life 2026 Dubai",
+    "location": "Dubai, United Arab Emirates",
+    "type": "Web3",
     "duration": "Dec 01-02",
     "monthYear": "December 2026",
     "dateDisplay": "Dec 1, 2026"
+  },
+  {
+    "date": "2026-12-03",
+    "name": "Bitcoin MENA 2026",
+    "location": "Dubai, United Arab Emirates",
+    "type": "Bitcoin",
+    "duration": "Dec 03-04",
+    "monthYear": "December 2026",
+    "dateDisplay": "Dec 3, 2026"
+  },
+  {
+    "date": "2026-12-07",
+    "name": "Blockchain & Digital Assets Summit 2026 Hong Kong",
+    "location": "Hong Kong, China",
+    "type": "Institutional",
+    "duration": "Dec 07-08",
+    "monthYear": "December 2026",
+    "dateDisplay": "Dec 7, 2026"
+  },
+  {
+    "date": "2026-12-09",
+    "name": "Global NFT & Metaverse Summit 2026",
+    "location": "Dubai, United Arab Emirates",
+    "type": "NFT",
+    "duration": "Dec 09-10",
+    "monthYear": "December 2026",
+    "dateDisplay": "Dec 9, 2026"
+  },
+  {
+    "date": "2026-12-11",
+    "name": "Latin America Blockchain Summit 2026",
+    "location": "São Paulo, Brazil",
+    "type": "Blockchain",
+    "duration": "Dec 11-12",
+    "monthYear": "December 2026",
+    "dateDisplay": "Dec 11, 2026"
   }
 ];
 
