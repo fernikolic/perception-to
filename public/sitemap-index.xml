@@ -2,23 +2,19 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://perception.to/sitemap.xml</loc>
-    <lastmod>2025-09-29</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://perception.to/sitemap-intelligence.xml</loc>
-    <lastmod>2025-07-30</lastmod>
+    <lastmod>2026-01-12</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://perception.to/sitemap-conferences.xml</loc>
-    <lastmod>2025-09-29</lastmod>
+    <lastmod>2026-01-10</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://perception.to/sitemap-sentiment.xml</loc>
-    <lastmod>2025-10-16</lastmod>
+    <lastmod>2026-01-12</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://perception.to/sitemap-research.xml</loc>
-    <lastmod>2025-12-29</lastmod>
+    <lastmod>2026-01-12</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://perception.to/sitemap-companies.xml</loc>

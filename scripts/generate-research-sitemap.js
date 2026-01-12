@@ -22,17 +22,17 @@ function generateSitemap() {
     const emptySitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>${SITE_URL}/research</loc>
+    <loc>${SITE_URL}/bitcoin-media-research</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>${SITE_URL}/research/reports</loc>
+    <loc>${SITE_URL}/bitcoin-media-research/reports</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>${SITE_URL}/research/opinion</loc>
+    <loc>${SITE_URL}/bitcoin-media-research/opinion</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -51,14 +51,14 @@ function generateSitemap() {
 
   // Static pages
   const staticUrls = [
-    { loc: `${SITE_URL}/research`, changefreq: 'weekly', priority: '0.8' },
-    { loc: `${SITE_URL}/research/reports`, changefreq: 'weekly', priority: '0.7' },
-    { loc: `${SITE_URL}/research/opinion`, changefreq: 'weekly', priority: '0.7' },
+    { loc: `${SITE_URL}/bitcoin-media-research`, changefreq: 'weekly', priority: '0.8' },
+    { loc: `${SITE_URL}/bitcoin-media-research/reports`, changefreq: 'weekly', priority: '0.7' },
+    { loc: `${SITE_URL}/bitcoin-media-research/opinion`, changefreq: 'weekly', priority: '0.7' },
   ];
 
   // Dynamic post URLs
   const postUrls = posts.map(post => ({
-    loc: `${SITE_URL}/research/${post.slug}`,
+    loc: `${SITE_URL}/bitcoin-media-research/${post.slug}`,
     lastmod: post.updated_at ? new Date(post.updated_at).toISOString().split('T')[0] : undefined,
     changefreq: 'monthly',
     priority: '0.6'

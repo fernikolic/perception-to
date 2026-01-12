@@ -125,6 +125,7 @@ const App = () => {
               <Route path="/book-a-call" element={<BookACallPage />} />
               <Route path="/slack-integration" element={<SlackIntegrationPage />} />
               <Route path="/documentation" element={<DocsPage />} />
+              <Route path="/docs" element={<Navigate to="/documentation" replace />} />
               <Route path="/api" element={<ApiPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
