@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run copy:functions && npm run copy:sitemaps",
+    "build": "vite build && npm run copy:functions && npm run copy:sitemaps && npm run markdown:generate",
     "copy:functions": "mkdir -p dist/functions && cp -r functions/* dist/functions/",
     "copy:sitemaps": "cp public/sitemap*.xml dist/",
     "lint": "eslint .",
@@ -21,6 +21,7 @@
     "conferences:save": "node scripts/save-to-firestore.js",
     "conferences:update": "npm run conferences:fetch && npm run sitemap:conferences && npm run conferences:save",
     "research:og": "node scripts/generate-research-og-data.js",
+    "markdown:generate": "node scripts/generate-markdown-pages.js",
     "prebuild": "npm run ghost:fetch && npm run social:generate && npm run sitemap:all && npm run research:og"
   },
   "dependencies": {
@@ -97,6 +98,7 @@
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss-animate": "^1.0.7",
     "three": "0.181.0",
+    "turndown": "7.2.2",
     "vaul": "^1.0.0",
     "zod": "^3.23.8"
   },

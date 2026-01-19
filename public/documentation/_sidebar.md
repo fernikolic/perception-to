@@ -31,6 +31,7 @@
 * **Integrations**
   * [Email Integration](integrations/email-alerts.md)
   * [Data Exports](integrations/exports.md)
+  * [Markdown for AI Agents](integrations/markdown-for-ai-agents.md)
 
 * **Help**
   * [FAQ](faq.md)

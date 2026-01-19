@@ -15,6 +15,7 @@ interface SEOProps {
   keywords?: string[];
   prevPage?: string;
   nextPage?: string;
+  markdownUrl?: string;  // URL to markdown version for AI agents
   children?: React.ReactNode;
 }
 
@@ -28,6 +29,7 @@ export default function SEO({
   keywords = ['Bitcoin', 'market trends', 'sentiment analysis', 'market intelligence'],
   prevPage,
   nextPage,
+  markdownUrl,
   children,
 }: SEOProps) {
   // Format title with site name if it doesn't already include it
@@ -105,6 +107,11 @@ export default function SEO({
       {/* Pagination links for SEO */}
       {prevPage && <link rel="prev" href={prevPage} />}
       {nextPage && <link rel="next" href={nextPage} />}
+
+      {/* Markdown alternate for AI agents */}
+      {markdownUrl && (
+        <link rel="alternate" type="text/markdown" href={markdownUrl} title="Markdown" />
+      )}
 
       {/* Allow additional elements to be injected */}
       {children}

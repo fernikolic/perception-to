@@ -9,6 +9,62 @@ import { PAGE_SEO, SOCIAL_IMAGES, DEFAULT_IMAGE, DEFAULT_SEO } from './seo-confi
 import { RESEARCH_OG_DATA, DEFAULT_RESEARCH_IMAGE } from './research-og-data.js';
 import sentimentCache from './sentiment-cache.json' assert { type: 'json' };
 
+// Month names for URL parsing
+const MONTH_NAMES = ['january', 'february', 'march', 'april', 'may', 'june',
+                     'july', 'august', 'september', 'october', 'november', 'december'];
+
+/**
+ * Resolve a URL path to its corresponding markdown file path
+ * @param {string} path - The URL path (without .md suffix)
+ * @returns {string} - The path to the markdown file in /markdown/
+ */
+function resolveMarkdownPath(path) {
+  // Research posts: /bitcoin-media-research/slug → /markdown/research/slug.md
+  const researchMatch = path.match(/^\/(research|bitcoin-media-research)\/([^/]+)$/);
+  if (researchMatch) {
+    return `/markdown/research/${researchMatch[2]}.md`;
+  }
+
+  // Daily sentiment: /bitcoin-market-sentiment/2025/january/15 → /markdown/sentiment/daily/2025-01-15.md
+  const monthPattern = MONTH_NAMES.join('|');
+  const dailyMatch = path.match(new RegExp(`^/bitcoin-market-sentiment/(\\d{4})/(${monthPattern})/(\\d{1,2})$`, 'i'));
+  if (dailyMatch) {
+    const [, year, month, day] = dailyMatch;
+    const monthIndex = MONTH_NAMES.indexOf(month.toLowerCase()) + 1;
+    const isoDate = `${year}-${String(monthIndex).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    return `/markdown/sentiment/daily/${isoDate}.md`;
+  }
+
+  // Monthly sentiment: /bitcoin-market-sentiment/2025/january → /markdown/sentiment/monthly/2025-01.md
+  const monthlyMatch = path.match(new RegExp(`^/bitcoin-market-sentiment/(\\d{4})/(${monthPattern})$`, 'i'));
+  if (monthlyMatch) {
+    const [, year, month] = monthlyMatch;
+    const monthIndex = MONTH_NAMES.indexOf(month.toLowerCase()) + 1;
+    return `/markdown/sentiment/monthly/${year}-${String(monthIndex).padStart(2, '0')}.md`;
+  }
+
+  // Static pages: /methodology → /markdown/pages/methodology.md
+  // Handle root path specially
+  if (path === '/' || path === '') {
+    return '/markdown/pages/home.md';
+  }
+
+  // Other static pages
+  const slug = path.replace(/^\//, '').replace(/\//g, '-').replace(/[^a-z0-9-]/gi, '') || 'home';
+  return `/markdown/pages/${slug}.md`;
+}
+
+/**
+ * Get the markdown URL for a given path (for alternate link)
+ * @param {string} path - The URL path
+ * @returns {string} - The .md URL
+ */
+function getMarkdownUrl(path) {
+  // Normalize path
+  const normalizedPath = path === '/' ? '' : path.replace(/\/$/, '');
+  return `${normalizedPath}.md`;
+}
+
 // Escape HTML entities to prevent breaking meta tags
 function escapeHtml(str) {
   if (!str) return '';
@@ -491,6 +547,9 @@ function injectSeoTags(html, path) {
 
   const ogType = seo.isArticle ? 'article' : 'website';
 
+  // Generate markdown alternate URL
+  const markdownUrl = getMarkdownUrl(path);
+
   // Build the replacement meta block
   const metaBlock = `
     <!-- SEO Meta Tags - Injected by Cloudflare Middleware -->
@@ -499,6 +558,7 @@ function injectSeoTags(html, path) {
     <meta name="description" content="${safeDescription}">
     <meta name="keywords" content="${safeKeywords}">
     <link rel="canonical" href="${seo.canonical}" />
+    <link rel="alternate" type="text/markdown" href="${markdownUrl}" title="Markdown">
 
     <!-- Open Graph -->
     <meta property="og:type" content="${ogType}">
@@ -622,6 +682,53 @@ export async function onRequest(context) {
   const url = new URL(context.request.url);
   const monthNames = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
   const monthPattern = monthNames.join('|');
+
+  // ===== MARKDOWN HANDLING FOR AI AGENTS =====
+
+  // Check if request is for markdown (either .md suffix or Accept: text/markdown)
+  const acceptHeader = context.request.headers.get('accept') || '';
+  const wantsMarkdown = url.pathname.endsWith('.md') || acceptHeader.includes('text/markdown');
+
+  if (wantsMarkdown) {
+    // Get the base path (remove .md suffix if present)
+    const basePath = url.pathname.endsWith('.md')
+      ? url.pathname.slice(0, -3)
+      : url.pathname;
+
+    // Resolve to markdown file path
+    const markdownPath = resolveMarkdownPath(basePath);
+
+    try {
+      // Fetch the pre-generated markdown file from assets
+      const mdResponse = await context.env.ASSETS.fetch(
+        new Request(`${url.origin}${markdownPath}`)
+      );
+
+      if (mdResponse.ok) {
+        const mdContent = await mdResponse.text();
+        return new Response(mdContent, {
+          status: 200,
+          headers: {
+            'Content-Type': 'text/markdown; charset=utf-8',
+            'X-Content-Type-Options': 'nosniff',
+            'Cache-Control': 'public, max-age=3600'
+          }
+        });
+      }
+    } catch (e) {
+      // Markdown file not found, continue to serve regular HTML
+      console.log(`Markdown not found for ${basePath}: ${e.message}`);
+    }
+
+    // If Accept header requested markdown but we couldn't serve it,
+    // fall through to serve HTML (only block if .md suffix was used)
+    if (url.pathname.endsWith('.md')) {
+      return new Response('Markdown version not available', {
+        status: 404,
+        headers: { 'Content-Type': 'text/plain' }
+      });
+    }
+  }
 
   // ===== REDIRECTS FOR MALFORMED URLS =====
 
