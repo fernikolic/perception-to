@@ -17,9 +17,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
-        reading: ['Charter', 'Bitstream Charter', 'Georgia', 'Cambria', 'serif'],
+        sans: ['Ronzino', 'system-ui', 'sans-serif'],
+        serif: ['Newsreader', 'Georgia', 'Cambria', 'serif'],
+        mono: ['Necto Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       fontWeight: {
         thin: '100',

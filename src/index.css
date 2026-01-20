@@ -1,3 +1,87 @@
+/* ==========================================================================
+   Typography System - Font Declarations
+   Perception Design System fonts: Ronzino, Newsreader, Necto Mono
+   ========================================================================== */
+
+/* Ronzino - Primary Sans-Serif (UI, navigation, headings, buttons, cards) */
+@font-face {
+  font-family: 'Ronzino';
+  src: url('/fonts/Ronzino-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ronzino';
+  src: url('/fonts/Ronzino-Oblique.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ronzino';
+  src: url('/fonts/Ronzino-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ronzino';
+  src: url('/fonts/Ronzino-MediumOblique.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ronzino';
+  src: url('/fonts/Ronzino-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ronzino';
+  src: url('/fonts/Ronzino-BoldOblique.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Newsreader - Reading Serif (Report body text, long-form content) */
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/Newsreader-Variable.woff2') format('woff2');
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/Newsreader-VariableItalic.woff2') format('woff2');
+  font-weight: 400 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Necto Mono - Data Display (Numbers, timestamps, code, data tables) */
+@font-face {
+  font-family: 'Necto Mono';
+  src: url('/fonts/NectoMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   End Typography System
+   ========================================================================== */
+
 @import './styles/theme.css';
 @import './styles/markdown.css';
 
@@ -241,4 +325,13 @@
 
 .ps-word-active {
   color: rgba(255, 255, 255, 1);
+}
+
+/* Typography Utility - Data Display
+   Use for numbers, percentages, financial data, timestamps
+   Provides tabular figures and precision styling */
+.font-data {
+  font-family: 'Necto Mono', ui-monospace, SFMono-Regular, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
 }
