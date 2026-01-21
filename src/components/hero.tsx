@@ -49,7 +49,7 @@ export function Hero() {
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                   <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-medium tracking-tight text-white text-center px-6 leading-snug">
-                    Get weeks of market{'\u00A0'}monitoring<br />condensed in{'\u00A0'}seconds.
+                    Board updates. Investor{'\u00A0'}briefs.<br />Competitive intel. Ready in{'\u00A0'}minutes.
                   </h1>
                   <div className="flex items-center gap-3 mt-6">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-xs sm:text-sm font-medium text-white/90">
@@ -92,7 +92,7 @@ export function Hero() {
 
               <div ref={subtitleRef} className="mb-8 sm:mb-10 text-center sm:text-left">
                 <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-black/70 font-light">
-                  Monitor your company and competitors across 650+ sources in Bitcoin, stablecoins, and tokenized finance. Get fully cited board updates, interview prep, investor briefs, and{'\u00A0'}more.
+                  Stop spending days assembling reports your stakeholders need tomorrow. Perception pulls from 650+ sources in Bitcoin, stablecoins, and tokenized finance, then generates fully cited deliverables on{'\u00A0'}demand.
                 </p>
               </div>
 

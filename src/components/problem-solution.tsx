@@ -5,11 +5,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 // Text for each paragraph
-const paragraph1 = "In an industry that never sleeps, manual tracking is a bottleneck.";
+const paragraph1 = "Finding information isn't hard. Making it useful is.";
 
-const paragraph2 = "Perception automates your entire intelligence workflow, from data collection to deliverable.";
+const paragraph2 = "Perception turns raw coverage into polished, cited deliverables.";
 
-const paragraph3 = "Get comprehensive sector coverage and cited insights in seconds, so you can spend less time 'gathering' and more time on the work that matters.";
+const paragraph3 = "Board updates. Interview prep. Competitive reports. Minutes, not days.";
 
 export function ProblemSolution() {
   const wrapperRef = useRef<HTMLDivElement>(null);
