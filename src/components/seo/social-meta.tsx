@@ -208,9 +208,10 @@ export function SocialMeta({ title, description, image, type = 'website', url }:
     updateMetaTag('image', finalImage, 'itemprop');
     updateMetaTag('thumbnailUrl', finalImage, 'itemprop');
 
-    // Add canonical link (this will update or create the canonical link)
-    updateCanonicalLink(finalUrl);
-    
+    // Note: Canonical link is now set server-side by middleware to prevent conflicts.
+    // The middleware sets both the <link rel="canonical"> tag and Link HTTP header
+    // for crawlers, ensuring a single source of truth for canonical URLs.
+
   }, [location.pathname, title, description, image, type, url]);
 
   // Generate breadcrumb items based on current path
@@ -242,15 +243,8 @@ function updateMetaTag(name: string, content: string, attr = 'name') {
   element.setAttribute('content', content);
 }
 
-function updateCanonicalLink(url: string) {
-  let element = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-  if (!element) {
-    element = document.createElement('link');
-    element.setAttribute('rel', 'canonical');
-    document.head.appendChild(element);
-  }
-  element.setAttribute('href', url);
-}
+// Note: updateCanonicalLink removed - canonical is now handled server-side by middleware
+// to prevent conflicts between server-set and client-set canonical URLs
 
 // Removed generateSocialImage function - now using social-image-validator
 

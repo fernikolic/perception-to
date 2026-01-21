@@ -324,21 +324,30 @@ export default function BitcoinMarketSentimentPage() {
 
   if (!isValid) {
     return (
-      <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center">
-        <div className="text-center max-w-md mx-auto px-6">
-          <div className="w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Sparkles className="w-10 h-10 text-red-500 dark:text-red-400" />
+      <>
+        <SEO
+          title="Invalid URL - Bitcoin Market Sentiment | Perception"
+          description="Invalid URL format for Bitcoin market sentiment page."
+          url="https://perception.to/bitcoin-market-sentiment"
+        >
+          <meta name="robots" content="noindex, nofollow" />
+        </SEO>
+        <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center">
+          <div className="text-center max-w-md mx-auto px-6">
+            <div className="w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Sparkles className="w-10 h-10 text-red-500 dark:text-red-400" />
+            </div>
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Invalid URL Format</h1>
+            <p className="text-slate-600 dark:text-white/60 mb-8 leading-relaxed">Use format: /year/month (e.g., /2025/april)</p>
+            <Link to="/bitcoin-market-sentiment">
+              <Button className="bg-slate-900 dark:bg-white text-white dark:text-black hover:bg-slate-800 dark:hover:bg-white/90 px-8 py-3 rounded-full font-medium">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Bitcoin Market Sentiment
+              </Button>
+            </Link>
           </div>
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Invalid URL Format</h1>
-          <p className="text-slate-600 dark:text-white/60 mb-8 leading-relaxed">Use format: /year/month (e.g., /2025/april)</p>
-          <Link to="/bitcoin-market-sentiment">
-            <Button className="bg-slate-900 dark:bg-white text-white dark:text-black hover:bg-slate-800 dark:hover:bg-white/90 px-8 py-3 rounded-full font-medium">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Bitcoin Market Sentiment
-            </Button>
-          </Link>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -358,54 +367,63 @@ export default function BitcoinMarketSentimentPage() {
 
   if (error || !sentimentData) {
     return (
-      <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center">
-        <div className="text-center max-w-2xl mx-auto px-6">
-          <div className="w-24 h-24 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full flex items-center justify-center mx-auto mb-8">
-            <Sparkles className="w-12 h-12 text-red-500 dark:text-red-400" />
-          </div>
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-6">Data Unavailable</h1>
-          <p className="text-slate-600 dark:text-white/70 mb-4 leading-relaxed text-lg">
-            {error || 'Unable to load sentiment data from API'}
-          </p>
-          <p className="text-sm text-slate-500 dark:text-white/40 mb-8">
-            The sentiment analysis API is currently unavailable. Please check back later.
-          </p>
-          
-          <div className="space-y-4 mb-8">
-            <div className="bg-slate-50 dark:bg-white/5 rounded-xl p-6 border border-slate-200 dark:border-white/10 backdrop-blur-xl">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Alternative options:</h3>
-              <ul className="text-slate-600 dark:text-white/60 space-y-2 text-left">
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  View the live Fear & Greed Index for current sentiment
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  Check back later when the API service is restored
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  Contact support if this issue persists
-                </li>
-              </ul>
+      <>
+        <SEO
+          title={`Data Unavailable - ${monthName} ${yearValue} | Perception`}
+          description={`Bitcoin market sentiment data for ${monthName} ${yearValue} is currently unavailable.`}
+          url="https://perception.to/bitcoin-market-sentiment"
+        >
+          <meta name="robots" content="noindex, nofollow" />
+        </SEO>
+        <div className="min-h-screen bg-white dark:bg-black flex items-center justify-center">
+          <div className="text-center max-w-2xl mx-auto px-6">
+            <div className="w-24 h-24 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full flex items-center justify-center mx-auto mb-8">
+              <Sparkles className="w-12 h-12 text-red-500 dark:text-red-400" />
+            </div>
+            <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-6">Data Unavailable</h1>
+            <p className="text-slate-600 dark:text-white/70 mb-4 leading-relaxed text-lg">
+              {error || 'Unable to load sentiment data from API'}
+            </p>
+            <p className="text-sm text-slate-500 dark:text-white/40 mb-8">
+              The sentiment analysis API is currently unavailable. Please check back later.
+            </p>
+
+            <div className="space-y-4 mb-8">
+              <div className="bg-slate-50 dark:bg-white/5 rounded-xl p-6 border border-slate-200 dark:border-white/10 backdrop-blur-xl">
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Alternative options:</h3>
+                <ul className="text-slate-600 dark:text-white/60 space-y-2 text-left">
+                  <li className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    View the live Fear & Greed Index for current sentiment
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    Check back later when the API service is restored
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    Contact support if this issue persists
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/bitcoin-market-sentiment">
+                <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium shadow-xl">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back to Bitcoin Market Sentiment
+                </Button>
+              </Link>
+              <Link to="/bitcoin-fear-greed-index">
+                <Button variant="outline" className="border-slate-300 dark:border-white/30 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 px-8 py-3 rounded-full font-medium backdrop-blur-xl">
+                  View Live Fear & Greed Index
+                </Button>
+              </Link>
             </div>
           </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/bitcoin-market-sentiment">
-              <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium shadow-xl">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Bitcoin Market Sentiment
-              </Button>
-            </Link>
-            <Link to="/bitcoin-fear-greed-index">
-              <Button variant="outline" className="border-slate-300 dark:border-white/30 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 px-8 py-3 rounded-full font-medium backdrop-blur-xl">
-                View Live Fear & Greed Index
-              </Button>
-            </Link>
-          </div>
         </div>
-      </div>
+      </>
     );
   }
 

@@ -764,13 +764,37 @@ export async function onRequest(context) {
     }
   }
 
-  // Handle canonical URL redirects (strip query parameters)
+  // Handle canonical URL redirects (strip tracking query parameters)
   if (url.search) {
     const params = new URLSearchParams(url.search);
 
-    // Strip 'ref' query parameter
-    if (params.has('ref')) {
-      params.delete('ref');
+    // List of tracking parameters to strip for canonical URLs
+    const trackingParams = [
+      'ref',
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+      'utm_term',
+      'utm_content',
+      'fbclid',
+      'gclid',
+      'gclsrc',
+      'dclid',
+      'msclkid',
+      'twclid',
+      'li_fat_id',
+      '_ga',
+      '_gl',
+      'mc_cid',
+      'mc_eid'
+    ];
+
+    // Check if any tracking parameters exist
+    const hasTrackingParams = trackingParams.some(param => params.has(param));
+
+    if (hasTrackingParams) {
+      // Remove all tracking parameters
+      trackingParams.forEach(param => params.delete(param));
       const newUrl = new URL(url);
       newUrl.search = params.toString();
       return Response.redirect(newUrl.toString(), 301);
@@ -818,10 +842,18 @@ export async function onRequest(context) {
 
     const modifiedHtml = injectSeoTags(html, normalizedPath);
 
+    // Get the canonical URL for HTTP header
+    const seoConfig = getSeoConfig(normalizedPath);
+    const canonicalUrl = seoConfig.canonical || `https://perception.to${normalizedPath}`;
+
+    // Create new headers with canonical link header
+    const newHeaders = new Headers(response.headers);
+    newHeaders.set('Link', `<${canonicalUrl}>; rel="canonical"`);
+
     return new Response(modifiedHtml, {
       status: response.status,
       statusText: response.statusText,
-      headers: response.headers
+      headers: newHeaders
     });
   }
 
