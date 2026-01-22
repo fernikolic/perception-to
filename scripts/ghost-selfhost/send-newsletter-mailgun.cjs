@@ -39,12 +39,9 @@ const ORIGINAL_POST_ID = '6958f73cec37692f72a5978e';
 const PROGRESS_FILE = path.join(__dirname, 'send-progress.json');
 
 // Mailgun probation limits (extra conservative for warm-up)
-// IMPORTANT: Probation = 100 messages/hour, where each RECIPIENT counts as a message
-// With 8 recipients/batch: 100 ÷ 8 = 12.5 batches/hour max
-// Using 6-minute delay = 10 batches/hour × 8 = 80 messages/hour (safe margin)
-const MAX_MESSAGES_PER_HOUR = 10; // Batches per hour (not recipients)
-const MAX_RECIPIENTS_PER_MESSAGE = 8;
-const DELAY_BETWEEN_SENDS_MS = 360000; // 6 minutes between sends (to stay under 100 recipients/hour)
+// IMPORTANT: Probation = 100 messages/hour
+// Sending individually: 37 seconds between each email = ~97 emails/hour (safe margin)
+const DELAY_BETWEEN_SENDS_MS = 37000; // 37 seconds between each individual email
 
 // Newsletter settings
 const FROM_NAME = 'Perception';
@@ -139,20 +136,17 @@ async function getMembersByBatch() {
 // ======================
 // MAILGUN API
 // ======================
-async function sendViaMailgun(to, subject, html, text, recipientVars = {}) {
+async function sendViaMailgun(recipient, subject, html, text) {
   const formData = new URLSearchParams();
 
-  // Required fields
+  // Required fields - SINGLE RECIPIENT ONLY to prevent email list exposure
   formData.append('from', `${FROM_NAME} <${FROM_EMAIL}>`);
-  formData.append('to', Array.isArray(to) ? to.join(',') : to);
+  formData.append('to', recipient);
   formData.append('subject', subject);
 
   // Both HTML and plain text versions (best practice for deliverability)
   formData.append('html', html);
   formData.append('text', text);
-
-  // Recipient variables for personalization
-  formData.append('recipient-variables', JSON.stringify(recipientVars));
 
   // Headers for best practices
   formData.append('h:Reply-To', 'fernando@btcperception.com');
@@ -346,7 +340,7 @@ function loadProgress() {
   if (fs.existsSync(PROGRESS_FILE)) {
     return JSON.parse(fs.readFileSync(PROGRESS_FILE, 'utf-8'));
   }
-  return { lastBatch: 0, sentEmails: [], startedAt: null };
+  return { sentEmails: [], startedAt: null };
 }
 
 function saveProgress(progress) {
@@ -402,78 +396,61 @@ async function main() {
     return;
   }
 
-  // Get members
+  // Get members - flatten all batches into single list
   console.log('Fetching members...');
   const batches = await getMembersByBatch();
-  const batchNumbers = Object.keys(batches).map(Number).sort((a, b) => a - b);
-  const totalMembers = Object.values(batches).reduce((sum, b) => sum + b.length, 0);
-  console.log(`Found ${totalMembers} members in ${batchNumbers.length} batches\n`);
+  const allMembers = Object.values(batches).flat();
+  console.log(`Found ${allMembers.length} total members\n`);
 
   // Load or initialize progress
-  let progress = RESUME ? loadProgress() : { lastBatch: 0, sentEmails: [], startedAt: new Date().toISOString() };
-  const startBatch = RESUME ? progress.lastBatch + 1 : START_BATCH;
+  let progress = RESUME ? loadProgress() : { sentEmails: [], startedAt: new Date().toISOString() };
+  const alreadySent = new Set(progress.sentEmails);
 
-  console.log(`Starting from batch ${startBatch}`);
+  // Filter out already-sent emails
+  const membersToSend = allMembers.filter(m => !alreadySent.has(m.email));
+  console.log(`Already sent: ${alreadySent.size}`);
+  console.log(`Remaining to send: ${membersToSend.length}`);
+
   if (BATCH_LIMIT) {
-    console.log(`Limit: ${BATCH_LIMIT} batches (warm-up mode)`);
+    console.log(`Limit: ${BATCH_LIMIT} emails (warm-up mode)`);
   }
-  console.log(`Rate limit: ${MAX_MESSAGES_PER_HOUR}/hour (${DELAY_BETWEEN_SENDS_MS}ms between sends)`);
+  console.log(`Rate limit: ~97 emails/hour (${DELAY_BETWEEN_SENDS_MS / 1000}s between each send)`);
   console.log('========================================\n');
 
   let sentCount = 0;
   let errorCount = 0;
-  let batchesSent = 0;
 
-  for (const batchNum of batchNumbers) {
-    if (batchNum < startBatch) continue;
-
+  for (let i = 0; i < membersToSend.length; i++) {
     // Check limit
-    if (BATCH_LIMIT && batchesSent >= BATCH_LIMIT) {
-      console.log(`\n⏸️  Reached limit of ${BATCH_LIMIT} batches. Run with --resume to continue tomorrow.`);
+    if (BATCH_LIMIT && sentCount >= BATCH_LIMIT) {
+      console.log(`\n⏸️  Reached limit of ${BATCH_LIMIT} emails. Run with --resume to continue tomorrow.`);
       break;
     }
 
-    const members = batches[batchNum];
-    console.log(`\n--- Batch ${batchNum} (${members.length} recipients) ---`);
-
-    // Build recipient list (up to 9 per message due to Mailgun limit)
-    const recipientEmails = members.map(m => m.email);
-    const recipientVars = {};
-    members.forEach(m => {
-      recipientVars[m.email] = { name: m.name || 'there' };
-    });
+    const member = membersToSend[i];
+    const remaining = membersToSend.length - i;
+    const etaMinutes = Math.ceil((remaining * DELAY_BETWEEN_SENDS_MS) / 60000);
 
     if (DRY_RUN) {
-      console.log(`[DRY RUN] Would send to: ${recipientEmails.join(', ')}`);
-      batchesSent++;
+      console.log(`[DRY RUN] Would send to: ${member.email}`);
+      sentCount++;
     } else {
       try {
-        const result = await sendViaMailgun(recipientEmails, post.title, emailHtml, emailText, recipientVars);
-        console.log(`✅ Sent to ${members.length} recipients (${result.id})`);
-        sentCount += members.length;
-        batchesSent++;
-        progress.sentEmails.push(...recipientEmails);
+        const result = await sendViaMailgun(member.email, post.title, emailHtml, emailText);
+        console.log(`✅ ${sentCount + 1}/${membersToSend.length} Sent to ${member.email} (${result.id})`);
+        sentCount++;
+        progress.sentEmails.push(member.email);
+        saveProgress(progress);
       } catch (err) {
-        console.error(`❌ Error: ${err.message}`);
-        errorCount += members.length;
+        console.error(`❌ Error sending to ${member.email}: ${err.message}`);
+        errorCount++;
       }
     }
 
-    // Save progress
-    progress.lastBatch = batchNum;
-    if (!DRY_RUN) {
-      saveProgress(progress);
-    }
-
-    // Rate limiting delay
-    if (batchNum < batchNumbers[batchNumbers.length - 1]) {
-      const remainingBatches = batchNumbers.length - batchNumbers.indexOf(batchNum) - 1;
-      const etaMinutes = Math.ceil((remainingBatches * DELAY_BETWEEN_SENDS_MS) / 60000);
-      console.log(`Waiting ${DELAY_BETWEEN_SENDS_MS / 1000}s... (ETA: ~${etaMinutes} min remaining)`);
-
-      if (!DRY_RUN) {
-        await new Promise(r => setTimeout(r, DELAY_BETWEEN_SENDS_MS));
-      }
+    // Rate limiting delay (skip on last email)
+    if (i < membersToSend.length - 1 && !DRY_RUN) {
+      console.log(`   Waiting ${DELAY_BETWEEN_SENDS_MS / 1000}s... (ETA: ~${etaMinutes} min remaining)`);
+      await new Promise(r => setTimeout(r, DELAY_BETWEEN_SENDS_MS));
     }
   }
 

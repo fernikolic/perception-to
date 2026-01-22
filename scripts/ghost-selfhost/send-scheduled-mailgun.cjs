@@ -88,11 +88,12 @@ async function getPostContent() {
 // ======================
 // MAILGUN API
 // ======================
-async function sendViaMailgun(to, subject, html, text, scheduledTime = null) {
+async function sendViaMailgun(recipient, subject, html, text, scheduledTime = null) {
   const formData = new URLSearchParams();
 
+  // SINGLE RECIPIENT ONLY to prevent email list exposure
   formData.append('from', `${FROM_NAME} <${FROM_EMAIL}>`);
-  formData.append('to', Array.isArray(to) ? to.join(',') : to);
+  formData.append('to', recipient);
   formData.append('subject', subject);
   formData.append('html', html);
   formData.append('text', text);
@@ -302,38 +303,31 @@ async function main() {
   const emailHtml = buildEmailHtml(post);
   const emailText = buildEmailText(post);
 
-  // Send in batches of 8 (Mailgun limit per message)
-  const BATCH_SIZE = 8;
-  const batches = [];
-  for (let i = 0; i < recipients.length; i += BATCH_SIZE) {
-    batches.push(recipients.slice(i, i + BATCH_SIZE));
-  }
-
-  console.log(`Sending ${batches.length} batches...\n`);
+  console.log(`Sending ${recipients.length} emails individually...\n`);
 
   let sentCount = 0;
   let errorCount = 0;
 
-  for (let i = 0; i < batches.length; i++) {
-    const batch = batches[i];
-    console.log(`Batch ${i + 1}/${batches.length}: ${batch.join(', ')}`);
+  for (let i = 0; i < recipients.length; i++) {
+    const recipient = recipients[i];
+    console.log(`${i + 1}/${recipients.length}: ${recipient}`);
 
     if (DRY_RUN) {
       console.log('[DRY RUN] Would schedule send\n');
-      sentCount += batch.length;
+      sentCount++;
     } else {
       try {
-        const result = await sendViaMailgun(batch, post.title, emailHtml, emailText, sendTime);
+        const result = await sendViaMailgun(recipient, post.title, emailHtml, emailText, sendTime);
         console.log(`✅ Queued: ${result.id}\n`);
-        sentCount += batch.length;
+        sentCount++;
       } catch (err) {
         console.error(`❌ Error: ${err.message}\n`);
-        errorCount += batch.length;
+        errorCount++;
       }
     }
 
     // Small delay between API calls
-    if (i < batches.length - 1) {
+    if (i < recipients.length - 1) {
       await new Promise(r => setTimeout(r, 1000));
     }
   }

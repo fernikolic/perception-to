@@ -12,7 +12,10 @@ import { pushToDataLayer, trackNewsletterSignup } from '@/lib/analytics';
 export function ExitIntentPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const [hasShown, setHasShown] = useState(false);
+  const [isEligible, setIsEligible] = useState(false);
   const signupRef = useRef<HTMLDivElement>(null);
+  const pageLoadTime = useRef(Date.now());
+  const maxScrollDepth = useRef(0);
 
   // Debug: Log when component mounts
   useEffect(() => {
@@ -47,6 +50,42 @@ export function ExitIntentPopup() {
     };
   }, []);
 
+  // Track scroll depth and time on page to determine eligibility
+  useEffect(() => {
+    const MIN_TIME_ON_PAGE = 30000; // 30 seconds minimum before showing popup
+    const MIN_SCROLL_DEPTH = 0.2; // Must scroll at least 20% of page
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        const scrollPercent = scrollTop / docHeight;
+        maxScrollDepth.current = Math.max(maxScrollDepth.current, scrollPercent);
+      }
+    };
+
+    const checkEligibility = () => {
+      const timeOnPage = Date.now() - pageLoadTime.current;
+      const hasEnoughTime = timeOnPage >= MIN_TIME_ON_PAGE;
+      const hasEnoughScroll = maxScrollDepth.current >= MIN_SCROLL_DEPTH;
+
+      if (hasEnoughTime && hasEnoughScroll && !isEligible) {
+        console.log('Exit intent now eligible - time:', timeOnPage, 'scroll:', maxScrollDepth.current);
+        setIsEligible(true);
+      }
+    };
+
+    // Check eligibility periodically
+    const eligibilityInterval = setInterval(checkEligibility, 1000);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      clearInterval(eligibilityInterval);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isEligible]);
+
   useEffect(() => {
     // Check if popup has already been shown recently (24 hour cooldown)
     const lastShownTime = localStorage.getItem('exitIntentLastShown');
@@ -68,7 +107,7 @@ export function ExitIntentPopup() {
     console.log('Setting up exit intent listeners');
 
     const triggerExitIntent = () => {
-      if (!hasShown && !isOpen) {
+      if (!hasShown && !isOpen && isEligible) {
         console.log('Exit intent triggered!');
         setIsOpen(true);
         setHasShown(true);
@@ -79,6 +118,8 @@ export function ExitIntentPopup() {
           event: 'exit_intent_shown',
           popup_type: 'newsletter'
         });
+      } else if (!isEligible) {
+        console.log('Exit intent detected but not eligible yet (need 30s on page + 20% scroll)');
       }
     };
 
@@ -147,7 +188,7 @@ export function ExitIntentPopup() {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, [hasShown, isOpen]);
+  }, [hasShown, isOpen, isEligible]);
 
   // Initialize Ghost signup form when dialog opens - copied from footer
   useEffect(() => {
