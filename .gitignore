@@ -16,3 +16,9 @@ dev.log
 .ghost-cli
 .ghostpid
 perception-cmo/
+
+# Sensitive data files
+scripts/ghost-selfhost/engaged-emails.txt
+scripts/ghost-selfhost/missed-recipients.json
+scripts/ghost-selfhost/open-rates.json
+scripts/ghost-selfhost/send-progress.json
