@@ -7,6 +7,7 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import { Logo } from '@/components/ui/logo';
+import { pushToDataLayer, trackNewsletterSignup } from '@/lib/analytics';
 
 export function ExitIntentPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,6 +74,11 @@ export function ExitIntentPopup() {
         setHasShown(true);
         // Store timestamp instead of just 'true'
         localStorage.setItem('exitIntentLastShown', Date.now().toString());
+        // Track exit intent popup shown
+        pushToDataLayer({
+          event: 'exit_intent_shown',
+          popup_type: 'newsletter'
+        });
       }
     };
 
@@ -183,11 +189,22 @@ export function ExitIntentPopup() {
     // Use a small delay to ensure DOM is ready and avoid React StrictMode conflicts
     timeoutId = setTimeout(initializeSignupForm, 100);
 
+    // Listen for Ghost signup success messages
+    const handleGhostMessage = (event: MessageEvent) => {
+      // Ghost sends a message when signup is successful
+      if (event.data && (event.data.type === 'signup-success' || event.data === 'ghost-signup-success')) {
+        trackNewsletterSignup('exit_intent');
+      }
+    };
+    window.addEventListener('message', handleGhostMessage);
+
     return () => {
       // Cleanup function
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
+
+      window.removeEventListener('message', handleGhostMessage);
 
       if (script && script.parentNode) {
         try {

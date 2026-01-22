@@ -2,6 +2,7 @@ import { FooterLinks } from './footer-links';
 import { FooterSocial } from './footer-social';
 import { Logo } from '@/components/ui/logo';
 import { useRef, useState, useEffect } from 'react';
+import { trackNewsletterSignup } from '@/lib/analytics';
 
 // TypeScript declarations for GhostSignupForm
 declare global {
@@ -60,12 +61,22 @@ export function Footer() {
     // Use a small delay to ensure DOM is ready and avoid React StrictMode conflicts
     timeoutId = setTimeout(initializeSignupForm, 100);
 
+    // Listen for Ghost signup success messages
+    const handleGhostMessage = (event: MessageEvent) => {
+      if (event.data && (event.data.type === 'signup-success' || event.data === 'ghost-signup-success')) {
+        trackNewsletterSignup('footer');
+      }
+    };
+    window.addEventListener('message', handleGhostMessage);
+
     return () => {
       // Cleanup function
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
-      
+
+      window.removeEventListener('message', handleGhostMessage);
+
       if (script && script.parentNode) {
         try {
           script.parentNode.removeChild(script);

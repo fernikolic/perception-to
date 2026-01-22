@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './index.css'
+import { captureAttribution } from './lib/analytics'
+
+// Capture UTM parameters and attribution data on page load
+captureAttribution()
 
 // Apply warning suppression BEFORE React loads
 if (process.env.NODE_ENV === 'development') {
