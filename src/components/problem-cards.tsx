@@ -118,7 +118,7 @@ export function ProblemCards() {
               ref={subtitleRef}
               className="text-xl sm:text-2xl lg:text-3xl text-blue-100/80 leading-relaxed font-light"
             >
-              3+ hours a day monitoring sources. Then the board wants competitive intel—start over. CEO has a podcast tomorrow—start over. PR needs journalist targets—start over.
+              3+ hours a day monitoring sources. Then the board wants competitive intel: start over. CEO has a podcast tomorrow: start over. PR needs journalist targets: start over.
             </p>
           </div>
         </div>

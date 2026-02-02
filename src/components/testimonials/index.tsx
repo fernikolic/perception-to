@@ -91,7 +91,7 @@ export function Testimonials() {
             ref={titleRef}
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight leading-[1.2] pb-4 overflow-visible"
           >
-            Trusted by the industry
+            The data others cite
           </h2>
         </div>
         <div

@@ -229,7 +229,7 @@ You don't need to log in unless you want more detail.
 
 ### "How is this different from just reading the news?"
 
-Perception aggregates 650+ sources, analyzes sentiment, identifies patterns, and synthesizes findings. You get the conclusions without reading hundreds of articles.
+Perception aggregates 450+ sources, analyzes sentiment, identifies patterns, and synthesizes findings. You get the conclusions without reading hundreds of articles.
 
 ### "What if I miss something important?"
 

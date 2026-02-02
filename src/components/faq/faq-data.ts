@@ -1,43 +1,57 @@
-export const faqData = [
+export interface FaqItem {
+  question: string;
+  answer: string;
+  linkText?: string;
+  linkHref?: string;
+  linkAction?: "bookDemo";
+  linkSuffix?: string;
+}
+
+export const faqData: FaqItem[] = [
   {
     question: "What is Perception?",
-    answer: "A research and deliverables tool built for Bitcoin, stablecoins, and tokenized finance. It monitors 650+ sources automatically, organizes what matters to you, and generates professional outputs—board updates, competitive analysis, PR briefs—with full citations in minutes. Think of it as an always-on research analyst."
+    answer: "The research platform for professionals doing serious work in Bitcoin and digital assets. We monitor 450+ sources across media, social, and earnings calls, then generate cited intelligence briefs on demand. Board updates, competitive reports, earnings analysis in minutes, not hours."
   },
   {
     question: "Who is Perception for?",
-    answer: "Professionals who create deliverables constantly:\n• Executives needing board updates and competitive intelligence\n• PR and comms teams needing pitch intel and stakeholder updates\n• Analysts and researchers needing sector deep dives\n• Marketing teams needing content briefs\n• Anyone tired of rebuilding the same reports from scratch"
-  },
-  {
-    question: "How do Watchlists, Spaces, and Recipes work?",
-    answer: "Watchlists track what you care about—competitors, topics, people. Spaces organize your intel by project or stakeholder. Recipes are templates that turn your organized intel into deliverables: Board Updates, Interview Prep, PR Pitches, and more."
+    answer: "Professionals who need to stay informed and deliver insights:\n• Fund analysts researching digital asset-exposed equities\n• IR and communications teams tracking coverage\n• Family offices monitoring their digital asset allocations\n• Financial journalists covering the space\n• Anyone who needs cited intelligence without hours of manual research"
   },
   {
     question: "What sources does Perception track?",
-    answer: "650+ sources including Bloomberg, Financial Times, CoinDesk, The Block, Bitcoin Magazine, Reddit, X, GitHub, YouTube, Spotify podcasts, and mainstream outlets like NYT, BBC, CNN, and Reuters. Full list available on the <a href='/methodology' class='text-bitcoin hover:underline'>methodology page</a>."
+    answer: "450+ sources including Bloomberg, Financial Times, CoinDesk, The Block, Bitcoin Magazine, Reddit, X, GitHub, YouTube, podcasts, and mainstream outlets like NYT, BBC, CNN, and Reuters. Full list available on the ",
+    linkText: "sources page",
+    linkHref: "/sources"
   },
   {
-    question: "What can I create with Recipes?",
-    answer: "Board Updates, Interview Prep briefs, PR Pitch Intelligence, Sector Deep Dives, Stakeholder Communications, Content Creation Briefs, and more. All include full source citations."
+    question: "What can I create with Perception?",
+    answer: "Board updates, competitive positioning reports, earnings call summaries, interview prep briefs, stakeholder communications, and more. All include full source citations you can verify."
   },
   {
     question: "How much does Perception cost?",
-    answer: "Pro is $49/month. Premium is $99/month. Enterprise is custom. All plans include a 7-day free trial. Beta users lock in current pricing permanently."
+    answer: "Analyst is $149/month for individual researchers. Professional is $299/month for power users and small teams. Team pricing is custom for organizations. Annual plans include 2 months free."
   },
   {
-    question: "What's included in the 7-day free trial?",
-    answer: "Full access to your selected plan. No credit card required to start. Cancel anytime."
+    question: "Can I try before I buy?",
+    answer: "Yes. Book a demo and we'll give you a personalized walkthrough. We'll set you up with access so you can explore with your own watchlist."
   },
   {
-    question: "How is this different from news aggregators or ChatGPT?",
-    answer: "News aggregators show articles. ChatGPT scrapes generic search results. Perception is purpose-built for Bitcoin, stablecoins, and tokenized finance with 650+ curated sources, automatic organization, and professional deliverable generation with citations. It's a complete workspace—not a search tool."
+    question: "What if I need more than 50 reports/month?",
+    answer: "Talk to us about the Team plan. We can customize limits based on your needs."
   },
   {
-    question: "Can I customize what I track?",
-    answer: "Yes. Create watchlists for any competitor, keyword, sector, or person. Organize everything into Spaces however you want."
+    question: "Do you offer annual pricing?",
+    answer: "Yes. Annual plans include 2 months free. ",
+    linkText: "Contact us",
+    linkAction: "bookDemo",
+    linkSuffix: " for details."
   },
   {
-    question: "What if I need strategic advisory beyond the workspace?",
-    answer: "Enterprise plans include quarterly strategy reviews. Additional advisory services available—<a href='/book-a-call' class='text-bitcoin hover:underline'>contact sales</a>."
+    question: "How is this different from Google Alerts?",
+    answer: "Google Alerts tells you something was published. Perception tells you what it means: sentiment, narrative context, competitive positioning, and how it connects to everything else being said. Plus, we generate cited deliverables you can actually use."
+  },
+  {
+    question: "How is this different from ChatGPT?",
+    answer: "ChatGPT scrapes generic search results and can hallucinate. Perception is purpose-built for Bitcoin and digital assets with 450+ curated sources, real-time monitoring, and professional deliverable generation with verifiable citations. It's a complete intelligence platform, not a chat tool."
   },
   {
     question: "Can I provide feedback or request features?",

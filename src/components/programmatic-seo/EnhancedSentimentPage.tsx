@@ -179,9 +179,9 @@ export default function EnhancedSentimentPage() {
               Get started with professional-grade {keyword.fullKeyword} analysis in minutes.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-semibold transition-all">
-                Get Started Free
-              </button>
+              <a href="/book-a-call" className="inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-semibold transition-all">
+                Book a Demo
+              </a>
               <button className="px-8 py-3 border border-zinc-600 hover:border-zinc-500 rounded-lg font-semibold transition-colors">
                 View Documentation
               </button>

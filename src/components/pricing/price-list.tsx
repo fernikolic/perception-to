@@ -1,70 +1,69 @@
 import { useState } from 'react';
 import { PriceCard } from './price-card';
-import { Toggle } from '@/components/ui/toggle';
 
 const tiers = [
   {
-    name: 'Pro',
-    id: 'pro',
-    description: '',
-    price: '$49',
-    annualPrice: '$495',
+    name: 'Analyst',
+    id: 'analyst',
+    description: 'For individual researchers and analysts',
+    price: '$149',
+    annualPrice: '$1,490',
     perUser: false,
     features: [
-      'Reclaim 10+ hours per week of manual research',
-      'Track emerging narratives across 650+ sources in real time',
-      'Monitor up to 3 saved topics with real-time alerts',
-      'Real-time blind-spot and sentiment notifications',
-      'Instant setup. No sales calls.',
+      'Full access to 450+ source database',
+      'Track up to 5 companies/topics with alerts',
+      'Generate up to 10 custom reports/month',
+      'Earnings call summaries and analysis',
+      'Email support',
     ],
     cta: 'Start 7-day free trial',
     ctaLink: 'https://app.perception.to/auth/sign-up',
     annualCtaLink: 'https://app.perception.to/auth/sign-up',
-    dataplan: 'pro',
+    dataplan: 'analyst',
   },
   {
-    name: 'Premium',
-    id: 'premium',
-    description: '',
-    price: '$99',
-    annualPrice: '$999',
+    name: 'Professional',
+    id: 'professional',
+    description: 'For power users and small teams',
+    price: '$299',
+    annualPrice: '$2,990',
     perUser: false,
-    badge: 'Most popular',
+    badge: 'Most Popular',
     features: [
-      'Everything in Pro, plus:',
-      'Monitor up to 20 saved topics with alerts',
-      'Generate up to 20 custom deliverables from your data',
-      'Advanced price-vs-narrative correlation tools',
+      'Everything in Analyst, plus:',
+      'Track up to 20 companies/topics with alerts',
+      'Generate up to 50 custom reports/month',
+      'Advanced sentiment and narrative analysis',
       'Custom dashboards by outlet, topic, or region',
-      'Auto-generated briefings—exportable in seconds',
-      '1× annual onboarding and strategy call',
+      'Competitive benchmarking tools',
       'Priority email and chat support',
+      '1× onboarding call',
     ],
     featured: true,
     cta: 'Start 7-day free trial',
     ctaLink: 'https://app.perception.to/auth/sign-up',
     annualCtaLink: 'https://app.perception.to/auth/sign-up',
-    dataplan: 'premium',
+    dataplan: 'professional',
   },
   {
-    name: 'Enterprise',
-    id: 'enterprise',
-    description: '',
+    name: 'Team',
+    id: 'team',
+    description: 'For organizations with multiple users',
     price: 'Custom pricing',
     perUser: false,
     features: [
-      'Everything in Premium, plus:',
-      'Unlimited saved topics and alerts',
-      'Unlimited deliverable generation',
-      'API access and custom integrations',
-      'Competitive benchmarking and strategic positioning support',
-      'White-label dashboards and reports',
-      'Dedicated account team and quarterly strategy reviews',
-      'Onboarding for internal comms, research, or IR teams',
+      'Everything in Professional, plus:',
+      'Unlimited tracking and reports',
+      'Multi-seat access with shared dashboards',
+      'API access for custom integrations',
+      'White-label reports and exports',
+      'Dedicated account manager',
+      'Quarterly strategy reviews',
+      'Custom onboarding for your team',
     ],
-    cta: 'Book a call',
-    ctaLink: 'https://perception.to/book-a-call',
-    dataplan: 'enterprise',
+    cta: 'Book a Demo',
+    ctaLink: '/book-a-call',
+    dataplan: 'team',
   },
 ];
 
@@ -74,34 +73,32 @@ export function PriceList() {
   return (
     <div className="flex flex-col">
       {/* Monthly/Annual Toggle */}
-      <div className="flex justify-center mb-12 sm:mb-20">
-        <div className="flex items-center space-x-1 sm:space-x-2 bg-gray-800 rounded-xl sm:rounded-2xl p-1.5 sm:p-2 ring-2 ring-gray-400 shadow-lg">
-          <Toggle
-            pressed={!isAnnual}
-            onPressedChange={() => setIsAnnual(false)}
-            className={`px-4 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl transition-all duration-300 text-sm sm:text-lg font-bold ${
+      <div className="flex flex-col items-center gap-3 mb-12 sm:mb-20">
+        <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-full p-1 border border-white/20">
+          <button
+            onClick={() => setIsAnnual(false)}
+            className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-300 text-sm sm:text-base font-semibold ${
               !isAnnual
-                ? 'bg-white text-black shadow-lg scale-105'
-                : 'text-white hover:bg-gray-700'
+                ? 'bg-white text-black shadow-md'
+                : 'text-white/70 hover:text-white'
             }`}
           >
             Monthly
-          </Toggle>
-          <Toggle
-            pressed={isAnnual}
-            onPressedChange={() => setIsAnnual(true)}
-            className={`px-4 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl transition-all duration-300 text-sm sm:text-lg font-bold relative ${
+          </button>
+          <button
+            onClick={() => setIsAnnual(true)}
+            className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-300 text-sm sm:text-base font-semibold ${
               isAnnual
-                ? 'bg-white text-black shadow-lg scale-105'
-                : 'text-white hover:bg-gray-700'
+                ? 'bg-white text-black shadow-md'
+                : 'text-white/70 hover:text-white'
             }`}
           >
             Annual
-            <span className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-gray-400 text-black text-xs sm:text-sm px-2 sm:px-3 py-0.5 sm:py-1 rounded-full font-bold shadow-lg">
-              Save 17%
-            </span>
-          </Toggle>
+          </button>
         </div>
+        <span className="text-sm text-green-400 font-medium">
+          Save 2 months with annual billing
+        </span>
       </div>
 
       <div className="grid gap-8 md:grid-cols-3">
@@ -112,7 +109,7 @@ export function PriceList() {
 
       <div className="mt-20 text-center">
         <p className="text-base sm:text-lg !text-gray-400 font-light">
-          Need 5+ users? <a href="https://perception.to/book-a-call" className="text-gray-300 hover:underline font-semibold">Contact sales</a> for volume pricing.
+          Need 5+ users? <a href="/book-a-call" className="text-gray-300 hover:underline font-semibold">Contact sales</a> for volume pricing.
         </p>
       </div>
     </div>

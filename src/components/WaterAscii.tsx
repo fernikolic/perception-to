@@ -124,7 +124,7 @@ const WaterAscii = () => {
   // Memoize styles to prevent recalculation
   const containerStyle = useMemo(() => ({
     margin: 0,
-    background: '#F0EEE6',
+    background: '#000000',
     overflow: 'hidden',
     display: 'flex',
     alignItems: 'center',
@@ -149,7 +149,8 @@ const WaterAscii = () => {
     cursor: 'default',
     userSelect: 'none' as const,
     margin: 0,
-    padding: '20px'
+    padding: '20px',
+    color: '#ffffff'
   }), []);
 
   return (

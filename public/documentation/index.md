@@ -29,7 +29,7 @@ Perception helps you track what the world is saying about Bitcoin. Monitor media
 | **Brief** | Executive-ready intelligence reports |
 
 ### Track Topics That Matter
-Create a watchlist of keywords, companies, or topics you care about. Perception monitors 560,000+ data points across 650+ sources to surface relevant coverage.
+Create a watchlist of keywords, companies, or topics you care about. Perception monitors 560,000+ data points across 450+ sources to surface relevant coverage.
 
 ### Discover Emerging Trends
 Our proprietary systems analyze thousands of data points in real-time to identify emerging narratives before they become mainstream news.
@@ -59,7 +59,7 @@ Create executive-ready intelligence reports tailored to your role - whether you'
 | Metric | Description |
 |--------|-------------|
 | **560,000+ data points** | From news, social media & publications |
-| **650+ sources** | News, social, podcasts & more |
+| **450+ sources** | News, social, podcasts & more |
 | **Real-time trend analysis** | Proprietary narrative detection |
 
 ---

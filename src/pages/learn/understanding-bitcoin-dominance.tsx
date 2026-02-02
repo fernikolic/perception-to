@@ -107,7 +107,7 @@ export default function UnderstandingBitcoinDominancePage() {
         <Callout type="insight" title="Why It Matters">
           Bitcoin dominance is a key indicator of <strong>risk appetite</strong> in crypto markets.
           When dominance rises, investors are favoring the "safer" asset (Bitcoin). When it falls,
-          capital is flowing into riskier altcoins—often a sign of speculative excess or "alt season."
+          capital is flowing into riskier altcoins, often a sign of speculative excess or "alt season."
         </Callout>
       </Section>
 

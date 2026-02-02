@@ -107,11 +107,11 @@ Perception | Bitcoin & Crypto Media Intelligence Platform | 250+ Sources
 
 **Current Description:**
 ```
-Intelligence workspace for Bitcoin, stablecoins & tokenized finance. Monitor trends with watchlists, organize in Spaces, generate deliverables with Recipes. 650+ sources, full citations.
+Intelligence workspace for Bitcoin, stablecoins & tokenized finance. Monitor trends with watchlists, organize in Spaces, generate deliverables with Recipes. 450+ sources, full citations.
 ```
 
 **Issues:**
-- Says "650+ sources" but your messaging says "250+ sources" - inconsistency
+- Says "450+ sources" but your messaging says "250+ sources" - inconsistency
 - Missing CTA ("Start free trial")
 - Doesn't mention key differentiators (media monitoring, PR teams, sentiment)
 

@@ -15,7 +15,7 @@
 ## Getting Started
 
 ### What is Perception?
-Perception is a Bitcoin market intelligence platform that aggregates and analyzes media coverage from 650+ sources. It helps you track topics, discover trends, and receive automated intelligence reports.
+Perception is a Bitcoin market intelligence platform that aggregates and analyzes media coverage from 450+ sources. It helps you track topics, discover trends, and receive automated intelligence reports.
 
 ### How do I start using Perception?
 1. Create an account
@@ -33,7 +33,7 @@ Perception is a web application optimized for desktop and mobile browsers. There
 ## Data & Coverage
 
 ### How much data does Perception have?
-Perception tracks 560,000+ data points from 650+ sources, with coverage spanning from 2011 to present. New data points are added continuously.
+Perception tracks 560,000+ data points from 450+ sources, with coverage spanning from 2011 to present. New data points are added continuously.
 
 ### What sources do you monitor?
 We monitor mainstream media (Reuters, Bloomberg, Forbes), crypto-native publications (CoinDesk, Cointelegraph), financial media (MarketWatch, Yahoo Finance), and social platforms. See [Sources Overview](./data-coverage/sources-overview.md) for details.

@@ -1,7 +1,13 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Check } from 'lucide-react';
 import SEO from '@/components/SEO';
-import BouncingPointCloud from '@/components/BouncingPointCloud';
+import AsciiDiagonalPetals from '@/components/AsciiDiagonalPetals';
+
+const features = [
+  { title: 'Set Up Watchlists Once', description: 'Track your company and top 3 competitors. We monitor 450+ sources automatically.' },
+  { title: 'Organize in a Space', description: 'Create a "Board Prep" Space. All your competitive intel, sentiment data, and trend analysis lives there.' },
+  { title: 'Generate with a Recipe', description: 'Click the Board Update Recipe. Get a ready-to-send report with competitive benchmarking, sentiment analysis, and full citations.' },
+  { title: 'Update It Anytime', description: 'Next quarter? Same Space, click the Recipe again. Fresh data, same professional format.' }
+];
 
 export function ExecutiveIntelligencePage() {
   return (
@@ -14,21 +20,35 @@ export function ExecutiveIntelligencePage() {
       />
       <div className="min-h-screen bg-[#F0EEE6]">
         {/* Hero Section */}
-        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-16">
-          {/* Base Gradient */}
+        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-28">
           <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 
           <div className="mx-auto max-w-[1800px] px-6 sm:px-8 py-8 sm:py-12 lg:py-16 lg:px-12">
+            {/* Back Button - Above Cards */}
+            <a href="/use-cases" className="inline-flex items-center gap-2 text-sm text-black/60 hover:text-black transition-colors mb-6 group bg-white/50 hover:bg-white px-4 py-2 rounded-full border border-black/10">
+              <span className="group-hover:-translate-x-0.5 transition-transform">←</span>
+              <span>Back to Use Cases</span>
+            </a>
+
             <div className="relative">
               <div className="flex flex-col-reverse lg:flex-row gap-6 lg:gap-8 min-h-[200px] lg:min-h-[600px]">
-                {/* ASCII Art - Left Card (Desktop only) */}
+                {/* ASCII Art - Left Card */}
                 <div className="w-full lg:w-1/2 relative min-h-[300px] lg:min-h-[600px] hidden lg:block">
                   <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl" style={{ background: '#000000' }}>
-                    <BouncingPointCloud />
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-white text-center px-8 leading-tight">
-                        Executive<br />Intelligence
-                      </h1>
+                    <AsciiDiagonalPetals />
+                    <div className="absolute inset-0 flex flex-col items-center justify-between pointer-events-none px-8 py-12">
+                      <div className="flex-1 flex items-center justify-center">
+                        <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-white text-center leading-tight">
+                          Executive Intelligence
+                        </h1>
+                      </div>
+                      <div className="flex items-center gap-6 text-white/60 text-sm">
+                        <span>Watchlists</span>
+                        <span className="w-1 h-1 rounded-full bg-white/40" />
+                        <span>Spaces</span>
+                        <span className="w-1 h-1 rounded-full bg-white/40" />
+                        <span>Recipes</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -37,14 +57,10 @@ export function ExecutiveIntelligencePage() {
                 <div className="w-full lg:w-1/2 px-6 sm:px-8 lg:pl-8 lg:pr-12 py-8 sm:py-12 lg:py-16 flex flex-col justify-center rounded-3xl shadow-2xl" style={{ background: '#F0EEE6' }}>
                   <div className="w-full max-w-2xl">
                     <div className="mb-4 sm:mb-6 lg:mb-8 text-center lg:text-left">
-                      <a href="/use-cases" className="flex items-center text-sm text-black/70 hover:text-black mb-4">
-                        ← Back to Use Cases
-                      </a>
-                      <div className="inline-flex items-center rounded-full px-5 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base font-semibold leading-6"
+                      <div className="inline-flex items-center rounded-full px-5 py-2 text-sm font-semibold"
                         style={{
                           background: 'rgba(255, 255, 255, 0.08)',
                           border: '1px solid rgba(255, 255, 255, 0.2)',
-                          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                         }}
                       >
                         <span className="flex items-center gap-2">
@@ -70,16 +86,16 @@ export function ExecutiveIntelligencePage() {
                     <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-6">
                       <Button
                         size="lg"
-                        className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
+                        className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
                         asChild
                       >
-                        <a href="https://app.perception.to/auth/sign-up">
-                          Start free trial
+                        <a href="/book-a-call">
+                          Book a Demo
                         </a>
                       </Button>
                       <Button
                         size="lg"
-                        className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
+                        className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
                         onClick={() => {
                           document.getElementById('solution-section')?.scrollIntoView({ behavior: 'smooth' });
                         }}
@@ -95,15 +111,17 @@ export function ExecutiveIntelligencePage() {
         </div>
 
         {/* The Challenge */}
-        <section className="py-24 sm:py-32 border-b border-white/10 bg-black">
+        <section className="py-24 sm:py-32 bg-black">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl">
-              <div className="mb-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-white/50">The Challenge</span>
+            <div className="mx-auto max-w-4xl">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white mb-12">
+                The challenge
+              </h2>
+              <div className="bg-gradient-to-br from-white/[0.08] to-white/[0.02] rounded-3xl p-10 border border-white/10">
+                <p className="text-xl sm:text-2xl md:text-3xl font-light text-white leading-relaxed">
+                  Board meeting next week. They want competitive intel. You spend 3 days pulling coverage from different sources, building a deck from scratch, and it's outdated by the time you present it.
+                </p>
               </div>
-              <p className="text-xl sm:text-2xl md:text-3xl font-light text-white leading-relaxed">
-                Board meeting next week. They want competitive intel. You spend 3 days pulling coverage from different sources, building a deck from scratch, and it's outdated by the time you present it.
-              </p>
             </div>
           </div>
         </section>
@@ -111,47 +129,20 @@ export function ExecutiveIntelligencePage() {
         {/* The Solution */}
         <section id="solution-section" className="py-24 sm:py-32 bg-[#F0EEE6]">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl">
-              <div className="mb-12">
-                <span className="text-xs font-semibold uppercase tracking-wider text-black/50 mb-4 block">The Solution</span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6">
-                  Your intel is already organized. Just generate the report.
-                </h2>
-              </div>
+            <div className="mx-auto max-w-4xl">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-black mb-8">
+                The solution
+              </h2>
+              <p className="text-xl text-black/60 leading-relaxed mb-16 font-light">
+                Your intel is already organized. Just generate the report.
+              </p>
 
-              <div className="space-y-8">
-                {[
-                  {
-                    title: "Set Up Watchlists Once",
-                    description: "Track your company and top 3 competitors. We monitor 650+ sources automatically."
-                  },
-                  {
-                    title: "Organize in a Space",
-                    description: "Create a \"Board Prep\" Space. All your competitive intel, sentiment data, and trend analysis lives there."
-                  },
-                  {
-                    title: "Generate with a Recipe",
-                    description: "Click the Board Update Recipe. Get a ready-to-send report with competitive benchmarking, sentiment analysis, and full citations."
-                  },
-                  {
-                    title: "Update It Anytime",
-                    description: "Next quarter? Same Space, click the Recipe again. Fresh data, same professional format."
-                  }
-                ].map((feature, index) => (
-                  <div key={index} className="flex gap-4">
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="w-6 h-6 rounded-full bg-black flex items-center justify-center">
-                        <Check className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-black mb-2">
-                        {feature.title}
-                      </h3>
-                      <p className="text-black/60">
-                        {feature.description}
-                      </p>
-                    </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                {features.map((feature, index) => (
+                  <div key={index} className="bg-white rounded-2xl p-8 border border-black/5 hover:shadow-lg transition-all duration-300">
+                    <span className="text-5xl font-light text-black/10 block mb-4">{String(index + 1).padStart(2, '0')}</span>
+                    <h3 className="text-xl font-semibold text-black mb-3">{feature.title}</h3>
+                    <p className="text-black/60 text-sm leading-relaxed">{feature.description}</p>
                   </div>
                 ))}
               </div>
@@ -160,23 +151,23 @@ export function ExecutiveIntelligencePage() {
         </section>
 
         {/* Impact */}
-        <section className="py-24 sm:py-32 border-b border-white/10 bg-black">
+        <section className="py-24 sm:py-32 bg-black">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl">
+            <div className="mx-auto max-w-4xl">
               <div className="grid sm:grid-cols-2 gap-8">
-                <div>
-                  <div className="text-5xl font-semibold text-white mb-2">
+                <div className="bg-white/5 rounded-3xl p-10 border border-white/10 text-center">
+                  <div className="text-5xl sm:text-6xl font-semibold text-white mb-4">
                     One click
                   </div>
-                  <div className="text-white/60">
+                  <div className="text-white/50 text-lg">
                     Instead of 3 days
                   </div>
                 </div>
-                <div>
-                  <div className="text-5xl font-semibold text-white mb-2">
+                <div className="bg-white/5 rounded-3xl p-10 border border-white/10 text-center">
+                  <div className="text-5xl sm:text-6xl font-semibold text-white mb-4">
                     Always fresh
                   </div>
-                  <div className="text-white/60">
+                  <div className="text-white/50 text-lg">
                     Never outdated
                   </div>
                 </div>
@@ -187,38 +178,27 @@ export function ExecutiveIntelligencePage() {
 
         {/* CTA */}
         <section className="py-24 sm:py-32 bg-[#F0EEE6]">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6">
-                Ready to stop rebuilding board decks from scratch?
-              </h2>
-              <p className="text-lg text-black/60 mb-10">
-                Set up watchlists once. Organize in a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Space</em>. Generate reports with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>. 7-day free trial.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="bg-black text-white hover:bg-black/90 px-8 rounded-full"
-                  asChild
-                >
-                  <a href="https://app.perception.to/auth/sign-up" className="flex items-center gap-2">
-                    Start free trial
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-black/20 hover:border-black/30 px-8 rounded-full"
-                  asChild
-                >
-                  <a href="/book-a-call">Book a demo</a>
-                </Button>
-              </div>
-            </div>
+          <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-black mb-6">
+              Ready to stop rebuilding board decks from scratch?
+            </h2>
+            <p className="text-xl text-black/50 mb-12 font-light">
+              Set up watchlists once. Organize in a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Space</em>. Generate reports with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>.
+            </p>
+            <Button
+              size="lg"
+              className="bg-black text-white hover:bg-black/90 font-semibold px-10 py-7 text-lg rounded-2xl shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300"
+              asChild
+            >
+              <a href="/book-a-call">
+                Book a Demo →
+              </a>
+            </Button>
           </div>
         </section>
       </div>
     </>
   );
 }
+
+export default ExecutiveIntelligencePage;

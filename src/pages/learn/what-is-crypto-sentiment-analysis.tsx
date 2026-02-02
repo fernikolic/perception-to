@@ -54,7 +54,7 @@ export default function WhatIsCryptoSentimentAnalysisPage() {
         </Paragraph>
         <Paragraph>
           Unlike technical analysis (which looks at price charts) or fundamental analysis (which examines
-          underlying value), sentiment analysis focuses on <strong>market psychology</strong>—the fear,
+          underlying value), sentiment analysis focuses on <strong>market psychology</strong>, the fear,
           greed, optimism, and pessimism that drive buying and selling decisions.
         </Paragraph>
         <Callout type="insight" title="Key Insight">
@@ -119,16 +119,16 @@ export default function WhatIsCryptoSentimentAnalysisPage() {
           </InfoCard>
 
           <InfoCard title="Media Sentiment" icon={Newspaper}>
-            <p className="mb-2">What journalists, analysts, and publications are reporting—from Bloomberg to CoinDesk.</p>
+            <p className="mb-2">What journalists, analysts, and publications are reporting, from Bloomberg to CoinDesk.</p>
             <ul className="text-sm space-y-1">
               <li><strong>Pros:</strong> Higher signal quality, institutional focus, narrative tracking</li>
               <li><strong>Cons:</strong> Slower than social, requires AI to process at scale</li>
-              <li><strong>Best tools:</strong> Perception (650+ sources)</li>
+              <li><strong>Best tools:</strong> Perception (450+ sources)</li>
             </ul>
           </InfoCard>
 
           <InfoCard title="On-Chain Sentiment" icon={BarChart3}>
-            <p className="mb-2">What blockchain data reveals about holder behavior—accumulation, distribution, whale movements.</p>
+            <p className="mb-2">What blockchain data reveals about holder behavior, accumulation, distribution, whale movements.</p>
             <ul className="text-sm space-y-1">
               <li><strong>Pros:</strong> Shows actual behavior, not just talk</li>
               <li><strong>Cons:</strong> Complex to interpret, lagging indicator</li>

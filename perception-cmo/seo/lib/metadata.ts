@@ -18,7 +18,7 @@ export interface PageMetadata {
 // =============================================================================
 export const homepageMetadata: PageMetadata = {
   title: "Perception | Bitcoin & Crypto Media Intelligence Platform | 250+ Sources",
-  description: "Track Bitcoin and crypto narratives across 250+ media sources. Real-time sentiment analysis, media monitoring, and intelligence reports for PR teams, analysts, and researchers. Start free trial.",
+  description: "Track Bitcoin and crypto narratives across 250+ media sources. Real-time sentiment analysis, media monitoring, and intelligence reports for PR teams, analysts, and researchers. Book a Demo.",
   keywords: [
     "crypto media intelligence",
     "bitcoin media monitoring",

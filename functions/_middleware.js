@@ -385,7 +385,7 @@ function generateSentimentPageContent(path) {
 
       <footer style="text-align: center; padding-top: 32px; border-top: 1px solid #e2e8f0; color: #94a3b8; font-size: 0.875rem;">
         <p>Data provided by <a href="https://perception.to" style="color: #3b82f6;">Perception</a> - Intelligence Workspace for Bitcoin & Crypto</p>
-        <p style="margin-top: 8px;">Updated daily from 650+ sources</p>
+        <p style="margin-top: 8px;">Updated daily from 450+ sources</p>
       </footer>
     </article>
     <script>

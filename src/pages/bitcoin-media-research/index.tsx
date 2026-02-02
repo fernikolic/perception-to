@@ -177,7 +177,7 @@ export function BitcoinMediaResearchPage() {
 
       <div className="min-h-screen bg-[#F0EEE6]">
         {/* Hero Section */}
-        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-16">
+        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-28">
           {/* Base Gradient */}
           <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 

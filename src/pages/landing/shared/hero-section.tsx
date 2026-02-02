@@ -77,7 +77,7 @@ export function HeroSection({ segment, title, subtitle, ctaText, backgroundClass
                     className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
                     asChild
                   >
-                    <a href="https://app.perception.to/auth/sign-up">
+                    <a href="/book-a-call">
                       {ctaText}
                     </a>
                   </Button>

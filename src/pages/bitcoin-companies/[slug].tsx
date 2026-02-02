@@ -63,7 +63,7 @@ function GatedSection({
         </p>
         <Link to="/pricing">
           <Button size="sm" className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100 rounded-full px-6">
-            Start Free Trial
+            Book a Demo
           </Button>
         </Link>
       </div>
@@ -220,7 +220,7 @@ export default function BitcoinCompanyPage() {
         <title>{company.metaTitle || `${company.name} - Bitcoin Narrative Intelligence | Perception`}</title>
         <meta
           name="description"
-          content={company.metaDescription || `Track ${company.name} coverage, sentiment, and narratives across 650+ sources. ${company.shortDescription}`}
+          content={company.metaDescription || `Track ${company.name} coverage, sentiment, and narratives across 450+ sources. ${company.shortDescription}`}
         />
         <meta property="og:title" content={`${company.name} - Narrative Intelligence | Perception`} />
         <meta property="og:description" content={company.shortDescription} />
@@ -555,11 +555,11 @@ export default function BitcoinCompanyPage() {
               <div className="bg-slate-900 dark:bg-slate-800 rounded-3xl p-10 border border-slate-700">
                 <h3 className="text-xl font-semibold text-white mb-3">Full Intelligence</h3>
                 <p className="text-slate-400 mb-8">
-                  Get real-time alerts, historical data, and AI-powered insights for {company.name}.
+                  Get real-time alerts, historical data, and intelligent insights for {company.name}.
                 </p>
                 <Link to="/pricing">
                   <Button className="w-full bg-white text-slate-900 hover:bg-slate-100 rounded-full py-6">
-                    Start Free Trial
+                    Book a Demo
                   </Button>
                 </Link>
               </div>

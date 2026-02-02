@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import AsciiDiagonalPetals from '@/components/AsciiDiagonalPetals';
 
 const comparisonPoints = [
-  { label: 'Data Sources', alternative: '5-6 indicators', perception: '650+ sources' },
+  { label: 'Data Sources', alternative: '5-6 indicators', perception: '450+ sources' },
   { label: 'Update Speed', alternative: 'Every 4 hours', perception: 'Every 90 seconds' },
   { label: 'Source Transparency', alternative: 'Limited', perception: 'Full transparency' },
   { label: 'Media Coverage', alternative: 'None', perception: 'Comprehensive' },
@@ -39,7 +39,7 @@ const uniqueCapabilities = [
 const faqs = [
   {
     question: 'Should I use Perception instead of Alternative.me?',
-    answer: 'They serve different purposes. Alternative.me provides a quick, free Fear & Greed Index for casual reference. Perception offers real-time updates, 650+ sources, and full transparency into where sentiment data comes from.'
+    answer: 'They serve different purposes. Alternative.me provides a quick, free Fear & Greed Index for casual reference. Perception offers real-time updates, 450+ sources, and full transparency into where sentiment data comes from.'
   },
   {
     question: 'What makes Perception\'s Fear & Greed Index different?',
@@ -47,7 +47,7 @@ const faqs = [
   },
   {
     question: 'Is Perception free like Alternative.me?',
-    answer: 'Perception offers a 7-day free trial with full access. Our paid plans include real-time updates, 650+ sources, API access, and full source transparency. Alternative.me is free but updates every 4 hours.'
+    answer: 'Perception offers paid plans with real-time updates, 450+ sources, API access, and full source transparency. Book a demo to see it in action. Alternative.me is free but updates every 4 hours.'
   },
   {
     question: 'Why does update speed matter?',
@@ -131,8 +131,8 @@ export default function AlternativeMeAlternativePage() {
                     className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-base font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
                     asChild
                   >
-                    <a href="https://app.perception.to/auth/sign-up">
-                      Start free trial
+                    <a href="/book-a-call">
+                      Book a Demo
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </a>
                   </Button>
@@ -292,7 +292,7 @@ export default function AlternativeMeAlternativePage() {
               <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>transparency</em>
             </h2>
             <p className="text-xl text-black/60 mb-10">
-              650+ sources. 90-second updates. 7-day free trial.
+              450+ sources. 90-second updates. Book a demo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -300,8 +300,8 @@ export default function AlternativeMeAlternativePage() {
                 className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-lg font-semibold shadow-2xl transition-all duration-300 hover:scale-105"
                 asChild
               >
-                <a href="https://app.perception.to/auth/sign-up">
-                  Start free trial
+                <a href="/book-a-call">
+                  Book a Demo
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>

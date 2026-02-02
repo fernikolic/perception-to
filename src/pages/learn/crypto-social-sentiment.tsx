@@ -88,14 +88,14 @@ export default function CryptoSocialSentimentPage() {
         </Paragraph>
         <Paragraph>
           Unlike traditional market indicators that look at price and volume, social sentiment
-          captures the <strong>human side of markets</strong>—the fear, excitement, skepticism,
+          captures the <strong>human side of markets</strong>, the fear, excitement, skepticism,
           and euphoria that drive buying and selling decisions.
         </Paragraph>
 
         <Callout type="insight" title="Why Social Sentiment Matters">
           Crypto markets are uniquely social. A viral tweet can move prices. Reddit communities
           can coordinate buying pressure. Telegram groups spread narratives. Understanding social
-          sentiment helps you anticipate these moves—or at least not be caught off guard by them.
+          sentiment helps you anticipate these moves, or at least not be caught off guard by them.
         </Callout>
 
         <ComparisonGrid
@@ -349,7 +349,7 @@ export default function CryptoSocialSentimentPage() {
             <strong>Media sentiment</strong> (from news outlets, analysts, and publications) tends to be
             higher quality than raw social sentiment. Media has editorial standards and reputation at stake.
             <InternalLink to="/bitcoin-media-research"> Perception's Media Research</InternalLink> analyzes
-            650+ sources to provide cleaner sentiment signals than social media alone.
+            450+ sources to provide cleaner sentiment signals than social media alone.
           </p>
         </Callout>
       </Section>

@@ -4,7 +4,7 @@ import AsciiDiagonalPetals from '@/components/AsciiDiagonalPetals';
 export default function BookACallPage() {
 
   return (
-    <div className="min-h-screen bg-background pt-16">
+    <div className="min-h-screen bg-background pt-28">
       {/* Hero Section with ASCII Art */}
       <section className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95">
         <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
@@ -61,7 +61,7 @@ export default function BookACallPage() {
                       className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
                       asChild
                     >
-                      <a href="https://calendar.app.google/Ta211CSAN4doLgPLA" target="_blank" rel="noopener noreferrer">
+                      <a href="https://calendly.com/fernikolic/30min" target="_blank" rel="noopener noreferrer">
                         Pick a time
                       </a>
                     </Button>

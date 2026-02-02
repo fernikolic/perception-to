@@ -66,7 +66,7 @@ export function ConveyorDemo() {
               Real-Time Processing
             </h3>
             <p className="text-slate-400">
-              Our AI-powered engine analyzes sentiment, detects trends, and identifies
+              Our analysis engine evaluates sentiment, detects trends, and identifies
               key insights as data flows through.
             </p>
           </div>
@@ -104,13 +104,10 @@ export function ConveyorDemo() {
             className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300"
             asChild
           >
-            <a href="https://app.perception.to/auth/sign-up">
-              Start Processing Intelligence
+            <a href="/book-a-call">
+              Book a Demo
             </a>
           </Button>
-          <p className="mt-4 text-slate-400 text-sm">
-            No credit card required • 7-day free trial
-          </p>
         </div>
       </div>
     </div>

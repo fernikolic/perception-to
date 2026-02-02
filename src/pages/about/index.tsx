@@ -52,7 +52,7 @@ export function AboutPage() {
       />
     <div className="min-h-screen bg-[#F0EEE6]">
       {/* Hero Section */}
-      <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-16">
+      <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-28">
         {/* Base Gradient */}
         <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 
@@ -110,8 +110,8 @@ export function AboutPage() {
                       className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
                       asChild
                     >
-                      <a href="https://app.perception.to/auth/sign-up">
-                        Start free trial
+                      <a href="/book-a-call">
+                        Book a Demo
                       </a>
                     </Button>
                     <Button
@@ -146,7 +146,7 @@ export function AboutPage() {
                   Stop starting from scratch every time you need to create a deliverable. Your board wants competitive intel? It's already organized in a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Space</em>. Generate it with a <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipe</em>.
                 </p>
                 <p>
-                  We monitor 650+ sources automatically. You set up watchlists for what matters. Everything gets organized into <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> by project or stakeholder. Then you generate professional deliverables with one click.
+                  We monitor 450+ sources automatically. You set up watchlists for what matters. Everything gets organized into <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em> by project or stakeholder. Then you generate professional deliverables with one click.
                 </p>
                 <p>
                   Our goal is simple: turn weeks of monitoring into ready-to-send outputs. Board updates, pitch intelligence, sector deep dives. All with full citations.
@@ -266,13 +266,13 @@ export function AboutPage() {
               Ready to stop starting from scratch?
             </h2>
             <p className="text-base sm:text-lg lg:text-xl xl:text-2xl font-light text-black/60 mb-8 sm:mb-12 max-w-3xl mx-auto px-2">
-              Set up watchlists, organize in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, generate with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>. 7-day free trial.
+              Set up watchlists, organize in <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>, generate with <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em>.
             </p>
             <a
-              href="https://app.perception.to/auth/sign-up"
+              href="/book-a-call"
               className="inline-flex items-center justify-center px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl font-semibold text-white bg-black rounded-full hover:bg-black/90 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-3xl focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
             >
-              Start free trial
+              Book a Demo
             </a>
           </div>
         </div>

@@ -142,7 +142,7 @@ export function BrandPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F0EEE6] pt-16">
+    <div className="min-h-screen bg-[#F0EEE6] pt-28">
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95">
         <div className="mx-auto max-w-[1800px] px-6 sm:px-8 py-8 sm:py-12 lg:py-16 lg:px-12">
@@ -375,7 +375,7 @@ export function BrandPage() {
               <div>
                 <div className="text-xs uppercase tracking-wider text-black/40 mb-2 font-semibold">BODY TEXT</div>
                 <div className="text-base sm:text-lg text-black/80 leading-relaxed max-w-2xl">
-                  We monitor 650+ sources across Bitcoin, stablecoins, and tokenized finance. Track with watchlists, organize in <em className="font-serif">Spaces</em>, generate with <em className="font-serif">Recipes</em>.
+                  We monitor 450+ sources across Bitcoin, stablecoins, and tokenized finance. Track with watchlists, organize in <em className="font-serif">Spaces</em>, generate with <em className="font-serif">Recipes</em>.
                 </div>
               </div>
             </div>
@@ -528,7 +528,7 @@ export function BrandPage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <button className="bg-black text-white font-bold text-sm px-6 py-3 rounded-full hover:bg-black/90 transition-colors">
-                    Start free trial
+                    Book a Demo
                   </button>
                   <span className="text-black/40 text-sm">Primary</span>
                 </div>

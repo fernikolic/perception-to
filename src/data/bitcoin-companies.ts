@@ -101,7 +101,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 660624,
     lastUpdated: '2026-01-06',
     metaTitle: 'Strategy (MSTR) - Narrative Intelligence & Sentiment Analysis',
-    metaDescription: 'Track what people are saying about Strategy (MicroStrategy). Real-time sentiment analysis, news coverage, and narrative trends from 650+ sources.',
+    metaDescription: 'Track what people are saying about Strategy (MicroStrategy). Real-time sentiment analysis, news coverage, and narrative trends from 450+ sources.',
     keywords: ['MicroStrategy sentiment', 'MSTR news', 'Michael Saylor coverage', 'Strategy Bitcoin narrative']
   },
   {
@@ -134,7 +134,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 53250,
     lastUpdated: '2026-01-06',
     metaTitle: 'Marathon Digital (MARA) - News & Sentiment Tracking',
-    metaDescription: 'Monitor Marathon Digital coverage across 650+ sources. Real-time sentiment analysis and narrative intelligence for MARA.',
+    metaDescription: 'Monitor Marathon Digital coverage across 450+ sources. Real-time sentiment analysis and narrative intelligence for MARA.',
     keywords: ['Marathon Digital news', 'MARA sentiment', 'Bitcoin mining coverage']
   },
   {
@@ -199,7 +199,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 8485,
     lastUpdated: '2026-01-06',
     metaTitle: 'Block Inc. (SQ) - Sentiment & Narrative Analysis',
-    metaDescription: 'Monitor Block Inc. coverage and Jack Dorsey\'s Bitcoin initiatives. Real-time sentiment tracking from 650+ sources.',
+    metaDescription: 'Monitor Block Inc. coverage and Jack Dorsey\'s Bitcoin initiatives. Real-time sentiment tracking from 450+ sources.',
     keywords: ['Block Inc news', 'Jack Dorsey Bitcoin', 'Cash App sentiment', 'Square crypto']
   },
   {
@@ -232,7 +232,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 11509,
     lastUpdated: '2026-01-06',
     metaTitle: 'Tesla (TSLA) Bitcoin - News & Sentiment Tracking',
-    metaDescription: 'Track Tesla Bitcoin coverage and Elon Musk crypto sentiment. Real-time narrative intelligence from 650+ sources.',
+    metaDescription: 'Track Tesla Bitcoin coverage and Elon Musk crypto sentiment. Real-time narrative intelligence from 450+ sources.',
     keywords: ['Tesla Bitcoin news', 'Elon Musk crypto', 'TSLA Bitcoin sentiment']
   },
   {
@@ -298,7 +298,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 30823,
     lastUpdated: '2026-01-06',
     metaTitle: 'Metaplanet - Japan Bitcoin Treasury Sentiment',
-    metaDescription: 'Track Metaplanet news and sentiment. Monitor Asia\'s leading Bitcoin treasury company across 650+ sources.',
+    metaDescription: 'Track Metaplanet news and sentiment. Monitor Asia\'s leading Bitcoin treasury company across 450+ sources.',
     keywords: ['Metaplanet Bitcoin', 'Japan Bitcoin company', 'Asia MicroStrategy']
   },
   {
@@ -330,7 +330,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     ],
     lastUpdated: '2026-01-06',
     metaTitle: 'BlackRock Bitcoin - ETF News & Sentiment',
-    metaDescription: 'Monitor BlackRock Bitcoin coverage and IBIT ETF sentiment. Track institutional adoption narratives from 650+ sources.',
+    metaDescription: 'Monitor BlackRock Bitcoin coverage and IBIT ETF sentiment. Track institutional adoption narratives from 450+ sources.',
     keywords: ['BlackRock Bitcoin', 'IBIT ETF news', 'Larry Fink crypto', 'institutional Bitcoin']
   },
   {
@@ -359,7 +359,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     ],
     lastUpdated: '2026-01-06',
     metaTitle: 'Fidelity Bitcoin - News & Sentiment Analysis',
-    metaDescription: 'Track Fidelity Digital Assets coverage and FBTC sentiment. Monitor institutional Bitcoin narratives from 650+ sources.',
+    metaDescription: 'Track Fidelity Digital Assets coverage and FBTC sentiment. Monitor institutional Bitcoin narratives from 450+ sources.',
     keywords: ['Fidelity Bitcoin', 'FBTC ETF', 'institutional crypto custody']
   },
   {
@@ -389,7 +389,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     ],
     lastUpdated: '2026-01-06',
     metaTitle: 'Strike - Bitcoin Payments News & Sentiment',
-    metaDescription: 'Monitor Strike and Jack Mallers coverage. Track Lightning Network and Bitcoin payments narratives from 650+ sources.',
+    metaDescription: 'Monitor Strike and Jack Mallers coverage. Track Lightning Network and Bitcoin payments narratives from 450+ sources.',
     keywords: ['Strike Bitcoin', 'Jack Mallers', 'Lightning Network news', 'Bitcoin payments']
   },
   {
@@ -419,7 +419,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     ],
     lastUpdated: '2026-01-06',
     metaTitle: 'Tether (USDT) - News & Sentiment Intelligence',
-    metaDescription: 'Track Tether coverage and USDT sentiment. Monitor stablecoin narratives and regulatory news from 650+ sources.',
+    metaDescription: 'Track Tether coverage and USDT sentiment. Monitor stablecoin narratives and regulatory news from 450+ sources.',
     keywords: ['Tether news', 'USDT sentiment', 'stablecoin regulation']
   },
   {
@@ -448,7 +448,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     ],
     lastUpdated: '2026-01-06',
     metaTitle: 'Bitcoin Magazine - Coverage & Sentiment Analysis',
-    metaDescription: 'Track Bitcoin Magazine influence and coverage trends. Monitor Bitcoin media narratives from 650+ sources.',
+    metaDescription: 'Track Bitcoin Magazine influence and coverage trends. Monitor Bitcoin media narratives from 450+ sources.',
     keywords: ['Bitcoin Magazine', 'Bitcoin Conference', 'Bitcoin news media']
   },
   {
@@ -478,7 +478,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     ],
     lastUpdated: '2026-01-06',
     metaTitle: 'Grayscale (GBTC) - ETF News & Sentiment',
-    metaDescription: 'Track Grayscale coverage and GBTC sentiment. Monitor Bitcoin ETF narratives from 650+ sources.',
+    metaDescription: 'Track Grayscale coverage and GBTC sentiment. Monitor Bitcoin ETF narratives from 450+ sources.',
     keywords: ['Grayscale news', 'GBTC sentiment', 'Bitcoin ETF']
   },
   {
@@ -506,7 +506,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     ],
     lastUpdated: '2026-01-06',
     metaTitle: 'Michael Saylor - Bitcoin Sentiment & Coverage',
-    metaDescription: 'Track Michael Saylor\'s Bitcoin coverage and influence. Monitor his impact on market narratives from 650+ sources.',
+    metaDescription: 'Track Michael Saylor\'s Bitcoin coverage and influence. Monitor his impact on market narratives from 450+ sources.',
     keywords: ['Michael Saylor Bitcoin', 'Saylor sentiment', 'Bitcoin advocacy']
   },
   {
@@ -565,7 +565,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 43514,
     lastUpdated: '2026-01-06',
     metaTitle: 'Twenty One Capital (XXI) - Bitcoin Treasury News & Sentiment',
-    metaDescription: 'Track Twenty One Capital Bitcoin holdings and market coverage. Monitor treasury strategy narratives from 650+ sources.',
+    metaDescription: 'Track Twenty One Capital Bitcoin holdings and market coverage. Monitor treasury strategy narratives from 450+ sources.',
     keywords: ['Twenty One Capital', 'XXI stock', 'Bitcoin treasury', 'corporate Bitcoin']
   },
   {
@@ -594,7 +594,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 13696,
     lastUpdated: '2026-01-06',
     metaTitle: 'Hut 8 (HUT) - Mining & AI News & Sentiment',
-    metaDescription: 'Track Hut 8 coverage and sentiment. Monitor Bitcoin mining and AI infrastructure narratives from 650+ sources.',
+    metaDescription: 'Track Hut 8 coverage and sentiment. Monitor Bitcoin mining and AI infrastructure narratives from 450+ sources.',
     keywords: ['Hut 8 mining', 'HUT stock', 'Bitcoin mining AI', 'crypto mining']
   },
   {
@@ -623,7 +623,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 13011,
     lastUpdated: '2026-01-06',
     metaTitle: 'CleanSpark (CLSK) - Bitcoin Mining News & Sentiment',
-    metaDescription: 'Track CleanSpark Bitcoin mining coverage. Monitor pure-play mining narratives from 650+ sources.',
+    metaDescription: 'Track CleanSpark Bitcoin mining coverage. Monitor pure-play mining narratives from 450+ sources.',
     keywords: ['CleanSpark', 'CLSK stock', 'Bitcoin mining', 'crypto miner']
   },
   {
@@ -652,7 +652,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 4710,
     lastUpdated: '2026-01-06',
     metaTitle: 'GameStop (GME) Bitcoin - Treasury News & Sentiment',
-    metaDescription: 'Track GameStop Bitcoin holdings and Ryan Cohen coverage. Monitor corporate Bitcoin adoption narratives from 650+ sources.',
+    metaDescription: 'Track GameStop Bitcoin holdings and Ryan Cohen coverage. Monitor corporate Bitcoin adoption narratives from 450+ sources.',
     keywords: ['GameStop Bitcoin', 'GME stock', 'Ryan Cohen Bitcoin', 'corporate treasury']
   },
   {
@@ -681,7 +681,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 6894,
     lastUpdated: '2026-01-06',
     metaTitle: 'Galaxy Digital (GLXY) - Crypto News & Sentiment',
-    metaDescription: 'Track Galaxy Digital and Mike Novogratz coverage. Monitor crypto financial services narratives from 650+ sources.',
+    metaDescription: 'Track Galaxy Digital and Mike Novogratz coverage. Monitor crypto financial services narratives from 450+ sources.',
     keywords: ['Galaxy Digital', 'Mike Novogratz', 'GLXY stock', 'crypto financial services']
   },
   {
@@ -710,7 +710,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 2116,
     lastUpdated: '2026-01-06',
     metaTitle: 'Core Scientific (CORZ) - Mining News & Sentiment',
-    metaDescription: 'Track Core Scientific coverage and sentiment. Monitor Bitcoin mining comeback narratives from 650+ sources.',
+    metaDescription: 'Track Core Scientific coverage and sentiment. Monitor Bitcoin mining comeback narratives from 450+ sources.',
     keywords: ['Core Scientific', 'CORZ stock', 'Bitcoin mining', 'crypto infrastructure']
   },
   {
@@ -768,7 +768,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 1526,
     lastUpdated: '2026-01-06',
     metaTitle: 'Fold (FLD) - Bitcoin Rewards News & Sentiment',
-    metaDescription: 'Track Fold Bitcoin rewards company coverage. Monitor Bitcoin mainstream adoption narratives from 650+ sources.',
+    metaDescription: 'Track Fold Bitcoin rewards company coverage. Monitor Bitcoin mainstream adoption narratives from 450+ sources.',
     keywords: ['Fold app', 'FLD stock', 'Bitcoin rewards', 'Bitcoin credit card']
   },
   // Tier 2: Infrastructure & Private Companies
@@ -795,7 +795,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'Blockstream - Bitcoin Infrastructure News & Sentiment',
-    metaDescription: 'Track Blockstream and Adam Back coverage. Monitor Bitcoin infrastructure and Liquid Network narratives from 650+ sources.',
+    metaDescription: 'Track Blockstream and Adam Back coverage. Monitor Bitcoin infrastructure and Liquid Network narratives from 450+ sources.',
     keywords: ['Blockstream', 'Adam Back', 'Liquid Network', 'Bitcoin infrastructure']
   },
   {
@@ -821,7 +821,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'Lightning Labs - Lightning Network News & Sentiment',
-    metaDescription: 'Track Lightning Labs coverage and sentiment. Monitor Lightning Network and Taproot Assets narratives from 650+ sources.',
+    metaDescription: 'Track Lightning Labs coverage and sentiment. Monitor Lightning Network and Taproot Assets narratives from 450+ sources.',
     keywords: ['Lightning Labs', 'Lightning Network', 'Taproot Assets', 'Elizabeth Stark']
   },
   {
@@ -847,7 +847,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'River - Bitcoin Exchange News & Sentiment',
-    metaDescription: 'Track River Bitcoin exchange coverage. Monitor Lightning infrastructure and Bitcoin-only narratives from 650+ sources.',
+    metaDescription: 'Track River Bitcoin exchange coverage. Monitor Lightning infrastructure and Bitcoin-only narratives from 450+ sources.',
     keywords: ['River Financial', 'River Bitcoin', 'Alex Leishman', 'Lightning API']
   },
   {
@@ -873,7 +873,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'Unchained - Bitcoin Custody News & Sentiment',
-    metaDescription: 'Track Unchained collaborative custody coverage. Monitor Bitcoin security and custody narratives from 650+ sources.',
+    metaDescription: 'Track Unchained collaborative custody coverage. Monitor Bitcoin security and custody narratives from 450+ sources.',
     keywords: ['Unchained Capital', 'Bitcoin custody', 'multisig', 'collaborative custody']
   },
   // Tier 3: Notable Miners
@@ -903,7 +903,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 2000,
     lastUpdated: '2026-01-06',
     metaTitle: 'Bitdeer (BTDR) - Mining News & Sentiment',
-    metaDescription: 'Track Bitdeer Bitcoin mining coverage. Monitor cloud mining and ASIC narratives from 650+ sources.',
+    metaDescription: 'Track Bitdeer Bitcoin mining coverage. Monitor cloud mining and ASIC narratives from 450+ sources.',
     keywords: ['Bitdeer', 'BTDR stock', 'cloud mining', 'Jihan Wu']
   },
   {
@@ -932,7 +932,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 1827,
     lastUpdated: '2026-01-06',
     metaTitle: 'Bitfarms (BITF) - Mining News & Sentiment',
-    metaDescription: 'Track Bitfarms Bitcoin mining coverage. Monitor sustainable mining narratives from 650+ sources.',
+    metaDescription: 'Track Bitfarms Bitcoin mining coverage. Monitor sustainable mining narratives from 450+ sources.',
     keywords: ['Bitfarms', 'BITF stock', 'Canadian mining', 'sustainable Bitcoin']
   },
   {
@@ -961,7 +961,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 1500,
     lastUpdated: '2026-01-06',
     metaTitle: 'Cipher Mining (CIFR) - News & Sentiment',
-    metaDescription: 'Track Cipher Mining coverage and sentiment. Monitor Bitcoin mining and AI narratives from 650+ sources.',
+    metaDescription: 'Track Cipher Mining coverage and sentiment. Monitor Bitcoin mining and AI narratives from 450+ sources.',
     keywords: ['Cipher Mining', 'CIFR stock', 'Texas Bitcoin mining', 'crypto miner']
   },
   {
@@ -990,7 +990,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 2201,
     lastUpdated: '2026-01-06',
     metaTitle: 'HIVE Digital (HIVE) - Mining News & Sentiment',
-    metaDescription: 'Track HIVE Digital Bitcoin mining coverage. Monitor green energy mining narratives from 650+ sources.',
+    metaDescription: 'Track HIVE Digital Bitcoin mining coverage. Monitor green energy mining narratives from 450+ sources.',
     keywords: ['HIVE Digital', 'HIVE stock', 'green Bitcoin mining', 'Canadian crypto']
   },
   // Tier 4: Other Noteworthy Companies
@@ -1020,7 +1020,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 11542,
     lastUpdated: '2026-01-06',
     metaTitle: 'Trump Media (DJT) Bitcoin - News & Sentiment',
-    metaDescription: 'Track Trump Media Bitcoin holdings and coverage. Monitor political Bitcoin adoption narratives from 650+ sources.',
+    metaDescription: 'Track Trump Media Bitcoin holdings and coverage. Monitor political Bitcoin adoption narratives from 450+ sources.',
     keywords: ['Trump Media', 'DJT Bitcoin', 'Truth Social Bitcoin', 'corporate treasury']
   },
   {
@@ -1049,7 +1049,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 7626,
     lastUpdated: '2026-01-06',
     metaTitle: 'Strive Asset Management - Bitcoin News & Sentiment',
-    metaDescription: 'Track Strive coverage and Bitcoin advocacy. Monitor corporate adoption narratives from 650+ sources.',
+    metaDescription: 'Track Strive coverage and Bitcoin advocacy. Monitor corporate adoption narratives from 450+ sources.',
     keywords: ['Strive Asset Management', 'Vivek Ramaswamy', 'corporate Bitcoin', 'shareholder activism']
   },
   {
@@ -1078,7 +1078,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 24300,
     lastUpdated: '2026-01-06',
     metaTitle: 'Bullish Exchange - Bitcoin News & Sentiment',
-    metaDescription: 'Track Bullish exchange coverage and sentiment. Monitor institutional crypto narratives from 650+ sources.',
+    metaDescription: 'Track Bullish exchange coverage and sentiment. Monitor institutional crypto narratives from 450+ sources.',
     keywords: ['Bullish exchange', 'BLSH stock', 'crypto exchange', 'Bitcoin treasury']
   },
   {
@@ -1107,7 +1107,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     btcHoldings: 1902,
     lastUpdated: '2026-01-06',
     metaTitle: 'Exodus Wallet (EXOD) - News & Sentiment',
-    metaDescription: 'Track Exodus wallet coverage and sentiment. Monitor self-custody and Bitcoin wallet narratives from 650+ sources.',
+    metaDescription: 'Track Exodus wallet coverage and sentiment. Monitor self-custody and Bitcoin wallet narratives from 450+ sources.',
     keywords: ['Exodus wallet', 'EXOD stock', 'self-custody', 'Bitcoin wallet']
   },
   // Hardware Wallets & Security
@@ -1134,7 +1134,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'Ledger - Hardware Wallet News & Sentiment',
-    metaDescription: 'Track Ledger hardware wallet coverage and sentiment. Monitor Bitcoin security narratives from 650+ sources.',
+    metaDescription: 'Track Ledger hardware wallet coverage and sentiment. Monitor Bitcoin security narratives from 450+ sources.',
     keywords: ['Ledger wallet', 'Ledger Nano', 'hardware wallet', 'Bitcoin security']
   },
   {
@@ -1159,7 +1159,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'Trezor - Hardware Wallet News & Sentiment',
-    metaDescription: 'Track Trezor and SatoshiLabs coverage. Monitor Bitcoin hardware wallet narratives from 650+ sources.',
+    metaDescription: 'Track Trezor and SatoshiLabs coverage. Monitor Bitcoin hardware wallet narratives from 450+ sources.',
     keywords: ['Trezor wallet', 'SatoshiLabs', 'hardware wallet', 'Bitcoin security']
   },
   {
@@ -1185,7 +1185,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'Coldcard - Bitcoin Wallet News & Sentiment',
-    metaDescription: 'Track Coldcard and Coinkite coverage. Monitor Bitcoin-only hardware wallet narratives from 650+ sources.',
+    metaDescription: 'Track Coldcard and Coinkite coverage. Monitor Bitcoin-only hardware wallet narratives from 450+ sources.',
     keywords: ['Coldcard', 'Coinkite', 'air-gapped wallet', 'Bitcoin hardware wallet']
   },
   {
@@ -1211,7 +1211,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'Foundation Devices - Passport Wallet News & Sentiment',
-    metaDescription: 'Track Foundation Devices and Passport wallet coverage. Monitor Bitcoin security narratives from 650+ sources.',
+    metaDescription: 'Track Foundation Devices and Passport wallet coverage. Monitor Bitcoin security narratives from 450+ sources.',
     keywords: ['Foundation Devices', 'Passport wallet', 'Bitcoin hardware wallet', 'open-source']
   },
   {
@@ -1236,7 +1236,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'BitBox - Hardware Wallet News & Sentiment',
-    metaDescription: 'Track BitBox and Shift Crypto coverage. Monitor Swiss Bitcoin security narratives from 650+ sources.',
+    metaDescription: 'Track BitBox and Shift Crypto coverage. Monitor Swiss Bitcoin security narratives from 450+ sources.',
     keywords: ['BitBox', 'Shift Crypto', 'Swiss wallet', 'Bitcoin hardware wallet']
   },
   {
@@ -1262,7 +1262,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'Casa - Bitcoin Multisig News & Sentiment',
-    metaDescription: 'Track Casa multisig coverage and sentiment. Monitor Bitcoin self-custody narratives from 650+ sources.',
+    metaDescription: 'Track Casa multisig coverage and sentiment. Monitor Bitcoin self-custody narratives from 450+ sources.',
     keywords: ['Casa Bitcoin', 'multisig', 'Bitcoin inheritance', 'Nick Neuman']
   },
   {
@@ -1288,7 +1288,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'Kraken Exchange - News & Sentiment',
-    metaDescription: 'Track Kraken exchange coverage and IPO news. Monitor crypto exchange narratives from 650+ sources.',
+    metaDescription: 'Track Kraken exchange coverage and IPO news. Monitor crypto exchange narratives from 450+ sources.',
     keywords: ['Kraken exchange', 'Kraken IPO', 'crypto exchange', 'Bitcoin trading']
   },
   {
@@ -1316,7 +1316,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'Gemini Exchange (GMNI) - News & Sentiment',
-    metaDescription: 'Track Gemini and Winklevoss coverage. Monitor crypto exchange narratives from 650+ sources.',
+    metaDescription: 'Track Gemini and Winklevoss coverage. Monitor crypto exchange narratives from 450+ sources.',
     keywords: ['Gemini exchange', 'Winklevoss', 'GMNI stock', 'crypto exchange']
   },
   // Software Wallets
@@ -1342,7 +1342,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'Wasabi Wallet - Bitcoin Privacy News & Sentiment',
-    metaDescription: 'Track Wasabi Wallet coverage and sentiment. Monitor Bitcoin privacy and CoinJoin narratives from 650+ sources.',
+    metaDescription: 'Track Wasabi Wallet coverage and sentiment. Monitor Bitcoin privacy and CoinJoin narratives from 450+ sources.',
     keywords: ['Wasabi Wallet', 'CoinJoin', 'Bitcoin privacy', 'WabiSabi']
   },
   {
@@ -1368,7 +1368,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'Sparrow Wallet - Bitcoin Desktop Wallet News & Sentiment',
-    metaDescription: 'Track Sparrow Wallet and Craig Raw coverage. Monitor Bitcoin self-custody narratives from 650+ sources.',
+    metaDescription: 'Track Sparrow Wallet and Craig Raw coverage. Monitor Bitcoin self-custody narratives from 450+ sources.',
     keywords: ['Sparrow Wallet', 'Craig Raw', 'Bitcoin desktop wallet', 'PSBT']
   },
   {
@@ -1393,7 +1393,7 @@ export const bitcoinCompanies: BitcoinCompany[] = [
     recentMentions: [],
     lastUpdated: '2026-01-06',
     metaTitle: 'BlueWallet - Bitcoin Mobile Wallet News & Sentiment',
-    metaDescription: 'Track BlueWallet coverage and sentiment. Monitor mobile Bitcoin and Lightning narratives from 650+ sources.',
+    metaDescription: 'Track BlueWallet coverage and sentiment. Monitor mobile Bitcoin and Lightning narratives from 450+ sources.',
     keywords: ['BlueWallet', 'Bitcoin mobile wallet', 'Lightning wallet', 'LDK']
   }
 ];

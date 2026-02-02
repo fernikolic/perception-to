@@ -32,7 +32,7 @@ interface Aggregator {
 const aggregators: Aggregator[] = [
   {
     name: 'Perception',
-    description: 'AI-powered media intelligence platform that goes beyond aggregation to provide sentiment analysis, narrative tracking, and Fear & Greed Index.',
+    description: 'Advanced media intelligence platform that goes beyond aggregation to provide sentiment analysis, narrative tracking, and Fear & Greed Index.',
     bestFor: 'Traders who want sentiment analysis with their news',
     sources: '650+ crypto media sources',
     features: [
@@ -287,7 +287,7 @@ export default function BestCryptoNewsAggregatorsPage() {
 
                 <p className="text-lg sm:text-xl text-black/70 font-light leading-relaxed mb-8">
                   Compare the top platforms for crypto news, from simple aggregators to
-                  AI-powered sentiment analysis tools.
+                  Advanced sentiment analysis tools.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -296,8 +296,8 @@ export default function BestCryptoNewsAggregatorsPage() {
                     className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-base font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
                     asChild
                   >
-                    <a href="https://app.perception.to/auth/sign-up">
-                      Start free trial
+                    <a href="/book-a-call">
+                      Book a Demo
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </a>
                   </Button>
@@ -532,7 +532,7 @@ export default function BestCryptoNewsAggregatorsPage() {
                           }`}
                           asChild
                         >
-                          <a href={index === 0 ? 'https://app.perception.to/auth/sign-up' : agg.website} target={index === 0 ? undefined : '_blank'} rel={index === 0 ? undefined : 'noopener noreferrer'}>
+                          <a href={index === 0 ? '/book-a-call' : agg.website} target={index === 0 ? undefined : '_blank'} rel={index === 0 ? undefined : 'noopener noreferrer'}>
                             {index === 0 ? 'Try Free' : 'Visit Site'}
                             <ArrowRight className="ml-2 w-4 h-4" />
                           </a>
@@ -566,7 +566,7 @@ export default function BestCryptoNewsAggregatorsPage() {
                 </h3>
                 <p className="text-white/70">
                   Need real-time sentiment data and alerts for market-moving news.
-                  <strong className="text-white"> Recommended: Perception</strong> for AI-powered sentiment analysis.
+                  <strong className="text-white"> Recommended: Perception</strong> for Advanced sentiment analysis.
                 </p>
               </div>
 
@@ -659,7 +659,7 @@ export default function BestCryptoNewsAggregatorsPage() {
                 },
                 {
                   q: 'Should I use multiple news sources?',
-                  a: 'Yes, using multiple sources can give you a more complete picture. However, a good aggregator like Perception already pulls from 650+ sources, so you get comprehensive coverage in one place.'
+                  a: 'Yes, using multiple sources can give you a more complete picture. However, a good aggregator like Perception already pulls from 450+ sources, so you get comprehensive coverage in one place.'
                 },
               ].map((faq) => (
                 <div
@@ -686,7 +686,7 @@ export default function BestCryptoNewsAggregatorsPage() {
               <em className="text-white" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>news aggregation</em>
             </h2>
             <p className="text-xl text-white/60 mb-10">
-              See how AI-powered sentiment analysis can give you an edge that simple
+              See how Advanced sentiment analysis can give you an edge that simple
               news reading can't provide.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -695,8 +695,8 @@ export default function BestCryptoNewsAggregatorsPage() {
                 className="bg-white text-black hover:bg-white/90 rounded-2xl px-8 py-6 text-lg font-semibold shadow-2xl transition-all duration-300 hover:scale-105"
                 asChild
               >
-                <a href="https://app.perception.to/auth/sign-up">
-                  Start free trial
+                <a href="/book-a-call">
+                  Book a Demo
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>

@@ -7,51 +7,51 @@ import { getSocialImageForPath, generateSocialImageTags } from '@/utils/social-i
 
 const DEFAULT_METADATA = {
   title: 'Perception',
-  description: 'Track Bitcoin trends. Decode market sentiment. Uncover narratives. All in one place.',
+  description: 'Track digital asset trends. Decode market sentiment. Uncover narratives. All in one place.',
   type: 'website' as const,
   image: 'https://perception-og-image.fernandonikolic.workers.dev'
 };
 
 const PAGE_METADATA: Record<string, any> = {
   '/': {
-    title: 'Perception - Bitcoin Trend Analysis & Market Sentiment',
-    description: 'Track Bitcoin trends. Decode market sentiment. Uncover narratives. All in one place.',
+    title: 'Perception - Digital Asset Trend Analysis & Market Sentiment',
+    description: 'Track digital asset trends. Decode market sentiment. Uncover narratives. All in one place.',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/methodology': {
     title: 'Methodology - Perception', 
-    description: 'Learn how our AI analyzes Bitcoin sentiment across social media, news, and market indicators',
+    description: 'Learn how we analyze digital asset sentiment across social media, news, and market indicators',
     type: 'article',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/journalist': {
     title: 'For Journalists - Perception',
-    description: 'Access real-time Bitcoin sentiment data and insights for your reporting',
+    description: 'Access real-time digital asset sentiment data and insights for your reporting',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/investor': {
     title: 'For Investors - Perception',
-    description: 'Make informed Bitcoin investment decisions with AI-powered sentiment analysis',
+    description: 'Make informed digital asset investment decisions with advanced sentiment analysis',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/researcher': {
     title: 'For Researchers - Perception',
-    description: 'Academic-grade Bitcoin sentiment data and analysis tools for research',
+    description: 'Academic-grade digital asset sentiment data and analysis tools for research',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/about': {
     title: 'About Us - Perception',
-    description: 'Learn about our mission to democratize Bitcoin sentiment analysis through AI',
+    description: 'Learn about our mission to democratize digital asset sentiment analysis',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/pricing': {
     title: 'Pricing - Perception',
-    description: 'Choose the right Bitcoin sentiment analysis plan for your needs',
+    description: 'Choose the right digital asset sentiment analysis plan for your needs',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
@@ -63,13 +63,13 @@ const PAGE_METADATA: Record<string, any> = {
   },
   '/api': {
     title: 'API Reference - Perception',
-    description: 'Comprehensive API documentation for Bitcoin sentiment data',
+    description: 'Comprehensive API documentation for digital asset sentiment data',
     type: 'article',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/learn': {
     title: 'Learn - Perception',
-    description: 'Educational resources about Bitcoin sentiment analysis and market psychology',
+    description: 'Educational resources about digital asset sentiment analysis and market psychology',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
@@ -93,25 +93,25 @@ const PAGE_METADATA: Record<string, any> = {
   },
   '/use-cases': {
     title: 'Use Cases - Perception',
-    description: 'Discover how investors, journalists, and researchers use Bitcoin sentiment analysis for better decision-making.',
+    description: 'Discover how investors, journalists, and researchers use digital asset sentiment analysis for better decision-making.',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/testimonials': {
     title: 'Testimonials - Perception',
-    description: 'See what our users say about Perception\'s Bitcoin sentiment analysis platform and data quality.',
+    description: 'See what leading voices in digital assets say about Perception\'s sentiment analysis platform and data quality.',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/roadmap': {
     title: 'Product Roadmap - Perception',
-    description: 'See what\'s coming next for Perception\'s Bitcoin sentiment analysis platform and upcoming features.',
+    description: 'See what\'s coming next for Perception\'s digital asset sentiment analysis platform and upcoming features.',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/press': {
     title: 'Press & Media - Perception',
-    description: 'Latest news, press releases, and media coverage of Perception\'s Bitcoin sentiment analysis platform.',
+    description: 'Latest news, press releases, and media coverage of Perception\'s digital asset sentiment analysis platform.',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
@@ -123,13 +123,13 @@ const PAGE_METADATA: Record<string, any> = {
   },
   '/book-a-call': {
     title: 'Book a Call - Perception',
-    description: 'Schedule a personalized demo of Perception\'s Bitcoin sentiment analysis platform with our team.',
+    description: 'Schedule a personalized demo of Perception\'s digital asset sentiment analysis platform with our team.',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },
   '/slack-integration': {
     title: 'Slack Integration - Perception',
-    description: 'Get Bitcoin sentiment alerts directly in Slack. Real-time notifications and market intelligence for your team.',
+    description: 'Get digital asset sentiment alerts directly in Slack. Real-time notifications and market intelligence for your team.',
     type: 'website',
     image: 'https://perception-og-image.fernandonikolic.workers.dev'
   },

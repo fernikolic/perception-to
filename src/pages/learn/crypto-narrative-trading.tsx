@@ -50,7 +50,7 @@ export default function CryptoNarrativeTradingPage() {
       <Section id="what-are-narratives" title="What Are Crypto Narratives?">
         <Paragraph>
           A <strong>narrative</strong> in crypto is a story or theme that the market collectively
-          believes and trades on. Narratives are the "why" behind price movements—they explain
+          believes and trades on. Narratives are the "why" behind price movements, they explain
           why people are buying or selling.
         </Paragraph>
         <Paragraph>
@@ -106,7 +106,7 @@ export default function CryptoNarrativeTradingPage() {
 
         <Callout type="tip" title="The Edge">
           If you can identify narratives in steps 1-2, you can position before the crowd arrives
-          in steps 3-5. This is the core of narrative trading—being early, not first.
+          in steps 3-5. This is the core of narrative trading, being early, not first.
         </Callout>
       </Section>
 
@@ -171,7 +171,7 @@ export default function CryptoNarrativeTradingPage() {
           <InfoCard title="Crypto Twitter (X)" icon={MessageSquare}>
             <p className="mb-3">
               The epicenter of crypto narratives. Follow smart money accounts, researchers,
-              and builders—not just influencers chasing engagement.
+              and builders, not just influencers chasing engagement.
             </p>
             <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-3">
               <p className="text-xs">
@@ -190,7 +190,7 @@ export default function CryptoNarrativeTradingPage() {
             <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-3">
               <p className="text-xs">
                 <strong>Tool:</strong> <InternalLink to="/bitcoin-media-research">Perception's Media Research</InternalLink> tracks
-                650+ sources in real-time, showing you what topics are gaining momentum.
+                450+ sources in real-time, showing you what topics are gaining momentum.
               </p>
             </div>
           </InfoCard>
@@ -272,7 +272,7 @@ export default function CryptoNarrativeTradingPage() {
 
         <Callout type="warning" title="Risk Warning">
           Narrative trading is high-risk. Narratives can collapse suddenly (LUNA, FTX).
-          Never bet more than you can lose. Use stop losses. Don't marry your positions—
+          Never bet more than you can lose. Use stop losses. Don't marry your positions, 
           if the narrative thesis breaks, exit quickly.
         </Callout>
       </Section>
@@ -293,7 +293,7 @@ export default function CryptoNarrativeTradingPage() {
             AI applications. Intersection of two megatrends.
           </InfoCard>
           <InfoCard title="Real World Assets (RWA)">
-            Tokenization of traditional assets—treasuries, real estate, private credit.
+            Tokenization of traditional assets, treasuries, real estate, private credit.
             Bridging TradFi and DeFi.
           </InfoCard>
           <InfoCard title="Restaking & AVS">

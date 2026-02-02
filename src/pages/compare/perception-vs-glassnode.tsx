@@ -104,7 +104,7 @@ export default function PerceptionVsGlassnodePage() {
                 Perception vs Glassnode
               </h1>
               <p className="text-lg sm:text-xl lg:text-2xl text-black/60 mb-8 max-w-3xl mx-auto">
-                <strong>Media sentiment</strong> vs <strong>on-chain analytics</strong>—two different
+                <strong>Media sentiment</strong> vs <strong>on-chain analytics</strong>, two different
                 approaches to understanding crypto markets. Which one is right for you?
               </p>
               <p className="text-base text-black/50 mb-8">
@@ -135,11 +135,11 @@ export default function PerceptionVsGlassnodePage() {
                 <ul className="space-y-2 text-sm text-white/60 mb-6">
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-400" /> 650+ media sources monitored</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-400" /> Real-time Fear & Greed Index</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-400" /> AI-powered narrative detection</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-400" /> Automated narrative detection</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-400" /> Starting at $49/month</li>
                 </ul>
                 <Button className="w-full bg-white text-black hover:bg-white/90 rounded-full" asChild>
-                  <a href="https://app.perception.to/auth/sign-up">Try Perception Free <ArrowRight className="ml-2 w-4 h-4" /></a>
+                  <a href="/book-a-call">Try Perception Free <ArrowRight className="ml-2 w-4 h-4" /></a>
                 </Button>
               </div>
 
@@ -175,7 +175,7 @@ export default function PerceptionVsGlassnodePage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-[#F0EEE6]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 text-black">
-              Key Differences Explained
+              Key differences explained
             </h2>
             <p className="text-lg text-black/60 text-center mb-12 max-w-3xl mx-auto">
               These tools answer fundamentally different questions about the market
@@ -223,7 +223,7 @@ export default function PerceptionVsGlassnodePage() {
                       <Database className="w-5 h-5 text-blue-500" /> On-Chain Metrics
                     </h4>
                     <p className="text-sm text-black/60">
-                      Analyzes blockchain data to see actual holder behavior—accumulation, distribution,
+                      Analyzes blockchain data to see actual holder behavior, accumulation, distribution,
                       exchange deposits/withdrawals.
                     </p>
                   </div>
@@ -461,8 +461,8 @@ export default function PerceptionVsGlassnodePage() {
                 className="bg-black hover:bg-black/90 text-white px-8 py-6 text-lg rounded-full"
                 asChild
               >
-                <a href="https://app.perception.to/auth/sign-up">
-                  Start Free Trial
+                <a href="/book-a-call">
+                  Book a Demo
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>

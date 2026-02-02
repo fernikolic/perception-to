@@ -628,7 +628,7 @@ export default function MethodologyPage() {
       <Navbar />
       <main className="flex-grow">
         {/* Hero Section */}
-        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-16">
+        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-28">
           {/* Base Gradient */}
           <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 
@@ -695,8 +695,8 @@ export default function MethodologyPage() {
                         className="w-full sm:w-auto bg-white/80 backdrop-blur-sm text-black hover:bg-white transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 border-2 border-black/20 hover:border-black/30 rounded-2xl"
                         asChild
                       >
-                        <a href="https://app.perception.to/auth/sign-up">
-                          Start free trial
+                        <a href="/book-a-call">
+                          Book a Demo
                         </a>
                       </Button>
                     </div>
@@ -717,7 +717,7 @@ export default function MethodologyPage() {
                 Complete source directory
               </h2>
               <div className="text-base sm:text-lg lg:text-xl text-white/70 space-y-4 mb-8">
-                <p>Every source we monitor, organized by category. 650+ sources across {sourceCategories.length} categories. Click to expand any category.</p>
+                <p>Every source we monitor, organized by category. 450+ sources across {sourceCategories.length} categories. Click to expand any category.</p>
               </div>
 
               {/* Category Overview Grid */}
@@ -795,7 +795,7 @@ export default function MethodologyPage() {
                     Everything gets captured
                   </h3>
                   <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-6">
-                    Every mention across 650+ sources. Dedicated coverage, social posts, passing references. This is what powers your watchlist alerts and the trend clustering in your <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>.
+                    Every mention across 450+ sources. Dedicated coverage, social posts, passing references. This is what powers your watchlist alerts and the trend clustering in your <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Spaces</em>.
                   </p>
                   <div className="rounded-lg overflow-hidden border border-white/10 mt-4" style={{ height: '200px', filter: 'invert(1)' }}>
                     <FlowingPattern />
@@ -851,7 +851,7 @@ export default function MethodologyPage() {
                 How we label sentiment
               </h2>
               <div className="text-base sm:text-lg lg:text-xl text-white/70 space-y-4 mb-8">
-                <p>We categorize by tone, context, and language. Not keywords—actual meaning. This is why the sentiment in your watchlists is reliable.</p>
+                <p>We categorize by tone, context, and language. Not keywords, actual meaning. This is why the sentiment in your watchlists is reliable.</p>
               </div>
 
               {/* Sentiment Categories */}

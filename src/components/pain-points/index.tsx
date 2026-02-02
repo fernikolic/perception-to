@@ -19,7 +19,7 @@ const painPoints = [
     consequence: 'Hours lost to manual research 🕐',
   },
   {
-    problem: 'Drowning in crypto media noise—Twitter, Reddit, news, and podcasts',
+    problem: 'Drowning in crypto media noise: Twitter, Reddit, news, and podcasts',
     consequence: 'Missing critical signals 📡',
   },
   {

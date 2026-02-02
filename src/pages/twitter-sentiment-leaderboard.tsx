@@ -266,9 +266,9 @@ function SignupPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
           <div className="space-y-3">
             <Button
               className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
-              onClick={() => window.open('https://perception.to', '_blank')}
+              onClick={() => window.open('/book-a-call', '_blank')}
             >
-              Sign Up for Perception
+              Book a Demo
             </Button>
             <Button
               variant="outline"
@@ -558,7 +558,7 @@ export default function TwitterSentimentLeaderboard() {
     <>
       <Helmet>
         <title>Bitcoin Twitter Sentiment Leaderboard | Bitcoin Perception</title>
-        <meta name="description" content="Discover all Bitcoin Twitter accounts with real tweets - based on real-time sentiment analysis from 650+ sources." />
+        <meta name="description" content="Discover all Bitcoin Twitter accounts with real tweets - based on real-time sentiment analysis from 450+ sources." />
         <meta name="keywords" content="Bitcoin, Twitter, X, sentiment analysis, leaderboard, crypto, social media, tweets" />
         <meta property="og:title" content="Bitcoin Twitter Sentiment Leaderboard with Real Tweets" />
         <meta property="og:description" content="Real-time ranking of all Bitcoin Twitter accounts with actual tweets and sentiment analysis" />
@@ -568,14 +568,14 @@ export default function TwitterSentimentLeaderboard() {
         <meta name="twitter:description" content="Real-time ranking of all Bitcoin Twitter accounts with actual tweets and sentiment analysis" />
       </Helmet>
 
-      <div className="min-h-screen bg-white pt-16">
+      <div className="min-h-screen bg-white pt-28">
         {/* Leaderboard Section */}
         <section className="relative py-8 sm:py-12">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header */}
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Bitcoin Influence Index</h1>
-              <p className="text-sm text-gray-600">Ranked by positive sentiment from 650+ sources</p>
+              <p className="text-sm text-gray-600">Ranked by positive sentiment from 450+ sources</p>
             </div>
 
             <div className="mb-8">

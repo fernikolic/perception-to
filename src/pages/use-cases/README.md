@@ -16,7 +16,7 @@ The Use Cases landing page showcases how different audiences use Perception to t
 ### 1. Hero Section
 - **Headline**: "Track the narrative before it moves the market."
 - **Subheadline**: Explains the value proposition for different audiences
-- **CTA Buttons**: "Start Free Trial" (primary) and "See Plans" (secondary)
+- **CTA Buttons**: "Book a Demo" (primary) and "See Plans" (secondary)
 - **Background**: Subtle grid pattern overlay
 
 ### 2. Use Case Grid

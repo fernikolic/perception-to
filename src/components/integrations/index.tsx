@@ -195,11 +195,11 @@ export function Integrations() {
           <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] !text-white">
             Intelligence across{' '}
             <span className="bg-gradient-to-r from-orange-500 to-orange-800 inline-block text-transparent bg-clip-text font-bold">
-              650+ sources
+              450+ sources
             </span>
           </h2>
           <p className="mt-8 sm:mt-10 text-xl sm:text-2xl lg:text-3xl leading-relaxed !text-white/80 font-light">
-            Bloomberg. Financial Times. Crypto-native media. Reddit. X. GitHub. Podcasts. Every trend surfaced, every watchlist alert, every deliverable—backed by this coverage.
+            Bloomberg. Financial Times. Crypto-native media. Reddit. X. GitHub. Podcasts. Every trend surfaced, every watchlist alert, every deliverable backed by this coverage.
           </p>
           <p className="mt-6 text-lg sm:text-xl lg:text-2xl leading-relaxed !text-white/60 font-light">
             You organize what matters. <em style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Recipes</em> handle the rest.

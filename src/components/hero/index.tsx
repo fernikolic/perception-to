@@ -87,7 +87,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 text-lg leading-8 text-white/60">
-              Every morning, your rivals spend 3 hours connecting dots across 650+ sources. You spend 10 minutes acting on opportunities we've already identified.
+              Every morning, your rivals spend 3 hours connecting dots across 450+ sources. You spend 10 minutes acting on opportunities we've already identified.
             </p>
 
             <p className="mt-4 text-xl font-semibold text-white">
@@ -100,8 +100,8 @@ export function Hero() {
                 asChild
                 className="bg-white text-black hover:bg-white/90 transition-all"
               >
-                <a href="https://app.perception.to/auth/sign-up">
-                  Start 7-day trial
+                <a href="/book-a-call">
+                  Book a Demo
                 </a>
               </Button>
               <Button 

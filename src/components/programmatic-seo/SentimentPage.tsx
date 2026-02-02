@@ -149,9 +149,9 @@ export default function SentimentPage() {
             <p className="text-xl text-zinc-300 mb-8">
               Join thousands of professionals who rely on our real-time sentiment data for critical decisions.
             </p>
-            <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-semibold transition-all">
-              Get Started Free
-            </button>
+            <a href="/book-a-call" className="inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-semibold transition-all">
+              Book a Demo
+            </a>
           </div>
         </section>
       </div>

@@ -90,7 +90,7 @@ function findValueForDate(data: FearGreedData[], targetDate: string): number | s
   for (let i = sorted.length - 1; i >= 0; i--) {
     if (sorted[i].date <= targetDate) return sorted[i].fear_greed_index;
   }
-  return '—';
+  return '-';
 }
 
 // Helper to get delta (change) between today and yesterday
@@ -311,7 +311,7 @@ export function FearGreedIndex() {
             </div>
           </div>
           <p className="text-xl text-slate-600 dark:text-white/80 font-light mb-2">Analyzing Market Sentiment</p>
-          <p className="text-sm text-slate-500 dark:text-white/60">Processing real-time data from 650+ sources...</p>
+          <p className="text-sm text-slate-500 dark:text-white/60">Processing real-time data from 450+ sources...</p>
         </div>
       </div>
     );

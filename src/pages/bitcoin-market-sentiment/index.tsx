@@ -350,7 +350,7 @@ export default function BitcoinMarketSentimentIndexPage() {
       
       <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white">
         {/* Hero Section */}
-        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-16">
+        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-28">
           {/* Base Gradient */}
           <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 
@@ -391,7 +391,7 @@ export default function BitcoinMarketSentimentIndexPage() {
                         Monthly sentiment trends and market{'\u00A0'}psychology.
                       </h2>
                       <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-black/60 font-light">
-                        Historical data from 650+ sources. Track how sentiment evolves{'\u00A0'}month-to-month.
+                        Historical data from 450+ sources. Track how sentiment evolves{'\u00A0'}month-to-month.
                       </p>
                     </div>
 
@@ -898,7 +898,7 @@ export default function BitcoinMarketSentimentIndexPage() {
                     </Link>
                   </h4>
                   <p className="text-slate-600 dark:text-slate-400 mb-6">
-                    Weekly research newsletter analyzing Bitcoin media coverage, sentiment trends, and narrative shifts across 650+ sources.
+                    Weekly research newsletter analyzing Bitcoin media coverage, sentiment trends, and narrative shifts across 450+ sources.
                   </p>
                   <Link to="/bitcoin-media-research" className="text-orange-500 hover:text-orange-600 font-medium">
                     Subscribe to Research →
@@ -970,9 +970,9 @@ export default function BitcoinMarketSentimentIndexPage() {
                       View Live Fear & Greed Index
                     </Button>
                   </Link>
-                  <Link to="https://app.perception.to/auth/sign-up" target="_blank" rel="noopener noreferrer">
+                  <Link to="/book-a-call">
                     <Button size="lg" variant="outline" className="border-slate-300 dark:border-slate-700 text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800/50 px-10 py-4 rounded-full font-medium">
-                      Get Access to Data
+                      Book a Demo
                     </Button>
                   </Link>
                 </div>

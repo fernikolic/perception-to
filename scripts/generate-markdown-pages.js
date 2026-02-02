@@ -111,7 +111,7 @@ function loadPageSeo() {
     },
     '/bitcoin-fear-greed-index': {
       title: 'Bitcoin Fear & Greed Index - Real-Time Market Sentiment',
-      description: 'Track Bitcoin market sentiment with our real-time Fear & Greed Index. Updated every 90 seconds from 650+ sources.'
+      description: 'Track Bitcoin market sentiment with our real-time Fear & Greed Index. Updated every 90 seconds from 450+ sources.'
     },
     '/bitcoin-market-sentiment': {
       title: 'Bitcoin Market Sentiment Analysis - Daily Updates',
@@ -127,7 +127,7 @@ function loadPageSeo() {
     },
     '/methodology': {
       title: 'Methodology | How Perception Analyzes Crypto Sentiment',
-      description: 'Learn how Perception analyzes crypto market sentiment. Our methodology covers 650+ sources.'
+      description: 'Learn how Perception analyzes crypto market sentiment. Our methodology covers 450+ sources.'
     },
     '/crypto-conferences': {
       title: 'Crypto Conferences 2025-2026 | Bitcoin & Blockchain Events Calendar',

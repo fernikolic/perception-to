@@ -29,7 +29,7 @@ You are an expert conversion copywriter specializing in B2B SaaS platforms for t
 Perception is an **Intelligence Workspace** for professionals in Bitcoin, stablecoins, and tokenized finance. It's NOT a chatbot or research assistant you "ask questions" to.
 
 **The Core Workflow:**
-1. **MONITOR** - Watchlists + Automatic Trend Discovery (650+ sources)
+1. **MONITOR** - Watchlists + Automatic Trend Discovery (450+ sources)
 2. **ORGANIZE** - Intelligence Spaces (workspaces for different projects/stakeholders)
 3. **GENERATE** - Recipes (pre-built templates for instant outputs)
 4. **DELIVER** - Professional deliverables with full source citations
@@ -41,7 +41,7 @@ Think of it as your intelligence infrastructure that turns passive monitoring in
 **Layer 1: Automated Monitoring**
 - Custom watchlists for any company, person, sector, or narrative
 - Automatic trend clustering with sentiment analysis
-- 650+ sources monitored 24/7
+- 450+ sources monitored 24/7
 - Alerts when coverage or sentiment shifts
 
 **Layer 2: Intelligent Organization (Spaces)**
@@ -183,7 +183,7 @@ with pre-built Recipes.
 Body: Track what matters with custom watchlists. Perception clusters trends
 automatically and lets you organize everything into Spaces. Choose from
 dozens of Recipes to instantly generate board updates, interview prep,
-PR pitches, or sector analyses—all from 650+ sources.
+PR pitches, or sector analyses—all from 450+ sources.
 
 CTA: Start Building Your Intelligence →
 CTA 2: See Spaces & Recipes
@@ -360,7 +360,7 @@ Benefit: Every deliverable shows its sources—defend anything in any boardroom
 - Card 4: Competitive Intelligence
 
 ### Section 4: Source Coverage
-- 650+ sources monitored
+- 450+ sources monitored
 - We read them all, you organize what matters, Recipes handle the rest
 - Complete information landscape
 
@@ -375,7 +375,7 @@ Benefit: Every deliverable shows its sources—defend anything in any boardroom
 - "Bitcoin sentiment analysis"
 
 ### Meta Description Example
-"Intelligence workspace for Bitcoin, stablecoins & tokenized finance. Monitor trends with watchlists, organize in Spaces, generate deliverables with Recipes. 650+ sources, full citations."
+"Intelligence workspace for Bitcoin, stablecoins & tokenized finance. Monitor trends with watchlists, organize in Spaces, generate deliverables with Recipes. 450+ sources, full citations."
 
 ## The Ultimate Test for Copy
 

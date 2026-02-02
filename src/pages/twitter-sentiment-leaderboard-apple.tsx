@@ -244,9 +244,9 @@ function SignupPopup({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
           <div className="space-y-3">
             <Button
               className="w-full bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-base font-semibold"
-              onClick={() => window.open('https://app.perception.to/auth/sign-up', '_blank')}
+              onClick={() => window.open('/book-a-call', '_blank')}
             >
-              Start Free Trial
+              Book a Demo
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <button
@@ -732,7 +732,7 @@ export default function AppleTwitterSentimentLeaderboard() {
               insights?
             </h2>
             <p className="text-black/60 mb-8">
-              650+ sources. Real-time updates. Full sentiment analysis.
+              450+ sources. Real-time updates. Full sentiment analysis.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -740,8 +740,8 @@ export default function AppleTwitterSentimentLeaderboard() {
                 className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-base font-semibold"
                 asChild
               >
-                <a href="https://app.perception.to/auth/sign-up">
-                  Start Free Trial
+                <a href="/book-a-call">
+                  Book a Demo
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>

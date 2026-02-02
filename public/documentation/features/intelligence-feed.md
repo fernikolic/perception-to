@@ -28,7 +28,7 @@
 
 ## Overview
 
-The Intelligence Feed is your central hub for monitoring Bitcoin-related media coverage. It aggregates content from 650+ sources into a single, searchable feed that updates continuously.
+The Intelligence Feed is your central hub for monitoring Bitcoin-related media coverage. It aggregates content from 450+ sources into a single, searchable feed that updates continuously.
 
 ---
 

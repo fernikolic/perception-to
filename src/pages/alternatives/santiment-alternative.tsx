@@ -136,8 +136,8 @@ export default function SantimentAlternativePage() {
                     className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-base font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
                     asChild
                   >
-                    <a href="https://app.perception.to/auth/sign-up">
-                      Start free trial
+                    <a href="/book-a-call">
+                      Book a Demo
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </a>
                   </Button>
@@ -294,7 +294,7 @@ export default function SantimentAlternativePage() {
               for professionals
             </h2>
             <p className="text-xl text-black/60 mb-10">
-              650+ sources. Real-time updates. 7-day free trial.
+              450+ sources. Real-time updates. Book a demo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -302,8 +302,8 @@ export default function SantimentAlternativePage() {
                 className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-lg font-semibold shadow-2xl transition-all duration-300 hover:scale-105"
                 asChild
               >
-                <a href="https://app.perception.to/auth/sign-up">
-                  Start free trial
+                <a href="/book-a-call">
+                  Book a Demo
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>

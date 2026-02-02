@@ -11,7 +11,7 @@ export default function BitcoinBadTakes() {
   return (
     <div className="min-h-screen bg-gray-200 relative">
       <Navbar />
-      <div className="pt-16"> {/* Add padding to account for fixed navbar */}
+      <div className="pt-28"> {/* Add padding to account for fixed navbar */}
         {/* Main Header */}
         <div className="container mx-auto px-4 py-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">

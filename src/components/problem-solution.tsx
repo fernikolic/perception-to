@@ -7,9 +7,9 @@ gsap.registerPlugin(ScrollTrigger);
 // Text for each paragraph
 const paragraph1 = "Finding information isn't hard. Making it useful is.";
 
-const paragraph2 = "Perception turns raw coverage into polished, cited deliverables.";
+const paragraph2 = "You could spend three hours scanning social media, reading earnings transcripts, and pulling media clips.";
 
-const paragraph3 = "Board updates. Interview prep. Competitive reports. Minutes, not days.";
+const paragraph3 = "Or you could open Perception and get a cited brief in two minutes.";
 
 export function ProblemSolution() {
   const wrapperRef = useRef<HTMLDivElement>(null);

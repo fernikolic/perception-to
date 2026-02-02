@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const faqs = [
   {
     question: 'What is the Bitcoin Fear & Greed Index?',
-    answer: 'The Bitcoin Fear & Greed Index is a market sentiment indicator that measures investor emotions on a scale from 0 (extreme fear) to 100 (extreme greed). It aggregates data from 650+ sources including social media, news coverage, volatility, and market momentum to provide a real-time snapshot of market psychology.'
+    answer: 'The Bitcoin Fear & Greed Index is a market sentiment indicator that measures investor emotions on a scale from 0 (extreme fear) to 100 (extreme greed). It aggregates data from 450+ sources including social media, news coverage, volatility, and market momentum to provide a real-time snapshot of market psychology.'
   },
   {
     question: 'How is the Fear & Greed Index calculated?',
@@ -124,7 +124,7 @@ export default function FearGreedIndexPage() {
     <>
       <SEO
         title="Bitcoin Fear & Greed Index - Real-Time Market Sentiment Analysis"
-        description="Track Bitcoin market sentiment with our real-time Fear & Greed Index. Updated every 90 seconds from 650+ sources. Get instant alerts, API access, and detailed analysis of market psychology."
+        description="Track Bitcoin market sentiment with our real-time Fear & Greed Index. Updated every 90 seconds from 450+ sources. Get instant alerts, API access, and detailed analysis of market psychology."
         keywords={["Bitcoin Fear & Greed Index", "crypto fear and greed index", "bitcoin sentiment", "market sentiment analysis", "bitcoin fear greed today", "crypto market psychology"]}
         url="https://perception.to/bitcoin-fear-greed-index"
         image="/images/bitcoin.png"
@@ -136,7 +136,7 @@ export default function FearGreedIndexPage() {
       
       <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-white">
         {/* Hero Section */}
-        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-16">
+        <div className="relative isolate overflow-hidden bg-gradient-to-b from-background via-background to-background/95 pt-28">
           <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_120%,rgba(30,58,138,0.1),rgba(255,255,255,0))]" />
 
           <div className="mx-auto max-w-[1800px] px-6 sm:px-8 py-8 sm:py-12 lg:py-16 lg:px-12">
@@ -190,8 +190,8 @@ export default function FearGreedIndexPage() {
                         className="w-full sm:w-auto bg-black text-white hover:bg-black/90 transition-all duration-300 font-semibold px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base lg:text-lg shadow-2xl hover:shadow-3xl hover:scale-105 rounded-2xl"
                         asChild
                       >
-                        <a href="https://app.perception.to/auth/sign-up">
-                          Start free trial
+                        <a href="/book-a-call">
+                          Book a Demo
                         </a>
                       </Button>
                     </div>
@@ -231,7 +231,7 @@ export default function FearGreedIndexPage() {
                   <div className="text-left">
                     <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-slate-600 dark:text-slate-400 mb-6 sm:mb-8 font-light">
                       A single score from 0 (extreme fear) to 100 (extreme greed) that captures market sentiment.
-                      We aggregate social media, news headlines, volatility, and market momentum from 650+ sources.
+                      We aggregate social media, news headlines, volatility, and market momentum from 450+ sources.
                     </p>
                     <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-slate-600 dark:text-slate-400 font-light">
                       Track market psychology, not just price. See what the crowd is feeling before it shows up in{'\u00A0'}charts.
@@ -295,7 +295,7 @@ export default function FearGreedIndexPage() {
 
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 tracking-tight text-slate-900 dark:text-white px-2">How it's calculated</h3>
                 <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-400 font-light max-w-4xl mx-auto px-2">
-                  We track sentiment across 650+ sources, weighted by credibility and velocity. Not just price data—actual market psychology.
+                  We track sentiment across 450+ sources, weighted by credibility and velocity. Not just price data, actual market psychology.
                 </p>
               </div>
 
@@ -624,8 +624,8 @@ export default function FearGreedIndexPage() {
                     className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-6 text-lg"
                     asChild
                   >
-                    <a href="https://app.perception.to/auth/sign-up">
-                      Start free trial
+                    <a href="/book-a-call">
+                      Book a Demo
                     </a>
                   </Button>
                   <Button
@@ -720,7 +720,7 @@ export default function FearGreedIndexPage() {
                     </Link>
                   </h4>
                   <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 sm:mb-6">
-                    Compare our Fear & Greed Index with Alternative.me. See why 650+ sources beats 5 indicators.
+                    Compare our Fear & Greed Index with Alternative.me. See why 450+ sources beats 5 indicators.
                   </p>
                   <Link to="/alternatives/alternative-me-alternative" className="text-orange-500 hover:text-orange-600 font-medium">
                     See Comparison →

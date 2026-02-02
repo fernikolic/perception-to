@@ -47,8 +47,8 @@ export function ValuePropSection({ title, subtitle, benefits }: ValuePropSection
                 className="bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl hover:scale-105 w-full text-sm sm:text-base py-5 sm:py-6 rounded-xl"
                 asChild
               >
-                <a href="https://app.perception.to/auth/sign-up">
-                  Start free trial
+                <a href="/book-a-call">
+                  Book a Demo
                 </a>
               </Button>
             </div>

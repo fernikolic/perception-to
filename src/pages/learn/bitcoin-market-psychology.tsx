@@ -17,7 +17,7 @@ export default function BitcoinMarketPsychologyPage() {
     <LearnArticleLayout
       title="Bitcoin Market Psychology Explained"
       metaTitle="Bitcoin Market Psychology Explained: FOMO, FUD & Cycles | Perception"
-      description="Understanding the emotional forces that move markets—FOMO, FUD, herd behavior, and cycle psychology—is essential for making rational decisions in irrational markets."
+      description="Understanding the emotional forces that move markets, FOMO, FUD, herd behavior, and cycle psychology, is essential for making rational decisions in irrational markets."
       keywords={[
         'bitcoin market psychology',
         'crypto fomo',
@@ -76,7 +76,7 @@ export default function BitcoinMarketPsychologyPage() {
         </CardGrid>
 
         <Callout type="insight" title="The Bottom Line">
-          The best traders aren't the smartest—they're the most emotionally disciplined.
+          The best traders aren't the smartest, they're the most emotionally disciplined.
           Understanding market psychology gives you an edge over those trading on pure emotion.
         </Callout>
       </Section>
@@ -127,7 +127,7 @@ export default function BitcoinMarketPsychologyPage() {
       {/* Section 3: FUD */}
       <Section id="fud" title="FUD: Fear, Uncertainty, Doubt">
         <Paragraph>
-          <strong>FUD</strong> is negative sentiment—real or manufactured—that causes fear and selling
+          <strong>FUD</strong> is negative sentiment, real or manufactured, that causes fear and selling
           pressure. In crypto, FUD can be legitimate concerns (regulation, hacks) or deliberate
           manipulation to drive prices down.
         </Paragraph>
@@ -173,7 +173,7 @@ export default function BitcoinMarketPsychologyPage() {
         <Callout type="tip" title="Pro Tip: Sentiment Tracking">
           Use tools like <InternalLink to="/bitcoin-fear-greed-index">Perception's Fear & Greed Index</InternalLink> to
           gauge whether FUD has reached capitulation levels. Extreme fear readings during FUD events
-          have historically been buying opportunities—after verifying the concerns aren't existential.
+          have historically been buying opportunities, after verifying the concerns aren't existential.
         </Callout>
       </Section>
 
@@ -181,7 +181,7 @@ export default function BitcoinMarketPsychologyPage() {
       <Section id="herd-behavior" title="Herd Behavior & Social Proof">
         <Paragraph>
           Humans are social creatures. We look to others for validation, especially when uncertain.
-          In markets, this creates <strong>herd behavior</strong>—the tendency to follow the crowd
+          In markets, this creates <strong>herd behavior</strong>, the tendency to follow the crowd
           regardless of individual analysis.
         </Paragraph>
 
@@ -207,7 +207,7 @@ export default function BitcoinMarketPsychologyPage() {
 
         <ul className="space-y-2 sm:space-y-3 text-muted-foreground mb-6 sm:mb-8">
           <li className="flex gap-3"><span className="text-orange-500 font-bold">•</span><span><strong>Influencer endorsements:</strong> Followers copy trades without analysis</span></li>
-          <li className="flex gap-3"><span className="text-orange-500 font-bold">•</span><span><strong>Gain screenshots:</strong> Survivorship bias—you see wins, not losses</span></li>
+          <li className="flex gap-3"><span className="text-orange-500 font-bold">•</span><span><strong>Gain screenshots:</strong> Survivorship bias, you see wins, not losses</span></li>
           <li className="flex gap-3"><span className="text-orange-500 font-bold">•</span><span><strong>Group chats:</strong> Echo chambers reinforce existing beliefs</span></li>
           <li className="flex gap-3"><span className="text-orange-500 font-bold">•</span><span><strong>Trading volume:</strong> High volume feels like validation</span></li>
         </ul>
@@ -249,7 +249,7 @@ export default function BitcoinMarketPsychologyPage() {
       {/* Section 6: Staying Rational */}
       <Section id="rational-trading" title="Staying Rational in Emotional Markets">
         <Paragraph>
-          Knowing about market psychology isn't enough—you need systems to prevent yourself from
+          Knowing about market psychology isn't enough, you need systems to prevent yourself from
           falling into the same traps. Here are practical strategies:
         </Paragraph>
 
@@ -270,7 +270,7 @@ export default function BitcoinMarketPsychologyPage() {
           </InfoCard>
 
           <InfoCard title="Track Your Emotions" icon={Brain}>
-            Keep a trading journal. Note how you felt when making decisions. Review your worst trades—
+            Keep a trading journal. Note how you felt when making decisions. Review your worst trades, 
             you'll find they were often made during emotional extremes.
           </InfoCard>
 

@@ -12,6 +12,7 @@ import { Integrations } from '@/components/integrations';
 import { Community } from '@/components/community';
 import { Pricing } from '@/components/pricing';
 import { Testimonials } from '@/components/testimonials';
+import TestimonialsPage from '@/pages/testimonials';
 import { Faq } from '@/components/faq';
 import { Footer } from '@/components/footer';
 import { FloatingNav } from '@/components/floating-nav';
@@ -26,6 +27,23 @@ import { ExecutiveIntelligencePage } from '@/pages/use-cases/executive-intellige
 import { StakeholderCommunicationsPage } from '@/pages/use-cases/stakeholder-communications';
 import { JournalismPage } from '@/pages/use-cases/journalism';
 import { PRAgencyPage } from '@/pages/use-cases/pr-agency';
+import { FundAnalystsPage } from '@/pages/use-cases/fund-analysts';
+import { IRCommunicationsPage } from '@/pages/use-cases/ir-communications';
+import { FamilyOfficesPage } from '@/pages/use-cases/family-offices';
+import { JournalistsPage } from '@/pages/use-cases/journalists';
+import { FeaturesIndex } from '@/pages/features/index';
+import { EarningsAnalysisPage } from '@/pages/features/earnings-analysis';
+import { SourcesPage } from '@/pages/features/sources';
+import { SampleReportPage } from '@/pages/features/sample-report';
+import { TrendsPage } from '@/pages/features/trends';
+import { ResearchPage } from '@/pages/features/research';
+import { JournalistIntelligencePage } from '@/pages/features/journalist-intelligence';
+import { SpacesPage } from '@/pages/features/spaces';
+import { AlertsPage } from '@/pages/features/alerts';
+import { WeeklyReportsPage } from '@/pages/features/weekly-reports';
+import { StakeholderCommunicationsReportPage } from '@/pages/sample-reports/stakeholder-communications';
+import { PRPitchIntelligenceReportPage } from '@/pages/sample-reports/pr-pitch-intelligence';
+import { SectorDeepDiveReportPage } from '@/pages/sample-reports/sector-deep-dive';
 import { AboutPage } from '@/pages/about';
 // import { CareersPage } from '@/pages/careers';
 import { PressPage } from '@/pages/press';
@@ -37,7 +55,6 @@ import { DocsPage } from '@/pages/documentation';
 import { ApiPage } from '@/pages/api';
 import { PrivacyPage } from '@/pages/legal/privacy';
 import { TermsPage } from '@/pages/legal/terms';
-import TestimonialsPage from '@/pages/testimonials';
 import SlackTestingPage from '@/pages/slack-testing';
 import SlackIntegrationPage from '@/pages/slack-integration';
 import SocialPreviewPage from '@/pages/social-preview';
@@ -116,6 +133,23 @@ const App = () => {
               <Route path="/use-cases/stakeholder-communications" element={<StakeholderCommunicationsPage />} />
               <Route path="/use-cases/journalism" element={<JournalismPage />} />
               <Route path="/use-cases/pr-agency" element={<PRAgencyPage />} />
+              <Route path="/use-cases/fund-analysts" element={<FundAnalystsPage />} />
+              <Route path="/use-cases/ir-communications" element={<IRCommunicationsPage />} />
+              <Route path="/use-cases/family-offices" element={<FamilyOfficesPage />} />
+              <Route path="/use-cases/journalists" element={<JournalistsPage />} />
+              <Route path="/product" element={<FeaturesIndex />} />
+              <Route path="/features/earnings-analysis" element={<EarningsAnalysisPage />} />
+              <Route path="/features/sources" element={<SourcesPage />} />
+              <Route path="/features/sample-report" element={<SampleReportPage />} />
+              <Route path="/features/trends" element={<TrendsPage />} />
+              <Route path="/features/research" element={<ResearchPage />} />
+              <Route path="/features/journalist-intelligence" element={<JournalistIntelligencePage />} />
+              <Route path="/features/spaces" element={<SpacesPage />} />
+              <Route path="/features/alerts" element={<AlertsPage />} />
+              <Route path="/features/weekly-reports" element={<WeeklyReportsPage />} />
+              <Route path="/sample-reports/stakeholder-communications" element={<StakeholderCommunicationsReportPage />} />
+              <Route path="/sample-reports/pr-pitch-intelligence" element={<PRPitchIntelligenceReportPage />} />
+              <Route path="/sample-reports/sector-deep-dive" element={<SectorDeepDiveReportPage />} />
               <Route path="/about" element={<AboutPage />} />
               {/* <Route path="/careers" element={<CareersPage />} /> */}
               <Route path="/press" element={<PressPage />} />

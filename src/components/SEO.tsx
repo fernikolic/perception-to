@@ -20,13 +20,13 @@ interface SEOProps {
 }
 
 export default function SEO({
-  title = 'Perception - Bitcoin Trend Analysis & Market Sentiment',
-  description = 'Track Bitcoin trends. Decode market sentiment. Uncover narratives. All in one place.',
+  title = 'Perception - Digital Asset Trend Analysis & Market Sentiment',
+  description = 'Track digital asset trends. Decode market sentiment. Uncover narratives. All in one place.',
   image = 'https://perception-og-image.fernandonikolic.workers.dev',
   url = 'https://perception.to/learn',
   type = 'website',
   article,
-  keywords = ['Bitcoin', 'market trends', 'sentiment analysis', 'market intelligence'],
+  keywords = ['digital assets', 'market trends', 'sentiment analysis', 'market intelligence'],
   prevPage,
   nextPage,
   markdownUrl,

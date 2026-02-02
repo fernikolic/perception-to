@@ -30,10 +30,10 @@ const tools: Tool[] = [
   {
     name: 'Perception',
     logo: '/images/logo.png',
-    description: 'AI-powered media intelligence workspace tracking 650+ news sources for crypto sentiment, narrative detection, and market psychology analysis.',
+    description: 'advanced media intelligence workspace tracking 650+ news sources for crypto sentiment, narrative detection, and market psychology analysis.',
     bestFor: 'Media monitoring, narrative tracking, PR teams',
-    pricing: 'From $49/mo',
-    pricingNote: '7-day free trial',
+    pricing: 'From $149/mo',
+    pricingNote: 'Demo available',
     rating: 4.9,
     features: {
       socialSentiment: true,
@@ -46,7 +46,7 @@ const tools: Tool[] = [
     pros: [
       '650+ media sources including Bloomberg, Reuters, WSJ',
       'Real-time updates every 90 seconds',
-      'AI-powered narrative detection',
+      'advanced narrative detection',
       'Slack integration for alerts',
       'Fear & Greed Index with velocity tracking'
     ],
@@ -54,7 +54,7 @@ const tools: Tool[] = [
       'Focused on media, not on-chain data',
       'Newer platform (launched 2024)'
     ],
-    url: 'https://app.perception.to/auth/sign-up',
+    url: '/book-a-call',
     isPerception: true
   },
   {
@@ -209,7 +209,7 @@ const tools: Tool[] = [
 const faqs = [
   {
     question: 'Which crypto sentiment tool is best for beginners?',
-    answer: 'For beginners, Alternative.me Fear & Greed Index is a good free starting point. For more comprehensive insights without complexity, Perception offers an intuitive interface with AI-powered analysis that explains WHY sentiment is changing, not just showing numbers.'
+    answer: 'For beginners, Alternative.me Fear & Greed Index is a good free starting point. For more comprehensive insights without complexity, Perception offers an intuitive interface with advanced analysis that explains WHY sentiment is changing, not just showing numbers.'
   },
   {
     question: 'What\'s the difference between social sentiment and media sentiment?',
@@ -361,8 +361,8 @@ export default function BestCryptoSentimentToolsPage() {
                     className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-base font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
                     asChild
                   >
-                    <a href="https://app.perception.to/auth/sign-up">
-                      Start free trial
+                    <a href="/book-a-call">
+                      Book a Demo
                     </a>
                   </Button>
                   <Button
@@ -610,7 +610,7 @@ export default function BestCryptoSentimentToolsPage() {
                 </h3>
                 <p className="text-white/70">
                   If you need to know what Bloomberg, Reuters, and crypto publications are reporting,
-                  <strong className="text-white"> Perception</strong> is the only tool monitoring 650+ media sources with AI-powered narrative detection.
+                  <strong className="text-white"> Perception</strong> is the only tool monitoring 650+ media sources with advanced narrative detection.
                 </p>
               </div>
 
@@ -685,8 +685,8 @@ export default function BestCryptoSentimentToolsPage() {
                 className="bg-white text-black hover:bg-white/90 rounded-2xl px-8 py-6 text-lg font-semibold shadow-2xl transition-all duration-300 hover:scale-105"
                 asChild
               >
-                <a href="https://app.perception.to/auth/sign-up">
-                  Start free trial
+                <a href="/book-a-call">
+                  Book a Demo
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>

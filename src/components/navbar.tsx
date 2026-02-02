@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { BookDemoButton } from '@/components/calendar-modal';
 import { Logo } from '@/components/ui/logo';
 import {
   NavigationMenu,
@@ -12,14 +12,61 @@ import {
 } from '@/components/ui/navigation-menu';
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import BouncingPointCloud from '@/components/BouncingPointCloud';
-import WavyYinYangNoDots from '@/components/WavyYinYangNoDots';
-import PineconeDelicate from '@/components/PineconeDelicate';
-import WaterAscii from '@/components/WaterAscii';
-import Metamorphosis from '@/components/Metamorphosis';
-import VerticalBarsNoise from '@/components/VerticalBarsNoise';
-import FlowingPattern from '@/components/FlowingPattern';
-import KaleidoscopeVariation3 from '@/components/KaleidoscopeVariation3';
+
+const product: {
+  title: string;
+  href: string;
+  description: string;
+  disabled?: boolean;
+  badge?: string;
+  className?: string;
+}[] = [
+  {
+    title: "Trends Dashboard",
+    href: "/features/trends",
+    description: "Surface emerging narratives in real-time"
+  },
+  {
+    title: "Research Hub",
+    href: "/features/research",
+    description: "Search 450+ sources simultaneously"
+  },
+  {
+    title: "Journalist Intelligence",
+    href: "/features/journalist-intelligence",
+    description: "Track reporter sentiment and coverage"
+  },
+  {
+    title: "Spaces & Reports",
+    href: "/features/spaces",
+    description: "Organized workspaces and briefs"
+  },
+  {
+    title: "Alerts",
+    href: "/features/alerts",
+    description: "Real-time mention and sentiment alerts"
+  },
+  {
+    title: "Weekly Reports",
+    href: "/features/weekly-reports",
+    description: "Automated weekly intelligence digests"
+  },
+  {
+    title: "Media Intelligence",
+    href: "/features/sources",
+    description: "450+ monitored sources"
+  },
+  {
+    title: "Earnings Analysis",
+    href: "/features/earnings-analysis",
+    description: "Automated earnings call summaries"
+  },
+  {
+    title: "Sample Report",
+    href: "/features/sample-report",
+    description: "See our intelligence in action"
+  },
+];
 
 const resources: {
   title: string;
@@ -28,7 +75,6 @@ const resources: {
   disabled?: boolean;
   badge?: string;
   className?: string;
-  animation?: React.ComponentType;
 }[] = [
   {
     title: "Documentation",
@@ -46,14 +92,12 @@ const resources: {
     title: "Bitcoin Media Research",
     href: "/bitcoin-media-research",
     description: "Join 2,000+ subscribers",
-    className: "text-orange-500",
-    animation: WaterAscii
+    className: "text-orange-500"
   },
   {
     title: "Methodology",
     href: "/methodology",
-    description: "Our data collection process",
-    animation: Metamorphosis
+    description: "Our data collection process"
   },
 ];
 
@@ -64,31 +108,26 @@ const useCases: {
   disabled?: boolean;
   badge?: string;
   className?: string;
-  animation?: React.ComponentType;
 }[] = [
   {
-    title: "Executive Intelligence",
-    href: "/use-cases/executive-intelligence",
-    description: "Board-ready competitive intelligence",
-    animation: BouncingPointCloud
+    title: "Fund Analysts",
+    href: "/use-cases/fund-analysts",
+    description: "Research Bitcoin companies in minutes"
   },
   {
-    title: "Stakeholder Communications",
-    href: "/use-cases/stakeholder-communications",
-    description: "Automated stakeholder reports",
-    animation: PineconeDelicate
+    title: "IR & Communications",
+    href: "/use-cases/ir-communications",
+    description: "Track coverage, prepare executives"
   },
   {
-    title: "Data-Backed Journalism",
-    href: "/use-cases/journalism",
-    description: "Quantifiable media intelligence",
-    animation: KaleidoscopeVariation3
+    title: "Family Offices",
+    href: "/use-cases/family-offices",
+    description: "Navigate your digital asset allocation"
   },
   {
-    title: "PR Intelligence",
-    href: "/use-cases/pr-agency",
-    description: "Reporter targeting & client tracking",
-    animation: WavyYinYangNoDots
+    title: "Financial Journalists",
+    href: "/use-cases/journalists",
+    description: "Get up to speed on any story"
   },
 ];
 
@@ -99,26 +138,16 @@ const company: {
   disabled?: boolean;
   badge?: string;
   className?: string;
-  animation?: React.ComponentType;
 }[] = [
   {
     title: "About",
     href: "/about",
-    description: "Learn about our mission and team",
-    animation: VerticalBarsNoise
+    description: "Learn about our mission and team"
   },
-  // {
-  //   title: "Careers",
-  //   href: "#",
-  //   description: "Join our growing team",
-  //   disabled: true,
-  //   badge: "Coming Soon"
-  // },
   {
     title: "Press",
     href: "/press",
-    description: "Latest news and media resources",
-    animation: FlowingPattern
+    description: "Latest news and media resources"
   },
   {
     title: "Advisory",
@@ -252,68 +281,84 @@ export function Navbar() {
                   "bg-transparent font-medium text-sm hover:text-primary transition-colors",
                   isOverDarkSection ? "text-white" : "text-black dark:text-white"
                 )}>
+                  Product
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="p-4 bg-background rounded-lg border shadow-lg w-[700px]">
+                    <ul className="grid grid-cols-3 gap-2">
+                      {product.map((item) => (
+                        <li key={item.title}>
+                          <NavigationMenuLink asChild>
+                            <a
+                              href={item.href}
+                              className={cn(
+                                "block rounded-lg p-3 transition-colors",
+                                item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/10",
+                                item.className
+                              )}
+                              onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                            >
+                              <div className="flex flex-wrap items-center gap-2 mb-1">
+                                <span className={cn("text-sm font-medium", item.className)}>
+                                  {item.title}
+                                </span>
+                                {item.badge && (
+                                  <Badge variant="secondary" className="text-xs">
+                                    {item.badge}
+                                  </Badge>
+                                )}
+                              </div>
+                              <div className="text-xs text-muted-foreground leading-tight">
+                                {item.description}
+                              </div>
+                            </a>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className={cn(
+                  "bg-transparent font-medium text-sm hover:text-primary transition-colors",
+                  isOverDarkSection ? "text-white" : "text-black dark:text-white"
+                )}>
                   Use Cases
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="p-4 bg-background rounded-lg border shadow-lg min-w-[500px] max-w-[700px]">
-                    <ul className="space-y-3">
-                      {useCases.map((item) => {
-                        const AnimationComponent = item.animation;
-                        return (
-                          <li key={item.title}>
-                            <NavigationMenuLink asChild>
-                              <a
-                                href={item.href}
-                                className={cn(
-                                  "block rounded-md transition-colors overflow-hidden",
-                                  item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/5 hover:text-foreground",
-                                  item.className
+                  <div className="p-4 bg-background rounded-lg border shadow-lg w-[500px]">
+                    <ul className="grid grid-cols-2 gap-2">
+                      {useCases.map((item) => (
+                        <li key={item.title}>
+                          <NavigationMenuLink asChild>
+                            <a
+                              href={item.href}
+                              className={cn(
+                                "block rounded-lg p-3 transition-colors",
+                                item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/10",
+                                item.className
+                              )}
+                              onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                            >
+                              <div className="flex flex-wrap items-center gap-2 mb-1">
+                                <span className={cn("text-sm font-medium", item.className)}>
+                                  {item.title}
+                                </span>
+                                {item.badge && (
+                                  <Badge variant="secondary" className="text-xs">
+                                    {item.badge}
+                                  </Badge>
                                 )}
-                                onClick={item.disabled ? (e) => e.preventDefault() : undefined}
-                              >
-                                <div className="flex items-center gap-3">
-                                  {/* ASCII Animation Preview */}
-                                  {AnimationComponent && (
-                                    <div className="w-20 h-20 flex-shrink-0 rounded-md overflow-hidden relative bg-[#F0EEE6]">
-                                      <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="w-[200%] h-[200%] scale-[0.35] origin-center">
-                                          <AnimationComponent />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  )}
-                                  {/* Text Content */}
-                                  <div className="flex-1 py-3 pr-3">
-                                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                                      <span className={cn("text-sm font-medium", item.className)}>
-                                        {item.title}
-                                      </span>
-                                      {item.badge && (
-                                        <Badge variant="secondary" className="text-xs">
-                                          {item.badge}
-                                        </Badge>
-                                      )}
-                                    </div>
-                                    <div
-                                      className="text-sm text-muted-foreground"
-                                      style={{
-                                        whiteSpace: 'normal',
-                                        wordWrap: 'break-word',
-                                        overflowWrap: 'break-word',
-                                        maxWidth: '100%',
-                                        width: '100%',
-                                        lineHeight: '1.4'
-                                      }}
-                                    >
-                                      {item.description}
-                                    </div>
-                                  </div>
-                                </div>
-                              </a>
-                            </NavigationMenuLink>
-                          </li>
-                        );
-                      })}
+                              </div>
+                              <div className="text-xs text-muted-foreground leading-tight">
+                                {item.description}
+                              </div>
+                            </a>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </NavigationMenuContent>
@@ -327,65 +372,37 @@ export function Navbar() {
                   Resources
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="p-4 bg-background rounded-lg border shadow-lg min-w-[500px] max-w-[700px]">
-                    <ul className="space-y-3">
-                      {resources.map((item) => {
-                        const AnimationComponent = item.animation;
-                        return (
-                          <li key={item.title}>
-                            <NavigationMenuLink asChild>
-                              <a
-                                href={item.href}
-                                className={cn(
-                                  "block rounded-md transition-colors overflow-hidden",
-                                  item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/5 hover:text-foreground",
-                                  item.className
+                  <div className="p-4 bg-background rounded-lg border shadow-lg w-[400px]">
+                    <ul className="grid grid-cols-2 gap-2">
+                      {resources.map((item) => (
+                        <li key={item.title}>
+                          <NavigationMenuLink asChild>
+                            <a
+                              href={item.href}
+                              className={cn(
+                                "block rounded-lg p-3 transition-colors",
+                                item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/10",
+                                item.className
+                              )}
+                              onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                            >
+                              <div className="flex flex-wrap items-center gap-2 mb-1">
+                                <span className={cn("text-sm font-medium", item.className)}>
+                                  {item.title}
+                                </span>
+                                {item.badge && (
+                                  <Badge variant="secondary" className="text-xs">
+                                    {item.badge}
+                                  </Badge>
                                 )}
-                                onClick={item.disabled ? (e) => e.preventDefault() : undefined}
-                              >
-                                <div className="flex items-center gap-3">
-                                  {/* ASCII Animation Preview */}
-                                  {AnimationComponent && (
-                                    <div className="w-20 h-20 flex-shrink-0 rounded-md overflow-hidden relative bg-[#F0EEE6]">
-                                      <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="w-[200%] h-[200%] scale-[0.35] origin-center">
-                                          <AnimationComponent />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  )}
-                                  {/* Text Content */}
-                                  <div className={cn("flex-1 py-3", AnimationComponent ? "pr-3" : "px-3")}>
-                                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                                      <span className={cn("text-sm font-medium", item.className)}>
-                                        {item.title}
-                                      </span>
-                                      {item.badge && (
-                                        <Badge variant="secondary" className="text-xs">
-                                          {item.badge}
-                                        </Badge>
-                                      )}
-                                    </div>
-                                    <div
-                                      className="text-sm text-muted-foreground"
-                                      style={{
-                                        whiteSpace: 'normal',
-                                        wordWrap: 'break-word',
-                                        overflowWrap: 'break-word',
-                                        maxWidth: '100%',
-                                        width: '100%',
-                                        lineHeight: '1.4'
-                                      }}
-                                    >
-                                      {item.description}
-                                    </div>
-                                  </div>
-                                </div>
-                              </a>
-                            </NavigationMenuLink>
-                          </li>
-                        );
-                      })}
+                              </div>
+                              <div className="text-xs text-muted-foreground leading-tight">
+                                {item.description}
+                              </div>
+                            </a>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </NavigationMenuContent>
@@ -399,65 +416,37 @@ export function Navbar() {
                   Company
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="p-4 bg-background rounded-lg border shadow-lg min-w-[500px] max-w-[700px]">
-                    <ul className="space-y-3">
-                      {company.map((item) => {
-                        const AnimationComponent = item.animation;
-                        return (
-                          <li key={item.title}>
-                            <NavigationMenuLink asChild>
-                              <a
-                                href={item.href}
-                                className={cn(
-                                  "block rounded-md transition-colors overflow-hidden",
-                                  item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/5 hover:text-foreground",
-                                  item.className
+                  <div className="p-4 bg-background rounded-lg border shadow-lg w-[300px]">
+                    <ul className="space-y-1">
+                      {company.map((item) => (
+                        <li key={item.title}>
+                          <NavigationMenuLink asChild>
+                            <a
+                              href={item.href}
+                              className={cn(
+                                "block rounded-lg p-3 transition-colors",
+                                item.disabled ? "cursor-not-allowed opacity-70" : "hover:bg-accent/10",
+                                item.className
+                              )}
+                              onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                            >
+                              <div className="flex flex-wrap items-center gap-2 mb-1">
+                                <span className={cn("text-sm font-medium", item.className)}>
+                                  {item.title}
+                                </span>
+                                {item.badge && (
+                                  <Badge variant="secondary" className="text-xs">
+                                    {item.badge}
+                                  </Badge>
                                 )}
-                                onClick={item.disabled ? (e) => e.preventDefault() : undefined}
-                              >
-                                <div className="flex items-center gap-3">
-                                  {/* ASCII Animation Preview */}
-                                  {AnimationComponent && (
-                                    <div className="w-20 h-20 flex-shrink-0 rounded-md overflow-hidden relative bg-[#F0EEE6]">
-                                      <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="w-[200%] h-[200%] scale-[0.35] origin-center">
-                                          <AnimationComponent />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  )}
-                                  {/* Text Content */}
-                                  <div className={cn("flex-1 py-3", AnimationComponent ? "pr-3" : "px-3")}>
-                                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                                      <span className={cn("text-sm font-medium", item.className)}>
-                                        {item.title}
-                                      </span>
-                                      {item.badge && (
-                                        <Badge variant="secondary" className="text-xs">
-                                          {item.badge}
-                                        </Badge>
-                                      )}
-                                    </div>
-                                    <div
-                                      className="text-sm text-muted-foreground"
-                                      style={{
-                                        whiteSpace: 'normal',
-                                        wordWrap: 'break-word',
-                                        overflowWrap: 'break-word',
-                                        maxWidth: '100%',
-                                        width: '100%',
-                                        lineHeight: '1.4'
-                                      }}
-                                    >
-                                      {item.description}
-                                    </div>
-                                  </div>
-                                </div>
-                              </a>
-                            </NavigationMenuLink>
-                          </li>
-                        );
-                      })}
+                              </div>
+                              <div className="text-xs text-muted-foreground leading-tight">
+                                {item.description}
+                              </div>
+                            </a>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </NavigationMenuContent>
@@ -485,14 +474,10 @@ export function Navbar() {
           >
             Login
           </a>
-          <Button
-            className="bg-black text-white hover:bg-gray-900 dark:bg-black dark:hover:bg-gray-900 transition-all shadow-md hover:shadow-lg rounded-full px-6 h-10 text-sm font-medium"
-            asChild
-          >
-            <a href="https://app.perception.to/auth/sign-up">
-              Start free trial
-            </a>
-          </Button>
+          <BookDemoButton
+            size="default"
+            className="rounded-full px-6 h-10 text-sm font-medium shadow-md hover:shadow-lg"
+          />
         </div>
 
         <button
@@ -517,6 +502,45 @@ export function Navbar() {
       >
         <div className="flex flex-col h-full overflow-y-auto">
           <div className="px-4 py-6 space-y-6">
+            {/* Product Section */}
+            <div>
+              <button
+                className="flex w-full items-center justify-between text-lg font-medium"
+                onClick={() => toggleSection('product')}
+              >
+                Product
+                {expandedSection === 'product' ? (
+                  <ChevronUp className="h-5 w-5" />
+                ) : (
+                  <ChevronDown className="h-5 w-5" />
+                )}
+              </button>
+              {expandedSection === 'product' && (
+                <div className="mt-4 space-y-4 pl-4">
+                  {product.map((item) => (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      className={cn(
+                        "block text-muted-foreground hover:text-foreground transition-colors",
+                        item.disabled && "opacity-50 cursor-not-allowed"
+                      )}
+                      onClick={item.disabled ? (e) => e.preventDefault() : undefined}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{item.title}</span>
+                        {item.badge && (
+                          <Badge variant="secondary" className="text-xs">
+                            {item.badge}
+                          </Badge>
+                        )}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {/* Use Cases Section */}
             <div>
               <button
@@ -647,14 +671,10 @@ export function Navbar() {
               >
                 Login
               </a>
-              <Button 
-                className="w-full bg-black text-white hover:bg-gray-900 dark:bg-black dark:hover:bg-gray-900"
-                asChild
-              >
-                <a href="https://app.perception.to/auth/sign-up">
-                  Start free trial
-                </a>
-              </Button>
+              <BookDemoButton
+                size="default"
+                className="w-full"
+              />
             </div>
           </div>
         </div>

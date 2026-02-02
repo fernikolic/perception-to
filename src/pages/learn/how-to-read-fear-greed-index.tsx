@@ -32,7 +32,7 @@ export default function HowToReadFearGreedIndexPage() {
         name: 'How often is the Fear & Greed Index updated?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Most Fear & Greed indices update daily. Perception\'s index updates every 90 seconds based on real-time media sentiment analysis from 650+ sources.'
+          text: 'Most Fear & Greed indices update daily. Perception\'s index updates every 90 seconds based on real-time media sentiment analysis from 450+ sources.'
         }
       },
       {
@@ -126,7 +126,7 @@ export default function HowToReadFearGreedIndexPage() {
             icon={Minus}
             color="slate"
             description="Market sentiment is balanced. Neither fear nor greed dominates. Often a period of consolidation or indecision."
-            note="Trading consideration: Watch for which direction sentiment breaks from neutral—this can signal the next trend."
+            note="Trading consideration: Watch for which direction sentiment breaks from neutral, this can signal the next trend."
           />
 
           <ScoreCard
@@ -181,7 +181,7 @@ export default function HowToReadFearGreedIndexPage() {
 
         <Callout type="tip" title="Perception's Approach">
           <InternalLink to="/bitcoin-fear-greed-index">Perception's Fear & Greed Index</InternalLink> uses
-          AI-powered analysis of 650+ media sources, updated every 90 seconds. This provides a unique
+          automated analysis of 650+ media sources, updated every 90 seconds. This provides a unique
           "media sentiment" perspective compared to social-focused alternatives.
         </Callout>
       </Section>
@@ -197,7 +197,7 @@ export default function HowToReadFearGreedIndexPage() {
             title="Contrarian Entry Points"
             icon={Target}
             color="purple"
-            description="Look for buying opportunities when fear reaches extremes (below 20) and the index starts recovering. This doesn't mean buying blindly—confirm with price action."
+            description="Look for buying opportunities when fear reaches extremes (below 20) and the index starts recovering. This doesn't mean buying blindly, confirm with price action."
           >
             <CardGrid columns={2}>
               <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-lg">
@@ -248,7 +248,7 @@ export default function HowToReadFearGreedIndexPage() {
 
           <InfoCard title="Mistake #2: Fighting Extreme Trends" gradient="from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/10">
             Extreme greed can last for weeks during bull runs. Extreme fear can persist during
-            bear markets. Don't assume a reversal just because sentiment is extreme—confirm with
+            bear markets. Don't assume a reversal just because sentiment is extreme, confirm with
             price action first.
           </InfoCard>
 
@@ -276,7 +276,7 @@ export default function HowToReadFearGreedIndexPage() {
 
           <FAQItem question="How often is the Fear & Greed Index updated?">
             Most Fear & Greed indices update daily. <InternalLink to="/bitcoin-fear-greed-index">Perception's index</InternalLink> updates
-            every 90 seconds based on real-time media sentiment analysis from 650+ sources.
+            every 90 seconds based on real-time media sentiment analysis from 450+ sources.
           </FAQItem>
 
           <FAQItem question="Should I buy when Fear & Greed shows extreme fear?">

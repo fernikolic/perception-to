@@ -4,7 +4,7 @@ import { Check, Zap, Clock, Users, TrendingUp, Shield } from 'lucide-react';
 
 export default function SlackIntegrationPage() {
   return (
-    <div className="min-h-screen bg-background pt-16">
+    <div className="min-h-screen bg-background pt-28">
       {/* Hero Section with Card Design */}
       <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
         {/* Subtle radial background like homepage */}
@@ -28,16 +28,16 @@ export default function SlackIntegrationPage() {
                 {/* Segment badge */}
                 <div className="mb-6 sm:mb-8">
                   <span className="inline-flex items-center rounded-full bg-transparent px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium leading-6 text-black ring-1 ring-inset ring-black/30 hover:ring-black/50 transition-all duration-300">
-                    For Bitcoin Companies
+                    For digital asset companies
                   </span>
                 </div>
 
                 <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tight text-black max-w-4xl mx-auto">
-                  Bitcoin Intelligence Delivered to Your Workspace
+                  Digital asset intelligence delivered to your workspace
                 </h1>
                 
                 <p className="mt-4 sm:mt-5 lg:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl leading-6 sm:leading-7 lg:leading-8 text-black/70 font-light max-w-3xl mx-auto">
-                  Get real-time Bitcoin narratives, sentiment shifts, and market intelligence delivered directly to your Slack channels. No more manual research.
+                  Get real-time digital asset narratives, sentiment shifts, and market intelligence delivered directly to your Slack channels. No more manual research.
                 </p>
 
                 <div className="mt-6 sm:mt-8 lg:mt-10 flex items-center justify-center">
@@ -69,7 +69,7 @@ export default function SlackIntegrationPage() {
               Everything You Need to Stay Ahead
             </h2>
             <p className="text-lg text-muted-foreground">
-              Transform your Slack workspace into a Bitcoin intelligence hub
+              Transform your Slack workspace into a digital asset intelligence hub
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export default function SlackIntegrationPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Real-Time Alerts</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Get instant notifications when major Bitcoin narratives break, 
+                  Get instant notifications when major digital asset narratives break,
                   sentiment shifts occur, or institutional developments emerge.
                 </p>
               </CardContent>
@@ -94,7 +94,7 @@ export default function SlackIntegrationPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Daily Digests</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Receive curated summaries of the day's most important Bitcoin 
+                  Receive curated summaries of the day's most important digital asset
                   developments, delivered at your preferred time.
                 </p>
               </CardContent>
@@ -160,11 +160,11 @@ export default function SlackIntegrationPage() {
         <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
           <div className="bg-gradient-to-r from-gray-800 to-black dark:from-gray-200 to-white rounded-3xl p-12 md:p-16 text-white dark:text-gray-900 shadow-2xl">
             <h2 className="text-3xl md:text-4xl font-extralight tracking-tight mb-6">
-              Ready to Transform Your Bitcoin Intelligence?
+              Ready to transform your digital asset intelligence?
             </h2>
             <p className="text-xl text-gray-200 dark:text-gray-700 mb-8 max-w-2xl mx-auto">
               Join hundreds of professionals who are already saving hours every week 
-              with automated Bitcoin intelligence delivered to their Slack.
+              with automated digital asset intelligence delivered to their Slack.
             </p>
             
             <Button 

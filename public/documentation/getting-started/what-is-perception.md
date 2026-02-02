@@ -23,7 +23,7 @@ Perception aggregates and analyzes Bitcoin-related content from across the media
 ## Core Capabilities
 
 ### Real-Time Market Intelligence
-- **Sentiment Analysis**: Track Bitcoin sentiment across 650+ sources
+- **Sentiment Analysis**: Track Bitcoin sentiment across 450+ sources
 - **Media Coverage**: Monitor volume and tone of Bitcoin coverage
 - **Price Correlation**: Analyze sentiment vs price movements
 - **Market Psychology**: Real-time indicators of market mood
@@ -89,7 +89,7 @@ All data is processed, enriched with sentiment analysis, and made searchable wit
 
 ## How It Works
 
-1. **Data Collection**: Our automated systems continuously gather content from 650+ sources
+1. **Data Collection**: Our automated systems continuously gather content from 450+ sources
 2. **Processing**: Each piece of content is analyzed for sentiment, topics, and relevance
 3. **Trend Detection**: Our proprietary systems identify patterns and emerging narratives in real-time
 4. **Delivery**: Access insights through the dashboard, alerts, or scheduled reports

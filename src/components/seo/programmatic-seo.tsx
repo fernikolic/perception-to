@@ -62,7 +62,7 @@ function generateTitle(keyword: string, intent: string): string {
 }
 
 function generateDescription(keyword: string, intent: string): string {
-  const baseDescription = `Get ${keyword} with real-time data from 650+ sources.`;
+  const baseDescription = `Get ${keyword} with real-time data from 450+ sources.`;
   
   switch (intent) {
     case 'informational':
@@ -138,7 +138,7 @@ export function generateHeroContent(keyword: KeywordData) {
   };
   
   const subheadlines = {
-    'informational': 'Comprehensive analysis with real-time data from 650+ sources',
+    'informational': 'Comprehensive analysis with real-time data from 450+ sources',
     'navigational': 'Live dashboards, tracking tools, and comprehensive analytics',
     'transactional': 'Robust API with real-time data, webhooks, and enterprise support',
     'commercial': 'Trusted by institutions, journalists, and professional traders'
@@ -163,9 +163,9 @@ function generateCTA(intent: string, templateType: string): string {
     case 'navigational':
       return 'Open Dashboard';
     case 'transactional':
-      return 'Start Free Trial';
+      return 'Book a Demo';
     case 'commercial':
-      return 'Get Started';
+      return 'Book a Demo';
     default:
       return 'Explore Now';
   }

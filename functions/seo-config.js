@@ -33,7 +33,7 @@ export const PAGE_SEO = {
 
   '/bitcoin-fear-greed-index': {
     title: 'Bitcoin Fear & Greed Index - Real-Time Market Sentiment | Perception',
-    description: 'Track Bitcoin market sentiment with our real-time Fear & Greed Index. Updated every 90 seconds from 650+ sources. Get instant alerts and API access.',
+    description: 'Track Bitcoin market sentiment with our real-time Fear & Greed Index. Updated every 90 seconds from 450+ sources. Get instant alerts and API access.',
     keywords: 'bitcoin fear and greed index, crypto fear greed index, bitcoin sentiment, market sentiment analysis, btc fear greed',
     canonical: 'https://perception.to/bitcoin-fear-greed-index',
     schema: {
@@ -63,7 +63,7 @@ export const PAGE_SEO = {
 
   '/bitcoin-market-sentiment': {
     title: 'Bitcoin Market Sentiment Analysis - Daily Updates | Perception',
-    description: 'Get comprehensive Bitcoin market sentiment analysis updated daily. Track investor psychology, fear & greed, and market narratives from 650+ sources.',
+    description: 'Get comprehensive Bitcoin market sentiment analysis updated daily. Track investor psychology, fear & greed, and market narratives from 450+ sources.',
     keywords: 'bitcoin market sentiment, bitcoin sentiment analysis, btc market mood, crypto sentiment today, bitcoin investor sentiment',
     canonical: 'https://perception.to/bitcoin-market-sentiment',
     schema: {
@@ -163,7 +163,7 @@ export const PAGE_SEO = {
 
   '/methodology': {
     title: 'Methodology | How Perception Analyzes Crypto Sentiment',
-    description: 'Learn how Perception analyzes crypto market sentiment. Our methodology covers 650+ sources, NLP analysis, and real-time data processing.',
+    description: 'Learn how Perception analyzes crypto market sentiment. Our methodology covers 450+ sources, NLP analysis, and real-time data processing.',
     keywords: 'crypto sentiment methodology, bitcoin analysis method, perception methodology',
     canonical: 'https://perception.to/methodology',
     schema: {
@@ -189,7 +189,7 @@ export const PAGE_SEO = {
 
   '/api': {
     title: 'API | Perception Crypto Sentiment API',
-    description: 'Access real-time crypto sentiment data via API. REST endpoints, webhooks, and SDKs. 650+ sources, enterprise-grade reliability.',
+    description: 'Access real-time crypto sentiment data via API. REST endpoints, webhooks, and SDKs. 450+ sources, enterprise-grade reliability.',
     keywords: 'crypto sentiment api, bitcoin api, perception api, crypto data api',
     canonical: 'https://perception.to/api',
     schema: {
@@ -215,7 +215,7 @@ export const DEFAULT_IMAGE = 'https://perception.to/logos/Perception-logo-social
 // Default meta for pages not explicitly configured
 export const DEFAULT_SEO = {
   title: 'Perception | Bitcoin & Crypto Media Intelligence Platform',
-  description: 'Intelligence workspace for Bitcoin, stablecoins & tokenized finance. Monitor trends, track sentiment, and generate insights from 650+ sources.',
+  description: 'Intelligence workspace for Bitcoin, stablecoins & tokenized finance. Monitor trends, track sentiment, and generate insights from 450+ sources.',
   keywords: 'crypto media monitoring, bitcoin media intelligence, crypto sentiment analysis',
   schema: {
     '@context': 'https://schema.org',

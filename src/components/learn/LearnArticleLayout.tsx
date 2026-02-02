@@ -244,8 +244,8 @@ export function LearnArticleLayout({
                     className="bg-black text-white hover:bg-black/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl rounded-2xl px-8 py-6 text-base font-semibold"
                     asChild
                   >
-                    <a href="https://app.perception.to/auth/sign-up">
-                      Start 7-day free trial
+                    <a href="/book-a-call">
+                      Book a Demo
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </a>
                   </Button>
@@ -307,7 +307,7 @@ export function LearnArticleLayout({
               into practice
             </h2>
             <p className="text-xl text-black/60 mb-10 max-w-2xl mx-auto">
-              Start tracking real-time crypto sentiment with our AI-powered intelligence workspace.
+              Start tracking real-time crypto sentiment with our intelligent analysis workspace.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -315,8 +315,8 @@ export function LearnArticleLayout({
                 className="bg-black text-white hover:bg-black/90 rounded-2xl px-8 py-6 text-lg font-semibold shadow-2xl transition-all duration-300 hover:scale-105"
                 asChild
               >
-                <a href="https://app.perception.to/auth/sign-up">
-                  Start 7-day free trial
+                <a href="/book-a-call">
+                  Book a Demo
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>

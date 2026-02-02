@@ -1,8 +1,12 @@
+import { useState } from 'react';
+import { DemoModal } from '@/components/demo-modal';
+
 interface FooterLink {
   label: string;
   href: string;
   comingSoon?: boolean;
   className?: string;
+  isDemo?: boolean;
 }
 
 interface FooterSection {
@@ -16,6 +20,7 @@ const footerSections: FooterSection[] = [
     links: [
       { label: 'Pricing', href: '/pricing' },
       { label: 'Book a Demo', href: '/book-a-call' },
+      { label: 'Product Walkthrough', href: '#', isDemo: true },
       { label: 'Methodology', href: '/methodology' },
     ],
   },
@@ -59,38 +64,50 @@ const footerSections: FooterSection[] = [
 ];
 
 export function FooterLinks() {
+  const [isDemoOpen, setIsDemoOpen] = useState(false);
+
   return (
-    <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
-      {footerSections.map((section) => (
-        <div key={section.title}>
-          <h3 className="text-sm font-semibold !text-white text-white">{section.title}</h3>
-          <ul className="mt-6 space-y-4">
-            {section.links.map((link) => (
-              <li key={link.label}>
-                {link.comingSoon ? (
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm !text-white/40 text-white/40 cursor-not-allowed">
+    <>
+      <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+        {footerSections.map((section) => (
+          <div key={section.title}>
+            <h3 className="text-sm font-semibold !text-white text-white">{section.title}</h3>
+            <ul className="mt-6 space-y-4">
+              {section.links.map((link) => (
+                <li key={link.label}>
+                  {link.comingSoon ? (
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm !text-white/40 text-white/40 cursor-not-allowed">
+                        {link.label}
+                      </span>
+                      <span className="inline-flex items-center rounded-md bg-white/10 px-1.5 py-0.5 text-[10px] font-medium !text-white/60 text-white/60">
+                        Coming soon
+                      </span>
+                    </div>
+                  ) : link.isDemo ? (
+                    <button
+                      onClick={() => setIsDemoOpen(true)}
+                      className={`text-sm !text-white/60 text-white/60 transition-colors hover:!text-white hover:text-white ${link.className || ''}`}
+                    >
                       {link.label}
-                    </span>
-                    <span className="inline-flex items-center rounded-md bg-white/10 px-1.5 py-0.5 text-[10px] font-medium !text-white/60 text-white/60">
-                      Coming soon
-                    </span>
-                  </div>
-                ) : (
-                  <a
-                    href={link.href}
-                    className={`text-sm !text-white/60 text-white/60 transition-colors hover:!text-white hover:text-white ${link.className || ''}`}
-                    target={link.href.startsWith('http') ? '_blank' : undefined}
-                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  >
-                    {link.label}
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
+                    </button>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className={`text-sm !text-white/60 text-white/60 transition-colors hover:!text-white hover:text-white ${link.className || ''}`}
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    >
+                      {link.label}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <DemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
+    </>
   );
 }

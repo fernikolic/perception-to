@@ -428,4 +428,45 @@ Firestore security rules are defined in `firestore.rules`
 
 ---
 
+## Remotion Video Production
+
+The `/remotion` folder contains a video production toolkit for marketing and promotional content.
+
+### Quick Reference
+
+```bash
+# Preview videos in browser (localhost:3001)
+npm run remotion:studio
+
+# Render a video
+npx remotion render remotion/src/index.ts <CompositionId> remotion/out/<filename>.mp4
+```
+
+### Structure
+
+```
+remotion/
+├── src/
+│   ├── Root.tsx              # Composition registry
+│   ├── compositions/         # Video files
+│   ├── components/           # Reusable components (devices, effects)
+│   └── lib/                  # Colors, easing curves
+├── public/
+│   ├── recordings/           # Screen recordings for videos
+│   └── *.woff2               # Brand fonts
+└── out/                      # Rendered outputs
+```
+
+### Design Direction
+
+**Style**: Apple-style editorial + bold energy
+- Minimal whitespace, one focal point at a time
+- Screen recordings of micro-interactions (not full-page screenshots)
+- Tight crops with subtle Ken Burns effects
+- Perception brand fonts: Ronzino (display), Newsreader (serif), Necto Mono (mono)
+
+**Full documentation**: See `/remotion/README.md`
+
+---
+
 For more information, refer to the individual component documentation or contact the development team.

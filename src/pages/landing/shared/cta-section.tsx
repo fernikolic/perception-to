@@ -28,7 +28,7 @@ export function CTASection({ title, subtitle, primaryCTA, secondaryCTA, backgrou
               className="w-full sm:w-auto bg-blue-950 text-white hover:bg-blue-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-lg hover:shadow-xl hover:scale-105 px-8 sm:px-10 lg:px-12 py-6 sm:py-7 text-base sm:text-lg lg:text-xl font-semibold rounded-2xl"
               asChild
             >
-              <a href="https://app.perception.to/auth/sign-up">
+              <a href="/book-a-call">
                 {primaryCTA}
               </a>
             </Button>

@@ -144,7 +144,7 @@ export default function BitcoinCompaniesPage() {
         <title>Bitcoin Companies - Narrative Intelligence & Sentiment Tracking | Perception</title>
         <meta
           name="description"
-          content={`Track sentiment, news coverage, and narratives for ${bitcoinCompanies.length}+ Bitcoin industry companies. Real-time intelligence from 650+ sources.`}
+          content={`Track sentiment, news coverage, and narratives for ${bitcoinCompanies.length}+ Bitcoin industry companies. Real-time intelligence from 450+ sources.`}
         />
         <meta property="og:title" content="Bitcoin Companies - Narrative Intelligence | Perception" />
         <meta property="og:description" content="Track what people are saying about Bitcoin industry companies. Real-time sentiment and narrative analysis." />
@@ -360,13 +360,13 @@ export default function BitcoinCompaniesPage() {
               Track Any Company
             </h2>
             <p className="text-lg text-slate-400 max-w-xl mx-auto mb-10">
-              Get real-time alerts, historical sentiment data, and AI-powered insights
+              Get real-time alerts, historical sentiment data, and intelligent insights
               for the companies that matter to you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/pricing">
                 <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 rounded-full px-10">
-                  Start Free Trial
+                  Book a Demo
                 </Button>
               </Link>
               <Link to="/book-a-call">

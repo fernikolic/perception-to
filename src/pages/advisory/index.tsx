@@ -93,7 +93,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
         >
-          Strategic advisory from Blockstream's former VP of Marketing & Communications. 650+ sources tracked in real-time. Narrative intelligence that helps you position before your competitors see the opportunity.
+          Strategic advisory from Blockstream's former VP of Marketing & Communications. 450+ sources tracked in real-time. Narrative intelligence that helps you position before your competitors see the opportunity.
         </motion.p>
 
         <motion.div
@@ -198,7 +198,7 @@ function DeliverablesSection() {
     {
       icon: Monitor,
       title: "Perception Platform",
-      description: "Full access to the intelligence platform tracking 650+ sources in real-time. See what I see. ($199/month value, included.)"
+      description: "Full access to the intelligence platform tracking 450+ sources in real-time. See what I see. ($199/month value, included.)"
     }
   ];
 
@@ -277,7 +277,7 @@ function BioSection() {
             </motion.p>
 
             <motion.p className="text-lg text-stone-400 leading-relaxed" variants={staggerItem}>
-              Now I run <strong className="text-stone-300">Perception</strong>, a narrative intelligence platform tracking Bitcoin, stablecoins, and tokenized finance across 650+ sources. The advisory service puts my interpretation and strategic thinking on top of that data.
+              Now I run <strong className="text-stone-300">Perception</strong>, a narrative intelligence platform tracking Bitcoin, stablecoins, and tokenized finance across 450+ sources. The advisory service puts my interpretation and strategic thinking on top of that data.
             </motion.p>
 
             <motion.blockquote
@@ -625,7 +625,7 @@ export function AdvisoryPage() {
     <>
       <SEO
         title="Perception Advisory | Brand Positioning Based on Data"
-        description="Strategic advisory for crypto founders. 650+ sources tracked in real-time. Positioning strategy based on narrative intelligence, not guesswork."
+        description="Strategic advisory for crypto founders. 450+ sources tracked in real-time. Positioning strategy based on narrative intelligence, not guesswork."
         url="https://perception.to/advisory"
         keywords={['crypto advisory', 'Bitcoin strategy', 'narrative intelligence', 'crypto marketing', 'Blockstream', 'crypto consulting', 'brand positioning']}
         image="/og/advisory.png"
